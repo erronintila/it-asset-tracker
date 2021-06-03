@@ -51,6 +51,21 @@ export default {
                     text: "Dashboard",
                     link: { name: "dashboard" }
                 },
+                // {
+                //     icon: "mdi-chart-areaspline",
+                //     text: "Work Orders",
+                //     link: { name: "" }
+                // },
+                {
+                    icon: "mdi-chart-areaspline",
+                    text: "Users",
+                    link: { name: "users.index" }
+                },
+                {
+                    icon: "mdi-chart-areaspline",
+                    text: "Customers",
+                    link: { name: "customers.index" }
+                },
                 {
                     icon: "mdi-chevron-up",
                     "icon-alt": "mdi-chevron-down",
