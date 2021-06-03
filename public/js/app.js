@@ -2097,25 +2097,31 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           name: "dashboard"
         }
       }, {
-        icon: "mdi-chart-areaspline",
+        icon: "mdi-calendar-month",
         text: "Schedules",
         link: {
           name: "schedules.index"
         }
       }, {
-        icon: "mdi-chart-areaspline",
+        icon: "mdi-text-box-multiple-outline",
         text: "Work Orders",
         link: {
           name: "work_orders.index"
         }
       }, {
-        icon: "mdi-chart-areaspline",
+        icon: "mdi-package-variant",
+        text: "Products",
+        link: {
+          name: "products.index"
+        }
+      }, {
+        icon: "mdi-account-group-outline",
         text: "Customers",
         link: {
           name: "customers.index"
         }
       }, {
-        icon: "mdi-chart-areaspline",
+        icon: "mdi-file-chart",
         text: "Reports",
         link: {
           name: "reports.index"
@@ -2146,7 +2152,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }]
       }],
       footer: {
-        company_name: "Sample Company",
+        company_name: "Twin-Circa Marketing",
         year: "2021"
       }
     };
@@ -39796,7 +39802,9 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-app-bar",
-    { attrs: { color: "white", flat: "", "clipped-left": "", app: "" } },
+    {
+      attrs: { color: "blue", dark: "", flat: "", "clipped-left": "", app: "" }
+    },
     [
       _c("v-app-bar-nav-icon", {
         on: {
@@ -102981,7 +102989,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _schedules__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./schedules */ "./resources/js/router/schedules.js");
 /* harmony import */ var _reports__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./reports */ "./resources/js/router/reports.js");
 /* harmony import */ var _settings__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./settings */ "./resources/js/router/settings.js");
-/* harmony import */ var _store_index__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../store/index */ "./resources/js/store/index.js");
+/* harmony import */ var _products__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./products */ "./resources/js/router/products.js");
+/* harmony import */ var _store_index__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../store/index */ "./resources/js/store/index.js");
+
 
 
 
@@ -102995,7 +103005,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var baseRoutes = [];
-var routes = baseRoutes.concat(_auth__WEBPACK_IMPORTED_MODULE_2__["default"], _pages__WEBPACK_IMPORTED_MODULE_3__["default"], _users__WEBPACK_IMPORTED_MODULE_4__["default"], _customers__WEBPACK_IMPORTED_MODULE_5__["default"], _permissions__WEBPACK_IMPORTED_MODULE_6__["default"], _work_orders__WEBPACK_IMPORTED_MODULE_7__["default"], _schedules__WEBPACK_IMPORTED_MODULE_8__["default"], _reports__WEBPACK_IMPORTED_MODULE_9__["default"], _settings__WEBPACK_IMPORTED_MODULE_10__["default"]);
+var routes = baseRoutes.concat(_auth__WEBPACK_IMPORTED_MODULE_2__["default"], _pages__WEBPACK_IMPORTED_MODULE_3__["default"], _users__WEBPACK_IMPORTED_MODULE_4__["default"], _customers__WEBPACK_IMPORTED_MODULE_5__["default"], _permissions__WEBPACK_IMPORTED_MODULE_6__["default"], _work_orders__WEBPACK_IMPORTED_MODULE_7__["default"], _schedules__WEBPACK_IMPORTED_MODULE_8__["default"], _reports__WEBPACK_IMPORTED_MODULE_9__["default"], _settings__WEBPACK_IMPORTED_MODULE_10__["default"], _products__WEBPACK_IMPORTED_MODULE_11__["default"]);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: "history",
   base: process.env.BASE_URL,
@@ -103006,7 +103016,7 @@ router.beforeEach(function (to, from, next) {
   if (to.matched.some(function (record) {
     return record.meta.auth;
   })) {
-    if (!_store_index__WEBPACK_IMPORTED_MODULE_11__["default"].getters["auth/authenticated"]) {
+    if (!_store_index__WEBPACK_IMPORTED_MODULE_12__["default"].getters["auth/authenticated"]) {
       next({
         name: "login"
       });
@@ -103016,7 +103026,7 @@ router.beforeEach(function (to, from, next) {
   } else if (to.matched.some(function (record) {
     return record.meta.guest;
   })) {
-    if (!_store_index__WEBPACK_IMPORTED_MODULE_11__["default"].getters["auth/authenticated"]) {
+    if (!_store_index__WEBPACK_IMPORTED_MODULE_12__["default"].getters["auth/authenticated"]) {
       next();
     } else {
       next({
@@ -103098,6 +103108,38 @@ var permission_routes = [{
   }
 }];
 /* harmony default export */ __webpack_exports__["default"] = (permission_routes);
+
+/***/ }),
+
+/***/ "./resources/js/router/products.js":
+/*!*****************************************!*\
+  !*** ./resources/js/router/products.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var product_routes = [{
+  path: "/products",
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ 20).then(__webpack_require__.bind(null, /*! ../pages/products/Index */ "./resources/js/pages/products/Index.vue"));
+  },
+  name: "products.index",
+  meta: {
+    auth: true
+  }
+}, {
+  path: "/products/create",
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ 21).then(__webpack_require__.bind(null, /*! ../pages/products/Create */ "./resources/js/pages/products/Create.vue"));
+  },
+  name: "products.create",
+  meta: {
+    auth: true
+  }
+}];
+/* harmony default export */ __webpack_exports__["default"] = (product_routes);
 
 /***/ }),
 

@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{any?}', "AppController@index");
+Route::get('/{path}', 'AppController@index')->where('path', '.*');
 
 Auth::routes();

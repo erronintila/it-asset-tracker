@@ -1,5 +1,5 @@
 <template>
-    <v-app-bar color="white" flat clipped-left app>
+    <v-app-bar color="blue" dark flat clipped-left app>
         <v-app-bar-nav-icon @click.stop="openCloseDrawer"></v-app-bar-nav-icon>
 
         <v-toolbar-title class="hidden-sm-and-down ml-0 pl-4 mr-4">

@@ -52,22 +52,27 @@ export default {
                     link: { name: "dashboard" }
                 },
                 {
-                    icon: "mdi-chart-areaspline",
+                    icon: "mdi-calendar-month",
                     text: "Schedules",
                     link: { name: "schedules.index" }
                 },
                 {
-                    icon: "mdi-chart-areaspline",
+                    icon: "mdi-text-box-multiple-outline",
                     text: "Work Orders",
                     link: { name: "work_orders.index" }
                 },
                 {
-                    icon: "mdi-chart-areaspline",
+                    icon: "mdi-package-variant",
+                    text: "Products",
+                    link: { name: "products.index" }
+                },
+                {
+                    icon: "mdi-account-group-outline",
                     text: "Customers",
                     link: { name: "customers.index" }
                 },
                 {
-                    icon: "mdi-chart-areaspline",
+                    icon: "mdi-file-chart",
                     text: "Reports",
                     link: { name: "reports.index" }
                 },
@@ -96,7 +101,7 @@ export default {
                 }
             ],
             footer: {
-                company_name: "Sample Company",
+                company_name: "Twin-Circa Marketing",
                 year: "2021"
             }
         };

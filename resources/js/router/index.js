@@ -9,6 +9,7 @@ import work_order_routes from "./work_orders";
 import schedule_routes from "./schedules";
 import report_routes from "./reports";
 import setting_routes from "./settings";
+import product_routes from "./products";
 
 import store from "../store/index";
 
@@ -22,7 +23,8 @@ const routes = baseRoutes.concat(
     work_order_routes,
     schedule_routes,
     report_routes,
-    setting_routes
+    setting_routes,
+    product_routes
 );
 
 const router = new VueRouter({
