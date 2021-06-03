@@ -2348,7 +2348,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "application-bar",
@@ -2469,6 +2468,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -39782,9 +39782,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-app-bar",
-    {
-      attrs: { color: "blue", dark: "", flat: "", "clipped-left": "", app: "" }
-    },
+    { attrs: { color: "white", flat: "", "clipped-left": "", app: "" } },
     [
       _c("v-app-bar-nav-icon", {
         on: {
@@ -39805,7 +39803,7 @@ var render = function() {
               staticStyle: { "text-decoration": "none", color: "inherit" },
               attrs: { to: { name: "home" } }
             },
-            [_c("span", { staticClass: "title" }, [_vm._v("Project Title")])]
+            [_c("span", [_vm._v("Project Title")])]
           )
         ],
         1
@@ -40209,7 +40207,11 @@ var render = function() {
   return _c(
     "v-navigation-drawer",
     {
-      attrs: { app: "", clipped: _vm.$vuetify.breakpoint.mdAndUp },
+      attrs: {
+        app: "",
+        clipped: _vm.$vuetify.breakpoint.mdAndUp,
+        floating: ""
+      },
       scopedSlots: _vm._u([
         {
           key: "prepend",
@@ -40255,14 +40257,22 @@ var render = function() {
                               },
                               attrs: { to: { name: "profile" } }
                             },
-                            [_c("span", [_vm._v(_vm._s(_vm.user.name))])]
+                            [
+                              _c("span", { staticClass: "blue--text" }, [
+                                _vm._v(_vm._s(_vm.user.name))
+                              ])
+                            ]
                           )
                         ],
                         1
                       ),
                       _vm._v(" "),
                       _c("v-list-item-subtitle", [
-                        _vm._v(_vm._s(_vm.user.email))
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(_vm.user.email) +
+                            "\n                "
+                        )
                       ])
                     ],
                     1
@@ -40308,10 +40318,9 @@ var render = function() {
     },
     [
       _vm._v(" "),
-      _c("v-divider"),
-      _vm._v(" "),
       _c(
         "v-list",
+        { attrs: { rounded: "" } },
         [
           _vm._l(_vm.left_drawer_items, function(item) {
             return [
@@ -102867,7 +102876,7 @@ __webpack_require__.r(__webpack_exports__);
 var auth_routes = [{
   path: "/login",
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../pages/auth/Login */ "./resources/js/pages/auth/Login.vue"));
+    return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ../pages/auth/Login */ "./resources/js/pages/auth/Login.vue"));
   },
   name: "login",
   meta: {
@@ -102876,7 +102885,7 @@ var auth_routes = [{
 }, {
   path: "/register",
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ../pages/auth/Register */ "./resources/js/pages/auth/Register.vue"));
+    return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! ../pages/auth/Register */ "./resources/js/pages/auth/Register.vue"));
   },
   name: "register",
   meta: {
@@ -102899,7 +102908,7 @@ __webpack_require__.r(__webpack_exports__);
 var customer_routes = [{
   path: "/customers",
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 9).then(__webpack_require__.bind(null, /*! ../pages/customers/Index */ "./resources/js/pages/customers/Index.vue"));
+    return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ../pages/customers/Index */ "./resources/js/pages/customers/Index.vue"));
   },
   name: "customers.index",
   meta: {
@@ -102908,7 +102917,7 @@ var customer_routes = [{
 }, {
   path: "/customers/create",
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 9).then(__webpack_require__.bind(null, /*! ../pages/customers/Index */ "./resources/js/pages/customers/Index.vue"));
+    return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ../pages/customers/Index */ "./resources/js/pages/customers/Index.vue"));
   },
   name: "customers.create",
   meta: {
@@ -102917,7 +102926,7 @@ var customer_routes = [{
 }, {
   path: "/customers/:id/edit",
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 10).then(__webpack_require__.bind(null, /*! ../pages/customers/Edit */ "./resources/js/pages/customers/Edit.vue"));
+    return __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! ../pages/customers/Edit */ "./resources/js/pages/customers/Edit.vue"));
   },
   name: "customers.edit",
   meta: {
@@ -102926,7 +102935,7 @@ var customer_routes = [{
 }, {
   path: "/customers/:id",
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! ../pages/customers/Show */ "./resources/js/pages/customers/Show.vue"));
+    return __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! ../pages/customers/Show */ "./resources/js/pages/customers/Show.vue"));
   },
   name: "customers.show",
   meta: {
@@ -103010,13 +103019,13 @@ __webpack_require__.r(__webpack_exports__);
 var pages_routes = [{
   path: "/test",
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ../pages/Test */ "./resources/js/pages/Test.vue"));
+    return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ../pages/Test */ "./resources/js/pages/Test.vue"));
   },
   name: "test"
 }, {
   path: "/",
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ../pages/Home */ "./resources/js/pages/Home.vue"));
+    return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ../pages/Home */ "./resources/js/pages/Home.vue"));
   },
   name: "home",
   meta: {
@@ -103025,7 +103034,7 @@ var pages_routes = [{
 }, {
   path: "/profile",
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../pages/Profile */ "./resources/js/pages/Profile.vue"));
+    return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../pages/Profile */ "./resources/js/pages/Profile.vue"));
   },
   name: "profile",
   meta: {
@@ -103034,7 +103043,7 @@ var pages_routes = [{
 }, {
   path: "/dashboard",
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ../pages/Dashboard */ "./resources/js/pages/Dashboard.vue"));
+    return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../pages/Dashboard */ "./resources/js/pages/Dashboard.vue"));
   },
   name: "dashboard",
   meta: {
@@ -103057,7 +103066,7 @@ __webpack_require__.r(__webpack_exports__);
 var user_routes = [{
   path: "/users",
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! ../pages/users/Index */ "./resources/js/pages/users/Index.vue"));
+    return __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! ../pages/users/Index */ "./resources/js/pages/users/Index.vue"));
   },
   name: "users.index",
   meta: {
@@ -103066,7 +103075,7 @@ var user_routes = [{
 }, {
   path: "/users/create",
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 12).then(__webpack_require__.bind(null, /*! ../pages/users/Create */ "./resources/js/pages/users/Create.vue"));
+    return __webpack_require__.e(/*! import() */ 9).then(__webpack_require__.bind(null, /*! ../pages/users/Create */ "./resources/js/pages/users/Create.vue"));
   },
   name: "users.create",
   meta: {
@@ -103075,7 +103084,7 @@ var user_routes = [{
 }, {
   path: "/users/:id/edit",
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! ../pages/users/Edit */ "./resources/js/pages/users/Edit.vue"));
+    return __webpack_require__.e(/*! import() */ 10).then(__webpack_require__.bind(null, /*! ../pages/users/Edit */ "./resources/js/pages/users/Edit.vue"));
   },
   name: "users.edit",
   meta: {
@@ -103084,7 +103093,7 @@ var user_routes = [{
 }, {
   path: "/users/:id",
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! ../pages/users/Show */ "./resources/js/pages/users/Show.vue"));
+    return __webpack_require__.e(/*! import() */ 12).then(__webpack_require__.bind(null, /*! ../pages/users/Show */ "./resources/js/pages/users/Show.vue"));
   },
   name: "users.show",
   meta: {
