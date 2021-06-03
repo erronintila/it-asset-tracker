@@ -51,20 +51,25 @@ export default {
                     text: "Dashboard",
                     link: { name: "dashboard" }
                 },
-                // {
-                //     icon: "mdi-chart-areaspline",
-                //     text: "Work Orders",
-                //     link: { name: "" }
-                // },
                 {
                     icon: "mdi-chart-areaspline",
-                    text: "Users",
-                    link: { name: "users.index" }
+                    text: "Schedules",
+                    link: { name: "schedules.index" }
+                },
+                {
+                    icon: "mdi-chart-areaspline",
+                    text: "Work Orders",
+                    link: { name: "work_orders.index" }
                 },
                 {
                     icon: "mdi-chart-areaspline",
                     text: "Customers",
                     link: { name: "customers.index" }
+                },
+                {
+                    icon: "mdi-chart-areaspline",
+                    text: "Reports",
+                    link: { name: "reports.index" }
                 },
                 {
                     icon: "mdi-chevron-up",
@@ -73,9 +78,19 @@ export default {
                     model: false,
                     children: [
                         {
+                            icon: "mdi-chart-areaspline",
+                            text: "Users",
+                            link: { name: "users.index" }
+                        },
+                        {
                             icon: "mdi-circle-medium",
-                            text: "Profile",
-                            link: { name: "profile" }
+                            text: "Permissions",
+                            link: { name: "permissions.index" }
+                        },
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "Settings",
+                            link: { name: "settings.index" }
                         }
                     ]
                 }

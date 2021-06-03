@@ -1,10 +1,5 @@
 <template>
-    <v-app-bar
-        color="white"
-        flat
-        clipped-left
-        app
-    >
+    <v-app-bar color="white" flat clipped-left app>
         <v-app-bar-nav-icon @click.stop="openCloseDrawer"></v-app-bar-nav-icon>
 
         <v-toolbar-title class="hidden-sm-and-down ml-0 pl-4 mr-4">
@@ -12,7 +7,7 @@
                 :to="{ name: 'home' }"
                 style="text-decoration: none; color: inherit;"
             >
-                <span>Project Title</span>
+                <span>Field Service System</span>
             </router-link>
         </v-toolbar-title>
 

@@ -1,5 +1,5 @@
 <template>
     <div>
-        create new user
+        <div class="title">Settings</div>
     </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
     <div>
-        create new user
+        <div class="title">Schedules</div>
     </div>
 </template>

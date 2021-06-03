@@ -4,6 +4,12 @@ import auth_routes from "./auth";
 import pages_routes from "./pages";
 import user_routes from "./users";
 import customer_routes from "./customers";
+import permission_routes from "./permissions";
+import work_order_routes from "./work_orders";
+import schedule_routes from "./schedules";
+import report_routes from "./reports";
+import setting_routes from "./settings";
+
 import store from "../store/index";
 
 const baseRoutes = [];
@@ -11,7 +17,12 @@ const routes = baseRoutes.concat(
     auth_routes,
     pages_routes,
     user_routes,
-    customer_routes
+    customer_routes,
+    permission_routes,
+    work_order_routes,
+    schedule_routes,
+    report_routes,
+    setting_routes
 );
 
 const router = new VueRouter({

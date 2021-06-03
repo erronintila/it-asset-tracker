@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
-    <title>{{ config('app.name', "Laravel Vuetify") }}</title>
+    <title>{{ config('app.name', "Laravel") }}</title>
 </head>
 
 <body>

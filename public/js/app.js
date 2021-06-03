@@ -2096,16 +2096,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         link: {
           name: "dashboard"
         }
-      }, // {
-      //     icon: "mdi-chart-areaspline",
-      //     text: "Work Orders",
-      //     link: { name: "" }
-      // },
-      {
+      }, {
         icon: "mdi-chart-areaspline",
-        text: "Users",
+        text: "Schedules",
         link: {
-          name: "users.index"
+          name: "schedules.index"
+        }
+      }, {
+        icon: "mdi-chart-areaspline",
+        text: "Work Orders",
+        link: {
+          name: "work_orders.index"
         }
       }, {
         icon: "mdi-chart-areaspline",
@@ -2114,15 +2115,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           name: "customers.index"
         }
       }, {
+        icon: "mdi-chart-areaspline",
+        text: "Reports",
+        link: {
+          name: "reports.index"
+        }
+      }, {
         icon: "mdi-chevron-up",
         "icon-alt": "mdi-chevron-down",
         text: "More",
         model: false,
         children: [{
-          icon: "mdi-circle-medium",
-          text: "Profile",
+          icon: "mdi-chart-areaspline",
+          text: "Users",
           link: {
-            name: "profile"
+            name: "users.index"
+          }
+        }, {
+          icon: "mdi-circle-medium",
+          text: "Permissions",
+          link: {
+            name: "permissions.index"
+          }
+        }, {
+          icon: "mdi-chart-areaspline",
+          text: "Settings",
+          link: {
+            name: "settings.index"
           }
         }]
       }],
@@ -2169,11 +2188,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
 //
 //
 //
@@ -7126,7 +7140,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/vuetify/dist/vuetify.min.css?bdb9":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/vuetify/dist/vuetify.min.css":
 /*!***********************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vuetify/dist/vuetify.min.css ***!
   \***********************************************************************************************************************************/
@@ -39803,7 +39817,7 @@ var render = function() {
               staticStyle: { "text-decoration": "none", color: "inherit" },
               attrs: { to: { name: "home" } }
             },
-            [_c("span", [_vm._v("Project Title")])]
+            [_c("span", [_vm._v("Field Service System")])]
           )
         ],
         1
@@ -101117,7 +101131,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_vue__;
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./vuetify.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/vuetify/dist/vuetify.min.css?bdb9");
+var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./vuetify.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/vuetify/dist/vuetify.min.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -102962,7 +102976,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages */ "./resources/js/router/pages.js");
 /* harmony import */ var _users__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./users */ "./resources/js/router/users.js");
 /* harmony import */ var _customers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./customers */ "./resources/js/router/customers.js");
-/* harmony import */ var _store_index__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../store/index */ "./resources/js/store/index.js");
+/* harmony import */ var _permissions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./permissions */ "./resources/js/router/permissions.js");
+/* harmony import */ var _work_orders__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./work_orders */ "./resources/js/router/work_orders.js");
+/* harmony import */ var _schedules__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./schedules */ "./resources/js/router/schedules.js");
+/* harmony import */ var _reports__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./reports */ "./resources/js/router/reports.js");
+/* harmony import */ var _settings__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./settings */ "./resources/js/router/settings.js");
+/* harmony import */ var _store_index__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../store/index */ "./resources/js/store/index.js");
+
+
+
+
+
 
 
 
@@ -102971,7 +102995,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var baseRoutes = [];
-var routes = baseRoutes.concat(_auth__WEBPACK_IMPORTED_MODULE_2__["default"], _pages__WEBPACK_IMPORTED_MODULE_3__["default"], _users__WEBPACK_IMPORTED_MODULE_4__["default"], _customers__WEBPACK_IMPORTED_MODULE_5__["default"]);
+var routes = baseRoutes.concat(_auth__WEBPACK_IMPORTED_MODULE_2__["default"], _pages__WEBPACK_IMPORTED_MODULE_3__["default"], _users__WEBPACK_IMPORTED_MODULE_4__["default"], _customers__WEBPACK_IMPORTED_MODULE_5__["default"], _permissions__WEBPACK_IMPORTED_MODULE_6__["default"], _work_orders__WEBPACK_IMPORTED_MODULE_7__["default"], _schedules__WEBPACK_IMPORTED_MODULE_8__["default"], _reports__WEBPACK_IMPORTED_MODULE_9__["default"], _settings__WEBPACK_IMPORTED_MODULE_10__["default"]);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: "history",
   base: process.env.BASE_URL,
@@ -102982,7 +103006,7 @@ router.beforeEach(function (to, from, next) {
   if (to.matched.some(function (record) {
     return record.meta.auth;
   })) {
-    if (!_store_index__WEBPACK_IMPORTED_MODULE_6__["default"].getters["auth/authenticated"]) {
+    if (!_store_index__WEBPACK_IMPORTED_MODULE_11__["default"].getters["auth/authenticated"]) {
       next({
         name: "login"
       });
@@ -102992,7 +103016,7 @@ router.beforeEach(function (to, from, next) {
   } else if (to.matched.some(function (record) {
     return record.meta.guest;
   })) {
-    if (!_store_index__WEBPACK_IMPORTED_MODULE_6__["default"].getters["auth/authenticated"]) {
+    if (!_store_index__WEBPACK_IMPORTED_MODULE_11__["default"].getters["auth/authenticated"]) {
       next();
     } else {
       next({
@@ -103054,6 +103078,98 @@ var pages_routes = [{
 
 /***/ }),
 
+/***/ "./resources/js/router/permissions.js":
+/*!********************************************!*\
+  !*** ./resources/js/router/permissions.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var permission_routes = [{
+  path: "/permissions",
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ 17).then(__webpack_require__.bind(null, /*! ../pages/permissions/Index */ "./resources/js/pages/permissions/Index.vue"));
+  },
+  name: "permissions.index",
+  meta: {
+    auth: true
+  }
+}];
+/* harmony default export */ __webpack_exports__["default"] = (permission_routes);
+
+/***/ }),
+
+/***/ "./resources/js/router/reports.js":
+/*!****************************************!*\
+  !*** ./resources/js/router/reports.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var report_routes = [{
+  path: "/reports",
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ 18).then(__webpack_require__.bind(null, /*! ../pages/reports/Index */ "./resources/js/pages/reports/Index.vue"));
+  },
+  name: "reports.index",
+  meta: {
+    auth: true
+  }
+}];
+/* harmony default export */ __webpack_exports__["default"] = (report_routes);
+
+/***/ }),
+
+/***/ "./resources/js/router/schedules.js":
+/*!******************************************!*\
+  !*** ./resources/js/router/schedules.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var schedule_routes = [{
+  path: "/schedules",
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ 16).then(__webpack_require__.bind(null, /*! ../pages/schedules/Index */ "./resources/js/pages/schedules/Index.vue"));
+  },
+  name: "schedules.index",
+  meta: {
+    auth: true
+  }
+}];
+/* harmony default export */ __webpack_exports__["default"] = (schedule_routes);
+
+/***/ }),
+
+/***/ "./resources/js/router/settings.js":
+/*!*****************************************!*\
+  !*** ./resources/js/router/settings.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var setting_routes = [{
+  path: "/settings",
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ 19).then(__webpack_require__.bind(null, /*! ../pages/settings/Index */ "./resources/js/pages/settings/Index.vue"));
+  },
+  name: "settings.index",
+  meta: {
+    auth: true
+  }
+}];
+/* harmony default export */ __webpack_exports__["default"] = (setting_routes);
+
+/***/ }),
+
 /***/ "./resources/js/router/users.js":
 /*!**************************************!*\
   !*** ./resources/js/router/users.js ***!
@@ -103101,6 +103217,56 @@ var user_routes = [{
   }
 }];
 /* harmony default export */ __webpack_exports__["default"] = (user_routes);
+
+/***/ }),
+
+/***/ "./resources/js/router/work_orders.js":
+/*!********************************************!*\
+  !*** ./resources/js/router/work_orders.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var work_order_routes = [{
+  path: "/work_orders",
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ 13).then(__webpack_require__.bind(null, /*! ../pages/work_orders/Index */ "./resources/js/pages/work_orders/Index.vue"));
+  },
+  name: "work_orders.index",
+  meta: {
+    auth: true
+  }
+}, {
+  path: "/work_orders/create",
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ 13).then(__webpack_require__.bind(null, /*! ../pages/work_orders/Index */ "./resources/js/pages/work_orders/Index.vue"));
+  },
+  name: "work_orders.create",
+  meta: {
+    auth: true
+  }
+}, {
+  path: "/work_orders/:id/edit",
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ 14).then(__webpack_require__.bind(null, /*! ../pages/work_orders/Edit */ "./resources/js/pages/work_orders/Edit.vue"));
+  },
+  name: "work_orders.edit",
+  meta: {
+    auth: true
+  }
+}, {
+  path: "/work_orders/:id",
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ 15).then(__webpack_require__.bind(null, /*! ../pages/work_orders/Show */ "./resources/js/pages/work_orders/Show.vue"));
+  },
+  name: "work_orders.show",
+  meta: {
+    auth: true
+  }
+}];
+/* harmony default export */ __webpack_exports__["default"] = (work_order_routes);
 
 /***/ }),
 
