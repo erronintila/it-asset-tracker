@@ -3,6 +3,7 @@
         app
         :clipped="$vuetify.breakpoint.mdAndUp"
         v-model="drawer"
+        floating
     >
         <template v-slot:prepend>
             <v-list-item two-line>
@@ -22,19 +23,19 @@
                             :to="{ name: 'profile' }"
                             style="text-decoration: none; color: inherit;"
                         >
-                            <span>{{ user.name }}</span>
+                            <span class="blue--text">{{ user.name }}</span>
                         </router-link>
                     </v-list-item-title>
-                    <v-list-item-subtitle>{{
-                        user.email
-                    }}</v-list-item-subtitle>
+                    <v-list-item-subtitle>
+                        {{ user.email }}
+                    </v-list-item-subtitle>
                 </v-list-item-content>
             </v-list-item>
         </template>
 
-        <v-divider></v-divider>
+        <!-- <v-divider></v-divider> -->
 
-        <v-list>
+        <v-list rounded>
             <template v-for="item in left_drawer_items">
                 <v-row v-if="item.heading" :key="item.heading"> </v-row>
                 <v-list-group

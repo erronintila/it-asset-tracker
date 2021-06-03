@@ -1,7 +1,6 @@
 <template>
     <v-app-bar
-        color="blue"
-        dark
+        color="white"
         flat
         clipped-left
         app
@@ -13,7 +12,7 @@
                 :to="{ name: 'home' }"
                 style="text-decoration: none; color: inherit;"
             >
-                <span class="title">Project Title</span>
+                <span>Project Title</span>
             </router-link>
         </v-toolbar-title>
 

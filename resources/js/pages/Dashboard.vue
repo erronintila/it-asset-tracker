@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p class="title">Welcome <span v-if="user">{{ user.name }}</span></p>
+        <div class="title">Dashboard</div>
     </div>
 </template>
 
