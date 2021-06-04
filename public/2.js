@@ -113,6 +113,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "dashboard",
@@ -123,26 +125,30 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           title: "Total Work Orders",
           subtitle: "sample text",
           body: "1,000,000.00",
-          color: "secondary",
-          dark: false
-        }, {
-          title: "Total Work Orders",
-          subtitle: "sample text",
-          body: "100",
-          color: "white",
-          dark: false
-        }, {
-          title: "Total Work Orders",
-          subtitle: "sample text",
-          body: "100",
           color: "primary",
-          dark: true
+          dark: false,
+          text_color: "white--text"
         }, {
           title: "Total Work Orders",
           subtitle: "sample text",
           body: "100",
           color: "white",
-          dark: false
+          dark: false,
+          text_color: "black--text"
+        }, {
+          title: "Total Work Orders",
+          subtitle: "sample text",
+          body: "100",
+          color: "white",
+          dark: true,
+          text_color: "black--text"
+        }, {
+          title: "Total Work Orders",
+          subtitle: "sample text",
+          body: "100",
+          color: "white",
+          dark: false,
+          text_color: "black--text"
         }]
       }
     };
@@ -256,25 +262,45 @@ var render = function() {
                                 { attrs: { "three-line": "" } },
                                 [
                                   _c("v-list-item-content", [
-                                    _c("div", { staticClass: "header-title" }, [
-                                      _vm._v(_vm._s(item.title))
-                                    ]),
+                                    _c(
+                                      "div",
+                                      {
+                                        class: "header-title " + item.text_color
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                " +
+                                            _vm._s(item.title) +
+                                            "\n                            "
+                                        )
+                                      ]
+                                    ),
                                     _vm._v(" "),
-                                    _c("div", { staticClass: "header-body" }, [
-                                      _vm._v(
-                                        "\n                                " +
-                                          _vm._s(item.body) +
-                                          "\n                            "
-                                      )
-                                    ]),
+                                    _c(
+                                      "div",
+                                      {
+                                        class: "header-body " + item.text_color
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                " +
+                                            _vm._s(item.body) +
+                                            "\n                            "
+                                        )
+                                      ]
+                                    ),
                                     _vm._v(" "),
-                                    _c("div", { staticClass: "body-2" }, [
-                                      _vm._v(
-                                        "\n                                " +
-                                          _vm._s(item.subtitle) +
-                                          "\n                            "
-                                      )
-                                    ])
+                                    _c(
+                                      "div",
+                                      { class: "body-2 " + item.text_color },
+                                      [
+                                        _vm._v(
+                                          "\n                                " +
+                                            _vm._s(item.subtitle) +
+                                            "\n                            "
+                                        )
+                                      ]
+                                    )
                                   ])
                                 ],
                                 1
