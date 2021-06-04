@@ -13,7 +13,7 @@
                 :to="{ name: 'home' }"
                 style="text-decoration: none; color: inherit;"
             >
-                <span>{{ $route.params.name }}</span>
+                <span class="font-weight-bold">Field Service System</span>
             </router-link>
         </v-toolbar-title>
 
@@ -89,8 +89,8 @@
                 <v-card-actions>
                     <v-spacer></v-spacer>
 
-                    <v-btn color="primary" text @click="viewNotifications">
-                        View All
+                    <v-btn class="font-weight-bold" color="primary" text @click="viewNotifications">
+                        <v-icon left>mdi-eye</v-icon>View All
                     </v-btn>
                 </v-card-actions>
             </v-card>
@@ -165,8 +165,14 @@
                 <v-card-actions>
                     <v-spacer></v-spacer>
 
-                    <v-btn color="primary" rounded text @click="onLogout">
-                        Logout
+                    <v-btn
+                        class="font-weight-bold"
+                        color="primary"
+                        rounded
+                        text
+                        @click="onLogout"
+                    >
+                        <v-icon>mdi-logout</v-icon>Log out
                     </v-btn>
                 </v-card-actions>
             </v-card>

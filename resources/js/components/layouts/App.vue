@@ -4,7 +4,7 @@
             v-if="user && authenticated"
             :user="user"
             :left_drawer="left_drawer"
-            :clipped_left="false"
+            :clipped_left="true"
             @open-close-drawer="openCloseDrawer"
         ></application-bar>
 
