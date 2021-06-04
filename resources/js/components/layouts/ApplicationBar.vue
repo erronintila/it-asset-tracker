@@ -17,6 +17,10 @@
             </router-link>
         </v-toolbar-title>
 
+        <v-btn icon @click="$router.push({ name: 'home' }, () => {})">
+            <v-icon>mdi-home</v-icon>
+        </v-btn>
+
         <v-spacer></v-spacer>
 
         <v-menu
@@ -89,7 +93,12 @@
                 <v-card-actions>
                     <v-spacer></v-spacer>
 
-                    <v-btn class="font-weight-bold" color="primary" text @click="viewNotifications">
+                    <v-btn
+                        class="font-weight-bold"
+                        color="primary"
+                        text
+                        @click="viewNotifications"
+                    >
                         <v-icon left>mdi-eye</v-icon>View All
                     </v-btn>
                 </v-card-actions>
