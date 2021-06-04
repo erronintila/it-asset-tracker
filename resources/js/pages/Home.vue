@@ -1,6 +1,12 @@
 <template>
     <div>
-        <div class="title">Welcome {{ user.name }}</div>
+        <v-row>
+            <v-col class="d-flex align-center">
+                <div class="page-title d-inline mr-3">
+                    Welcome {{ user.name }}
+                </div>
+            </v-col>
+        </v-row>
     </div>
 </template>
 
@@ -16,3 +22,10 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+.page-title {
+    font-size: 1.5rem;
+    font-weight: 100;
+}
+</style>

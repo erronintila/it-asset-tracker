@@ -1,6 +1,12 @@
 <template>
     <div>
-        <div class="title">Profile</div>
+        <v-row>
+            <v-col class="d-flex align-center">
+                <div class="page-title d-inline mr-3">
+                    Profile
+                </div>
+            </v-col>
+        </v-row>
         <div class="my-4">
             <p>Name: {{ user ? user.name : "" }}</p>
             <p>Email: {{ user ? user.email : "" }}</p>
@@ -20,3 +26,10 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+.page-title {
+    font-size: 1.5rem;
+    font-weight: 100;
+}
+</style>
