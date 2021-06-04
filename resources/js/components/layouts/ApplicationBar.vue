@@ -17,7 +17,7 @@
             </router-link>
         </v-toolbar-title>
 
-        <v-btn icon @click="$router.push({ name: 'home' }, () => {})">
+        <v-btn class="hidden-md-and-up" icon @click="$router.push({ name: 'home' }, () => {})">
             <v-icon>mdi-home</v-icon>
         </v-btn>
 
