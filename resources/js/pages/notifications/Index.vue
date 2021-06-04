@@ -1,0 +1,5 @@
+<template>
+    <div>
+        <div class="title">Notifications</div>
+    </div>
+</template>

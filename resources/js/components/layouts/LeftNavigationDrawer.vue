@@ -3,10 +3,10 @@
         app
         :clipped="$vuetify.breakpoint.mdAndUp"
         v-model="drawer"
-        floating
+        :floating="floating"
     >
         <template v-slot:prepend>
-            <v-list-item two-line>
+            <v-list-item dense two-line>
                 <v-list-item-avatar>
                     <v-sheet color="grey lighten-4" class="pa-4">
                         <v-avatar
@@ -23,7 +23,7 @@
                             :to="{ name: 'profile' }"
                             style="text-decoration: none; color: inherit;"
                         >
-                            <span class="blue--text">{{ user.name }}</span>
+                            <span class="primary--text font-weight-bold">{{ user.name }}</span>
                         </router-link>
                     </v-list-item-title>
                     <v-list-item-subtitle>
@@ -35,11 +35,11 @@
 
         <!-- <v-divider></v-divider> -->
 
-        <v-list rounded>
+        <v-list dense rounded>
             <template v-for="item in left_drawer_items">
                 <v-row v-if="item.heading" :key="item.heading"> </v-row>
                 <v-list-group
-                    color="blue"
+                    color="primary"
                     v-else-if="item.children"
                     :key="item.text"
                     v-model="item.model"
@@ -49,7 +49,9 @@
                     <template v-slot:activator>
                         <v-list-item-content>
                             <v-list-item-title>
-                                {{ item.text }}
+                                <div class="font-weight-bold">
+                                    {{ item.text }}
+                                </div>
                             </v-list-item-title>
                         </v-list-item-content>
                     </template>
@@ -64,13 +66,15 @@
                         </v-list-item-action>
                         <v-list-item-content>
                             <v-list-item-title>
-                                {{ child.text }}
+                                <div class="font-weight-bold">
+                                    {{ child.text }}
+                                </div>
                             </v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
                 </v-list-group>
                 <v-list-item
-                    color="blue"
+                    color="primary"
                     v-else
                     :key="item.text"
                     :to="item.link"
@@ -81,20 +85,22 @@
                     </v-list-item-action>
                     <v-list-item-content>
                         <v-list-item-title>
-                            {{ item.text }}
+                            <div class="font-weight-bold">
+                                {{ item.text }}
+                            </div>
                         </v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
             </template>
         </v-list>
 
-        <template v-slot:append>
+        <!-- <template v-slot:append>
             <div class="pa-2">
-                <v-btn block color="blue" dark @click="onLogout">
+                <v-btn block color="primary" dark @click="onLogout">
                     Logout
                 </v-btn>
             </div>
-        </template>
+        </template> -->
     </v-navigation-drawer>
 </template>
 
@@ -107,6 +113,14 @@ export default {
         user: {
             type: Object,
             default: () => {}
+        },
+        floating: {
+            type: Boolean,
+            default: false
+        },
+        clipped: {
+            type: String,
+            default: "$vuetify.breakpoint.mdAndUp"
         },
         left_drawer: {
             type: Boolean,

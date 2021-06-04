@@ -1,5 +1,5 @@
 <template>
-    <v-footer fixed padless v-if="company_name !== ''">
+    <v-footer  color="white" padless v-if="company_name !== ''">
         <v-col class="text-right" cols="12">
             <small>
                 © {{ year }} Copyright — <strong>{{ company_name }}</strong>

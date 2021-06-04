@@ -8,6 +8,7 @@ import vuetify from "./plugins/vuetify";
 import store from "./store/index";
 import router from "./router/index";
 import App from "./components/layouts/App";
+import ApexCharts from 'apexcharts'
 
 Vue.use(VueRouter);
 

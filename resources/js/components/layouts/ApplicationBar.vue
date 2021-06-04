@@ -1,5 +1,11 @@
 <template>
-    <v-app-bar color="blue" dark flat clipped-left app>
+    <v-app-bar
+        app
+        :color="color"
+        :dark="dark"
+        :flat="flat"
+        :clipped-left="clipped_left"
+    >
         <v-app-bar-nav-icon @click.stop="openCloseDrawer"></v-app-bar-nav-icon>
 
         <v-toolbar-title class="hidden-sm-and-down ml-0 pl-4 mr-4">
@@ -7,7 +13,7 @@
                 :to="{ name: 'home' }"
                 style="text-decoration: none; color: inherit;"
             >
-                <span>Field Service System</span>
+                <span>{{ $route.params.name }}</span>
             </router-link>
         </v-toolbar-title>
 
@@ -83,11 +89,7 @@
                 <v-card-actions>
                     <v-spacer></v-spacer>
 
-                    <v-btn
-                        color="primary"
-                        text
-                        @click="notification_menu = false"
-                    >
+                    <v-btn color="primary" text @click="viewNotifications">
                         View All
                     </v-btn>
                 </v-card-actions>
@@ -163,7 +165,7 @@
                 <v-card-actions>
                     <v-spacer></v-spacer>
 
-                    <v-btn color="primary" text @click="onLogout">
+                    <v-btn color="primary" rounded text @click="onLogout">
                         Logout
                     </v-btn>
                 </v-card-actions>
@@ -178,6 +180,22 @@ import { mapActions } from "vuex";
 export default {
     name: "application-bar",
     props: {
+        color: {
+            type: String,
+            default: "white"
+        },
+        dark: {
+            type: Boolean,
+            default: false
+        },
+        flat: {
+            type: Boolean,
+            default: true
+        },
+        clipped_left: {
+            type: Boolean,
+            default: true
+        },
         user: {
             type: Object,
             default: () => {}
@@ -234,6 +252,10 @@ export default {
         openCloseDrawer() {
             this.nav_drawer = !this.nav_drawer;
             this.$emit("open-close-drawer", this.nav_drawer);
+        },
+        viewNotifications() {
+            this.notification_menu = false;
+            this.$router.push({ name: "notifications.index" });
         }
     },
     watch: {

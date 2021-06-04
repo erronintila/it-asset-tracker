@@ -1,6 +1,97 @@
 <template>
     <div>
-        <div class="title">Dashboard</div>
+        <div class="page-title mb-4">Dashboard</div>
+
+        <v-row>
+            <v-col
+                cols="12"
+                md="3"
+                v-for="(item, index) in dashboard.headers"
+                :key="index"
+            >
+                <v-hover v-slot="{ hover }" open-delay="30">
+                    <v-card
+                        :elevation="hover ? 10 : 3"
+                        :class="{ 'on-hover': hover }"
+                        class="rounded-xl"
+                        :color="item.color"
+                        :dark="item.dark"
+                    >
+                        <v-list-item three-line>
+                            <v-list-item-content>
+                                <div class="header-title">{{ item.title }}</div>
+                                <div class="header-body">
+                                    {{ item.body }}
+                                </div>
+                                <div class="body-2">
+                                    {{ item.subtitle }}
+                                </div>
+                            </v-list-item-content>
+                        </v-list-item>
+                    </v-card>
+                </v-hover>
+            </v-col>
+        </v-row>
+
+        <v-row>
+            <v-col cols="12" md="4">
+                <v-hover v-slot="{ hover }" open-delay="30">
+                    <v-card
+                        :elevation="hover ? 10 : 3"
+                        :class="{ 'on-hover': hover }"
+                        class="rounded-xl"
+                        height="25rem"
+                    >
+                        <v-list-item three-line>
+                            <v-list-item-content>
+                                <div class="header-title">
+                                    Sample Title
+                                </div>
+                            </v-list-item-content>
+                        </v-list-item>
+                    </v-card></v-hover
+                >
+            </v-col>
+            <v-col cols="12" md="8">
+                <v-hover v-slot="{ hover }" open-delay="30">
+                    <v-card
+                        :elevation="hover ? 10 : 3"
+                        :class="{ 'on-hover': hover }"
+                        class="rounded-xl"
+                        height="25rem"
+                    >
+                        <v-list-item three-line>
+                            <v-list-item-content>
+                                <div class="header-title">
+                                    Sample Title
+                                </div>
+                            </v-list-item-content>
+                        </v-list-item>
+                    </v-card>
+                </v-hover>
+            </v-col>
+        </v-row>
+
+        <v-row>
+            <v-col>
+                <v-hover v-slot="{ hover }" open-delay="30">
+                    <v-card
+                        :elevation="hover ? 10 : 3"
+                        :class="{ 'on-hover': hover }"
+                        class="rounded-xl"
+                        height="25rem"
+                    >
+                        <v-list-item three-line>
+                            <v-list-item-content>
+                                <div class="header-title">
+                                    Sample Title
+                                </div>
+                            </v-list-item-content>
+                        </v-list-item>
+                    </v-card>
+                </v-hover>
+            </v-col>
+        </v-row>
     </div>
 </template>
 
@@ -8,6 +99,42 @@
 import { mapGetters } from "vuex";
 export default {
     name: "dashboard",
+    data() {
+        return {
+            dashboard: {
+                headers: [
+                    {
+                        title: "Total Work Orders",
+                        subtitle: "sample text",
+                        body: "1,000,000.00",
+                        color: "secondary",
+                        dark: false
+                    },
+                    {
+                        title: "Total Work Orders",
+                        subtitle: "sample text",
+                        body: "100",
+                        color: "white",
+                        dark: false
+                    },
+                    {
+                        title: "Total Work Orders",
+                        subtitle: "sample text",
+                        body: "100",
+                        color: "primary",
+                        dark: true
+                    },
+                    {
+                        title: "Total Work Orders",
+                        subtitle: "sample text",
+                        body: "100",
+                        color: "white",
+                        dark: false
+                    }
+                ]
+            }
+        };
+    },
     computed: {
         ...mapGetters({
             user: "auth/user"
@@ -15,3 +142,20 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+.header-title {
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.header-body {
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.page-title {
+    font-size: 1.5rem;
+    font-weight: 100;
+}
+</style>

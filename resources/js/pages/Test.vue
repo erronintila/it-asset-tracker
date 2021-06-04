@@ -41,7 +41,7 @@ export default {
         openSnackbar2() {
             this.snackbar2 = {
                 outlined: true,
-                color: "blue",
+                color: "primary",
                 icon: "mdi-info",
                 mode: "multi-line",
                 position: "top",

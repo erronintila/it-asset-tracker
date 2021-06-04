@@ -4,6 +4,7 @@
             v-if="user && authenticated"
             :user="user"
             :left_drawer="left_drawer"
+            :clipped_left="false"
             @open-close-drawer="openCloseDrawer"
         ></application-bar>
 
@@ -12,10 +13,11 @@
             :user="user"
             :left_drawer="left_drawer"
             :left_drawer_items="left_drawer_items"
+            :floating="true"
             @open-close-drawer="openCloseDrawer"
         ></left-navigation-drawer>
 
-        <v-main>
+        <v-main class="white mb-8 pb-8">
             <v-container fluid>
                 <router-view></router-view>
             </v-container>
@@ -53,7 +55,7 @@ export default {
                 },
                 {
                     icon: "mdi-calendar-month",
-                    text: "Schedules",
+                    text: "Schedule Board",
                     link: { name: "schedules.index" }
                 },
                 {
