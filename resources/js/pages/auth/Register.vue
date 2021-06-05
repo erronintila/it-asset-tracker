@@ -72,7 +72,7 @@
                     </v-btn>
                 </div>
                 <v-spacer></v-spacer>
-                <v-btn color="blue" class="mr-4" dark @click="onRegister">
+                <v-btn color="primary" class="mr-4" dark @click="onRegister">
                     Register
                 </v-btn>
             </v-card-actions>
