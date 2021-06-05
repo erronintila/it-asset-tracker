@@ -69,11 +69,6 @@ export default {
                     link: { name: "products.index" }
                 },
                 {
-                    icon: "mdi-account-group-outline",
-                    text: "Customers",
-                    link: { name: "customers.index" }
-                },
-                {
                     icon: "mdi-file-chart",
                     text: "Reports",
                     link: { name: "reports.index" }
@@ -86,8 +81,8 @@ export default {
                     children: [
                         {
                             icon: "mdi-chart-areaspline",
-                            text: "Users",
-                            link: { name: "users.index" }
+                            text: "Accounts",
+                            link: { name: "accounts.index" }
                         },
                         {
                             icon: "mdi-circle-medium",

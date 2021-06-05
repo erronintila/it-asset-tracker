@@ -2,8 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import auth_routes from "./auth";
 import pages_routes from "./pages";
-import user_routes from "./users";
-import customer_routes from "./customers";
+import account_routes from "./accounts";
 import permission_routes from "./permissions";
 import work_order_routes from "./work_orders";
 import schedule_routes from "./schedules";
@@ -18,8 +17,7 @@ const baseRoutes = [];
 const routes = baseRoutes.concat(
     auth_routes,
     pages_routes,
-    user_routes,
-    customer_routes,
+    account_routes,
     permission_routes,
     work_order_routes,
     schedule_routes,
