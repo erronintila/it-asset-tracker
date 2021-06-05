@@ -19,11 +19,13 @@
                     >
                         <v-list-item three-line>
                             <v-list-item-content>
-                                <div class="header-title">{{ item.title }}</div>
-                                <div class="header-body">
+                                <div :class="'header-title ' + item.text_color">
+                                    {{ item.title }}
+                                </div>
+                                <div :class="'header-body ' + item.text_color">
                                     {{ item.body }}
                                 </div>
-                                <div class="body-2">
+                                <div :class="'body-2 ' + item.text_color">
                                     {{ item.subtitle }}
                                 </div>
                             </v-list-item-content>
@@ -107,29 +109,33 @@ export default {
                         title: "Total Work Orders",
                         subtitle: "sample text",
                         body: "1,000,000.00",
-                        color: "secondary",
-                        dark: false
-                    },
-                    {
-                        title: "Total Work Orders",
-                        subtitle: "sample text",
-                        body: "100",
-                        color: "white",
-                        dark: false
-                    },
-                    {
-                        title: "Total Work Orders",
-                        subtitle: "sample text",
-                        body: "100",
                         color: "primary",
-                        dark: true
+                        dark: false,
+                        text_color: "white--text"
                     },
                     {
                         title: "Total Work Orders",
                         subtitle: "sample text",
                         body: "100",
                         color: "white",
-                        dark: false
+                        dark: false,
+                        text_color: "black--text"
+                    },
+                    {
+                        title: "Total Work Orders",
+                        subtitle: "sample text",
+                        body: "100",
+                        color: "white",
+                        dark: true,
+                        text_color: "black--text"
+                    },
+                    {
+                        title: "Total Work Orders",
+                        subtitle: "sample text",
+                        body: "100",
+                        color: "white",
+                        dark: false,
+                        text_color: "black--text"
                     }
                 ]
             }
