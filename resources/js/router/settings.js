@@ -1,8 +1,16 @@
 const setting_routes = [
     {
-        path: "/settings",
-        component: () => import("../pages/settings/Index"),
-        name: "settings.index",
+        path: "/settings/general",
+        component: () => import("../pages/settings/general/Index"),
+        name: "settings.general.index",
+        meta: {
+            auth: true
+        }
+    },
+    {
+        path: "/settings/account",
+        component: () => import("../pages/settings/account/Index"),
+        name: "settings.account.index",
         meta: {
             auth: true
         }

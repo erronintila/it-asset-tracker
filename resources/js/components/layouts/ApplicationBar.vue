@@ -13,7 +13,9 @@
                 :to="{ name: 'home' }"
                 style="text-decoration: none; color: inherit;"
             >
-                <span class="font-weight-bold">Asset Tracking System</span>
+                <span class="font-weight-bold">
+                    Field Service & Asset Tracking System
+                </span>
             </router-link>
         </v-toolbar-title>
 

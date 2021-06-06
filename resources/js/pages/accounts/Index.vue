@@ -5,9 +5,14 @@
                 <div class="page-title d-inline mr-3">
                     Accounts
                 </div>
-                <v-btn fab color="primary" x-small
-                    ><v-icon>mdi-plus</v-icon></v-btn
+                <v-btn
+                    fab
+                    color="primary"
+                    x-small
+                    :to="{ name: 'accounts.create' }"
                 >
+                    <v-icon>mdi-plus</v-icon>
+                </v-btn>
             </v-col>
         </v-row>
 

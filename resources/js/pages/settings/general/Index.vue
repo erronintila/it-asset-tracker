@@ -3,7 +3,7 @@
         <v-row>
             <v-col class="d-flex align-center">
                 <div class="page-title d-inline mr-3">
-                    Settings
+                    General Settings
                 </div>
             </v-col>
         </v-row>

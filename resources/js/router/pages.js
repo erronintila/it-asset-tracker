@@ -1,32 +1,32 @@
 const pages_routes = [
     {
         path: "/test",
-        component: () => import("../pages/Test"),
-        name: "test",
+        component: () => import("../pages/tests/Index"),
+        name: "test"
     },
     {
         path: "/",
-        component: () => import("../pages/Home"),
+        component: () => import("../pages/home/Index"),
         name: "home",
         meta: {
-            auth: true,
-        },
+            auth: true
+        }
     },
     {
         path: "/profile",
-        component: () => import("../pages/Profile"),
+        component: () => import("../pages/profile/Index"),
         name: "profile",
         meta: {
-            auth: true,
-        },
+            auth: true
+        }
     },
     {
         path: "/dashboard",
-        component: () => import("../pages/Dashboard"),
+        component: () => import("../pages/dashboard/Index"),
         name: "dashboard",
         meta: {
-            auth: true,
-        },
+            auth: true
+        }
     }
 ];
 
