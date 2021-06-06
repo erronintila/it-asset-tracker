@@ -129,21 +129,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           dark: false,
           text_color: "white--text"
         }, {
-          title: "Total Work Orders",
+          title: "Total Assets",
           subtitle: "sample text",
           body: "100",
           color: "white",
           dark: false,
           text_color: "black--text"
         }, {
-          title: "Total Work Orders",
+          title: "Scheduled Work Orders",
           subtitle: "sample text",
           body: "100",
           color: "white",
           dark: true,
           text_color: "black--text"
         }, {
-          title: "Total Work Orders",
+          title: "Scheduled Work Orders",
           subtitle: "sample text",
           body: "100",
           color: "white",
