@@ -54,35 +54,122 @@ export default {
                     link: { name: "dashboard" }
                 },
                 {
-                    icon: "mdi-calendar-month",
-                    text: "Schedule Board",
-                    link: { name: "schedules.index" }
-                },
-                {
-                    icon: "mdi-text-box-multiple-outline",
-                    text: "Work Orders",
-                    link: { name: "work_orders.index" }
-                },
-                {
-                    icon: "mdi-package-variant",
-                    text: "Products",
-                    link: { name: "products.index" }
-                },
-                {
-                    icon: "mdi-file-chart",
-                    text: "Reports",
-                    link: { name: "reports.index" }
-                },
-                {
                     icon: "mdi-chevron-up",
                     "icon-alt": "mdi-chevron-down",
-                    text: "More",
+                    text: "Assets",
                     model: false,
                     children: [
                         {
                             icon: "mdi-chart-areaspline",
-                            text: "Accounts",
+                            text: "View All",
+                            link: { name: "assets.index" }
+                        },
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "Components",
+                            link: { name: "assets.index" }
+                        },
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "Accessories",
+                            link: { name: "assets.index" }
+                        },
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "Consumables",
+                            link: { name: "assets.index" }
+                        },
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "Licenses",
+                            link: { name: "assets.index" }
+                        },
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "Models",
+                            link: { name: "assets.index" }
+                        }
+                    ]
+                },
+                {
+                    icon: "mdi-chevron-up",
+                    "icon-alt": "mdi-chevron-down",
+                    text: "Work Orders",
+                    model: false,
+                    children: [
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "View All",
+                            link: { name: "work_orders.index" }
+                        },
+                        {
+                            icon: "mdi-calendar-month",
+                            text: "Schedule Board",
+                            link: { name: "schedules.index" }
+                        }
+                    ]
+                },
+                {
+                    icon: "mdi-chevron-up",
+                    "icon-alt": "mdi-chevron-down",
+                    text: "Reports",
+                    model: false,
+                    children: [
+                        {
+                            icon: "mdi-file-chart",
+                            text: "Asset Maintenance",
+                            link: { name: "reports.index" }
+                        },
+                        {
+                            icon: "mdi-file-chart",
+                            text: "Activity Logs",
+                            link: { name: "reports.index" }
+                        }
+                    ]
+                },
+                {
+                    icon: "mdi-chevron-up",
+                    "icon-alt": "mdi-chevron-down",
+                    text: "Accounts",
+                    model: false,
+                    children: [
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "Users",
                             link: { name: "accounts.index" }
+                        },
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "Customers",
+                            link: { name: "accounts.index" }
+                        },
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "Suppliers",
+                            link: { name: "accounts.index" }
+                        },
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "Manufacturers",
+                            link: { name: "accounts.index" }
+                        }
+                    ]
+                },
+                {
+                    icon: "mdi-chevron-up",
+                    "icon-alt": "mdi-chevron-down",
+                    text: "Settings",
+                    model: false,
+                    children: [
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "General",
+                            link: { name: "settings.index" }
+                        },
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "Account",
+                            link: { name: "settings.index" }
                         },
                         {
                             icon: "mdi-circle-medium",
@@ -91,7 +178,17 @@ export default {
                         },
                         {
                             icon: "mdi-chart-areaspline",
-                            text: "Settings",
+                            text: "Categories",
+                            link: { name: "settings.index" }
+                        },
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "Departments",
+                            link: { name: "settings.index" }
+                        },
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "Locations",
                             link: { name: "settings.index" }
                         }
                     ]

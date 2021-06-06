@@ -13,11 +13,15 @@
                 :to="{ name: 'home' }"
                 style="text-decoration: none; color: inherit;"
             >
-                <span class="font-weight-bold">Field Service System</span>
+                <span class="font-weight-bold">Asset Tracking System</span>
             </router-link>
         </v-toolbar-title>
 
-        <v-btn class="hidden-md-and-up" icon @click="$router.push({ name: 'home' }, () => {})">
+        <v-btn
+            class="hidden-md-and-up"
+            icon
+            @click="$router.push({ name: 'home' }, () => {})"
+        >
             <v-icon>mdi-home</v-icon>
         </v-btn>
 

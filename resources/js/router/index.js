@@ -8,7 +8,7 @@ import work_order_routes from "./work_orders";
 import schedule_routes from "./schedules";
 import report_routes from "./reports";
 import setting_routes from "./settings";
-import product_routes from "./products";
+import asset_routes from "./assets";
 import notification_routes from "./notifications";
 
 import store from "../store/index";
@@ -23,7 +23,7 @@ const routes = baseRoutes.concat(
     schedule_routes,
     report_routes,
     setting_routes,
-    product_routes,
+    asset_routes,
     notification_routes
 );
 
