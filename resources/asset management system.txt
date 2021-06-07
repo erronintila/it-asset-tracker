@@ -1,0 +1,109 @@
+assets
+
+asset_types
+
+asset_categories
+
+locations
+
+asset_request
+
+requests
+
+users
+
+suppliers
+
+manufacturers
+
+
+
+
+
+
+sample:
+
+asset
+asset tag: 30352911	
+serial: 9c00e8f2-8a8e-3b87-a7e2-9ce7313856fe	
+model: iPad Pro	
+category: Tablets
+
+
+license:
+name: Acrobat	
+product key: 39e650e9-24d3-35aa-9cab-5caacebcc0c6	
+expiration: Fri Mar 03, 2023	
+licensed to email: alisha.zboncak@example.com	
+licensed to name: Casper Schuster	
+manufacturer: Adobe	
+total: 10	
+available: 10
+
+
+accessories:
+name: USB Keyboard	
+category: Keyboards	
+model: 27696684	
+manufacturer: Apple	
+location: New Amaya	
+total: 15	
+min qty: 2	
+available: 14	
+
+
+consumables
+name: Cardstock (White)	
+category: Printer Paper	
+model no: 	
+item no: 9347063	
+total: 10	
+remaining: 10	
+min qty: 2		
+order no.: 22362473	
+purchased date: Mon Jun 22, 2020	
+purchase cost: 16.26
+
+
+components:
+name: Crucial 4GB DDR3L-1600 SODIMM	
+serial: 8f930722-f309-3898-8405-6056efee51c4	
+category: RAM	
+total: 10	
+remaining: 10	
+min qty: 2	
+location: New Amaya	
+order no: 38669762	
+purchase date: Thu May 08, 1980	
+purchase cost: 872406.97
+
+
+category
+name			type		qty
+Laptops			Asset		0			  
+Desktops		Asset		0			  
+Keyboards		Accessory	2			  
+Mouse			Accessory	2			  
+Printer Paper		Consumable	2			  
+Printer Ink		Consumable	1			  
+HDD/SSD			Component	2			  
+RAM			Component	2			  
+Graphics Software	License		3			  
+Office Software		License		1			  
+Conference Phones	Asset		1			  
+SAN Storage		Asset		1			  
+VOIP Phones		Asset		7			  
+Tablets			Asset		16			  
+Displays		Asset		20			  
+Mobile Phones		Asset		67	
+
+status
+status name		status type	assets		color
+Archived	 	Archived	0				  
+Broken - Not Fixable	Undeployable	0				  
+Lost/Stolen	 	Undeployable	0				  
+Out for Diagnostics	Undeployable	0				  
+Out for Repair	 	Undeployable	0				  
+Pending	 		Pending		0				  
+Production	 	Deployable	1				  
+Ready to Deploy	 Deployable	111				
