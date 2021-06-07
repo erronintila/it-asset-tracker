@@ -68,6 +68,16 @@ export default {
                             icon: "mdi-calendar-month",
                             text: "Schedule Board",
                             link: { name: "schedules.index" }
+                        },
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "Contracts",
+                            link: { name: "work_orders.index" }
+                        },
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "Warranties",
+                            link: { name: "work_orders.index" }
                         }
                     ]
                 },
