@@ -27,6 +27,10 @@ class ModifyColumnsInUsersTable extends Migration
             $table->string("website")->nullable();
             $table->string("fax")->nullable();
             $table->string('username')->unique();
+            $table->string('job_title')->nullable();
+            $table->enum('type', ['admin', 'user', 'customer'])->default('user');
+            $table->boolean('is_admin')->default(false);
+            $table->boolean('is_active')->default(true);
             $table->softDeletes();
         });
     }

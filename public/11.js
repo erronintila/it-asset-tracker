@@ -112,7 +112,7 @@ var render = function() {
             _c("div", { staticClass: "page-title d-inline mr-3" }, [
               _vm._v(
                 "\n                Welcome " +
-                  _vm._s(_vm.user.name) +
+                  _vm._s(_vm.user ? _vm.user.name : "") +
                   "\n            "
               )
             ])

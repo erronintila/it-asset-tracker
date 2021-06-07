@@ -21,6 +21,15 @@
                         prepend-icon="mdi-account-outline"
                     ></v-text-field>
                     <v-text-field
+                        v-model="form.username"
+                        label="Username"
+                        :rules="rules.username"
+                        :error-messages="errors.username"
+                        @input="errors = []"
+                        @keyup.enter="onRegister"
+                        prepend-icon="mdi-account-outline"
+                    ></v-text-field>
+                    <v-text-field
                         v-model="form.email"
                         label="Email Address"
                         :rules="rules.email"
@@ -91,18 +100,21 @@ export default {
             show_confirm_password: false,
             form: {
                 name: "",
+                username: "",
                 email: "",
                 password: "",
                 password_confirmation: ""
             },
             errors: {
                 name: [],
+                username: [],
                 email: [],
                 password: [],
                 password_confirmation: []
             },
             rules: {
                 name: [v => !!v || "This field is required"],
+                username: [v => !!v || "This field is required"],
                 email: [
                     v => !!v || "This field is required",
                     v =>
@@ -133,7 +145,7 @@ export default {
             try {
                 if (this.$refs.form.validate()) {
                     await this.register(this.form);
-                    this.$router.push({ name: "home" });
+                    this.$router.push({ name: "login" });
                 }
             } catch (error) {
                 this.errors = error.response.data.errors;

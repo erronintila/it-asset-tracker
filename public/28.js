@@ -106,6 +106,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "login",
@@ -118,18 +127,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       show_confirm_password: false,
       form: {
         name: "",
+        username: "",
         email: "",
         password: "",
         password_confirmation: ""
       },
       errors: {
         name: [],
+        username: [],
         email: [],
         password: [],
         password_confirmation: []
       },
       rules: {
         name: [function (v) {
+          return !!v || "This field is required";
+        }],
+        username: [function (v) {
           return !!v || "This field is required";
         }],
         email: [function (v) {
@@ -173,7 +187,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 4:
                 _this2.$router.push({
-                  name: "home"
+                  name: "login"
                 });
 
               case 5:
@@ -290,6 +304,42 @@ var render = function() {
                         _vm.$set(_vm.form, "name", $$v)
                       },
                       expression: "form.name"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("v-text-field", {
+                    attrs: {
+                      label: "Username",
+                      rules: _vm.rules.username,
+                      "error-messages": _vm.errors.username,
+                      "prepend-icon": "mdi-account-outline"
+                    },
+                    on: {
+                      input: function($event) {
+                        _vm.errors = []
+                      },
+                      keyup: function($event) {
+                        if (
+                          !$event.type.indexOf("key") &&
+                          _vm._k(
+                            $event.keyCode,
+                            "enter",
+                            13,
+                            $event.key,
+                            "Enter"
+                          )
+                        ) {
+                          return null
+                        }
+                        return _vm.onRegister.apply(null, arguments)
+                      }
+                    },
+                    model: {
+                      value: _vm.form.username,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "username", $$v)
+                      },
+                      expression: "form.username"
                     }
                   }),
                   _vm._v(" "),

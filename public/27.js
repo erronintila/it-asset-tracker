@@ -79,6 +79,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "login",
@@ -87,14 +96,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       valid: true,
       show_password: false,
       form: {
+        username: "",
         email: "",
         password: ""
       },
       errors: {
+        username: [],
         email: [],
         password: []
       },
       rules: {
+        username: [function (v) {
+          return !!v || "This field is required";
+        }],
         email: [function (v) {
           return !!v || "This field is required";
         }, function (v) {
@@ -205,11 +219,10 @@ var render = function() {
                 [
                   _c("v-text-field", {
                     attrs: {
-                      label: "Email Address",
-                      rules: _vm.rules.email,
-                      "error-messages": _vm.errors.email,
-                      type: "email",
-                      "prepend-icon": "mdi-email-outline"
+                      label: "Username",
+                      rules: _vm.rules.username,
+                      "error-messages": _vm.errors.username,
+                      "prepend-icon": "mdi-account-outline"
                     },
                     on: {
                       input: function($event) {
@@ -232,11 +245,11 @@ var render = function() {
                       }
                     },
                     model: {
-                      value: _vm.form.email,
+                      value: _vm.form.username,
                       callback: function($$v) {
-                        _vm.$set(_vm.form, "email", $$v)
+                        _vm.$set(_vm.form, "username", $$v)
                       },
-                      expression: "form.email"
+                      expression: "form.username"
                     }
                   }),
                   _vm._v(" "),

@@ -9,7 +9,7 @@
 
             <v-card-text>
                 <v-form ref="form" v-model="valid">
-                    <v-text-field
+                    <!-- <v-text-field
                         v-model="form.email"
                         label="Email Address"
                         :rules="rules.email"
@@ -18,6 +18,15 @@
                         @keyup.enter="onLogin"
                         type="email"
                         prepend-icon="mdi-email-outline"
+                    ></v-text-field> -->
+                    <v-text-field
+                        v-model="form.username"
+                        label="Username"
+                        :rules="rules.username"
+                        :error-messages="errors.username"
+                        @input="errors = []"
+                        @keyup.enter="onLogin"
+                        prepend-icon="mdi-account-outline"
                     ></v-text-field>
                     <v-text-field
                         v-model="form.password"
@@ -62,14 +71,17 @@ export default {
             valid: true,
             show_password: false,
             form: {
+                username: "",
                 email: "",
                 password: ""
             },
             errors: {
+                username: [],
                 email: [],
                 password: []
             },
             rules: {
+                username: [v => !!v || "This field is required"],
                 email: [
                     v => !!v || "This field is required",
                     v =>
