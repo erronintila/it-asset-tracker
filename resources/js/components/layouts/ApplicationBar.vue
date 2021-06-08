@@ -14,7 +14,7 @@
                 style="text-decoration: none; color: inherit;"
             >
                 <span class="font-weight-bold">
-                    Field Service & Asset Tracking System
+                    Asset Inventory System
                 </span>
             </router-link>
         </v-toolbar-title>
