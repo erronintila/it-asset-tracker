@@ -151,13 +151,13 @@ export default {
 
 <style scoped>
 .header-title {
-    font-size: 1.2rem;
-    font-weight: 900;
+    font-size: 1rem;
+    font-weight: 100;
 }
 
 .header-body {
-    font-size: 2.5rem;
-    font-weight: 800;
+    font-size: 2rem;
+    font-weight: 100;
 }
 
 .page-title {

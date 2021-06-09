@@ -172,7 +172,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.header-title[data-v-f7b9f0c4] {\r\n    font-size: 1.2rem;\r\n    font-weight: 900;\n}\n.header-body[data-v-f7b9f0c4] {\r\n    font-size: 2.5rem;\r\n    font-weight: 800;\n}\n.page-title[data-v-f7b9f0c4] {\r\n    font-size: 1.5rem;\r\n    font-weight: 100;\n}\r\n", ""]);
+exports.push([module.i, "\n.header-title[data-v-f7b9f0c4] {\r\n    font-size: 1rem;\r\n    font-weight: 100;\n}\n.header-body[data-v-f7b9f0c4] {\r\n    font-size: 2rem;\r\n    font-weight: 100;\n}\n.page-title[data-v-f7b9f0c4] {\r\n    font-size: 1.5rem;\r\n    font-weight: 100;\n}\r\n", ""]);
 
 // exports
 

@@ -41,9 +41,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      selected: [],
       headers: [{
         text: "Dessert (100g serving)",
         align: "start",
@@ -154,7 +180,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.page-title[data-v-1d7e33e2] {\r\n    font-size: 1.5rem;\r\n    font-weight: 100;\n}\r\n", ""]);
+exports.push([module.i, "\n.page-title[data-v-1d7e33e2] {\r\n    font-size: 1.2rem;\r\n    font-weight: 100;\n}\r\n", ""]);
 
 // exports
 
@@ -216,23 +242,75 @@ var render = function() {
             "v-col",
             { staticClass: "d-flex align-center" },
             [
-              _c("div", { staticClass: "page-title d-inline mr-3" }, [
+              _c("div", { staticClass: "page-title d-inline mx-3" }, [
                 _vm._v("\n                Assets\n            ")
               ]),
               _vm._v(" "),
               _c(
                 "v-btn",
-                {
-                  attrs: {
-                    fab: "",
-                    color: "primary",
-                    "x-small": "",
-                    to: { name: "assets.create" }
-                  }
-                },
+                { attrs: { icon: "" } },
+                [_c("v-icon", [_vm._v("mdi-refresh")])],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                { attrs: { icon: "", to: { name: "assets.create" } } },
                 [_c("v-icon", [_vm._v("mdi-plus")])],
                 1
-              )
+              ),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                { attrs: { icon: "" } },
+                [_c("v-icon", [_vm._v("mdi-dots-vertical")])],
+                1
+              ),
+              _vm._v(" "),
+              _vm.selected.length
+                ? _c(
+                    "div",
+                    { staticClass: "d-inline" },
+                    [
+                      _c(
+                        "v-btn",
+                        { attrs: { icon: "" } },
+                        [_c("v-icon", [_vm._v("mdi-plus")])],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        { attrs: { icon: "" } },
+                        [_c("v-icon", [_vm._v("mdi-plus")])],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.selected.length
+                ? _c(
+                    "div",
+                    { staticClass: "d-inline" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "text-capitalize",
+                          attrs: { small: "", outlined: "", rounded: "" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                    clear filters\n                "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e()
             ],
             1
           )
@@ -243,16 +321,41 @@ var render = function() {
       _c(
         "v-row",
         [
+          _vm.selected.length
+            ? _c("v-col", { attrs: { cols: "12" } }, [
+                _c("div", { staticClass: "ml-4" }, [
+                  _c("small", [
+                    _vm._v(
+                      "\n                    All Assets | 2021-01-01 ~ 2021-12-31 | Active\n                "
+                    )
+                  ])
+                ])
+              ])
+            : _vm._e()
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-row",
+        [
           _c(
             "v-col",
+            { attrs: { cols: "12" } },
             [
               _c("v-data-table", {
-                staticClass: "elevation-1",
                 attrs: {
-                  elevation: "0",
                   headers: _vm.headers,
                   items: _vm.desserts,
-                  "items-per-page": 5
+                  "items-per-page": 10,
+                  "show-select": ""
+                },
+                model: {
+                  value: _vm.selected,
+                  callback: function($$v) {
+                    _vm.selected = $$v
+                  },
+                  expression: "selected"
                 }
               })
             ],

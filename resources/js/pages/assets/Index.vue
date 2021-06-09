@@ -2,29 +2,54 @@
     <div>
         <v-row>
             <v-col class="d-flex align-center">
-                <div class="page-title d-inline mr-3">
+                <div class="page-title d-inline mx-3">
                     Assets
                 </div>
-                <v-btn
-                    fab
-                    color="primary"
-                    x-small
-                    :to="{ name: 'assets.create' }"
-                >
+                <v-btn icon>
+                    <v-icon>mdi-refresh</v-icon>
+                </v-btn>
+                <v-btn icon :to="{ name: 'assets.create' }">
                     <v-icon>mdi-plus</v-icon>
                 </v-btn>
+                <v-btn icon>
+                    <v-icon>mdi-dots-vertical</v-icon>
+                </v-btn>
+                <div class="d-inline" v-if="selected.length">
+                    <v-btn icon>
+                        <v-icon>mdi-plus</v-icon>
+                    </v-btn>
+                    <v-btn icon>
+                        <v-icon>mdi-plus</v-icon>
+                    </v-btn>
+                </div>
+                <div class="d-inline" v-if="selected.length">
+                    <v-btn small outlined rounded class="text-capitalize">
+                        clear filters
+                    </v-btn>
+                </div>
             </v-col>
         </v-row>
 
         <v-row>
-            <v-col>
+            <v-col cols="12" v-if="selected.length">
+                <div class="ml-4">
+                    <small>
+                        All Assets | 2021-01-01 ~ 2021-12-31 | Active
+                    </small>
+                </div>
+            </v-col>
+        </v-row>
+
+        <v-row>
+            <v-col cols="12">
                 <v-data-table
-                    elevation="0"
+                    v-model="selected"
                     :headers="headers"
                     :items="desserts"
-                    :items-per-page="5"
-                    class="elevation-1"
-                ></v-data-table>
+                    :items-per-page="10"
+                    show-select
+                >
+                </v-data-table>
             </v-col>
         </v-row>
     </div>
@@ -34,6 +59,7 @@
 export default {
     data() {
         return {
+            selected: [],
             headers: [
                 {
                     text: "Dessert (100g serving)",
@@ -136,7 +162,7 @@ export default {
 
 <style scoped>
 .page-title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 100;
 }
 </style>

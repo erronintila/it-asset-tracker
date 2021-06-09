@@ -35,7 +35,7 @@
 
         <!-- <v-divider></v-divider> -->
 
-        <v-list dense rounded>
+        <v-list dense shaped>
             <template v-for="item in left_drawer_items">
                 <v-row v-if="item.heading" :key="item.heading"> </v-row>
                 <v-list-group
@@ -49,7 +49,7 @@
                     <template v-slot:activator>
                         <v-list-item-content>
                             <v-list-item-title>
-                                <div class="font-weight-bold">
+                                <div>
                                     {{ item.text }}
                                 </div>
                             </v-list-item-title>
@@ -66,7 +66,7 @@
                         </v-list-item-action>
                         <v-list-item-content>
                             <v-list-item-title>
-                                <div class="font-weight-bold">
+                                <div>
                                     {{ child.text }}
                                 </div>
                             </v-list-item-title>
@@ -85,7 +85,7 @@
                     </v-list-item-action>
                     <v-list-item-content>
                         <v-list-item-title>
-                            <div class="font-weight-bold">
+                            <div>
                                 {{ item.text }}
                             </div>
                         </v-list-item-title>

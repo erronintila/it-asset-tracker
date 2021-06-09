@@ -92,21 +92,21 @@ export default {
                             text: "View All",
                             link: { name: "assets.index" }
                         },
-                        {
-                            icon: "mdi-chart-areaspline",
-                            text: "Components",
-                            link: { name: "components.index" }
-                        },
-                        {
-                            icon: "mdi-chart-areaspline",
-                            text: "Accessories",
-                            link: { name: "accessories.index" }
-                        },
-                        {
-                            icon: "mdi-chart-areaspline",
-                            text: "Consumables",
-                            link: { name: "consumables.index" }
-                        },
+                        // {
+                        //     icon: "mdi-chart-areaspline",
+                        //     text: "Components",
+                        //     link: { name: "components.index" }
+                        // },
+                        // {
+                        //     icon: "mdi-chart-areaspline",
+                        //     text: "Accessories",
+                        //     link: { name: "accessories.index" }
+                        // },
+                        // {
+                        //     icon: "mdi-chart-areaspline",
+                        //     text: "Consumables",
+                        //     link: { name: "consumables.index" }
+                        // },
                         {
                             icon: "mdi-chart-areaspline",
                             text: "Licenses",

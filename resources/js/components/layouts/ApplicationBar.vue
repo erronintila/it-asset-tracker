@@ -13,7 +13,7 @@
                 :to="{ name: 'home' }"
                 style="text-decoration: none; color: inherit;"
             >
-                <span class="font-weight-bold">
+                <span>
                     Asset Inventory System
                 </span>
             </router-link>
@@ -100,12 +100,13 @@
                     <v-spacer></v-spacer>
 
                     <v-btn
-                        class="font-weight-bold"
+                    text
+                        rounded
+                        class="text-capitalize"
                         color="primary"
-                        text
                         @click="viewNotifications"
                     >
-                        <v-icon left>mdi-eye</v-icon>View All
+                        View All
                     </v-btn>
                 </v-card-actions>
             </v-card>
@@ -181,13 +182,13 @@
                     <v-spacer></v-spacer>
 
                     <v-btn
-                        class="font-weight-bold"
-                        color="primary"
-                        rounded
                         text
+                        rounded
                         @click="onLogout"
+                        class="text-capitalize"
+                        color="primary"
                     >
-                        <v-icon>mdi-logout</v-icon>Log out
+                        Log out
                     </v-btn>
                 </v-card-actions>
             </v-card>

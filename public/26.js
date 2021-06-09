@@ -17,13 +17,101 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      form: {},
-      errors: {},
-      rules: {}
+      valid: false,
+      form: {
+        first_name: "",
+        last_name: "",
+        email: ""
+      },
+      errors: {
+        first_name: [],
+        last_name: [],
+        email: []
+      },
+      rules: {
+        name: [function (v) {
+          return !!v || "This field is required";
+        }, function (v) {
+          return v.length <= 10 || "Name must be less than 10 characters";
+        }],
+        email: [function (v) {
+          return !!v || "This field is required";
+        }, function (v) {
+          return /.+@.+/.test(v) || "E-mail must be valid";
+        }]
+      }
     };
+  },
+  methods: {
+    onBack: function onBack() {
+      var result = confirm("Do you want to leave this page? Changes won't be saved.");
+
+      if (result) {
+        this.$router.go(-1);
+      }
+    },
+    onSave: function onSave() {
+      var result = confirm("Do you want to save?");
+
+      if (result) {
+        this.$router.go(-1);
+      }
+    }
   }
 });
 
@@ -44,18 +132,150 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    [
+      _c(
+        "v-row",
+        { staticClass: "mb-4" },
+        [
+          _c(
+            "v-col",
+            [
+              _c(
+                "v-btn",
+                { attrs: { icon: "" }, on: { click: _vm.onBack } },
+                [_c("v-icon", [_vm._v("mdi-arrow-left")])],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-form",
+        {
+          model: {
+            value: _vm.valid,
+            callback: function($$v) {
+              _vm.valid = $$v
+            },
+            expression: "valid"
+          }
+        },
+        [
+          _c(
+            "v-container",
+            [
+              _c(
+                "v-row",
+                [
+                  _c(
+                    "v-col",
+                    { attrs: { cols: "12", md: "6", lg: "4" } },
+                    [
+                      _c("v-text-field", {
+                        attrs: {
+                          rules: _vm.rules.name,
+                          label: "First Name",
+                          solo: "",
+                          required: ""
+                        },
+                        model: {
+                          value: _vm.form.first_name,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "first_name", $$v)
+                          },
+                          expression: "form.first_name"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-col",
+                    { attrs: { cols: "12", md: "6", lg: "4" } },
+                    [
+                      _c("v-text-field", {
+                        attrs: {
+                          rules: _vm.rules.name,
+                          label: "Last Name",
+                          solo: "",
+                          required: ""
+                        },
+                        model: {
+                          value: _vm.form.last_name,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "last_name", $$v)
+                          },
+                          expression: "form.last_name"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-col",
+                    { attrs: { cols: "12", md: "6", lg: "4" } },
+                    [
+                      _c("v-text-field", {
+                        attrs: {
+                          rules: _vm.rules.email,
+                          label: "E-mail",
+                          solo: "",
+                          required: ""
+                        },
+                        model: {
+                          value: _vm.form.email,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "email", $$v)
+                          },
+                          expression: "form.email"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-col",
+                    { staticClass: "text-right", attrs: { cols: "12" } },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "text-capitalize",
+                          attrs: { color: "primary", rounded: "", dark: "" },
+                          on: { click: _vm.onSave }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Save\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "title" }, [_vm._v("\n        New Asset\n    ")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
