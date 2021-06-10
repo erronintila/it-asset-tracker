@@ -27,3 +27,8 @@ $typoOptions: display-4, display-3, display-2, display-1, headline, title, subti
 
 // Material Design Icons
 @import "~@mdi/font/css/materialdesignicons.min.css";
+
+.page-title {
+  font-size: 1.5rem;
+  font-weight: 100;
+}

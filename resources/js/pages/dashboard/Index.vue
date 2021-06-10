@@ -160,8 +160,5 @@ export default {
     font-weight: 100;
 }
 
-.page-title {
-    font-size: 1.5rem;
-    font-weight: 100;
-}
+
 </style>
