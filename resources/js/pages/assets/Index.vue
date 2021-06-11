@@ -159,10 +159,3 @@ export default {
     }
 };
 </script>
-
-<style scoped>
-.page-title {
-    font-size: 1.2rem;
-    font-weight: 100;
-}
-</style>
