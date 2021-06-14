@@ -15,6 +15,7 @@ class CreateLocationsTable extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
+            $table->string("name");
             $table->string("address");
             $table->string("street")->nullable();
             $table->string("district")->nullable();
@@ -26,6 +27,7 @@ class CreateLocationsTable extends Migration
             $table->string("longitude")->nullable();
             $table->enum("type", ['commercial', 'residential']);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

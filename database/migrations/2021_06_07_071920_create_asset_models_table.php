@@ -16,6 +16,7 @@ class CreateAssetModelsTable extends Migration
         Schema::create('asset_models', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
