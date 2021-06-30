@@ -18,6 +18,6 @@ Route::get('/v1/user', 'AuthController@user');
 
 Route::middleware('auth:sanctum')->prefix("v1")->group(function () {
     Route::apiResources([
-        'users' => UserController::class
+        'users' => 'API\v1\UserController'
     ]);
 });

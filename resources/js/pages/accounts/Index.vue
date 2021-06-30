@@ -56,6 +56,8 @@
 </template>
 
 <script>
+import UserDataService from "../../services/UserDataService";
+
 export default {
     data() {
         return {
@@ -156,6 +158,17 @@ export default {
                 }
             ]
         };
+    },
+    created() {
+        UserDataService.getAll()
+            .then()
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error);
+                console.log(error.response);
+            });
     }
 };
 </script>

@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'company', 'first_name', 'middle_name', 'last_name', 'suffix', 'gender', 'birthdate', 
+        'name', 'email', 'password', 'company', 'first_name', 'middle_name', 'last_name', 'suffix', 'gender', 'birthdate',
         'business_phone', 'home_phone', 'mobile_phone', 'website', 'fax', 'username', 'job_title', 'type', 'is_admin', 'is_active'
     ];
 
@@ -41,4 +41,21 @@ class User extends Authenticatable
         'is_active' => 'boolean',
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['full_name'];
+
+    /**
+     * Get the user's full name.
+     *
+     * @return string
+     */
+    public function getFullNameAttribute()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
 }

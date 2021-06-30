@@ -3,10 +3,15 @@
 namespace App\Http\Controllers\API\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Traits\HttpResponse;
 
 class UserController extends Controller
 {
+    use HttpResponse;
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return UserResource::collection($users);
     }
 
     /**
@@ -25,7 +31,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User();
+        return $this->success("", $user, 200);
     }
 
     /**
@@ -36,7 +43,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return $this->success("", $user, 200);
     }
 
     /**
@@ -48,7 +56,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        return $this->success("", $user, 200);
     }
 
     /**
@@ -59,6 +68,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::destroy($id);
+        return $this->success("", $user, 200);
     }
 }
