@@ -14,6 +14,22 @@ const setting_routes = [
         meta: {
             auth: true
         }
+    },
+    {
+        path: "/settings/asset",
+        component: () => import("../pages/settings/asset/Index"),
+        name: "settings.asset.index",
+        meta: {
+            auth: true
+        }
+    },
+    {
+        path: "/settings/work_order",
+        component: () => import("../pages/settings/work_order/Index"),
+        name: "settings.work_order.index",
+        meta: {
+            auth: true
+        }
     }
 ];
 

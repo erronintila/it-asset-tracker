@@ -100,7 +100,7 @@
                     <v-spacer></v-spacer>
 
                     <v-btn
-                    text
+                        text
                         rounded
                         class="text-capitalize"
                         color="primary"
@@ -143,7 +143,7 @@
                                     :to="{ name: 'profile' }"
                                     style="text-decoration: none; color: inherit;"
                                 >
-                                    <span>{{ user.name }}</span>
+                                    <span>{{ user.full_name }}</span>
                                 </router-link>
                             </v-list-item-title>
                             <v-list-item-subtitle>

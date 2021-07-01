@@ -56,34 +56,6 @@ export default {
                 {
                     icon: "mdi-chevron-up",
                     "icon-alt": "mdi-chevron-down",
-                    text: "Work Orders",
-                    model: false,
-                    children: [
-                        {
-                            icon: "mdi-chart-areaspline",
-                            text: "View All",
-                            link: { name: "work_orders.index" }
-                        },
-                        {
-                            icon: "mdi-calendar-month",
-                            text: "Schedule Board",
-                            link: { name: "schedules.index" }
-                        },
-                        {
-                            icon: "mdi-chart-areaspline",
-                            text: "Contracts",
-                            link: { name: "work_orders.index" }
-                        },
-                        {
-                            icon: "mdi-chart-areaspline",
-                            text: "Warranties",
-                            link: { name: "work_orders.index" }
-                        }
-                    ]
-                },
-                {
-                    icon: "mdi-chevron-up",
-                    "icon-alt": "mdi-chevron-down",
                     text: "Assets",
                     model: false,
                     children: [
@@ -102,11 +74,16 @@ export default {
                         //     text: "Accessories",
                         //     link: { name: "accessories.index" }
                         // },
-                        // {
-                        //     icon: "mdi-chart-areaspline",
-                        //     text: "Consumables",
-                        //     link: { name: "consumables.index" }
-                        // },
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "Models",
+                            link: { name: "asset_models.index" }
+                        },
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "Consumables",
+                            link: { name: "consumables.index" }
+                        },
                         {
                             icon: "mdi-chart-areaspline",
                             text: "Licenses",
@@ -114,8 +91,36 @@ export default {
                         },
                         {
                             icon: "mdi-chart-areaspline",
-                            text: "Models",
-                            link: { name: "asset_models.index" }
+                            text: "Locations",
+                            link: { name: "locations.index" }
+                        }
+                        // {
+                        //     icon: "mdi-chart-areaspline",
+                        //     text: "Reviews",
+                        //     link: { name: "licenses.index" }
+                        // }
+                    ]
+                },
+                {
+                    icon: "mdi-chevron-up",
+                    "icon-alt": "mdi-chevron-down",
+                    text: "Work Orders",
+                    model: false,
+                    children: [
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "View All",
+                            link: { name: "work_orders.index" }
+                        },
+                        {
+                            icon: "mdi-calendar-month",
+                            text: "Schedule Board",
+                            link: { name: "schedules.index" }
+                        },
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "Service Agreements",
+                            link: { name: "agreements.index" }
                         }
                     ]
                 },
@@ -127,7 +132,7 @@ export default {
                     children: [
                         {
                             icon: "mdi-chart-areaspline",
-                            text: "Users",
+                            text: "Employees",
                             link: { name: "accounts.index" }
                         },
                         {
@@ -182,25 +187,51 @@ export default {
                             link: { name: "settings.account.index" }
                         },
                         {
+                            icon: "mdi-chart-areaspline",
+                            text: "Asset Settings",
+                            link: { name: "settings.asset.index" }
+                        },
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "Work Order Settings",
+                            link: { name: "settings.work_order.index" }
+                        },
+                        {
                             icon: "mdi-circle-medium",
                             text: "Permissions",
                             link: { name: "permissions.index" }
                         },
                         {
                             icon: "mdi-chart-areaspline",
-                            text: "Categories",
-                            link: { name: "categories.index" }
-                        },
-                        {
-                            icon: "mdi-chart-areaspline",
                             text: "Departments",
                             link: { name: "departments.index" }
-                        },
-                        {
-                            icon: "mdi-chart-areaspline",
-                            text: "Locations",
-                            link: { name: "locations.index" }
                         }
+
+                        // {
+                        //     icon: "mdi-chart-areaspline",
+                        //     text: "Asset Categories",
+                        //     link: { name: "categories.index" }
+                        // },
+                        // {
+                        //     icon: "mdi-chart-areaspline",
+                        //     text: "Work Order Types",
+                        //     link: { name: "categories.index" }
+                        // },
+                        // {
+                        //     icon: "mdi-chart-areaspline",
+                        //     text: "Request Types",
+                        //     link: { name: "categories.index" }
+                        // },
+                        // {
+                        //     icon: "mdi-chart-areaspline",
+                        //     text: "Asset Statuses",
+                        //     link: { name: "categories.index" }
+                        // },
+                        // {
+                        //     icon: "mdi-chart-areaspline",
+                        //     text: "Review Categories",
+                        //     link: { name: "categories.index" }
+                        // }
                     ]
                 }
             ],

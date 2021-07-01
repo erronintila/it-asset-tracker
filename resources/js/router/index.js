@@ -21,6 +21,7 @@ import license_routes from "./licenses";
 import location_routes from "./locations";
 import manufacturer_routes from "./manufacturers";
 import supplier_routes from "./suppliers";
+import agreement_routes from "./agreements";
 
 import store from "../store/index";
 
@@ -46,7 +47,8 @@ const routes = baseRoutes.concat(
     license_routes,
     location_routes,
     manufacturer_routes,
-    supplier_routes
+    supplier_routes,
+    agreement_routes
 );
 
 const router = new VueRouter({

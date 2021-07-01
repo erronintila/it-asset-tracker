@@ -23,7 +23,9 @@
                             :to="{ name: 'profile' }"
                             style="text-decoration: none; color: inherit;"
                         >
-                            <span class="primary--text font-weight-bold">{{ user.name }}</span>
+                            <span class="primary--text font-weight-bold">
+                                {{ user.full_name }}
+                            </span>
                         </router-link>
                     </v-list-item-title>
                     <v-list-item-subtitle>
