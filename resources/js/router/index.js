@@ -12,7 +12,7 @@ import asset_routes from "./assets";
 import notification_routes from "./notifications";
 import accessory_routes from "./accessories";
 import asset_model_routes from "./asset_models";
-import category_routes from "./categories";
+import asset_category_routes from "./asset_categories";
 import component_routes from "./components";
 import consumable_routes from "./consumables";
 import customer_routes from "./customers";
@@ -39,7 +39,7 @@ const routes = baseRoutes.concat(
     notification_routes,
     accessory_routes,
     asset_model_routes,
-    category_routes,
+    asset_category_routes,
     component_routes,
     consumable_routes,
     customer_routes,

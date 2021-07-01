@@ -22,9 +22,9 @@ class UserSeeder extends Seeder
             'remember_token' => Str::random(10),
 
             'company' => 'Twin-Circa Marketing',
-            'first_name' => null,
+            'first_name' => 'Administrator',
             'middle_name' => null,
-            'last_name' => null,
+            'last_name' => '',
             'suffix' => null,
             'gender' => null,
             'birthdate' => null,
