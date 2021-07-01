@@ -7109,7 +7109,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/vuetify/dist/vuetify.min.css?bdb9":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/vuetify/dist/vuetify.min.css":
 /*!***********************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vuetify/dist/vuetify.min.css ***!
   \***********************************************************************************************************************************/
@@ -101091,7 +101091,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_vue__;
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./vuetify.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/vuetify/dist/vuetify.min.css?bdb9");
+var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./vuetify.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/vuetify/dist/vuetify.min.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -102850,7 +102850,7 @@ __webpack_require__.r(__webpack_exports__);
 var auth_routes = [{
   path: "/login",
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../pages/auth/Login */ "./resources/js/pages/auth/Login.vue"));
+    return __webpack_require__.e(/*! import() */ 28).then(__webpack_require__.bind(null, /*! ../pages/auth/Login */ "./resources/js/pages/auth/Login.vue"));
   },
   name: "login",
   meta: {
@@ -102859,7 +102859,7 @@ var auth_routes = [{
 }, {
   path: "/register",
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ../pages/auth/Register */ "./resources/js/pages/auth/Register.vue"));
+    return __webpack_require__.e(/*! import() */ 29).then(__webpack_require__.bind(null, /*! ../pages/auth/Register */ "./resources/js/pages/auth/Register.vue"));
   },
   name: "register",
   meta: {
@@ -102949,13 +102949,13 @@ __webpack_require__.r(__webpack_exports__);
 var pages_routes = [{
   path: "/test",
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ../pages/Test */ "./resources/js/pages/Test.vue"));
+    return __webpack_require__.e(/*! import() */ 50).then(__webpack_require__.bind(null, /*! ../pages/Test */ "./resources/js/pages/Test.vue"));
   },
   name: "test"
 }, {
   path: "/",
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ../pages/Home */ "./resources/js/pages/Home.vue"));
+    return __webpack_require__.e(/*! import() */ 51).then(__webpack_require__.bind(null, /*! ../pages/Home */ "./resources/js/pages/Home.vue"));
   },
   name: "home",
   meta: {
@@ -102964,7 +102964,7 @@ var pages_routes = [{
 }, {
   path: "/profile",
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../pages/Profile */ "./resources/js/pages/Profile.vue"));
+    return __webpack_require__.e(/*! import() */ 49).then(__webpack_require__.bind(null, /*! ../pages/Profile */ "./resources/js/pages/Profile.vue"));
   },
   name: "profile",
   meta: {
@@ -102973,7 +102973,7 @@ var pages_routes = [{
 }, {
   path: "/dashboard",
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ../pages/Dashboard */ "./resources/js/pages/Dashboard.vue"));
+    return __webpack_require__.e(/*! import() */ 48).then(__webpack_require__.bind(null, /*! ../pages/Dashboard */ "./resources/js/pages/Dashboard.vue"));
   },
   name: "dashboard",
   meta: {
@@ -103164,8 +103164,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\ERROR-PC\Documents\Projects\field-service-system\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\ERROR-PC\Documents\Projects\field-service-system\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\erron\Documents\Projects\Laravel\it-asset-tracker\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\erron\Documents\Projects\Laravel\it-asset-tracker\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
