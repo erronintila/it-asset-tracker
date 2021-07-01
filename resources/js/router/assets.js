@@ -14,6 +14,14 @@ const asset_routes = [
         meta: {
             auth: true
         }
+    },
+    {
+        path: "/assets/:id",
+        name: "assets.show",
+        component: () => import("../pages/assets/Show"),
+        meta: {
+            auth: true
+        }
     }
 ];
 

@@ -13,7 +13,7 @@
                     <v-card
                         :elevation="hover ? 10 : 3"
                         :class="{ 'on-hover': hover }"
-                        class="rounded-xl"
+                        class="rounded-lg"
                         :color="item.color"
                         :dark="item.dark"
                     >
@@ -41,13 +41,13 @@
                     <v-card
                         :elevation="hover ? 10 : 3"
                         :class="{ 'on-hover': hover }"
-                        class="rounded-xl"
+                        class="rounded-lg"
                         height="25rem"
                     >
                         <v-list-item three-line>
                             <v-list-item-content>
                                 <div class="header-title">
-                                    Sample Title
+                                    Assets by Status
                                 </div>
                             </v-list-item-content>
                         </v-list-item>
@@ -59,13 +59,13 @@
                     <v-card
                         :elevation="hover ? 10 : 3"
                         :class="{ 'on-hover': hover }"
-                        class="rounded-xl"
+                        class="rounded-lg"
                         height="25rem"
                     >
                         <v-list-item three-line>
                             <v-list-item-content>
                                 <div class="header-title">
-                                    Sample Title
+                                    Recent Activity
                                 </div>
                             </v-list-item-content>
                         </v-list-item>
@@ -74,26 +74,26 @@
             </v-col>
         </v-row>
 
-        <v-row>
+        <!-- <v-row>
             <v-col>
                 <v-hover v-slot="{ hover }" open-delay="30">
                     <v-card
                         :elevation="hover ? 10 : 3"
                         :class="{ 'on-hover': hover }"
-                        class="rounded-xl"
+                        class="rounded-lg"
                         height="25rem"
                     >
                         <v-list-item three-line>
                             <v-list-item-content>
                                 <div class="header-title">
-                                    Sample Title
+                                    Line Chart
                                 </div>
                             </v-list-item-content>
                         </v-list-item>
                     </v-card>
                 </v-hover>
             </v-col>
-        </v-row>
+        </v-row> -->
     </div>
 </template>
 
@@ -106,24 +106,24 @@ export default {
             dashboard: {
                 headers: [
                     {
-                        title: "Total Work Orders",
-                        subtitle: "sample text",
+                        title: "Total Assets",
+                        subtitle: "",
                         body: "1,000,000.00",
-                        color: "primary",
+                        color: "white",
                         dark: false,
-                        text_color: "white--text"
+                        text_color: "black--text"
                     },
                     {
-                        title: "Total Assets",
-                        subtitle: "sample text",
+                        title: "Total Work Orders",
+                        subtitle: "",
                         body: "100",
                         color: "white",
                         dark: false,
                         text_color: "black--text"
                     },
                     {
-                        title: "Scheduled Work Orders",
-                        subtitle: "sample text",
+                        title: "Pending Work Orders",
+                        subtitle: "",
                         body: "100",
                         color: "white",
                         dark: true,
@@ -131,7 +131,7 @@ export default {
                     },
                     {
                         title: "Scheduled Work Orders",
-                        subtitle: "sample text",
+                        subtitle: "",
                         body: "100",
                         color: "white",
                         dark: false,
@@ -159,6 +159,4 @@ export default {
     font-size: 2rem;
     font-weight: 100;
 }
-
-
 </style>

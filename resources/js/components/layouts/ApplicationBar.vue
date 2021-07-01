@@ -14,7 +14,7 @@
                 style="text-decoration: none; color: inherit;"
             >
                 <span>
-                    Asset Inventory System
+                    IT Asset Tracker
                 </span>
             </router-link>
         </v-toolbar-title>
@@ -155,7 +155,7 @@
 
                 <v-divider></v-divider>
 
-                <v-list>
+                <!-- <v-list>
                     <v-list-item>
                         <v-list-item-action>
                             <v-switch
@@ -176,7 +176,7 @@
                             Enable hints
                         </v-list-item-title>
                     </v-list-item>
-                </v-list>
+                </v-list> -->
 
                 <v-card-actions>
                     <v-spacer></v-spacer>
