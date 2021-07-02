@@ -41,101 +41,248 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      selected: [],
       headers: [{
-        text: "Dessert (100g serving)",
+        text: "Asset Tag",
         align: "start",
-        sortable: false,
-        value: "name"
+        sortable: true,
+        value: "asset_tag"
       }, {
-        text: "Calories",
-        value: "calories"
+        text: "Description",
+        value: "description"
       }, {
-        text: "Fat (g)",
-        value: "fat"
+        text: "Category",
+        value: "category"
       }, {
-        text: "Carbs (g)",
-        value: "carbs"
+        text: "Serial No.",
+        value: "serial"
       }, {
-        text: "Protein (g)",
-        value: "protein"
+        text: "Model",
+        value: "model"
       }, {
-        text: "Iron (%)",
-        value: "iron"
+        text: "Assigned To",
+        value: "assigned_to"
+      }, {
+        text: "Status",
+        value: "status"
       }],
-      desserts: [{
-        name: "Frozen Yogurt",
-        calories: 159,
-        fat: 6.0,
-        carbs: 24,
-        protein: 4.0,
-        iron: "1%"
+      items: [{
+        id: 1,
+        asset_tag: "252342342325",
+        description: "Apple iPad Pro",
+        category: "Tablets",
+        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
+        model: "iPad Pro",
+        assigned_to: "",
+        status: {
+          text: "In Storage",
+          color: "primary",
+          text_color: "white"
+        }
       }, {
-        name: "Ice cream sandwich",
-        calories: 237,
-        fat: 9.0,
-        carbs: 37,
-        protein: 4.3,
-        iron: "1%"
+        id: 2,
+        asset_tag: "24352342342",
+        description: "Apple iPad Pro",
+        category: "Tablets",
+        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
+        model: "iPad Pro",
+        assigned_to: "Juan Dela Cruz",
+        status: {
+          text: "In Use",
+          color: "green",
+          text_color: "white"
+        }
       }, {
-        name: "Eclair",
-        calories: 262,
-        fat: 16.0,
-        carbs: 23,
-        protein: 6.0,
-        iron: "7%"
+        id: 3,
+        asset_tag: "245234234",
+        description: "Apple iPad Pro",
+        category: "Tablets",
+        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
+        model: "iPad Pro",
+        assigned_to: "Juan Dela Cruz",
+        status: {
+          text: "In Maintenance",
+          color: "red",
+          text_color: "white"
+        }
       }, {
-        name: "Cupcake",
-        calories: 305,
-        fat: 3.7,
-        carbs: 67,
-        protein: 4.3,
-        iron: "8%"
+        id: 4,
+        asset_tag: "3453452",
+        description: "Apple iPad Pro",
+        category: "Tablets",
+        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
+        model: "iPad Pro",
+        assigned_to: "",
+        status: {
+          text: "Disposed",
+          color: "grey",
+          text_color: "white"
+        }
       }, {
-        name: "Gingerbread",
-        calories: 356,
-        fat: 16.0,
-        carbs: 49,
-        protein: 3.9,
-        iron: "16%"
+        id: 5,
+        asset_tag: "67867857",
+        description: "Apple iPad Pro",
+        category: "Tablets",
+        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
+        model: "iPad Pro",
+        assigned_to: "Juan Dela Cruz",
+        status: {
+          text: "In Transit",
+          color: "yellow",
+          text_color: "black"
+        }
       }, {
-        name: "Jelly bean",
-        calories: 375,
-        fat: 0.0,
-        carbs: 94,
-        protein: 0.0,
-        iron: "0%"
+        id: 6,
+        asset_tag: "34563463",
+        description: "Apple iPad Pro",
+        category: "Tablets",
+        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
+        model: "iPad Pro",
+        assigned_to: "",
+        status: {
+          text: "In Retired",
+          color: "grey",
+          text_color: "white"
+        }
       }, {
-        name: "Lollipop",
-        calories: 392,
-        fat: 0.2,
-        carbs: 98,
-        protein: 0,
-        iron: "2%"
+        id: 7,
+        asset_tag: "5678576",
+        description: "Apple iPad Pro",
+        category: "Tablets",
+        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
+        model: "iPad Pro",
+        assigned_to: "",
+        status: {
+          text: "Missing",
+          color: "grey",
+          text_color: "white"
+        }
       }, {
-        name: "Honeycomb",
-        calories: 408,
-        fat: 3.2,
-        carbs: 87,
-        protein: 6.5,
-        iron: "45%"
+        id: 8,
+        asset_tag: "34634657",
+        description: "Apple iPad Pro",
+        category: "Tablets",
+        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
+        model: "iPad Pro",
+        assigned_to: "",
+        status: {
+          text: "In Storage",
+          color: "primary",
+          text_color: "white"
+        }
       }, {
-        name: "Donut",
-        calories: 452,
-        fat: 25.0,
-        carbs: 51,
-        protein: 4.9,
-        iron: "22%"
+        id: 9,
+        asset_tag: "87897897",
+        description: "Apple iPad Pro",
+        category: "Tablets",
+        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
+        model: "iPad Pro",
+        assigned_to: "",
+        status: {
+          text: "In Storage",
+          color: "primary",
+          text_color: "white"
+        }
       }, {
-        name: "KitKat",
-        calories: 518,
-        fat: 26.0,
-        carbs: 65,
-        protein: 7,
-        iron: "6%"
-      }]
+        id: 10,
+        asset_tag: "4564563456",
+        description: "Apple iPad Pro",
+        category: "Tablets",
+        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
+        model: "iPad Pro",
+        assigned_to: "Juan Dela Cruz",
+        status: {
+          text: "In Maintenance",
+          color: "red",
+          text_color: "white"
+        }
+      }],
+      showSearch: false
     };
   }
 });
@@ -154,7 +301,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.page-title[data-v-9c307d1e] {\r\n    font-size: 1.5rem;\r\n    font-weight: 100;\n}\r\n", ""]);
+exports.push([module.i, "\na[data-v-9c307d1e] {\r\n    text-decoration: none;\n}\r\n", ""]);
 
 // exports
 
@@ -216,21 +363,144 @@ var render = function() {
             "v-col",
             { staticClass: "d-flex align-center" },
             [
-              _c("div", { staticClass: "page-title d-inline mr-3" }, [
+              _c("div", { staticClass: "page-title d-inline mx-3" }, [
                 _vm._v("\n                Suppliers\n            ")
               ]),
               _vm._v(" "),
               _c(
                 "v-btn",
+                { attrs: { icon: "" } },
+                [_c("v-icon", [_vm._v("mdi-refresh")])],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                { attrs: { icon: "", to: { name: "suppliers.create" } } },
+                [_c("v-icon", [_vm._v("mdi-plus")])],
+                1
+              ),
+              _vm._v(" "),
+              _vm.selected.length
+                ? _c(
+                    "div",
+                    { staticClass: "d-inline" },
+                    [
+                      _c(
+                        "v-btn",
+                        { attrs: { icon: "" } },
+                        [
+                          _c("v-icon", [
+                            _vm._v("mdi-file-document-edit-outline")
+                          ])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "v-btn",
                 {
-                  attrs: {
-                    fab: "",
-                    color: "primary",
-                    "x-small": "",
-                    to: { name: "suppliers.create" }
+                  attrs: { icon: "" },
+                  on: {
+                    click: function($event) {
+                      _vm.showSearch = !_vm.showSearch
+                    }
                   }
                 },
-                [_c("v-icon", [_vm._v("mdi-plus")])],
+                [_c("v-icon", [_vm._v("mdi-file-search-outline")])],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-menu",
+                {
+                  attrs: { rounded: "", "offset-y": "" },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "activator",
+                      fn: function(ref) {
+                        var on = ref.on
+                        var attrs = ref.attrs
+                        return [
+                          _c(
+                            "v-btn",
+                            _vm._g(
+                              _vm._b(
+                                { attrs: { icon: "" } },
+                                "v-btn",
+                                attrs,
+                                false
+                              ),
+                              on
+                            ),
+                            [_c("v-icon", [_vm._v("mdi-dots-vertical")])],
+                            1
+                          )
+                        ]
+                      }
+                    }
+                  ])
+                },
+                [
+                  _vm._v(" "),
+                  _c(
+                    "v-list",
+                    [
+                      _c(
+                        "v-list-item",
+                        { attrs: { link: "" } },
+                        [
+                          _c("v-list-item-title", [
+                            _vm._v(
+                              "\n                            Create Work Order\n                        "
+                            )
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-item",
+                        { attrs: { link: "" } },
+                        [_c("v-list-item-title", [_vm._v("Checkout ")])],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-item",
+                        { attrs: { link: "" } },
+                        [_c("v-list-item-title", [_vm._v("Dispose ")])],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-item",
+                        { attrs: { link: "" } },
+                        [_c("v-list-item-title", [_vm._v("Export ")])],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-item",
+                        { attrs: { link: "" } },
+                        [_c("v-list-item-title", [_vm._v("Delete ")])],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-item",
+                        { attrs: { link: "" } },
+                        [_c("v-list-item-title", [_vm._v("Restore ")])],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
                 1
               )
             ],
@@ -240,19 +510,100 @@ var render = function() {
         1
       ),
       _vm._v(" "),
+      _vm.showSearch
+        ? _c(
+            "v-row",
+            [
+              _c(
+                "v-col",
+                { staticClass: "d-flex" },
+                [
+                  _c("v-text-field", {
+                    attrs: {
+                      outlined: "",
+                      clearable: "",
+                      placeholder: "Enter text here..."
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          )
+        : _vm._e(),
+      _vm._v(" "),
       _c(
         "v-row",
         [
           _c(
             "v-col",
+            { attrs: { cols: "12" } },
             [
               _c("v-data-table", {
-                staticClass: "elevation-1",
                 attrs: {
-                  elevation: "0",
                   headers: _vm.headers,
-                  items: _vm.desserts,
-                  "items-per-page": 5
+                  items: _vm.items,
+                  "items-per-page": 10,
+                  "show-select": ""
+                },
+                scopedSlots: _vm._u(
+                  [
+                    {
+                      key: "item.asset_tag",
+                      fn: function(ref) {
+                        var item = ref.item
+                        return [
+                          _c(
+                            "router-link",
+                            {
+                              attrs: {
+                                to: {
+                                  name: "suppliers.show",
+                                  params: { id: item.id }
+                                }
+                              }
+                            },
+                            [_vm._v(_vm._s(item.asset_tag))]
+                          )
+                        ]
+                      }
+                    },
+                    {
+                      key: "item.status",
+                      fn: function(ref) {
+                        var item = ref.item
+                        return [
+                          _c(
+                            "v-chip",
+                            {
+                              attrs: {
+                                small: "",
+                                color: item.status.color,
+                                "text-color": item.status.text_color
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        " +
+                                  _vm._s(item.status.text) +
+                                  "\n                    "
+                              )
+                            ]
+                          )
+                        ]
+                      }
+                    }
+                  ],
+                  null,
+                  true
+                ),
+                model: {
+                  value: _vm.selected,
+                  callback: function($$v) {
+                    _vm.selected = $$v
+                  },
+                  expression: "selected"
                 }
               })
             ],

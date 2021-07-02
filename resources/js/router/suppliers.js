@@ -14,6 +14,14 @@ const supplier_routes = [
         meta: {
             auth: true
         }
+    },
+    {
+        path: "/suppliers/:id",
+        component: () => import("../pages/suppliers/Show"),
+        name: "suppliers.show",
+        meta: {
+            auth: true
+        }
     }
 ];
 
