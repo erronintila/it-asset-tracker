@@ -14,6 +14,14 @@ const consumable_routes = [
         meta: {
             auth: true
         }
+    },
+    {
+        path: "/consumables/:id",
+        component: () => import("../pages/consumables/Show"),
+        name: "consumables.show",
+        meta: {
+            auth: true
+        }
     }
 ];
 
