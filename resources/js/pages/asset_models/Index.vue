@@ -28,17 +28,6 @@
 
                     <v-list>
                         <v-list-item link>
-                            <v-list-item-title>
-                                Create Work Order
-                            </v-list-item-title>
-                        </v-list-item>
-                        <v-list-item link>
-                            <v-list-item-title>Checkout </v-list-item-title>
-                        </v-list-item>
-                        <v-list-item link>
-                            <v-list-item-title>Dispose </v-list-item-title>
-                        </v-list-item>
-                        <v-list-item link>
                             <v-list-item-title>Export </v-list-item-title>
                         </v-list-item>
                         <v-list-item link>
@@ -119,17 +108,15 @@ export default {
             selected: [],
             headers: [
                 {
-                    text: "Asset Tag",
+                    text: "Model No.",
                     align: "start",
                     sortable: true,
                     value: "asset_tag"
                 },
-                { text: "Description", value: "description" },
+                { text: "Name", value: "description" },
                 { text: "Category", value: "category" },
-                { text: "Serial No.", value: "serial" },
-                { text: "Model", value: "model" },
-                { text: "Assigned To", value: "assigned_to" },
-                { text: "Status", value: "status" }
+                { text: "Manufacturer", value: "manufacturer" },
+                { text: "Assets", value: "quantity" }
             ],
             items: [
                 {
@@ -140,6 +127,8 @@ export default {
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
                     assigned_to: "",
+                    manufacturer: "Apple",
+                    quantity: 100,
                     status: {
                         text: "In Storage",
                         color: "primary",
@@ -154,6 +143,8 @@ export default {
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
                     assigned_to: "Juan Dela Cruz",
+                    manufacturer: "Apple",
+                    quantity: 100,
                     status: {
                         text: "In Use",
                         color: "green",
@@ -168,6 +159,8 @@ export default {
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
                     assigned_to: "Juan Dela Cruz",
+                    manufacturer: "Apple",
+                    quantity: 100,
                     status: {
                         text: "In Maintenance",
                         color: "red",
@@ -182,6 +175,8 @@ export default {
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
                     assigned_to: "",
+                    manufacturer: "Apple",
+                    quantity: 100,
                     status: {
                         text: "Disposed",
                         color: "grey",
@@ -196,6 +191,8 @@ export default {
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
                     assigned_to: "Juan Dela Cruz",
+                    manufacturer: "Apple",
+                    quantity: 100,
                     status: {
                         text: "In Transit",
                         color: "yellow",
@@ -210,6 +207,8 @@ export default {
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
                     assigned_to: "",
+                    manufacturer: "Apple",
+                    quantity: 100,
                     status: {
                         text: "In Retired",
                         color: "grey",
@@ -224,6 +223,8 @@ export default {
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
                     assigned_to: "",
+                    manufacturer: "Apple",
+                    quantity: 100,
                     status: {
                         text: "Missing",
                         color: "grey",
@@ -238,6 +239,8 @@ export default {
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
                     assigned_to: "",
+                    manufacturer: "Apple",
+                    quantity: 100,
                     status: {
                         text: "In Storage",
                         color: "primary",
@@ -252,6 +255,8 @@ export default {
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
                     assigned_to: "",
+                    manufacturer: "Apple",
+                    quantity: 100,
                     status: {
                         text: "In Storage",
                         color: "primary",
@@ -266,6 +271,8 @@ export default {
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
                     assigned_to: "Juan Dela Cruz",
+                    manufacturer: "Apple",
+                    quantity: 100,
                     status: {
                         text: "In Maintenance",
                         color: "red",

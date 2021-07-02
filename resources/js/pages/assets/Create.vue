@@ -138,8 +138,9 @@
                             color="primary"
                             @click="$router.go(-1)"
                             class="mr-2"
+                            large
                         >
-                            Save Changes
+                            Save
                         </v-btn>
                     </v-card-actions>
                 </v-card>

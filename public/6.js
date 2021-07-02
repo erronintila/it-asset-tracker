@@ -112,44 +112,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       selected: [],
       headers: [{
-        text: "Asset Tag",
+        text: "Model No.",
         align: "start",
         sortable: true,
         value: "asset_tag"
       }, {
-        text: "Description",
+        text: "Name",
         value: "description"
       }, {
         text: "Category",
         value: "category"
       }, {
-        text: "Serial No.",
-        value: "serial"
+        text: "Manufacturer",
+        value: "manufacturer"
       }, {
-        text: "Model",
-        value: "model"
-      }, {
-        text: "Assigned To",
-        value: "assigned_to"
-      }, {
-        text: "Status",
-        value: "status"
+        text: "Assets",
+        value: "quantity"
       }],
       items: [{
         id: 1,
@@ -159,6 +142,8 @@ __webpack_require__.r(__webpack_exports__);
         serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
         model: "iPad Pro",
         assigned_to: "",
+        manufacturer: "Apple",
+        quantity: 100,
         status: {
           text: "In Storage",
           color: "primary",
@@ -172,6 +157,8 @@ __webpack_require__.r(__webpack_exports__);
         serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
         model: "iPad Pro",
         assigned_to: "Juan Dela Cruz",
+        manufacturer: "Apple",
+        quantity: 100,
         status: {
           text: "In Use",
           color: "green",
@@ -185,6 +172,8 @@ __webpack_require__.r(__webpack_exports__);
         serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
         model: "iPad Pro",
         assigned_to: "Juan Dela Cruz",
+        manufacturer: "Apple",
+        quantity: 100,
         status: {
           text: "In Maintenance",
           color: "red",
@@ -198,6 +187,8 @@ __webpack_require__.r(__webpack_exports__);
         serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
         model: "iPad Pro",
         assigned_to: "",
+        manufacturer: "Apple",
+        quantity: 100,
         status: {
           text: "Disposed",
           color: "grey",
@@ -211,6 +202,8 @@ __webpack_require__.r(__webpack_exports__);
         serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
         model: "iPad Pro",
         assigned_to: "Juan Dela Cruz",
+        manufacturer: "Apple",
+        quantity: 100,
         status: {
           text: "In Transit",
           color: "yellow",
@@ -224,6 +217,8 @@ __webpack_require__.r(__webpack_exports__);
         serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
         model: "iPad Pro",
         assigned_to: "",
+        manufacturer: "Apple",
+        quantity: 100,
         status: {
           text: "In Retired",
           color: "grey",
@@ -237,6 +232,8 @@ __webpack_require__.r(__webpack_exports__);
         serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
         model: "iPad Pro",
         assigned_to: "",
+        manufacturer: "Apple",
+        quantity: 100,
         status: {
           text: "Missing",
           color: "grey",
@@ -250,6 +247,8 @@ __webpack_require__.r(__webpack_exports__);
         serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
         model: "iPad Pro",
         assigned_to: "",
+        manufacturer: "Apple",
+        quantity: 100,
         status: {
           text: "In Storage",
           color: "primary",
@@ -263,6 +262,8 @@ __webpack_require__.r(__webpack_exports__);
         serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
         model: "iPad Pro",
         assigned_to: "",
+        manufacturer: "Apple",
+        quantity: 100,
         status: {
           text: "In Storage",
           color: "primary",
@@ -276,6 +277,8 @@ __webpack_require__.r(__webpack_exports__);
         serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
         model: "iPad Pro",
         assigned_to: "Juan Dela Cruz",
+        manufacturer: "Apple",
+        quantity: 100,
         status: {
           text: "In Maintenance",
           color: "red",
@@ -450,33 +453,6 @@ var render = function() {
                   _c(
                     "v-list",
                     [
-                      _c(
-                        "v-list-item",
-                        { attrs: { link: "" } },
-                        [
-                          _c("v-list-item-title", [
-                            _vm._v(
-                              "\n                            Create Work Order\n                        "
-                            )
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-item",
-                        { attrs: { link: "" } },
-                        [_c("v-list-item-title", [_vm._v("Checkout ")])],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-item",
-                        { attrs: { link: "" } },
-                        [_c("v-list-item-title", [_vm._v("Dispose ")])],
-                        1
-                      ),
-                      _vm._v(" "),
                       _c(
                         "v-list-item",
                         { attrs: { link: "" } },

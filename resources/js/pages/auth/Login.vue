@@ -1,10 +1,10 @@
 <template>
     <div class="d-flex justify-center align-center" style="height:90vh">
         <v-card elevation="0" light width="30rem">
-            <v-card-title>
-                <h3 class="headline">
-                    Login
-                </h3>
+            <v-card-title class="d-flex justify-center align-center">
+                <p class="page-title primary--text">
+                    IT ASSET TRACKER
+                </p>
             </v-card-title>
 
             <v-card-text>
@@ -26,7 +26,9 @@
                         :error-messages="errors.username"
                         @input="errors = []"
                         @keyup.enter="onLogin"
-                        prepend-icon="mdi-account-outline"
+                        append-icon="mdi-account-outline"
+                        outlined
+                        clearable
                     ></v-text-field>
                     <v-text-field
                         v-model="form.password"
@@ -36,28 +38,23 @@
                         @input="errors = []"
                         @keyup.enter="onLogin"
                         :type="show_password ? 'text' : 'password'"
-                        prepend-icon="mdi-lock-outline"
                         :append-icon="show_password ? 'mdi-eye' : 'mdi-eye-off'"
                         @click:append="show_password = !show_password"
+                        outlined
+                        clearable
                     ></v-text-field>
+                    <v-btn
+                        class="mr-8"
+                        x-large
+                        block
+                        color="primary"
+                        dark
+                        @click="onLogin"
+                    >
+                        Login
+                    </v-btn>
                 </v-form>
             </v-card-text>
-            <v-card-actions>
-                <div class="d-flex">
-                    <v-btn
-                        text
-                        color="primary"
-                        class="mr-4"
-                        :to="{ name: 'register' }"
-                    >
-                        Register
-                    </v-btn>
-                </div>
-                <v-spacer></v-spacer>
-                <v-btn color="primary" class="mr-4" dark @click="onLogin">
-                    Login
-                </v-btn>
-            </v-card-actions>
         </v-card>
     </div>
 </template>

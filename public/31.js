@@ -310,7 +310,7 @@ var render = function() {
                         "v-btn",
                         {
                           staticClass: "mr-2",
-                          attrs: { color: "primary" },
+                          attrs: { color: "primary", large: "" },
                           on: {
                             click: function($event) {
                               return _vm.$router.go(-1)
@@ -319,7 +319,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                        Save Changes\n                    "
+                            "\n                        Save\n                    "
                           )
                         ]
                       )

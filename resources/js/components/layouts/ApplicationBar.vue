@@ -101,10 +101,9 @@
 
                     <v-btn
                         text
-                        rounded
-                        class="text-capitalize"
                         color="primary"
                         @click="viewNotifications"
+                        x-large
                     >
                         View All
                     </v-btn>
@@ -181,13 +180,7 @@
                 <v-card-actions>
                     <v-spacer></v-spacer>
 
-                    <v-btn
-                        text
-                        rounded
-                        @click="onLogout"
-                        class="text-capitalize"
-                        color="primary"
-                    >
+                    <v-btn text @click="onLogout" color="primary" x-large>
                         Log out
                     </v-btn>
                 </v-card-actions>

@@ -55,7 +55,7 @@ var render = function() {
         [
           _c(
             "v-col",
-            { attrs: { cols: "12", md: "4" } },
+            { attrs: { cols: "12", md: "6" } },
             [
               _c(
                 "v-card",
@@ -80,7 +80,7 @@ var render = function() {
                             [
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Reference No.",
+                                  label: "Model No.",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -88,7 +88,7 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Asset Tag",
+                                  label: "Name",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -104,22 +104,6 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Description",
-                                  outlined: "",
-                                  clearable: ""
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Model",
-                                  outlined: "",
-                                  clearable: ""
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
                                   label: "Manufacturer",
                                   outlined: "",
                                   clearable: ""
@@ -128,167 +112,7 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Parent Asset",
-                                  outlined: "",
-                                  clearable: ""
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-col",
-            { attrs: { cols: "12", md: "4" } },
-            [
-              _c(
-                "v-card",
-                { attrs: { flat: "" } },
-                [
-                  _c("v-card-title", [
-                    _vm._v(
-                      "\n                    Purchase Information\n                "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "v-card-text",
-                    [
-                      _c(
-                        "v-row",
-                        { staticClass: "d-flex justify-center" },
-                        [
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "12" } },
-                            [
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Supplier",
-                                  outlined: "",
-                                  clearable: ""
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Purchase Date",
-                                  outlined: "",
-                                  clearable: ""
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Purchase Cost",
-                                  outlined: "",
-                                  clearable: ""
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Warranty",
-                                  outlined: "",
-                                  clearable: ""
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Stock Keeping Unit",
-                                  outlined: "",
-                                  clearable: ""
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Quantity",
-                                  outlined: "",
-                                  clearable: ""
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-col",
-            { attrs: { cols: "12", md: "4" } },
-            [
-              _c(
-                "v-card",
-                { attrs: { flat: "" } },
-                [
-                  _c("v-card-title", [
-                    _vm._v(
-                      "\n                    Other Information\n                "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "v-card-text",
-                    [
-                      _c(
-                        "v-row",
-                        { staticClass: "d-flex justify-center" },
-                        [
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "12" } },
-                            [
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Parameters",
-                                  outlined: "",
-                                  clearable: ""
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Image",
-                                  outlined: "",
-                                  clearable: ""
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
                                   label: "Notes",
-                                  outlined: "",
-                                  clearable: ""
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Attachments",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -311,8 +135,8 @@ var render = function() {
                       _c(
                         "v-btn",
                         {
-                          staticClass: "text-capitalize",
-                          attrs: { color: "primary", rounded: "", dark: "" },
+                          staticClass: "mr-2",
+                          attrs: { color: "primary", large: "" },
                           on: {
                             click: function($event) {
                               return _vm.$router.go(-1)

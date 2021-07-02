@@ -85,9 +85,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "login",
@@ -195,11 +192,15 @@ var render = function() {
         "v-card",
         { attrs: { elevation: "0", light: "", width: "30rem" } },
         [
-          _c("v-card-title", [
-            _c("h3", { staticClass: "headline" }, [
-              _vm._v("\n                Login\n            ")
-            ])
-          ]),
+          _c(
+            "v-card-title",
+            { staticClass: "d-flex justify-center align-center" },
+            [
+              _c("p", { staticClass: "page-title primary--text" }, [
+                _vm._v("\n                IT ASSET TRACKER\n            ")
+              ])
+            ]
+          ),
           _vm._v(" "),
           _c(
             "v-card-text",
@@ -222,7 +223,9 @@ var render = function() {
                       label: "Username",
                       rules: _vm.rules.username,
                       "error-messages": _vm.errors.username,
-                      "prepend-icon": "mdi-account-outline"
+                      "append-icon": "mdi-account-outline",
+                      outlined: "",
+                      clearable: ""
                     },
                     on: {
                       input: function($event) {
@@ -259,10 +262,11 @@ var render = function() {
                       rules: _vm.rules.password,
                       "error-messages": _vm.errors.password,
                       type: _vm.show_password ? "text" : "password",
-                      "prepend-icon": "mdi-lock-outline",
                       "append-icon": _vm.show_password
                         ? "mdi-eye"
-                        : "mdi-eye-off"
+                        : "mdi-eye-off",
+                      outlined: "",
+                      clearable: ""
                     },
                     on: {
                       input: function($event) {
@@ -294,47 +298,24 @@ var render = function() {
                       },
                       expression: "form.password"
                     }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-card-actions",
-            [
-              _c(
-                "div",
-                { staticClass: "d-flex" },
-                [
+                  }),
+                  _vm._v(" "),
                   _c(
                     "v-btn",
                     {
-                      staticClass: "mr-4",
+                      staticClass: "mr-8",
                       attrs: {
-                        text: "",
+                        "x-large": "",
+                        block: "",
                         color: "primary",
-                        to: { name: "register" }
-                      }
+                        dark: ""
+                      },
+                      on: { click: _vm.onLogin }
                     },
-                    [_vm._v("\n                    Register\n                ")]
+                    [_vm._v("\n                    Login\n                ")]
                   )
                 ],
                 1
-              ),
-              _vm._v(" "),
-              _c("v-spacer"),
-              _vm._v(" "),
-              _c(
-                "v-btn",
-                {
-                  staticClass: "mr-4",
-                  attrs: { color: "primary", dark: "" },
-                  on: { click: _vm.onLogin }
-                },
-                [_vm._v("\n                Login\n            ")]
               )
             ],
             1
