@@ -117,6 +117,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -474,7 +480,21 @@ var render = function() {
                       _c(
                         "v-list-item",
                         { attrs: { link: "" } },
+                        [_c("v-list-item-title", [_vm._v("Export ")])],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-item",
+                        { attrs: { link: "" } },
                         [_c("v-list-item-title", [_vm._v("Delete ")])],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-item",
+                        { attrs: { link: "" } },
+                        [_c("v-list-item-title", [_vm._v("Restore ")])],
                         1
                       )
                     ],

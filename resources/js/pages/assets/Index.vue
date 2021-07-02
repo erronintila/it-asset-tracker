@@ -39,7 +39,13 @@
                             <v-list-item-title>Dispose </v-list-item-title>
                         </v-list-item>
                         <v-list-item link>
+                            <v-list-item-title>Export </v-list-item-title>
+                        </v-list-item>
+                        <v-list-item link>
                             <v-list-item-title>Delete </v-list-item-title>
+                        </v-list-item>
+                        <v-list-item link>
+                            <v-list-item-title>Restore </v-list-item-title>
                         </v-list-item>
                     </v-list>
                 </v-menu>
