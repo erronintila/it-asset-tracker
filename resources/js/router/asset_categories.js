@@ -14,6 +14,14 @@ const asset_category_routes = [
         meta: {
             auth: true
         }
+    },
+    {
+        path: "/asset_categories/:id",
+        component: () => import("../pages/asset_categories/Show"),
+        name: "asset_categories.show",
+        meta: {
+            auth: true
+        }
     }
 ];
 
