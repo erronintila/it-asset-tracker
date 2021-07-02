@@ -53,7 +53,7 @@ var render = function() {
         [
           _c(
             "v-col",
-            { attrs: { cols: "12", md: "4" } },
+            { attrs: { cols: "12", sm: "6", md: "4" } },
             [
               _c(
                 "v-card",
@@ -149,7 +149,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "v-col",
-            { attrs: { cols: "12", md: "4" } },
+            { attrs: { cols: "12", sm: "6", md: "4" } },
             [
               _c(
                 "v-card",
@@ -237,7 +237,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "v-col",
-            { attrs: { cols: "12", md: "4" } },
+            { attrs: { cols: "12", sm: "6", md: "4" } },
             [
               _c(
                 "v-card",
@@ -309,8 +309,8 @@ var render = function() {
                       _c(
                         "v-btn",
                         {
-                          staticClass: "text-capitalize",
-                          attrs: { color: "primary", rounded: "", dark: "" },
+                          staticClass: "mr-2",
+                          attrs: { color: "primary" },
                           on: {
                             click: function($event) {
                               return _vm.$router.go(-1)
@@ -319,7 +319,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                        Save\n                    "
+                            "\n                        Save Changes\n                    "
                           )
                         ]
                       )

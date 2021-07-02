@@ -10,7 +10,7 @@
         </v-row>
 
         <v-row class="d-flex justify-center">
-            <v-col cols="12" md="4">
+            <v-col cols="12" sm="6" md="4">
                 <v-card flat>
                     <v-card-title>
                         General Information
@@ -58,7 +58,7 @@
                     </v-card-text>
                 </v-card>
             </v-col>
-            <v-col cols="12" md="4">
+            <v-col cols="12" sm="6" md="4">
                 <v-card flat>
                     <v-card-title>
                         Purchase Information
@@ -101,7 +101,7 @@
                     </v-card-text>
                 </v-card>
             </v-col>
-            <v-col cols="12" md="4">
+            <v-col cols="12" sm="6" md="4">
                 <v-card flat>
                     <v-card-title>
                         Other Information
@@ -136,12 +136,10 @@
                         <v-spacer></v-spacer>
                         <v-btn
                             color="primary"
-                            rounded
-                            dark
                             @click="$router.go(-1)"
-                            class="text-capitalize"
+                            class="mr-2"
                         >
-                            Save
+                            Save Changes
                         </v-btn>
                     </v-card-actions>
                 </v-card>
