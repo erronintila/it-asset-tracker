@@ -14,6 +14,14 @@ const location_routes = [
         meta: {
             auth: true
         }
+    },
+    {
+        path: "/locations/:id",
+        component: () => import("../pages/locations/Show"),
+        name: "locations.show",
+        meta: {
+            auth: true
+        }
     }
 ];
 
