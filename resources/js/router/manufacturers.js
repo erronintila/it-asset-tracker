@@ -14,6 +14,14 @@ const manufacturer_routes = [
         meta: {
             auth: true
         }
+    },
+    {
+        path: "/manufacturers/:id",
+        component: () => import("../pages/manufacturers/Show"),
+        name: "manufacturers.show",
+        meta: {
+            auth: true
+        }
     }
 ];
 
