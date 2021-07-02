@@ -14,6 +14,14 @@ const department_routes = [
         meta: {
             auth: true
         }
+    },
+    {
+        path: "/departments/:id",
+        component: () => import("../pages/departments/Show"),
+        name: "departments.show",
+        meta: {
+            auth: true
+        }
     }
 ];
 
