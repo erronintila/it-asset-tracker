@@ -22,6 +22,7 @@ import location_routes from "./locations";
 import manufacturer_routes from "./manufacturers";
 import supplier_routes from "./suppliers";
 import agreement_routes from "./agreements";
+import asset_review_routes from "./asset_reviews";
 
 import store from "../store/index";
 
@@ -48,7 +49,8 @@ const routes = baseRoutes.concat(
     location_routes,
     manufacturer_routes,
     supplier_routes,
-    agreement_routes
+    agreement_routes,
+    asset_review_routes
 );
 
 const router = new VueRouter({
