@@ -133,7 +133,7 @@ export default {
                         {
                             icon: "mdi-chart-areaspline",
                             text: "Employees",
-                            link: { name: "accounts.index" }
+                            link: { name: "employees.index" }
                         },
                         {
                             icon: "mdi-chart-areaspline",
