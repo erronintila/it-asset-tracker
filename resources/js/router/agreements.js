@@ -14,6 +14,14 @@ const agreement_routes = [
         meta: {
             auth: true
         }
+    },
+    {
+        path: "/agreements/:id",
+        component: () => import("../pages/agreements/Show"),
+        name: "agreements.show",
+        meta: {
+            auth: true
+        }
     }
 ];
 
