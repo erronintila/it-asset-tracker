@@ -14,6 +14,14 @@ const license_routes = [
         meta: {
             auth: true
         }
+    },
+    {
+        path: "/licenses/:id",
+        component: () => import("../pages/licenses/Show"),
+        name: "licenses.show",
+        meta: {
+            auth: true
+        }
     }
 ];
 
