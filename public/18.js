@@ -216,13 +216,13 @@ var render = function() {
             "v-col",
             { staticClass: "d-flex align-center" },
             [
-              _c("div", { staticClass: "page-title d-inline mr-3" }, [
+              _c("div", { staticClass: "page-title d-inline mx-3" }, [
                 _vm._v("\n                Schedule Board\n            ")
               ]),
               _vm._v(" "),
               _c(
                 "v-btn",
-                { attrs: { fab: "", color: "primary", "x-small": "" } },
+                { attrs: { icon: "", to: { name: "work_orders.create" } } },
                 [_c("v-icon", [_vm._v("mdi-plus")])],
                 1
               )

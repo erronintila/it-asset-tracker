@@ -28,17 +28,6 @@
 
                     <v-list>
                         <v-list-item link>
-                            <v-list-item-title>
-                                Create Work Order
-                            </v-list-item-title>
-                        </v-list-item>
-                        <v-list-item link>
-                            <v-list-item-title>Checkout </v-list-item-title>
-                        </v-list-item>
-                        <v-list-item link>
-                            <v-list-item-title>Dispose </v-list-item-title>
-                        </v-list-item>
-                        <v-list-item link>
                             <v-list-item-title>Export </v-list-item-title>
                         </v-list-item>
                         <v-list-item link>
@@ -88,13 +77,13 @@
                     :items-per-page="10"
                     show-select
                 >
-                    <template v-slot:[`item.asset_tag`]="{ item }">
+                    <template v-slot:[`item.name`]="{ item }">
                         <router-link
                             :to="{
                                 name: 'locations.show',
                                 params: { id: item.id }
                             }"
-                            >{{ item.asset_tag }}</router-link
+                            >{{ item.name }}</router-link
                         >
                     </template>
                     <template v-slot:[`item.status`]="{ item }">
@@ -119,22 +108,25 @@ export default {
             selected: [],
             headers: [
                 {
-                    text: "Asset Tag",
+                    text: "Name",
                     align: "start",
                     sortable: true,
-                    value: "asset_tag"
+                    value: "name"
                 },
-                { text: "Description", value: "description" },
-                { text: "Category", value: "category" },
-                { text: "Serial No.", value: "serial" },
-                { text: "Model", value: "model" },
-                { text: "Assigned To", value: "assigned_to" },
-                { text: "Status", value: "status" }
+                { text: "Address", value: "address" },
+                { text: "Country", value: "country" },
+                { text: "Postal Code", value: "postal_code" },
+                { text: "Assets", value: "quantity" }
             ],
             items: [
                 {
                     id: 1,
-                    asset_tag: "252342342325",
+                    name: "GSDH Laboratory",
+                    address: "General Santos City",
+                    country: "Philippines",
+                    postal_code: "9500",
+                    quantity: "30",
+                    asset_tag: "Sample Name",
                     description: "Apple iPad Pro",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
@@ -148,7 +140,12 @@ export default {
                 },
                 {
                     id: 2,
-                    asset_tag: "24352342342",
+                    name: "GSDH Laboratory",
+                    address: "General Santos City",
+                    country: "Philippines",
+                    postal_code: "9500",
+                    quantity: "30",
+                    asset_tag: "Sample Name",
                     description: "Apple iPad Pro",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
@@ -162,7 +159,12 @@ export default {
                 },
                 {
                     id: 3,
-                    asset_tag: "245234234",
+                    name: "GSDH Laboratory",
+                    address: "General Santos City",
+                    country: "Philippines",
+                    postal_code: "9500",
+                    quantity: "30",
+                    asset_tag: "Sample Name",
                     description: "Apple iPad Pro",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
@@ -176,7 +178,12 @@ export default {
                 },
                 {
                     id: 4,
-                    asset_tag: "3453452",
+                    name: "GSDH Laboratory",
+                    address: "General Santos City",
+                    country: "Philippines",
+                    postal_code: "9500",
+                    quantity: "30",
+                    asset_tag: "Sample Name",
                     description: "Apple iPad Pro",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
@@ -190,7 +197,12 @@ export default {
                 },
                 {
                     id: 5,
-                    asset_tag: "67867857",
+                    name: "GSDH Laboratory",
+                    address: "General Santos City",
+                    country: "Philippines",
+                    postal_code: "9500",
+                    quantity: "30",
+                    asset_tag: "Sample Name",
                     description: "Apple iPad Pro",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
@@ -204,7 +216,12 @@ export default {
                 },
                 {
                     id: 6,
-                    asset_tag: "34563463",
+                    name: "GSDH Laboratory",
+                    address: "General Santos City",
+                    country: "Philippines",
+                    postal_code: "9500",
+                    quantity: "30",
+                    asset_tag: "Sample Name",
                     description: "Apple iPad Pro",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
@@ -218,7 +235,12 @@ export default {
                 },
                 {
                     id: 7,
-                    asset_tag: "5678576",
+                    name: "GSDH Laboratory",
+                    address: "General Santos City",
+                    country: "Philippines",
+                    postal_code: "9500",
+                    quantity: "30",
+                    asset_tag: "Sample Name",
                     description: "Apple iPad Pro",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
@@ -232,7 +254,12 @@ export default {
                 },
                 {
                     id: 8,
-                    asset_tag: "34634657",
+                    name: "GSDH Laboratory",
+                    address: "General Santos City",
+                    country: "Philippines",
+                    postal_code: "9500",
+                    quantity: "30",
+                    asset_tag: "Sample Name",
                     description: "Apple iPad Pro",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
@@ -246,7 +273,12 @@ export default {
                 },
                 {
                     id: 9,
-                    asset_tag: "87897897",
+                    name: "GSDH Laboratory",
+                    address: "General Santos City",
+                    country: "Philippines",
+                    postal_code: "9500",
+                    quantity: "30",
+                    asset_tag: "Sample Name",
                     description: "Apple iPad Pro",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
@@ -260,7 +292,12 @@ export default {
                 },
                 {
                     id: 10,
-                    asset_tag: "4564563456",
+                    name: "GSDH Laboratory",
+                    address: "General Santos City",
+                    country: "Philippines",
+                    postal_code: "9500",
+                    quantity: "30",
+                    asset_tag: "Sample Name",
                     description: "Apple iPad Pro",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",

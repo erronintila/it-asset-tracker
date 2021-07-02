@@ -28,11 +28,6 @@
 
                     <v-list>
                         <v-list-item link>
-                            <v-list-item-title>
-                                Create Work Order
-                            </v-list-item-title>
-                        </v-list-item>
-                        <v-list-item link>
                             <v-list-item-title>Checkout </v-list-item-title>
                         </v-list-item>
                         <v-list-item link>
@@ -88,13 +83,13 @@
                     :items-per-page="10"
                     show-select
                 >
-                    <template v-slot:[`item.asset_tag`]="{ item }">
+                    <template v-slot:[`item.description`]="{ item }">
                         <router-link
                             :to="{
                                 name: 'licenses.show',
                                 params: { id: item.id }
                             }"
-                            >{{ item.asset_tag }}</router-link
+                            >{{ item.description }}</router-link
                         >
                     </template>
                     <template v-slot:[`item.status`]="{ item }">
@@ -118,28 +113,23 @@ export default {
         return {
             selected: [],
             headers: [
-                {
-                    text: "Asset Tag",
-                    align: "start",
-                    sortable: true,
-                    value: "asset_tag"
-                },
                 { text: "Description", value: "description" },
                 { text: "Category", value: "category" },
-                { text: "Serial No.", value: "serial" },
-                { text: "Model", value: "model" },
-                { text: "Assigned To", value: "assigned_to" },
+                { text: "Product Key", value: "serial" },
+                { text: "Manufacturer", value: "manufacturer" },
+                { text: "Asset", value: "assigned_to" },
                 { text: "Status", value: "status" }
             ],
             items: [
                 {
                     id: 1,
                     asset_tag: "252342342325",
-                    description: "Apple iPad Pro",
+                    description: "Windows 10",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
                     assigned_to: "",
+                    manufacturer: "Apple",
                     status: {
                         text: "In Storage",
                         color: "primary",
@@ -149,11 +139,12 @@ export default {
                 {
                     id: 2,
                     asset_tag: "24352342342",
-                    description: "Apple iPad Pro",
+                    description: "Windows 10",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
-                    assigned_to: "Juan Dela Cruz",
+                    assigned_to: "Z234 Lenovo Laptop",
+                    manufacturer: "Apple",
                     status: {
                         text: "In Use",
                         color: "green",
@@ -163,27 +154,29 @@ export default {
                 {
                     id: 3,
                     asset_tag: "245234234",
-                    description: "Apple iPad Pro",
+                    description: "Windows 10",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
-                    assigned_to: "Juan Dela Cruz",
+                    assigned_to: "Z234 Lenovo Laptop",
+                    manufacturer: "Apple",
                     status: {
-                        text: "In Maintenance",
-                        color: "red",
+                        text: "In Use",
+                        color: "green",
                         text_color: "white"
                     }
                 },
                 {
                     id: 4,
                     asset_tag: "3453452",
-                    description: "Apple iPad Pro",
+                    description: "Windows 10",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
-                    assigned_to: "",
+                    assigned_to: "Z234 Lenovo Laptop",
+                    manufacturer: "Apple",
                     status: {
-                        text: "Disposed",
+                        text: "Expired",
                         color: "grey",
                         text_color: "white"
                     }
@@ -191,27 +184,29 @@ export default {
                 {
                     id: 5,
                     asset_tag: "67867857",
-                    description: "Apple iPad Pro",
+                    description: "Windows 10",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
-                    assigned_to: "Juan Dela Cruz",
+                    assigned_to: "Z234 Lenovo Laptop",
+                    manufacturer: "Apple",
                     status: {
-                        text: "In Transit",
-                        color: "yellow",
-                        text_color: "black"
+                        text: "In Use",
+                        color: "green",
+                        text_color: "white"
                     }
                 },
                 {
                     id: 6,
                     asset_tag: "34563463",
-                    description: "Apple iPad Pro",
+                    description: "Windows 10",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
-                    assigned_to: "",
+                    assigned_to: "Z234 Lenovo Laptop",
+                    manufacturer: "Apple",
                     status: {
-                        text: "In Retired",
+                        text: "Expired",
                         color: "grey",
                         text_color: "white"
                     }
@@ -219,13 +214,14 @@ export default {
                 {
                     id: 7,
                     asset_tag: "5678576",
-                    description: "Apple iPad Pro",
+                    description: "Windows 10",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
-                    assigned_to: "",
+                    assigned_to: "Z234 Lenovo Laptop",
+                    manufacturer: "Apple",
                     status: {
-                        text: "Missing",
+                        text: "Terminated",
                         color: "grey",
                         text_color: "white"
                     }
@@ -233,11 +229,12 @@ export default {
                 {
                     id: 8,
                     asset_tag: "34634657",
-                    description: "Apple iPad Pro",
+                    description: "Windows 10",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
-                    assigned_to: "",
+                    assigned_to: "Z234 Lenovo Laptop",
+                    manufacturer: "Apple",
                     status: {
                         text: "In Storage",
                         color: "primary",
@@ -247,11 +244,12 @@ export default {
                 {
                     id: 9,
                     asset_tag: "87897897",
-                    description: "Apple iPad Pro",
+                    description: "Windows 10",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
-                    assigned_to: "",
+                    assigned_to: "Z234 Lenovo Laptop",
+                    manufacturer: "Apple",
                     status: {
                         text: "In Storage",
                         color: "primary",
@@ -261,14 +259,15 @@ export default {
                 {
                     id: 10,
                     asset_tag: "4564563456",
-                    description: "Apple iPad Pro",
+                    description: "Windows 10",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
-                    assigned_to: "Juan Dela Cruz",
+                    assigned_to: "Z234 Lenovo Laptop",
+                    manufacturer: "Apple",
                     status: {
-                        text: "In Maintenance",
-                        color: "red",
+                        text: "In Use",
+                        color: "green",
                         text_color: "white"
                     }
                 }

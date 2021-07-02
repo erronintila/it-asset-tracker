@@ -332,7 +332,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       tab: null,
-      items: ["details", "assets", "licenses", "consumables", "maintenances", "history", "attachments"],
+      items: ["details", "assets", "licenses", "consumables", "maintenances", "reviews", "history", "attachments"],
       records: [{
         name: "Data 1",
         value: 159
@@ -448,7 +448,8 @@ var render = function() {
                   _c("v-img", {
                     attrs: {
                       height: "250",
-                      src: "https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                      src:
+                        "https://cdn.vuetifyjs.com/images/parallax/material2.jpg"
                     }
                   }),
                   _vm._v(" "),

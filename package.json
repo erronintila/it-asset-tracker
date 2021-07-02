@@ -30,6 +30,7 @@
         "@mdi/font": "^5.9.55",
         "apexcharts": "^3.26.3",
         "epic-spinners": "^1.1.0",
+        "vue-apexcharts": "^1.6.1",
         "vuetify": "^2.5.3"
     }
 }

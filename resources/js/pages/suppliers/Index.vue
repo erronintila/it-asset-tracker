@@ -28,18 +28,10 @@
 
                     <v-list>
                         <v-list-item link>
-                            <v-list-item-title>
-                                Create Work Order
-                            </v-list-item-title>
-                        </v-list-item>
-                        <v-list-item link>
-                            <v-list-item-title>Checkout </v-list-item-title>
-                        </v-list-item>
-                        <v-list-item link>
-                            <v-list-item-title>Dispose </v-list-item-title>
-                        </v-list-item>
-                        <v-list-item link>
                             <v-list-item-title>Export </v-list-item-title>
+                        </v-list-item>
+                        <v-list-item link>
+                            <v-list-item-title>Deactivate </v-list-item-title>
                         </v-list-item>
                         <v-list-item link>
                             <v-list-item-title>Delete </v-list-item-title>
@@ -88,14 +80,15 @@
                     :items-per-page="10"
                     show-select
                 >
-                    <template v-slot:[`item.asset_tag`]="{ item }">
+                    <template v-slot:[`item.code`]="{ item }">
                         <router-link
                             :to="{
                                 name: 'suppliers.show',
                                 params: { id: item.id }
                             }"
-                            >{{ item.asset_tag }}</router-link
                         >
+                            {{ item.code }}
+                        </router-link>
                     </template>
                     <template v-slot:[`item.status`]="{ item }">
                         <v-chip
@@ -119,158 +112,36 @@ export default {
             selected: [],
             headers: [
                 {
-                    text: "Asset Tag",
+                    text: "Code",
                     align: "start",
                     sortable: true,
-                    value: "asset_tag"
+                    value: "code"
                 },
-                { text: "Description", value: "description" },
-                { text: "Category", value: "category" },
-                { text: "Serial No.", value: "serial" },
-                { text: "Model", value: "model" },
-                { text: "Assigned To", value: "assigned_to" },
-                { text: "Status", value: "status" }
+                { text: "Name", value: "name" },
+                { text: "Phone No.", value: "phone" },
+                { text: "Email", value: "email" },
+                { text: "Assets", value: "assets" }
             ],
             items: [
                 {
                     id: 1,
-                    asset_tag: "252342342325",
-                    description: "Apple iPad Pro",
-                    category: "Tablets",
-                    serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-                    model: "iPad Pro",
-                    assigned_to: "",
-                    status: {
-                        text: "In Storage",
-                        color: "primary",
-                        text_color: "white"
-                    }
+                    code: "012030123",
+                    name: "Juan Dela Cruz",
+                    department: "Sales and Marketing",
+                    job_title: "Sales & Marketing Officer",
+                    phone: "09211121212",
+                    email: "juandelacruz@gmail.com",
+                    assets: "20"
                 },
                 {
                     id: 2,
-                    asset_tag: "24352342342",
-                    description: "Apple iPad Pro",
-                    category: "Tablets",
-                    serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-                    model: "iPad Pro",
-                    assigned_to: "Juan Dela Cruz",
-                    status: {
-                        text: "In Use",
-                        color: "green",
-                        text_color: "white"
-                    }
-                },
-                {
-                    id: 3,
-                    asset_tag: "245234234",
-                    description: "Apple iPad Pro",
-                    category: "Tablets",
-                    serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-                    model: "iPad Pro",
-                    assigned_to: "Juan Dela Cruz",
-                    status: {
-                        text: "In Maintenance",
-                        color: "red",
-                        text_color: "white"
-                    }
-                },
-                {
-                    id: 4,
-                    asset_tag: "3453452",
-                    description: "Apple iPad Pro",
-                    category: "Tablets",
-                    serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-                    model: "iPad Pro",
-                    assigned_to: "",
-                    status: {
-                        text: "Disposed",
-                        color: "grey",
-                        text_color: "white"
-                    }
-                },
-                {
-                    id: 5,
-                    asset_tag: "67867857",
-                    description: "Apple iPad Pro",
-                    category: "Tablets",
-                    serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-                    model: "iPad Pro",
-                    assigned_to: "Juan Dela Cruz",
-                    status: {
-                        text: "In Transit",
-                        color: "yellow",
-                        text_color: "black"
-                    }
-                },
-                {
-                    id: 6,
-                    asset_tag: "34563463",
-                    description: "Apple iPad Pro",
-                    category: "Tablets",
-                    serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-                    model: "iPad Pro",
-                    assigned_to: "",
-                    status: {
-                        text: "In Retired",
-                        color: "grey",
-                        text_color: "white"
-                    }
-                },
-                {
-                    id: 7,
-                    asset_tag: "5678576",
-                    description: "Apple iPad Pro",
-                    category: "Tablets",
-                    serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-                    model: "iPad Pro",
-                    assigned_to: "",
-                    status: {
-                        text: "Missing",
-                        color: "grey",
-                        text_color: "white"
-                    }
-                },
-                {
-                    id: 8,
-                    asset_tag: "34634657",
-                    description: "Apple iPad Pro",
-                    category: "Tablets",
-                    serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-                    model: "iPad Pro",
-                    assigned_to: "",
-                    status: {
-                        text: "In Storage",
-                        color: "primary",
-                        text_color: "white"
-                    }
-                },
-                {
-                    id: 9,
-                    asset_tag: "87897897",
-                    description: "Apple iPad Pro",
-                    category: "Tablets",
-                    serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-                    model: "iPad Pro",
-                    assigned_to: "",
-                    status: {
-                        text: "In Storage",
-                        color: "primary",
-                        text_color: "white"
-                    }
-                },
-                {
-                    id: 10,
-                    asset_tag: "4564563456",
-                    description: "Apple iPad Pro",
-                    category: "Tablets",
-                    serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-                    model: "iPad Pro",
-                    assigned_to: "Juan Dela Cruz",
-                    status: {
-                        text: "In Maintenance",
-                        color: "red",
-                        text_color: "white"
-                    }
+                    code: "4524323",
+                    name: "Maria Santiago",
+                    department: "Purchasing",
+                    job_title: "Purchase Officer",
+                    phone: "093248023423",
+                    email: "mariasantiago@gmail.com",
+                    assets: "38"
                 }
             ],
             showSearch: false

@@ -13,7 +13,7 @@
                 :to="{ name: 'home' }"
                 style="text-decoration: none; color: inherit;"
             >
-                <span>
+                <span class="page-title">
                     IT Asset Tracker
                 </span>
             </router-link>

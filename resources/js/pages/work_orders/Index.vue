@@ -28,15 +28,13 @@
 
                     <v-list>
                         <v-list-item link>
-                            <v-list-item-title>
-                                Create Work Order
-                            </v-list-item-title>
+                            <v-list-item-title>Approve </v-list-item-title>
                         </v-list-item>
                         <v-list-item link>
-                            <v-list-item-title>Checkout </v-list-item-title>
+                            <v-list-item-title>Cancel </v-list-item-title>
                         </v-list-item>
                         <v-list-item link>
-                            <v-list-item-title>Dispose </v-list-item-title>
+                            <v-list-item-title>Duplicate </v-list-item-title>
                         </v-list-item>
                         <v-list-item link>
                             <v-list-item-title>Export </v-list-item-title>
@@ -119,15 +117,14 @@ export default {
             selected: [],
             headers: [
                 {
-                    text: "Asset Tag",
+                    text: "Work Order No.",
                     align: "start",
                     sortable: true,
                     value: "asset_tag"
                 },
-                { text: "Description", value: "description" },
-                { text: "Category", value: "category" },
-                { text: "Serial No.", value: "serial" },
-                { text: "Model", value: "model" },
+                { text: "Type", value: "work_order_type" },
+                { text: "Date", value: "date_range" },
+                { text: "Asset", value: "asset_name" },
                 { text: "Assigned To", value: "assigned_to" },
                 { text: "Status", value: "status" }
             ],
@@ -135,13 +132,16 @@ export default {
                 {
                     id: 1,
                     asset_tag: "252342342325",
+                    work_order_type: "Preventive Maintenance",
+                    date_range: "2020-01-01 ~ 2020-01-02",
+                    asset_name: "SP101 Machine",
                     description: "Apple iPad Pro",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
-                    assigned_to: "",
+                    assigned_to: "Maria Santiago",
                     status: {
-                        text: "In Storage",
+                        text: "Posted",
                         color: "primary",
                         text_color: "white"
                     }
@@ -150,12 +150,15 @@ export default {
                     id: 2,
                     asset_tag: "24352342342",
                     description: "Apple iPad Pro",
+                    work_order_type: "Preventive Maintenance",
+                    date_range: "2020-01-01 ~ 2020-01-02",
+                    asset_name: "SP101 Machine",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
                     assigned_to: "Juan Dela Cruz",
                     status: {
-                        text: "In Use",
+                        text: "Completed",
                         color: "green",
                         text_color: "white"
                     }
@@ -164,12 +167,15 @@ export default {
                     id: 3,
                     asset_tag: "245234234",
                     description: "Apple iPad Pro",
+                    work_order_type: "Preventive Maintenance",
+                    date_range: "2020-01-01 ~ 2020-01-02",
+                    asset_name: "SP101 Machine",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
                     assigned_to: "Juan Dela Cruz",
                     status: {
-                        text: "In Maintenance",
+                        text: "Cancelled",
                         color: "red",
                         text_color: "white"
                     }
@@ -178,12 +184,15 @@ export default {
                     id: 4,
                     asset_tag: "3453452",
                     description: "Apple iPad Pro",
+                    work_order_type: "Preventive Maintenance",
+                    date_range: "2020-01-01 ~ 2020-01-02",
+                    asset_name: "SP101 Machine",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
-                    assigned_to: "",
+                    assigned_to: "Maria Santiago",
                     status: {
-                        text: "Disposed",
+                        text: "Pending",
                         color: "grey",
                         text_color: "white"
                     }
@@ -192,12 +201,15 @@ export default {
                     id: 5,
                     asset_tag: "67867857",
                     description: "Apple iPad Pro",
+                    work_order_type: "Preventive Maintenance",
+                    date_range: "2020-01-01 ~ 2020-01-02",
+                    asset_name: "SP101 Machine",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
                     assigned_to: "Juan Dela Cruz",
                     status: {
-                        text: "In Transit",
+                        text: "On Going",
                         color: "yellow",
                         text_color: "black"
                     }
@@ -206,12 +218,15 @@ export default {
                     id: 6,
                     asset_tag: "34563463",
                     description: "Apple iPad Pro",
+                    work_order_type: "Preventive Maintenance",
+                    date_range: "2020-01-01 ~ 2020-01-02",
+                    asset_name: "SP101 Machine",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
-                    assigned_to: "",
+                    assigned_to: "Maria Santiago",
                     status: {
-                        text: "In Retired",
+                        text: "Pending",
                         color: "grey",
                         text_color: "white"
                     }
@@ -220,12 +235,15 @@ export default {
                     id: 7,
                     asset_tag: "5678576",
                     description: "Apple iPad Pro",
+                    work_order_type: "Preventive Maintenance",
+                    date_range: "2020-01-01 ~ 2020-01-02",
+                    asset_name: "SP101 Machine",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
-                    assigned_to: "",
+                    assigned_to: "Maria Santiago",
                     status: {
-                        text: "Missing",
+                        text: "Pending",
                         color: "grey",
                         text_color: "white"
                     }
@@ -234,12 +252,15 @@ export default {
                     id: 8,
                     asset_tag: "34634657",
                     description: "Apple iPad Pro",
+                    work_order_type: "Preventive Maintenance",
+                    date_range: "2020-01-01 ~ 2020-01-02",
+                    asset_name: "SP101 Machine",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
-                    assigned_to: "",
+                    assigned_to: "Maria Santiago",
                     status: {
-                        text: "In Storage",
+                        text: "Posted",
                         color: "primary",
                         text_color: "white"
                     }
@@ -248,12 +269,15 @@ export default {
                     id: 9,
                     asset_tag: "87897897",
                     description: "Apple iPad Pro",
+                    work_order_type: "Preventive Maintenance",
+                    date_range: "2020-01-01 ~ 2020-01-02",
+                    asset_name: "SP101 Machine",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
-                    assigned_to: "",
+                    assigned_to: "Maria Santiago",
                     status: {
-                        text: "In Storage",
+                        text: "Posted",
                         color: "primary",
                         text_color: "white"
                     }
@@ -262,12 +286,15 @@ export default {
                     id: 10,
                     asset_tag: "4564563456",
                     description: "Apple iPad Pro",
+                    work_order_type: "Preventive Maintenance",
+                    date_range: "2020-01-01 ~ 2020-01-02",
+                    asset_name: "SP101 Machine",
                     category: "Tablets",
                     serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
                     model: "iPad Pro",
                     assigned_to: "Juan Dela Cruz",
                     status: {
-                        text: "In Maintenance",
+                        text: "Cancelled",
                         color: "red",
                         text_color: "white"
                     }

@@ -10,95 +10,7 @@
         </v-row>
 
         <v-row>
-            <v-col cols="12" md="4">
-                <v-card>
-                    <template slot="progress">
-                        <v-progress-linear
-                            color="deep-purple"
-                            height="10"
-                            indeterminate
-                        ></v-progress-linear>
-                    </template>
-
-                    <v-img
-                        height="250"
-                        src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-                    ></v-img>
-
-                    <v-card-title>
-                        Description
-                        <v-spacer></v-spacer>
-                        <v-chip>Status</v-chip>
-                    </v-card-title>
-
-                    <v-card-text>
-                        <v-row align="center" class="mx-0">
-                            <v-rating
-                                :value="4.5"
-                                color="amber"
-                                dense
-                                half-increments
-                                readonly
-                                size="14"
-                            ></v-rating>
-
-                            <div class="grey--text ms-4">
-                                4.5 (413)
-                            </div>
-                        </v-row>
-
-                        <div class="my-4 text-subtitle-1">
-                            # 32412431234
-                        </div>
-
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing
-                            elit. Sit, possimus.
-                        </p>
-
-                        <p>
-                            Last Updated: 2021-01-01 08:00
-                        </p>
-                    </v-card-text>
-
-                    <v-divider class="mx-4"></v-divider>
-
-                    <!-- <v-card-title>Tonight's availability</v-card-title> -->
-
-                    <!-- <v-card-text>
-                        <v-chip-group
-                            active-class="deep-purple accent-4 white--text"
-                            column
-                        >
-                            <v-chip>5:30PM</v-chip>
-
-                            <v-chip>7:30PM</v-chip>
-
-                            <v-chip>8:00PM</v-chip>
-
-                            <v-chip>9:00PM</v-chip>
-                        </v-chip-group>
-                    </v-card-text> -->
-
-                    <v-card-actions>
-                        <v-btn icon>
-                            <v-icon>mdi-file-document-edit-outline</v-icon>
-                        </v-btn>
-
-                        <v-btn icon>
-                            <v-icon>mdi-delete</v-icon>
-                        </v-btn>
-
-                        <v-btn icon>
-                            <v-icon>mdi-file-export-outline</v-icon>
-                        </v-btn>
-                        <v-btn icon>
-                            <v-icon>mdi-text-box-plus-outline</v-icon>
-                        </v-btn>
-                    </v-card-actions>
-                </v-card>
-            </v-col>
-            <v-col cols="12" md="8">
+            <v-col cols="12">
                 <v-card>
                     <v-tabs v-model="tab" show-arrows>
                         <v-tabs-slider color="teal lighten-3"></v-tabs-slider>
@@ -322,15 +234,7 @@ export default {
     data() {
         return {
             tab: null,
-            items: [
-                "details",
-                "assets",
-                "licenses",
-                "consumables",
-                "maintenances",
-                "history",
-                "attachments"
-            ],
+            items: ["details", "assets", "history"],
             records: [
                 {
                     name: "Data 1",

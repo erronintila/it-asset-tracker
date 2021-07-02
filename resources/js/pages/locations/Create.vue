@@ -10,7 +10,7 @@
         </v-row>
 
         <v-row class="d-flex justify-center">
-            <v-col cols="12" md="4">
+            <v-col cols="12" md="6">
                 <v-card flat>
                     <v-card-title>
                         General Information
@@ -19,113 +19,47 @@
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
                                 <v-text-field
-                                    label="Reference No."
+                                    label="Name"
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Asset Tag"
+                                    label="Address"
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Category"
+                                    label="City"
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Description"
+                                    label="State"
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Model"
+                                    label="Country"
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Manufacturer"
+                                    label="Postal Code"
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Parent Asset"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                            </v-col>
-                        </v-row>
-                    </v-card-text>
-                </v-card>
-            </v-col>
-            <v-col cols="12" md="4">
-                <v-card flat>
-                    <v-card-title>
-                        Purchase Information
-                    </v-card-title>
-                    <v-card-text>
-                        <v-row class="d-flex justify-center">
-                            <v-col cols="12">
-                                <v-text-field
-                                    label="Supplier"
+                                    label="Latitude"
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Purchase Date"
+                                    label="Longitude"
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Purchase Cost"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Warranty"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Stock Keeping Unit"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Quantity"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                            </v-col>
-                        </v-row>
-                    </v-card-text>
-                </v-card>
-            </v-col>
-            <v-col cols="12" md="4">
-                <v-card flat>
-                    <v-card-title>
-                        Other Information
-                    </v-card-title>
-                    <v-card-text>
-                        <v-row class="d-flex justify-center">
-                            <v-col cols="12">
-                                <v-text-field
-                                    label="Parameters"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Image"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Notes"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Attachments"
+                                    label="Parent Location"
                                     outlined
                                     clearable
                                 ></v-text-field>
@@ -136,10 +70,9 @@
                         <v-spacer></v-spacer>
                         <v-btn
                             color="primary"
-                            rounded
-                            dark
                             @click="$router.go(-1)"
-                            class="text-capitalize"
+                            class="mr-2"
+                            large
                         >
                             Save
                         </v-btn>

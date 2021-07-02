@@ -22,38 +22,29 @@
 
                     <v-img
                         height="250"
-                        src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                        src="https://cdn.vuetifyjs.com/images/parallax/material2.jpg"
                     ></v-img>
 
                     <v-card-title>
-                        Description
+                        Name
                         <v-spacer></v-spacer>
                         <v-chip>Status</v-chip>
                     </v-card-title>
 
                     <v-card-text>
                         <v-row align="center" class="mx-0">
-                            <v-rating
-                                :value="4.5"
-                                color="amber"
-                                dense
-                                half-increments
-                                readonly
-                                size="14"
-                            ></v-rating>
-
-                            <div class="grey--text ms-4">
-                                4.5 (413)
+                            <div class="grey--text">
+                                Department
                             </div>
                         </v-row>
 
                         <div class="my-4 text-subtitle-1">
-                            # 32412431234
+                            # supplier code
                         </div>
 
                         <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing
-                            elit. Sit, possimus.
+                            Notes: Lorem ipsum dolor sit amet consectetur,
+                            adipisicing elit. Sit, possimus.
                         </p>
 
                         <p>
@@ -322,15 +313,7 @@ export default {
     data() {
         return {
             tab: null,
-            items: [
-                "details",
-                "assets",
-                "licenses",
-                "consumables",
-                "maintenances",
-                "history",
-                "attachments"
-            ],
+            items: ["details", "assets", "history"],
             records: [
                 {
                     name: "Data 1",

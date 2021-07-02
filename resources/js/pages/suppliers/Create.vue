@@ -19,37 +19,22 @@
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
                                 <v-text-field
-                                    label="Reference No."
+                                    label="Supplier Code"
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Asset Tag"
+                                    label="Name"
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Category"
+                                    label="Email"
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Description"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Model"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Manufacturer"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Parent Asset"
+                                    label="Website"
                                     outlined
                                     clearable
                                 ></v-text-field>
@@ -61,38 +46,43 @@
             <v-col cols="12" md="4">
                 <v-card flat>
                     <v-card-title>
-                        Purchase Information
+                        Contact Information
                     </v-card-title>
                     <v-card-text>
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
                                 <v-text-field
-                                    label="Supplier"
+                                    label="Contact Person"
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Purchase Date"
+                                    label="Phone No."
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Purchase Cost"
+                                    label="Address"
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Warranty"
+                                    label="City"
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Stock Keeping Unit"
+                                    label="State"
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Quantity"
+                                    label="Country"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                                <v-text-field
+                                    label="Postal Code"
                                     outlined
                                     clearable
                                 ></v-text-field>
@@ -115,17 +105,12 @@
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Image"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
                                     label="Notes"
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Attachments"
+                                    label="Image"
                                     outlined
                                     clearable
                                 ></v-text-field>
@@ -133,13 +118,15 @@
                         </v-row>
                     </v-card-text>
                     <v-card-actions>
+                        <v-sheet class="ml-4">
+                            <v-switch inset label="Activate Account"></v-switch>
+                        </v-sheet>
                         <v-spacer></v-spacer>
                         <v-btn
                             color="primary"
-                            rounded
-                            dark
                             @click="$router.go(-1)"
-                            class="text-capitalize"
+                            class="mr-2"
+                            large
                         >
                             Save
                         </v-btn>

@@ -24,7 +24,7 @@
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Asset Tag"
+                                    label="Name"
                                     outlined
                                     clearable
                                 ></v-text-field>
@@ -34,12 +34,7 @@
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Description"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Model"
+                                    label="Product Key"
                                     outlined
                                     clearable
                                 ></v-text-field>
@@ -49,7 +44,12 @@
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Parent Asset"
+                                    label="License To Name"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                                <v-text-field
+                                    label="License To Email"
                                     outlined
                                     clearable
                                 ></v-text-field>
@@ -82,17 +82,12 @@
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Warranty"
+                                    label="Expiration Date"
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Stock Keeping Unit"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Quantity"
+                                    label="Termination Date"
                                     outlined
                                     clearable
                                 ></v-text-field>
@@ -115,17 +110,7 @@
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Image"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
                                     label="Notes"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Attachments"
                                     outlined
                                     clearable
                                 ></v-text-field>
@@ -136,10 +121,9 @@
                         <v-spacer></v-spacer>
                         <v-btn
                             color="primary"
-                            rounded
-                            dark
                             @click="$router.go(-1)"
-                            class="text-capitalize"
+                            class="mr-2"
+                            large
                         >
                             Save
                         </v-btn>

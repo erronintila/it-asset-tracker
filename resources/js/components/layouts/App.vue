@@ -79,11 +79,11 @@ export default {
                             text: "Models",
                             link: { name: "asset_models.index" }
                         },
-                        {
-                            icon: "mdi-chart-areaspline",
-                            text: "Consumables",
-                            link: { name: "consumables.index" }
-                        },
+                        // {
+                        //     icon: "mdi-chart-areaspline",
+                        //     text: "Consumables",
+                        //     link: { name: "consumables.index" }
+                        // },
                         {
                             icon: "mdi-chart-areaspline",
                             text: "Licenses",
@@ -94,11 +94,11 @@ export default {
                             text: "Locations",
                             link: { name: "locations.index" }
                         },
-                        {
-                            icon: "mdi-chart-areaspline",
-                            text: "Asset Reviews",
-                            link: { name: "asset_reviews.index" }
-                        }
+                        // {
+                        //     icon: "mdi-chart-areaspline",
+                        //     text: "Asset Reviews",
+                        //     link: { name: "asset_reviews.index" }
+                        // }
                         // {
                         //     icon: "mdi-chart-areaspline",
                         //     text: "Reviews",

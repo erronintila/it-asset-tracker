@@ -116,171 +116,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       selected: [],
       headers: [{
-        text: "Asset Tag",
+        text: "Code",
         align: "start",
         sortable: true,
-        value: "asset_tag"
+        value: "code"
       }, {
-        text: "Description",
-        value: "description"
+        text: "Name",
+        value: "name"
       }, {
-        text: "Category",
-        value: "category"
+        text: "Phone No.",
+        value: "phone"
       }, {
-        text: "Serial No.",
-        value: "serial"
+        text: "Email",
+        value: "email"
       }, {
-        text: "Model",
-        value: "model"
-      }, {
-        text: "Assigned To",
-        value: "assigned_to"
-      }, {
-        text: "Status",
-        value: "status"
+        text: "Assets",
+        value: "assets"
       }],
       items: [{
         id: 1,
-        asset_tag: "252342342325",
-        description: "Apple iPad Pro",
-        category: "Tablets",
-        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-        model: "iPad Pro",
-        assigned_to: "",
-        status: {
-          text: "In Storage",
-          color: "primary",
-          text_color: "white"
-        }
+        code: "012030123",
+        name: "Juan Dela Cruz",
+        department: "Sales and Marketing",
+        job_title: "Sales & Marketing Officer",
+        phone: "09211121212",
+        email: "juandelacruz@gmail.com",
+        assets: "20"
       }, {
         id: 2,
-        asset_tag: "24352342342",
-        description: "Apple iPad Pro",
-        category: "Tablets",
-        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-        model: "iPad Pro",
-        assigned_to: "Juan Dela Cruz",
-        status: {
-          text: "In Use",
-          color: "green",
-          text_color: "white"
-        }
-      }, {
-        id: 3,
-        asset_tag: "245234234",
-        description: "Apple iPad Pro",
-        category: "Tablets",
-        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-        model: "iPad Pro",
-        assigned_to: "Juan Dela Cruz",
-        status: {
-          text: "In Maintenance",
-          color: "red",
-          text_color: "white"
-        }
-      }, {
-        id: 4,
-        asset_tag: "3453452",
-        description: "Apple iPad Pro",
-        category: "Tablets",
-        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-        model: "iPad Pro",
-        assigned_to: "",
-        status: {
-          text: "Disposed",
-          color: "grey",
-          text_color: "white"
-        }
-      }, {
-        id: 5,
-        asset_tag: "67867857",
-        description: "Apple iPad Pro",
-        category: "Tablets",
-        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-        model: "iPad Pro",
-        assigned_to: "Juan Dela Cruz",
-        status: {
-          text: "In Transit",
-          color: "yellow",
-          text_color: "black"
-        }
-      }, {
-        id: 6,
-        asset_tag: "34563463",
-        description: "Apple iPad Pro",
-        category: "Tablets",
-        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-        model: "iPad Pro",
-        assigned_to: "",
-        status: {
-          text: "In Retired",
-          color: "grey",
-          text_color: "white"
-        }
-      }, {
-        id: 7,
-        asset_tag: "5678576",
-        description: "Apple iPad Pro",
-        category: "Tablets",
-        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-        model: "iPad Pro",
-        assigned_to: "",
-        status: {
-          text: "Missing",
-          color: "grey",
-          text_color: "white"
-        }
-      }, {
-        id: 8,
-        asset_tag: "34634657",
-        description: "Apple iPad Pro",
-        category: "Tablets",
-        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-        model: "iPad Pro",
-        assigned_to: "",
-        status: {
-          text: "In Storage",
-          color: "primary",
-          text_color: "white"
-        }
-      }, {
-        id: 9,
-        asset_tag: "87897897",
-        description: "Apple iPad Pro",
-        category: "Tablets",
-        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-        model: "iPad Pro",
-        assigned_to: "",
-        status: {
-          text: "In Storage",
-          color: "primary",
-          text_color: "white"
-        }
-      }, {
-        id: 10,
-        asset_tag: "4564563456",
-        description: "Apple iPad Pro",
-        category: "Tablets",
-        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-        model: "iPad Pro",
-        assigned_to: "Juan Dela Cruz",
-        status: {
-          text: "In Maintenance",
-          color: "red",
-          text_color: "white"
-        }
+        code: "4524323",
+        name: "Maria Santiago",
+        department: "Purchasing",
+        job_title: "Purchase Officer",
+        phone: "093248023423",
+        email: "mariasantiago@gmail.com",
+        assets: "38"
       }],
       showSearch: false
     };
@@ -453,34 +328,14 @@ var render = function() {
                       _c(
                         "v-list-item",
                         { attrs: { link: "" } },
-                        [
-                          _c("v-list-item-title", [
-                            _vm._v(
-                              "\n                            Create Work Order\n                        "
-                            )
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-item",
-                        { attrs: { link: "" } },
-                        [_c("v-list-item-title", [_vm._v("Checkout ")])],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-item",
-                        { attrs: { link: "" } },
-                        [_c("v-list-item-title", [_vm._v("Dispose ")])],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-item",
-                        { attrs: { link: "" } },
                         [_c("v-list-item-title", [_vm._v("Export ")])],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-item",
+                        { attrs: { link: "" } },
+                        [_c("v-list-item-title", [_vm._v("Deactivate ")])],
                         1
                       ),
                       _vm._v(" "),
@@ -550,7 +405,7 @@ var render = function() {
                 scopedSlots: _vm._u(
                   [
                     {
-                      key: "item.asset_tag",
+                      key: "item.code",
                       fn: function(ref) {
                         var item = ref.item
                         return [
@@ -564,7 +419,13 @@ var render = function() {
                                 }
                               }
                             },
-                            [_vm._v(_vm._s(item.asset_tag))]
+                            [
+                              _vm._v(
+                                "\n                        " +
+                                  _vm._s(item.code) +
+                                  "\n                    "
+                              )
+                            ]
                           )
                         ]
                       }

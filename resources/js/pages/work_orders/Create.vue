@@ -24,32 +24,22 @@
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Asset Tag"
+                                    label="Work Order No."
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Category"
+                                    label="Work Order Type"
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Description"
+                                    label="Date"
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Model"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Manufacturer"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Parent Asset"
+                                    label="Parent Work Order"
                                     outlined
                                     clearable
                                 ></v-text-field>
@@ -61,38 +51,38 @@
             <v-col cols="12" md="4">
                 <v-card flat>
                     <v-card-title>
-                        Purchase Information
+                        Asset Information
                     </v-card-title>
                     <v-card-text>
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
                                 <v-text-field
-                                    label="Supplier"
+                                    label="Asset"
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Purchase Date"
+                                    label="Assigned To"
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Purchase Cost"
+                                    label="Location"
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Warranty"
+                                    label="Incident Type"
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Stock Keeping Unit"
+                                    label="Diagnosis"
                                     outlined
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    label="Quantity"
+                                    label="Action Taken"
                                     outlined
                                     clearable
                                 ></v-text-field>
@@ -110,16 +100,6 @@
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
                                 <v-text-field
-                                    label="Parameters"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Image"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
                                     label="Notes"
                                     outlined
                                     clearable
@@ -136,10 +116,9 @@
                         <v-spacer></v-spacer>
                         <v-btn
                             color="primary"
-                            rounded
-                            dark
                             @click="$router.go(-1)"
-                            class="text-capitalize"
+                            class="mr-2"
+                            large
                         >
                             Save
                         </v-btn>

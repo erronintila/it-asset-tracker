@@ -2,7 +2,7 @@
     <div>
         <v-row>
             <v-col class="d-flex align-center">
-                <div class="page-title d-inline mr-3">
+                <div class="page-title d-inline mx-3">
                     Asset Maintenance
                 </div>
             </v-col>

@@ -71,7 +71,7 @@ var render = function() {
         "v-row",
         [
           _c("v-col", { staticClass: "d-flex align-center" }, [
-            _c("div", { staticClass: "page-title d-inline mr-3" }, [
+            _c("div", { staticClass: "page-title d-inline mx-3" }, [
               _vm._v("\n                Asset Maintenance\n            ")
             ])
           ])

@@ -2,12 +2,12 @@
     <div>
         <v-row class="mb-4">
             <v-col class="d-flex align-center">
-                <div class="page-title d-inline mr-3">
+                <div class="page-title d-inline mx-3">
                     Schedule Board
                 </div>
-                <v-btn fab color="primary" x-small
-                    ><v-icon>mdi-plus</v-icon></v-btn
-                >
+                <v-btn icon :to="{ name: 'work_orders.create' }">
+                    <v-icon>mdi-plus</v-icon>
+                </v-btn>
             </v-col>
         </v-row>
 

@@ -22,13 +22,15 @@
 
                     <v-img
                         height="250"
-                        src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                        src="https://cdn.vuetifyjs.com/images/parallax/material2.jpg"
                     ></v-img>
 
                     <v-card-title>
                         Description
                         <v-spacer></v-spacer>
-                        <v-chip>Status</v-chip>
+                        <v-btn rounded color="yellow" elevation="0">
+                            On Going
+                        </v-btn>
                     </v-card-title>
 
                     <v-card-text>
