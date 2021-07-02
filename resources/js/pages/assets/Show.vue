@@ -51,10 +51,14 @@
                             # 32412431234
                         </div>
 
-                        <div>
+                        <p>
                             Lorem ipsum dolor sit amet consectetur, adipisicing
                             elit. Sit, possimus.
-                        </div>
+                        </p>
+
+                        <p>
+                            Last Updated: 2021-01-01 08:00
+                        </p>
                     </v-card-text>
 
                     <v-divider class="mx-4"></v-divider>

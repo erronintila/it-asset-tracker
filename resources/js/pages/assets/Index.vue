@@ -11,17 +11,39 @@
                 <v-btn icon :to="{ name: 'assets.create' }">
                     <v-icon>mdi-plus</v-icon>
                 </v-btn>
-                <v-btn icon>
-                    <v-icon>mdi-file-search-outline</v-icon>
-                </v-btn>
                 <div class="d-inline" v-if="selected.length">
                     <v-btn icon>
                         <v-icon>mdi-file-document-edit-outline</v-icon>
                     </v-btn>
-                    <v-btn icon>
-                        <v-icon>mdi-delete</v-icon>
-                    </v-btn>
                 </div>
+                <v-btn icon @click="showSearch = !showSearch">
+                    <v-icon>mdi-file-search-outline</v-icon>
+                </v-btn>
+                <v-menu rounded offset-y>
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-btn icon v-bind="attrs" v-on="on">
+                            <v-icon>mdi-dots-vertical</v-icon>
+                        </v-btn>
+                    </template>
+
+                    <v-list>
+                        <v-list-item link>
+                            <v-list-item-title>
+                                Create Work Order
+                            </v-list-item-title>
+                        </v-list-item>
+                        <v-list-item link>
+                            <v-list-item-title>Checkout </v-list-item-title>
+                        </v-list-item>
+                        <v-list-item link>
+                            <v-list-item-title>Dispose </v-list-item-title>
+                        </v-list-item>
+                        <v-list-item link>
+                            <v-list-item-title>Delete </v-list-item-title>
+                        </v-list-item>
+                    </v-list>
+                </v-menu>
+
                 <!-- <div class="d-inline" v-if="selected.length">
                     <v-btn small outlined rounded class="text-capitalize">
                         clear filters
@@ -39,6 +61,17 @@
                 </div>
             </v-col>
         </v-row> -->
+
+        <v-row v-if="showSearch">
+            <v-col class="d-flex">
+                <v-text-field
+                    outlined
+                    clearable
+                    placeholder="Enter text here..."
+                >
+                </v-text-field>
+            </v-col>
+        </v-row>
 
         <v-row>
             <v-col cols="12">
@@ -233,7 +266,8 @@ export default {
                         text_color: "white"
                     }
                 }
-            ]
+            ],
+            showSearch: false
         };
     }
 };

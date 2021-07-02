@@ -20,7 +20,7 @@
                     <v-card
                         :elevation="hover ? 10 : 3"
                         :class="{ 'on-hover': hover }"
-                        class="rounded-xl"
+                        class="rounded-lg"
                         @click="$router.push({ name: item.link })"
                     >
                         <v-list-item three-line>
