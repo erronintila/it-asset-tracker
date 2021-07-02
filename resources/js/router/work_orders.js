@@ -4,15 +4,15 @@ const work_order_routes = [
         component: () => import("../pages/work_orders/Index"),
         name: "work_orders.index",
         meta: {
-            auth: true,
+            auth: true
         }
     },
     {
         path: "/work_orders/create",
-        component: () => import("../pages/work_orders/Index"),
+        component: () => import("../pages/work_orders/Create"),
         name: "work_orders.create",
         meta: {
-            auth: true,
+            auth: true
         }
     },
     {
@@ -20,7 +20,7 @@ const work_order_routes = [
         component: () => import("../pages/work_orders/Edit"),
         name: "work_orders.edit",
         meta: {
-            auth: true,
+            auth: true
         }
     },
     {
@@ -28,7 +28,7 @@ const work_order_routes = [
         component: () => import("../pages/work_orders/Show"),
         name: "work_orders.show",
         meta: {
-            auth: true,
+            auth: true
         }
     }
 ];
