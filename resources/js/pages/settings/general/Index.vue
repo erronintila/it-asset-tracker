@@ -236,7 +236,7 @@ export default {
     data() {
         return {
             tab: null,
-            items: ["Print Layout"],
+            items: ["Company", "Print Layout"],
             records: [
                 {
                     name: "Data 1",
