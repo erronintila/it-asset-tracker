@@ -203,6 +203,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -530,6 +531,7 @@ var render = function() {
                                   _c("VueApexCharts", {
                                     attrs: {
                                       type: "donut",
+                                      height: "300",
                                       options: _vm.options.asset,
                                       series: _vm.series.asset
                                     }

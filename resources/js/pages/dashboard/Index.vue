@@ -53,6 +53,7 @@
                             <div>
                                 <VueApexCharts
                                     type="donut"
+                                    height="300"
                                     :options="options.asset"
                                     :series="series.asset"
                                 ></VueApexCharts>
