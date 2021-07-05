@@ -15,7 +15,12 @@ class CreateTransactionTypesTable extends Migration
     {
         Schema::create('transaction_types', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
+            $table->string('slug');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
+            $table->softDeletes();
+            $table->foreignId('transaction_type_id')->nullable()->constrained()->onDelete('cascade');
         });
     }
 

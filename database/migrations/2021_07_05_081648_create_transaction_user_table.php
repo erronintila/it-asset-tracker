@@ -15,6 +15,8 @@ class CreateTransactionUserTable extends Migration
     {
         Schema::create('transaction_user', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('transaction_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('employee_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

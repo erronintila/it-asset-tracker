@@ -14,7 +14,8 @@ class CreateAssetLicenseTable extends Migration
     public function up()
     {
         Schema::create('asset_license', function (Blueprint $table) {
-            $table->id();
+            $table->foreignId('asset_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('license_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

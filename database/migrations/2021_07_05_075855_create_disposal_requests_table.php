@@ -15,7 +15,9 @@ class CreateDisposalRequestsTable extends Migration
     {
         Schema::create('disposal_requests', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

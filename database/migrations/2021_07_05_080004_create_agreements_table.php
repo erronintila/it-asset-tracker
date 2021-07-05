@@ -15,7 +15,12 @@ class CreateAgreementsTable extends Migration
     {
         Schema::create('agreements', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
+            $table->string('reference_no')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+            $table->foreignId('asset_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('customer_id')->nullable()->constrained('users')->onDelete('cascade');
         });
     }
 

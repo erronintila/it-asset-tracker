@@ -15,7 +15,12 @@ class CreateAssetModelsTable extends Migration
     {
         Schema::create('asset_models', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
+            $table->string('slug');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
+            $table->softDeletes();
+            $table->foreignId('manufacturer_id')->nullable()->constrained()->onDelete('cascade');
         });
     }
 

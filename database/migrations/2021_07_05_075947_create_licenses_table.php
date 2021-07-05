@@ -15,7 +15,11 @@ class CreateLicensesTable extends Migration
     {
         Schema::create('licenses', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
+            $table->string('slug');
+            $table->string('reference_no')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

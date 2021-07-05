@@ -15,7 +15,15 @@ class CreateUserGroupsTable extends Migration
     {
         Schema::create('user_groups', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
+            $table->string('slug');
+            $table->enum('type', ['employee', 'customer']);
+            $table->enum('category', ['department', 'area_code', 'organization_type']);
+            $table->string('name');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
+            $table->softDeletes();
+            $table->foreignId('user_group_id')->nullable()->constrained()->onDelete('cascade');
         });
     }
 
