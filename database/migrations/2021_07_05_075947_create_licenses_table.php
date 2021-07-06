@@ -23,7 +23,6 @@ class CreateLicensesTable extends Migration
             $table->foreignId('supplier_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('manufacturer_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('asset_category_id')->constrained()->onDelete('cascade');
-            $table->foreignId('asset_id')->nullable()->constrained()->onDelete('cascade');
         });
     }
 
