@@ -18,6 +18,23 @@ Route::get('/v1/user', 'AuthController@user');
 
 Route::middleware('auth:sanctum')->prefix("v1")->group(function () {
     Route::apiResources([
-        'users' => 'API\v1\UserController'
+        'agreements' => 'API\v1\AgreementController',
+        'assets' => 'API\v1\AssetController',
+        'asset_categories' => 'API\v1\AssetCategoryController',
+        'asset_models' => 'API\v1\AssetModelController',
+        'checkin_requests' => 'API\v1\CheckinRequestController',
+        'checkout_requests' => 'API\v1\CheckoutRequestController',
+        'customers' => 'API\v1\CustomerController',
+        'disposal_requests' => 'API\v1\DisposalRequestController',
+        'employees' => 'API\v1\EmployeeController',
+        'licenses' => 'API\v1\LicenseController',
+        'locations' => 'API\v1\LocationController',
+        'manufacturers' => 'API\v1\ManufacturerController',
+        'suppliers' => 'API\v1\SupplierController',
+        'transactions' => 'API\v1\TransactionController',
+        'transaction_types' => 'API\v1\TransactionTypeController',
+        'users' => 'API\v1\UserController',
+        'user_groups' => 'API\v1\UserGroupController',
+        'work_orders' => 'API\v1\WorkOrderController',
     ]);
 });
