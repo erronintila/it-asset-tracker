@@ -18,13 +18,25 @@ class CreateAssetsTable extends Migration
             $table->string('code');
             $table->string('slug');
             $table->string('reference_no')->nullable();
+            $table->string('asset_tag');
+            $table->string('serial_no')->nullable();
+            $table->string('description');
+            $table->date('purchased_date')->nullable();
+            $table->double('purchased_cost', 10, 2)->nullable();
+            $table->date('warranty_start_date')->nullable();
+            $table->date('warranty_end_date')->nullable();
+            $table->string('sku')->nullable();
+            $table->double('quantity', 10, 2)->default(1);
+            $table->text('notes')->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->foreignId('asset_model_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('supplier_id')->nullable()->constrained()->onDelete('cascade');
-            $table->foreignId('asset_category_id')->nullable()->constrained()->onDelete('cascade');
-            $table->foreignId('assigned_to')->nullable()->constrained('users')->onDelete('cascade');
-            $table->foreignId('location_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('manufacturer_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('asset_category_id')->constrained()->onDelete('cascade');
+            $table->foreignId('assigned_to')->nullable()->constrained('users');
+            $table->foreignId('location_id')->nullable()->constrained();
+            $table->foreignId('asset_id')->nullable()->constrained()->onDelete('cascade');
         });
     }
 

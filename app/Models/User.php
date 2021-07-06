@@ -49,6 +49,13 @@ class User extends Authenticatable
      */
     protected $appends = ['full_name'];
 
+    protected $with = ['profile'];
+
+    public function profile()
+    {
+        return $this->morphTo();
+    }
+
     /**
      * Get the user's full name.
      *

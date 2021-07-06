@@ -17,6 +17,8 @@ class CreateAssetModelsTable extends Migration
             $table->id();
             $table->string('code');
             $table->string('slug');
+            $table->string('model_no')->nullable();
+            $table->string('name');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
             $table->softDeletes();

@@ -34,6 +34,7 @@ class CreateCustomersTable extends Migration
             $table->boolean('is_active')->default(true);
             $table->timestamps();
             $table->softDeletes();
+            $table->foreignId('location_id')->nullable()->constrained()->onDelete('cascade');
         });
     }
 

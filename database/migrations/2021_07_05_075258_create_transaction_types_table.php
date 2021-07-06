@@ -17,6 +17,8 @@ class CreateTransactionTypesTable extends Migration
             $table->id();
             $table->string('code');
             $table->string('slug');
+            $table->enum('action_type', ['checkin', 'checkout', 'maintenance', 'disposal']);
+            $table->string('name');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
             $table->softDeletes();
