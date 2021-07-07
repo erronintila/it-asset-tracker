@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->boolean('is_active')->default(true);
             $table->text('notes')->nullable();
+            $table->boolean('default')->default(false);
             $table->timestamps();
             $table->unsignedBigInteger("profile_id")->nullable();
             $table->string("profile_type")->nullable();
