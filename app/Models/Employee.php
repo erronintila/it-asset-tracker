@@ -20,6 +20,16 @@ class Employee extends Model
         return $this->morphOne('App\Models\User', 'profile');
     }
 
+    public function location()
+    {
+        return $this->belongsTo('App\Models\Location');
+    }
+
+    public function department()
+    {
+        return $this->belongsTo('App\Models\Department');
+    }
+
     /**
      * Get the employee's full name.
      *

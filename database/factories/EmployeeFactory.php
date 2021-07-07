@@ -36,6 +36,7 @@ $factory->define(Employee::class, function (Faker $faker) {
         'postal_code' => $faker->postcode,
         'is_active' => true,
         'location_id' => factory(App\Models\Location::class)->create()->id,
-        'manager_id' => null,
+        'department_id' => $faker->randomElement([1, 2, 3])
+        // 'department_id' => factory(App\Models\Department::class)->create()->id,
     ];
 });

@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\API\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\EmployeeResource;
+use App\Http\Resources\UserResource;
+use App\Models\Employee;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -14,7 +18,15 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::with(['profile' => function ($query) {
+            $query->with(['location', 'department']);
+        }])->where('profile_type', 'App\Models\Employee')->paginate(10);
+
+        return UserResource::collection($users);
+
+        // $employees = Employee::with(['location', 'user'])->paginate(10);
+
+        // return EmployeeResource::collection($employees);
     }
 
     /**

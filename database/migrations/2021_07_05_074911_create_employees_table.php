@@ -38,7 +38,8 @@ class CreateEmployeesTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->foreignId('location_id')->nullable()->constrained()->onDelete('cascade');
-            $table->foreignId('manager_id')->nullable()->constrained('employees')->onDelete('cascade');
+            $table->foreignId('department_id')->nullable()->constrained()->onDelete('cascade');
+            
         });
     }
 

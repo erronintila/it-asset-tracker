@@ -30,6 +30,7 @@ $factory->define(Customer::class, function (Faker $faker) {
         'country' => 'Philippines',
         'postal_code' => $faker->postcode,
         'is_company' => true,
+        'organization_type' => $faker->randomElement(['private', 'government']),
         'location_id' => factory(App\Models\Location::class)->create()->id,
     ];
 });

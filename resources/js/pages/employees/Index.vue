@@ -88,14 +88,14 @@
                     :items-per-page="10"
                     show-select
                 >
-                    <template v-slot:[`item.code`]="{ item }">
+                    <template v-slot:[`item.profile.code`]="{ item }">
                         <router-link
                             :to="{
                                 name: 'employees.show',
                                 params: { id: item.id }
                             }"
                         >
-                            {{ item.code }}
+                            {{ item.profile.code }}
                         </router-link>
                     </template>
                     <template v-slot:[`item.status`]="{ item }">
@@ -114,6 +114,8 @@
 </template>
 
 <script>
+import EmployeeDataService from "../../services/EmployeeDataService";
+
 export default {
     data() {
         return {
@@ -123,39 +125,24 @@ export default {
                     text: "Code",
                     align: "start",
                     sortable: true,
-                    value: "code"
+                    value: "profile.code"
                 },
                 { text: "Name", value: "name" },
-                { text: "Department", value: "department" },
-                { text: "Job Title", value: "job_title" },
-                { text: "Phone No.", value: "phone" },
+                { text: "Department", value: "profile.department.name" },
+                { text: "Job Title", value: "profile.job_title" },
+                { text: "Phone No.", value: "profile.mobile_phone" },
                 { text: "Email", value: "email" },
                 { text: "Assets", value: "assets" }
             ],
-            items: [
-                {
-                    id: 1,
-                    code: "98237423",
-                    name: "Juan Dela Cruz",
-                    department: "Sales and Marketing",
-                    job_title: "Sales & Marketing Officer",
-                    phone: "09211121212",
-                    email: "juandelacruz@gmail.com",
-                    assets: "20"
-                },
-                {
-                    id: 2,
-                    code: "67567567",
-                    name: "Maria Santiago",
-                    department: "Purchasing",
-                    job_title: "Purchase Officer",
-                    phone: "093248023423",
-                    email: "mariasantiago@gmail.com",
-                    assets: "38"
-                }
-            ],
+            items: [],
             showSearch: false
         };
+    },
+    created() {
+        EmployeeDataService.getAll().then(res => {
+            this.items = res.data.data;
+            console.log(res);
+        });
     }
 };
 </script>
