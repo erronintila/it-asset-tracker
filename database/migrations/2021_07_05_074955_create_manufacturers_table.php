@@ -18,7 +18,7 @@ class CreateManufacturersTable extends Migration
             $table->string('code');
             $table->string('slug');
             $table->string('name');
-            $table->date("contact_person")->nullable();
+            $table->string("contact_person")->nullable();
             $table->string("phone1")->nullable();
             $table->string("phone2")->nullable();
             $table->string('email')->unique()->nullable();

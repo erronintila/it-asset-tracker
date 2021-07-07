@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddTransactionIdToUsersTable extends Migration
+class AddTransactionIdToAssetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddTransactionIdToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('assets', function (Blueprint $table) {
             $table->foreignId('last_transaction_id')->nullable()->constrained('transactions');
         });
     }
@@ -25,7 +25,7 @@ class AddTransactionIdToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('assets', function (Blueprint $table) {
             $table->dropForeign('last_transaction_id');
         });
     }
