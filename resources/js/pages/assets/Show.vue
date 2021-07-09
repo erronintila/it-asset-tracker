@@ -110,6 +110,18 @@
                         <v-tab-item>
                             <v-card flat>
                                 <v-card-text>
+                                    <VueApexCharts
+                                        type="donut"
+                                        height="300"
+                                        :options="options.asset"
+                                        :series="series.asset"
+                                    ></VueApexCharts>
+                                </v-card-text>
+                            </v-card>
+                        </v-tab-item>
+                        <v-tab-item>
+                            <v-card flat>
+                                <v-card-text>
                                     <v-simple-table>
                                         <template v-slot:default>
                                             <thead>
@@ -318,11 +330,33 @@
 </template>
 
 <script>
+import VueApexCharts from "vue-apexcharts";
+
 export default {
+    components: {
+        VueApexCharts
+    },
     data() {
         return {
             tab: null,
+            series: {
+                asset: [44, 55, 41, 17]
+            },
+            options: {
+                asset: {
+                    labels: [
+                        "In Storage",
+                        "In Use",
+                        "In Maintenance",
+                        "Disposed"
+                    ],
+                    legend: {
+                        show: false
+                    }
+                }
+            },
             items: [
+                "overview",
                 "details",
                 "assets",
                 "licenses",

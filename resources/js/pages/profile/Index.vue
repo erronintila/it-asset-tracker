@@ -51,23 +51,6 @@
 
                     <v-divider class="mx-4"></v-divider>
 
-                    <!-- <v-card-title>Tonight's availability</v-card-title> -->
-
-                    <!-- <v-card-text>
-                        <v-chip-group
-                            active-class="deep-purple accent-4 white--text"
-                            column
-                        >
-                            <v-chip>5:30PM</v-chip>
-
-                            <v-chip>7:30PM</v-chip>
-
-                            <v-chip>8:00PM</v-chip>
-
-                            <v-chip>9:00PM</v-chip>
-                        </v-chip-group>
-                    </v-card-text> -->
-
                     <v-card-actions>
                         <v-btn icon title="Edit Information">
                             <v-icon>mdi-file-document-edit-outline</v-icon>
@@ -92,6 +75,175 @@
                         </v-tab>
                     </v-tabs>
                     <v-tabs-items v-model="tab">
+                        <v-tab-item>
+                            <v-card flat>
+                                <v-card-text>
+                                    <div class="page-title my-4">
+                                        Assets
+                                    </div>
+
+                                    <div class="my-4">
+                                        <VueApexCharts
+                                            type="donut"
+                                            height="300"
+                                            :options="options.asset"
+                                            :series="series.asset"
+                                        ></VueApexCharts>
+                                    </div>
+
+                                    <div class="page-title my-4">
+                                        Work Orders
+                                    </div>
+
+                                    <v-row class="mx-md-8 my-4">
+                                        <v-col cols="12" md="6">
+                                            <v-hover
+                                                v-slot="{ hover }"
+                                                open-delay="30"
+                                            >
+                                                <v-card
+                                                    :elevation="hover ? 10 : 3"
+                                                    :class="{
+                                                        'on-hover': hover
+                                                    }"
+                                                    class="rounded-lg"
+                                                    to="/work_orders"
+                                                    max-height="100"
+                                                >
+                                                    <v-card-text>
+                                                        <v-list-item three-line>
+                                                            <v-list-item-content>
+                                                                <div
+                                                                    class="primary--text"
+                                                                >
+                                                                    Scheduled
+                                                                </div>
+                                                                <div
+                                                                    class="header-body"
+                                                                >
+                                                                    100
+                                                                </div>
+                                                                <div
+                                                                    class="body-2"
+                                                                ></div>
+                                                            </v-list-item-content>
+                                                        </v-list-item>
+                                                    </v-card-text>
+                                                </v-card>
+                                            </v-hover>
+                                        </v-col>
+                                        <v-col cols="12" md="6">
+                                            <v-hover
+                                                v-slot="{ hover }"
+                                                open-delay="30"
+                                            >
+                                                <v-card
+                                                    :elevation="hover ? 10 : 3"
+                                                    :class="{
+                                                        'on-hover': hover
+                                                    }"
+                                                    class="rounded-lg"
+                                                    to="/work_orders"
+                                                    max-height="100"
+                                                >
+                                                    <v-card-text>
+                                                        <v-list-item three-line>
+                                                            <v-list-item-content>
+                                                                <div
+                                                                    class="red--text"
+                                                                >
+                                                                    Urgent
+                                                                </div>
+                                                                <div
+                                                                    class="header-body"
+                                                                >
+                                                                    100
+                                                                </div>
+                                                                <div
+                                                                    class="body-2"
+                                                                ></div>
+                                                            </v-list-item-content>
+                                                        </v-list-item>
+                                                    </v-card-text>
+                                                </v-card>
+                                            </v-hover>
+                                        </v-col>
+                                        <v-col cols="12" md="6">
+                                            <v-hover
+                                                v-slot="{ hover }"
+                                                open-delay="30"
+                                            >
+                                                <v-card
+                                                    :elevation="hover ? 10 : 3"
+                                                    :class="{
+                                                        'on-hover': hover
+                                                    }"
+                                                    class="rounded-lg"
+                                                    to="/work_orders"
+                                                    max-height="100"
+                                                >
+                                                    <v-card-text>
+                                                        <v-list-item three-line>
+                                                            <v-list-item-content>
+                                                                <div
+                                                                    class="orange--text"
+                                                                >
+                                                                    On Going
+                                                                </div>
+                                                                <div
+                                                                    class="header-body"
+                                                                >
+                                                                    100
+                                                                </div>
+                                                                <div
+                                                                    class="body-2"
+                                                                ></div>
+                                                            </v-list-item-content>
+                                                        </v-list-item>
+                                                    </v-card-text>
+                                                </v-card>
+                                            </v-hover>
+                                        </v-col>
+                                        <v-col cols="12" md="6">
+                                            <v-hover
+                                                v-slot="{ hover }"
+                                                open-delay="30"
+                                            >
+                                                <v-card
+                                                    :elevation="hover ? 10 : 3"
+                                                    :class="{
+                                                        'on-hover': hover
+                                                    }"
+                                                    class="rounded-lg"
+                                                    to="/work_orders"
+                                                    max-height="100"
+                                                >
+                                                    <v-card-text>
+                                                        <v-list-item three-line>
+                                                            <v-list-item-content>
+                                                                <div
+                                                                    class="green--text"
+                                                                >
+                                                                    Completed
+                                                                </div>
+                                                                <div
+                                                                    class="header-body"
+                                                                >
+                                                                    100
+                                                                </div>
+                                                                <div
+                                                                    class="body-2"
+                                                                ></div>
+                                                            </v-list-item-content>
+                                                        </v-list-item>
+                                                    </v-card-text>
+                                                </v-card>
+                                            </v-hover>
+                                        </v-col>
+                                    </v-row>
+                                </v-card-text>
+                            </v-card>
+                        </v-tab-item>
                         <v-tab-item>
                             <v-card flat>
                                 <v-card-text>
@@ -303,11 +455,23 @@
 </template>
 
 <script>
+import VueApexCharts from "vue-apexcharts";
+
 export default {
+    name: "profile.index",
+    components: {
+        VueApexCharts
+    },
     data() {
         return {
             tab: null,
-            items: ["details", "assets", "maintenances", "history"],
+            items: [
+                "overview",
+                "details",
+                "assets",
+                "work orders",
+                "system activity logs"
+            ],
             records: [
                 {
                     name: "Data 1",
@@ -349,8 +513,40 @@ export default {
                     name: "Data 10",
                     value: 518
                 }
-            ]
+            ],
+            series: {
+                asset: [44, 55, 41, 17]
+            },
+            options: {
+                asset: {
+                    labels: [
+                        "Personal Computers",
+                        "Components",
+                        "Accessories",
+                        "Licenses"
+                    ]
+                    // legend: {
+                    //     show: false
+                    // }
+                }
+            }
         };
     }
 };
 </script>
+
+<style scoped>
+.header-title {
+    font-size: 1rem;
+    font-weight: 100;
+}
+
+.header-body {
+    font-size: 2rem;
+    font-weight: 100;
+}
+
+a {
+    text-decoration: none;
+}
+</style>

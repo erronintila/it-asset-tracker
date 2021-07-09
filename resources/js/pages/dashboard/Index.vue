@@ -45,7 +45,7 @@
             </v-col>
         </v-row>
 
-        <v-dialog v-model="dialogAccount" max-width="600">
+        <v-dialog persistent v-model="dialogAccount" max-width="600">
             <v-card>
                 <v-card-title>Account</v-card-title>
                 <v-card-text>
@@ -93,14 +93,18 @@
                 <v-card-actions>
                     <v-spacer></v-spacer>
                     <div class="mb-4">
-                        <v-btn class="mx-2">OK</v-btn>
-                        <v-btn class="mx-2">Close</v-btn>
+                        <v-btn class="mx-2" @click="dialogAccount = false"
+                            >OK</v-btn
+                        >
+                        <v-btn class="mx-2" @click="dialogAccount = false"
+                            >Close</v-btn
+                        >
                     </div>
                 </v-card-actions>
             </v-card>
         </v-dialog>
 
-        <v-dialog v-model="dialogCategory" max-width="600">
+        <v-dialog persistent v-model="dialogCategory" max-width="600">
             <v-card>
                 <v-card-title>Category</v-card-title>
                 <v-card-text>
@@ -148,14 +152,18 @@
                 <v-card-actions>
                     <v-spacer></v-spacer>
                     <div class="mb-4">
-                        <v-btn class="mx-2">OK</v-btn>
-                        <v-btn class="mx-2">Close</v-btn>
+                        <v-btn class="mx-2" @click="dialogCategory = false"
+                            >OK</v-btn
+                        >
+                        <v-btn class="mx-2" @click="dialogCategory = false"
+                            >Close</v-btn
+                        >
                     </div>
                 </v-card-actions>
             </v-card>
         </v-dialog>
 
-        <v-dialog v-model="dialogManufacturer" max-width="600">
+        <v-dialog persistent v-model="dialogManufacturer" max-width="600">
             <v-card>
                 <v-card-title>Manufacturer</v-card-title>
                 <v-card-text>
@@ -203,8 +211,12 @@
                 <v-card-actions>
                     <v-spacer></v-spacer>
                     <div class="mb-4">
-                        <v-btn class="mx-2">OK</v-btn>
-                        <v-btn class="mx-2">Close</v-btn>
+                        <v-btn class="mx-2" @click="dialogManufacturer = false"
+                            >OK</v-btn
+                        >
+                        <v-btn class="mx-2" @click="dialogManufacturer = false"
+                            >Close</v-btn
+                        >
                     </div>
                 </v-card-actions>
             </v-card>
@@ -225,7 +237,7 @@
                         :color="item.color"
                         :dark="item.dark"
                     >
-                        <v-list-item three-line>
+                        <v-list-item three-line :to="item.link">
                             <v-list-item-content>
                                 <div :class="'header-title ' + item.text_color">
                                     {{ item.title }}
@@ -431,7 +443,8 @@ export default {
                         body: "1,000,000.00",
                         color: "white",
                         dark: false,
-                        text_color: "black--text"
+                        text_color: "black--text",
+                        link: "/assets"
                     },
                     {
                         title: "Completed Work Orders",
@@ -439,7 +452,8 @@ export default {
                         body: "100",
                         color: "white",
                         dark: false,
-                        text_color: "black--text"
+                        text_color: "black--text",
+                        link: "/work_orders"
                     },
                     {
                         title: "Pending Work Orders",
@@ -447,7 +461,8 @@ export default {
                         body: "100",
                         color: "white",
                         dark: true,
-                        text_color: "black--text"
+                        text_color: "black--text",
+                        link: "/work_orders"
                     },
                     {
                         title: "Scheduled Work Orders",
@@ -455,7 +470,8 @@ export default {
                         body: "100",
                         color: "white",
                         dark: false,
-                        text_color: "black--text"
+                        text_color: "black--text",
+                        link: "/work_orders"
                     }
                 ]
             },

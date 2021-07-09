@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[53],{
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/customers/Create.vue?vue&type=template&id=55b09b02&":
-/*!**************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/customers/Create.vue?vue&type=template&id=55b09b02& ***!
-  \**************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/consumables/Create.vue?vue&type=template&id=dd18fd78&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/consumables/Create.vue?vue&type=template&id=dd18fd78& ***!
+  \****************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -40,7 +40,7 @@ var render = function() {
               ),
               _vm._v(" "),
               _c("span", { staticClass: "page-title" }, [
-                _vm._v("New Customer")
+                _vm._v("New Consumable")
               ])
             ],
             1
@@ -80,7 +80,7 @@ var render = function() {
                             [
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Customer Code",
+                                  label: "Reference No.",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -88,7 +88,7 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Name",
+                                  label: "Asset Tag",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -96,7 +96,7 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Email",
+                                  label: "Category",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -104,7 +104,31 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Website",
+                                  label: "Description",
+                                  outlined: "",
+                                  clearable: ""
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Model",
+                                  outlined: "",
+                                  clearable: ""
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Manufacturer",
+                                  outlined: "",
+                                  clearable: ""
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Parent Asset",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -135,7 +159,7 @@ var render = function() {
                 [
                   _c("v-card-title", [
                     _vm._v(
-                      "\n                    Contact Information\n                "
+                      "\n                    Purchase Information\n                "
                     )
                   ]),
                   _vm._v(" "),
@@ -152,7 +176,7 @@ var render = function() {
                             [
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Contact Person",
+                                  label: "Supplier",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -160,7 +184,7 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Phone No.",
+                                  label: "Purchase Date",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -168,7 +192,7 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Address",
+                                  label: "Purchase Cost",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -176,7 +200,7 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "City",
+                                  label: "Warranty",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -184,7 +208,7 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "State",
+                                  label: "Stock Keeping Unit",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -192,15 +216,7 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Country",
-                                  outlined: "",
-                                  clearable: ""
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Postal Code",
+                                  label: "Quantity",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -256,6 +272,14 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
+                                  label: "Image",
+                                  outlined: "",
+                                  clearable: ""
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
                                   label: "Notes",
                                   outlined: "",
                                   clearable: ""
@@ -264,7 +288,7 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Image",
+                                  label: "Attachments",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -282,24 +306,13 @@ var render = function() {
                   _c(
                     "v-card-actions",
                     [
-                      _c(
-                        "v-sheet",
-                        { staticClass: "ml-4" },
-                        [
-                          _c("v-switch", {
-                            attrs: { inset: "", label: "Activate Account" }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
                       _c("v-spacer"),
                       _vm._v(" "),
                       _c(
                         "v-btn",
                         {
-                          staticClass: "mr-2",
-                          attrs: { color: "primary", large: "" },
+                          staticClass: "text-capitalize",
+                          attrs: { color: "primary", rounded: "", dark: "" },
                           on: {
                             click: function($event) {
                               return _vm.$router.go(-1)
@@ -335,16 +348,16 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/pages/customers/Create.vue":
-/*!*************************************************!*\
-  !*** ./resources/js/pages/customers/Create.vue ***!
-  \*************************************************/
+/***/ "./resources/js/pages/consumables/Create.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/pages/consumables/Create.vue ***!
+  \***************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Create_vue_vue_type_template_id_55b09b02___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Create.vue?vue&type=template&id=55b09b02& */ "./resources/js/pages/customers/Create.vue?vue&type=template&id=55b09b02&");
+/* harmony import */ var _Create_vue_vue_type_template_id_dd18fd78___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Create.vue?vue&type=template&id=dd18fd78& */ "./resources/js/pages/consumables/Create.vue?vue&type=template&id=dd18fd78&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 var script = {}
@@ -354,8 +367,8 @@ var script = {}
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
   script,
-  _Create_vue_vue_type_template_id_55b09b02___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Create_vue_vue_type_template_id_55b09b02___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Create_vue_vue_type_template_id_dd18fd78___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Create_vue_vue_type_template_id_dd18fd78___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -365,24 +378,24 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/pages/customers/Create.vue"
+component.options.__file = "resources/js/pages/consumables/Create.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/pages/customers/Create.vue?vue&type=template&id=55b09b02&":
-/*!********************************************************************************!*\
-  !*** ./resources/js/pages/customers/Create.vue?vue&type=template&id=55b09b02& ***!
-  \********************************************************************************/
+/***/ "./resources/js/pages/consumables/Create.vue?vue&type=template&id=dd18fd78&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/pages/consumables/Create.vue?vue&type=template&id=dd18fd78& ***!
+  \**********************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_55b09b02___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Create.vue?vue&type=template&id=55b09b02& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/customers/Create.vue?vue&type=template&id=55b09b02&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_55b09b02___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_dd18fd78___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Create.vue?vue&type=template&id=dd18fd78& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/consumables/Create.vue?vue&type=template&id=dd18fd78&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_dd18fd78___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_55b09b02___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_dd18fd78___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
