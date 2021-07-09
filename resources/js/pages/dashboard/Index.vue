@@ -1,6 +1,214 @@
 <template>
     <div>
-        <div class="page-title mb-4">Dashboard</div>
+        <v-row>
+            <v-col class="d-flex align-center">
+                <div class="page-title d-inline">
+                    Dashboard
+                </div>
+            </v-col>
+            <v-spacer></v-spacer>
+            <v-col class="d-flex align-center justify-end">
+                <v-btn icon title="Clear Filters">
+                    <v-icon>mdi-close</v-icon>
+                </v-btn>
+                <v-menu bottom left>
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-btn icon v-bind="attrs" v-on="on" title="Filter">
+                            <v-icon>mdi-clipboard-search-outline</v-icon>
+                        </v-btn>
+                    </template>
+                    <v-list>
+                        <v-list-item link @click="dialogAccount = true">
+                            <v-list-item-title>
+                                Account
+                            </v-list-item-title>
+                        </v-list-item>
+                        <v-list-item link>
+                            <v-list-item-title>
+                                Date Range
+                            </v-list-item-title>
+                        </v-list-item>
+                    </v-list>
+                </v-menu>
+            </v-col>
+        </v-row>
+
+        <v-row class="hidden-sm-and-down mb-2">
+            <v-col class="d-flex align-center">
+                <small class="text--secondary">
+                    January 01, 2021 ~ July 09, 2021
+                </small>
+                <small class="mx-4">|</small>
+                <small class="text--secondary">
+                    All Accounts
+                </small>
+            </v-col>
+        </v-row>
+
+        <v-dialog v-model="dialogAccount" max-width="600">
+            <v-card>
+                <v-card-title>Account</v-card-title>
+                <v-card-text>
+                    <div class="d-flex justify-space-between align-center">
+                        <div>All Accounts</div>
+                        <div>
+                            <v-text-field
+                                label="Search"
+                                clearable
+                            ></v-text-field>
+                        </div>
+                    </div>
+                    <v-data-table
+                        v-model="tableSelected"
+                        :headers="[
+                            {
+                                text: 'Asset Tag',
+                                value: 'asset_tag'
+                            },
+                            { text: 'Description', value: 'description' },
+                            { text: 'Category', value: 'category' }
+                        ]"
+                        :items="[
+                            {
+                                id: 1,
+                                asset_tag: '252342342325',
+                                description: 'Apple iPad Pro',
+                                category: 'Tablets'
+                            },
+                            {
+                                id: 2,
+                                asset_tag: '252342342325',
+                                description: 'Apple iPad Pro',
+                                category: 'Tablets'
+                            }
+                        ]"
+                        :items-per-page="5"
+                        show-select
+                        single-select
+                        :footer-props="{
+                            itemsPerPageOptions: [3, 5]
+                        }"
+                    ></v-data-table>
+                </v-card-text>
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <div class="mb-4">
+                        <v-btn class="mx-2">OK</v-btn>
+                        <v-btn class="mx-2">Close</v-btn>
+                    </div>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
+
+        <v-dialog v-model="dialogCategory" max-width="600">
+            <v-card>
+                <v-card-title>Category</v-card-title>
+                <v-card-text>
+                    <div class="d-flex justify-space-between align-center">
+                        <div>All Categories</div>
+                        <div>
+                            <v-text-field
+                                label="Search"
+                                clearable
+                            ></v-text-field>
+                        </div>
+                    </div>
+                    <v-data-table
+                        v-model="tableSelected"
+                        :headers="[
+                            {
+                                text: 'Asset Tag',
+                                value: 'asset_tag'
+                            },
+                            { text: 'Description', value: 'description' },
+                            { text: 'Category', value: 'category' }
+                        ]"
+                        :items="[
+                            {
+                                id: 1,
+                                asset_tag: '252342342325',
+                                description: 'Apple iPad Pro',
+                                category: 'Tablets'
+                            },
+                            {
+                                id: 2,
+                                asset_tag: '252342342325',
+                                description: 'Apple iPad Pro',
+                                category: 'Tablets'
+                            }
+                        ]"
+                        :items-per-page="5"
+                        show-select
+                        single-select
+                        :footer-props="{
+                            itemsPerPageOptions: [3, 5]
+                        }"
+                    ></v-data-table>
+                </v-card-text>
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <div class="mb-4">
+                        <v-btn class="mx-2">OK</v-btn>
+                        <v-btn class="mx-2">Close</v-btn>
+                    </div>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
+
+        <v-dialog v-model="dialogManufacturer" max-width="600">
+            <v-card>
+                <v-card-title>Manufacturer</v-card-title>
+                <v-card-text>
+                    <div class="d-flex justify-space-between align-center">
+                        <div>All Manufacturers</div>
+                        <div>
+                            <v-text-field
+                                label="Search"
+                                clearable
+                            ></v-text-field>
+                        </div>
+                    </div>
+                    <v-data-table
+                        v-model="tableSelected"
+                        :headers="[
+                            {
+                                text: 'Asset Tag',
+                                value: 'asset_tag'
+                            },
+                            { text: 'Description', value: 'description' },
+                            { text: 'Category', value: 'category' }
+                        ]"
+                        :items="[
+                            {
+                                id: 1,
+                                asset_tag: '252342342325',
+                                description: 'Apple iPad Pro',
+                                category: 'Tablets'
+                            },
+                            {
+                                id: 2,
+                                asset_tag: '252342342325',
+                                description: 'Apple iPad Pro',
+                                category: 'Tablets'
+                            }
+                        ]"
+                        :items-per-page="5"
+                        show-select
+                        single-select
+                        :footer-props="{
+                            itemsPerPageOptions: [3, 5]
+                        }"
+                    ></v-data-table>
+                </v-card-text>
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <div class="mb-4">
+                        <v-btn class="mx-2">OK</v-btn>
+                        <v-btn class="mx-2">Close</v-btn>
+                    </div>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
 
         <v-row>
             <v-col
@@ -44,10 +252,37 @@
                         class="rounded-lg"
                         height="25rem"
                     >
-                        <v-card-title>
+                        <v-card-title class="d-flex justify-space-between">
                             <div class="page-title">
                                 Assets by Status
                             </div>
+                            <v-menu bottom left>
+                                <template v-slot:activator="{ on, attrs }">
+                                    <v-btn icon v-bind="attrs" v-on="on">
+                                        <v-icon>
+                                            mdi-dots-vertical
+                                        </v-icon>
+                                    </v-btn>
+                                </template>
+                                <v-list>
+                                    <v-list-item
+                                        link
+                                        @click="dialogCategory = true"
+                                    >
+                                        <v-list-item-title>
+                                            Category
+                                        </v-list-item-title>
+                                    </v-list-item>
+                                    <v-list-item
+                                        link
+                                        @click="dialogManufacturer = true"
+                                    >
+                                        <v-list-item-title>
+                                            Manufacturer
+                                        </v-list-item-title>
+                                    </v-list-item>
+                                </v-list>
+                            </v-menu>
                         </v-card-title>
                         <v-card-text>
                             <div>
@@ -57,6 +292,11 @@
                                     :options="options.asset"
                                     :series="series.asset"
                                 ></VueApexCharts>
+                            </div>
+                            <div class="mt-2">
+                                <small>All Categories</small>
+                                <small>|</small>
+                                <small>All Manufacturers</small>
                             </div>
                         </v-card-text>
                     </v-card>
@@ -126,6 +366,19 @@
                                                 This Week
                                             </v-list-item-title>
                                         </v-list-item>
+                                        <v-list-item
+                                            link
+                                            @click="
+                                                $router.push({
+                                                    name:
+                                                        'reports.activity_logs.index'
+                                                })
+                                            "
+                                        >
+                                            <v-list-item-title>
+                                                View All
+                                            </v-list-item-title>
+                                        </v-list-item>
                                     </v-list>
                                 </v-menu>
                             </div>
@@ -135,14 +388,6 @@
                                 :headers="headers.activity"
                                 :items="activities"
                                 :items-per-page="5"
-                                :footer-props="{
-                                    itemsPerPageOptions: [5],
-                                    showFirstLastPage: true,
-                                    firstIcon: 'mdi-page-first',
-                                    lastIcon: 'mdi-page-last',
-                                    prevIcon: 'mdi-chevron-left',
-                                    nextIcon: 'mdi-chevron-right'
-                                }"
                             >
                                 <template v-slot:[`item.actions`]="{ item }">
                                     <router-link
@@ -160,27 +405,6 @@
                 </v-hover>
             </v-col>
         </v-row>
-
-        <!-- <v-row>
-            <v-col>
-                <v-hover v-slot="{ hover }" open-delay="30">
-                    <v-card
-                        :elevation="hover ? 10 : 3"
-                        :class="{ 'on-hover': hover }"
-                        class="rounded-lg"
-                        height="25rem"
-                    >
-                        <v-list-item three-line>
-                            <v-list-item-content>
-                                <div class="header-title">
-                                    Line Chart
-                                </div>
-                            </v-list-item-content>
-                        </v-list-item>
-                    </v-card>
-                </v-hover>
-            </v-col>
-        </v-row> -->
     </div>
 </template>
 
@@ -195,6 +419,10 @@ export default {
     },
     data() {
         return {
+            dialogAccount: false,
+            dialogCategory: false,
+            dialogManufacturer: false,
+            tableSelected: [],
             dashboard: {
                 headers: [
                     {
@@ -206,7 +434,7 @@ export default {
                         text_color: "black--text"
                     },
                     {
-                        title: "Total Work Orders",
+                        title: "Completed Work Orders",
                         subtitle: "",
                         body: "100",
                         color: "white",
@@ -330,7 +558,10 @@ export default {
     computed: {
         ...mapGetters({
             user: "auth/user"
-        })
+        }),
+        dateRangeText() {
+            return this.dates.join(" ~ ");
+        }
     }
 };
 </script>

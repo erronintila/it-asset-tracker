@@ -204,6 +204,230 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -213,6 +437,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
+      dialogAccount: false,
+      dialogCategory: false,
+      dialogManufacturer: false,
+      tableSelected: [],
       dashboard: {
         headers: [{
           title: "Total Assets",
@@ -222,7 +450,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           dark: false,
           text_color: "black--text"
         }, {
-          title: "Total Work Orders",
+          title: "Completed Work Orders",
           subtitle: "",
           body: "100",
           color: "white",
@@ -320,9 +548,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }]
     };
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])({
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])({
     user: "auth/user"
-  }))
+  })), {}, {
+    dateRangeText: function dateRangeText() {
+      return this.dates.join(" ~ ");
+    }
+  })
 });
 
 /***/ }),
@@ -394,7 +626,459 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("div", { staticClass: "page-title mb-4" }, [_vm._v("Dashboard")]),
+      _c(
+        "v-row",
+        [
+          _c("v-col", { staticClass: "d-flex align-center" }, [
+            _c("div", { staticClass: "page-title d-inline" }, [
+              _vm._v("\n                Dashboard\n            ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("v-spacer"),
+          _vm._v(" "),
+          _c(
+            "v-col",
+            { staticClass: "d-flex align-center justify-end" },
+            [
+              _c(
+                "v-btn",
+                { attrs: { icon: "", title: "Clear Filters" } },
+                [_c("v-icon", [_vm._v("mdi-close")])],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-menu",
+                {
+                  attrs: { bottom: "", left: "" },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "activator",
+                      fn: function(ref) {
+                        var on = ref.on
+                        var attrs = ref.attrs
+                        return [
+                          _c(
+                            "v-btn",
+                            _vm._g(
+                              _vm._b(
+                                { attrs: { icon: "", title: "Filter" } },
+                                "v-btn",
+                                attrs,
+                                false
+                              ),
+                              on
+                            ),
+                            [
+                              _c("v-icon", [
+                                _vm._v("mdi-clipboard-search-outline")
+                              ])
+                            ],
+                            1
+                          )
+                        ]
+                      }
+                    }
+                  ])
+                },
+                [
+                  _vm._v(" "),
+                  _c(
+                    "v-list",
+                    [
+                      _c(
+                        "v-list-item",
+                        {
+                          attrs: { link: "" },
+                          on: {
+                            click: function($event) {
+                              _vm.dialogAccount = true
+                            }
+                          }
+                        },
+                        [
+                          _c("v-list-item-title", [
+                            _vm._v(
+                              "\n                            Account\n                        "
+                            )
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-item",
+                        { attrs: { link: "" } },
+                        [
+                          _c("v-list-item-title", [
+                            _vm._v(
+                              "\n                            Date Range\n                        "
+                            )
+                          ])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-row",
+        { staticClass: "hidden-sm-and-down mb-2" },
+        [
+          _c("v-col", { staticClass: "d-flex align-center" }, [
+            _c("small", { staticClass: "text--secondary" }, [
+              _vm._v(
+                "\n                January 01, 2021 ~ July 09, 2021\n            "
+              )
+            ]),
+            _vm._v(" "),
+            _c("small", { staticClass: "mx-4" }, [_vm._v("|")]),
+            _vm._v(" "),
+            _c("small", { staticClass: "text--secondary" }, [
+              _vm._v("\n                All Accounts\n            ")
+            ])
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { "max-width": "600" },
+          model: {
+            value: _vm.dialogAccount,
+            callback: function($$v) {
+              _vm.dialogAccount = $$v
+            },
+            expression: "dialogAccount"
+          }
+        },
+        [
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", [_vm._v("Account")]),
+              _vm._v(" "),
+              _c(
+                "v-card-text",
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "d-flex justify-space-between align-center"
+                    },
+                    [
+                      _c("div", [_vm._v("All Accounts")]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        [
+                          _c("v-text-field", {
+                            attrs: { label: "Search", clearable: "" }
+                          })
+                        ],
+                        1
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("v-data-table", {
+                    attrs: {
+                      headers: [
+                        {
+                          text: "Asset Tag",
+                          value: "asset_tag"
+                        },
+                        { text: "Description", value: "description" },
+                        { text: "Category", value: "category" }
+                      ],
+                      items: [
+                        {
+                          id: 1,
+                          asset_tag: "252342342325",
+                          description: "Apple iPad Pro",
+                          category: "Tablets"
+                        },
+                        {
+                          id: 2,
+                          asset_tag: "252342342325",
+                          description: "Apple iPad Pro",
+                          category: "Tablets"
+                        }
+                      ],
+                      "items-per-page": 5,
+                      "show-select": "",
+                      "single-select": "",
+                      "footer-props": {
+                        itemsPerPageOptions: [3, 5]
+                      }
+                    },
+                    model: {
+                      value: _vm.tableSelected,
+                      callback: function($$v) {
+                        _vm.tableSelected = $$v
+                      },
+                      expression: "tableSelected"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "mb-4" },
+                    [
+                      _c("v-btn", { staticClass: "mx-2" }, [_vm._v("OK")]),
+                      _vm._v(" "),
+                      _c("v-btn", { staticClass: "mx-2" }, [_vm._v("Close")])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { "max-width": "600" },
+          model: {
+            value: _vm.dialogCategory,
+            callback: function($$v) {
+              _vm.dialogCategory = $$v
+            },
+            expression: "dialogCategory"
+          }
+        },
+        [
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", [_vm._v("Category")]),
+              _vm._v(" "),
+              _c(
+                "v-card-text",
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "d-flex justify-space-between align-center"
+                    },
+                    [
+                      _c("div", [_vm._v("All Categories")]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        [
+                          _c("v-text-field", {
+                            attrs: { label: "Search", clearable: "" }
+                          })
+                        ],
+                        1
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("v-data-table", {
+                    attrs: {
+                      headers: [
+                        {
+                          text: "Asset Tag",
+                          value: "asset_tag"
+                        },
+                        { text: "Description", value: "description" },
+                        { text: "Category", value: "category" }
+                      ],
+                      items: [
+                        {
+                          id: 1,
+                          asset_tag: "252342342325",
+                          description: "Apple iPad Pro",
+                          category: "Tablets"
+                        },
+                        {
+                          id: 2,
+                          asset_tag: "252342342325",
+                          description: "Apple iPad Pro",
+                          category: "Tablets"
+                        }
+                      ],
+                      "items-per-page": 5,
+                      "show-select": "",
+                      "single-select": "",
+                      "footer-props": {
+                        itemsPerPageOptions: [3, 5]
+                      }
+                    },
+                    model: {
+                      value: _vm.tableSelected,
+                      callback: function($$v) {
+                        _vm.tableSelected = $$v
+                      },
+                      expression: "tableSelected"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "mb-4" },
+                    [
+                      _c("v-btn", { staticClass: "mx-2" }, [_vm._v("OK")]),
+                      _vm._v(" "),
+                      _c("v-btn", { staticClass: "mx-2" }, [_vm._v("Close")])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { "max-width": "600" },
+          model: {
+            value: _vm.dialogManufacturer,
+            callback: function($$v) {
+              _vm.dialogManufacturer = $$v
+            },
+            expression: "dialogManufacturer"
+          }
+        },
+        [
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", [_vm._v("Manufacturer")]),
+              _vm._v(" "),
+              _c(
+                "v-card-text",
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "d-flex justify-space-between align-center"
+                    },
+                    [
+                      _c("div", [_vm._v("All Manufacturers")]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        [
+                          _c("v-text-field", {
+                            attrs: { label: "Search", clearable: "" }
+                          })
+                        ],
+                        1
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("v-data-table", {
+                    attrs: {
+                      headers: [
+                        {
+                          text: "Asset Tag",
+                          value: "asset_tag"
+                        },
+                        { text: "Description", value: "description" },
+                        { text: "Category", value: "category" }
+                      ],
+                      items: [
+                        {
+                          id: 1,
+                          asset_tag: "252342342325",
+                          description: "Apple iPad Pro",
+                          category: "Tablets"
+                        },
+                        {
+                          id: 2,
+                          asset_tag: "252342342325",
+                          description: "Apple iPad Pro",
+                          category: "Tablets"
+                        }
+                      ],
+                      "items-per-page": 5,
+                      "show-select": "",
+                      "single-select": "",
+                      "footer-props": {
+                        itemsPerPageOptions: [3, 5]
+                      }
+                    },
+                    model: {
+                      value: _vm.tableSelected,
+                      callback: function($$v) {
+                        _vm.tableSelected = $$v
+                      },
+                      expression: "tableSelected"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "mb-4" },
+                    [
+                      _c("v-btn", { staticClass: "mx-2" }, [_vm._v("OK")]),
+                      _vm._v(" "),
+                      _c("v-btn", { staticClass: "mx-2" }, [_vm._v("Close")])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
       _vm._v(" "),
       _c(
         "v-row",
@@ -516,13 +1200,109 @@ var render = function() {
                             }
                           },
                           [
-                            _c("v-card-title", [
-                              _c("div", { staticClass: "page-title" }, [
-                                _vm._v(
-                                  "\n                            Assets by Status\n                        "
+                            _c(
+                              "v-card-title",
+                              { staticClass: "d-flex justify-space-between" },
+                              [
+                                _c("div", { staticClass: "page-title" }, [
+                                  _vm._v(
+                                    "\n                            Assets by Status\n                        "
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "v-menu",
+                                  {
+                                    attrs: { bottom: "", left: "" },
+                                    scopedSlots: _vm._u(
+                                      [
+                                        {
+                                          key: "activator",
+                                          fn: function(ref) {
+                                            var on = ref.on
+                                            var attrs = ref.attrs
+                                            return [
+                                              _c(
+                                                "v-btn",
+                                                _vm._g(
+                                                  _vm._b(
+                                                    { attrs: { icon: "" } },
+                                                    "v-btn",
+                                                    attrs,
+                                                    false
+                                                  ),
+                                                  on
+                                                ),
+                                                [
+                                                  _c("v-icon", [
+                                                    _vm._v(
+                                                      "\n                                        mdi-dots-vertical\n                                    "
+                                                    )
+                                                  ])
+                                                ],
+                                                1
+                                              )
+                                            ]
+                                          }
+                                        }
+                                      ],
+                                      null,
+                                      true
+                                    )
+                                  },
+                                  [
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list",
+                                      [
+                                        _c(
+                                          "v-list-item",
+                                          {
+                                            attrs: { link: "" },
+                                            on: {
+                                              click: function($event) {
+                                                _vm.dialogCategory = true
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("v-list-item-title", [
+                                              _vm._v(
+                                                "\n                                        Category\n                                    "
+                                              )
+                                            ])
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-list-item",
+                                          {
+                                            attrs: { link: "" },
+                                            on: {
+                                              click: function($event) {
+                                                _vm.dialogManufacturer = true
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("v-list-item-title", [
+                                              _vm._v(
+                                                "\n                                        Manufacturer\n                                    "
+                                              )
+                                            ])
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
                                 )
-                              ])
-                            ]),
+                              ],
+                              1
+                            ),
                             _vm._v(" "),
                             _c("v-card-text", [
                               _c(
@@ -538,7 +1318,15 @@ var render = function() {
                                   })
                                 ],
                                 1
-                              )
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "mt-2" }, [
+                                _c("small", [_vm._v("All Categories")]),
+                                _vm._v(" "),
+                                _c("small", [_vm._v("|")]),
+                                _vm._v(" "),
+                                _c("small", [_vm._v("All Manufacturers")])
+                              ])
                             ])
                           ],
                           1
@@ -731,6 +1519,29 @@ var render = function() {
                                                 ])
                                               ],
                                               1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "v-list-item",
+                                              {
+                                                attrs: { link: "" },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.$router.push({
+                                                      name:
+                                                        "reports.activity_logs.index"
+                                                    })
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("v-list-item-title", [
+                                                  _vm._v(
+                                                    "\n                                            View All\n                                        "
+                                                  )
+                                                ])
+                                              ],
+                                              1
                                             )
                                           ],
                                           1
@@ -751,15 +1562,7 @@ var render = function() {
                                   attrs: {
                                     headers: _vm.headers.activity,
                                     items: _vm.activities,
-                                    "items-per-page": 5,
-                                    "footer-props": {
-                                      itemsPerPageOptions: [5],
-                                      showFirstLastPage: true,
-                                      firstIcon: "mdi-page-first",
-                                      lastIcon: "mdi-page-last",
-                                      prevIcon: "mdi-chevron-left",
-                                      nextIcon: "mdi-chevron-right"
-                                    }
+                                    "items-per-page": 5
                                   },
                                   scopedSlots: _vm._u(
                                     [
