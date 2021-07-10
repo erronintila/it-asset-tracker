@@ -24,6 +24,11 @@
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
+                                    label="Short Name"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                                <v-text-field
                                     label="Name"
                                     outlined
                                     clearable
@@ -35,6 +40,16 @@
                                 ></v-text-field>
                                 <v-text-field
                                     label="Website"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                                <v-text-field
+                                    label="Area Code"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                                <v-text-field
+                                    label="Location"
                                     outlined
                                     clearable
                                 ></v-text-field>
@@ -83,6 +98,16 @@
                                 ></v-text-field>
                                 <v-text-field
                                     label="Postal Code"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                                <v-text-field
+                                    label="Latitude"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                                <v-text-field
+                                    label="Longitude"
                                     outlined
                                     clearable
                                 ></v-text-field>

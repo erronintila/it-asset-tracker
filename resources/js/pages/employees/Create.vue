@@ -24,6 +24,11 @@
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
+                                    label="Short Name"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                                <v-text-field
                                     label="Department"
                                     outlined
                                     clearable
@@ -60,6 +65,11 @@
                                 ></v-text-field>
                                 <v-text-field
                                     label="Birthdate"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                                <v-text-field
+                                    label="Location"
                                     outlined
                                     clearable
                                 ></v-text-field>

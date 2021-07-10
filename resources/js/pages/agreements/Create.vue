@@ -61,6 +61,30 @@
                             </v-col>
                         </v-row>
                     </v-card-text>
+                </v-card>
+            </v-col>
+
+            <v-col cols="12" md="6">
+                <v-card flat>
+                    <v-card-title>
+                        Other Information
+                    </v-card-title>
+                    <v-card-text>
+                        <v-row class="d-flex justify-center">
+                            <v-col cols="12">
+                                <v-text-field
+                                    label="Attachments"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                                <v-text-field
+                                    label="Notes"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                            </v-col>
+                        </v-row>
+                    </v-card-text>
                     <v-card-actions>
                         <v-spacer></v-spacer>
                         <v-btn

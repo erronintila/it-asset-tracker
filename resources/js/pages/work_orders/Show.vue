@@ -112,6 +112,19 @@
                         <v-tab-item>
                             <v-card flat>
                                 <v-card-text>
+                                    <!-- Overview -->
+                                    <VueApexCharts
+                                        type="donut"
+                                        height="300"
+                                        :options="options.asset"
+                                        :series="series.asset"
+                                    ></VueApexCharts>
+                                </v-card-text>
+                            </v-card>
+                        </v-tab-item>
+                        <v-tab-item>
+                            <v-card flat>
+                                <v-card-text>
                                     <v-simple-table>
                                         <template v-slot:default>
                                             <thead>
@@ -320,19 +333,42 @@
 </template>
 
 <script>
+import VueApexCharts from "vue-apexcharts";
+import XDataTable from "../../components/X-DataTable.vue";
+import XDialog from "../../components/X-Dialog.vue";
+
 export default {
+    components: {
+        VueApexCharts,
+        XDataTable,
+        XDialog
+    },
     data() {
         return {
             tab: null,
             items: [
+                "overview",
                 "details",
                 "assets",
                 "licenses",
-                "consumables",
-                "maintenances",
-                "history",
+                // "consumables",
+                // "maintenances",
+                "system activity logs",
                 "attachments"
             ],
+            series: {
+                asset: [44, 55, 41, 17]
+            },
+            options: {
+                asset: {
+                    labels: [
+                        "Repair",
+                        "Preventive Maintenance",
+                        "Corrective Maintenance",
+                        "Others"
+                    ]
+                }
+            },
             records: [
                 {
                     name: "Data 1",

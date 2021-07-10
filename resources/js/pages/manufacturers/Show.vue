@@ -313,7 +313,7 @@ export default {
     data() {
         return {
             tab: null,
-            items: ["details", "assets", "history"],
+            items: ["details", "assets", "System Activity Logs"],
             records: [
                 {
                     name: "Data 1",

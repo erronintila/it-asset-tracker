@@ -236,7 +236,7 @@ export default {
     data() {
         return {
             tab: null,
-            items: ["Work Order Types", "Status Labels"],
+            items: ["Work Order Types"],
             records: [
                 {
                     name: "Data 1",

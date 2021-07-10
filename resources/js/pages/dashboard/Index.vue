@@ -45,182 +45,23 @@
             </v-col>
         </v-row>
 
-        <v-dialog persistent v-model="dialogAccount" max-width="600">
-            <v-card>
-                <v-card-title>Account</v-card-title>
-                <v-card-text>
-                    <div class="d-flex justify-space-between align-center">
-                        <div>All Accounts</div>
-                        <div>
-                            <v-text-field
-                                label="Search"
-                                clearable
-                            ></v-text-field>
-                        </div>
-                    </div>
-                    <v-data-table
-                        v-model="tableSelected"
-                        :headers="[
-                            {
-                                text: 'Asset Tag',
-                                value: 'asset_tag'
-                            },
-                            { text: 'Description', value: 'description' },
-                            { text: 'Category', value: 'category' }
-                        ]"
-                        :items="[
-                            {
-                                id: 1,
-                                asset_tag: '252342342325',
-                                description: 'Apple iPad Pro',
-                                category: 'Tablets'
-                            },
-                            {
-                                id: 2,
-                                asset_tag: '252342342325',
-                                description: 'Apple iPad Pro',
-                                category: 'Tablets'
-                            }
-                        ]"
-                        :items-per-page="5"
-                        show-select
-                        single-select
-                        :footer-props="{
-                            itemsPerPageOptions: [3, 5]
-                        }"
-                    ></v-data-table>
-                </v-card-text>
-                <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <div class="mb-4">
-                        <v-btn class="mx-2" @click="dialogAccount = false"
-                            >OK</v-btn
-                        >
-                        <v-btn class="mx-2" @click="dialogAccount = false"
-                            >Close</v-btn
-                        >
-                    </div>
-                </v-card-actions>
-            </v-card>
-        </v-dialog>
+        <XDialog
+            :dialog="dialogCategory"
+            :title="'Category'"
+            @close-dialog="dialogCategory = false"
+        ></XDialog>
 
-        <v-dialog persistent v-model="dialogCategory" max-width="600">
-            <v-card>
-                <v-card-title>Category</v-card-title>
-                <v-card-text>
-                    <div class="d-flex justify-space-between align-center">
-                        <div>All Categories</div>
-                        <div>
-                            <v-text-field
-                                label="Search"
-                                clearable
-                            ></v-text-field>
-                        </div>
-                    </div>
-                    <v-data-table
-                        v-model="tableSelected"
-                        :headers="[
-                            {
-                                text: 'Asset Tag',
-                                value: 'asset_tag'
-                            },
-                            { text: 'Description', value: 'description' },
-                            { text: 'Category', value: 'category' }
-                        ]"
-                        :items="[
-                            {
-                                id: 1,
-                                asset_tag: '252342342325',
-                                description: 'Apple iPad Pro',
-                                category: 'Tablets'
-                            },
-                            {
-                                id: 2,
-                                asset_tag: '252342342325',
-                                description: 'Apple iPad Pro',
-                                category: 'Tablets'
-                            }
-                        ]"
-                        :items-per-page="5"
-                        show-select
-                        single-select
-                        :footer-props="{
-                            itemsPerPageOptions: [3, 5]
-                        }"
-                    ></v-data-table>
-                </v-card-text>
-                <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <div class="mb-4">
-                        <v-btn class="mx-2" @click="dialogCategory = false"
-                            >OK</v-btn
-                        >
-                        <v-btn class="mx-2" @click="dialogCategory = false"
-                            >Close</v-btn
-                        >
-                    </div>
-                </v-card-actions>
-            </v-card>
-        </v-dialog>
+        <XDialog
+            :dialog="dialogAccount"
+            :title="'Account'"
+            @close-dialog="dialogAccount = false"
+        ></XDialog>
 
-        <v-dialog persistent v-model="dialogManufacturer" max-width="600">
-            <v-card>
-                <v-card-title>Manufacturer</v-card-title>
-                <v-card-text>
-                    <div class="d-flex justify-space-between align-center">
-                        <div>All Manufacturers</div>
-                        <div>
-                            <v-text-field
-                                label="Search"
-                                clearable
-                            ></v-text-field>
-                        </div>
-                    </div>
-                    <v-data-table
-                        v-model="tableSelected"
-                        :headers="[
-                            {
-                                text: 'Asset Tag',
-                                value: 'asset_tag'
-                            },
-                            { text: 'Description', value: 'description' },
-                            { text: 'Category', value: 'category' }
-                        ]"
-                        :items="[
-                            {
-                                id: 1,
-                                asset_tag: '252342342325',
-                                description: 'Apple iPad Pro',
-                                category: 'Tablets'
-                            },
-                            {
-                                id: 2,
-                                asset_tag: '252342342325',
-                                description: 'Apple iPad Pro',
-                                category: 'Tablets'
-                            }
-                        ]"
-                        :items-per-page="5"
-                        show-select
-                        single-select
-                        :footer-props="{
-                            itemsPerPageOptions: [3, 5]
-                        }"
-                    ></v-data-table>
-                </v-card-text>
-                <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <div class="mb-4">
-                        <v-btn class="mx-2" @click="dialogManufacturer = false"
-                            >OK</v-btn
-                        >
-                        <v-btn class="mx-2" @click="dialogManufacturer = false"
-                            >Close</v-btn
-                        >
-                    </div>
-                </v-card-actions>
-            </v-card>
-        </v-dialog>
+        <XDialog
+            :dialog="dialogManufacturer"
+            :title="'Manufacturer'"
+            @close-dialog="dialogManufacturer = false"
+        ></XDialog>
 
         <v-row>
             <v-col
@@ -423,11 +264,13 @@
 <script>
 import { mapGetters } from "vuex";
 import VueApexCharts from "vue-apexcharts";
+import XDialog from "../../components/X-Dialog.vue";
 
 export default {
     name: "dashboard",
     components: {
-        VueApexCharts
+        VueApexCharts,
+        XDialog
     },
     data() {
         return {

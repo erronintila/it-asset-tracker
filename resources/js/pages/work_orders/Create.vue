@@ -62,6 +62,11 @@
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
+                                    label="Sub-Assets"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                                <v-text-field
                                     label="Assigned To"
                                     outlined
                                     clearable
@@ -73,16 +78,6 @@
                                 ></v-text-field>
                                 <v-text-field
                                     label="Incident Type"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Diagnosis"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Action Taken"
                                     outlined
                                     clearable
                                 ></v-text-field>
@@ -99,6 +94,26 @@
                     <v-card-text>
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
+                                <v-text-field
+                                    label="Actual Date Performed"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                                <v-text-field
+                                    label="Diagnosis"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                                <v-text-field
+                                    label="Action Taken"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                                <v-text-field
+                                    label="Recommendation"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
                                 <v-text-field
                                     label="Notes"
                                     outlined

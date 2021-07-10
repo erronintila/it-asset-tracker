@@ -8,6 +8,36 @@
                 <v-btn icon :to="{ name: 'work_orders.create' }">
                     <v-icon>mdi-plus</v-icon>
                 </v-btn>
+                <v-menu rounded offset-y>
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-btn icon v-bind="attrs" v-on="on" title="Filter">
+                            <v-icon>mdi-filter-outline</v-icon>
+                        </v-btn>
+                    </template>
+
+                    <v-list>
+                        <v-list-item link>
+                            <v-list-item-title>
+                                Date
+                            </v-list-item-title>
+                        </v-list-item>
+                        <v-list-item link @click="dialogCategory = true">
+                            <v-list-item-title>
+                                Category Filter
+                            </v-list-item-title>
+                        </v-list-item>
+                        <v-list-item link @click="dialogStatus = true">
+                            <v-list-item-title
+                                >Status Filter
+                            </v-list-item-title>
+                        </v-list-item>
+                        <v-list-item link @click="dialogAccount = true">
+                            <v-list-item-title
+                                >Account Filter
+                            </v-list-item-title>
+                        </v-list-item>
+                    </v-list>
+                </v-menu>
             </v-col>
         </v-row>
 
@@ -62,13 +92,39 @@
                 ></v-calendar>
             </v-sheet>
         </div>
+
+        <XDialog
+            :dialog="dialogCategory"
+            :title="'Category'"
+            @close-dialog="dialogCategory = false"
+        />
+
+        <XDialog
+            :dialog="dialogStatus"
+            :title="'Status'"
+            @close-dialog="dialogStatus = false"
+        />
+
+        <XDialog
+            :dialog="dialogAccount"
+            :title="'Account'"
+            @close-dialog="dialogAccount = false"
+        />
     </div>
 </template>
 
 <script>
+import XDialog from "../../components/X-Dialog.vue";
+
 export default {
+    components: {
+        XDialog
+    },
     data() {
         return {
+            dialogCategory: false,
+            dialogStatus: false,
+            dialogAccount: false,
             type: "month",
             types: ["month", "week", "day", "4day"],
             mode: "stack",

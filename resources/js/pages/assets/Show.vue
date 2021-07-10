@@ -81,18 +81,18 @@
                     </v-card-text> -->
 
                     <v-card-actions>
-                        <v-btn icon>
+                        <v-btn icon title="Update">
                             <v-icon>mdi-file-document-edit-outline</v-icon>
                         </v-btn>
 
-                        <v-btn icon>
+                        <v-btn icon title="Dispose">
                             <v-icon>mdi-delete</v-icon>
                         </v-btn>
 
-                        <v-btn icon>
+                        <v-btn icon title="Checkout">
                             <v-icon>mdi-file-export-outline</v-icon>
                         </v-btn>
-                        <v-btn icon>
+                        <v-btn icon title="Create Work Order">
                             <v-icon>mdi-text-box-plus-outline</v-icon>
                         </v-btn>
                     </v-card-actions>
@@ -110,6 +110,7 @@
                         <v-tab-item>
                             <v-card flat>
                                 <v-card-text>
+                                    <!-- Overview -->
                                     <VueApexCharts
                                         type="donut"
                                         height="300"
@@ -122,203 +123,426 @@
                         <v-tab-item>
                             <v-card flat>
                                 <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
-                                                >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
+                                    <!-- Details -->
+                                    <XDataTable
+                                        :showSelect="false"
+                                        :headers="[
+                                            {
+                                                text: 'Field',
+                                                value: 'text'
+                                            },
+                                            { text: 'Value', value: 'text' }
+                                        ]"
+                                        :items="records"
+                                    />
                                 </v-card-text>
                             </v-card>
                         </v-tab-item>
                         <v-tab-item>
                             <v-card flat>
                                 <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
+                                    <!-- Sub-Assets -->
+                                    <v-row>
+                                        <v-spacer></v-spacer>
+                                        <v-col class="d-flex justify-end">
+                                            <v-btn icon title="Add New">
+                                                <v-icon>mdi-plus</v-icon>
+                                            </v-btn>
+                                            <v-btn icon title="Update">
+                                                <v-icon
+                                                    >mdi-square-edit-outline</v-icon
                                                 >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
+                                            </v-btn>
+                                            <v-btn icon title="Delete">
+                                                <v-icon
+                                                    >mdi-delete-outline</v-icon
+                                                >
+                                            </v-btn>
+                                            <v-btn icon title="View Data">
+                                                <v-icon>mdi-eye</v-icon>
+                                            </v-btn>
+                                            <v-menu bottom left>
+                                                <template
+                                                    v-slot:activator="{
+                                                        on,
+                                                        attrs
+                                                    }"
+                                                >
+                                                    <v-btn
+                                                        icon
+                                                        v-bind="attrs"
+                                                        v-on="on"
+                                                    >
+                                                        <v-icon>
+                                                            mdi-dots-vertical
+                                                        </v-icon>
+                                                    </v-btn>
+                                                </template>
+                                                <v-list>
+                                                    <v-list-item
+                                                        link
+                                                        to="/checkin_requests/create"
+                                                    >
+                                                        <v-list-item-title>
+                                                            Checkin
+                                                        </v-list-item-title>
+                                                    </v-list-item>
+                                                    <v-list-item
+                                                        link
+                                                        to="/checkout_requests/create"
+                                                    >
+                                                        <v-list-item-title>
+                                                            Checkout
+                                                        </v-list-item-title>
+                                                    </v-list-item>
+                                                    <v-list-item
+                                                        link
+                                                        @click="
+                                                            dialogCategory = true
+                                                        "
+                                                    >
+                                                        <v-list-item-title>
+                                                            Category Filter
+                                                        </v-list-item-title>
+                                                    </v-list-item>
+                                                    <v-list-item
+                                                        link
+                                                        @click="
+                                                            dialogStatus = true
+                                                        "
+                                                    >
+                                                        <v-list-item-title>
+                                                            Status Filter
+                                                        </v-list-item-title>
+                                                    </v-list-item>
+                                                    <v-list-item
+                                                        link
+                                                        @click="
+                                                            dialogManufacturer = true
+                                                        "
+                                                    >
+                                                        <v-list-item-title>
+                                                            Manufacturer Filter
+                                                        </v-list-item-title>
+                                                    </v-list-item>
+                                                </v-list>
+                                            </v-menu>
+                                        </v-col>
+                                    </v-row>
+                                    <XDataTable
+                                        :showSelect="true"
+                                        :headers="[
+                                            {
+                                                text: 'Description',
+                                                value: 'text'
+                                            },
+                                            { text: 'Rating', value: 'number' },
+                                            { text: 'Category', value: 'text' }
+                                        ]"
+                                        :items="records"
+                                    />
                                 </v-card-text>
                             </v-card>
                         </v-tab-item>
                         <v-tab-item>
                             <v-card flat>
                                 <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
+                                    <!-- Licenses -->
+                                    <v-row>
+                                        <v-spacer></v-spacer>
+                                        <v-col class="d-flex justify-end">
+                                            <v-btn icon title="Add New">
+                                                <v-icon>mdi-plus</v-icon>
+                                            </v-btn>
+                                            <v-btn icon title="Update">
+                                                <v-icon
+                                                    >mdi-square-edit-outline</v-icon
                                                 >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
+                                            </v-btn>
+                                            <v-btn icon title="Delete">
+                                                <v-icon
+                                                    >mdi-delete-outline</v-icon
+                                                >
+                                            </v-btn>
+                                            <v-btn icon title="View Data">
+                                                <v-icon>mdi-eye</v-icon>
+                                            </v-btn>
+                                            <v-menu bottom left>
+                                                <template
+                                                    v-slot:activator="{
+                                                        on,
+                                                        attrs
+                                                    }"
+                                                >
+                                                    <v-btn
+                                                        icon
+                                                        v-bind="attrs"
+                                                        v-on="on"
+                                                    >
+                                                        <v-icon>
+                                                            mdi-dots-vertical
+                                                        </v-icon>
+                                                    </v-btn>
+                                                </template>
+                                                <v-list>
+                                                    <v-list-item
+                                                        link
+                                                        @click="
+                                                            dialogCategory = true
+                                                        "
+                                                    >
+                                                        <v-list-item-title>
+                                                            Category Filter
+                                                        </v-list-item-title>
+                                                    </v-list-item>
+                                                    <v-list-item
+                                                        link
+                                                        @click="
+                                                            dialogManufacturer = true
+                                                        "
+                                                    >
+                                                        <v-list-item-title>
+                                                            Manufacturer Filter
+                                                        </v-list-item-title>
+                                                    </v-list-item>
+                                                </v-list>
+                                            </v-menu>
+                                        </v-col>
+                                    </v-row>
+                                    <XDataTable
+                                        :showSelect="true"
+                                        :headers="[
+                                            {
+                                                text: 'Description',
+                                                value: 'text'
+                                            },
+                                            {
+                                                text: 'Valid Until',
+                                                value: 'date'
+                                            },
+                                            { text: 'Category', value: 'text' }
+                                        ]"
+                                        :items="records"
+                                    />
                                 </v-card-text>
                             </v-card>
                         </v-tab-item>
                         <v-tab-item>
                             <v-card flat>
                                 <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
+                                    <!-- Work Orders -->
+                                    <v-row>
+                                        <v-spacer></v-spacer>
+                                        <v-col class="d-flex justify-end">
+                                            <v-btn icon title="Add New">
+                                                <v-icon>mdi-plus</v-icon>
+                                            </v-btn>
+                                            <v-btn icon title="Update">
+                                                <v-icon
+                                                    >mdi-square-edit-outline</v-icon
                                                 >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
+                                            </v-btn>
+                                            <v-btn icon title="Delete">
+                                                <v-icon
+                                                    >mdi-delete-outline</v-icon
+                                                >
+                                            </v-btn>
+                                            <v-btn icon title="View Data">
+                                                <v-icon>mdi-eye</v-icon>
+                                            </v-btn>
+                                            <v-menu bottom left>
+                                                <template
+                                                    v-slot:activator="{
+                                                        on,
+                                                        attrs
+                                                    }"
+                                                >
+                                                    <v-btn
+                                                        icon
+                                                        v-bind="attrs"
+                                                        v-on="on"
+                                                    >
+                                                        <v-icon>
+                                                            mdi-dots-vertical
+                                                        </v-icon>
+                                                    </v-btn>
+                                                </template>
+                                                <v-list>
+                                                    <v-list-item
+                                                        link
+                                                        @click="
+                                                            dialogType = true
+                                                        "
+                                                    >
+                                                        <v-list-item-title>
+                                                            Type Filter
+                                                        </v-list-item-title>
+                                                    </v-list-item>
+                                                    <v-list-item
+                                                        link
+                                                        @click="
+                                                            dialogStatus = true
+                                                        "
+                                                    >
+                                                        <v-list-item-title>
+                                                            Status Filter
+                                                        </v-list-item-title>
+                                                    </v-list-item>
+                                                </v-list>
+                                            </v-menu>
+                                        </v-col>
+                                    </v-row>
+                                    <XDataTable
+                                        :showSelect="true"
+                                        :headers="[
+                                            {
+                                                text: 'Date',
+                                                value: 'date'
+                                            },
+                                            {
+                                                text: 'Work Order No.',
+                                                value: 'number'
+                                            },
+                                            { text: 'Type', value: 'text' },
+                                            { text: 'Status', value: 'text' }
+                                        ]"
+                                        :items="records"
+                                    />
                                 </v-card-text>
                             </v-card>
                         </v-tab-item>
                         <v-tab-item>
                             <v-card flat>
                                 <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
+                                    <!-- Evaluation -->
+                                    <v-row>
+                                        <v-spacer></v-spacer>
+                                        <v-col class="d-flex justify-end">
+                                            <v-btn icon title="Add New">
+                                                <v-icon>mdi-plus</v-icon>
+                                            </v-btn>
+                                            <v-btn icon title="Update">
+                                                <v-icon
+                                                    >mdi-square-edit-outline</v-icon
                                                 >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
+                                            </v-btn>
+                                            <v-btn icon title="Delete">
+                                                <v-icon
+                                                    >mdi-delete-outline</v-icon
+                                                >
+                                            </v-btn>
+                                            <v-btn icon title="View Data">
+                                                <v-icon>mdi-eye</v-icon>
+                                            </v-btn>
+                                        </v-col>
+                                    </v-row>
+                                    <XDataTable
+                                        :showSelect="true"
+                                        :headers="[
+                                            {
+                                                text: 'Description',
+                                                value: 'text'
+                                            },
+                                            {
+                                                text: 'Rating',
+                                                value: 'number'
+                                            }
+                                        ]"
+                                        :items="records"
+                                    />
                                 </v-card-text>
                             </v-card>
                         </v-tab-item>
                         <v-tab-item>
                             <v-card flat>
                                 <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
-                                                >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
+                                    <!-- System Activity Logs -->
+                                    <XDataTable
+                                        :showSelect="true"
+                                        :headers="[
+                                            {
+                                                text: 'Date',
+                                                value: 'date'
+                                            },
+                                            {
+                                                text: 'Activity',
+                                                value: 'text'
+                                            }
+                                        ]"
+                                        :items="records"
+                                    />
                                 </v-card-text>
                             </v-card>
                         </v-tab-item>
                         <v-tab-item>
                             <v-card flat>
                                 <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
+                                    <!-- Attachments -->
+                                    <v-row>
+                                        <v-spacer></v-spacer>
+                                        <v-col class="d-flex justify-end">
+                                            <v-btn icon title="Add New">
+                                                <v-icon>mdi-plus</v-icon>
+                                            </v-btn>
+                                            <v-btn icon title="Update">
+                                                <v-icon
+                                                    >mdi-square-edit-outline</v-icon
                                                 >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
+                                            </v-btn>
+                                            <v-btn icon title="Delete">
+                                                <v-icon
+                                                    >mdi-delete-outline</v-icon
+                                                >
+                                            </v-btn>
+                                            <v-btn icon title="View Data">
+                                                <v-icon>mdi-eye</v-icon>
+                                            </v-btn>
+                                            <v-menu bottom left>
+                                                <template
+                                                    v-slot:activator="{
+                                                        on,
+                                                        attrs
+                                                    }"
+                                                >
+                                                    <v-btn
+                                                        icon
+                                                        v-bind="attrs"
+                                                        v-on="on"
+                                                    >
+                                                        <v-icon>
+                                                            mdi-dots-vertical
+                                                        </v-icon>
+                                                    </v-btn>
+                                                </template>
+                                                <v-list>
+                                                    <v-list-item
+                                                        link
+                                                        @click="
+                                                            dialogCategory = true
+                                                        "
+                                                    >
+                                                        <v-list-item-title>
+                                                            Category Filter
+                                                        </v-list-item-title>
+                                                    </v-list-item>
+                                                </v-list>
+                                            </v-menu>
+                                        </v-col>
+                                    </v-row>
+                                    <XDataTable
+                                        :showSelect="true"
+                                        :headers="[
+                                            {
+                                                text: 'Description',
+                                                value: 'text'
+                                            },
+                                            {
+                                                text: 'File Type',
+                                                value: 'text'
+                                            }
+                                        ]"
+                                        :items="records"
+                                    />
                                 </v-card-text>
                             </v-card>
                         </v-tab-item>
@@ -326,18 +550,50 @@
                 </v-card>
             </v-col>
         </v-row>
+
+        <XDialog
+            :dialog="dialogCategory"
+            :title="'Category'"
+            @close-dialog="dialogCategory = false"
+        />
+
+        <XDialog
+            :dialog="dialogStatus"
+            :title="'Status'"
+            @close-dialog="dialogStatus = false"
+        />
+
+        <XDialog
+            :dialog="dialogType"
+            :title="'Type'"
+            @close-dialog="dialogType = false"
+        />
+
+        <XDialog
+            :dialog="dialogManufacturer"
+            :title="'Manufacturer'"
+            @close-dialog="dialogManufacturer = false"
+        />
     </div>
 </template>
 
 <script>
 import VueApexCharts from "vue-apexcharts";
+import XDataTable from "../../components/X-DataTable.vue";
+import XDialog from "../../components/X-Dialog.vue";
 
 export default {
     components: {
-        VueApexCharts
+        VueApexCharts,
+        XDataTable,
+        XDialog
     },
     data() {
         return {
+            dialogCategory: false,
+            dialogStatus: false,
+            dialogType: false,
+            dialogManufacturer: false,
             tab: null,
             series: {
                 asset: [44, 55, 41, 17]
@@ -345,67 +601,59 @@ export default {
             options: {
                 asset: {
                     labels: [
-                        "In Storage",
-                        "In Use",
-                        "In Maintenance",
-                        "Disposed"
-                    ],
-                    legend: {
-                        show: false
-                    }
+                        "Repair",
+                        "Preventive Maintenance",
+                        "Corrective Maintenance",
+                        "Others"
+                    ]
                 }
             },
             items: [
                 "overview",
                 "details",
-                "assets",
+                "sub-assets",
                 "licenses",
-                "consumables",
-                "maintenances",
-                "reviews",
-                "history",
+                // "consumables",
+                "work orders",
+                "evaluation",
+                "system activity logs",
                 "attachments"
             ],
             records: [
                 {
-                    name: "Data 1",
-                    value: 159
+                    id: 1,
+                    text: "Data 1",
+                    number: 159,
+                    date: "2021-12-31",
+                    boolean: "true"
                 },
                 {
-                    name: "Data 2",
-                    value: 237
+                    id: 2,
+                    text: "Data 1",
+                    number: 159,
+                    date: "2021-12-31",
+                    boolean: "true"
                 },
                 {
-                    name: "Data 3",
-                    value: 262
+                    id: 3,
+                    text: "Data 1",
+                    number: 159,
+                    date: "2021-12-31",
+                    boolean: "true"
                 },
                 {
-                    name: "Data 4",
-                    value: 305
+                    id: 4,
+                    text: "Data 1",
+                    number: 159,
+                    date: "2021-12-31",
+                    boolean: "true"
                 },
                 {
-                    name: "Data 5",
-                    value: 356
-                },
-                {
-                    name: "Data 6",
-                    value: 375
-                },
-                {
-                    name: "Data 7",
-                    value: 392
-                },
-                {
-                    name: "Data 8",
-                    value: 408
-                },
-                {
-                    name: "Data 9",
-                    value: 452
-                },
-                {
-                    name: "Data 10",
-                    value: 518
+                    id: 5,
+                    text: "Data 1",
+                    number: 159,
+                    date: "2021-12-31",
+                    boolean: "true"
                 }
             ]
         };

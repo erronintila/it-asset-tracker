@@ -19,6 +19,24 @@
                         </v-tab>
                     </v-tabs>
                     <v-tabs-items v-model="tab">
+                        <!-- <v-tab-item>
+                            <v-card flat>
+                                <v-card-text>
+                                    <div class="page-title my-4">
+                                        Assets
+                                    </div>
+
+                                    <div class="my-4">
+                                        <VueApexCharts
+                                            type="donut"
+                                            height="300"
+                                            :options="options.asset"
+                                            :series="series.asset"
+                                        ></VueApexCharts>
+                                    </div>
+                                </v-card-text>
+                            </v-card>
+                        </v-tab-item> -->
                         <v-tab-item>
                             <v-card flat>
                                 <v-card-text>
@@ -230,11 +248,31 @@
 </template>
 
 <script>
+import VueApexCharts from "vue-apexcharts";
+import XDataTable from "../../components/X-DataTable.vue";
+import XDialog from "../../components/X-Dialog.vue";
+
 export default {
+    components: {
+        VueApexCharts,
+        XDataTable,
+        XDialog
+    },
     data() {
         return {
             tab: null,
-            items: ["details", "assets", "history"],
+            items: ["details", "assets", "system activity logs"],
+            series: {
+                asset: [44, 55, 10]
+            },
+            options: {
+                asset: {
+                    labels: ["Graphics Software", "System Software", "Others"]
+                    // legend: {
+                    //     show: false
+                    // }
+                }
+            },
             records: [
                 {
                     name: "Data 1",

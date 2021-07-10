@@ -64,6 +64,22 @@ export default {
                             text: "View All",
                             link: { name: "assets.index" }
                         },
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "Checkin Requests",
+                            link: { name: "checkin_requests.index" }
+                        },
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "Checkout Requests",
+                            link: { name: "checkout_requests.index" }
+                        },
+
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "Disposal Requests",
+                            link: { name: "disposal_requests.index" }
+                        },
                         // {
                         //     icon: "mdi-chart-areaspline",
                         //     text: "Components",
@@ -93,7 +109,7 @@ export default {
                             icon: "mdi-chart-areaspline",
                             text: "Locations",
                             link: { name: "locations.index" }
-                        },
+                        }
                         // {
                         //     icon: "mdi-chart-areaspline",
                         //     text: "Asset Reviews",
@@ -201,16 +217,16 @@ export default {
                             text: "Work Order Settings",
                             link: { name: "settings.work_order.index" }
                         },
-                        {
-                            icon: "mdi-circle-medium",
-                            text: "Permissions",
-                            link: { name: "permissions.index" }
-                        },
-                        {
-                            icon: "mdi-chart-areaspline",
-                            text: "Departments",
-                            link: { name: "departments.index" }
-                        }
+                        // {
+                        //     icon: "mdi-circle-medium",
+                        //     text: "Permissions",
+                        //     link: { name: "permissions.index" }
+                        // },
+                        // {
+                        //     icon: "mdi-chart-areaspline",
+                        //     text: "Departments",
+                        //     link: { name: "departments.index" }
+                        // }
 
                         // {
                         //     icon: "mdi-chart-areaspline",

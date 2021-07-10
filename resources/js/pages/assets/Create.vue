@@ -82,6 +82,16 @@
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
+                                    label="Received Date"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                                <v-text-field
+                                    label="Received By"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                                <v-text-field
                                     label="Warranty"
                                     outlined
                                     clearable
@@ -109,6 +119,11 @@
                     <v-card-text>
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
+                                <v-text-field
+                                    label="Acquisition Type"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
                                 <v-text-field
                                     label="Parameters"
                                     outlined

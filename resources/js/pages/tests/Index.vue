@@ -17,13 +17,56 @@
                 </v-btn>
             </template>
         </v-snackbar>
+
+        <v-btn @click="dialog = true">Open Dialog</v-btn>
+
+        <XDialog
+            :dialog="dialog"
+            :title="'hahaha'"
+            @close-dialog="dialog = false"
+        >
+            <!-- <template v-slot:table>
+                <XDataTable
+                    :headers="[
+                        {
+                            text: 'Asset Tag',
+                            value: 'asset_tag'
+                        },
+                        { text: 'Description', value: 'description' },
+                        { text: 'Category', value: 'category' }
+                    ]"
+                    :items="[
+                        {
+                            id: 1,
+                            asset_tag: '252342342325',
+                            description: 'Apple iPad Pro',
+                            category: 'Tablets'
+                        },
+                        {
+                            id: 2,
+                            asset_tag: '252342342325',
+                            description: 'Apple iPad Pro',
+                            category: 'Tablets'
+                        }
+                    ]"
+                ></XDataTable>
+            </template> -->
+        </XDialog>
     </div>
 </template>
 
 <script>
+import XDialog from "../../components/X-Dialog.vue";
+import XDataTable from "../../components/X-DataTable.vue";
+
 export default {
+    components: {
+        XDialog,
+        XDataTable
+    },
     data() {
         return {
+            dialog: false,
             snackbar2: {
                 outlined: true,
                 color: null,

@@ -24,6 +24,11 @@
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
+                                    label="Short Name"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                                <v-text-field
                                     label="Name"
                                     outlined
                                     clearable

@@ -236,7 +236,7 @@ export default {
     data() {
         return {
             tab: null,
-            items: ["category1", "category2", "category3", "category4"],
+            items: ["general", "departments", "permissions"],
             records: [
                 {
                     name: "Data 1",
