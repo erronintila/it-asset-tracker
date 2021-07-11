@@ -19,6 +19,11 @@ Vue.component(
     require("./components/partials/LoadingScreen.vue").default
 );
 
+Vue.component(
+    "subpage-header",
+    require("./components/layouts/SubPageHeader.vue").default
+);
+
 store.dispatch("auth/AUTH_USER").then(() => {
     new Vue({
         el: "#app",

@@ -1,90 +1,101 @@
 <template>
     <div>
         <v-row>
-            <v-col class="d-flex align-center">
-                <div class="page-title d-inline mx-3">
-                    Locations
-                </div>
-                <v-btn icon>
-                    <v-icon>mdi-refresh</v-icon>
-                </v-btn>
-                <v-btn icon :to="{ name: 'locations.create' }">
-                    <v-icon>mdi-plus</v-icon>
-                </v-btn>
-                <div class="d-inline" v-if="selected.length">
-                    <v-btn icon>
-                        <v-icon>mdi-file-document-edit-outline</v-icon>
+            <v-col class="d-flex align-center justify-space-between">
+                <div class="d-flex align-center">
+                    <div class="page-title d-inline">
+                        Locations
+                    </div>
+                    <v-btn
+                        class="ml-3"
+                        icon
+                        :to="{ name: 'locations.create' }"
+                        title="Add new location"
+                    >
+                        <v-icon>mdi-plus</v-icon>
                     </v-btn>
-                </div>
-                <v-btn icon @click="showSearch = !showSearch">
-                    <v-icon>mdi-file-search-outline</v-icon>
-                </v-btn>
-                <v-menu rounded offset-y>
-                    <template v-slot:activator="{ on, attrs }">
-                        <v-btn icon v-bind="attrs" v-on="on">
-                            <v-icon>mdi-dots-vertical</v-icon>
-                        </v-btn>
-                    </template>
+                    <v-menu rounded offset-y>
+                        <template v-slot:activator="{ on, attrs }">
+                            <v-btn
+                                icon
+                                v-bind="attrs"
+                                v-on="on"
+                                title="More action"
+                            >
+                                <v-icon>
+                                    mdi-dots-vertical
+                                </v-icon>
+                            </v-btn>
+                        </template>
 
-                    <v-list>
-                        <v-list-item link>
-                            <v-list-item-title>Export </v-list-item-title>
-                        </v-list-item>
-                        <v-list-item link>
-                            <v-list-item-title>Delete </v-list-item-title>
-                        </v-list-item>
-                        <v-list-item link>
-                            <v-list-item-title>Restore </v-list-item-title>
-                        </v-list-item>
-                    </v-list>
-                </v-menu>
-
-                <!-- <div class="d-inline" v-if="selected.length">
-                    <v-btn small outlined rounded class="text-capitalize">
-                        clear filters
-                    </v-btn>
-                </div> -->
-            </v-col>
-        </v-row>
-
-        <!-- <v-row>
-            <v-col cols="12" v-if="selected.length">
-                <div class="ml-4">
-                    <small>
-                        All locations | 2021-01-01 ~ 2021-12-31 | Active
-                    </small>
+                        <v-list dense>
+                            <template v-for="(item, index) in actions">
+                                <v-list-item
+                                    link
+                                    :key="index"
+                                    @click="filterAction(item.action)"
+                                >
+                                    <v-list-item-icon>
+                                        <v-icon>{{ item.icon }}</v-icon>
+                                    </v-list-item-icon>
+                                    <v-list-item-title>
+                                        <div class="mr-3">
+                                            {{ item.text }}
+                                        </div>
+                                    </v-list-item-title>
+                                </v-list-item>
+                            </template>
+                        </v-list>
+                    </v-menu>
                 </div>
             </v-col>
-        </v-row> -->
-
-        <v-row v-if="showSearch">
-            <v-col class="d-flex">
+            <v-col cols="12" md="4" class="my-0 py-0">
                 <v-text-field
-                    outlined
+                    class="mx-4"
+                    label="Search"
                     clearable
-                    placeholder="Enter text here..."
-                >
-                </v-text-field>
+                    append-icon="mdi-clipboard-search-outline"
+                    @click:append="openSearchDialog"
+                ></v-text-field>
             </v-col>
         </v-row>
+
+        <div class="my-3">
+            <small>Search: Sample | Client: GSDH</small>
+            <v-btn x-small class="mx-2" @click="clearFilters"
+                >Clear Filters</v-btn
+            >
+        </div>
 
         <v-row>
             <v-col cols="12">
                 <v-data-table
-                    v-model="selected"
-                    :headers="headers"
-                    :items="items"
-                    :items-per-page="10"
+                    v-model="selectedItems"
                     show-select
+                    item-key="id"
+                    :headers="tableOptions.headers"
+                    :items="items"
+                    :loading="tableOptions.loading"
+                    :options.sync="tableOptions.options"
+                    :server-items-length="tableOptions.serverItemsLength"
+                    :footer-props="{
+                        itemsPerPageOptions: tableOptions.itemsPerPageOptions,
+                        showFirstLastPage: true,
+                        firstIcon: 'mdi-page-first',
+                        lastIcon: 'mdi-page-last',
+                        prevIcon: 'mdi-chevron-left',
+                        nextIcon: 'mdi-chevron-right'
+                    }"
                 >
-                    <template v-slot:[`item.name`]="{ item }">
+                    <template v-slot:[`item.code`]="{ item }">
                         <router-link
                             :to="{
                                 name: 'locations.show',
                                 params: { id: item.id }
                             }"
-                            >{{ item.name }}</router-link
                         >
+                            {{ item.code }}
+                        </router-link>
                     </template>
                     <template v-slot:[`item.status`]="{ item }">
                         <v-chip
@@ -102,216 +113,136 @@
 </template>
 
 <script>
+import LocationDataService from "../../services/LocationDataService";
+
 export default {
     data() {
         return {
-            selected: [],
-            headers: [
-                {
-                    text: "Name",
-                    align: "start",
-                    sortable: true,
-                    value: "name"
-                },
-                { text: "Address", value: "address" },
-                { text: "Country", value: "country" },
-                { text: "Postal Code", value: "postal_code" },
-                { text: "Assets", value: "quantity" }
+            actions: [
+                { text: "Refresh", action: "refresh", icon: "mdi-refresh" },
+                { text: "Update", action: "update", icon: "mdi-update" },
+                { text: "Delete", action: "delete", icon: "mdi-delete" },
+                { text: "Restore", action: "restore", icon: "mdi-restore" },
+                { text: "Export", action: "export", icon: "mdi-export" }
             ],
-            items: [
-                {
-                    id: 1,
-                    name: "GSDH Laboratory",
-                    address: "General Santos City",
-                    country: "Philippines",
-                    postal_code: "9500",
-                    quantity: "30",
-                    asset_tag: "Sample Name",
-                    description: "Apple iPad Pro",
-                    category: "Tablets",
-                    serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-                    model: "iPad Pro",
-                    assigned_to: "",
-                    status: {
-                        text: "In Storage",
-                        color: "primary",
-                        text_color: "white"
-                    }
+            tableOptions: {
+                options: {
+                    sortBy: ["code"],
+                    sortDesc: [false],
+                    page: 1,
+                    itemsPerPage: 10
                 },
-                {
-                    id: 2,
-                    name: "GSDH Laboratory",
-                    address: "General Santos City",
-                    country: "Philippines",
-                    postal_code: "9500",
-                    quantity: "30",
-                    asset_tag: "Sample Name",
-                    description: "Apple iPad Pro",
-                    category: "Tablets",
-                    serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-                    model: "iPad Pro",
-                    assigned_to: "Juan Dela Cruz",
-                    status: {
-                        text: "In Use",
-                        color: "green",
-                        text_color: "white"
-                    }
-                },
-                {
-                    id: 3,
-                    name: "GSDH Laboratory",
-                    address: "General Santos City",
-                    country: "Philippines",
-                    postal_code: "9500",
-                    quantity: "30",
-                    asset_tag: "Sample Name",
-                    description: "Apple iPad Pro",
-                    category: "Tablets",
-                    serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-                    model: "iPad Pro",
-                    assigned_to: "Juan Dela Cruz",
-                    status: {
-                        text: "In Maintenance",
-                        color: "red",
-                        text_color: "white"
-                    }
-                },
-                {
-                    id: 4,
-                    name: "GSDH Laboratory",
-                    address: "General Santos City",
-                    country: "Philippines",
-                    postal_code: "9500",
-                    quantity: "30",
-                    asset_tag: "Sample Name",
-                    description: "Apple iPad Pro",
-                    category: "Tablets",
-                    serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-                    model: "iPad Pro",
-                    assigned_to: "",
-                    status: {
-                        text: "Disposed",
-                        color: "grey",
-                        text_color: "white"
-                    }
-                },
-                {
-                    id: 5,
-                    name: "GSDH Laboratory",
-                    address: "General Santos City",
-                    country: "Philippines",
-                    postal_code: "9500",
-                    quantity: "30",
-                    asset_tag: "Sample Name",
-                    description: "Apple iPad Pro",
-                    category: "Tablets",
-                    serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-                    model: "iPad Pro",
-                    assigned_to: "Juan Dela Cruz",
-                    status: {
-                        text: "In Transit",
-                        color: "yellow",
-                        text_color: "black"
-                    }
-                },
-                {
-                    id: 6,
-                    name: "GSDH Laboratory",
-                    address: "General Santos City",
-                    country: "Philippines",
-                    postal_code: "9500",
-                    quantity: "30",
-                    asset_tag: "Sample Name",
-                    description: "Apple iPad Pro",
-                    category: "Tablets",
-                    serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-                    model: "iPad Pro",
-                    assigned_to: "",
-                    status: {
-                        text: "In Retired",
-                        color: "grey",
-                        text_color: "white"
-                    }
-                },
-                {
-                    id: 7,
-                    name: "GSDH Laboratory",
-                    address: "General Santos City",
-                    country: "Philippines",
-                    postal_code: "9500",
-                    quantity: "30",
-                    asset_tag: "Sample Name",
-                    description: "Apple iPad Pro",
-                    category: "Tablets",
-                    serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-                    model: "iPad Pro",
-                    assigned_to: "",
-                    status: {
-                        text: "Missing",
-                        color: "grey",
-                        text_color: "white"
-                    }
-                },
-                {
-                    id: 8,
-                    name: "GSDH Laboratory",
-                    address: "General Santos City",
-                    country: "Philippines",
-                    postal_code: "9500",
-                    quantity: "30",
-                    asset_tag: "Sample Name",
-                    description: "Apple iPad Pro",
-                    category: "Tablets",
-                    serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-                    model: "iPad Pro",
-                    assigned_to: "",
-                    status: {
-                        text: "In Storage",
-                        color: "primary",
-                        text_color: "white"
-                    }
-                },
-                {
-                    id: 9,
-                    name: "GSDH Laboratory",
-                    address: "General Santos City",
-                    country: "Philippines",
-                    postal_code: "9500",
-                    quantity: "30",
-                    asset_tag: "Sample Name",
-                    description: "Apple iPad Pro",
-                    category: "Tablets",
-                    serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-                    model: "iPad Pro",
-                    assigned_to: "",
-                    status: {
-                        text: "In Storage",
-                        color: "primary",
-                        text_color: "white"
-                    }
-                },
-                {
-                    id: 10,
-                    name: "GSDH Laboratory",
-                    address: "General Santos City",
-                    country: "Philippines",
-                    postal_code: "9500",
-                    quantity: "30",
-                    asset_tag: "Sample Name",
-                    description: "Apple iPad Pro",
-                    category: "Tablets",
-                    serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-                    model: "iPad Pro",
-                    assigned_to: "Juan Dela Cruz",
-                    status: {
-                        text: "In Maintenance",
-                        color: "red",
-                        text_color: "white"
-                    }
-                }
-            ],
-            showSearch: false
+                loading: false,
+                itemsPerPageOptions: [10, 20, 50, 100],
+                serverItemsLength: 0,
+                headers: [
+                    { text: "Code", value: "code" },
+                    { text: "Name", value: "name" },
+                    { text: "Address", value: "address" },
+                    { text: "Assets", value: "quantity" }
+                ]
+            },
+            items: [],
+            selectedItems: []
         };
+    },
+    methods: {
+        getData() {
+            this.tableOptions.loading = true;
+            return new Promise((resolve, reject) => {
+                const {
+                    sortBy,
+                    sortDesc,
+                    page,
+                    itemsPerPage
+                } = this.tableOptions.options;
+                // let search = this.search.trim().toLowerCase();
+                // let status = this.status;
+
+                let data = {
+                    params: {
+                        sortBy: sortBy[0],
+                        sortType: sortDesc[0] ? "desc" : "asc",
+                        page: page,
+                        itemsPerPage: itemsPerPage
+                        // search: search,
+                        // status: status
+                    }
+                };
+
+                LocationDataService.getAll(data)
+                    .then(response => {
+                        console.log(response.data);
+                        this.items = response.data.data.data;
+                        this.tableOptions.serverItemsLength =
+                            response.data.total;
+                        this.tableOptions.loading = false;
+                        resolve();
+                    })
+                    .catch(error => {
+                        this.tableOptions.loading = false;
+                        console.log(error);
+                        console.log(error.response);
+                        reject();
+                    });
+            });
+        },
+        filterAction: function(action) {
+            switch (action) {
+                case "refresh":
+                    this.getData();
+                    break;
+                case "update":
+                    if (!this.selectedItems.length) {
+                        alert("No data selected.");
+                        return;
+                    }
+                    this.$router.push(
+                        "/locations/" + this.selectedItems[0].id + "/edit"
+                    );
+                    break;
+                case "delete":
+                    this.deleteData();
+                    break;
+                case "restore":
+                    break;
+                case "export":
+                    break;
+                default:
+                    alert("Error: Action not identified");
+                    break;
+            }
+        },
+        deleteData: function() {
+            alert("Hello World");
+        },
+        openSearchDialog: function() {
+            alert("Search Dialog");
+        },
+        clearFilters: function() {
+            alert("All filters are cleared.");
+        }
+    },
+    computed: {
+        params(nv) {
+            return {
+                ...this.tableOptions.options
+                // query: this.search,
+                // query: this.status
+            };
+        }
+    },
+    watch: {
+        params: {
+            immediate: true,
+            deep: true,
+            handler() {
+                this.getData();
+            }
+        },
+        selectedItems() {
+            console.log(this.selectedItems);
+        }
     }
 };
 </script>

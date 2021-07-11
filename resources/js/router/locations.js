@@ -22,6 +22,14 @@ const location_routes = [
         meta: {
             auth: true
         }
+    },
+    {
+        path: "/locations/:id/edit",
+        component: () => import("../pages/locations/Edit"),
+        name: "locations.edit",
+        meta: {
+            auth: true
+        }
     }
 ];
 

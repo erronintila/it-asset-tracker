@@ -1,13 +1,9 @@
 <template>
     <div>
-        <v-row>
-            <v-col class="d-flex justify-start">
-                <v-btn icon @click="$router.go(-1)">
-                    <v-icon>mdi-arrow-left</v-icon>
-                </v-btn>
-                <span class="page-title">New Location</span>
-            </v-col>
-        </v-row>
+        <subpage-header
+            :title="'New Location'"
+            :backButton="true"
+        ></subpage-header>
 
         <v-row class="d-flex justify-center">
             <v-col cols="12" md="6">
@@ -38,16 +34,30 @@
                                     outlined
                                     clearable
                                 ></v-text-field>
-                                <v-text-field
+                                <v-select
                                     label="Country"
+                                    :items="['Philippines']"
                                     outlined
-                                    clearable
-                                ></v-text-field>
+                                ></v-select>
                                 <v-text-field
                                     label="Postal Code"
                                     outlined
                                     clearable
                                 ></v-text-field>
+                            </v-col>
+                        </v-row>
+                    </v-card-text>
+                </v-card>
+            </v-col>
+
+            <v-col cols="12" md="6">
+                <v-card flat>
+                    <v-card-title>
+                        Other Information
+                    </v-card-title>
+                    <v-card-text>
+                        <v-row class="d-flex justify-center">
+                            <v-col cols="12">
                                 <v-text-field
                                     label="Latitude"
                                     outlined
@@ -63,6 +73,12 @@
                                     outlined
                                     clearable
                                 ></v-text-field>
+                                <v-textarea
+                                    label="Notes"
+                                    outlined
+                                    clearable
+                                    rows="3"
+                                ></v-textarea>
                             </v-col>
                         </v-row>
                     </v-card-text>
@@ -82,3 +98,11 @@
         </v-row>
     </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {};
+    }
+};
+</script>
