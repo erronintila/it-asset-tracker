@@ -4,7 +4,7 @@ namespace App\Traits;
 
 trait HttpResponseMessage
 {
-    protected function success($message = "", $data = [], $status = 200)
+    protected function successResponse($message = "", $data = [], $status = 200)
     {
         return response([
             'success' => true,
@@ -13,7 +13,7 @@ trait HttpResponseMessage
         ], $status);
     }
 
-    protected function error($message = "", $data = [], $status = 422)
+    protected function errorResponse($message = "", $data = [], $status = 422)
     {
         return response([
             'success' => false,

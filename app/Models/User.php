@@ -11,15 +11,18 @@ class User extends Authenticatable
 {
     use Notifiable, HasRoles;
 
+    /*
+    |------------------------------------------------------------------------------------------------------------------------------------
+    | LARAVEL MODEL CONFIGURATION
+    |------------------------------------------------------------------------------------------------------------------------------------
+    */
+
     /**
-     * The attributes that are mass assignable.
+     * The attributes that are not mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password', 'company', 'first_name', 'middle_name', 'last_name', 'suffix', 'gender', 'birthdate',
-        'business_phone', 'home_phone', 'mobile_phone', 'website', 'fax', 'username', 'job_title', 'type', 'is_admin', 'is_active'
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -36,7 +39,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'birthdate' => 'date',
         'is_admin' => 'boolean',
         'is_active' => 'boolean',
         'email_verified_at' => 'datetime',
@@ -51,10 +53,29 @@ class User extends Authenticatable
 
     protected $with = ['profile'];
 
+    /*
+    |------------------------------------------------------------------------------------------------------------------------------------
+    | LIBRARY/PACKAGE CONFIGURATION
+    |------------------------------------------------------------------------------------------------------------------------------------
+    */
+
+
+    /*
+    |------------------------------------------------------------------------------------------------------------------------------------
+    | RELATIONSHIPS
+    |------------------------------------------------------------------------------------------------------------------------------------
+    */
+
     public function profile()
     {
         return $this->morphTo();
     }
+
+    /*
+    |------------------------------------------------------------------------------------------------------------------------------------
+    | LARAVEL ACCESSORS
+    |------------------------------------------------------------------------------------------------------------------------------------
+    */
 
     /**
      * Get the user's full name.
@@ -63,10 +84,6 @@ class User extends Authenticatable
      */
     public function getFullNameAttribute()
     {
-        if ($this->profile) {
-            return $this->profile->full_name;
-        }
-
-        return $this->name;
+        return ($this->profile) ? $this->profile->full_name : $this->name;
     }
 }
