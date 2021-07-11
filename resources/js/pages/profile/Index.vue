@@ -1,5 +1,6 @@
 <template>
     <div>
+        <loading-screen></loading-screen>
         <v-row class="mb-4">
             <v-col class="d-flex justify-start">
                 <span class="page-title">Profile</span>

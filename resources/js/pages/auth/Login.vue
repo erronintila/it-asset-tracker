@@ -1,5 +1,6 @@
 <template>
     <div class="d-flex justify-center align-center" style="height:90vh">
+        <loading-screen></loading-screen>
         <v-card elevation="0" light width="30rem">
             <v-card-title class="d-flex justify-center align-center">
                 <p class="page-title primary--text">
@@ -61,6 +62,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import LoadingScreen from "../../components/partials/LoadingScreen.vue";
 export default {
     name: "login",
     data() {

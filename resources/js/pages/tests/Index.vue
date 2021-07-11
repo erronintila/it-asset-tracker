@@ -52,6 +52,8 @@
                 ></XDataTable>
             </template> -->
         </XDialog>
+
+        <loading-screen></loading-screen>
     </div>
 </template>
 

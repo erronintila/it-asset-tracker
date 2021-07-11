@@ -8,9 +8,16 @@ import vuetify from "./plugins/vuetify";
 import store from "./store/index";
 import router from "./router/index";
 import App from "./components/layouts/App";
-import ApexCharts from 'apexcharts'
+import ApexCharts from "apexcharts";
+import Mixin from "./mixins/index";
 
 Vue.use(VueRouter);
+Vue.use(Mixin);
+
+Vue.component(
+    "loading-screen",
+    require("./components/partials/LoadingScreen.vue").default
+);
 
 store.dispatch("auth/AUTH_USER").then(() => {
     new Vue({

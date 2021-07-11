@@ -1,7 +1,11 @@
 <template>
     <v-app>
+        <loading-screen
+            :isLoading="isLoading"
+            :autoClose="false"
+        ></loading-screen>
         <application-bar
-            v-if="user && authenticated"
+            v-if="user && authenticated && !isLoading"
             :user="user"
             :left_drawer="left_drawer"
             :clipped_left="true"
@@ -9,7 +13,7 @@
         ></application-bar>
 
         <left-navigation-drawer
-            v-if="user && authenticated"
+            v-if="user && authenticated && !isLoading"
             :user="user"
             :left_drawer="left_drawer"
             :left_drawer_items="left_drawer_items"
@@ -17,14 +21,14 @@
             @open-close-drawer="openCloseDrawer"
         ></left-navigation-drawer>
 
-        <v-main class="white mb-8 pb-8">
+        <v-main class="white mb-8 pb-8" v-if="!isLoading">
             <v-container fluid>
                 <router-view></router-view>
             </v-container>
         </v-main>
 
         <page-footer
-            v-if="user && authenticated"
+            v-if="user && authenticated && !isLoading"
             :company_name="footer.company_name"
             :year="footer.year"
         ></page-footer>
@@ -46,6 +50,7 @@ export default {
     },
     data() {
         return {
+            isLoading: true,
             left_drawer: true,
             left_drawer_items: [
                 {
@@ -216,7 +221,7 @@ export default {
                             icon: "mdi-chart-areaspline",
                             text: "Work Order Settings",
                             link: { name: "settings.work_order.index" }
-                        },
+                        }
                         // {
                         //     icon: "mdi-circle-medium",
                         //     text: "Permissions",
@@ -272,6 +277,11 @@ export default {
         openCloseDrawer(e) {
             this.left_drawer = e;
         }
+    },
+    created() {
+        setTimeout(() => {
+            this.isLoading = false;
+        }, 2000);
     }
 };
 </script>

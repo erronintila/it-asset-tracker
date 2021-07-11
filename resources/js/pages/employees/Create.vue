@@ -58,16 +58,54 @@
                                     outlined
                                     clearable
                                 ></v-text-field>
-                                <v-text-field
+                                <v-select
+                                    :items="['Male', 'Female']"
                                     label="Gender"
                                     outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Birthdate"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
+                                ></v-select>
+                                <v-dialog
+                                    ref="dialog"
+                                    v-model="birthdateModal"
+                                    :return-value.sync="form.birthdate"
+                                    persistent
+                                    width="290px"
+                                >
+                                    <template v-slot:activator="{ on, attrs }">
+                                        <v-text-field
+                                            v-model="form.birthdate"
+                                            label="Birthdate"
+                                            readonly
+                                            v-bind="attrs"
+                                            v-on="on"
+                                            outlined
+                                        ></v-text-field>
+                                    </template>
+                                    <v-date-picker
+                                        v-model="form.birthdate"
+                                        :max="maxDate"
+                                        scrollable
+                                    >
+                                        <v-spacer></v-spacer>
+                                        <v-btn
+                                            text
+                                            color="primary"
+                                            @click="birthdateModal = false"
+                                        >
+                                            Cancel
+                                        </v-btn>
+                                        <v-btn
+                                            text
+                                            color="primary"
+                                            @click="
+                                                $refs.dialog.save(
+                                                    form.birthdate
+                                                )
+                                            "
+                                        >
+                                            OK
+                                        </v-btn>
+                                    </v-date-picker>
+                                </v-dialog>
                                 <v-text-field
                                     label="Location"
                                     outlined
@@ -90,6 +128,9 @@
                                     label="Mobile Phone No."
                                     outlined
                                     clearable
+                                    type="number"
+                                    counter="10"
+                                    hint="Ex. 09XXXXXXXXX"
                                 ></v-text-field>
                                 <v-text-field
                                     label="Home Phone No."
@@ -116,11 +157,12 @@
                                     outlined
                                     clearable
                                 ></v-text-field>
-                                <v-text-field
+                                <v-select
+                                    :items="['Philippines']"
                                     label="Country"
                                     outlined
-                                    clearable
-                                ></v-text-field>
+                                >
+                                </v-select>
                                 <v-text-field
                                     label="Postal Code"
                                     outlined
@@ -181,3 +223,27 @@
         </v-row>
     </div>
 </template>
+
+<script>
+import moment from "moment";
+
+export default {
+    data() {
+        return {
+            form: {
+                birthdate: moment()
+                    .subtract(18, "year")
+                    .format("YYYY-MM-DD")
+            },
+            birthdateModal: false
+        };
+    },
+    computed: {
+        maxDate() {
+            return moment()
+                .subtract(18, "year")
+                .format("YYYY-MM-DD");
+        }
+    }
+};
+</script>

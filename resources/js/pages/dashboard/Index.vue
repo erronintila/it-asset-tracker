@@ -1,5 +1,6 @@
 <template>
     <div>
+        <loading-screen></loading-screen>
         <v-row>
             <v-col class="d-flex align-center">
                 <div class="page-title d-inline">
