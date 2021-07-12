@@ -20,8 +20,8 @@ Vue.component(
 );
 
 Vue.component(
-    "subpage-header",
-    require("./components/layouts/SubPageHeader.vue").default
+    "page-header",
+    require("./components/layouts/PageHeader.vue").default
 );
 
 store.dispatch("auth/AUTH_USER").then(() => {

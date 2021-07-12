@@ -15,19 +15,20 @@ class CreateLocationsTable extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
-            $table->string('slug');
-            $table->string("name");
+            $table->string('code')->unique();
+            $table->string('slug')->unique();
+            $table->string("name")->unique();
             $table->string("address");
             $table->string("street")->nullable();
             $table->string("district")->nullable();
             $table->string("city");
             $table->string("province");
             $table->string("country");
-            $table->string("postal_code");
+            $table->string("postal_code", 10);
             $table->string("latitude")->nullable();
             $table->string("longitude")->nullable();
             $table->boolean('is_active')->default(true);
+            $table->foreignId('location_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

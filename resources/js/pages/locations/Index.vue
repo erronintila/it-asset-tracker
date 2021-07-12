@@ -1,57 +1,66 @@
 <template>
     <div>
-        <v-row>
-            <v-col class="d-flex align-center justify-space-between">
-                <div class="d-flex align-center">
-                    <div class="page-title d-inline">
-                        Locations
-                    </div>
-                    <v-btn
-                        class="ml-3"
-                        icon
-                        :to="{ name: 'locations.create' }"
-                        title="Add new location"
-                    >
-                        <v-icon>mdi-plus</v-icon>
-                    </v-btn>
-                    <v-menu rounded offset-y>
-                        <template v-slot:activator="{ on, attrs }">
-                            <v-btn
-                                icon
-                                v-bind="attrs"
-                                v-on="on"
-                                title="More action"
-                            >
-                                <v-icon>
-                                    mdi-dots-vertical
-                                </v-icon>
-                            </v-btn>
-                        </template>
+        <page-header :title="'Locations'">
+            <template slot="leftSideNavigation">
+                <v-btn
+                    class="ml-3"
+                    icon
+                    :to="{ name: 'locations.create' }"
+                    title="Add new location"
+                >
+                    <v-icon>mdi-plus</v-icon>
+                </v-btn>
+                <v-menu rounded offset-y>
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-btn
+                            icon
+                            v-bind="attrs"
+                            v-on="on"
+                            title="More action"
+                        >
+                            <v-icon>
+                                mdi-dots-vertical
+                            </v-icon>
+                        </v-btn>
+                    </template>
 
-                        <v-list dense>
-                            <template v-for="(item, index) in actions">
-                                <v-list-item
-                                    link
-                                    :key="index"
-                                    @click="filterAction(item.action)"
-                                >
-                                    <v-list-item-icon>
-                                        <v-icon>{{ item.icon }}</v-icon>
-                                    </v-list-item-icon>
-                                    <v-list-item-title>
-                                        <div class="mr-3">
-                                            {{ item.text }}
-                                        </div>
-                                    </v-list-item-title>
-                                </v-list-item>
-                            </template>
-                        </v-list>
-                    </v-menu>
-                </div>
-            </v-col>
-            <v-col cols="12" md="4" class="my-0 py-0">
+                    <v-list dense>
+                        <template v-for="(item, index) in actions">
+                            <v-list-item
+                                link
+                                :key="index"
+                                @click="filterAction(item.action)"
+                            >
+                                <v-list-item-icon>
+                                    <v-icon>{{ item.icon }}</v-icon>
+                                </v-list-item-icon>
+                                <v-list-item-title>
+                                    <div class="mr-3">
+                                        {{ item.text }}
+                                    </div>
+                                </v-list-item-title>
+                            </v-list-item>
+                        </template>
+                    </v-list>
+                </v-menu>
+            </template>
+            <template slot="rightSideNavigation">
                 <v-text-field
-                    class="mx-4"
+                    v-model="search"
+                    class="hidden-sm-and-down mt-5 p-0"
+                    label="Search"
+                    clearable
+                    append-icon="mdi-clipboard-search-outline"
+                    @click:append="openSearchDialog"
+                ></v-text-field>
+            </template>
+        </page-header>
+
+        <!-- Search bar on small screen size -->
+        <v-row class="hidden-sm-and-up mx-1">
+            <v-col>
+                <v-text-field
+                    class="mt-5 p-0"
                     label="Search"
                     clearable
                     append-icon="mdi-clipboard-search-outline"
@@ -59,14 +68,22 @@
                 ></v-text-field>
             </v-col>
         </v-row>
+        <!-- End of Search bar -->
 
+        <!-- Search results info -->
         <div class="my-3">
-            <small>Search: Sample | Client: GSDH</small>
-            <v-btn x-small class="mx-2" @click="clearFilters"
-                >Clear Filters</v-btn
-            >
+            <small class="mx-3" v-if="selectedItems.length">
+                {{ selectedItems.length }} item(s) selected
+            </small>
+            <small class="mx-3" v-if="search"> Search: {{ search }}</small>
+            <small class="mx-3">Client: GSDH</small>
+            <v-btn x-small class="mx-2" @click="clearFilters">
+                Clear Filters
+            </v-btn>
         </div>
+        <!-- End of Search results info -->
 
+        <!-- DataTable -->
         <v-row>
             <v-col cols="12">
                 <v-data-table
@@ -109,6 +126,7 @@
                 </v-data-table>
             </v-col>
         </v-row>
+        <!-- End of DataTable -->
     </div>
 </template>
 
@@ -142,6 +160,7 @@ export default {
                     { text: "Assets", value: "quantity" }
                 ]
             },
+            search: "",
             items: [],
             selectedItems: []
         };
@@ -175,7 +194,7 @@ export default {
                         console.log(response.data);
                         this.items = response.data.data.data;
                         this.tableOptions.serverItemsLength =
-                            response.data.total;
+                            response.data.data.total;
                         this.tableOptions.loading = false;
                         resolve();
                     })
@@ -202,7 +221,7 @@ export default {
                     );
                     break;
                 case "delete":
-                    this.deleteData();
+                    this.onDelete();
                     break;
                 case "restore":
                     break;
@@ -213,14 +232,39 @@ export default {
                     break;
             }
         },
-        deleteData: function() {
-            alert("Hello World");
+        onDelete: function() {
+            if (!this.selectedItems.length) {
+                alert("No data selected.");
+                return;
+            }
+
+            if (!confirm("WARNING: Do you want to delete selected items?")) {
+                return;
+            }
+
+            let data = {
+                params: {
+                    ids: this.selectedItems.map(item => item.id)
+                }
+            };
+
+            LocationDataService.deleteMany(data)
+                .then(response => {
+                    console.log(response.data);
+                    this.getData();
+                    this.selectedItems = [];
+                })
+                .catch(error => {
+                    console.log(error.response);
+                    alert("An error has occurred.");
+                });
         },
         openSearchDialog: function() {
             alert("Search Dialog");
         },
         clearFilters: function() {
-            alert("All filters are cleared.");
+            this.selectedItems = [];
+            this.search = "";
         }
     },
     computed: {
@@ -239,9 +283,6 @@ export default {
             handler() {
                 this.getData();
             }
-        },
-        selectedItems() {
-            console.log(this.selectedItems);
         }
     }
 };

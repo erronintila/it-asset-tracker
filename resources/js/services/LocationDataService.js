@@ -2,11 +2,11 @@
 import axios from "axios";
 
 class LocationDataService {
-    getAll(data = null) {
+    getAll(data) {
         return axios.get("/api/v1/locations", data);
     }
 
-    show(id, data = null) {
+    show(id, data) {
         return axios.get(`/api/v1/locations/${id}`, data);
     }
 
@@ -18,8 +18,12 @@ class LocationDataService {
         return axios.put(`/api/v1/locations/${id}`, data);
     }
 
-    delete(id, data = null) {
+    delete(id, data) {
         return axios.delete(`/api/v1/locations/${id}`, data);
+    }
+
+    deleteMany(data) {
+        return axios.delete(`/api/v1/locations/multiple`, data);
     }
 }
 

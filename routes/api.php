@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/v1/user', 'AuthController@user');
 
 Route::middleware('auth:sanctum')->prefix("v1")->group(function () {
+    // Multiple deletion
+    Route::delete('locations/multiple', 'API\v1\LocationController@destroyMany');
+
     Route::apiResources([
         'agreements' => 'API\v1\AgreementController',
         'assets' => 'API\v1\AssetController',

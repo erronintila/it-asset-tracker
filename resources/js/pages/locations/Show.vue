@@ -1,13 +1,10 @@
 <template>
     <div>
-        <v-row class="mb-4">
-            <v-col class="d-flex justify-start">
-                <v-btn icon @click="$router.go(-1)">
-                    <v-icon>mdi-arrow-left</v-icon>
-                </v-btn>
-                <span class="page-title">Location Details</span>
-            </v-col>
-        </v-row>
+        <page-header
+            class="mb-4"
+            :title="'Location Details'"
+            :backButton="true"
+        ></page-header>
 
         <v-row>
             <v-col cols="12">
@@ -23,7 +20,7 @@
                             <v-card flat>
                                 <v-card-text>
                                     <div class="page-title my-4">
-                                        Assets
+                                        Location Name
                                     </div>
 
                                     <div class="my-4">

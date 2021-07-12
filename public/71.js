@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[71],{
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/work_orders/Create.vue?vue&type=template&id=c03bdffe&":
-/*!****************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/work_orders/Create.vue?vue&type=template&id=c03bdffe& ***!
-  \****************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/manufacturers/Create.vue?vue&type=template&id=3df19d1c&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/manufacturers/Create.vue?vue&type=template&id=3df19d1c& ***!
+  \******************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -40,7 +40,7 @@ var render = function() {
               ),
               _vm._v(" "),
               _c("span", { staticClass: "page-title" }, [
-                _vm._v("New Work Order")
+                _vm._v("New Manufacturer")
               ])
             ],
             1
@@ -80,7 +80,7 @@ var render = function() {
                             [
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Reference No.",
+                                  label: "Manufacturer Code",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -88,7 +88,7 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Work Order No.",
+                                  label: "Name",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -96,7 +96,7 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Work Order Type",
+                                  label: "Email",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -104,15 +104,7 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Date",
-                                  outlined: "",
-                                  clearable: ""
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Parent Work Order",
+                                  label: "Website",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -143,7 +135,7 @@ var render = function() {
                 [
                   _c("v-card-title", [
                     _vm._v(
-                      "\n                    Asset Information\n                "
+                      "\n                    Contact Information\n                "
                     )
                   ]),
                   _vm._v(" "),
@@ -160,7 +152,7 @@ var render = function() {
                             [
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Asset",
+                                  label: "Contact Person",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -168,7 +160,7 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Sub-Assets",
+                                  label: "Phone No.",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -176,7 +168,7 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Assigned To",
+                                  label: "Address",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -184,7 +176,7 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Location",
+                                  label: "City",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -192,7 +184,23 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Incident Type",
+                                  label: "State",
+                                  outlined: "",
+                                  clearable: ""
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Country",
+                                  outlined: "",
+                                  clearable: ""
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Postal Code",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -240,31 +248,7 @@ var render = function() {
                             [
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Actual Date Performed",
-                                  outlined: "",
-                                  clearable: ""
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Diagnosis",
-                                  outlined: "",
-                                  clearable: ""
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Action Taken",
-                                  outlined: "",
-                                  clearable: ""
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Recommendation",
+                                  label: "Parameters",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -280,7 +264,7 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Attachments",
+                                  label: "Image",
                                   outlined: "",
                                   clearable: ""
                                 }
@@ -298,6 +282,17 @@ var render = function() {
                   _c(
                     "v-card-actions",
                     [
+                      _c(
+                        "v-sheet",
+                        { staticClass: "ml-4" },
+                        [
+                          _c("v-switch", {
+                            attrs: { inset: "", label: "Activate Account" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
                       _c("v-spacer"),
                       _vm._v(" "),
                       _c(
@@ -340,16 +335,16 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/pages/work_orders/Create.vue":
-/*!***************************************************!*\
-  !*** ./resources/js/pages/work_orders/Create.vue ***!
-  \***************************************************/
+/***/ "./resources/js/pages/manufacturers/Create.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/pages/manufacturers/Create.vue ***!
+  \*****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Create_vue_vue_type_template_id_c03bdffe___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Create.vue?vue&type=template&id=c03bdffe& */ "./resources/js/pages/work_orders/Create.vue?vue&type=template&id=c03bdffe&");
+/* harmony import */ var _Create_vue_vue_type_template_id_3df19d1c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Create.vue?vue&type=template&id=3df19d1c& */ "./resources/js/pages/manufacturers/Create.vue?vue&type=template&id=3df19d1c&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 var script = {}
@@ -359,8 +354,8 @@ var script = {}
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
   script,
-  _Create_vue_vue_type_template_id_c03bdffe___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Create_vue_vue_type_template_id_c03bdffe___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Create_vue_vue_type_template_id_3df19d1c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Create_vue_vue_type_template_id_3df19d1c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -370,24 +365,24 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/pages/work_orders/Create.vue"
+component.options.__file = "resources/js/pages/manufacturers/Create.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/pages/work_orders/Create.vue?vue&type=template&id=c03bdffe&":
-/*!**********************************************************************************!*\
-  !*** ./resources/js/pages/work_orders/Create.vue?vue&type=template&id=c03bdffe& ***!
-  \**********************************************************************************/
+/***/ "./resources/js/pages/manufacturers/Create.vue?vue&type=template&id=3df19d1c&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/pages/manufacturers/Create.vue?vue&type=template&id=3df19d1c& ***!
+  \************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_c03bdffe___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Create.vue?vue&type=template&id=c03bdffe& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/work_orders/Create.vue?vue&type=template&id=c03bdffe&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_c03bdffe___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_3df19d1c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Create.vue?vue&type=template&id=3df19d1c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/manufacturers/Create.vue?vue&type=template&id=3df19d1c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_3df19d1c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_c03bdffe___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_3df19d1c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

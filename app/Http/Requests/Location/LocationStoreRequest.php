@@ -13,7 +13,7 @@ class LocationStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,33 @@ class LocationStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'code' => ['nullable', 'string', 'max:250', 'unique:locations,code'],
+            'slug' => ['nullable', 'string', 'max:250', 'unique:locations,slug'],
+            'name' => ['required', 'string', 'max:250', 'unique:locations,name'],
+            'address' => ['required', 'string', 'max:250'],
+            'street' => ['nullable', 'string', 'max:250'],
+            'district' => ['nullable', 'string', 'max:250'],
+            'city' => ['required', 'string', 'max:250'],
+            'province' => ['required', 'string', 'max:250'],
+            'country' => ['required', 'string', 'max:250'],
+            'postal_code' => ['required', 'string', 'max:10'],
+            'latitude' => ['required', 'string', 'max:250'],
+            'longitude' => ['required', 'string', 'max:250'],
+            'is_active' => ['required', 'boolean'],
+            // 'notes' => ['nullable', 'string', 'max:250'],
+            'location_id' => ['nullable', 'integer', 'max:20'],
+        ];
+    }
+
+    /**
+     * Custom message for validation
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            // 'job_id.required_if' => 'The job designation field is required.'
         ];
     }
 }
