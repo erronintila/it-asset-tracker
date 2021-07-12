@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->text('notes')->nullable();
             $table->boolean('default')->default(false);
             $table->timestamps();
+            $table->softDeletes();
             $table->unsignedBigInteger("profile_id")->nullable();
             $table->string("profile_type")->nullable();
         });
