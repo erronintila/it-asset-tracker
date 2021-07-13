@@ -19,11 +19,11 @@ class CreateManufacturersTable extends Migration
             $table->string('slug');
             $table->string('name');
             $table->string("contact_person")->nullable();
-            $table->string("phone1")->nullable();
-            $table->string("phone2")->nullable();
+            $table->string("phone1", 30)->nullable();
+            $table->string("phone2", 30)->nullable();
             $table->string('email')->unique()->nullable();
             $table->string('website')->nullable();
-            $table->string('fax')->nullable();
+            $table->string('fax', 30)->nullable();
             $table->string("address");
             $table->string("street")->nullable();
             $table->string("district")->nullable();

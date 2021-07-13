@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->prefix("v1")->group(function () {
     // Multiple deletion routes
     Route::delete('departments/multiple', 'API\v1\DepartmentController@destroyMany');
     Route::delete('locations/multiple', 'API\v1\LocationController@destroyMany');
+    Route::delete('manufacturers/multiple', 'API\v1\ManufacturerController@destroyMany');
     Route::delete('suppliers/multiple', 'API\v1\SupplierController@destroyMany');
 
     // API Resource routes

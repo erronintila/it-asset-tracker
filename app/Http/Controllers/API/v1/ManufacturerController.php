@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\API\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ManufacturerResource;
+use App\Models\Manufacturer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ManufacturerController extends Controller
 {
@@ -14,7 +17,14 @@ class ManufacturerController extends Controller
      */
     public function index()
     {
-        //
+        $sortBy = request('sortBy') ?? "code";
+        $sortType = request('sortType') ?? "asc";
+        $itemsPerPage = request('itemsPerPage') ?? 10;
+
+        $manufacturers = Manufacturer::orderBy($sortBy, $sortType)->paginate($itemsPerPage);
+
+        return $this->successResponse('read', $manufacturers, 200);
+        // return $this->successResponse('Success', ManufacturerResource::collection($manufacturers), 200);
     }
 
     /**
@@ -25,7 +35,21 @@ class ManufacturerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validated();
+        $data = DB::transaction(function () use ($validated) {
+            $code = 'SUP' . date("YmdHis");
+            $slug = $code . '-' . implode('-', explode(' ', $validated['name']));
+
+            $manufacturer = new Manufacturer();
+            $manufacturer->fill($validated);
+            $manufacturer->code = $code;
+            $manufacturer->slug = $slug;
+            $manufacturer->save();
+
+            return $manufacturer;
+        });
+
+        return $this->successResponse('create', $data, 201);
     }
 
     /**
@@ -36,7 +60,8 @@ class ManufacturerController extends Controller
      */
     public function show($id)
     {
-        //
+        $manufacturer = Manufacturer::findOrFail($id);
+        return $this->successResponse('read', new ManufacturerResource($manufacturer), 200);
     }
 
     /**
@@ -48,7 +73,16 @@ class ManufacturerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validated();
+        $data = DB::transaction(function () use ($id, $validated) {
+            $manufacturer = Manufacturer::findOrFail($id);
+            $manufacturer->fill($validated);
+            $manufacturer->slug = $manufacturer->code . '-' . implode('-', explode(' ', $validated['name']));
+            $manufacturer->save();
+            return $manufacturer;
+        });
+
+        return $this->successResponse('update', $data, 200);
     }
 
     /**
@@ -59,6 +93,22 @@ class ManufacturerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = DB::transaction(function () use ($id) {
+            $manufacturer = Manufacturer::findOrFail($id);
+            return $manufacturer;
+        });
+
+        return $this->successResponse('delete', $data, 200);
+    }
+
+    public function destroyMany()
+    {
+        $ids = request('ids');
+        $data = DB::transaction(function () use ($ids) {
+            $manufacturers = Manufacturer::destroy($ids);
+            return $manufacturers;
+        });
+
+        return $this->successResponse('delete', $data, 200);
     }
 }
