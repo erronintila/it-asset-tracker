@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Supplier\SupplierStoreRequest;
+use App\Http\Requests\Supplier\SupplierUpdateRequest;
 use App\Http\Resources\SupplierResource;
 use App\Models\Supplier;
 use App\Traits\HttpResponseMessage;
@@ -12,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 class SupplierController extends Controller
 {
     use HttpResponseMessage;
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +38,7 @@ class SupplierController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SupplierStoreRequest $request)
     {
         $validated = $request->validated();
         $data = DB::transaction(function () use ($validated) {
@@ -74,7 +76,7 @@ class SupplierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SupplierUpdateRequest $request, $id)
     {
         $validated = $request->validated();
         $data = DB::transaction(function () use ($id, $validated) {

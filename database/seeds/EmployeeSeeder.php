@@ -11,7 +11,7 @@ class EmployeeSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\Employee::class, 10)->create()->each(function ($employee) {
+        factory(\App\Models\Employee::class, 30)->create()->each(function ($employee) {
             $employee->user()->save(factory(\App\Models\User::class)->make());
             // $employee->department()->save(factory(\App\Models\Department::class)->make());
         });

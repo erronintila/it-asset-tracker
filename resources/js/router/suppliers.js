@@ -22,6 +22,14 @@ const supplier_routes = [
         meta: {
             auth: true
         }
+    },
+    {
+        path: "/suppliers/:id/edit",
+        component: () => import("../pages/suppliers/Edit"),
+        name: "suppliers.edit",
+        meta: {
+            auth: true
+        }
     }
 ];
 

@@ -25,13 +25,13 @@ class SupplierUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            "code" => ['required', 'string', 'max:250', Rule::unique('suppliers', 'code')->ignore($this->supplier)],
-            "slug" => ['required', 'string', 'max:250', Rule::unique('suppliers', 'slug')->ignore($this->supplier)],
+            "code" => ['nullable', 'string', 'max:250', Rule::unique('suppliers', 'code')->ignore($this->supplier)],
+            "slug" => ['nullable', 'string', 'max:250', Rule::unique('suppliers', 'slug')->ignore($this->supplier)],
             "name" => ['required', 'string', 'max:250', Rule::unique('suppliers', 'name')->ignore($this->supplier)],
             "contact_person" => ['nullable', 'string', 'max:250'],
             "phone1" => ['nullable', 'string', 'max:30'],
             "phone2" => ['nullable', 'string', 'max:30'],
-            "email" => ['nullable', 'string', 'max:250'],
+            "email" => ['nullable', 'email', 'max:250'],
             "website" => ['nullable', 'string', 'max:250'],
             "fax" => ['nullable', 'string', 'max:30'],
             "address" => ['required', 'string', 'max:250'],

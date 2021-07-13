@@ -265,6 +265,12 @@ export default {
         clearFilters: function() {
             this.selectedItems = [];
             this.search = "";
+            this.tableOptions.options = {
+                sortBy: ["code"],
+                sortDesc: [false],
+                page: 1,
+                itemsPerPage: 10
+            };
         }
     },
     computed: {

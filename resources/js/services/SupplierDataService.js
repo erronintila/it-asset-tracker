@@ -21,6 +21,10 @@ class SupplierDataService {
     delete(id, data) {
         return axios.delete(`/api/v1/suppliers/${id}`, data);
     }
+
+    deleteMany(data) {
+        return axios.delete(`/api/v1/suppliers/multiple`, data);
+    }
 }
 
 export default new SupplierDataService();

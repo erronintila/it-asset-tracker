@@ -305,6 +305,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     clearFilters: function clearFilters() {
       this.selectedItems = [];
       this.search = "";
+      this.tableOptions.options = {
+        sortBy: ["code"],
+        sortDesc: [false],
+        page: 1,
+        itemsPerPage: 10
+      };
     }
   },
   computed: {
