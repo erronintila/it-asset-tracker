@@ -72,14 +72,36 @@
 
         <!-- Search results info -->
         <div class="my-3">
-            <small class="mx-3" v-if="selectedItems.length">
+            <v-chip
+                v-if="selectedItems.length"
+                close
+                label
+                outlined
+                small
+                @click:close="selectedItems = []"
+            >
                 {{ selectedItems.length }} item(s) selected
-            </small>
-            <small class="mx-3" v-if="search"> Search: {{ search }}</small>
-            <small class="mx-3">Client: GSDH</small>
-            <v-btn x-small class="mx-2" @click="clearFilters">
-                Clear Filters
-            </v-btn>
+            </v-chip>
+            <v-chip
+                v-if="search"
+                close
+                label
+                outlined
+                small
+                @click:close="search = ''"
+            >
+                {{ search }}
+            </v-chip>
+            <v-chip
+                v-if="hasFilters"
+                close
+                label
+                outlined
+                small
+                @click:close="clearFilters"
+            >
+                Clear All Filters
+            </v-chip>
         </div>
         <!-- End of Search results info -->
 
@@ -280,6 +302,9 @@ export default {
                 // query: this.search,
                 // query: this.status
             };
+        },
+        hasFilters() {
+            return this.search || this.selectedItems.length;
         }
     },
     watch: {

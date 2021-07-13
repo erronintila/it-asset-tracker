@@ -148,6 +148,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -316,6 +338,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   computed: {
     params: function params(nv) {
       return _objectSpread({}, this.tableOptions.options);
+    },
+    hasFilters: function hasFilters() {
+      return this.search || this.selectedItems.length;
     }
   },
   watch: {
@@ -561,32 +586,51 @@ var render = function() {
         { staticClass: "my-3" },
         [
           _vm.selectedItems.length
-            ? _c("small", { staticClass: "mx-3" }, [
-                _vm._v(
-                  "\n            " +
-                    _vm._s(_vm.selectedItems.length) +
-                    " item(s) selected\n        "
-                )
-              ])
+            ? _c(
+                "v-chip",
+                {
+                  attrs: { close: "", label: "", outlined: "", small: "" },
+                  on: {
+                    "click:close": function($event) {
+                      _vm.selectedItems = []
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n            " +
+                      _vm._s(_vm.selectedItems.length) +
+                      " item(s) selected\n        "
+                  )
+                ]
+              )
             : _vm._e(),
           _vm._v(" "),
           _vm.search
-            ? _c("small", { staticClass: "mx-3" }, [
-                _vm._v(" Search: " + _vm._s(_vm.search))
-              ])
+            ? _c(
+                "v-chip",
+                {
+                  attrs: { close: "", label: "", outlined: "", small: "" },
+                  on: {
+                    "click:close": function($event) {
+                      _vm.search = ""
+                    }
+                  }
+                },
+                [_vm._v("\n            " + _vm._s(_vm.search) + "\n        ")]
+              )
             : _vm._e(),
           _vm._v(" "),
-          _c("small", { staticClass: "mx-3" }, [_vm._v("Client: GSDH")]),
-          _vm._v(" "),
-          _c(
-            "v-btn",
-            {
-              staticClass: "mx-2",
-              attrs: { "x-small": "" },
-              on: { click: _vm.clearFilters }
-            },
-            [_vm._v("\n            Clear Filters\n        ")]
-          )
+          _vm.hasFilters
+            ? _c(
+                "v-chip",
+                {
+                  attrs: { close: "", label: "", outlined: "", small: "" },
+                  on: { "click:close": _vm.clearFilters }
+                },
+                [_vm._v("\n            Clear All Filters\n        ")]
+              )
+            : _vm._e()
         ],
         1
       ),
