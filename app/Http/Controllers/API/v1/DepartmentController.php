@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Department\DepartmentStoreRequest;
 use App\Http\Requests\Department\DepartmentUpdateRequest;
 use App\Http\Resources\DepartmentResource;
 use App\Models\Department;
@@ -37,7 +38,7 @@ class DepartmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DepartmentStoreRequest $request)
     {
         $validated = $request->validated();
         $data = DB::transaction(function () use ($validated) {

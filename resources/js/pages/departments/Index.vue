@@ -1,90 +1,139 @@
 <template>
     <div>
-        <v-row>
-            <v-col class="d-flex align-center">
-                <div class="page-title d-inline mx-3">
-                    Departments
-                </div>
-                <v-btn icon>
-                    <v-icon>mdi-refresh</v-icon>
-                </v-btn>
-                <v-btn icon :to="{ name: 'departments.create' }">
-                    <v-icon>mdi-plus</v-icon>
-                </v-btn>
-                <div class="d-inline" v-if="selected.length">
-                    <v-btn icon>
-                        <v-icon>mdi-file-document-edit-outline</v-icon>
-                    </v-btn>
-                </div>
-                <v-btn icon @click="showSearch = !showSearch">
-                    <v-icon>mdi-file-search-outline</v-icon>
+        <page-header>
+            <template slot="leftSideNavigation">
+                <v-btn
+                    text
+                    title="Add new department"
+                    @click="dialogDepartmentCreate = true"
+                >
+                    Create New
                 </v-btn>
                 <v-menu rounded offset-y>
                     <template v-slot:activator="{ on, attrs }">
-                        <v-btn icon v-bind="attrs" v-on="on">
-                            <v-icon>mdi-dots-vertical</v-icon>
+                        <v-btn
+                            icon
+                            v-bind="attrs"
+                            v-on="on"
+                            title="More action"
+                        >
+                            <v-icon>
+                                mdi-dots-vertical
+                            </v-icon>
                         </v-btn>
                     </template>
 
-                    <v-list>
-                        <v-list-item link>
-                            <v-list-item-title>Export </v-list-item-title>
-                        </v-list-item>
-                        <v-list-item link>
-                            <v-list-item-title>Delete </v-list-item-title>
-                        </v-list-item>
-                        <v-list-item link>
-                            <v-list-item-title>Restore </v-list-item-title>
-                        </v-list-item>
+                    <v-list dense>
+                        <template v-for="(item, index) in actions">
+                            <v-list-item
+                                link
+                                :key="index"
+                                @click="filterAction(item.action)"
+                            >
+                                <v-list-item-icon>
+                                    <v-icon>{{ item.icon }}</v-icon>
+                                </v-list-item-icon>
+                                <v-list-item-title>
+                                    <div class="mr-3">
+                                        {{ item.text }}
+                                    </div>
+                                </v-list-item-title>
+                            </v-list-item>
+                        </template>
                     </v-list>
                 </v-menu>
-
-                <!-- <div class="d-inline" v-if="selected.length">
-                    <v-btn small outlined rounded class="text-capitalize">
-                        clear filters
-                    </v-btn>
-                </div> -->
-            </v-col>
-        </v-row>
-
-        <!-- <v-row>
-            <v-col cols="12" v-if="selected.length">
-                <div class="ml-4">
-                    <small>
-                        All departments | 2021-01-01 ~ 2021-12-31 | Active
-                    </small>
-                </div>
-            </v-col>
-        </v-row> -->
-
-        <v-row v-if="showSearch">
-            <v-col class="d-flex">
+            </template>
+            <template slot="rightSideNavigation">
                 <v-text-field
-                    outlined
+                    v-model="search"
+                    class="hidden-sm-and-down mt-5 p-0"
+                    label="Search"
                     clearable
-                    placeholder="Enter text here..."
-                >
-                </v-text-field>
+                    append-icon="mdi-clipboard-search-outline"
+                    @click:append="openSearchDialog"
+                ></v-text-field>
+            </template>
+        </page-header>
+
+        <!-- Search bar on small screen size -->
+        <v-row class="hidden-sm-and-up mx-1">
+            <v-col>
+                <v-text-field
+                    class="mt-5 p-0"
+                    label="Search"
+                    clearable
+                    append-icon="mdi-clipboard-search-outline"
+                    @click:append="openSearchDialog"
+                ></v-text-field>
             </v-col>
         </v-row>
+        <!-- End of Search bar -->
 
+        <!-- Search results info -->
+        <div class="my-3">
+            <v-chip
+                v-if="selectedItems.length"
+                close
+                label
+                outlined
+                small
+                @click:close="selectedItems = []"
+            >
+                {{ selectedItems.length }} item(s) selected
+            </v-chip>
+            <v-chip
+                v-if="search"
+                close
+                label
+                outlined
+                small
+                @click:close="search = ''"
+            >
+                {{ search }}
+            </v-chip>
+            <v-chip
+                v-if="hasFilters"
+                close
+                label
+                outlined
+                small
+                @click:close="clearFilters"
+            >
+                Clear All Filters
+            </v-chip>
+        </div>
+        <!-- End of Search results info -->
+
+        <!-- DataTable -->
         <v-row>
             <v-col cols="12">
                 <v-data-table
-                    v-model="selected"
-                    :headers="headers"
-                    :items="items"
-                    :items-per-page="10"
+                    v-model="selectedItems"
                     show-select
+                    item-key="id"
+                    :headers="tableOptions.headers"
+                    :items="items"
+                    :loading="tableOptions.loading"
+                    :options.sync="tableOptions.options"
+                    :server-items-length="tableOptions.serverItemsLength"
+                    :footer-props="{
+                        itemsPerPageOptions: tableOptions.itemsPerPageOptions,
+                        showFirstLastPage: true,
+                        firstIcon: 'mdi-page-first',
+                        lastIcon: 'mdi-page-last',
+                        prevIcon: 'mdi-chevron-left',
+                        nextIcon: 'mdi-chevron-right'
+                    }"
                 >
-                    <template v-slot:[`item.department`]="{ item }">
+                    <template v-slot:[`item.code`]="{ item }">
                         <router-link
                             :to="{
                                 name: 'departments.show',
                                 params: { id: item.id }
                             }"
-                            >{{ item.department }}</router-link
                         >
+                            {{ item.code }}
+                        </router-link>
                     </template>
                     <template v-slot:[`item.status`]="{ item }">
                         <v-chip
@@ -98,50 +147,191 @@
                 </v-data-table>
             </v-col>
         </v-row>
+        <!-- End of DataTable -->
+
+        <!-- Dialogs -->
+        <DepartmentCreate
+            :dialogCreate="dialogDepartmentCreate"
+            @close-dialog="dialogDepartmentCreate = false"
+            @save-dialog="
+                () => {
+                    getData();
+                    dialogDepartmentCreate = false;
+                }
+            "
+        ></DepartmentCreate>
+        <!-- End of Dialogs -->
     </div>
 </template>
 
 <script>
+import DepartmentDataService from "../../services/DepartmentDataService";
+import DepartmentCreate from "./Create.vue";
+
 export default {
+    name: "departments-index",
+    components: {
+        DepartmentCreate
+    },
     data() {
         return {
-            selected: [],
-            headers: [
-                {
-                    text: "Department",
-                    align: "start",
-                    sortable: true,
-                    value: "department"
-                },
-                { text: "Manager", value: "manager" },
-                { text: "Employees", value: "employees" },
-                { text: "Assets", value: "assets" }
+            dialogDepartmentCreate: false,
+            actions: [
+                { text: "Refresh", action: "refresh", icon: "mdi-refresh" },
+                { text: "Update", action: "update", icon: "mdi-update" },
+                { text: "Delete", action: "delete", icon: "mdi-delete" },
+                { text: "Restore", action: "restore", icon: "mdi-restore" },
+                { text: "Export", action: "export", icon: "mdi-export" }
             ],
-            items: [
-                {
-                    id: 1,
-                    department: "Sales & Marketing Department",
-                    manager: "Juan Dela Cruz",
-                    employees: 10,
-                    assets: 20
+            tableOptions: {
+                options: {
+                    sortBy: ["code"],
+                    sortDesc: [false],
+                    page: 1,
+                    itemsPerPage: 10
                 },
-                {
-                    id: 2,
-                    department: "Technical Department",
-                    manager: "Juan Dela Cruz",
-                    employees: 3,
-                    assets: 100
-                },
-                {
-                    id: 3,
-                    department: "Purchasing Department",
-                    manager: "Juan Dela Cruz",
-                    employees: 5,
-                    assets: 50
-                }
-            ],
-            showSearch: false
+                loading: false,
+                itemsPerPageOptions: [10, 20, 50, 100],
+                serverItemsLength: 0,
+                headers: [
+                    { text: "Code", value: "code" },
+                    { text: "Name", value: "name" },
+                    { text: "Assets", value: "quantity" }
+                ]
+            },
+            search: "",
+            items: [],
+            selectedItems: []
         };
+    },
+    methods: {
+        getData() {
+            this.tableOptions.loading = true;
+            return new Promise((resolve, reject) => {
+                const {
+                    sortBy,
+                    sortDesc,
+                    page,
+                    itemsPerPage
+                } = this.tableOptions.options;
+                // let search = this.search.trim().toLowerCase();
+                // let status = this.status;
+
+                let data = {
+                    params: {
+                        sortBy: sortBy[0],
+                        sortType: sortDesc[0] ? "desc" : "asc",
+                        page: page,
+                        itemsPerPage: itemsPerPage
+                        // search: search,
+                        // status: status
+                    }
+                };
+
+                DepartmentDataService.getAll(data)
+                    .then(response => {
+                        console.log(response.data);
+                        this.items = response.data.data.data;
+                        this.tableOptions.serverItemsLength =
+                            response.data.data.total;
+                        this.tableOptions.loading = false;
+                        resolve();
+                    })
+                    .catch(error => {
+                        this.tableOptions.loading = false;
+                        console.log(error);
+                        console.log(error.response);
+                        reject();
+                    });
+            });
+        },
+        filterAction: function(action) {
+            switch (action) {
+                case "refresh":
+                    this.getData();
+                    break;
+                case "update":
+                    if (!this.selectedItems.length) {
+                        alert("No data selected.");
+                        return;
+                    }
+                    this.$router.push(
+                        "/departments/" + this.selectedItems[0].id + "/edit"
+                    );
+                    break;
+                case "delete":
+                    this.onDelete();
+                    break;
+                case "restore":
+                    break;
+                case "export":
+                    break;
+                default:
+                    alert("Error: Action not identified");
+                    break;
+            }
+        },
+        onDelete: function() {
+            if (!this.selectedItems.length) {
+                alert("No data selected.");
+                return;
+            }
+
+            if (!confirm("WARNING: Do you want to delete selected items?")) {
+                return;
+            }
+
+            let data = {
+                params: {
+                    ids: this.selectedItems.map(item => item.id)
+                }
+            };
+
+            DepartmentDataService.deleteMany(data)
+                .then(response => {
+                    console.log(response.data);
+                    this.getData();
+                    this.selectedItems = [];
+                })
+                .catch(error => {
+                    console.log(error.response);
+                    alert("An error has occurred.");
+                });
+        },
+        openSearchDialog: function() {
+            alert("Search Dialog");
+        },
+        clearFilters: function() {
+            this.selectedItems = [];
+            this.search = "";
+            this.tableOptions.options = {
+                sortBy: ["code"],
+                sortDesc: [false],
+                page: 1,
+                itemsPerPage: 10
+            };
+        }
+    },
+    computed: {
+        params(nv) {
+            return {
+                ...this.tableOptions.options
+                // query: this.search,
+                // query: this.status
+            };
+        },
+        hasFilters() {
+            return this.search || this.selectedItems.length;
+        }
+    },
+    watch: {
+        params: {
+            immediate: true,
+            deep: true,
+            handler() {
+                this.getData();
+            }
+        }
     }
 };
 </script>

@@ -1,45 +1,75 @@
 <template>
     <v-form ref="form" v-model="valid">
         <v-row class="d-flex justify-center">
-            <v-col cols="12" md="6">
+            <v-col>
                 <v-card flat>
                     <v-card-title>
-                        General Information
+                        {{ title }}
                     </v-card-title>
                     <v-card-text>
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
                                 <v-text-field
+                                    v-model="form.name"
                                     label="Name"
                                     outlined
                                     clearable
+                                    hint="Ex. Sales And Marketing"
+                                    :error-messages="errors.name[0]"
+                                    @inputs="errors.name = []"
                                 ></v-text-field>
                                 <v-text-field
+                                    v-model="form.manager_id"
                                     label="Manager"
                                     outlined
                                     clearable
+                                    hint="Ex. Juan Dela Cruz"
+                                    :error-messages="errors.manager_id[0]"
+                                    @inputs="errors.manager_id = []"
                                 ></v-text-field>
                                 <v-text-field
+                                    v-model="form.department_id"
                                     label="Parent Department"
                                     outlined
                                     clearable
+                                    hint="Ex. Sales And Marketing"
+                                    :error-messages="errors.department_id[0]"
+                                    @inputs="errors.department_id = []"
                                 ></v-text-field>
                             </v-col>
                         </v-row>
                     </v-card-text>
                     <v-card-actions>
-                        <v-sheet class="ml-4">
-                            <v-switch inset label="Active"></v-switch>
-                        </v-sheet>
-                        <v-spacer></v-spacer>
-                        <v-btn
-                            color="primary"
-                            @click="$router.go(-1)"
-                            class="mr-2"
-                            large
-                        >
-                            Save
-                        </v-btn>
+                        <v-row>
+                            <v-col cols="12" md="6">
+                                <v-sheet class="ml-4">
+                                    <v-switch
+                                        v-model="form.is_active"
+                                        inset
+                                        label="Active"
+                                    ></v-switch>
+                                </v-sheet>
+                            </v-col>
+                            <v-spacer></v-spacer>
+                            <v-col cols="12" md="6" class="d-flex align-center">
+                                <v-btn
+                                    color="primary"
+                                    class="mr-2"
+                                    large
+                                    @click="onCancel"
+                                >
+                                    Cancel
+                                </v-btn>
+                                <v-btn
+                                    color="primary"
+                                    class="mr-2"
+                                    large
+                                    @click="onSave"
+                                >
+                                    Save
+                                </v-btn>
+                            </v-col>
+                        </v-row>
                     </v-card-actions>
                 </v-card>
             </v-col>
@@ -50,6 +80,10 @@
 <script>
 export default {
     props: {
+        title: {
+            type: String,
+            default: ""
+        },
         departmentForm: {
             type: Object,
             default: () => {
@@ -58,6 +92,7 @@ export default {
                     slug: "",
                     name: "",
                     is_active: true,
+                    manager_id: "",
                     department_id: ""
                 };
             }
@@ -70,6 +105,7 @@ export default {
                     slug: [],
                     name: [],
                     is_active: [],
+                    manager_id: [],
                     department_id: []
                 };
             }
@@ -82,6 +118,7 @@ export default {
                     slug: [],
                     name: [],
                     is_active: [],
+                    manager_id: [],
                     department_id: []
                 };
             }
@@ -95,11 +132,22 @@ export default {
                 slug: "",
                 name: "",
                 is_active: true,
+                manager_id: "",
                 department_id: ""
             }
         };
     },
     methods: {
+        onReset() {
+            this.form = {
+                code: "",
+                slug: "",
+                name: "",
+                is_active: true,
+                manager_id: "",
+                department_id: ""
+            };
+        },
         onSave() {
             if (!confirm("Do you want to save?")) {
                 return;
@@ -117,6 +165,10 @@ export default {
             }
 
             this.$emit("on-save", this.form);
+        },
+        onCancel() {
+            this.onReset();
+            this.$emit("on-cancel");
         }
     },
     watch: {
