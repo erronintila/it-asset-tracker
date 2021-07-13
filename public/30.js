@@ -9,6 +9,13 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _services_ManufacturerDataService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../services/ManufacturerDataService */ "./resources/js/services/ManufacturerDataService.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -116,49 +123,209 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      selected: [],
-      headers: [{
-        text: "Code",
-        align: "start",
-        sortable: true,
-        value: "code"
+      actions: [{
+        text: "Refresh",
+        action: "refresh",
+        icon: "mdi-refresh"
       }, {
-        text: "Name",
-        value: "name"
+        text: "Update",
+        action: "update",
+        icon: "mdi-update"
       }, {
-        text: "Phone No.",
-        value: "phone"
+        text: "Delete",
+        action: "delete",
+        icon: "mdi-delete"
       }, {
-        text: "Email",
-        value: "email"
+        text: "Restore",
+        action: "restore",
+        icon: "mdi-restore"
       }, {
-        text: "Assets",
-        value: "assets"
+        text: "Export",
+        action: "export",
+        icon: "mdi-export"
       }],
-      items: [{
-        id: 1,
-        code: "012030123",
-        name: "Juan Dela Cruz",
-        department: "Sales and Marketing",
-        job_title: "Sales & Marketing Officer",
-        phone: "09211121212",
-        email: "juandelacruz@gmail.com",
-        assets: "20"
-      }, {
-        id: 2,
-        code: "4524323",
-        name: "Maria Santiago",
-        department: "Purchasing",
-        job_title: "Purchase Officer",
-        phone: "093248023423",
-        email: "mariasantiago@gmail.com",
-        assets: "38"
-      }],
-      showSearch: false
+      tableOptions: {
+        options: {
+          sortBy: ["code"],
+          sortDesc: [false],
+          page: 1,
+          itemsPerPage: 10
+        },
+        loading: false,
+        itemsPerPageOptions: [10, 20, 50, 100],
+        serverItemsLength: 0,
+        headers: [{
+          text: "Code",
+          value: "code"
+        }, {
+          text: "Name",
+          value: "name"
+        }, {
+          text: "Address",
+          value: "address"
+        }, {
+          text: "Assets",
+          value: "quantity"
+        }]
+      },
+      search: "",
+      items: [],
+      selectedItems: []
     };
+  },
+  methods: {
+    getData: function getData() {
+      var _this = this;
+
+      this.tableOptions.loading = true;
+      return new Promise(function (resolve, reject) {
+        var _this$tableOptions$op = _this.tableOptions.options,
+            sortBy = _this$tableOptions$op.sortBy,
+            sortDesc = _this$tableOptions$op.sortDesc,
+            page = _this$tableOptions$op.page,
+            itemsPerPage = _this$tableOptions$op.itemsPerPage; // let search = this.search.trim().toLowerCase();
+        // let status = this.status;
+
+        var data = {
+          params: {
+            sortBy: sortBy[0],
+            sortType: sortDesc[0] ? "desc" : "asc",
+            page: page,
+            itemsPerPage: itemsPerPage // search: search,
+            // status: status
+
+          }
+        };
+        _services_ManufacturerDataService__WEBPACK_IMPORTED_MODULE_0__["default"].getAll(data).then(function (response) {
+          console.log(response.data);
+          _this.items = response.data.data.data;
+          _this.tableOptions.serverItemsLength = response.data.data.total;
+          _this.tableOptions.loading = false;
+          resolve();
+        })["catch"](function (error) {
+          _this.tableOptions.loading = false;
+          console.log(error);
+          console.log(error.response);
+          reject();
+        });
+      });
+    },
+    filterAction: function filterAction(action) {
+      switch (action) {
+        case "refresh":
+          this.getData();
+          break;
+
+        case "update":
+          if (!this.selectedItems.length) {
+            alert("No data selected.");
+            return;
+          }
+
+          this.$router.push("/manufacturers/" + this.selectedItems[0].id + "/edit");
+          break;
+
+        case "delete":
+          this.onDelete();
+          break;
+
+        case "restore":
+          break;
+
+        case "export":
+          break;
+
+        default:
+          alert("Error: Action not identified");
+          break;
+      }
+    },
+    onDelete: function onDelete() {
+      var _this2 = this;
+
+      if (!this.selectedItems.length) {
+        alert("No data selected.");
+        return;
+      }
+
+      if (!confirm("WARNING: Do you want to delete selected items?")) {
+        return;
+      }
+
+      var data = {
+        params: {
+          ids: this.selectedItems.map(function (item) {
+            return item.id;
+          })
+        }
+      };
+      _services_ManufacturerDataService__WEBPACK_IMPORTED_MODULE_0__["default"].deleteMany(data).then(function (response) {
+        console.log(response.data);
+
+        _this2.getData();
+
+        _this2.selectedItems = [];
+      })["catch"](function (error) {
+        console.log(error.response);
+        alert("An error has occurred.");
+      });
+    },
+    openSearchDialog: function openSearchDialog() {
+      alert("Search Dialog");
+    },
+    clearFilters: function clearFilters() {
+      this.selectedItems = [];
+      this.search = "";
+      this.tableOptions.options = {
+        sortBy: ["code"],
+        sortDesc: [false],
+        page: 1,
+        itemsPerPage: 10
+      };
+    }
+  },
+  computed: {
+    params: function params(nv) {
+      return _objectSpread({}, this.tableOptions.options);
+    }
+  },
+  watch: {
+    params: {
+      immediate: true,
+      deep: true,
+      handler: function handler() {
+        this.getData();
+      }
+    }
   }
 });
 
@@ -232,61 +399,24 @@ var render = function() {
     "div",
     [
       _c(
-        "v-row",
+        "page-header",
+        { attrs: { title: "Manufacturers" } },
         [
           _c(
-            "v-col",
-            { staticClass: "d-flex align-center" },
+            "template",
+            { slot: "leftSideNavigation" },
             [
-              _c("div", { staticClass: "page-title d-inline mx-3" }, [
-                _vm._v("\n                Manufacturers\n            ")
-              ]),
-              _vm._v(" "),
-              _c(
-                "v-btn",
-                { attrs: { icon: "" } },
-                [_c("v-icon", [_vm._v("mdi-refresh")])],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-btn",
-                { attrs: { icon: "", to: { name: "manufacturers.create" } } },
-                [_c("v-icon", [_vm._v("mdi-plus")])],
-                1
-              ),
-              _vm._v(" "),
-              _vm.selected.length
-                ? _c(
-                    "div",
-                    { staticClass: "d-inline" },
-                    [
-                      _c(
-                        "v-btn",
-                        { attrs: { icon: "" } },
-                        [
-                          _c("v-icon", [
-                            _vm._v("mdi-file-document-edit-outline")
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                : _vm._e(),
-              _vm._v(" "),
               _c(
                 "v-btn",
                 {
-                  attrs: { icon: "" },
-                  on: {
-                    click: function($event) {
-                      _vm.showSearch = !_vm.showSearch
-                    }
+                  staticClass: "ml-3",
+                  attrs: {
+                    icon: "",
+                    to: { name: "manufacturers.create" },
+                    title: "Add new manufacturer"
                   }
                 },
-                [_c("v-icon", [_vm._v("mdi-file-search-outline")])],
+                [_c("v-icon", [_vm._v("mdi-plus")])],
                 1
               ),
               _vm._v(" "),
@@ -305,14 +435,20 @@ var render = function() {
                             "v-btn",
                             _vm._g(
                               _vm._b(
-                                { attrs: { icon: "" } },
+                                { attrs: { icon: "", title: "More action" } },
                                 "v-btn",
                                 attrs,
                                 false
                               ),
                               on
                             ),
-                            [_c("v-icon", [_vm._v("mdi-dots-vertical")])],
+                            [
+                              _c("v-icon", [
+                                _vm._v(
+                                  "\n                            mdi-dots-vertical\n                        "
+                                )
+                              ])
+                            ],
                             1
                           )
                         ]
@@ -324,40 +460,95 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "v-list",
+                    { attrs: { dense: "" } },
                     [
-                      _c(
-                        "v-list-item",
-                        { attrs: { link: "" } },
-                        [_c("v-list-item-title", [_vm._v("Export ")])],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-item",
-                        { attrs: { link: "" } },
-                        [_c("v-list-item-title", [_vm._v("Deactivate ")])],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-item",
-                        { attrs: { link: "" } },
-                        [_c("v-list-item-title", [_vm._v("Delete ")])],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-item",
-                        { attrs: { link: "" } },
-                        [_c("v-list-item-title", [_vm._v("Restore ")])],
-                        1
-                      )
+                      _vm._l(_vm.actions, function(item, index) {
+                        return [
+                          _c(
+                            "v-list-item",
+                            {
+                              key: index,
+                              attrs: { link: "" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.filterAction(item.action)
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "v-list-item-icon",
+                                [_c("v-icon", [_vm._v(_vm._s(item.icon))])],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("v-list-item-title", [
+                                _c("div", { staticClass: "mr-3" }, [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(item.text) +
+                                      "\n                                "
+                                  )
+                                ])
+                              ])
+                            ],
+                            1
+                          )
+                        ]
+                      })
                     ],
-                    1
+                    2
                   )
                 ],
                 1
               )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "template",
+            { slot: "rightSideNavigation" },
+            [
+              _c("v-text-field", {
+                staticClass: "hidden-sm-and-down mt-5 p-0",
+                attrs: {
+                  label: "Search",
+                  clearable: "",
+                  "append-icon": "mdi-clipboard-search-outline"
+                },
+                on: { "click:append": _vm.openSearchDialog },
+                model: {
+                  value: _vm.search,
+                  callback: function($$v) {
+                    _vm.search = $$v
+                  },
+                  expression: "search"
+                }
+              })
+            ],
+            1
+          )
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c(
+        "v-row",
+        { staticClass: "hidden-sm-and-up mx-1" },
+        [
+          _c(
+            "v-col",
+            [
+              _c("v-text-field", {
+                staticClass: "mt-5 p-0",
+                attrs: {
+                  label: "Search",
+                  clearable: "",
+                  "append-icon": "mdi-clipboard-search-outline"
+                },
+                on: { "click:append": _vm.openSearchDialog }
+              })
             ],
             1
           )
@@ -365,28 +556,40 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _vm.showSearch
-        ? _c(
-            "v-row",
-            [
-              _c(
-                "v-col",
-                { staticClass: "d-flex" },
-                [
-                  _c("v-text-field", {
-                    attrs: {
-                      outlined: "",
-                      clearable: "",
-                      placeholder: "Enter text here..."
-                    }
-                  })
-                ],
-                1
-              )
-            ],
-            1
+      _c(
+        "div",
+        { staticClass: "my-3" },
+        [
+          _vm.selectedItems.length
+            ? _c("small", { staticClass: "mx-3" }, [
+                _vm._v(
+                  "\n            " +
+                    _vm._s(_vm.selectedItems.length) +
+                    " item(s) selected\n        "
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.search
+            ? _c("small", { staticClass: "mx-3" }, [
+                _vm._v(" Search: " + _vm._s(_vm.search))
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("small", { staticClass: "mx-3" }, [_vm._v("Client: GSDH")]),
+          _vm._v(" "),
+          _c(
+            "v-btn",
+            {
+              staticClass: "mx-2",
+              attrs: { "x-small": "" },
+              on: { click: _vm.clearFilters }
+            },
+            [_vm._v("\n            Clear Filters\n        ")]
           )
-        : _vm._e(),
+        ],
+        1
+      ),
       _vm._v(" "),
       _c(
         "v-row",
@@ -397,10 +600,26 @@ var render = function() {
             [
               _c("v-data-table", {
                 attrs: {
-                  headers: _vm.headers,
+                  "show-select": "",
+                  "item-key": "id",
+                  headers: _vm.tableOptions.headers,
                   items: _vm.items,
-                  "items-per-page": 10,
-                  "show-select": ""
+                  loading: _vm.tableOptions.loading,
+                  options: _vm.tableOptions.options,
+                  "server-items-length": _vm.tableOptions.serverItemsLength,
+                  "footer-props": {
+                    itemsPerPageOptions: _vm.tableOptions.itemsPerPageOptions,
+                    showFirstLastPage: true,
+                    firstIcon: "mdi-page-first",
+                    lastIcon: "mdi-page-last",
+                    prevIcon: "mdi-chevron-left",
+                    nextIcon: "mdi-chevron-right"
+                  }
+                },
+                on: {
+                  "update:options": function($event) {
+                    return _vm.$set(_vm.tableOptions, "options", $event)
+                  }
                 },
                 scopedSlots: _vm._u(
                   [
@@ -460,11 +679,11 @@ var render = function() {
                   true
                 ),
                 model: {
-                  value: _vm.selected,
+                  value: _vm.selectedItems,
                   callback: function($$v) {
-                    _vm.selected = $$v
+                    _vm.selectedItems = $$v
                   },
-                  expression: "selected"
+                  expression: "selectedItems"
                 }
               })
             ],
@@ -568,6 +787,70 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_ebc91a68_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/services/ManufacturerDataService.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/services/ManufacturerDataService.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+// import http from "../http-common";
+
+
+var ManufacturerDataService = /*#__PURE__*/function () {
+  function ManufacturerDataService() {
+    _classCallCheck(this, ManufacturerDataService);
+  }
+
+  _createClass(ManufacturerDataService, [{
+    key: "getAll",
+    value: function getAll(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/manufacturers", data);
+    }
+  }, {
+    key: "show",
+    value: function show(id, data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/manufacturers/".concat(id), data);
+    }
+  }, {
+    key: "store",
+    value: function store(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/manufacturers", data);
+    }
+  }, {
+    key: "update",
+    value: function update(id, data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/manufacturers/".concat(id), data);
+    }
+  }, {
+    key: "delete",
+    value: function _delete(id, data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/manufacturers/".concat(id), data);
+    }
+  }, {
+    key: "deleteMany",
+    value: function deleteMany(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/manufacturers/multiple", data);
+    }
+  }]);
+
+  return ManufacturerDataService;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (new ManufacturerDataService());
 
 /***/ })
 

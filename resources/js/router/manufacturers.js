@@ -22,6 +22,14 @@ const manufacturer_routes = [
         meta: {
             auth: true
         }
+    },
+    {
+        path: "/manufacturers/:id/edit",
+        component: () => import("../pages/manufacturers/Edit"),
+        name: "manufacturers.edit",
+        meta: {
+            auth: true
+        }
     }
 ];
 

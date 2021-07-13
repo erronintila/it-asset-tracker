@@ -1,138 +1,61 @@
 <template>
     <div>
-        <v-row>
-            <v-col class="d-flex justify-start">
-                <v-btn icon @click="$router.go(-1)">
-                    <v-icon>mdi-arrow-left</v-icon>
-                </v-btn>
-                <span class="page-title">New Manufacturer</span>
-            </v-col>
-        </v-row>
+        <page-header :title="'New Manufacturer'" :backButton="true"></page-header>
 
-        <v-row class="d-flex justify-center">
-            <v-col cols="12" md="4">
-                <v-card flat>
-                    <v-card-title>
-                        General Information
-                    </v-card-title>
-                    <v-card-text>
-                        <v-row class="d-flex justify-center">
-                            <v-col cols="12">
-                                <v-text-field
-                                    label="Manufacturer Code"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Name"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Email"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Website"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                            </v-col>
-                        </v-row>
-                    </v-card-text>
-                </v-card>
-            </v-col>
-            <v-col cols="12" md="4">
-                <v-card flat>
-                    <v-card-title>
-                        Contact Information
-                    </v-card-title>
-                    <v-card-text>
-                        <v-row class="d-flex justify-center">
-                            <v-col cols="12">
-                                <v-text-field
-                                    label="Contact Person"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Phone No."
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Address"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="City"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="State"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Country"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Postal Code"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                            </v-col>
-                        </v-row>
-                    </v-card-text>
-                </v-card>
-            </v-col>
-            <v-col cols="12" md="4">
-                <v-card flat>
-                    <v-card-title>
-                        Other Information
-                    </v-card-title>
-                    <v-card-text>
-                        <v-row class="d-flex justify-center">
-                            <v-col cols="12">
-                                <v-text-field
-                                    label="Parameters"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Notes"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Image"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                            </v-col>
-                        </v-row>
-                    </v-card-text>
-                    <v-card-actions>
-                        <v-sheet class="ml-4">
-                            <v-switch inset label="Activate Account"></v-switch>
-                        </v-sheet>
-                        <v-spacer></v-spacer>
-                        <v-btn
-                            color="primary"
-                            @click="$router.go(-1)"
-                            class="mr-2"
-                            large
-                        >
-                            Save
-                        </v-btn>
-                    </v-card-actions>
-                </v-card>
-            </v-col>
-        </v-row>
+        <Form @on-save="onSave" :errors="errors"></Form>
     </div>
 </template>
+
+<script>
+import ManufacturerDataService from "../../services/ManufacturerDataService";
+import Form from "./Form.vue";
+
+export default {
+    components: {
+        Form
+    },
+    data() {
+        return {
+            formDataLoaded: true,
+            errors: {
+                code: [],
+                slug: [],
+                name: [],
+                contact_person: [],
+                phone1: [],
+                phone2: [],
+                email: [],
+                website: [],
+                fax: [],
+                address: [],
+                street: [],
+                district: [],
+                city: [],
+                province: [],
+                country: [],
+                postal_code: [],
+                is_active: true,
+                notes: []
+            }
+        };
+    },
+    methods: {
+        onSave(value) {
+            ManufacturerDataService.store(value)
+                .then(response => {
+                    console.log(response.data);
+                    alert("Successfully created.");
+                    this.$router.push({ name: "manufacturers.index" });
+                })
+                .catch(error => {
+                    console.log(error.response);
+                    alert("An error has occurred.");
+                    this.errors = {
+                        ...this.errors,
+                        ...error.response.data.errors
+                    };
+                });
+        }
+    }
+};
+</script>

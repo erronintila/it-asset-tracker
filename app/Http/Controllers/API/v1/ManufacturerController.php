@@ -3,13 +3,18 @@
 namespace App\Http\Controllers\API\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Manufacturer\ManufacturerStoreRequest;
+use App\Http\Requests\Manufacturer\ManufacturerUpdateRequest;
 use App\Http\Resources\ManufacturerResource;
 use App\Models\Manufacturer;
+use App\Traits\HttpResponseMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ManufacturerController extends Controller
 {
+    use HttpResponseMessage;
+
     /**
      * Display a listing of the resource.
      *
@@ -33,11 +38,11 @@ class ManufacturerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ManufacturerStoreRequest $request)
     {
         $validated = $request->validated();
         $data = DB::transaction(function () use ($validated) {
-            $code = 'SUP' . date("YmdHis");
+            $code = 'MAN' . date("YmdHis");
             $slug = $code . '-' . implode('-', explode(' ', $validated['name']));
 
             $manufacturer = new Manufacturer();
@@ -71,7 +76,7 @@ class ManufacturerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ManufacturerUpdateRequest $request, $id)
     {
         $validated = $request->validated();
         $data = DB::transaction(function () use ($id, $validated) {
