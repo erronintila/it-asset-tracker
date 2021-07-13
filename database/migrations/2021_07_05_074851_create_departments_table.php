@@ -18,6 +18,7 @@ class CreateDepartmentsTable extends Migration
             $table->string('code')->unique();
             $table->string('slug')->unique();
             $table->string('name')->unique();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
             $table->softDeletes();
             $table->foreignId('department_id')->nullable()->constrained()->onDelete('cascade');

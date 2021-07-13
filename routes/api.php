@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\API\v1\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,12 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/v1/user', 'AuthController@user');
+Route::get('/v1/user', 'AuthController@user'); // Get Current User route
 
 Route::middleware('auth:sanctum')->prefix("v1")->group(function () {
-    // Multiple deletion
+
+    // Multiple deletion routes
+    Route::delete('departments/multiple', 'API\v1\DepartmentController@destroyMany');
     Route::delete('locations/multiple', 'API\v1\LocationController@destroyMany');
 
+    // API Resource routes
     Route::apiResources([
         'agreements' => 'API\v1\AgreementController',
         'assets' => 'API\v1\AssetController',
@@ -28,6 +30,7 @@ Route::middleware('auth:sanctum')->prefix("v1")->group(function () {
         'checkin_requests' => 'API\v1\CheckinRequestController',
         'checkout_requests' => 'API\v1\CheckoutRequestController',
         'customers' => 'API\v1\CustomerController',
+        'departments' => 'API\v1\DepartmentController',
         'disposal_requests' => 'API\v1\DisposalRequestController',
         'employees' => 'API\v1\EmployeeController',
         'licenses' => 'API\v1\LicenseController',

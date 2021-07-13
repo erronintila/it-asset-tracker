@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\API\v1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Location\LocationStoreRequest;
-use App\Http\Requests\Location\LocationUpdateRequest;
-use App\Http\Resources\LocationResource;
-use App\Models\Location;
+use App\Http\Requests\Department\DepartmentUpdateRequest;
+use App\Http\Resources\DepartmentResource;
+use App\Models\Department;
 use App\Traits\HttpResponseMessage;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class LocationController extends Controller
+class DepartmentController extends Controller
 {
     use HttpResponseMessage;
-
+    
     /**
      * Display a listing of the resource.
      *
@@ -25,10 +25,10 @@ class LocationController extends Controller
         $sortType = request('sortType') ?? "asc";
         $itemsPerPage = request('itemsPerPage') ?? 10;
 
-        $locations = Location::orderBy($sortBy, $sortType)->paginate($itemsPerPage);
+        $departments = Department::orderBy($sortBy, $sortType)->paginate($itemsPerPage);
 
-        return $this->successResponse('read', $locations, 200);
-        // return $this->successResponse('Success', LocationResource::collection($locations), 200);
+        return $this->successResponse('read', $departments, 200);
+        // return $this->successResponse('Success', DepartmentResource::collection($departments), 200);
     }
 
     /**
@@ -37,20 +37,20 @@ class LocationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LocationStoreRequest $request)
+    public function store(Request $request)
     {
         $validated = $request->validated();
         $data = DB::transaction(function () use ($validated) {
             $code = 'LOC' . date("YmdHis");
             $slug = $code . '-' . implode('-', explode(' ', $validated['name']));
 
-            $location = new Location();
-            $location->fill($validated);
-            $location->code = $code;
-            $location->slug = $slug;
-            $location->save();
+            $department = new Department();
+            $department->fill($validated);
+            $department->code = $code;
+            $department->slug = $slug;
+            $department->save();
 
-            return $location;
+            return $department;
         });
 
         return $this->successResponse('create', $data, 201);
@@ -64,8 +64,8 @@ class LocationController extends Controller
      */
     public function show($id)
     {
-        $location = Location::findOrFail($id);
-        return $this->successResponse('read', new LocationResource($location), 200);
+        $department = Department::findOrFail($id);
+        return $this->successResponse('read', new DepartmentResource($department), 200);
     }
 
     /**
@@ -75,15 +75,15 @@ class LocationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(LocationUpdateRequest $request, $id)
+    public function update(DepartmentUpdateRequest $request, $id)
     {
         $validated = $request->validated();
         $data = DB::transaction(function () use ($id, $validated) {
-            $location = Location::findOrFail($id);
-            $location->fill($validated);
-            $location->slug = $location->code . '-' . implode('-', explode(' ', $validated['name']));
-            $location->save();
-            return $location;
+            $department = Department::findOrFail($id);
+            $department->fill($validated);
+            $department->slug = $department->code . '-' . implode('-', explode(' ', $validated['name']));
+            $department->save();
+            return $department;
         });
 
         return $this->successResponse('update', $data, 200);
@@ -98,8 +98,8 @@ class LocationController extends Controller
     public function destroy($id)
     {
         $data = DB::transaction(function () use ($id) {
-            $location = Location::findOrFail($id);
-            return $location;
+            $department = Department::findOrFail($id);
+            return $department;
         });
 
         return $this->successResponse('delete', $data, 200);
@@ -109,8 +109,8 @@ class LocationController extends Controller
     {
         $ids = request('ids');
         $data = DB::transaction(function () use ($ids) {
-            $locations = Location::destroy($ids);
-            return $locations;
+            $departments = Department::destroy($ids);
+            return $departments;
         });
 
         return $this->successResponse('delete', $data, 200);

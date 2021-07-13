@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class LocationResource extends JsonResource
+class DepartmentResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,17 +19,8 @@ class LocationResource extends JsonResource
             "code" => $this->code,
             "slug" => $this->slug,
             "name" => $this->name,
-            "address" => $this->address,
-            "street" => $this->street,
-            "district" => $this->district,
-            "city" => $this->city,
-            "province" => $this->province,
-            "country" => $this->country,
-            "postal_code" => $this->postal_code,
-            "latitude" => $this->latitude,
-            "longitude" => $this->longitude,
             "is_active" => $this->is_active,
-            "location_id" => $this->location_id,
+            "department_id" => $this->department_id,
             "created_at" => $this->created_at,
             "updated_at" => $this->updated_at,
             "deleted_at" => $this->deleted_at
