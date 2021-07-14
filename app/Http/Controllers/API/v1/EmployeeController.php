@@ -24,11 +24,20 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = User::with(['profile' => function ($query) {
-            $query->with(['location', 'department']);
-        }])->where('profile_type', 'App\Models\Employee')->paginate(10);
+        // $employees = User::with(['profile' => function ($query) {
+        //     $query->with(['user', 'department']);
+        // }])->where('profile_type', 'App\Models\Employee')->paginate(10);
 
-        return UserResource::collection($employees);
+        // return UserResource::collection($employees);
+
+        $sortBy = request('sortBy') ?? "code";
+        $sortType = request('sortType') ?? "asc";
+        $itemsPerPage = request('itemsPerPage') ?? 10;
+
+        $users = User::orderBy($sortBy, $sortType)->paginate($itemsPerPage);
+
+        return $this->successResponse('read', $users, 200);
+        // return $this->successResponse('Success', UserResource::collection($users), 200);
     }
 
     /**
@@ -41,10 +50,19 @@ class EmployeeController extends Controller
     {
         $validated = $request->validated();
         $data = DB::transaction(function () use ($validated) {
+            $code = 'LOC' . date("YmdHis");
+            $slug = $code . '-' . implode('-', explode(' ', $validated['name']));
+
+            $user = new User();
+            $user->fill($validated);
+            $user->code = $code;
+            $user->slug = $slug;
+            $user->save();
+
+            return $user;
         });
 
-        $message = "Employee created successfully";
-        return $this->successResponse($data, $message, 201);
+        return $this->successResponse('create', $data, 201);
     }
 
     /**
@@ -55,9 +73,8 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        $employee = Employee::findOrFail($id);
-        $message = "Employee retrieved successfully.";
-        return $this->successResponse(new EmployeeResource($employee), $message, 200);
+        $user = User::findOrFail($id);
+        return $this->successResponse('read', new UserResource($user), 200);
     }
 
     /**
@@ -70,9 +87,15 @@ class EmployeeController extends Controller
     public function update(EmployeeUpdateRequest $request, $id)
     {
         $validated = $request->validated();
+        $data = DB::transaction(function () use ($id, $validated) {
+            $user = User::findOrFail($id);
+            $user->fill($validated);
+            $user->slug = $user->code . '-' . implode('-', explode(' ', $validated['name']));
+            $user->save();
+            return $user;
+        });
 
-        $message = "Employee updated successfully";
-        return $this->successResponse($validated, $message, 200);
+        return $this->successResponse('update', $data, 200);
     }
 
     /**
@@ -84,11 +107,21 @@ class EmployeeController extends Controller
     public function destroy($id)
     {
         $data = DB::transaction(function () use ($id) {
-            // $data = Employee::findOrFail(explode(",", $id));
-            // return $data;
+            $user = User::findOrFail($id);
+            return $user;
         });
 
-        $message = "Employee(s) deleted successfully";
-        return $this->successResponse($data, $message, 200);
+        return $this->successResponse('delete', $data, 200);
+    }
+
+    public function destroyMany()
+    {
+        $ids = request('ids');
+        $data = DB::transaction(function () use ($ids) {
+            $users = User::destroy($ids);
+            return $users;
+        });
+
+        return $this->successResponse('delete', $data, 200);
     }
 }

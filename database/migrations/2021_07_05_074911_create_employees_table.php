@@ -23,9 +23,9 @@ class CreateEmployeesTable extends Migration
             $table->string('suffix')->nullable();
             $table->enum('gender', ['male', 'female']);
             $table->date("birthdate")->nullable();
-            $table->string("business_phone")->nullable();
-            $table->string("home_phone")->nullable();
-            $table->string("mobile_phone")->nullable();
+            $table->string("business_phone", 30)->nullable();
+            $table->string("home_phone", 30)->nullable();
+            $table->string("mobile_phone", 30)->nullable();
             $table->string('job_title');
             $table->string("address");
             $table->string("street")->nullable();
@@ -33,13 +33,12 @@ class CreateEmployeesTable extends Migration
             $table->string("city");
             $table->string("province");
             $table->string("country");
-            $table->string("postal_code");
+            $table->string("postal_code", 10);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
             $table->softDeletes();
             $table->foreignId('location_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('department_id')->nullable()->constrained()->onDelete('cascade');
-            
         });
     }
 
