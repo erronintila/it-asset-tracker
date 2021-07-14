@@ -27,7 +27,11 @@ class CustomerController extends Controller
         $sortType = request('sortType') ?? "asc";
         $itemsPerPage = request('itemsPerPage') ?? 10;
 
-        $users = User::orderBy($sortBy, $sortType)->paginate($itemsPerPage);
+        $users = User::with(['profile' => function ($query) {
+            $query->with(['user']);
+        }])->where('profile_type', 'App\Models\Customer')
+            ->orderBy($sortBy, $sortType)
+            ->paginate($itemsPerPage);
 
         return $this->successResponse('read', $users, 200);
         // return $this->successResponse('Success', UserResource::collection($users), 200);
