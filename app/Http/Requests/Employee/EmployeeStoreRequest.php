@@ -25,8 +25,8 @@ class EmployeeStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => ['nullable', 'string', 'max:250', 'unique:suppliers,code'],
-            'slug' => ['nullable', 'string', 'max:250', 'unique:suppliers,slug'],
+            'code' => ['nullable', 'string', 'max:250', 'unique:employees,code'],
+            'slug' => ['nullable', 'string', 'max:250', 'unique:employees,slug'],
             'first_name' => ['required', 'string', 'max:250'],
             'middle_name' => ['required', 'string', 'max:250'],
             'last_name' => ['required', 'string', 'max:250'],

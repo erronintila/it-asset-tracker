@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Customer extends Model
 {
     use SoftDeletes;
-    
+
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | LARAVEL MODEL CONFIGURATION
@@ -39,6 +39,11 @@ class Customer extends Model
     public function user()
     {
         return $this->morphOne('App\Models\User', 'profile');
+    }
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
     }
 
     /*
