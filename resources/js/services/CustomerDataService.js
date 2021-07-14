@@ -21,6 +21,10 @@ class CustomerDataService {
     delete(id, data) {
         return axios.delete(`/api/v1/customers/${id}`, data);
     }
+
+    deleteMany(data) {
+        return axios.delete(`/api/v1/customers/multiple`, data);
+    }
 }
 
 export default new CustomerDataService();
