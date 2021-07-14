@@ -5,11 +5,14 @@ namespace App\Http\Controllers\API\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Traits\HttpResponseMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
 {
+    use HttpResponseMessage;
+
     /**
      * Display a listing of the resource.
      *

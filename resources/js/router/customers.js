@@ -16,6 +16,14 @@ const customer_routes = [
         }
     },
     {
+        path: "/customers/:id/edit",
+        component: () => import("../pages/customers/Edit"),
+        name: "customers.edit",
+        meta: {
+            auth: true
+        }
+    },
+    {
         path: "/customers/:id",
         component: () => import("../pages/customers/Show"),
         name: "customers.show",
