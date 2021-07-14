@@ -28,10 +28,10 @@ class EmployeeStoreRequest extends FormRequest
             'code' => ['nullable', 'string', 'max:250', 'unique:employees,code'],
             'slug' => ['nullable', 'string', 'max:250', 'unique:employees,slug'],
             'first_name' => ['required', 'string', 'max:250'],
-            'middle_name' => ['required', 'string', 'max:250'],
+            'middle_name' => ['nullable', 'string', 'max:250'],
             'last_name' => ['required', 'string', 'max:250'],
-            'suffix' => ['required', 'string', 'max:250'],
-            'gender' => ['required', 'string', Rule::in(['male', 'female'])],
+            'suffix' => ['nullable', 'string', 'max:250'],
+            'gender' => ['required', 'string', Rule::in(['Male', 'Female'])],
             'birthdate' => ['required', 'date'],
             'business_phone' => ['nullable', 'string', 'max:30'],
             'home_phone' => ['nullable', 'string', 'max:30'],
@@ -47,10 +47,12 @@ class EmployeeStoreRequest extends FormRequest
             'latitude' => ['nullable', 'string', 'max:250'],
             'longitude' => ['nullable', 'string', 'max:250'],
             'is_active' => ['required', 'boolean'],
+            'image' => ['nullable', 'string'],
             'location_id' => ['nullable', 'integer', 'max:20'],
-            'department_id' => ['nullable', 'integer', 'max:20'],
-            'username' => ['required', 'string', 'max:250'],
-            'email' => ['required', 'string', 'max:250'],
+            'department_id' => ['required', 'integer', 'max:20'],
+            'username' => ['required', 'string', 'max:250', 'unique:users,username'],
+            'email' => ['required', 'string', 'max:250', 'unique:users,email'],
+
         ];
     }
 }

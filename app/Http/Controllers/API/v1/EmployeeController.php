@@ -7,10 +7,13 @@ use App\Http\Requests\Employee\EmployeeStoreRequest;
 use App\Http\Requests\Employee\EmployeeUpdateRequest;
 use App\Http\Resources\EmployeeResource;
 use App\Http\Resources\UserResource;
+use App\Models\Department;
 use App\Models\Employee;
+use App\Models\Location;
 use App\Models\User;
 use App\Traits\HttpResponseMessage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
@@ -54,16 +57,33 @@ class EmployeeController extends Controller
     {
         $validated = $request->validated();
         $data = DB::transaction(function () use ($validated) {
-            $code = 'LOC' . date("YmdHis");
-            $slug = $code . '-' . implode('-', explode(' ', $validated['name']));
+            $code = 'EMP' . date("YmdHis");
+            $slug = $code . '-' . implode('-', explode(' ', ($validated['first_name'] . ' ' . $validated['last_name'])));
+
+            $department = Department::findOrFail($validated['department_id']);
 
             $user = new User();
-            $user->fill($validated);
-            $user->code = $code;
-            $user->slug = $slug;
-            $user->save();
+            $user->type = "employee";
+            $user->name = $validated['first_name'] . ' ' . $validated['last_name'];
+            $user->username = $code;
+            $user->email = $validated['email'] ?? null;
+            $user->password = bcrypt('password');
 
-            return $user;
+            $employee = new Employee();
+            $employee->fill(Arr::except($validated, ['email', 'username']));
+            $employee->code = $code;
+            $employee->slug = $slug;
+
+            $employee->department()->associate($department);
+            if ($validated['location_id']) {
+                $location = Location::findOrFail($validated['location_id']);
+                $employee->location()->associate($location);
+            }
+
+            $employee->save();
+            $employee->user()->save($user);
+
+            return $employee;
         });
 
         return $this->successResponse('create', $data, 201);

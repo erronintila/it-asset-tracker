@@ -47,8 +47,11 @@ class EmployeeUpdateRequest extends FormRequest
             'latitude' => ['nullable', 'string', 'max:250'],
             'longitude' => ['nullable', 'string', 'max:250'],
             'is_active' => ['required', 'boolean'],
+            'image' => ['nullable', 'string'],
             'location_id' => ['nullable', 'integer', 'max:20'],
-            'department_id' => ['nullable', 'integer', 'max:20'],
+            'department_id' => ['required', 'integer', 'max:20'],
+            'username' => ['required', 'string', 'max:250', Rule::unique('users', 'username')->ignore($this->employee)],
+            'email' => ['required', 'string', 'max:250', Rule::unique('users', 'email')->ignore($this->employee)],
         ];
     }
 }

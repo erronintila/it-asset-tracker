@@ -10,69 +10,154 @@
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
                                 <v-text-field
-                                    v-model="form.name"
-                                    label="Name"
+                                    v-model="form.department_id"
+                                    label="Department"
                                     outlined
                                     clearable
-                                    hint="Ex. XYZ Company"
-                                    :error-messages="errors.name[0]"
-                                    @input="errors.name = []"
+                                    hint="Ex. Sales and Marketing"
+                                    :error-messages="errors.department_id[0]"
+                                    @input="errors.department_id = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.email"
-                                    label="Email Address"
+                                    v-model="form.job_title"
+                                    label="Job Title"
                                     outlined
                                     clearable
-                                    hint="Ex. sample@sample.com"
-                                    :error-messages="errors.email[0]"
-                                    @input="errors.email = []"
+                                    hint="Ex. Sales Representative"
+                                    :error-messages="errors.job_title[0]"
+                                    @input="errors.job_title = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.street"
-                                    label="Street"
+                                    v-model="form.first_name"
+                                    label="First Name"
                                     outlined
                                     clearable
-                                    hint="Ex. Balete Street"
-                                    :error-messages="errors.street[0]"
-                                    @input="errors.street = []"
+                                    hint="Ex. Juan"
+                                    :error-messages="errors.first_name[0]"
+                                    @input="errors.first_name = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.district"
-                                    label="Fax"
+                                    v-model="form.middle_name"
+                                    label="Middle Name"
                                     outlined
                                     clearable
-                                    hint="Ex. Barangay Poblacion"
-                                    :error-messages="errors.district[0]"
-                                    @input="errors.district = []"
+                                    hint="Ex. Dela Cruz"
+                                    :error-messages="errors.middle_name[0]"
+                                    @input="errors.middle_name = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.contact_person"
-                                    label="Contact Person"
+                                    v-model="form.last_name"
+                                    label="Last Name"
                                     outlined
                                     clearable
-                                    hint="Ex. Juan Dela Cruz"
-                                    :error-messages="errors.contact_person[0]"
-                                    @input="errors.contact_person = []"
+                                    hint="Ex. Dela Cruz"
+                                    :error-messages="errors.last_name[0]"
+                                    @input="errors.last_name = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.phone1"
-                                    label="Phone No. (1)"
+                                    v-model="form.suffix"
+                                    label="Suffix"
                                     outlined
                                     clearable
-                                    hint="Ex. 09XXXXXXXXX"
-                                    :error-messages="errors.contact_person[0]"
-                                    @input="errors.contact_person = []"
+                                    hint="Ex. Jr."
+                                    :error-messages="errors.suffix[0]"
+                                    @input="errors.suffix = []"
+                                ></v-text-field>
+                                <v-select
+                                    v-model="form.gender"
+                                    :items="['Male', 'Female']"
+                                    label="Gender"
+                                    outlined
+                                    :error-messages="errors.gender[0]"
+                                    @input="errors.gender = []"
+                                ></v-select>
+                                <v-dialog
+                                    ref="dialog"
+                                    v-model="birthdateModal"
+                                    :return-value.sync="form.birthdate"
+                                    persistent
+                                    width="290px"
+                                >
+                                    <template v-slot:activator="{ on, attrs }">
+                                        <v-text-field
+                                            v-model="form.birthdate"
+                                            label="Birthdate"
+                                            readonly
+                                            v-bind="attrs"
+                                            v-on="on"
+                                            outlined
+                                            hint="Ex. 2000-01-01"
+                                            :error-messages="
+                                                errors.birthdate[0]
+                                            "
+                                            @input="errors.birthdate = []"
+                                        ></v-text-field>
+                                    </template>
+                                    <v-date-picker
+                                        v-model="form.birthdate"
+                                        :max="maxDate"
+                                        scrollable
+                                        @input="errors.birthdate = []"
+                                    >
+                                        <v-spacer></v-spacer>
+                                        <v-btn
+                                            text
+                                            color="primary"
+                                            @click="birthdateModal = false"
+                                        >
+                                            Cancel
+                                        </v-btn>
+                                        <v-btn
+                                            text
+                                            color="primary"
+                                            @click="
+                                                $refs.dialog.save(
+                                                    form.birthdate
+                                                )
+                                            "
+                                        >
+                                            OK
+                                        </v-btn>
+                                    </v-date-picker>
+                                </v-dialog>
+                                <v-text-field
+                                    v-model="form.location_id"
+                                    label="Location"
+                                    outlined
+                                    clearable
+                                    hint="Ex. Office 1"
+                                    :error-messages="errors.location_id[0]"
+                                    @input="errors.location_id = []"
+                                ></v-text-field>
+                                <v-text-field
+                                    v-model="form.mobile_phone"
+                                    label="Mobile Phone No."
+                                    outlined
+                                    clearable
                                     type="number"
+                                    hint="Ex. 09XXXXXXXXX"
+                                    :error-messages="errors.mobile_phone[0]"
+                                    @input="errors.mobile_phone = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.phone2"
-                                    label="Phone No. (2)"
+                                    v-model="form.home_phone"
+                                    label="Home Phone No."
                                     outlined
                                     clearable
-                                    hint="Ex. 09XXXXXXXXX"
-                                    :error-messages="errors.contact_person[0]"
-                                    @input="errors.contact_person = []"
                                     type="number"
+                                    hint="Ex. 09XXXXXXXXX"
+                                    :error-messages="errors.home_phone[0]"
+                                    @input="errors.home_phone = []"
+                                ></v-text-field>
+                                <v-text-field
+                                    v-model="form.business_phone"
+                                    label="Work Phone No."
+                                    outlined
+                                    clearable
+                                    type="number"
+                                    hint="Ex. 09XXXXXXXXX"
+                                    :error-messages="errors.business_phone[0]"
+                                    @input="errors.business_phone = []"
                                 ></v-text-field>
                             </v-col>
                         </v-row>
@@ -151,6 +236,24 @@
                                     type="number"
                                     @input="errors.postal_code = []"
                                 ></v-text-field>
+                                <v-text-field
+                                    v-model="form.latitude"
+                                    label="Latitude"
+                                    outlined
+                                    clearable
+                                    hint="Ex. 6.1164 N"
+                                    :error-messages="errors.latitude[0]"
+                                    @input="errors.latitude = []"
+                                ></v-text-field>
+                                <v-text-field
+                                    v-model="form.longitude"
+                                    label="Longitude"
+                                    outlined
+                                    clearable
+                                    hint="Ex. 125.1716 E"
+                                    :error-messages="errors.longitude[0]"
+                                    @input="errors.longitude = []"
+                                ></v-text-field>
                             </v-col>
                         </v-row>
                     </v-card-text>
@@ -160,11 +263,37 @@
             <v-col cols="12" md="4">
                 <v-card flat>
                     <v-card-title>
-                        Other Information
+                        Account Information
                     </v-card-title>
                     <v-card-text>
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
+                                <v-text-field
+                                    v-model="form.email"
+                                    label="Email"
+                                    outlined
+                                    clearable
+                                    hint="Ex. juandelacruz@gmail.com"
+                                    :error-messages="errors.email[0]"
+                                    @input="errors.email = []"
+                                ></v-text-field>
+                                <v-text-field
+                                    v-model="form.username"
+                                    label="Username"
+                                    outlined
+                                    clearable
+                                    hint="Ex. juandelacruz"
+                                    :error-messages="errors.username[0]"
+                                    @input="errors.username = []"
+                                ></v-text-field>
+                                <v-text-field
+                                    v-model="form.image"
+                                    label="Image"
+                                    outlined
+                                    clearable
+                                    :error-messages="errors.image[0]"
+                                    @input="errors.image = []"
+                                ></v-text-field>
                                 <v-textarea
                                     v-model="form.notes"
                                     label="Notes"
@@ -210,13 +339,16 @@ export default {
                 return {
                     code: "",
                     slug: "",
-                    name: "",
-                    contact_person: "",
-                    phone1: "",
-                    phone2: "",
-                    email: "",
-                    website: "",
-                    fax: "",
+                    first_name: "",
+                    middle_name: "",
+                    last_name: "",
+                    suffix: "",
+                    gender: "",
+                    birthdate: "",
+                    business_phone: "",
+                    home_phone: "",
+                    mobile_phone: "",
+                    job_title: "",
                     address: "",
                     street: "",
                     district: "",
@@ -224,8 +356,15 @@ export default {
                     province: "",
                     country: "",
                     postal_code: "",
+                    latitude: "",
+                    longitude: "",
                     is_active: true,
-                    notes: ""
+                    location_id: "",
+                    department_id: "",
+                    notes: "",
+                    email: "",
+                    username: "",
+                    image: ""
                 };
             }
         },
@@ -235,13 +374,16 @@ export default {
                 return {
                     code: [],
                     slug: [],
-                    name: [],
-                    contact_person: [],
-                    phone1: [],
-                    phone2: [],
-                    email: [],
-                    website: [],
-                    fax: [],
+                    first_name: [],
+                    middle_name: [],
+                    last_name: [],
+                    suffix: [],
+                    gender: [],
+                    birthdate: [],
+                    business_phone: [],
+                    home_phone: [],
+                    mobile_phone: [],
+                    job_title: [],
                     address: [],
                     street: [],
                     district: [],
@@ -249,8 +391,15 @@ export default {
                     province: [],
                     country: [],
                     postal_code: [],
-                    is_active: [],
-                    notes: []
+                    latitude: [],
+                    longitude: [],
+                    is_active: true,
+                    location_id: [],
+                    department_id: [],
+                    notes: [],
+                    email: [],
+                    username: [],
+                    image: []
                 };
             }
         },
@@ -260,13 +409,16 @@ export default {
                 return {
                     code: [],
                     slug: [],
-                    name: [],
-                    contact_person: [],
-                    phone1: [],
-                    phone2: [],
-                    email: [],
-                    website: [],
-                    fax: [],
+                    first_name: [],
+                    middle_name: [],
+                    last_name: [],
+                    suffix: [],
+                    gender: [],
+                    birthdate: [],
+                    business_phone: [],
+                    home_phone: [],
+                    mobile_phone: [],
+                    job_title: [],
                     address: [],
                     street: [],
                     district: [],
@@ -274,8 +426,15 @@ export default {
                     province: [],
                     country: [],
                     postal_code: [],
-                    is_active: [],
-                    notes: []
+                    latitude: [],
+                    longitude: [],
+                    is_active: true,
+                    location_id: [],
+                    department_id: [],
+                    notes: [],
+                    email: [],
+                    username: [],
+                    image: []
                 };
             }
         }
@@ -286,13 +445,16 @@ export default {
             form: {
                 code: "",
                 slug: "",
-                name: "",
-                contact_person: "",
-                phone1: "",
-                phone2: "",
-                email: "",
-                website: "",
-                fax: "",
+                first_name: "",
+                middle_name: "",
+                last_name: "",
+                suffix: "",
+                gender: "",
+                birthdate: "",
+                business_phone: "",
+                home_phone: "",
+                mobile_phone: "",
+                job_title: "",
                 address: "",
                 street: "",
                 district: "",
@@ -300,8 +462,15 @@ export default {
                 province: "",
                 country: "",
                 postal_code: "",
+                latitude: "",
+                longitude: "",
                 is_active: true,
-                notes: ""
+                location_id: "",
+                department_id: "",
+                notes: "",
+                email: "",
+                username: "",
+                image: ""
             }
         };
     },

@@ -1,8 +1,8 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[3],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/locations/Form.vue?vue&type=script&lang=js&":
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/customers/Form.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/locations/Form.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/customers/Form.vue?vue&type=script&lang=js& ***!
   \********************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -168,15 +168,115 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    locationForm: {
+    customerForm: {
       type: Object,
       "default": function _default() {
         return {
           code: "",
           slug: "",
           name: "",
+          contact_person: "",
+          phone1: "",
+          phone2: "",
+          email: "",
+          website: "",
+          fax: "",
           address: "",
           street: "",
           district: "",
@@ -186,7 +286,9 @@ __webpack_require__.r(__webpack_exports__);
           postal_code: "",
           latitude: "",
           longitude: "",
+          organization_type: "",
           is_active: true,
+          is_company: false,
           notes: "",
           location_id: ""
         };
@@ -199,6 +301,12 @@ __webpack_require__.r(__webpack_exports__);
           code: [],
           slug: [],
           name: [],
+          contact_person: [],
+          phone1: [],
+          phone2: [],
+          email: [],
+          website: [],
+          fax: [],
           address: [],
           street: [],
           district: [],
@@ -208,7 +316,9 @@ __webpack_require__.r(__webpack_exports__);
           postal_code: [],
           latitude: [],
           longitude: [],
+          organization_type: [],
           is_active: [],
+          is_company: [],
           notes: [],
           location_id: []
         };
@@ -221,6 +331,12 @@ __webpack_require__.r(__webpack_exports__);
           code: [],
           slug: [],
           name: [],
+          contact_person: [],
+          phone1: [],
+          phone2: [],
+          email: [],
+          website: [],
+          fax: [],
           address: [],
           street: [],
           district: [],
@@ -230,7 +346,9 @@ __webpack_require__.r(__webpack_exports__);
           postal_code: [],
           latitude: [],
           longitude: [],
+          organization_type: [],
           is_active: [],
+          is_company: [],
           notes: [],
           location_id: []
         };
@@ -244,6 +362,12 @@ __webpack_require__.r(__webpack_exports__);
         code: "",
         slug: "",
         name: "",
+        contact_person: "",
+        phone1: "",
+        phone2: "",
+        email: "",
+        website: "",
+        fax: "",
         address: "",
         street: "",
         district: "",
@@ -253,8 +377,10 @@ __webpack_require__.r(__webpack_exports__);
         postal_code: "",
         latitude: "",
         longitude: "",
+        organization_type: "",
         is_active: true,
-        location_id: ""
+        is_company: false,
+        notes: ""
       }
     };
   },
@@ -279,7 +405,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   watch: {
-    locationForm: {
+    customerForm: {
       immediate: true,
       handler: function handler(newValue, oldValue) {
         this.form = newValue;
@@ -290,9 +416,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/locations/Form.vue?vue&type=template&id=eb468fc4&":
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/customers/Form.vue?vue&type=template&id=be118df2&":
 /*!************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/locations/Form.vue?vue&type=template&id=eb468fc4& ***!
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/customers/Form.vue?vue&type=template&id=be118df2& ***!
   \************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -324,7 +450,7 @@ var render = function() {
         [
           _c(
             "v-col",
-            { attrs: { cols: "12", md: "6" } },
+            { attrs: { cols: "12", md: "4" } },
             [
               _c(
                 "v-card",
@@ -352,7 +478,7 @@ var render = function() {
                                   label: "Name",
                                   outlined: "",
                                   clearable: "",
-                                  hint: "Ex. Warehouse1",
+                                  hint: "Ex. XYZ Company",
                                   "error-messages": _vm.errors.name[0]
                                 },
                                 on: {
@@ -369,6 +495,182 @@ var render = function() {
                                 }
                               }),
                               _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Email Address",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. sample@sample.com",
+                                  "error-messages": _vm.errors.email[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.email = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.email,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "email", $$v)
+                                  },
+                                  expression: "form.email"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Contact Person",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. Juan Dela Cruz",
+                                  "error-messages": _vm.errors.contact_person[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.contact_person = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.contact_person,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "contact_person", $$v)
+                                  },
+                                  expression: "form.contact_person"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Phone No. (1)",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. 09XXXXXXXXX",
+                                  "error-messages":
+                                    _vm.errors.contact_person[0],
+                                  type: "number"
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.contact_person = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.phone1,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "phone1", $$v)
+                                  },
+                                  expression: "form.phone1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Phone No. (2)",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. 09XXXXXXXXX",
+                                  "error-messages":
+                                    _vm.errors.contact_person[0],
+                                  type: "number"
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.contact_person = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.phone2,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "phone2", $$v)
+                                  },
+                                  expression: "form.phone2"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Fax",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. 1 323 555 1234",
+                                  "error-messages": _vm.errors.fax[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.fax = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.fax,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "fax", $$v)
+                                  },
+                                  expression: "form.fax"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Website",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. www.sample.com",
+                                  "error-messages": _vm.errors.website[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.website = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.website,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "website", $$v)
+                                  },
+                                  expression: "form.website"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-col",
+            { attrs: { cols: "12", md: "4" } },
+            [
+              _c(
+                "v-card",
+                { attrs: { flat: "" } },
+                [
+                  _c("v-card-title", [
+                    _vm._v(
+                      "\n                    Address Information\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-text",
+                    [
+                      _c(
+                        "v-row",
+                        { staticClass: "d-flex justify-center" },
+                        [
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12" } },
+                            [
                               _c("v-text-field", {
                                 attrs: {
                                   label: "Address",
@@ -521,48 +823,8 @@ var render = function() {
                                   },
                                   expression: "form.postal_code"
                                 }
-                              })
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-col",
-            { attrs: { cols: "12", md: "6" } },
-            [
-              _c(
-                "v-card",
-                { attrs: { flat: "" } },
-                [
-                  _c("v-card-title", [
-                    _vm._v(
-                      "\n                    Other Information\n                "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "v-card-text",
-                    [
-                      _c(
-                        "v-row",
-                        { staticClass: "d-flex justify-center" },
-                        [
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "12" } },
-                            [
+                              }),
+                              _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
                                   label: "Latitude",
@@ -605,11 +867,74 @@ var render = function() {
                                   },
                                   expression: "form.longitude"
                                 }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-col",
+            { attrs: { cols: "12", md: "4" } },
+            [
+              _c(
+                "v-card",
+                { attrs: { flat: "" } },
+                [
+                  _c("v-card-title", [
+                    _vm._v(
+                      "\n                    Other Information\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-text",
+                    [
+                      _c(
+                        "v-row",
+                        { staticClass: "d-flex justify-center" },
+                        [
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12" } },
+                            [
+                              _c("v-select", {
+                                attrs: {
+                                  label: "Organization Type",
+                                  items: ["Walkin", "Private", "Government"],
+                                  outlined: "",
+                                  clearable: "",
+                                  "error-messages":
+                                    _vm.errors.organization_type[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.organization_type = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.organization_type,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "organization_type", $$v)
+                                  },
+                                  expression: "form.organization_type"
+                                }
                               }),
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Parent Location",
+                                  label: "Location",
                                   outlined: "",
                                   clearable: "",
                                   "error-messages": _vm.errors.location_id[0]
@@ -622,11 +947,7 @@ var render = function() {
                                 model: {
                                   value: _vm.form.location_id,
                                   callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.form,
-                                      "location_id",
-                                      _vm._n($$v)
-                                    )
+                                    _vm.$set(_vm.form, "location_id", $$v)
                                   },
                                   expression: "form.location_id"
                                 }
@@ -652,7 +973,43 @@ var render = function() {
                                   },
                                   expression: "form.notes"
                                 }
-                              })
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "v-sheet",
+                                { staticClass: "ml-4" },
+                                [
+                                  _c("v-switch", {
+                                    attrs: { inset: "", label: "Active" },
+                                    model: {
+                                      value: _vm.form.is_active,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "is_active", $$v)
+                                      },
+                                      expression: "form.is_active"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-sheet",
+                                { staticClass: "ml-4" },
+                                [
+                                  _c("v-switch", {
+                                    attrs: { inset: "", label: "Company" },
+                                    model: {
+                                      value: _vm.form.is_company,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "is_company", $$v)
+                                      },
+                                      expression: "form.is_company"
+                                    }
+                                  })
+                                ],
+                                1
+                              )
                             ],
                             1
                           )
@@ -667,37 +1024,32 @@ var render = function() {
                     "v-card-actions",
                     [
                       _c(
-                        "v-sheet",
-                        { staticClass: "ml-4" },
+                        "v-row",
                         [
-                          _c("v-switch", {
-                            attrs: { inset: "", label: "Active" },
-                            model: {
-                              value: _vm.form.is_active,
-                              callback: function($$v) {
-                                _vm.$set(_vm.form, "is_active", $$v)
-                              },
-                              expression: "form.is_active"
-                            }
-                          })
+                          _c("v-spacer"),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { staticClass: "d-flex justify-end" },
+                            [
+                              _c(
+                                "v-btn",
+                                {
+                                  staticClass: "mr-2",
+                                  attrs: { color: "primary", large: "" },
+                                  on: { click: _vm.onSave }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                Save\n                            "
+                                  )
+                                ]
+                              )
+                            ],
+                            1
+                          )
                         ],
                         1
-                      ),
-                      _vm._v(" "),
-                      _c("v-spacer"),
-                      _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        {
-                          staticClass: "mr-2",
-                          attrs: { color: "primary", large: "" },
-                          on: { click: _vm.onSave }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        Save\n                    "
-                          )
-                        ]
                       )
                     ],
                     1
@@ -722,17 +1074,17 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/pages/locations/Form.vue":
+/***/ "./resources/js/pages/customers/Form.vue":
 /*!***********************************************!*\
-  !*** ./resources/js/pages/locations/Form.vue ***!
+  !*** ./resources/js/pages/customers/Form.vue ***!
   \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Form_vue_vue_type_template_id_eb468fc4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=template&id=eb468fc4& */ "./resources/js/pages/locations/Form.vue?vue&type=template&id=eb468fc4&");
-/* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./resources/js/pages/locations/Form.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Form_vue_vue_type_template_id_be118df2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=template&id=be118df2& */ "./resources/js/pages/customers/Form.vue?vue&type=template&id=be118df2&");
+/* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./resources/js/pages/customers/Form.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -743,8 +1095,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Form_vue_vue_type_template_id_eb468fc4___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Form_vue_vue_type_template_id_eb468fc4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Form_vue_vue_type_template_id_be118df2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Form_vue_vue_type_template_id_be118df2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -754,46 +1106,46 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/pages/locations/Form.vue"
+component.options.__file = "resources/js/pages/customers/Form.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/pages/locations/Form.vue?vue&type=script&lang=js&":
+/***/ "./resources/js/pages/customers/Form.vue?vue&type=script&lang=js&":
 /*!************************************************************************!*\
-  !*** ./resources/js/pages/locations/Form.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/js/pages/customers/Form.vue?vue&type=script&lang=js& ***!
   \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/locations/Form.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/customers/Form.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/pages/locations/Form.vue?vue&type=template&id=eb468fc4&":
+/***/ "./resources/js/pages/customers/Form.vue?vue&type=template&id=be118df2&":
 /*!******************************************************************************!*\
-  !*** ./resources/js/pages/locations/Form.vue?vue&type=template&id=eb468fc4& ***!
+  !*** ./resources/js/pages/customers/Form.vue?vue&type=template&id=be118df2& ***!
   \******************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_eb468fc4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=template&id=eb468fc4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/locations/Form.vue?vue&type=template&id=eb468fc4&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_eb468fc4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_be118df2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=template&id=be118df2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/customers/Form.vue?vue&type=template&id=be118df2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_be118df2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_eb468fc4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_be118df2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "./resources/js/services/LocationDataService.js":
+/***/ "./resources/js/services/CustomerDataService.js":
 /*!******************************************************!*\
-  !*** ./resources/js/services/LocationDataService.js ***!
+  !*** ./resources/js/services/CustomerDataService.js ***!
   \******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -811,47 +1163,47 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 // import http from "../http-common";
 
 
-var LocationDataService = /*#__PURE__*/function () {
-  function LocationDataService() {
-    _classCallCheck(this, LocationDataService);
+var CustomerDataService = /*#__PURE__*/function () {
+  function CustomerDataService() {
+    _classCallCheck(this, CustomerDataService);
   }
 
-  _createClass(LocationDataService, [{
+  _createClass(CustomerDataService, [{
     key: "getAll",
     value: function getAll(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/locations", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/customers", data);
     }
   }, {
     key: "show",
     value: function show(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/locations/".concat(id), data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/customers/".concat(id), data);
     }
   }, {
     key: "store",
     value: function store(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/locations", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/customers", data);
     }
   }, {
     key: "update",
     value: function update(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/locations/".concat(id), data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/customers/".concat(id), data);
     }
   }, {
     key: "delete",
     value: function _delete(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/locations/".concat(id), data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/customers/".concat(id), data);
     }
   }, {
     key: "deleteMany",
     value: function deleteMany(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/locations/multiple", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/customers/multiple", data);
     }
   }]);
 
-  return LocationDataService;
+  return CustomerDataService;
 }();
 
-/* harmony default export */ __webpack_exports__["default"] = (new LocationDataService());
+/* harmony default export */ __webpack_exports__["default"] = (new CustomerDataService());
 
 /***/ })
 

@@ -36,11 +36,12 @@ class CreateEmployeesTable extends Migration
             $table->string("postal_code", 10);
             $table->string("latitude")->nullable();
             $table->string("longitude")->nullable();
+            $table->text("image")->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
             $table->softDeletes();
             $table->foreignId('location_id')->nullable()->constrained()->onDelete('cascade');
-            $table->foreignId('department_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('department_id')->constrained()->onDelete('cascade');
         });
     }
 
