@@ -51,8 +51,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         province: [],
         country: [],
         postal_code: [],
-        is_active: true,
-        notes: []
+        latitude: [],
+        longitude: [],
+        organization_type: [],
+        is_active: [],
+        is_company: [],
+        notes: [],
+        location_id: []
       }
     };
   },

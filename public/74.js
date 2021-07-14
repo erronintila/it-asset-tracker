@@ -212,6 +212,56 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     customerForm: {
@@ -234,8 +284,13 @@ __webpack_require__.r(__webpack_exports__);
           province: "",
           country: "",
           postal_code: "",
+          latitude: "",
+          longitude: "",
+          organization_type: "",
           is_active: true,
-          notes: ""
+          is_company: false,
+          notes: "",
+          location_id: ""
         };
       }
     },
@@ -259,8 +314,13 @@ __webpack_require__.r(__webpack_exports__);
           province: [],
           country: [],
           postal_code: [],
-          is_active: true,
-          notes: []
+          latitude: [],
+          longitude: [],
+          organization_type: [],
+          is_active: [],
+          is_company: [],
+          notes: [],
+          location_id: []
         };
       }
     },
@@ -284,8 +344,13 @@ __webpack_require__.r(__webpack_exports__);
           province: [],
           country: [],
           postal_code: [],
-          is_active: true,
-          notes: []
+          latitude: [],
+          longitude: [],
+          organization_type: [],
+          is_active: [],
+          is_company: [],
+          notes: [],
+          location_id: []
         };
       }
     }
@@ -310,7 +375,11 @@ __webpack_require__.r(__webpack_exports__);
         province: "",
         country: "",
         postal_code: "",
+        latitude: "",
+        longitude: "",
+        organization_type: "",
         is_active: true,
+        is_company: false,
         notes: ""
       }
     };
@@ -450,50 +519,6 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Street",
-                                  outlined: "",
-                                  clearable: "",
-                                  hint: "Ex. Balete Street",
-                                  "error-messages": _vm.errors.street[0]
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.street = []
-                                  }
-                                },
-                                model: {
-                                  value: _vm.form.street,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "street", $$v)
-                                  },
-                                  expression: "form.street"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Fax",
-                                  outlined: "",
-                                  clearable: "",
-                                  hint: "Ex. Barangay Poblacion",
-                                  "error-messages": _vm.errors.district[0]
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.district = []
-                                  }
-                                },
-                                model: {
-                                  value: _vm.form.district,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "district", $$v)
-                                  },
-                                  expression: "form.district"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
                                   label: "Contact Person",
                                   outlined: "",
                                   clearable: "",
@@ -559,6 +584,50 @@ var render = function() {
                                     _vm.$set(_vm.form, "phone2", $$v)
                                   },
                                   expression: "form.phone2"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Fax",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. 1 323 555 1234",
+                                  "error-messages": _vm.errors.fax[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.fax = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.fax,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "fax", $$v)
+                                  },
+                                  expression: "form.fax"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Website",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. www.sample.com",
+                                  "error-messages": _vm.errors.website[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.website = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.website,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "website", $$v)
+                                  },
+                                  expression: "form.website"
                                 }
                               })
                             ],
@@ -754,6 +823,50 @@ var render = function() {
                                   },
                                   expression: "form.postal_code"
                                 }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Latitude",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. 6.1164 N",
+                                  "error-messages": _vm.errors.latitude[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.latitude = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.latitude,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "latitude", $$v)
+                                  },
+                                  expression: "form.latitude"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Longitude",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. 125.1716 E",
+                                  "error-messages": _vm.errors.longitude[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.longitude = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.longitude,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "longitude", $$v)
+                                  },
+                                  expression: "form.longitude"
+                                }
                               })
                             ],
                             1
@@ -796,6 +909,50 @@ var render = function() {
                             "v-col",
                             { attrs: { cols: "12" } },
                             [
+                              _c("v-select", {
+                                attrs: {
+                                  label: "Organization Type",
+                                  items: ["Walkin", "Private", "Government"],
+                                  outlined: "",
+                                  clearable: "",
+                                  "error-messages":
+                                    _vm.errors.organization_type[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.organization_type = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.organization_type,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "organization_type", $$v)
+                                  },
+                                  expression: "form.organization_type"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Location",
+                                  outlined: "",
+                                  clearable: "",
+                                  "error-messages": _vm.errors.location_id[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.location_id = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.location_id,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "location_id", $$v)
+                                  },
+                                  expression: "form.location_id"
+                                }
+                              }),
+                              _vm._v(" "),
                               _c("v-textarea", {
                                 attrs: {
                                   label: "Notes",
@@ -816,7 +973,43 @@ var render = function() {
                                   },
                                   expression: "form.notes"
                                 }
-                              })
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "v-sheet",
+                                { staticClass: "ml-4" },
+                                [
+                                  _c("v-switch", {
+                                    attrs: { inset: "", label: "Active" },
+                                    model: {
+                                      value: _vm.form.is_active,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "is_active", $$v)
+                                      },
+                                      expression: "form.is_active"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-sheet",
+                                { staticClass: "ml-4" },
+                                [
+                                  _c("v-switch", {
+                                    attrs: { inset: "", label: "Company" },
+                                    model: {
+                                      value: _vm.form.is_company,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "is_company", $$v)
+                                      },
+                                      expression: "form.is_company"
+                                    }
+                                  })
+                                ],
+                                1
+                              )
                             ],
                             1
                           )
@@ -831,37 +1024,32 @@ var render = function() {
                     "v-card-actions",
                     [
                       _c(
-                        "v-sheet",
-                        { staticClass: "ml-4" },
+                        "v-row",
                         [
-                          _c("v-switch", {
-                            attrs: { inset: "", label: "Active" },
-                            model: {
-                              value: _vm.form.is_active,
-                              callback: function($$v) {
-                                _vm.$set(_vm.form, "is_active", $$v)
-                              },
-                              expression: "form.is_active"
-                            }
-                          })
+                          _c("v-spacer"),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { staticClass: "d-flex justify-end" },
+                            [
+                              _c(
+                                "v-btn",
+                                {
+                                  staticClass: "mr-2",
+                                  attrs: { color: "primary", large: "" },
+                                  on: { click: _vm.onSave }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                Save\n                            "
+                                  )
+                                ]
+                              )
+                            ],
+                            1
+                          )
                         ],
                         1
-                      ),
-                      _vm._v(" "),
-                      _c("v-spacer"),
-                      _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        {
-                          staticClass: "mr-2",
-                          attrs: { color: "primary", large: "" },
-                          on: { click: _vm.onSave }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        Save\n                    "
-                          )
-                        ]
                       )
                     ],
                     1

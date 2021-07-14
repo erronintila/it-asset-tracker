@@ -35,6 +35,8 @@ class EmployeeResource extends JsonResource
             'province' => $this->province,
             'country' => $this->country,
             'postal_code' => $this->postal_code,
+            "latitude" => $this->longitude,
+            "longitude" => $this->latitude,
             'is_active' => $this->is_active,
             'location' => $this->location,
             'department' => $this->department,

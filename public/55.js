@@ -259,7 +259,7 @@ __webpack_require__.r(__webpack_exports__);
           province: [],
           country: [],
           postal_code: [],
-          is_active: true,
+          is_active: [],
           notes: []
         };
       }
@@ -284,7 +284,7 @@ __webpack_require__.r(__webpack_exports__);
           province: [],
           country: [],
           postal_code: [],
-          is_active: true,
+          is_active: [],
           notes: []
         };
       }

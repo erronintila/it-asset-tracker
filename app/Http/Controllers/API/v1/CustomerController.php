@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\API\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Customer\CustomerStoreRequest;
+use App\Http\Requests\Customer\CustomerUpdateRequest;
 use App\Http\Resources\UserResource;
+use App\Models\Customer;
 use App\Models\User;
 use App\Traits\HttpResponseMessage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
@@ -46,20 +50,28 @@ class CustomerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CustomerStoreRequest $request)
     {
         $validated = $request->validated();
         $data = DB::transaction(function () use ($validated) {
-            $code = 'LOC' . date("YmdHis");
+            $code = 'CUS' . date("YmdHis");
             $slug = $code . '-' . implode('-', explode(' ', $validated['name']));
 
             $user = new User();
-            $user->fill($validated);
-            $user->code = $code;
-            $user->slug = $slug;
-            $user->save();
+            $user->type = "customer";
+            $user->name = $validated['name'];
+            $user->username = $code;
+            $user->email = $validated['email'] ?? null;
+            $user->password = bcrypt('password');
 
-            return $user;
+            $customer = new Customer();
+            $customer->fill(Arr::except($validated, ['email']));
+            $customer->code = $code;
+            $customer->slug = $slug;
+            $customer->save();
+            $customer->user()->save($user);
+
+            return $customer;
         });
 
         return $this->successResponse('create', $data, 201);
@@ -84,7 +96,7 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CustomerUpdateRequest $request, $id)
     {
         $validated = $request->validated();
         $data = DB::transaction(function () use ($id, $validated) {

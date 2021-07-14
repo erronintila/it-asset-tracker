@@ -30,7 +30,9 @@ class CreateCustomersTable extends Migration
             $table->string("province");
             $table->string("country");
             $table->string("postal_code", 10);
-            $table->enum('organization_type', ['private', 'government'])->nullable();
+            $table->string("latitude")->nullable();
+            $table->string("longitude")->nullable();
+            $table->enum('organization_type', ['walkin', 'private', 'government']);
             $table->boolean('is_company')->default(false);
             $table->boolean('is_active')->default(true);
             $table->timestamps();

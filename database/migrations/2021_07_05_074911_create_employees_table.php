@@ -34,6 +34,8 @@ class CreateEmployeesTable extends Migration
             $table->string("province");
             $table->string("country");
             $table->string("postal_code", 10);
+            $table->string("latitude")->nullable();
+            $table->string("longitude")->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
             $table->softDeletes();

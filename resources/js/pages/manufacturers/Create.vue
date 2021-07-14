@@ -34,7 +34,7 @@ export default {
                 province: [],
                 country: [],
                 postal_code: [],
-                is_active: true,
+                is_active: [],
                 notes: []
             }
         };

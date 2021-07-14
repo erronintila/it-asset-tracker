@@ -36,8 +36,13 @@ export default {
                 province: "",
                 country: "",
                 postal_code: "",
+                latitude: "",
+                longitude: "",
+                organization_type: "",
                 is_active: true,
-                notes: ""
+                is_company: false,
+                notes: "",
+                location_id: ""
             },
             errors: {
                 code: [],
@@ -56,7 +61,11 @@ export default {
                 province: [],
                 country: [],
                 postal_code: [],
-                is_active: true,
+                latitude: [],
+                longitude: [],
+                organization_type: [],
+                is_active: [],
+                is_company: [],
                 notes: []
             }
         };

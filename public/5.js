@@ -259,7 +259,7 @@ __webpack_require__.r(__webpack_exports__);
           province: [],
           country: [],
           postal_code: [],
-          is_active: true,
+          is_active: [],
           notes: []
         };
       }
@@ -284,7 +284,7 @@ __webpack_require__.r(__webpack_exports__);
           province: [],
           country: [],
           postal_code: [],
-          is_active: true,
+          is_active: [],
           notes: []
         };
       }
@@ -450,50 +450,6 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Street",
-                                  outlined: "",
-                                  clearable: "",
-                                  hint: "Ex. Balete Street",
-                                  "error-messages": _vm.errors.street[0]
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.street = []
-                                  }
-                                },
-                                model: {
-                                  value: _vm.form.street,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "street", $$v)
-                                  },
-                                  expression: "form.street"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Fax",
-                                  outlined: "",
-                                  clearable: "",
-                                  hint: "Ex. Barangay Poblacion",
-                                  "error-messages": _vm.errors.district[0]
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.district = []
-                                  }
-                                },
-                                model: {
-                                  value: _vm.form.district,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "district", $$v)
-                                  },
-                                  expression: "form.district"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
                                   label: "Contact Person",
                                   outlined: "",
                                   clearable: "",
@@ -559,6 +515,50 @@ var render = function() {
                                     _vm.$set(_vm.form, "phone2", $$v)
                                   },
                                   expression: "form.phone2"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Fax",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. 1 323 555 1234",
+                                  "error-messages": _vm.errors.fax[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.fax = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.fax,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "fax", $$v)
+                                  },
+                                  expression: "form.fax"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Website",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. www.sample.com",
+                                  "error-messages": _vm.errors.website[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.website = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.website,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "website", $$v)
+                                  },
+                                  expression: "form.website"
                                 }
                               })
                             ],

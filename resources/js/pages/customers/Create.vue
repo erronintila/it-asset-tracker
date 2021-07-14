@@ -34,8 +34,13 @@ export default {
                 province: [],
                 country: [],
                 postal_code: [],
-                is_active: true,
-                notes: []
+                latitude: [],
+                longitude: [],
+                organization_type: [],
+                is_active: [],
+                is_company: [],
+                notes: [],
+                location_id: []
             }
         };
     },

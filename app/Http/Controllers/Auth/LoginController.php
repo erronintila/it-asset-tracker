@@ -58,6 +58,11 @@ class LoginController extends Controller
      */
     protected function credentials(\Illuminate\Http\Request $request)
     {
-        return ['username' => $request->username, 'password' => $request->password, 'is_active' => 1];
+        return [
+            'username' => $request->username,
+            'password' => $request->password,
+            'is_active' => 1,
+            'type' => 'admin' || 'employee'
+        ];
     }
 }

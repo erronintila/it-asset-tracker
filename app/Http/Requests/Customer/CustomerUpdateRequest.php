@@ -41,7 +41,9 @@ class CustomerUpdateRequest extends FormRequest
             "province" => ['required', 'string', 'max:250'],
             "country" => ['required', 'string', 'max:250'],
             "postal_code" => ['required', 'string', 'max:10'],
-            "organization_type" => ['required', 'string', Rule::in(['walkin', 'private', 'government'])],
+            'latitude' => ['nullable', 'string', 'max:250'],
+            'longitude' => ['nullable', 'string', 'max:250'],
+            "organization_type" => ['required', 'string', Rule::in(['Walkin', 'Private', 'Government'])],
             "is_company" => ['required', 'boolean'],
             "is_active" => ['required', 'boolean'],
             "location_id" => ['nullable', 'integer', 'max:20']

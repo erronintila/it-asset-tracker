@@ -34,6 +34,8 @@ $factory->define(Employee::class, function (Faker $faker) {
         'province' => $faker->state,
         'country' => 'Philippines',
         'postal_code' => $faker->postcode,
+        'latitude' => $faker->latitude($min = -90, $max = 90),
+        'longitude' => $faker->longitude($min = -180, $max = 180),
         'is_active' => true,
         'location_id' => factory(App\Models\Location::class)->create()->id,
         'department_id' => $faker->randomElement([1, 2, 3])

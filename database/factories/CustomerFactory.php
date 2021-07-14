@@ -29,6 +29,8 @@ $factory->define(Customer::class, function (Faker $faker) {
         'province' => $faker->state,
         'country' => 'Philippines',
         'postal_code' => $faker->postcode,
+        'latitude' => $faker->latitude($min = -90, $max = 90),
+        'longitude' => $faker->longitude($min = -180, $max = 180),
         'is_company' => true,
         'organization_type' => $faker->randomElement(['private', 'government']),
         'location_id' => factory(App\Models\Location::class)->create()->id,

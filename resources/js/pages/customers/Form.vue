@@ -28,24 +28,6 @@
                                     @input="errors.email = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.street"
-                                    label="Street"
-                                    outlined
-                                    clearable
-                                    hint="Ex. Balete Street"
-                                    :error-messages="errors.street[0]"
-                                    @input="errors.street = []"
-                                ></v-text-field>
-                                <v-text-field
-                                    v-model="form.district"
-                                    label="Fax"
-                                    outlined
-                                    clearable
-                                    hint="Ex. Barangay Poblacion"
-                                    :error-messages="errors.district[0]"
-                                    @input="errors.district = []"
-                                ></v-text-field>
-                                <v-text-field
                                     v-model="form.contact_person"
                                     label="Contact Person"
                                     outlined
@@ -73,6 +55,24 @@
                                     :error-messages="errors.contact_person[0]"
                                     @input="errors.contact_person = []"
                                     type="number"
+                                ></v-text-field>
+                                <v-text-field
+                                    v-model="form.fax"
+                                    label="Fax"
+                                    outlined
+                                    clearable
+                                    hint="Ex. 1 323 555 1234"
+                                    :error-messages="errors.fax[0]"
+                                    @input="errors.fax = []"
+                                ></v-text-field>
+                                <v-text-field
+                                    v-model="form.website"
+                                    label="Website"
+                                    outlined
+                                    clearable
+                                    hint="Ex. www.sample.com"
+                                    :error-messages="errors.website[0]"
+                                    @input="errors.website = []"
                                 ></v-text-field>
                             </v-col>
                         </v-row>
@@ -151,6 +151,24 @@
                                     type="number"
                                     @input="errors.postal_code = []"
                                 ></v-text-field>
+                                <v-text-field
+                                    v-model="form.latitude"
+                                    label="Latitude"
+                                    outlined
+                                    clearable
+                                    hint="Ex. 6.1164 N"
+                                    :error-messages="errors.latitude[0]"
+                                    @input="errors.latitude = []"
+                                ></v-text-field>
+                                <v-text-field
+                                    v-model="form.longitude"
+                                    label="Longitude"
+                                    outlined
+                                    clearable
+                                    hint="Ex. 125.1716 E"
+                                    :error-messages="errors.longitude[0]"
+                                    @input="errors.longitude = []"
+                                ></v-text-field>
                             </v-col>
                         </v-row>
                     </v-card-text>
@@ -165,6 +183,27 @@
                     <v-card-text>
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
+                                <v-select
+                                    v-model="form.organization_type"
+                                    label="Organization Type"
+                                    :items="['Walkin', 'Private', 'Government']"
+                                    outlined
+                                    clearable
+                                    :error-messages="
+                                        errors.organization_type[0]
+                                    "
+                                    @input="errors.organization_type = []"
+                                >
+                                </v-select>
+                                <v-text-field
+                                    v-model="form.location_id"
+                                    label="Location"
+                                    outlined
+                                    clearable
+                                    :error-messages="errors.location_id[0]"
+                                    @input="errors.location_id = []"
+                                >
+                                </v-text-field>
                                 <v-textarea
                                     v-model="form.notes"
                                     label="Notes"
@@ -174,26 +213,37 @@
                                     :error-messages="errors.notes[0]"
                                     @input="errors.notes = []"
                                 ></v-textarea>
+                                <v-sheet class="ml-4">
+                                    <v-switch
+                                        v-model="form.is_active"
+                                        inset
+                                        label="Active"
+                                    ></v-switch>
+                                </v-sheet>
+                                <v-sheet class="ml-4">
+                                    <v-switch
+                                        v-model="form.is_company"
+                                        inset
+                                        label="Company"
+                                    ></v-switch>
+                                </v-sheet>
                             </v-col>
                         </v-row>
                     </v-card-text>
                     <v-card-actions>
-                        <v-sheet class="ml-4">
-                            <v-switch
-                                v-model="form.is_active"
-                                inset
-                                label="Active"
-                            ></v-switch>
-                        </v-sheet>
-                        <v-spacer></v-spacer>
-                        <v-btn
-                            color="primary"
-                            @click="onSave"
-                            class="mr-2"
-                            large
-                        >
-                            Save
-                        </v-btn>
+                        <v-row>
+                            <v-spacer></v-spacer>
+                            <v-col class="d-flex justify-end">
+                                <v-btn
+                                    color="primary"
+                                    @click="onSave"
+                                    class="mr-2"
+                                    large
+                                >
+                                    Save
+                                </v-btn>
+                            </v-col>
+                        </v-row>
                     </v-card-actions>
                 </v-card>
             </v-col>
@@ -224,8 +274,13 @@ export default {
                     province: "",
                     country: "",
                     postal_code: "",
+                    latitude: "",
+                    longitude: "",
+                    organization_type: "",
                     is_active: true,
-                    notes: ""
+                    is_company: false,
+                    notes: "",
+                    location_id: ""
                 };
             }
         },
@@ -249,8 +304,13 @@ export default {
                     province: [],
                     country: [],
                     postal_code: [],
-                    is_active: true,
-                    notes: []
+                    latitude: [],
+                    longitude: [],
+                    organization_type: [],
+                    is_active: [],
+                    is_company: [],
+                    notes: [],
+                    location_id: []
                 };
             }
         },
@@ -274,8 +334,13 @@ export default {
                     province: [],
                     country: [],
                     postal_code: [],
-                    is_active: true,
-                    notes: []
+                    latitude: [],
+                    longitude: [],
+                    organization_type: [],
+                    is_active: [],
+                    is_company: [],
+                    notes: [],
+                    location_id: []
                 };
             }
         }
@@ -300,7 +365,11 @@ export default {
                 province: "",
                 country: "",
                 postal_code: "",
+                latitude: "",
+                longitude: "",
+                organization_type: "",
                 is_active: true,
+                is_company: false,
                 notes: ""
             }
         };

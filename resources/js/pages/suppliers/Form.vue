@@ -28,24 +28,6 @@
                                     @input="errors.email = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.street"
-                                    label="Street"
-                                    outlined
-                                    clearable
-                                    hint="Ex. Balete Street"
-                                    :error-messages="errors.street[0]"
-                                    @input="errors.street = []"
-                                ></v-text-field>
-                                <v-text-field
-                                    v-model="form.district"
-                                    label="Fax"
-                                    outlined
-                                    clearable
-                                    hint="Ex. Barangay Poblacion"
-                                    :error-messages="errors.district[0]"
-                                    @input="errors.district = []"
-                                ></v-text-field>
-                                <v-text-field
                                     v-model="form.contact_person"
                                     label="Contact Person"
                                     outlined
@@ -73,6 +55,24 @@
                                     :error-messages="errors.contact_person[0]"
                                     @input="errors.contact_person = []"
                                     type="number"
+                                ></v-text-field>
+                                <v-text-field
+                                    v-model="form.fax"
+                                    label="Fax"
+                                    outlined
+                                    clearable
+                                    hint="Ex. 1 323 555 1234"
+                                    :error-messages="errors.fax[0]"
+                                    @input="errors.fax = []"
+                                ></v-text-field>
+                                <v-text-field
+                                    v-model="form.website"
+                                    label="Website"
+                                    outlined
+                                    clearable
+                                    hint="Ex. www.sample.com"
+                                    :error-messages="errors.website[0]"
+                                    @input="errors.website = []"
                                 ></v-text-field>
                             </v-col>
                         </v-row>
@@ -249,7 +249,7 @@ export default {
                     province: [],
                     country: [],
                     postal_code: [],
-                    is_active: true,
+                    is_active: [],
                     notes: []
                 };
             }
@@ -274,7 +274,7 @@ export default {
                     province: [],
                     country: [],
                     postal_code: [],
-                    is_active: true,
+                    is_active: [],
                     notes: []
                 };
             }
