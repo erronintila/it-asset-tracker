@@ -20,29 +20,31 @@ export default {
     data() {
         return {
             form: {
-                code: "",
-                slug: "",
-                name: "",
-                contact_person: "",
-                phone1: "",
-                phone2: "",
                 email: "",
-                website: "",
-                fax: "",
-                address: "",
-                street: "",
-                district: "",
-                city: "",
-                province: "",
-                country: "",
-                postal_code: "",
-                latitude: "",
-                longitude: "",
-                organization_type: "",
                 is_active: true,
-                is_company: false,
                 notes: "",
-                location_id: ""
+                profile: {
+                    code: "",
+                    slug: "",
+                    name: "",
+                    contact_person: "",
+                    phone1: "",
+                    phone2: "",
+                    website: "",
+                    fax: "",
+                    address: "",
+                    street: "",
+                    district: "",
+                    city: "",
+                    province: "",
+                    country: "",
+                    postal_code: "",
+                    latitude: "",
+                    longitude: "",
+                    organization_type: "",
+                    is_company: false,
+                    location_id: ""
+                }
             },
             errors: {
                 code: [],
@@ -66,7 +68,8 @@ export default {
                 organization_type: [],
                 is_active: [],
                 is_company: [],
-                notes: []
+                notes: [],
+                location_id: []
             }
         };
     },
@@ -85,11 +88,18 @@ export default {
             CustomerDataService.show(this.$route.params.id, data)
                 .then(response => {
                     console.log(response.data);
-                    this.form = { ...this.form, ...response.data.data };
+                    this.form = {
+                        ...this.form,
+                        ...response.data.data
+                    };
+                    console.log("hello", {
+                        ...this.form,
+                        ...response.data.data
+                    });
                 })
                 .catch(error => {
                     console.log(error.response);
-                    alert("An error has occurred.");
+                    // alert("An error has occurred.");
                     this.$router.push({ name: "customers.index" }, () => {});
                 });
         },
@@ -102,7 +112,7 @@ export default {
                 })
                 .catch(error => {
                     console.log(error.response.data);
-                    alert("An error has occurred.");
+                    // alert("An error has occurred.");
                     if (error.response) {
                         if (error.response.data) {
                             this.errors = {

@@ -37,29 +37,31 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       form: {
-        code: "",
-        slug: "",
-        name: "",
-        contact_person: "",
-        phone1: "",
-        phone2: "",
         email: "",
-        website: "",
-        fax: "",
-        address: "",
-        street: "",
-        district: "",
-        city: "",
-        province: "",
-        country: "",
-        postal_code: "",
-        latitude: "",
-        longitude: "",
-        organization_type: "",
         is_active: true,
-        is_company: false,
         notes: "",
-        location_id: ""
+        profile: {
+          code: "",
+          slug: "",
+          name: "",
+          contact_person: "",
+          phone1: "",
+          phone2: "",
+          website: "",
+          fax: "",
+          address: "",
+          street: "",
+          district: "",
+          city: "",
+          province: "",
+          country: "",
+          postal_code: "",
+          latitude: "",
+          longitude: "",
+          organization_type: "",
+          is_company: false,
+          location_id: ""
+        }
       },
       errors: {
         code: [],
@@ -83,7 +85,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         organization_type: [],
         is_active: [],
         is_company: [],
-        notes: []
+        notes: [],
+        location_id: []
       }
     };
   },
@@ -102,9 +105,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       _services_CustomerDataService__WEBPACK_IMPORTED_MODULE_0__["default"].show(this.$route.params.id, data).then(function (response) {
         console.log(response.data);
         _this.form = _objectSpread(_objectSpread({}, _this.form), response.data.data);
+        console.log("hello", _objectSpread(_objectSpread({}, _this.form), response.data.data));
       })["catch"](function (error) {
-        console.log(error.response);
-        alert("An error has occurred.");
+        console.log(error.response); // alert("An error has occurred.");
 
         _this.$router.push({
           name: "customers.index"
@@ -122,8 +125,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           name: "customers.index"
         });
       })["catch"](function (error) {
-        console.log(error.response.data);
-        alert("An error has occurred.");
+        console.log(error.response.data); // alert("An error has occurred.");
 
         if (error.response) {
           if (error.response.data) {

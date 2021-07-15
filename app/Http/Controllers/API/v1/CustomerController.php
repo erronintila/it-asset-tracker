@@ -85,7 +85,13 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
+        // $user = User::findOrFail($id);
+        $user = User::with(['profile' => function ($query) {
+            $query->with('location');
+        }])
+            ->where('profile_type', 'App\Models\Customer')
+            ->findOrFail($id);
+
         return $this->successResponse('read', new UserResource($user), 200);
     }
 
@@ -101,10 +107,20 @@ class CustomerController extends Controller
         $validated = $request->validated();
         $data = DB::transaction(function () use ($id, $validated) {
             $user = User::findOrFail($id);
-            $user->fill($validated);
-            $user->slug = $user->code . '-' . implode('-', explode(' ', $validated['name']));
-            $user->save();
-            return $user;
+            $slug = $user->profile->code . '-' . implode('-', explode(' ', $validated['name']));
+
+            $user->type = "customer";
+            $user->name = $validated['name'];
+            $user->email = $validated['email'] ?? null;
+            // $user->save();
+
+            $customer = Customer::findOrFail($user->profile->id);
+            $customer->fill(Arr::except($validated, ['email']));
+            $customer->slug = $slug;
+            $customer->save();
+            $customer->user()->save($user);
+
+            return $customer;
         });
 
         return $this->successResponse('update', $data, 200);

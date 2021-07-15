@@ -10,7 +10,7 @@
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
                                 <v-text-field
-                                    v-model="form.name"
+                                    v-model="form.profile.name"
                                     label="Name"
                                     outlined
                                     clearable
@@ -28,7 +28,7 @@
                                     @input="errors.email = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.contact_person"
+                                    v-model="form.profile.contact_person"
                                     label="Contact Person"
                                     outlined
                                     clearable
@@ -37,7 +37,7 @@
                                     @input="errors.contact_person = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.phone1"
+                                    v-model="form.profile.phone1"
                                     label="Phone No. (1)"
                                     outlined
                                     clearable
@@ -47,7 +47,7 @@
                                     type="number"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.phone2"
+                                    v-model="form.profile.phone2"
                                     label="Phone No. (2)"
                                     outlined
                                     clearable
@@ -57,7 +57,7 @@
                                     type="number"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.fax"
+                                    v-model="form.profile.fax"
                                     label="Fax"
                                     outlined
                                     clearable
@@ -66,7 +66,7 @@
                                     @input="errors.fax = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.website"
+                                    v-model="form.profile.website"
                                     label="Website"
                                     outlined
                                     clearable
@@ -89,7 +89,7 @@
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
                                 <v-text-field
-                                    v-model="form.address"
+                                    v-model="form.profile.address"
                                     label="Address"
                                     outlined
                                     clearable
@@ -98,7 +98,7 @@
                                     @input="errors.address = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.street"
+                                    v-model="form.profile.street"
                                     label="Street"
                                     outlined
                                     clearable
@@ -107,7 +107,7 @@
                                     @input="errors.street = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.district"
+                                    v-model="form.profile.district"
                                     label="District"
                                     outlined
                                     clearable
@@ -116,7 +116,7 @@
                                     @input="errors.district = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.city"
+                                    v-model="form.profile.city"
                                     label="City"
                                     outlined
                                     clearable
@@ -125,7 +125,7 @@
                                     @input="errors.city = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.province"
+                                    v-model="form.profile.province"
                                     label="Province"
                                     outlined
                                     clearable
@@ -134,7 +134,7 @@
                                     @input="errors.province = []"
                                 ></v-text-field>
                                 <v-combobox
-                                    v-model="form.country"
+                                    v-model="form.profile.country"
                                     label="Country"
                                     outlined
                                     clearable
@@ -143,7 +143,7 @@
                                     @input="errors.country = []"
                                 ></v-combobox>
                                 <v-text-field
-                                    v-model="form.postal_code"
+                                    v-model="form.profile.postal_code"
                                     label="Postal Code"
                                     outlined
                                     clearable
@@ -152,7 +152,7 @@
                                     @input="errors.postal_code = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.latitude"
+                                    v-model="form.profile.latitude"
                                     label="Latitude"
                                     outlined
                                     clearable
@@ -161,7 +161,7 @@
                                     @input="errors.latitude = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.longitude"
+                                    v-model="form.profile.longitude"
                                     label="Longitude"
                                     outlined
                                     clearable
@@ -184,9 +184,9 @@
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
                                 <v-select
-                                    v-model="form.organization_type"
+                                    v-model="form.profile.organization_type"
                                     label="Organization Type"
-                                    :items="['Walkin', 'Private', 'Government']"
+                                    :items="['walkin', 'private', 'government']"
                                     outlined
                                     clearable
                                     :error-messages="
@@ -196,7 +196,7 @@
                                 >
                                 </v-select>
                                 <v-text-field
-                                    v-model="form.location_id"
+                                    v-model="form.profile.location_id"
                                     label="Location"
                                     outlined
                                     clearable
@@ -222,7 +222,7 @@
                                 </v-sheet>
                                 <v-sheet class="ml-4">
                                     <v-switch
-                                        v-model="form.is_company"
+                                        v-model="form.profile.is_company"
                                         inset
                                         label="Company"
                                     ></v-switch>
@@ -258,29 +258,31 @@ export default {
             type: Object,
             default: () => {
                 return {
-                    code: "",
-                    slug: "",
-                    name: "",
-                    contact_person: "",
-                    phone1: "",
-                    phone2: "",
                     email: "",
-                    website: "",
-                    fax: "",
-                    address: "",
-                    street: "",
-                    district: "",
-                    city: "",
-                    province: "",
-                    country: "",
-                    postal_code: "",
-                    latitude: "",
-                    longitude: "",
-                    organization_type: "",
                     is_active: true,
-                    is_company: false,
                     notes: "",
-                    location_id: ""
+                    profile: {
+                        code: "",
+                        slug: "",
+                        name: "",
+                        contact_person: "",
+                        phone1: "",
+                        phone2: "",
+                        website: "",
+                        fax: "",
+                        address: "",
+                        street: "",
+                        district: "",
+                        city: "",
+                        province: "",
+                        country: "",
+                        postal_code: "",
+                        latitude: "",
+                        longitude: "",
+                        organization_type: "",
+                        is_company: false,
+                        location_id: ""
+                    }
                 };
             }
         },
@@ -349,28 +351,31 @@ export default {
         return {
             valid: false,
             form: {
-                code: "",
-                slug: "",
-                name: "",
-                contact_person: "",
-                phone1: "",
-                phone2: "",
                 email: "",
-                website: "",
-                fax: "",
-                address: "",
-                street: "",
-                district: "",
-                city: "",
-                province: "",
-                country: "",
-                postal_code: "",
-                latitude: "",
-                longitude: "",
-                organization_type: "",
                 is_active: true,
-                is_company: false,
-                notes: ""
+                notes: "",
+                profile: {
+                    code: "",
+                    slug: "",
+                    name: "",
+                    contact_person: "",
+                    phone1: "",
+                    phone2: "",
+                    website: "",
+                    fax: "",
+                    address: "",
+                    street: "",
+                    district: "",
+                    city: "",
+                    province: "",
+                    country: "",
+                    postal_code: "",
+                    latitude: "",
+                    longitude: "",
+                    organization_type: "",
+                    is_company: false,
+                    location_id: ""
+                }
             }
         };
     },
@@ -385,13 +390,21 @@ export default {
                 return;
             }
 
-            console.log(this.form);
+            let newForm = {
+                ...this.form.profile,
+                ...this.form,
+                // ...{ id: this.form.profile.id },
+                ...{ name: this.form.profile.name },
+                ...{ profile_id: this.form.profile.id }
+            };
 
-            if (!this.form.is_active) {
-                this.form.is_active = false;
+            console.log(newForm);
+
+            if (!newForm.is_active) {
+                newForm.is_active = false;
             }
 
-            this.$emit("on-save", this.form);
+            this.$emit("on-save", newForm);
         }
     },
     watch: {

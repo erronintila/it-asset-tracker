@@ -43,7 +43,7 @@ class CustomerStoreRequest extends FormRequest
             "postal_code" => ['required', 'string', 'max:10'],
             'latitude' => ['nullable', 'string', 'max:250'],
             'longitude' => ['nullable', 'string', 'max:250'],
-            "organization_type" => ['required', 'string', Rule::in(['Walkin', 'Private', 'Government'])],
+            "organization_type" => ['required', 'string', Rule::in(['walkin', 'private', 'government'])],
             "is_company" => ['required', 'boolean'],
             "is_active" => ['required', 'boolean'],
             "location_id" => ['nullable', 'integer', 'max:20']

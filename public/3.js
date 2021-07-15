@@ -9,6 +9,12 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -268,29 +274,31 @@ __webpack_require__.r(__webpack_exports__);
       type: Object,
       "default": function _default() {
         return {
-          code: "",
-          slug: "",
-          name: "",
-          contact_person: "",
-          phone1: "",
-          phone2: "",
           email: "",
-          website: "",
-          fax: "",
-          address: "",
-          street: "",
-          district: "",
-          city: "",
-          province: "",
-          country: "",
-          postal_code: "",
-          latitude: "",
-          longitude: "",
-          organization_type: "",
           is_active: true,
-          is_company: false,
           notes: "",
-          location_id: ""
+          profile: {
+            code: "",
+            slug: "",
+            name: "",
+            contact_person: "",
+            phone1: "",
+            phone2: "",
+            website: "",
+            fax: "",
+            address: "",
+            street: "",
+            district: "",
+            city: "",
+            province: "",
+            country: "",
+            postal_code: "",
+            latitude: "",
+            longitude: "",
+            organization_type: "",
+            is_company: false,
+            location_id: ""
+          }
         };
       }
     },
@@ -359,28 +367,31 @@ __webpack_require__.r(__webpack_exports__);
     return {
       valid: false,
       form: {
-        code: "",
-        slug: "",
-        name: "",
-        contact_person: "",
-        phone1: "",
-        phone2: "",
         email: "",
-        website: "",
-        fax: "",
-        address: "",
-        street: "",
-        district: "",
-        city: "",
-        province: "",
-        country: "",
-        postal_code: "",
-        latitude: "",
-        longitude: "",
-        organization_type: "",
         is_active: true,
-        is_company: false,
-        notes: ""
+        notes: "",
+        profile: {
+          code: "",
+          slug: "",
+          name: "",
+          contact_person: "",
+          phone1: "",
+          phone2: "",
+          website: "",
+          fax: "",
+          address: "",
+          street: "",
+          district: "",
+          city: "",
+          province: "",
+          country: "",
+          postal_code: "",
+          latitude: "",
+          longitude: "",
+          organization_type: "",
+          is_company: false,
+          location_id: ""
+        }
       }
     };
   },
@@ -395,13 +406,19 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
-      console.log(this.form);
+      var newForm = _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, this.form.profile), this.form), {
+        name: this.form.profile.name
+      }), {
+        profile_id: this.form.profile.id
+      });
 
-      if (!this.form.is_active) {
-        this.form.is_active = false;
+      console.log(newForm);
+
+      if (!newForm.is_active) {
+        newForm.is_active = false;
       }
 
-      this.$emit("on-save", this.form);
+      this.$emit("on-save", newForm);
     }
   },
   watch: {
@@ -487,11 +504,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.name,
+                                  value: _vm.form.profile.name,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "name", $$v)
+                                    _vm.$set(_vm.form.profile, "name", $$v)
                                   },
-                                  expression: "form.name"
+                                  expression: "form.profile.name"
                                 }
                               }),
                               _vm._v(" "),
@@ -531,11 +548,15 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.contact_person,
+                                  value: _vm.form.profile.contact_person,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "contact_person", $$v)
+                                    _vm.$set(
+                                      _vm.form.profile,
+                                      "contact_person",
+                                      $$v
+                                    )
                                   },
-                                  expression: "form.contact_person"
+                                  expression: "form.profile.contact_person"
                                 }
                               }),
                               _vm._v(" "),
@@ -555,11 +576,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.phone1,
+                                  value: _vm.form.profile.phone1,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "phone1", $$v)
+                                    _vm.$set(_vm.form.profile, "phone1", $$v)
                                   },
-                                  expression: "form.phone1"
+                                  expression: "form.profile.phone1"
                                 }
                               }),
                               _vm._v(" "),
@@ -579,11 +600,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.phone2,
+                                  value: _vm.form.profile.phone2,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "phone2", $$v)
+                                    _vm.$set(_vm.form.profile, "phone2", $$v)
                                   },
-                                  expression: "form.phone2"
+                                  expression: "form.profile.phone2"
                                 }
                               }),
                               _vm._v(" "),
@@ -601,11 +622,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.fax,
+                                  value: _vm.form.profile.fax,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "fax", $$v)
+                                    _vm.$set(_vm.form.profile, "fax", $$v)
                                   },
-                                  expression: "form.fax"
+                                  expression: "form.profile.fax"
                                 }
                               }),
                               _vm._v(" "),
@@ -623,11 +644,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.website,
+                                  value: _vm.form.profile.website,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "website", $$v)
+                                    _vm.$set(_vm.form.profile, "website", $$v)
                                   },
-                                  expression: "form.website"
+                                  expression: "form.profile.website"
                                 }
                               })
                             ],
@@ -685,11 +706,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.address,
+                                  value: _vm.form.profile.address,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "address", $$v)
+                                    _vm.$set(_vm.form.profile, "address", $$v)
                                   },
-                                  expression: "form.address"
+                                  expression: "form.profile.address"
                                 }
                               }),
                               _vm._v(" "),
@@ -707,11 +728,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.street,
+                                  value: _vm.form.profile.street,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "street", $$v)
+                                    _vm.$set(_vm.form.profile, "street", $$v)
                                   },
-                                  expression: "form.street"
+                                  expression: "form.profile.street"
                                 }
                               }),
                               _vm._v(" "),
@@ -729,11 +750,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.district,
+                                  value: _vm.form.profile.district,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "district", $$v)
+                                    _vm.$set(_vm.form.profile, "district", $$v)
                                   },
-                                  expression: "form.district"
+                                  expression: "form.profile.district"
                                 }
                               }),
                               _vm._v(" "),
@@ -751,11 +772,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.city,
+                                  value: _vm.form.profile.city,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "city", $$v)
+                                    _vm.$set(_vm.form.profile, "city", $$v)
                                   },
-                                  expression: "form.city"
+                                  expression: "form.profile.city"
                                 }
                               }),
                               _vm._v(" "),
@@ -773,11 +794,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.province,
+                                  value: _vm.form.profile.province,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "province", $$v)
+                                    _vm.$set(_vm.form.profile, "province", $$v)
                                   },
-                                  expression: "form.province"
+                                  expression: "form.profile.province"
                                 }
                               }),
                               _vm._v(" "),
@@ -795,11 +816,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.country,
+                                  value: _vm.form.profile.country,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "country", $$v)
+                                    _vm.$set(_vm.form.profile, "country", $$v)
                                   },
-                                  expression: "form.country"
+                                  expression: "form.profile.country"
                                 }
                               }),
                               _vm._v(" "),
@@ -817,11 +838,15 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.postal_code,
+                                  value: _vm.form.profile.postal_code,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "postal_code", $$v)
+                                    _vm.$set(
+                                      _vm.form.profile,
+                                      "postal_code",
+                                      $$v
+                                    )
                                   },
-                                  expression: "form.postal_code"
+                                  expression: "form.profile.postal_code"
                                 }
                               }),
                               _vm._v(" "),
@@ -839,11 +864,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.latitude,
+                                  value: _vm.form.profile.latitude,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "latitude", $$v)
+                                    _vm.$set(_vm.form.profile, "latitude", $$v)
                                   },
-                                  expression: "form.latitude"
+                                  expression: "form.profile.latitude"
                                 }
                               }),
                               _vm._v(" "),
@@ -861,11 +886,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.longitude,
+                                  value: _vm.form.profile.longitude,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "longitude", $$v)
+                                    _vm.$set(_vm.form.profile, "longitude", $$v)
                                   },
-                                  expression: "form.longitude"
+                                  expression: "form.profile.longitude"
                                 }
                               })
                             ],
@@ -912,7 +937,7 @@ var render = function() {
                               _c("v-select", {
                                 attrs: {
                                   label: "Organization Type",
-                                  items: ["Walkin", "Private", "Government"],
+                                  items: ["walkin", "private", "government"],
                                   outlined: "",
                                   clearable: "",
                                   "error-messages":
@@ -924,11 +949,15 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.organization_type,
+                                  value: _vm.form.profile.organization_type,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "organization_type", $$v)
+                                    _vm.$set(
+                                      _vm.form.profile,
+                                      "organization_type",
+                                      $$v
+                                    )
                                   },
-                                  expression: "form.organization_type"
+                                  expression: "form.profile.organization_type"
                                 }
                               }),
                               _vm._v(" "),
@@ -945,11 +974,15 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.location_id,
+                                  value: _vm.form.profile.location_id,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "location_id", $$v)
+                                    _vm.$set(
+                                      _vm.form.profile,
+                                      "location_id",
+                                      $$v
+                                    )
                                   },
-                                  expression: "form.location_id"
+                                  expression: "form.profile.location_id"
                                 }
                               }),
                               _vm._v(" "),
@@ -1000,11 +1033,15 @@ var render = function() {
                                   _c("v-switch", {
                                     attrs: { inset: "", label: "Company" },
                                     model: {
-                                      value: _vm.form.is_company,
+                                      value: _vm.form.profile.is_company,
                                       callback: function($$v) {
-                                        _vm.$set(_vm.form, "is_company", $$v)
+                                        _vm.$set(
+                                          _vm.form.profile,
+                                          "is_company",
+                                          $$v
+                                        )
                                       },
-                                      expression: "form.is_company"
+                                      expression: "form.profile.is_company"
                                     }
                                   })
                                 ],
