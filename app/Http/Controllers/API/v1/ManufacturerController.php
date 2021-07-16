@@ -99,7 +99,7 @@ class ManufacturerController extends Controller
     public function destroy($id)
     {
         $data = DB::transaction(function () use ($id) {
-            $manufacturer = Manufacturer::findOrFail($id);
+            $manufacturer = Manufacturer::destroy($id);
             return $manufacturer;
         });
 

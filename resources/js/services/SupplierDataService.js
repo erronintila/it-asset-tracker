@@ -18,7 +18,7 @@ class SupplierDataService {
         return axios.put(`/api/v1/suppliers/${id}`, data);
     }
 
-    delete(id, data) {
+    delete(id, data = null) {
         return axios.delete(`/api/v1/suppliers/${id}`, data);
     }
 

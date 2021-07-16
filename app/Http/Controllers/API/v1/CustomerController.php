@@ -135,7 +135,7 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         $data = DB::transaction(function () use ($id) {
-            $user = User::findOrFail($id);
+            $user = User::destroy($id);
             return $user;
         });
 

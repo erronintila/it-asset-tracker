@@ -1002,7 +1002,8 @@ var SupplierDataService = /*#__PURE__*/function () {
     }
   }, {
     key: "delete",
-    value: function _delete(id, data) {
+    value: function _delete(id) {
+      var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/suppliers/".concat(id), data);
     }
   }, {

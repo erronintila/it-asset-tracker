@@ -20,6 +20,24 @@
 
         <v-btn @click="dialog = true">Open Dialog</v-btn>
 
+        <CardSummary :title="'title'" :subtitle="'subtitle'">
+            <template v-slot:header>
+                <v-img
+                    height="250"
+                    src="https://cdn.vuetifyjs.com/images/parallax/material2.jpg"
+                ></v-img>
+            </template>
+            <template v-slot:body>
+                <div>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Ex, voluptatum?
+                </div>
+            </template>
+            <template v-slot:actions>
+                <v-btn>Hello</v-btn>
+            </template>
+        </CardSummary>
+
         <XDialog
             :dialog="dialog"
             :title="'hahaha'"
@@ -58,13 +76,15 @@
 </template>
 
 <script>
+import CardSummary from "../../components/pages/CardSummary.vue";
 import XDialog from "../../components/X-Dialog.vue";
 import XDataTable from "../../components/X-DataTable.vue";
 
 export default {
     components: {
         XDialog,
-        XDataTable
+        XDataTable,
+        CardSummary
     },
     data() {
         return {

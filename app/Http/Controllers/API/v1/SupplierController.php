@@ -99,7 +99,7 @@ class SupplierController extends Controller
     public function destroy($id)
     {
         $data = DB::transaction(function () use ($id) {
-            $supplier = Supplier::findOrFail($id);
+            $supplier = Supplier::destroy($id);
             return $supplier;
         });
 

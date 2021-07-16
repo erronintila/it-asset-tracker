@@ -1,93 +1,48 @@
 <template>
     <div>
-        <v-row class="mb-4">
-            <v-col class="d-flex justify-start">
-                <v-btn icon @click="$router.go(-1)">
-                    <v-icon>mdi-arrow-left</v-icon>
-                </v-btn>
-                <span class="page-title">Employee Details</span>
-            </v-col>
-        </v-row>
+        <page-header
+            class="mb-4"
+            :title="'Employee Details'"
+            :backButton="true"
+        ></page-header>
 
         <v-row>
             <v-col cols="12" md="4">
-                <v-card>
-                    <template slot="progress">
-                        <v-progress-linear
-                            color="deep-purple"
-                            height="10"
-                            indeterminate
-                        ></v-progress-linear>
+                <CardSummary
+                    :title="form.name"
+                    :subtitle="'# ' + form.profile.code"
+                >
+                    <template v-slot:body>
+                        <p>Phone: {{ form.profile.business_phone }}</p>
+                        <p v-if="form.email">Email: {{ form.email }}</p>
+                        <p>
+                            Address: {{ form.profile.address }},
+                            {{ form.profile.city }},
+                            {{ form.profile.province }},
+                            {{ form.profile.postal_code }},
+                            {{ form.profile.country }}
+                        </p>
                     </template>
-
-                    <v-img
-                        height="250"
-                        src="https://cdn.vuetifyjs.com/images/parallax/material2.jpg"
-                    ></v-img>
-
-                    <v-card-title>
-                        Name
-                        <v-spacer></v-spacer>
-                        <v-chip>Status</v-chip>
-                    </v-card-title>
-
-                    <v-card-text>
-                        <v-row align="center" class="mx-0">
-                            <div class="grey--text">
-                                Department
-                            </div>
-                        </v-row>
-
-                        <div class="my-4 text-subtitle-1">
-                            # employee code
-                        </div>
-
-                        <p>
-                            Notes: Lorem ipsum dolor sit amet consectetur,
-                            adipisicing elit. Sit, possimus.
-                        </p>
-
-                        <p>
-                            Last Updated: 2021-01-01 08:00
-                        </p>
-                    </v-card-text>
-
-                    <v-divider class="mx-4"></v-divider>
-
-                    <!-- <v-card-title>Tonight's availability</v-card-title> -->
-
-                    <!-- <v-card-text>
-                        <v-chip-group
-                            active-class="deep-purple accent-4 white--text"
-                            column
+                    <template v-slot:actions>
+                        <v-btn
+                            icon
+                            @click="
+                                $router.push(
+                                    '/employees/' + $route.params.id + '/edit'
+                                )
+                            "
                         >
-                            <v-chip>5:30PM</v-chip>
-
-                            <v-chip>7:30PM</v-chip>
-
-                            <v-chip>8:00PM</v-chip>
-
-                            <v-chip>9:00PM</v-chip>
-                        </v-chip-group>
-                    </v-card-text> -->
-
-                    <v-card-actions>
-                        <v-btn icon>
-                            <v-icon>mdi-file-document-edit-outline</v-icon>
+                            <v-icon>
+                                mdi-file-document-edit-outline
+                            </v-icon>
                         </v-btn>
-
-                        <v-btn icon>
-                            <v-icon>mdi-delete</v-icon>
+                        <v-btn icon @click="onDelete">
+                            <v-icon>
+                                mdi-delete
+                            </v-icon>
                         </v-btn>
-
-                        <v-btn icon>
-                            <v-icon>mdi-file-export-outline</v-icon>
-                        </v-btn>
-                        <v-btn icon>
-                            <v-icon>mdi-text-box-plus-outline</v-icon>
-                        </v-btn>
-                    </v-card-actions>
-                </v-card>
+                    </template>
+                </CardSummary>
             </v-col>
             <v-col cols="12" md="8">
                 <v-card>
@@ -115,11 +70,21 @@
                                             </thead>
                                             <tbody>
                                                 <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
+                                                    v-for="(value,
+                                                    name,
+                                                    index) in form.profile"
+                                                    :key="index"
                                                 >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
+                                                    <td>{{ name }}</td>
+                                                    <td>{{ value }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Email</td>
+                                                    <td>{{ form.email }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Username</td>
+                                                    <td>{{ form.username }}</td>
                                                 </tr>
                                             </tbody>
                                         </template>
@@ -142,15 +107,7 @@
                                                     </th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
-                                                >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
-                                                </tr>
-                                            </tbody>
+                                            <tbody></tbody>
                                         </template>
                                     </v-simple-table>
                                 </v-card-text>
@@ -309,54 +266,86 @@
 </template>
 
 <script>
+import CardSummary from "../../components/pages/CardSummary.vue";
+import EmployeeDataService from "../../services/EmployeeDataService";
+
 export default {
+    components: {
+        CardSummary
+    },
     data() {
         return {
             tab: null,
             items: ["details", "assets", "System Activity Logs"],
-            records: [
-                {
-                    name: "Data 1",
-                    value: 159
-                },
-                {
-                    name: "Data 2",
-                    value: 237
-                },
-                {
-                    name: "Data 3",
-                    value: 262
-                },
-                {
-                    name: "Data 4",
-                    value: 305
-                },
-                {
-                    name: "Data 5",
-                    value: 356
-                },
-                {
-                    name: "Data 6",
-                    value: 375
-                },
-                {
-                    name: "Data 7",
-                    value: 392
-                },
-                {
-                    name: "Data 8",
-                    value: 408
-                },
-                {
-                    name: "Data 9",
-                    value: 452
-                },
-                {
-                    name: "Data 10",
-                    value: 518
+            records: [],
+            form: {
+                username: "",
+                email: "",
+                is_active: true,
+                notes: "",
+                profile: {
+                    code: "",
+                    slug: "",
+                    first_name: "",
+                    middle_name: "",
+                    last_name: "",
+                    suffix: "",
+                    gender: "",
+                    birthdate: "",
+                    business_phone: "",
+                    home_phone: "",
+                    mobile_phone: "",
+                    job_title: "",
+                    address: "",
+                    street: "",
+                    district: "",
+                    city: "",
+                    province: "",
+                    country: "",
+                    postal_code: "",
+                    latitude: "",
+                    longitude: "",
+                    location_id: "",
+                    department_id: "",
+                    image: ""
                 }
-            ]
+            }
         };
+    },
+    methods: {
+        getData() {
+            let data = {};
+
+            EmployeeDataService.show(this.$route.params.id, data)
+                .then(response => {
+                    console.log(response.data);
+                    this.form = { ...this.form, ...response.data.data };
+                })
+                .catch(error => {
+                    console.log(error.response);
+                    alert("An error has occurred.");
+                    this.$router.push({ name: "employees.index" }, () => {});
+                });
+        },
+        onDelete() {
+            if (!confirm("WARNING: Do you want to delete this record?")) {
+                return;
+            }
+
+            EmployeeDataService.delete(this.$route.params.id, {})
+                .then(response => {
+                    console.log(response.data);
+                    alert(response.data.message);
+                    this.$router.push({ name: "employees.index" });
+                })
+                .catch(error => {
+                    console.log(error.response);
+                    alert("An error has occurred.");
+                });
+        }
+    },
+    created() {
+        this.getData();
     }
 };
 </script>
