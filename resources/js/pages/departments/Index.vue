@@ -160,6 +160,18 @@
                 }
             "
         ></DepartmentCreate>
+
+        <DepartmentEdit
+            :department="selectedItems[0]"
+            :dialogEdit="dialogDepartmentEdit"
+            @close-dialog="dialogDepartmentEdit = false"
+            @save-dialog="
+                () => {
+                    getData();
+                    dialogDepartmentEdit = false;
+                }
+            "
+        ></DepartmentEdit>
         <!-- End of Dialogs -->
     </div>
 </template>
@@ -167,15 +179,18 @@
 <script>
 import DepartmentDataService from "../../services/DepartmentDataService";
 import DepartmentCreate from "./Create.vue";
+import DepartmentEdit from "./Edit.vue";
 
 export default {
     name: "departments-index",
     components: {
-        DepartmentCreate
+        DepartmentCreate,
+        DepartmentEdit
     },
     data() {
         return {
             dialogDepartmentCreate: false,
+            dialogDepartmentEdit: false,
             actions: [
                 { text: "Refresh", action: "refresh", icon: "mdi-refresh" },
                 { text: "Update", action: "update", icon: "mdi-update" },
@@ -255,9 +270,8 @@ export default {
                         alert("No data selected.");
                         return;
                     }
-                    this.$router.push(
-                        "/departments/" + this.selectedItems[0].id + "/edit"
-                    );
+                    this.dialogDepartmentEdit = true;
+                    console.log(this.selectedItems[0].id);
                     break;
                 case "delete":
                     this.onDelete();
