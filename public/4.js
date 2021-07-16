@@ -9,6 +9,14 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -341,40 +349,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     employeeForm: {
       type: Object,
       "default": function _default() {
         return {
-          code: "",
-          slug: "",
-          first_name: "",
-          middle_name: "",
-          last_name: "",
-          suffix: "",
-          gender: "",
-          birthdate: "",
-          business_phone: "",
-          home_phone: "",
-          mobile_phone: "",
-          job_title: "",
-          address: "",
-          street: "",
-          district: "",
-          city: "",
-          province: "",
-          country: "",
-          postal_code: "",
-          latitude: "",
-          longitude: "",
-          is_active: true,
-          location_id: "",
-          department_id: "",
-          notes: "",
-          email: "",
           username: "",
-          image: ""
+          email: "",
+          is_active: true,
+          notes: "",
+          profile: {
+            code: "",
+            slug: "",
+            first_name: "",
+            middle_name: "",
+            last_name: "",
+            suffix: "",
+            gender: "",
+            birthdate: "",
+            business_phone: "",
+            home_phone: "",
+            mobile_phone: "",
+            job_title: "",
+            address: "",
+            street: "",
+            district: "",
+            city: "",
+            province: "",
+            country: "",
+            postal_code: "",
+            latitude: "",
+            longitude: "",
+            location_id: "",
+            department_id: "",
+            image: ""
+          }
         };
       }
     },
@@ -452,35 +463,38 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       valid: false,
+      birthdateModal: false,
       form: {
-        code: "",
-        slug: "",
-        first_name: "",
-        middle_name: "",
-        last_name: "",
-        suffix: "",
-        gender: "",
-        birthdate: "",
-        business_phone: "",
-        home_phone: "",
-        mobile_phone: "",
-        job_title: "",
-        address: "",
-        street: "",
-        district: "",
-        city: "",
-        province: "",
-        country: "",
-        postal_code: "",
-        latitude: "",
-        longitude: "",
-        is_active: true,
-        location_id: "",
-        department_id: "",
-        notes: "",
-        email: "",
         username: "",
-        image: ""
+        email: "",
+        is_active: true,
+        notes: "",
+        profile: {
+          code: "",
+          slug: "",
+          first_name: "",
+          middle_name: "",
+          last_name: "",
+          suffix: "",
+          gender: "",
+          birthdate: "",
+          business_phone: "",
+          home_phone: "",
+          mobile_phone: "",
+          job_title: "",
+          address: "",
+          street: "",
+          district: "",
+          city: "",
+          province: "",
+          country: "",
+          postal_code: "",
+          latitude: "",
+          longitude: "",
+          location_id: "",
+          department_id: "",
+          image: ""
+        }
       }
     };
   },
@@ -495,13 +509,24 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
-      console.log(this.form);
+      var newForm = _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, this.form.profile), this.form), {
+        name: this.form.profile.name
+      }), {
+        profile_id: this.form.profile.id
+      });
 
-      if (!this.form.is_active) {
-        this.form.is_active = false;
+      console.log(newForm);
+
+      if (!newForm.is_active) {
+        newForm.is_active = false;
       }
 
-      this.$emit("on-save", this.form);
+      this.$emit("on-save", newForm);
+    }
+  },
+  computed: {
+    maxDate: function maxDate() {
+      return moment__WEBPACK_IMPORTED_MODULE_0___default()().subtract(18, "year").format("YYYY-MM-DD");
     }
   },
   watch: {
@@ -587,11 +612,15 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.department_id,
+                                  value: _vm.form.profile.department_id,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "department_id", $$v)
+                                    _vm.$set(
+                                      _vm.form.profile,
+                                      "department_id",
+                                      $$v
+                                    )
                                   },
-                                  expression: "form.department_id"
+                                  expression: "form.profile.department_id"
                                 }
                               }),
                               _vm._v(" "),
@@ -609,11 +638,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.job_title,
+                                  value: _vm.form.profile.job_title,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "job_title", $$v)
+                                    _vm.$set(_vm.form.profile, "job_title", $$v)
                                   },
-                                  expression: "form.job_title"
+                                  expression: "form.profile.job_title"
                                 }
                               }),
                               _vm._v(" "),
@@ -631,11 +660,15 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.first_name,
+                                  value: _vm.form.profile.first_name,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "first_name", $$v)
+                                    _vm.$set(
+                                      _vm.form.profile,
+                                      "first_name",
+                                      $$v
+                                    )
                                   },
-                                  expression: "form.first_name"
+                                  expression: "form.profile.first_name"
                                 }
                               }),
                               _vm._v(" "),
@@ -653,11 +686,15 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.middle_name,
+                                  value: _vm.form.profile.middle_name,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "middle_name", $$v)
+                                    _vm.$set(
+                                      _vm.form.profile,
+                                      "middle_name",
+                                      $$v
+                                    )
                                   },
-                                  expression: "form.middle_name"
+                                  expression: "form.profile.middle_name"
                                 }
                               }),
                               _vm._v(" "),
@@ -675,11 +712,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.last_name,
+                                  value: _vm.form.profile.last_name,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "last_name", $$v)
+                                    _vm.$set(_vm.form.profile, "last_name", $$v)
                                   },
-                                  expression: "form.last_name"
+                                  expression: "form.profile.last_name"
                                 }
                               }),
                               _vm._v(" "),
@@ -697,17 +734,17 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.suffix,
+                                  value: _vm.form.profile.suffix,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "suffix", $$v)
+                                    _vm.$set(_vm.form.profile, "suffix", $$v)
                                   },
-                                  expression: "form.suffix"
+                                  expression: "form.profile.suffix"
                                 }
                               }),
                               _vm._v(" "),
                               _c("v-select", {
                                 attrs: {
-                                  items: ["Male", "Female"],
+                                  items: ["male", "female"],
                                   label: "Gender",
                                   outlined: "",
                                   "error-messages": _vm.errors.gender[0]
@@ -718,11 +755,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.gender,
+                                  value: _vm.form.profile.gender,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "gender", $$v)
+                                    _vm.$set(_vm.form.profile, "gender", $$v)
                                   },
-                                  expression: "form.gender"
+                                  expression: "form.profile.gender"
                                 }
                               }),
                               _vm._v(" "),
@@ -777,15 +814,18 @@ var render = function() {
                                                     }
                                                   },
                                                   model: {
-                                                    value: _vm.form.birthdate,
+                                                    value:
+                                                      _vm.form.profile
+                                                        .birthdate,
                                                     callback: function($$v) {
                                                       _vm.$set(
-                                                        _vm.form,
+                                                        _vm.form.profile,
                                                         "birthdate",
                                                         $$v
                                                       )
                                                     },
-                                                    expression: "form.birthdate"
+                                                    expression:
+                                                      "form.profile.birthdate"
                                                   }
                                                 },
                                                 "v-text-field",
@@ -822,11 +862,15 @@ var render = function() {
                                         }
                                       },
                                       model: {
-                                        value: _vm.form.birthdate,
+                                        value: _vm.form.profile.birthdate,
                                         callback: function($$v) {
-                                          _vm.$set(_vm.form, "birthdate", $$v)
+                                          _vm.$set(
+                                            _vm.form.profile,
+                                            "birthdate",
+                                            $$v
+                                          )
                                         },
-                                        expression: "form.birthdate"
+                                        expression: "form.profile.birthdate"
                                       }
                                     },
                                     [
@@ -856,7 +900,7 @@ var render = function() {
                                           on: {
                                             click: function($event) {
                                               return _vm.$refs.dialog.save(
-                                                _vm.form.birthdate
+                                                _vm.form.profile.birthdate
                                               )
                                             }
                                           }
@@ -888,11 +932,15 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.location_id,
+                                  value: _vm.form.profile.location_id,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "location_id", $$v)
+                                    _vm.$set(
+                                      _vm.form.profile,
+                                      "location_id",
+                                      $$v
+                                    )
                                   },
-                                  expression: "form.location_id"
+                                  expression: "form.profile.location_id"
                                 }
                               }),
                               _vm._v(" "),
@@ -911,11 +959,15 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.mobile_phone,
+                                  value: _vm.form.profile.mobile_phone,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "mobile_phone", $$v)
+                                    _vm.$set(
+                                      _vm.form.profile,
+                                      "mobile_phone",
+                                      $$v
+                                    )
                                   },
-                                  expression: "form.mobile_phone"
+                                  expression: "form.profile.mobile_phone"
                                 }
                               }),
                               _vm._v(" "),
@@ -934,11 +986,15 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.home_phone,
+                                  value: _vm.form.profile.home_phone,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "home_phone", $$v)
+                                    _vm.$set(
+                                      _vm.form.profile,
+                                      "home_phone",
+                                      $$v
+                                    )
                                   },
-                                  expression: "form.home_phone"
+                                  expression: "form.profile.home_phone"
                                 }
                               }),
                               _vm._v(" "),
@@ -957,11 +1013,15 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.business_phone,
+                                  value: _vm.form.profile.business_phone,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "business_phone", $$v)
+                                    _vm.$set(
+                                      _vm.form.profile,
+                                      "business_phone",
+                                      $$v
+                                    )
                                   },
-                                  expression: "form.business_phone"
+                                  expression: "form.profile.business_phone"
                                 }
                               })
                             ],
@@ -1019,11 +1079,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.address,
+                                  value: _vm.form.profile.address,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "address", $$v)
+                                    _vm.$set(_vm.form.profile, "address", $$v)
                                   },
-                                  expression: "form.address"
+                                  expression: "form.profile.address"
                                 }
                               }),
                               _vm._v(" "),
@@ -1041,11 +1101,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.street,
+                                  value: _vm.form.profile.street,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "street", $$v)
+                                    _vm.$set(_vm.form.profile, "street", $$v)
                                   },
-                                  expression: "form.street"
+                                  expression: "form.profile.street"
                                 }
                               }),
                               _vm._v(" "),
@@ -1063,11 +1123,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.district,
+                                  value: _vm.form.profile.district,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "district", $$v)
+                                    _vm.$set(_vm.form.profile, "district", $$v)
                                   },
-                                  expression: "form.district"
+                                  expression: "form.profile.district"
                                 }
                               }),
                               _vm._v(" "),
@@ -1085,11 +1145,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.city,
+                                  value: _vm.form.profile.city,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "city", $$v)
+                                    _vm.$set(_vm.form.profile, "city", $$v)
                                   },
-                                  expression: "form.city"
+                                  expression: "form.profile.city"
                                 }
                               }),
                               _vm._v(" "),
@@ -1107,11 +1167,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.province,
+                                  value: _vm.form.profile.province,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "province", $$v)
+                                    _vm.$set(_vm.form.profile, "province", $$v)
                                   },
-                                  expression: "form.province"
+                                  expression: "form.profile.province"
                                 }
                               }),
                               _vm._v(" "),
@@ -1129,11 +1189,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.country,
+                                  value: _vm.form.profile.country,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "country", $$v)
+                                    _vm.$set(_vm.form.profile, "country", $$v)
                                   },
-                                  expression: "form.country"
+                                  expression: "form.profile.country"
                                 }
                               }),
                               _vm._v(" "),
@@ -1151,11 +1211,15 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.postal_code,
+                                  value: _vm.form.profile.postal_code,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "postal_code", $$v)
+                                    _vm.$set(
+                                      _vm.form.profile,
+                                      "postal_code",
+                                      $$v
+                                    )
                                   },
-                                  expression: "form.postal_code"
+                                  expression: "form.profile.postal_code"
                                 }
                               }),
                               _vm._v(" "),
@@ -1173,11 +1237,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.latitude,
+                                  value: _vm.form.profile.latitude,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "latitude", $$v)
+                                    _vm.$set(_vm.form.profile, "latitude", $$v)
                                   },
-                                  expression: "form.latitude"
+                                  expression: "form.profile.latitude"
                                 }
                               }),
                               _vm._v(" "),
@@ -1195,11 +1259,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.longitude,
+                                  value: _vm.form.profile.longitude,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "longitude", $$v)
+                                    _vm.$set(_vm.form.profile, "longitude", $$v)
                                   },
-                                  expression: "form.longitude"
+                                  expression: "form.profile.longitude"
                                 }
                               })
                             ],
@@ -1300,11 +1364,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.image,
+                                  value: _vm.form.profile.image,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "image", $$v)
+                                    _vm.$set(_vm.form.profile, "image", $$v)
                                   },
-                                  expression: "form.image"
+                                  expression: "form.profile.image"
                                 }
                               }),
                               _vm._v(" "),

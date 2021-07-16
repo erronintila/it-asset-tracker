@@ -25,8 +25,8 @@ class EmployeeUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            "code" => ['nullable', 'string', 'max:250', Rule::unique('employees', 'code')->ignore($this->employee)],
-            "slug" => ['nullable', 'string', 'max:250', Rule::unique('employees', 'slug')->ignore($this->employee)],
+            "code" => ['nullable', 'string', 'max:250', Rule::unique('employees', 'code')->ignore($this->profile_id)],
+            "slug" => ['nullable', 'string', 'max:250', Rule::unique('employees', 'slug')->ignore($this->profile_id)],
             'first_name' => ['required', 'string', 'max:250'],
             'middle_name' => ['required', 'string', 'max:250'],
             'last_name' => ['required', 'string', 'max:250'],
@@ -50,8 +50,8 @@ class EmployeeUpdateRequest extends FormRequest
             'image' => ['nullable', 'string'],
             'location_id' => ['nullable', 'integer', 'max:20'],
             'department_id' => ['required', 'integer', 'max:20'],
-            'username' => ['required', 'string', 'max:250', Rule::unique('users', 'username')->ignore($this->employee)],
-            'email' => ['required', 'string', 'max:250', Rule::unique('users', 'email')->ignore($this->employee)],
+            'username' => ['required', 'string', 'max:250', Rule::unique('users', 'username')->ignore($this->id)],
+            'email' => ['required', 'string', 'max:250', Rule::unique('users', 'email')->ignore($this->id)],
         ];
     }
 }

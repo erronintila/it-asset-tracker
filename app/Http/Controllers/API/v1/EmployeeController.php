@@ -65,7 +65,7 @@ class EmployeeController extends Controller
             $user = new User();
             $user->type = "employee";
             $user->name = $validated['first_name'] . ' ' . $validated['last_name'];
-            $user->username = $code;
+            $user->username = $validated['username'];
             $user->email = $validated['email'] ?? null;
             $user->password = bcrypt('password');
 
@@ -113,10 +113,30 @@ class EmployeeController extends Controller
         $validated = $request->validated();
         $data = DB::transaction(function () use ($id, $validated) {
             $user = User::findOrFail($id);
-            $user->fill($validated);
-            $user->slug = $user->code . '-' . implode('-', explode(' ', $validated['name']));
-            $user->save();
-            return $user;
+            $slug = $user->profile->code . '-' . implode('-', explode(' ', ($validated['first_name'] . ' ' . $validated['last_name'])));
+
+            $department = Department::findOrFail($validated['department_id']);
+
+            $user->type = "employee";
+            $user->name = ($validated['first_name'] . ' ' . $validated['last_name']);
+            $user->email = $validated['email'] ?? null;
+            $user->username = $validated['username'];
+            // $user->save();
+
+            $employee = Employee::findOrFail($user->profile->id);
+            $employee->fill(Arr::except($validated, ['email', 'username']));
+            $employee->slug = $slug;
+
+            $employee->department()->associate($department);
+            if ($validated['location_id']) {
+                $location = Location::findOrFail($validated['location_id']);
+                $employee->location()->associate($location);
+            }
+
+            $employee->save();
+            $employee->user()->save($user);
+
+            return $employee;
         });
 
         return $this->successResponse('update', $data, 200);

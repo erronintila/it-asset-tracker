@@ -20,34 +20,36 @@ export default {
     data() {
         return {
             form: {
-                code: "",
-                slug: "",
-                first_name: "",
-                middle_name: "",
-                last_name: "",
-                suffix: "",
-                gender: "",
-                birthdate: "",
-                business_phone: "",
-                home_phone: "",
-                mobile_phone: "",
-                job_title: "",
-                address: "",
-                street: "",
-                district: "",
-                city: "",
-                province: "",
-                country: "",
-                postal_code: "",
-                latitude: "",
-                longitude: "",
-                is_active: true,
-                location_id: "",
-                department_id: "",
-                notes: "",
-                email: "",
                 username: "",
-                image: ""
+                email: "",
+                is_active: true,
+                notes: "",
+                profile: {
+                    code: "",
+                    slug: "",
+                    first_name: "",
+                    middle_name: "",
+                    last_name: "",
+                    suffix: "",
+                    gender: "",
+                    birthdate: "",
+                    business_phone: "",
+                    home_phone: "",
+                    mobile_phone: "",
+                    job_title: "",
+                    address: "",
+                    street: "",
+                    district: "",
+                    city: "",
+                    province: "",
+                    country: "",
+                    postal_code: "",
+                    latitude: "",
+                    longitude: "",
+                    location_id: "",
+                    department_id: "",
+                    image: ""
+                }
             },
             errors: {
                 code: [],
@@ -96,7 +98,10 @@ export default {
             EmployeeDataService.show(this.$route.params.id, data)
                 .then(response => {
                     console.log(response.data);
-                    this.form = { ...this.form, ...response.data.data };
+                    this.form = { 
+                        ...this.form, 
+                        ...response.data.data 
+                    };
                 })
                 .catch(error => {
                     console.log(error.response);

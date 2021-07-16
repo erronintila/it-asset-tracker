@@ -10,7 +10,7 @@
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
                                 <v-text-field
-                                    v-model="form.department_id"
+                                    v-model="form.profile.department_id"
                                     label="Department"
                                     outlined
                                     clearable
@@ -19,7 +19,7 @@
                                     @input="errors.department_id = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.job_title"
+                                    v-model="form.profile.job_title"
                                     label="Job Title"
                                     outlined
                                     clearable
@@ -28,7 +28,7 @@
                                     @input="errors.job_title = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.first_name"
+                                    v-model="form.profile.first_name"
                                     label="First Name"
                                     outlined
                                     clearable
@@ -37,7 +37,7 @@
                                     @input="errors.first_name = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.middle_name"
+                                    v-model="form.profile.middle_name"
                                     label="Middle Name"
                                     outlined
                                     clearable
@@ -46,7 +46,7 @@
                                     @input="errors.middle_name = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.last_name"
+                                    v-model="form.profile.last_name"
                                     label="Last Name"
                                     outlined
                                     clearable
@@ -55,7 +55,7 @@
                                     @input="errors.last_name = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.suffix"
+                                    v-model="form.profile.suffix"
                                     label="Suffix"
                                     outlined
                                     clearable
@@ -64,8 +64,8 @@
                                     @input="errors.suffix = []"
                                 ></v-text-field>
                                 <v-select
-                                    v-model="form.gender"
-                                    :items="['Male', 'Female']"
+                                    v-model="form.profile.gender"
+                                    :items="['male', 'female']"
                                     label="Gender"
                                     outlined
                                     :error-messages="errors.gender[0]"
@@ -80,7 +80,7 @@
                                 >
                                     <template v-slot:activator="{ on, attrs }">
                                         <v-text-field
-                                            v-model="form.birthdate"
+                                            v-model="form.profile.birthdate"
                                             label="Birthdate"
                                             readonly
                                             v-bind="attrs"
@@ -94,7 +94,7 @@
                                         ></v-text-field>
                                     </template>
                                     <v-date-picker
-                                        v-model="form.birthdate"
+                                        v-model="form.profile.birthdate"
                                         :max="maxDate"
                                         scrollable
                                         @input="errors.birthdate = []"
@@ -112,7 +112,7 @@
                                             color="primary"
                                             @click="
                                                 $refs.dialog.save(
-                                                    form.birthdate
+                                                    form.profile.birthdate
                                                 )
                                             "
                                         >
@@ -121,7 +121,7 @@
                                     </v-date-picker>
                                 </v-dialog>
                                 <v-text-field
-                                    v-model="form.location_id"
+                                    v-model="form.profile.location_id"
                                     label="Location"
                                     outlined
                                     clearable
@@ -130,7 +130,7 @@
                                     @input="errors.location_id = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.mobile_phone"
+                                    v-model="form.profile.mobile_phone"
                                     label="Mobile Phone No."
                                     outlined
                                     clearable
@@ -140,7 +140,7 @@
                                     @input="errors.mobile_phone = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.home_phone"
+                                    v-model="form.profile.home_phone"
                                     label="Home Phone No."
                                     outlined
                                     clearable
@@ -150,7 +150,7 @@
                                     @input="errors.home_phone = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.business_phone"
+                                    v-model="form.profile.business_phone"
                                     label="Work Phone No."
                                     outlined
                                     clearable
@@ -174,7 +174,7 @@
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
                                 <v-text-field
-                                    v-model="form.address"
+                                    v-model="form.profile.address"
                                     label="Address"
                                     outlined
                                     clearable
@@ -183,7 +183,7 @@
                                     @input="errors.address = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.street"
+                                    v-model="form.profile.street"
                                     label="Street"
                                     outlined
                                     clearable
@@ -192,7 +192,7 @@
                                     @input="errors.street = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.district"
+                                    v-model="form.profile.district"
                                     label="District"
                                     outlined
                                     clearable
@@ -201,7 +201,7 @@
                                     @input="errors.district = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.city"
+                                    v-model="form.profile.city"
                                     label="City"
                                     outlined
                                     clearable
@@ -210,7 +210,7 @@
                                     @input="errors.city = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.province"
+                                    v-model="form.profile.province"
                                     label="Province"
                                     outlined
                                     clearable
@@ -219,7 +219,7 @@
                                     @input="errors.province = []"
                                 ></v-text-field>
                                 <v-combobox
-                                    v-model="form.country"
+                                    v-model="form.profile.country"
                                     label="Country"
                                     outlined
                                     clearable
@@ -228,7 +228,7 @@
                                     @input="errors.country = []"
                                 ></v-combobox>
                                 <v-text-field
-                                    v-model="form.postal_code"
+                                    v-model="form.profile.postal_code"
                                     label="Postal Code"
                                     outlined
                                     clearable
@@ -237,7 +237,7 @@
                                     @input="errors.postal_code = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.latitude"
+                                    v-model="form.profile.latitude"
                                     label="Latitude"
                                     outlined
                                     clearable
@@ -246,7 +246,7 @@
                                     @input="errors.latitude = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.longitude"
+                                    v-model="form.profile.longitude"
                                     label="Longitude"
                                     outlined
                                     clearable
@@ -287,7 +287,7 @@
                                     @input="errors.username = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.image"
+                                    v-model="form.profile.image"
                                     label="Image"
                                     outlined
                                     clearable
@@ -331,40 +331,43 @@
 </template>
 
 <script>
+import moment from "moment";
 export default {
     props: {
         employeeForm: {
             type: Object,
             default: () => {
                 return {
-                    code: "",
-                    slug: "",
-                    first_name: "",
-                    middle_name: "",
-                    last_name: "",
-                    suffix: "",
-                    gender: "",
-                    birthdate: "",
-                    business_phone: "",
-                    home_phone: "",
-                    mobile_phone: "",
-                    job_title: "",
-                    address: "",
-                    street: "",
-                    district: "",
-                    city: "",
-                    province: "",
-                    country: "",
-                    postal_code: "",
-                    latitude: "",
-                    longitude: "",
-                    is_active: true,
-                    location_id: "",
-                    department_id: "",
-                    notes: "",
-                    email: "",
                     username: "",
-                    image: ""
+                    email: "",
+                    is_active: true,
+                    notes: "",
+                    profile: {
+                        code: "",
+                        slug: "",
+                        first_name: "",
+                        middle_name: "",
+                        last_name: "",
+                        suffix: "",
+                        gender: "",
+                        birthdate: "",
+                        business_phone: "",
+                        home_phone: "",
+                        mobile_phone: "",
+                        job_title: "",
+                        address: "",
+                        street: "",
+                        district: "",
+                        city: "",
+                        province: "",
+                        country: "",
+                        postal_code: "",
+                        latitude: "",
+                        longitude: "",
+                        location_id: "",
+                        department_id: "",
+                        image: ""
+                    }
                 };
             }
         },
@@ -442,35 +445,38 @@ export default {
     data() {
         return {
             valid: false,
+            birthdateModal: false,
             form: {
-                code: "",
-                slug: "",
-                first_name: "",
-                middle_name: "",
-                last_name: "",
-                suffix: "",
-                gender: "",
-                birthdate: "",
-                business_phone: "",
-                home_phone: "",
-                mobile_phone: "",
-                job_title: "",
-                address: "",
-                street: "",
-                district: "",
-                city: "",
-                province: "",
-                country: "",
-                postal_code: "",
-                latitude: "",
-                longitude: "",
-                is_active: true,
-                location_id: "",
-                department_id: "",
-                notes: "",
-                email: "",
                 username: "",
-                image: ""
+                email: "",
+                is_active: true,
+                notes: "",
+                profile: {
+                    code: "",
+                    slug: "",
+                    first_name: "",
+                    middle_name: "",
+                    last_name: "",
+                    suffix: "",
+                    gender: "",
+                    birthdate: "",
+                    business_phone: "",
+                    home_phone: "",
+                    mobile_phone: "",
+                    job_title: "",
+                    address: "",
+                    street: "",
+                    district: "",
+                    city: "",
+                    province: "",
+                    country: "",
+                    postal_code: "",
+                    latitude: "",
+                    longitude: "",
+                    location_id: "",
+                    department_id: "",
+                    image: ""
+                }
             }
         };
     },
@@ -485,13 +491,27 @@ export default {
                 return;
             }
 
-            console.log(this.form);
+            let newForm = {
+                ...this.form.profile,
+                ...this.form,
+                ...{ name: this.form.profile.name },
+                ...{ profile_id: this.form.profile.id }
+            };
 
-            if (!this.form.is_active) {
-                this.form.is_active = false;
+            console.log(newForm);
+
+            if (!newForm.is_active) {
+                newForm.is_active = false;
             }
 
-            this.$emit("on-save", this.form);
+            this.$emit("on-save", newForm);
+        }
+    },
+    computed: {
+        maxDate() {
+            return moment()
+                .subtract(18, "year")
+                .format("YYYY-MM-DD");
         }
     },
     watch: {

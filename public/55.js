@@ -105,7 +105,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       _services_CustomerDataService__WEBPACK_IMPORTED_MODULE_0__["default"].show(this.$route.params.id, data).then(function (response) {
         console.log(response.data);
         _this.form = _objectSpread(_objectSpread({}, _this.form), response.data.data);
-        console.log("hello", _objectSpread(_objectSpread({}, _this.form), response.data.data));
       })["catch"](function (error) {
         console.log(error.response); // alert("An error has occurred.");
 

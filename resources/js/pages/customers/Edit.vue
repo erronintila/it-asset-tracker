@@ -92,10 +92,6 @@ export default {
                         ...this.form,
                         ...response.data.data
                     };
-                    console.log("hello", {
-                        ...this.form,
-                        ...response.data.data
-                    });
                 })
                 .catch(error => {
                     console.log(error.response);
