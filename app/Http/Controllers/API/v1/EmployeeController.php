@@ -33,7 +33,7 @@ class EmployeeController extends Controller
 
         // return UserResource::collection($employees);
 
-        $sortBy = request('sortBy') ?? "code";
+        $sortBy = request('sortBy') ?? "name";
         $sortType = request('sortType') ?? "asc";
         $itemsPerPage = request('itemsPerPage') ?? 10;
 

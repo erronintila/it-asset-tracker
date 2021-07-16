@@ -197,7 +197,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }],
       tableOptions: {
         options: {
-          sortBy: ["created_at"],
+          sortBy: ["name"],
           sortDesc: [false],
           page: 1,
           itemsPerPage: 10
@@ -207,16 +207,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         serverItemsLength: 0,
         headers: [{
           text: "Code",
-          value: "code"
+          value: "profile.code"
         }, {
           text: "Name",
-          value: "name"
+          value: "profile.name"
+        }, {
+          text: "Phone No.",
+          value: "profile.phone1"
         }, {
           text: "Address",
-          value: "address"
+          value: "profile.address"
         }, {
           text: "Assets",
-          value: "quantity"
+          value: "profile.quantity"
         }]
       },
       search: "",
@@ -328,7 +331,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.selectedItems = [];
       this.search = "";
       this.tableOptions.options = {
-        sortBy: ["created_at"],
+        sortBy: ["name"],
         sortDesc: [false],
         page: 1,
         itemsPerPage: 10
@@ -668,7 +671,7 @@ var render = function() {
                 scopedSlots: _vm._u(
                   [
                     {
-                      key: "item.code",
+                      key: "item.profile.code",
                       fn: function(ref) {
                         var item = ref.item
                         return [
@@ -685,7 +688,7 @@ var render = function() {
                             [
                               _vm._v(
                                 "\n                        " +
-                                  _vm._s(item.code) +
+                                  _vm._s(item.profile.code) +
                                   "\n                    "
                               )
                             ]

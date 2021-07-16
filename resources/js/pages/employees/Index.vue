@@ -126,14 +126,14 @@
                         nextIcon: 'mdi-chevron-right'
                     }"
                 >
-                    <template v-slot:[`item.code`]="{ item }">
+                    <template v-slot:[`item.profile.code`]="{ item }">
                         <router-link
                             :to="{
                                 name: 'employees.show',
                                 params: { id: item.id }
                             }"
                         >
-                            {{ item.code }}
+                            {{ item.profile.code }}
                         </router-link>
                     </template>
                     <template v-slot:[`item.status`]="{ item }">
@@ -167,7 +167,7 @@ export default {
             ],
             tableOptions: {
                 options: {
-                    sortBy: ["created_at"],
+                    sortBy: ["name"],
                     sortDesc: [false],
                     page: 1,
                     itemsPerPage: 10
@@ -176,10 +176,12 @@ export default {
                 itemsPerPageOptions: [10, 20, 50, 100],
                 serverItemsLength: 0,
                 headers: [
-                    { text: "Code", value: "code" },
+                    { text: "Code", value: "profile.code" },
                     { text: "Name", value: "name" },
-                    { text: "Address", value: "address" },
-                    { text: "Assets", value: "quantity" }
+                    { text: "Job Title", value: "profile.job_title" },
+                    { text: "Phone No.", value: "profile.business_phone" },
+                    { text: "Address", value: "profile.address" },
+                    { text: "Assets", value: "profile.quantity" }
                 ]
             },
             search: "",
@@ -288,7 +290,7 @@ export default {
             this.selectedItems = [];
             this.search = "";
             this.tableOptions.options = {
-                sortBy: ["created_at"],
+                sortBy: ["name"],
                 sortDesc: [false],
                 page: 1,
                 itemsPerPage: 10

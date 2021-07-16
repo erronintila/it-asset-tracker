@@ -126,14 +126,14 @@
                         nextIcon: 'mdi-chevron-right'
                     }"
                 >
-                    <template v-slot:[`item.code`]="{ item }">
+                    <template v-slot:[`item.profile.code`]="{ item }">
                         <router-link
                             :to="{
                                 name: 'customers.show',
                                 params: { id: item.id }
                             }"
                         >
-                            {{ item.code }}
+                            {{ item.profile.code }}
                         </router-link>
                     </template>
                     <template v-slot:[`item.status`]="{ item }">
@@ -167,7 +167,7 @@ export default {
             ],
             tableOptions: {
                 options: {
-                    sortBy: ["created_at"],
+                    sortBy: ["name"],
                     sortDesc: [false],
                     page: 1,
                     itemsPerPage: 10
@@ -176,10 +176,11 @@ export default {
                 itemsPerPageOptions: [10, 20, 50, 100],
                 serverItemsLength: 0,
                 headers: [
-                    { text: "Code", value: "code" },
-                    { text: "Name", value: "name" },
-                    { text: "Address", value: "address" },
-                    { text: "Assets", value: "quantity" }
+                    { text: "Code", value: "profile.code" },
+                    { text: "Name", value: "profile.name" },
+                    { text: "Phone No.", value: "profile.phone1" },
+                    { text: "Address", value: "profile.address" },
+                    { text: "Assets", value: "profile.quantity" }
                 ]
             },
             search: "",
@@ -288,7 +289,7 @@ export default {
             this.selectedItems = [];
             this.search = "";
             this.tableOptions.options = {
-                sortBy: ["created_at"],
+                sortBy: ["name"],
                 sortDesc: [false],
                 page: 1,
                 itemsPerPage: 10

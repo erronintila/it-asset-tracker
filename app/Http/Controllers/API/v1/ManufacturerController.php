@@ -22,7 +22,7 @@ class ManufacturerController extends Controller
      */
     public function index()
     {
-        $sortBy = request('sortBy') ?? "code";
+        $sortBy = request('sortBy') ?? "name";
         $sortType = request('sortType') ?? "asc";
         $itemsPerPage = request('itemsPerPage') ?? 10;
 

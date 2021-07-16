@@ -167,7 +167,7 @@ export default {
             ],
             tableOptions: {
                 options: {
-                    sortBy: ["code"],
+                    sortBy: ["name"],
                     sortDesc: [false],
                     page: 1,
                     itemsPerPage: 10
@@ -178,6 +178,7 @@ export default {
                 headers: [
                     { text: "Code", value: "code" },
                     { text: "Name", value: "name" },
+                    { text: "Phone No.", value: "phone1" },
                     { text: "Address", value: "address" },
                     { text: "Assets", value: "quantity" }
                 ]
@@ -288,7 +289,7 @@ export default {
             this.selectedItems = [];
             this.search = "";
             this.tableOptions.options = {
-                sortBy: ["code"],
+                sortBy: ["name"],
                 sortDesc: [false],
                 page: 1,
                 itemsPerPage: 10

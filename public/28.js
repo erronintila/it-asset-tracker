@@ -197,7 +197,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }],
       tableOptions: {
         options: {
-          sortBy: ["code"],
+          sortBy: ["name"],
           sortDesc: [false],
           page: 1,
           itemsPerPage: 10
@@ -211,6 +211,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, {
           text: "Name",
           value: "name"
+        }, {
+          text: "Phone No.",
+          value: "phone1"
         }, {
           text: "Address",
           value: "address"
@@ -328,7 +331,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.selectedItems = [];
       this.search = "";
       this.tableOptions.options = {
-        sortBy: ["code"],
+        sortBy: ["name"],
         sortDesc: [false],
         page: 1,
         itemsPerPage: 10
