@@ -98,7 +98,7 @@ class LocationController extends Controller
     public function destroy($id)
     {
         $data = DB::transaction(function () use ($id) {
-            $location = Location::findOrFail($id);
+            $location = Location::destroy($id);
             return $location;
         });
 
