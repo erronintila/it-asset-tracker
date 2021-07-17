@@ -1,16 +1,33 @@
 <template>
     <div>
-        <v-row class="mb-4">
-            <v-col class="d-flex justify-start">
-                <v-btn icon @click="$router.go(-1)">
-                    <v-icon>mdi-arrow-left</v-icon>
-                </v-btn>
-                <span class="page-title">Department Details</span>
-            </v-col>
-        </v-row>
+        <page-header
+            class="mb-4"
+            :title="'Department Details'"
+            :backButton="true"
+        ></page-header>
 
         <v-row>
-            <v-col cols="12">
+            <v-col cols="12" md="4">
+                <CardSummary :title="form.name" :subtitle="'# ' + form.code">
+                    <template v-slot:body>
+                        <p>Manager: {{ form.manager_id }}</p>
+                        <p>Last Updated: {{ form.updated_at }}</p>
+                    </template>
+                    <template v-slot:actions>
+                        <v-btn icon @click="dialogDepartmentEdit = true">
+                            <v-icon>
+                                mdi-file-document-edit-outline
+                            </v-icon>
+                        </v-btn>
+                        <v-btn icon @click="onDelete">
+                            <v-icon>
+                                mdi-delete
+                            </v-icon>
+                        </v-btn>
+                    </template>
+                </CardSummary>
+            </v-col>
+            <v-col cols="12" md="8">
                 <v-card>
                     <v-tabs v-model="tab" show-arrows>
                         <v-tabs-slider color="teal lighten-3"></v-tabs-slider>
@@ -36,11 +53,13 @@
                                             </thead>
                                             <tbody>
                                                 <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
+                                                    v-for="(value,
+                                                    name,
+                                                    index) in form"
+                                                    :key="index"
                                                 >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
+                                                    <td>{{ name }}</td>
+                                                    <td>{{ value }}</td>
                                                 </tr>
                                             </tbody>
                                         </template>
@@ -226,58 +245,81 @@
                 </v-card>
             </v-col>
         </v-row>
+
+        <DepartmentEdit
+            :department="form"
+            :dialogEdit="dialogDepartmentEdit"
+            @close-dialog="dialogDepartmentEdit = false"
+            @save-dialog="
+                () => {
+                    getData();
+                    dialogDepartmentEdit = false;
+                }
+            "
+        ></DepartmentEdit>
     </div>
 </template>
 
 <script>
+import CardSummary from "../../components/pages/CardSummary.vue";
+import DepartmentDataService from "../../services/DepartmentDataService";
+import DepartmentEdit from "./Edit.vue";
+
 export default {
+    components: {
+        CardSummary,
+        DepartmentEdit
+    },
     data() {
         return {
             tab: null,
             items: ["details", "employees", "assets", "history"],
-            records: [
-                {
-                    name: "Data 1",
-                    value: 159
-                },
-                {
-                    name: "Data 2",
-                    value: 237
-                },
-                {
-                    name: "Data 3",
-                    value: 262
-                },
-                {
-                    name: "Data 4",
-                    value: 305
-                },
-                {
-                    name: "Data 5",
-                    value: 356
-                },
-                {
-                    name: "Data 6",
-                    value: 375
-                },
-                {
-                    name: "Data 7",
-                    value: 392
-                },
-                {
-                    name: "Data 8",
-                    value: 408
-                },
-                {
-                    name: "Data 9",
-                    value: 452
-                },
-                {
-                    name: "Data 10",
-                    value: 518
-                }
-            ]
+            dialogDepartmentEdit: false,
+            records: [],
+            form: {
+                code: "",
+                slug: "",
+                name: "",
+                is_active: true,
+                manager_id: "",
+                department_id: ""
+            }
         };
+    },
+    methods: {
+        getData() {
+            let data = {};
+
+            DepartmentDataService.show(this.$route.params.id, data)
+                .then(response => {
+                    console.log(response.data);
+                    this.form = { ...this.form, ...response.data.data };
+                })
+                .catch(error => {
+                    console.log(error.response);
+                    alert("An error has occurred.");
+                    this.$router.push({ name: "departments.index" }, () => {});
+                });
+        },
+        onDelete() {
+            if (!confirm("WARNING: Do you want to delete this record?")) {
+                return;
+            }
+
+            DepartmentDataService.delete(this.$route.params.id, {})
+                .then(response => {
+                    console.log(response.data);
+                    alert(response.data.message);
+                    this.$router.push({ name: "departments.index" });
+                })
+                .catch(error => {
+                    console.log(error.response);
+                    alert("An error has occurred.");
+                });
+        }
+    },
+    created() {
+        this.getData();
     }
 };
 </script>

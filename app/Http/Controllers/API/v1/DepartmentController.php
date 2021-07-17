@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 class DepartmentController extends Controller
 {
     use HttpResponseMessage;
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -99,7 +99,7 @@ class DepartmentController extends Controller
     public function destroy($id)
     {
         $data = DB::transaction(function () use ($id) {
-            $department = Department::findOrFail($id);
+            $department = Department::destroy($id);
             return $department;
         });
 
