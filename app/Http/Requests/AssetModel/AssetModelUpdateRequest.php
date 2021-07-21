@@ -3,6 +3,7 @@
 namespace App\Http\Requests\AssetModel;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class AssetModelUpdateRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class AssetModelUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,12 @@ class AssetModelUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'code' => ['nullable', 'string', 'max:250', Rule::unique('asset_models', 'code')->ignore($this->asset_model)],
+            'slug' => ['nullable', 'string', 'max:250', Rule::unique('asset_models', 'slug')->ignore($this->asset_model)],
+            'name' => ['required', 'string', 'max:250', Rule::unique('asset_models', 'name')->ignore($this->asset_model)],
+            "model_no" => ['required', 'string', 'max:250'],
+            "is_active" => ['required', 'boolean'],
+            "manufacturer_id" => ['nullable', 'integer'],
         ];
     }
 }

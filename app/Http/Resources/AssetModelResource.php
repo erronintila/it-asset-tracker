@@ -16,28 +16,15 @@ class AssetModelResource extends JsonResource
     {
         return [
             "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
+            "code" => $this->code,
+            "slug" => $this->slug,
+            "model_no" => $this->model_no,
+            "name" => $this->name,
+            "is_active" => $this->is_active,
             "created_at" => $this->created_at,
             "updated_at" => $this->updated_at,
-            "deleted_at" => $this->deleted_at
+            "deleted_at" => $this->deleted_at,
+            "manufacturer_id" => $this->manufacturer_id,
         ];
     }
 }

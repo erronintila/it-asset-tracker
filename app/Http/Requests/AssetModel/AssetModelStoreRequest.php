@@ -13,7 +13,7 @@ class AssetModelStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class AssetModelStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'code' => ['nullable', 'string', 'max:250', 'unique:asset_models,code'],
+            'slug' => ['nullable', 'string', 'max:250', 'unique:asset_models,slug'],
+            'name' => ['required', 'string', 'max:250', 'unique:asset_models,name'],
+            "model_no" => ['required', 'string', 'max:250'],
+            "is_active" => ['required', 'boolean'],
+            "manufacturer_id" => ['nullable', 'integer'],
         ];
     }
 }
