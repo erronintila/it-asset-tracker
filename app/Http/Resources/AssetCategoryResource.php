@@ -16,28 +16,15 @@ class AssetCategoryResource extends JsonResource
     {
         return [
             "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
-            "id" => $this->id,
+            "type" => $this->type,
+            "code" => $this->code,
+            "slug" => $this->slug,
+            "name" => $this->name,
+            "is_active" => $this->is_active,
             "created_at" => $this->created_at,
             "updated_at" => $this->updated_at,
-            "deleted_at" => $this->deleted_at
+            "deleted_at" => $this->deleted_at,
+            "asset_category_id" => $this->asset_category_id,
         ];
     }
 }

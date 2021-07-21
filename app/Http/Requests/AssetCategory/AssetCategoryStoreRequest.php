@@ -13,7 +13,7 @@ class AssetCategoryStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class AssetCategoryStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "type" => ['required', 'string', 'in:asset,license'],
+            "code" => ['nullable', 'string', 'max:250', 'unique:asset_categories,code'],
+            "slug" => ['nullable', 'string', 'max:250', 'unique:asset_categories,slug'],
+            "name" => ['required', 'string', 'max:250', 'unique:asset_categories,name'],
+            "is_active" => ['required', 'boolean'],
+            "asset_category_id" => ['nullable', 'integer', 'max:20'],
         ];
     }
 }
