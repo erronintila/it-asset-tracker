@@ -3,7 +3,7 @@
         <v-card>
             <v-card-text>
                 <Form
-                    :title="'New Transaction Type'"
+                    :title="'New Work Order Type'"
                     @on-save="onSave"
                     @on-cancel="onCancel"
                     :errors="errors"

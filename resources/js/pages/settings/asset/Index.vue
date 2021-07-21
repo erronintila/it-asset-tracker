@@ -17,7 +17,11 @@
                                 <AssetCategoryIndex></AssetCategoryIndex>
                             </v-card>
                         </v-tab-item>
-                        <v-tab-item> </v-tab-item>
+                        <v-tab-item>
+                            <v-card>
+                                <RequestTypeIndex></RequestTypeIndex>
+                            </v-card>
+                        </v-tab-item>
                     </v-tabs-items>
                 </v-card>
             </v-col>
@@ -27,14 +31,17 @@
 
 <script>
 import AssetCategoryIndex from "../../asset_categories/Index.vue";
+import RequestTypeIndex from "../../request_types/Index.vue";
+
 export default {
     components: {
-        AssetCategoryIndex
+        AssetCategoryIndex,
+        RequestTypeIndex
     },
     data() {
         return {
             tab: null,
-            items: ["categories", "action types"]
+            items: ["categories", "request types"]
         };
     }
 };

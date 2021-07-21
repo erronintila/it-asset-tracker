@@ -38,9 +38,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    AssetCategoryIndex: _asset_categories_Index_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    AssetCategoryIndex: _asset_categories_Index_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    RequestTypeIndex: _asset_categories_Index_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {

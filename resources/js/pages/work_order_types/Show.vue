@@ -2,7 +2,7 @@
     <div>
         <page-header
             class="mb-4"
-            :title="'Transaction Type Details'"
+            :title="'Work Order Type Details'"
             :backButton="true"
         ></page-header>
 

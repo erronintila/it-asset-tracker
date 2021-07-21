@@ -628,7 +628,7 @@ var render = function() {
             [
               _c("Form", {
                 attrs: {
-                  title: "Update Transaction Type",
+                  title: "Update Work Order Type",
                   transaction_typeForm: _vm.form,
                   errors: _vm.errors
                 },
@@ -671,7 +671,7 @@ var render = function() {
     [
       _c("page-header", {
         staticClass: "mb-4",
-        attrs: { title: "Transaction Type Details", backButton: true }
+        attrs: { title: "Work Order Type Details", backButton: true }
       }),
       _vm._v(" "),
       _c(

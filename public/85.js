@@ -699,7 +699,7 @@ var render = function() {
             "v-card-text",
             [
               _c("Form", {
-                attrs: { title: "New Transaction Type", errors: _vm.errors },
+                attrs: { title: "New Work Order Type", errors: _vm.errors },
                 on: { "on-save": _vm.onSave, "on-cancel": _vm.onCancel }
               })
             ],
@@ -755,7 +755,7 @@ var render = function() {
             [
               _c("Form", {
                 attrs: {
-                  title: "Update Transaction Type",
+                  title: "Update Work Order Type",
                   transaction_typeForm: _vm.form,
                   errors: _vm.errors
                 },
