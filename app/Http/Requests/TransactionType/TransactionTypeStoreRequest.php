@@ -13,7 +13,7 @@ class TransactionTypeStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class TransactionTypeStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'code' => ['nullable', 'string', 'max:250', 'unique:transaction_types,code'],
+            'slug' => ['nullable', 'string', 'max:250', 'unique:transaction_types,slug'],
+            'name' => ['required', 'string', 'max:250', 'unique:transaction_types,name'],
+            "action_type" => ['required', 'string', 'in:checkin,checkout,maintenance,disposal'],
+            "is_active" => ['required', 'boolean'],
         ];
     }
 }

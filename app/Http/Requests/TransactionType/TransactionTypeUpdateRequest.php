@@ -3,6 +3,7 @@
 namespace App\Http\Requests\TransactionType;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class TransactionTypeUpdateRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class TransactionTypeUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,11 @@ class TransactionTypeUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'code' => ['nullable', 'string', 'max:250', Rule::unique('transaction_types', 'code')->ignore($this->transaction_type)],
+            'slug' => ['nullable', 'string', 'max:250', Rule::unique('transaction_types', 'slug')->ignore($this->transaction_type)],
+            'name' => ['required', 'string', 'max:250', Rule::unique('transaction_types', 'name')->ignore($this->transaction_type)],
+            "action_type" => ['required', 'string', 'in:checkin,checkout,maintenance,disposal'],
+            "is_active" => ['required', 'boolean'],
         ];
     }
 }

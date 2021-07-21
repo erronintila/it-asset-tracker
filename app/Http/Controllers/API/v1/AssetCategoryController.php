@@ -6,11 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AssetCategory\AssetCategoryUpdateRequest;
 use App\Http\Resources\AssetCategoryResource;
 use App\Models\AssetCategory;
+use App\Traits\HttpResponseMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class AssetCategoryController extends Controller
 {
+    use HttpResponseMessage;
+    
     /**
      * Display a listing of the resource.
      *
