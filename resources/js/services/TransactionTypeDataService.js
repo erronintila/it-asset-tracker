@@ -21,6 +21,10 @@ class TransactionTypeDataService {
     delete(id, data) {
         return axios.delete(`/api/v1/transaction_types/${id}`, data);
     }
+
+    deleteMany(data) {
+        return axios.delete(`/api/v1/transaction_types/multiple`, data);
+    }
 }
 
 export default new TransactionTypeDataService();

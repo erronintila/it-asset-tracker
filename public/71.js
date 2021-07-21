@@ -48,7 +48,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -57,7 +56,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       tab: null,
-      items: ["general", "departments", "permissions"]
+      items: ["departments", "permissions"]
     };
   }
 });
@@ -141,8 +140,6 @@ var render = function() {
                       }
                     },
                     [
-                      _c("v-tab-item"),
-                      _vm._v(" "),
                       _c(
                         "v-tab-item",
                         [_c("v-card", [_c("DepartmentIndex")], 1)],

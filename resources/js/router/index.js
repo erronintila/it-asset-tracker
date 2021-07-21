@@ -4,6 +4,7 @@ import auth_routes from "./auth";
 import pages_routes from "./pages";
 import employee_routes from "./employees";
 import permission_routes from "./permissions";
+import work_order_type_routes from "./work_order_types";
 import work_order_routes from "./work_orders";
 import schedule_routes from "./schedules";
 import report_routes from "./reports";
@@ -35,6 +36,7 @@ const routes = baseRoutes.concat(
     pages_routes,
     employee_routes,
     permission_routes,
+    work_order_type_routes,
     work_order_routes,
     schedule_routes,
     report_routes,

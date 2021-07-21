@@ -19,7 +19,7 @@ class TransactionTypeResource extends JsonResource
             "code" => $this->code,
             "slug" => $this->slug,
             "action_type" => $this->action_type,
-            "name" => $this->inamed,
+            "name" => $this->name,
             "is_active" => $this->is_active,
             "created_at" => $this->created_at,
             "updated_at" => $this->updated_at,

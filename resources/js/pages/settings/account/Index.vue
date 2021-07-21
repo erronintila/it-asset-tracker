@@ -23,7 +23,6 @@
                         </v-tab>
                     </v-tabs>
                     <v-tabs-items v-model="tab">
-                        <v-tab-item> </v-tab-item>
                         <v-tab-item>
                             <v-card>
                                 <DepartmentIndex></DepartmentIndex>
@@ -46,7 +45,7 @@ export default {
     data() {
         return {
             tab: null,
-            items: ["general", "departments", "permissions"]
+            items: ["departments", "permissions"]
         };
     }
 };
