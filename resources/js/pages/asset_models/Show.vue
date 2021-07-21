@@ -1,16 +1,41 @@
 <template>
     <div>
-        <v-row class="mb-4">
-            <v-col class="d-flex justify-start">
-                <v-btn icon @click="$router.go(-1)">
-                    <v-icon>mdi-arrow-left</v-icon>
-                </v-btn>
-                <span class="page-title">Asset Model Details</span>
-            </v-col>
-        </v-row>
+        <page-header
+            class="mb-4"
+            :title="'Asset Model Details'"
+            :backButton="true"
+        ></page-header>
 
         <v-row>
-            <v-col cols="12">
+            <v-col cols="12" md="4">
+                <CardSummary :title="form.name" :subtitle="'# ' + form.code">
+                    <template v-slot:body>
+                        <p>Manufacturer: {{ form.manufacturer_id }}</p>
+                    </template>
+                    <template v-slot:actions>
+                        <v-btn
+                            icon
+                            @click="
+                                $router.push(
+                                    '/asset_models/' +
+                                        $route.params.id +
+                                        '/edit'
+                                )
+                            "
+                        >
+                            <v-icon>
+                                mdi-file-document-edit-outline
+                            </v-icon>
+                        </v-btn>
+                        <v-btn icon @click="onDelete">
+                            <v-icon>
+                                mdi-delete
+                            </v-icon>
+                        </v-btn>
+                    </template>
+                </CardSummary>
+            </v-col>
+            <v-col cols="12" md="8">
                 <v-card>
                     <v-tabs v-model="tab" show-arrows>
                         <v-tabs-slider color="teal lighten-3"></v-tabs-slider>
@@ -23,7 +48,7 @@
                             <v-card flat>
                                 <v-card-text>
                                     <div class="page-title my-4">
-                                        Assets
+                                        Asset Model Name
                                     </div>
 
                                     <div class="my-4">
@@ -54,11 +79,13 @@
                                             </thead>
                                             <tbody>
                                                 <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
+                                                    v-for="(value,
+                                                    name,
+                                                    index) in form"
+                                                    :key="index"
                                                 >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
+                                                    <td>{{ name }}</td>
+                                                    <td>{{ value }}</td>
                                                 </tr>
                                             </tbody>
                                         </template>
@@ -249,10 +276,13 @@
 
 <script>
 import VueApexCharts from "vue-apexcharts";
+import CardSummary from "../../components/pages/CardSummary.vue";
+import AssetModelDataService from "../../services/AssetModelDataService";
 
 export default {
     components: {
-        VueApexCharts
+        VueApexCharts,
+        CardSummary
     },
     data() {
         return {
@@ -271,49 +301,51 @@ export default {
                     ]
                 }
             },
-            records: [
-                {
-                    name: "Data 1",
-                    value: 159
-                },
-                {
-                    name: "Data 2",
-                    value: 237
-                },
-                {
-                    name: "Data 3",
-                    value: 262
-                },
-                {
-                    name: "Data 4",
-                    value: 305
-                },
-                {
-                    name: "Data 5",
-                    value: 356
-                },
-                {
-                    name: "Data 6",
-                    value: 375
-                },
-                {
-                    name: "Data 7",
-                    value: 392
-                },
-                {
-                    name: "Data 8",
-                    value: 408
-                },
-                {
-                    name: "Data 9",
-                    value: 452
-                },
-                {
-                    name: "Data 10",
-                    value: 518
-                }
-            ]
+            records: [],
+            form: {
+                code: "",
+                slug: "",
+                name: "",
+                model_no: "",
+                is_active: true,
+                manufacturer_id: ""
+            }
         };
+    },
+    methods: {
+        getData() {
+            let data = {};
+
+            AssetModelDataService.show(this.$route.params.id, data)
+                .then(response => {
+                    console.log(response.data);
+                    this.form = { ...this.form, ...response.data.data };
+                })
+                .catch(error => {
+                    console.log(error.response);
+                    alert("An error has occurred.");
+                    this.$router.push({ name: "asset_models.index" }, () => {});
+                });
+        },
+        onDelete() {
+            if (!confirm("WARNING: Do you want to delete this record?")) {
+                return;
+            }
+
+            AssetModelDataService.delete(this.$route.params.id, {})
+                .then(response => {
+                    console.log(response.data);
+                    alert(response.data.message);
+                    this.$router.push({ name: "asset_models.index" });
+                })
+                .catch(error => {
+                    console.log(error.response);
+                    alert("An error has occurred.");
+                });
+        }
+    },
+    created() {
+        this.getData();
     }
 };
 </script>

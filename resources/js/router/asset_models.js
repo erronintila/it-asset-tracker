@@ -16,6 +16,14 @@ const asset_model_routes = [
         }
     },
     {
+        path: "/asset_models/:id/edit",
+        component: () => import("../pages/asset_models/Edit"),
+        name: "asset_models.edit",
+        meta: {
+            auth: true
+        }
+    },
+    {
         path: "/asset_models/:id",
         component: () => import("../pages/asset_models/Show"),
         name: "asset_models.show",

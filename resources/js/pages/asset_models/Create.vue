@@ -1,64 +1,52 @@
 <template>
     <div>
-        <v-row>
-            <v-col class="d-flex justify-start">
-                <v-btn icon @click="$router.go(-1)">
-                    <v-icon>mdi-arrow-left</v-icon>
-                </v-btn>
-                <span class="page-title">New Asset Model</span>
-            </v-col>
-        </v-row>
+        <page-header
+            :title="'New Asset Model'"
+            :backButton="true"
+        ></page-header>
 
-        <v-row class="d-flex justify-center">
-            <v-col cols="12" md="6">
-                <v-card flat>
-                    <v-card-title>
-                        General Information
-                    </v-card-title>
-                    <v-card-text>
-                        <v-row class="d-flex justify-center">
-                            <v-col cols="12">
-                                <v-text-field
-                                    label="Model No."
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Name"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Category"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Manufacturer"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Notes"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                            </v-col>
-                        </v-row>
-                    </v-card-text>
-                    <v-card-actions>
-                        <v-spacer></v-spacer>
-                        <v-btn
-                            color="primary"
-                            @click="$router.go(-1)"
-                            class="mr-2"
-                            large
-                        >
-                            Save
-                        </v-btn>
-                    </v-card-actions>
-                </v-card>
-            </v-col>
-        </v-row>
+        <Form @on-save="onSave" :errors="errors"></Form>
     </div>
 </template>
+
+<script>
+import AssetModelDataService from "../../services/AssetModelDataService";
+import Form from "./Form.vue";
+
+export default {
+    components: {
+        Form
+    },
+    data() {
+        return {
+            formDataLoaded: true,
+            errors: {
+                code: [],
+                slug: [],
+                name: [],
+                model_no: [],
+                is_active: [],
+                manufacturer_id: []
+            }
+        };
+    },
+    methods: {
+        onSave(value) {
+            AssetModelDataService.store(value)
+                .then(response => {
+                    console.log(response.data);
+                    alert("Successfully created.");
+                    this.$router.push({ name: "asset_models.index" });
+                })
+                .catch(error => {
+                    console.log(error.response);
+                    alert("An error has occurred.");
+                    this.errors = {
+                        ...this.errors,
+                        ...error.response.data.errors
+                    };
+                });
+        }
+    }
+};
+</script>
