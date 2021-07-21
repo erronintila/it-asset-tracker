@@ -1,350 +1,20 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[37],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/asset_categories/Index.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/asset_categories/Index.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/asset_categories/Create.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/asset_categories/Create.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      selected: [],
-      headers: [{
-        text: "Asset Tag",
-        align: "start",
-        sortable: true,
-        value: "asset_tag"
-      }, {
-        text: "Description",
-        value: "description"
-      }, {
-        text: "Category",
-        value: "category"
-      }, {
-        text: "Serial No.",
-        value: "serial"
-      }, {
-        text: "Model",
-        value: "model"
-      }, {
-        text: "Assigned To",
-        value: "assigned_to"
-      }, {
-        text: "Status",
-        value: "status"
-      }],
-      items: [{
-        id: 1,
-        asset_tag: "252342342325",
-        description: "Apple iPad Pro",
-        category: "Tablets",
-        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-        model: "iPad Pro",
-        assigned_to: "",
-        status: {
-          text: "In Storage",
-          color: "primary",
-          text_color: "white"
-        }
-      }, {
-        id: 2,
-        asset_tag: "24352342342",
-        description: "Apple iPad Pro",
-        category: "Tablets",
-        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-        model: "iPad Pro",
-        assigned_to: "Juan Dela Cruz",
-        status: {
-          text: "In Use",
-          color: "green",
-          text_color: "white"
-        }
-      }, {
-        id: 3,
-        asset_tag: "245234234",
-        description: "Apple iPad Pro",
-        category: "Tablets",
-        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-        model: "iPad Pro",
-        assigned_to: "Juan Dela Cruz",
-        status: {
-          text: "In Maintenance",
-          color: "red",
-          text_color: "white"
-        }
-      }, {
-        id: 4,
-        asset_tag: "3453452",
-        description: "Apple iPad Pro",
-        category: "Tablets",
-        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-        model: "iPad Pro",
-        assigned_to: "",
-        status: {
-          text: "Disposed",
-          color: "grey",
-          text_color: "white"
-        }
-      }, {
-        id: 5,
-        asset_tag: "67867857",
-        description: "Apple iPad Pro",
-        category: "Tablets",
-        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-        model: "iPad Pro",
-        assigned_to: "Juan Dela Cruz",
-        status: {
-          text: "In Transit",
-          color: "yellow",
-          text_color: "black"
-        }
-      }, {
-        id: 6,
-        asset_tag: "34563463",
-        description: "Apple iPad Pro",
-        category: "Tablets",
-        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-        model: "iPad Pro",
-        assigned_to: "",
-        status: {
-          text: "In Retired",
-          color: "grey",
-          text_color: "white"
-        }
-      }, {
-        id: 7,
-        asset_tag: "5678576",
-        description: "Apple iPad Pro",
-        category: "Tablets",
-        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-        model: "iPad Pro",
-        assigned_to: "",
-        status: {
-          text: "Missing",
-          color: "grey",
-          text_color: "white"
-        }
-      }, {
-        id: 8,
-        asset_tag: "34634657",
-        description: "Apple iPad Pro",
-        category: "Tablets",
-        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-        model: "iPad Pro",
-        assigned_to: "",
-        status: {
-          text: "In Storage",
-          color: "primary",
-          text_color: "white"
-        }
-      }, {
-        id: 9,
-        asset_tag: "87897897",
-        description: "Apple iPad Pro",
-        category: "Tablets",
-        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-        model: "iPad Pro",
-        assigned_to: "",
-        status: {
-          text: "In Storage",
-          color: "primary",
-          text_color: "white"
-        }
-      }, {
-        id: 10,
-        asset_tag: "4564563456",
-        description: "Apple iPad Pro",
-        category: "Tablets",
-        serial: "d0e963f9-75ff-367f-bad2-beb7c8c12b27",
-        model: "iPad Pro",
-        assigned_to: "Juan Dela Cruz",
-        status: {
-          text: "In Maintenance",
-          color: "red",
-          text_color: "white"
-        }
-      }],
-      showSearch: false
-    };
-  }
-});
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\resources\\js\\pages\\asset_categories\\Create.vue: Unexpected token, expected \",\" (36:16)\n\n\u001b[0m \u001b[90m 34 |\u001b[39m                 slug\u001b[33m:\u001b[39m []\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 35 |\u001b[39m                 type\u001b[33m:\u001b[39m []\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 36 |\u001b[39m                 name\u001b[33m:\u001b[39m []\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 37 |\u001b[39m                 is_active\u001b[33m:\u001b[39m []\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 38 |\u001b[39m                 asset_category_id\u001b[33m:\u001b[39m []\u001b[0m\n\u001b[0m \u001b[90m 39 |\u001b[39m             }\u001b[0m\n    at Parser._raise (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:810:17)\n    at Parser.raiseWithData (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:803:17)\n    at Parser.raise (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:764:17)\n    at Parser.unexpected (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:9980:16)\n    at Parser.expect (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:9954:28)\n    at Parser.parseObjectLike (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:11770:14)\n    at Parser.parseExprAtom (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:11298:23)\n    at Parser.parseExprSubscripts (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10954:23)\n    at Parser.parseUpdate (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10934:21)\n    at Parser.parseMaybeUnary (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10912:23)\n    at Parser.parseExprOps (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10769:23)\n    at Parser.parseMaybeConditional (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10743:23)\n    at Parser.parseMaybeAssign (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10706:21)\n    at C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10673:39\n    at Parser.allowInAnd (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:12396:12)\n    at Parser.parseMaybeAssignAllowIn (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10673:17)\n    at Parser.parseObjectProperty (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:11939:101)\n    at Parser.parseObjPropValue (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:11964:100)\n    at Parser.parsePropertyDefinition (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:11888:10)\n    at Parser.parseObjectLike (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:11778:25)\n    at Parser.parseExprAtom (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:11298:23)\n    at Parser.parseExprSubscripts (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10954:23)\n    at Parser.parseUpdate (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10934:21)\n    at Parser.parseMaybeUnary (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10912:23)\n    at Parser.parseExprOps (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10769:23)\n    at Parser.parseMaybeConditional (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10743:23)\n    at Parser.parseMaybeAssign (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10706:21)\n    at Parser.parseExpressionBase (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10651:23)\n    at C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10645:39\n    at Parser.allowInAnd (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:12390:16)\n    at Parser.parseExpression (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10645:17)\n    at Parser.parseReturnStatement (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:12974:28)\n    at Parser.parseStatementContent (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:12644:21)\n    at Parser.parseStatement (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:12596:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:13185:25)\n    at Parser.parseBlockBody (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:13176:10)");
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/asset_categories/Index.vue?vue&type=style&index=0&id=1f0c4217&scoped=true&lang=css&":
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/asset_categories/Index.vue?vue&type=style&index=0&id=1f0c4217&scoped=true&lang=css& ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "\na[data-v-1f0c4217] {\r\n    text-decoration: none;\n}\r\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/asset_categories/Index.vue?vue&type=style&index=0&id=1f0c4217&scoped=true&lang=css&":
-/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/asset_categories/Index.vue?vue&type=style&index=0&id=1f0c4217&scoped=true&lang=css& ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./Index.vue?vue&type=style&index=0&id=1f0c4217&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/asset_categories/Index.vue?vue&type=style&index=0&id=1f0c4217&scoped=true&lang=css&");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/asset_categories/Index.vue?vue&type=template&id=1f0c4217&scoped=true&":
-/*!********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/asset_categories/Index.vue?vue&type=template&id=1f0c4217&scoped=true& ***!
-  \********************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/asset_categories/Create.vue?vue&type=template&id=2b9f68f2&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/asset_categories/Create.vue?vue&type=template&id=2b9f68f2& ***!
+  \*********************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -357,273 +27,27 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "v-dialog",
+    {
+      attrs: { persistent: "", "max-width": "500" },
+      model: {
+        value: _vm.dialog,
+        callback: function($$v) {
+          _vm.dialog = $$v
+        },
+        expression: "dialog"
+      }
+    },
     [
       _c(
-        "v-row",
+        "v-card",
         [
           _c(
-            "v-col",
-            { staticClass: "d-flex align-center" },
+            "v-card-text",
             [
-              _c(
-                "div",
-                { staticClass: "page-title d-inline mx-3" },
-                [
-                  _c(
-                    "router-link",
-                    { attrs: { to: { name: "settings.asset.index" } } },
-                    [
-                      _vm._v(
-                        "\n                    Asset Settings\n                "
-                      )
-                    ]
-                  ),
-                  _vm._v("\n                / Categories\n            ")
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-btn",
-                { attrs: { icon: "" } },
-                [_c("v-icon", [_vm._v("mdi-refresh")])],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-btn",
-                {
-                  attrs: { icon: "", to: { name: "asset_categories.create" } }
-                },
-                [_c("v-icon", [_vm._v("mdi-plus")])],
-                1
-              ),
-              _vm._v(" "),
-              _vm.selected.length
-                ? _c(
-                    "div",
-                    { staticClass: "d-inline" },
-                    [
-                      _c(
-                        "v-btn",
-                        { attrs: { icon: "" } },
-                        [
-                          _c("v-icon", [
-                            _vm._v("mdi-file-document-edit-outline")
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _c(
-                "v-btn",
-                {
-                  attrs: { icon: "" },
-                  on: {
-                    click: function($event) {
-                      _vm.showSearch = !_vm.showSearch
-                    }
-                  }
-                },
-                [_c("v-icon", [_vm._v("mdi-file-search-outline")])],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-menu",
-                {
-                  attrs: { rounded: "", "offset-y": "" },
-                  scopedSlots: _vm._u([
-                    {
-                      key: "activator",
-                      fn: function(ref) {
-                        var on = ref.on
-                        var attrs = ref.attrs
-                        return [
-                          _c(
-                            "v-btn",
-                            _vm._g(
-                              _vm._b(
-                                { attrs: { icon: "" } },
-                                "v-btn",
-                                attrs,
-                                false
-                              ),
-                              on
-                            ),
-                            [_c("v-icon", [_vm._v("mdi-dots-vertical")])],
-                            1
-                          )
-                        ]
-                      }
-                    }
-                  ])
-                },
-                [
-                  _vm._v(" "),
-                  _c(
-                    "v-list",
-                    [
-                      _c(
-                        "v-list-item",
-                        { attrs: { link: "" } },
-                        [
-                          _c("v-list-item-title", [
-                            _vm._v(
-                              "\n                            Create Work Order\n                        "
-                            )
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-item",
-                        { attrs: { link: "" } },
-                        [_c("v-list-item-title", [_vm._v("Checkout ")])],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-item",
-                        { attrs: { link: "" } },
-                        [_c("v-list-item-title", [_vm._v("Dispose ")])],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-item",
-                        { attrs: { link: "" } },
-                        [_c("v-list-item-title", [_vm._v("Export ")])],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-item",
-                        { attrs: { link: "" } },
-                        [_c("v-list-item-title", [_vm._v("Delete ")])],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-item",
-                        { attrs: { link: "" } },
-                        [_c("v-list-item-title", [_vm._v("Restore ")])],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _vm.showSearch
-        ? _c(
-            "v-row",
-            [
-              _c(
-                "v-col",
-                { staticClass: "d-flex" },
-                [
-                  _c("v-text-field", {
-                    attrs: {
-                      outlined: "",
-                      clearable: "",
-                      placeholder: "Enter text here..."
-                    }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _c(
-        "v-row",
-        [
-          _c(
-            "v-col",
-            { attrs: { cols: "12" } },
-            [
-              _c("v-data-table", {
-                attrs: {
-                  headers: _vm.headers,
-                  items: _vm.items,
-                  "items-per-page": 10,
-                  "show-select": ""
-                },
-                scopedSlots: _vm._u(
-                  [
-                    {
-                      key: "item.asset_tag",
-                      fn: function(ref) {
-                        var item = ref.item
-                        return [
-                          _c(
-                            "router-link",
-                            {
-                              attrs: {
-                                to: {
-                                  name: "asset_categories.show",
-                                  params: { id: item.id }
-                                }
-                              }
-                            },
-                            [_vm._v(_vm._s(item.asset_tag))]
-                          )
-                        ]
-                      }
-                    },
-                    {
-                      key: "item.status",
-                      fn: function(ref) {
-                        var item = ref.item
-                        return [
-                          _c(
-                            "v-chip",
-                            {
-                              attrs: {
-                                small: "",
-                                color: item.status.color,
-                                "text-color": item.status.text_color
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                        " +
-                                  _vm._s(item.status.text) +
-                                  "\n                    "
-                              )
-                            ]
-                          )
-                        ]
-                      }
-                    }
-                  ],
-                  null,
-                  true
-                ),
-                model: {
-                  value: _vm.selected,
-                  callback: function($$v) {
-                    _vm.selected = $$v
-                  },
-                  expression: "selected"
-                }
+              _c("Form", {
+                attrs: { title: "New Asset Category", errors: _vm.errors },
+                on: { "on-save": _vm.onSave, "on-cancel": _vm.onCancel }
               })
             ],
             1
@@ -642,20 +66,18 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/pages/asset_categories/Index.vue":
-/*!*******************************************************!*\
-  !*** ./resources/js/pages/asset_categories/Index.vue ***!
-  \*******************************************************/
+/***/ "./resources/js/pages/asset_categories/Create.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/pages/asset_categories/Create.vue ***!
+  \********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Index_vue_vue_type_template_id_1f0c4217_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Index.vue?vue&type=template&id=1f0c4217&scoped=true& */ "./resources/js/pages/asset_categories/Index.vue?vue&type=template&id=1f0c4217&scoped=true&");
-/* harmony import */ var _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Index.vue?vue&type=script&lang=js& */ "./resources/js/pages/asset_categories/Index.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _Index_vue_vue_type_style_index_0_id_1f0c4217_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Index.vue?vue&type=style&index=0&id=1f0c4217&scoped=true&lang=css& */ "./resources/js/pages/asset_categories/Index.vue?vue&type=style&index=0&id=1f0c4217&scoped=true&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
+/* harmony import */ var _Create_vue_vue_type_template_id_2b9f68f2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Create.vue?vue&type=template&id=2b9f68f2& */ "./resources/js/pages/asset_categories/Create.vue?vue&type=template&id=2b9f68f2&");
+/* harmony import */ var _Create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Create.vue?vue&type=script&lang=js& */ "./resources/js/pages/asset_categories/Create.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -663,67 +85,51 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Index_vue_vue_type_template_id_1f0c4217_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Index_vue_vue_type_template_id_1f0c4217_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Create_vue_vue_type_template_id_2b9f68f2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Create_vue_vue_type_template_id_2b9f68f2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "1f0c4217",
+  null,
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/pages/asset_categories/Index.vue"
+component.options.__file = "resources/js/pages/asset_categories/Create.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/pages/asset_categories/Index.vue?vue&type=script&lang=js&":
-/*!********************************************************************************!*\
-  !*** ./resources/js/pages/asset_categories/Index.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************/
+/***/ "./resources/js/pages/asset_categories/Create.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/pages/asset_categories/Create.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/asset_categories/Index.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Create.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/asset_categories/Create.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/pages/asset_categories/Index.vue?vue&type=style&index=0&id=1f0c4217&scoped=true&lang=css&":
-/*!****************************************************************************************************************!*\
-  !*** ./resources/js/pages/asset_categories/Index.vue?vue&type=style&index=0&id=1f0c4217&scoped=true&lang=css& ***!
-  \****************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_style_index_0_id_1f0c4217_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./Index.vue?vue&type=style&index=0&id=1f0c4217&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/asset_categories/Index.vue?vue&type=style&index=0&id=1f0c4217&scoped=true&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_style_index_0_id_1f0c4217_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_style_index_0_id_1f0c4217_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_style_index_0_id_1f0c4217_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_style_index_0_id_1f0c4217_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-
-
-/***/ }),
-
-/***/ "./resources/js/pages/asset_categories/Index.vue?vue&type=template&id=1f0c4217&scoped=true&":
-/*!**************************************************************************************************!*\
-  !*** ./resources/js/pages/asset_categories/Index.vue?vue&type=template&id=1f0c4217&scoped=true& ***!
-  \**************************************************************************************************/
+/***/ "./resources/js/pages/asset_categories/Create.vue?vue&type=template&id=2b9f68f2&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/pages/asset_categories/Create.vue?vue&type=template&id=2b9f68f2& ***!
+  \***************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_1f0c4217_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Index.vue?vue&type=template&id=1f0c4217&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/asset_categories/Index.vue?vue&type=template&id=1f0c4217&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_1f0c4217_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_2b9f68f2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Create.vue?vue&type=template&id=2b9f68f2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/asset_categories/Create.vue?vue&type=template&id=2b9f68f2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_2b9f68f2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_1f0c4217_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_2b9f68f2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

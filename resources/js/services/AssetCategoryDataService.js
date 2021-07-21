@@ -21,6 +21,10 @@ class AssetCategoryDataService {
     delete(id, data) {
         return axios.delete(`/api/v1/asset_categories/${id}`, data);
     }
+
+    deleteMany(data) {
+        return axios.delete(`/api/v1/asset_categories/multiple`, data);
+    }
 }
 
 export default new AssetCategoryDataService();

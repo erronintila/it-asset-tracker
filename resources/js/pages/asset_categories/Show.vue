@@ -1,102 +1,31 @@
 <template>
     <div>
-        <v-row class="mb-4">
-            <v-col class="d-flex justify-start">
-                <v-btn icon @click="$router.go(-1)">
-                    <v-icon>mdi-arrow-left</v-icon>
-                </v-btn>
-                <span class="page-title">Asset Category Details</span>
-            </v-col>
-        </v-row>
+        <page-header
+            class="mb-4"
+            :title="'Asset Category Details'"
+            :backButton="true"
+        ></page-header>
 
         <v-row>
             <v-col cols="12" md="4">
-                <v-card>
-                    <template slot="progress">
-                        <v-progress-linear
-                            color="deep-purple"
-                            height="10"
-                            indeterminate
-                        ></v-progress-linear>
+                <CardSummary :title="form.name" :subtitle="'# ' + form.code">
+                    <template v-slot:body>
+                        <p>Type: {{ form.type }}</p>
+                        <p>Last Updated: {{ form.updated_at }}</p>
                     </template>
-
-                    <v-img
-                        height="250"
-                        src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-                    ></v-img>
-
-                    <v-card-title>
-                        Description
-                        <v-spacer></v-spacer>
-                        <v-chip>Status</v-chip>
-                    </v-card-title>
-
-                    <v-card-text>
-                        <v-row align="center" class="mx-0">
-                            <v-rating
-                                :value="4.5"
-                                color="amber"
-                                dense
-                                half-increments
-                                readonly
-                                size="14"
-                            ></v-rating>
-
-                            <div class="grey--text ms-4">
-                                4.5 (413)
-                            </div>
-                        </v-row>
-
-                        <div class="my-4 text-subtitle-1">
-                            # 32412431234
-                        </div>
-
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing
-                            elit. Sit, possimus.
-                        </p>
-
-                        <p>
-                            Last Updated: 2021-01-01 08:00
-                        </p>
-                    </v-card-text>
-
-                    <v-divider class="mx-4"></v-divider>
-
-                    <!-- <v-card-title>Tonight's availability</v-card-title> -->
-
-                    <!-- <v-card-text>
-                        <v-chip-group
-                            active-class="deep-purple accent-4 white--text"
-                            column
-                        >
-                            <v-chip>5:30PM</v-chip>
-
-                            <v-chip>7:30PM</v-chip>
-
-                            <v-chip>8:00PM</v-chip>
-
-                            <v-chip>9:00PM</v-chip>
-                        </v-chip-group>
-                    </v-card-text> -->
-
-                    <v-card-actions>
-                        <v-btn icon>
-                            <v-icon>mdi-file-document-edit-outline</v-icon>
+                    <template v-slot:actions>
+                        <v-btn icon @click="dialogAssetCategoryEdit = true">
+                            <v-icon>
+                                mdi-file-document-edit-outline
+                            </v-icon>
                         </v-btn>
-
-                        <v-btn icon>
-                            <v-icon>mdi-delete</v-icon>
+                        <v-btn icon @click="onDelete">
+                            <v-icon>
+                                mdi-delete
+                            </v-icon>
                         </v-btn>
-
-                        <v-btn icon>
-                            <v-icon>mdi-file-export-outline</v-icon>
-                        </v-btn>
-                        <v-btn icon>
-                            <v-icon>mdi-text-box-plus-outline</v-icon>
-                        </v-btn>
-                    </v-card-actions>
-                </v-card>
+                    </template>
+                </CardSummary>
             </v-col>
             <v-col cols="12" md="8">
                 <v-card>
@@ -124,11 +53,13 @@
                                             </thead>
                                             <tbody>
                                                 <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
+                                                    v-for="(value,
+                                                    name,
+                                                    index) in form"
+                                                    :key="index"
                                                 >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
+                                                    <td>{{ name }}</td>
+                                                    <td>{{ value }}</td>
                                                 </tr>
                                             </tbody>
                                         </template>
@@ -314,66 +245,84 @@
                 </v-card>
             </v-col>
         </v-row>
+
+        <AssetCategoryEdit
+            :asset_category="form"
+            :dialogEdit="dialogAssetCategoryEdit"
+            @close-dialog="dialogAssetCategoryEdit = false"
+            @save-dialog="
+                () => {
+                    getData();
+                    dialogAssetCategoryEdit = false;
+                }
+            "
+        ></AssetCategoryEdit>
     </div>
 </template>
 
 <script>
+import CardSummary from "../../components/pages/CardSummary.vue";
+import AssetCategoryDataService from "../../services/AssetCategoryDataService";
+import AssetCategoryEdit from "./Edit.vue";
+
 export default {
+    components: {
+        CardSummary,
+        AssetCategoryEdit
+    },
     data() {
         return {
             tab: null,
-            items: [
-                "details",
-                "assets",
-                "licenses",
-                "consumables",
-                "maintenances",
-                "history",
-                "attachments"
-            ],
-            records: [
-                {
-                    name: "Data 1",
-                    value: 159
-                },
-                {
-                    name: "Data 2",
-                    value: 237
-                },
-                {
-                    name: "Data 3",
-                    value: 262
-                },
-                {
-                    name: "Data 4",
-                    value: 305
-                },
-                {
-                    name: "Data 5",
-                    value: 356
-                },
-                {
-                    name: "Data 6",
-                    value: 375
-                },
-                {
-                    name: "Data 7",
-                    value: 392
-                },
-                {
-                    name: "Data 8",
-                    value: 408
-                },
-                {
-                    name: "Data 9",
-                    value: 452
-                },
-                {
-                    name: "Data 10",
-                    value: 518
-                }
-            ]
+            items: ["details", "employees", "assets", "history"],
+            dialogAssetCategoryEdit: false,
+            records: [],
+            form: {
+                code: "",
+                slug: "",
+                type: "",
+                name: "",
+                is_active: true,
+                asset_category_id: ""
+            }
         };
+    },
+    methods: {
+        getData() {
+            let data = {};
+
+            AssetCategoryDataService.show(this.$route.params.id, data)
+                .then(response => {
+                    console.log(response.data);
+                    this.form = { ...this.form, ...response.data.data };
+                })
+                .catch(error => {
+                    console.log(error.response);
+                    alert("An error has occurred.");
+                    this.$router.push(
+                        { name: "asset_categories.index" },
+                        () => {}
+                    );
+                });
+        },
+        onDelete() {
+            if (!confirm("WARNING: Do you want to delete this record?")) {
+                return;
+            }
+
+            AssetCategoryDataService.delete(this.$route.params.id, {})
+                .then(response => {
+                    console.log(response.data);
+                    alert(response.data.message);
+                    this.$router.push({ name: "asset_categories.index" });
+                })
+                .catch(error => {
+                    console.log(error.response);
+                    alert("An error has occurred.");
+                });
+        }
+    },
+    created() {
+        this.getData();
     }
 };
 </script>

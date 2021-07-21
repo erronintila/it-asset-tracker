@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AssetCategory\AssetCategoryStoreRequest;
 use App\Http\Requests\AssetCategory\AssetCategoryUpdateRequest;
 use App\Http\Resources\AssetCategoryResource;
 use App\Models\AssetCategory;
@@ -36,7 +37,7 @@ class AssetCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AssetCategoryStoreRequest $request)
     {
         $validated = $request->validated();
         $data = DB::transaction(function () use ($validated) {
