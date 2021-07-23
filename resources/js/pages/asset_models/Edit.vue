@@ -25,7 +25,7 @@ export default {
                 name: "",
                 model_no: "",
                 is_active: true,
-                manufacturer_id: ""
+                manufacturer: ""
             },
             errors: {
                 code: [],
@@ -51,7 +51,6 @@ export default {
 
             AssetModelDataService.show(this.$route.params.id, data)
                 .then(response => {
-                    console.log("elow e");
                     console.log(response.data);
                     this.form = { ...this.form, ...response.data.data };
                 })

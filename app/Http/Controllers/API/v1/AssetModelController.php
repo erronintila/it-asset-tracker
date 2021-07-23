@@ -27,7 +27,8 @@ class AssetModelController extends Controller
         $sortType = request('sortType') ?? "asc";
         $itemsPerPage = request('itemsPerPage') ?? 10;
 
-        $asset_models = AssetModel::search($search)
+        $asset_models = AssetModel::with(['manufacturer'])
+            ->search($search)
             ->orderBy($sortBy, $sortType)
             ->paginate($itemsPerPage);
 
@@ -68,7 +69,7 @@ class AssetModelController extends Controller
      */
     public function show($id)
     {
-        $asset_model = AssetModel::findOrFail($id);
+        $asset_model = AssetModel::with(['manufacturer'])->findOrFail($id);
         return $this->successResponse('read', new AssetModelResource($asset_model), 200);
     }
 

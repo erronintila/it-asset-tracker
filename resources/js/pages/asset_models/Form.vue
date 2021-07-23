@@ -28,14 +28,49 @@
                                     @input="errors.model_no = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.manufacturer_id"
-                                    label="Manufacturer"
-                                    outlined
-                                    clearable
-                                    hint="Ex. Apple Inc."
-                                    :error-messages="errors.manufacturer_id[0]"
+                                    :value="
+                                        form.manufacturer
+                                            ? form.manufacturer.name
+                                            : ''
+                                    "
+                                    :error-messages="errors.manufacturer_id"
                                     @input="errors.manufacturer_id = []"
-                                ></v-text-field>
+                                    label="Manufacturer"
+                                    readonly
+                                    outlined
+                                    class="d-flex justify-center align-center"
+                                >
+                                    <template v-slot:append>
+                                        <ManufacturerDialogSelector
+                                            :selected="
+                                                !form.manufacturer
+                                                    ? []
+                                                    : [...form.manufacturer]
+                                            "
+                                            :dialogManufacturer="
+                                                dialogManufacturer
+                                            "
+                                            @close-dialog="
+                                                dialogManufacturer = false
+                                            "
+                                            @on-select="onSelectManufacturer"
+                                        >
+                                            <template v-slot:openDialog>
+                                                <v-btn
+                                                    color="primary"
+                                                    icon
+                                                    @click="
+                                                        dialogManufacturer = true
+                                                    "
+                                                >
+                                                    <v-icon dark>
+                                                        mdi-magnify
+                                                    </v-icon>
+                                                </v-btn>
+                                            </template>
+                                        </ManufacturerDialogSelector>
+                                    </template>
+                                </v-text-field>
                             </v-col>
                         </v-row>
                     </v-card-text>
@@ -64,6 +99,8 @@
 </template>
 
 <script>
+import ManufacturerDialogSelector from "../../components/selectors/ManufacturerDialogSelector.vue";
+
 export default {
     props: {
         asset_modelForm: {
@@ -75,7 +112,7 @@ export default {
                     name: "",
                     model_no: "",
                     is_active: true,
-                    manufacturer_id: ""
+                    manufacturer: ""
                 };
             }
         },
@@ -106,8 +143,12 @@ export default {
             }
         }
     },
+    components: {
+        ManufacturerDialogSelector
+    },
     data() {
         return {
+            dialogManufacturer: false,
             valid: false,
             form: {
                 code: "",
@@ -115,7 +156,7 @@ export default {
                 name: "",
                 model_no: "",
                 is_active: true,
-                manufacturer_id: ""
+                manufacturer: ""
             }
         };
     },
@@ -132,11 +173,28 @@ export default {
 
             console.log(this.form);
 
-            if (!this.form.is_active) {
-                this.form.is_active = false;
+            let newForm = {
+                ...this.form,
+                ...{ manufacturer_id: this.form.manufacturer.id }
+            };
+
+            if (!newForm.is_active) {
+                newForm.is_active = false;
             }
 
-            this.$emit("on-save", this.form);
+            this.$emit("on-save", newForm);
+        },
+        onSelectManufacturer(e) {
+            this.dialogManufacturer = false;
+            this.errors.manufacturer_id = [];
+
+            if (e == null || e == undefined) {
+                this.form.manufacturer = null;
+                return;
+            }
+
+            this.form.manufacturer = e[0];
+            this.dialogManufacturer = false;
         }
     },
     watch: {

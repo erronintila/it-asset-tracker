@@ -34,6 +34,11 @@ class Manufacturer extends Model
         return $this->hasMany(Asset::class);
     }
 
+    public function asset_models()
+    {
+        return $this->hasMany(AssetModel::class);
+    }
+
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | LARAVEL ACCESSORS

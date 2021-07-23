@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class AssetModel extends Model
 {
     use SoftDeletes;
-    
-        /*
+
+    /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | LARAVEL MODEL CONFIGURATION
     |------------------------------------------------------------------------------------------------------------------------------------
@@ -32,6 +32,11 @@ class AssetModel extends Model
     public function assets()
     {
         return $this->hasMany(Asset::class);
+    }
+
+    public function manufacturer()
+    {
+        return $this->belongsTo(Manufacturer::class);
     }
 
     /*
