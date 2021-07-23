@@ -30,9 +30,9 @@ class LicenseResource extends JsonResource
             "updated_at" => $this->updated_at,
             "deleted_at" => $this->deleted_at,
 
-            "supplier_id" => $this->supplier_id,
-            "manufacturer_id" => $this->manufacturer_id,
-            "asset_category_id" => $this->asset_category_id,
+            "supplier" => $this->supplier,
+            "manufacturer" => $this->manufacturer,
+            "asset_category" => $this->asset_category,
         ];
     }
 }

@@ -37,6 +37,21 @@ class License extends Model
         return $this->morphToMany('App\Models\Transaction', 'assetable');
     }
 
+    public function asset_category()
+    {
+        return $this->belongsTo(AssetCategory::class);
+    }
+
+    public function manufacturer()
+    {
+        return $this->belongsTo(Manufacturer::class);
+    }
+
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class);
+    }
+
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | LARAVEL ACCESSORS

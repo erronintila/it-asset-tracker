@@ -34,6 +34,11 @@ class Supplier extends Model
         return $this->hasMany(Asset::class);
     }
 
+    public function licenses()
+    {
+        return $this->hasMany(License::class);
+    }
+
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | LARAVEL ACCESSORS

@@ -37,25 +37,93 @@
                                     clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.asset_category_id"
-                                    :error-messages="
-                                        errors.asset_category_id[0]
+                                    :value="
+                                        form.asset_category
+                                            ? form.asset_category.name
+                                            : ''
                                     "
+                                    :error-messages="errors.asset_category_id"
                                     @input="errors.asset_category_id = []"
-                                    hint="Ex. 000011"
-                                    label="Category"
+                                    label="Asset Category"
+                                    readonly
                                     outlined
-                                    clearable
-                                ></v-text-field>
+                                    class="d-flex justify-center align-center"
+                                >
+                                    <template v-slot:append>
+                                        <AssetCategoryDialogSelector
+                                            :selected="
+                                                !form.asset_category
+                                                    ? []
+                                                    : [...form.asset_category]
+                                            "
+                                            :dialogAssetCategory="
+                                                dialogAssetCategory
+                                            "
+                                            @close-dialog="
+                                                dialogAssetCategory = false
+                                            "
+                                            @on-select="onSelectAssetCategory"
+                                        >
+                                            <template v-slot:openDialog>
+                                                <v-btn
+                                                    color="primary"
+                                                    icon
+                                                    @click="
+                                                        dialogAssetCategory = true
+                                                    "
+                                                >
+                                                    <v-icon dark>
+                                                        mdi-magnify
+                                                    </v-icon>
+                                                </v-btn>
+                                            </template>
+                                        </AssetCategoryDialogSelector>
+                                    </template>
+                                </v-text-field>
                                 <v-text-field
-                                    v-model="form.manufacturer_id"
-                                    :error-messages="errors.manufacturer_id[0]"
+                                    :value="
+                                        form.manufacturer
+                                            ? form.manufacturer.name
+                                            : ''
+                                    "
+                                    :error-messages="errors.manufacturer_id"
                                     @input="errors.manufacturer_id = []"
-                                    hint="Ex. 000011"
                                     label="Manufacturer"
+                                    readonly
                                     outlined
-                                    clearable
-                                ></v-text-field>
+                                    class="d-flex justify-center align-center"
+                                >
+                                    <template v-slot:append>
+                                        <ManufacturerDialogSelector
+                                            :selected="
+                                                !form.manufacturer
+                                                    ? []
+                                                    : [...form.manufacturer]
+                                            "
+                                            :dialogManufacturer="
+                                                dialogManufacturer
+                                            "
+                                            @close-dialog="
+                                                dialogManufacturer = false
+                                            "
+                                            @on-select="onSelectManufacturer"
+                                        >
+                                            <template v-slot:openDialog>
+                                                <v-btn
+                                                    color="primary"
+                                                    icon
+                                                    @click="
+                                                        dialogManufacturer = true
+                                                    "
+                                                >
+                                                    <v-icon dark>
+                                                        mdi-magnify
+                                                    </v-icon>
+                                                </v-btn>
+                                            </template>
+                                        </ManufacturerDialogSelector>
+                                    </template>
+                                </v-text-field>
                             </v-col>
                         </v-row>
                     </v-card-text>
@@ -70,14 +138,45 @@
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
                                 <v-text-field
-                                    v-model="form.supplier_id"
-                                    :error-messages="errors.supplier_id[0]"
+                                    :value="
+                                        form.supplier ? form.supplier.name : ''
+                                    "
+                                    :error-messages="errors.supplier_id"
                                     @input="errors.supplier_id = []"
-                                    hint="Ex. 000011"
                                     label="Supplier"
+                                    readonly
                                     outlined
-                                    clearable
-                                ></v-text-field>
+                                    class="d-flex justify-center align-center"
+                                >
+                                    <template v-slot:append>
+                                        <SupplierDialogSelector
+                                            :selected="
+                                                !form.supplier
+                                                    ? []
+                                                    : [...form.supplier]
+                                            "
+                                            :dialogSupplier="dialogSupplier"
+                                            @close-dialog="
+                                                dialogSupplier = false
+                                            "
+                                            @on-select="onSelectSupplier"
+                                        >
+                                            <template v-slot:openDialog>
+                                                <v-btn
+                                                    color="primary"
+                                                    icon
+                                                    @click="
+                                                        dialogSupplier = true
+                                                    "
+                                                >
+                                                    <v-icon dark>
+                                                        mdi-magnify
+                                                    </v-icon>
+                                                </v-btn>
+                                            </template>
+                                        </SupplierDialogSelector>
+                                    </template>
+                                </v-text-field>
                                 <v-text-field
                                     v-model="form.purchased_date"
                                     :error-messages="errors.purchased_date[0]"
@@ -128,6 +227,10 @@
 </template>
 
 <script>
+import AssetCategoryDialogSelector from "../../components/selectors/AssetCategoryDialogSelector.vue";
+import ManufacturerDialogSelector from "../../components/selectors/ManufacturerDialogSelector.vue";
+import SupplierDialogSelector from "../../components/selectors/SupplierDialogSelector.vue";
+
 export default {
     props: {
         licenseForm: {
@@ -143,9 +246,9 @@ export default {
                     purchased_cost: "",
                     warranty_start_date: "",
                     warranty_end_date: "",
-                    supplier_id: "",
-                    manufacturer_id: "",
-                    asset_category_id: ""
+                    supplier: "",
+                    manufacturer: "",
+                    asset_category: ""
                 };
             }
         },
@@ -188,8 +291,16 @@ export default {
             }
         }
     },
+    components: {
+        AssetCategoryDialogSelector,
+        ManufacturerDialogSelector,
+        SupplierDialogSelector
+    },
     data() {
         return {
+            dialogAssetCategory: false,
+            dialogManufacturer: false,
+            dialogSupplier: false,
             valid: false,
             form: {
                 code: "",
@@ -201,9 +312,9 @@ export default {
                 purchased_cost: "",
                 warranty_start_date: "",
                 warranty_end_date: "",
-                supplier_id: "",
-                manufacturer_id: "",
-                asset_category_id: ""
+                supplier: "",
+                manufacturer: "",
+                asset_category: ""
             }
         };
     },
@@ -220,18 +331,61 @@ export default {
 
             console.log(this.form);
 
-            if (!this.form.is_active) {
-                this.form.is_active = false;
+            let newForm = {
+                ...this.form,
+                ...{ asset_category_id: this.form.asset_category.id },
+                ...{ manufacturer_id: this.form.manufacturer.id },
+                ...{ supplier_id: this.form.supplier.id }
+            };
+
+            if (!newForm.is_active) {
+                newForm.is_active = false;
             }
 
             let warranty_dates = this.warranty_date.split("/");
             // this.form.warranty_start_date = warranty_dates[0] ?? null;
             // this.form.warranty_end_date = warranty_dates[1] ?? null;
 
-            this.form.warranty_start_date = null;
-            this.form.warranty_end_date = null;
+            newForm.warranty_start_date = null;
+            newForm.warranty_end_date = null;
 
-            this.$emit("on-save", this.form);
+            this.$emit("on-save", newForm);
+        },
+        onSelectAssetCategory(e) {
+            this.dialogAssetCategory = false;
+            this.errors.asset_category_id = [];
+
+            if (e == null || e == undefined) {
+                this.form.asset_category = null;
+                return;
+            }
+
+            this.form.asset_category = e[0];
+            this.dialogAssetCategory = false;
+        },
+        onSelectManufacturer(e) {
+            this.dialogManufacturer = false;
+            this.errors.manufacturer_id = [];
+
+            if (e == null || e == undefined) {
+                this.form.manufacturer = null;
+                return;
+            }
+
+            this.form.manufacturer = e[0];
+            this.dialogManufacturer = false;
+        },
+        onSelectSupplier(e) {
+            this.dialogSupplier = false;
+            this.errors.supplier_id = [];
+
+            if (e == null || e == undefined) {
+                this.form.supplier = null;
+                return;
+            }
+
+            this.form.supplier = e[0];
+            this.dialogSupplier = false;
         }
     },
     computed: {

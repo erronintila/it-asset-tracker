@@ -26,9 +26,9 @@ export default {
                     purchased_cost: "",
                     warranty_start_date: "",
                     warranty_end_date: "",
-                    supplier_id: "",
-                    manufacturer_id: "",
-                    asset_category_id: ""
+                    supplier: "",
+                    manufacturer: "",
+                    asset_category: ""
             },
             errors: {
                 code: [],

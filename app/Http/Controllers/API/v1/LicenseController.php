@@ -27,7 +27,8 @@ class LicenseController extends Controller
         $sortType = request('sortType') ?? "asc";
         $itemsPerPage = request('itemsPerPage') ?? 10;
 
-        $licenses = License::search($search)
+        $licenses = License::with(['asset_category', 'manufacturer', 'supplier'])
+            ->search($search)
             ->orderBy($sortBy, $sortType)
             ->paginate($itemsPerPage);
 
@@ -67,7 +68,7 @@ class LicenseController extends Controller
      */
     public function show($id)
     {
-        $license = License::findOrFail($id);
+        $license = License::with(['asset_category', 'manufacturer', 'supplier'])->findOrFail($id);
         return $this->successResponse('read', new LicenseResource($license), 200);
     }
 
