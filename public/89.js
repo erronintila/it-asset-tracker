@@ -168,6 +168,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     assetForm: {
@@ -176,18 +216,23 @@ __webpack_require__.r(__webpack_exports__);
         return {
           code: "",
           slug: "",
-          name: "",
-          address: "",
-          street: "",
-          district: "",
-          city: "",
-          province: "",
-          country: "",
-          postal_code: "",
-          latitude: "",
-          longitude: "",
-          is_active: true,
+          reference_no: "",
+          asset_tag: "",
+          serial_no: "",
+          description: "",
+          purchased_date: "",
+          purchased_cost: "",
+          warranty_start_date: "",
+          warranty_end_date: "",
+          sku: "",
+          quantity: "",
           notes: "",
+          asset_model_id: "",
+          supplier_id: "",
+          manufacturer_id: "",
+          asset_category_id: "",
+          assigned_to: "",
+          location_id: "",
           asset_id: ""
         };
       }
@@ -198,18 +243,23 @@ __webpack_require__.r(__webpack_exports__);
         return {
           code: [],
           slug: [],
-          name: [],
-          address: [],
-          street: [],
-          district: [],
-          city: [],
-          province: [],
-          country: [],
-          postal_code: [],
-          latitude: [],
-          longitude: [],
-          is_active: [],
+          reference_no: [],
+          asset_tag: [],
+          serial_no: [],
+          description: [],
+          purchased_date: [],
+          purchased_cost: [],
+          warranty_start_date: [],
+          warranty_end_date: [],
+          sku: [],
+          quantity: [],
           notes: [],
+          asset_model_id: [],
+          supplier_id: [],
+          manufacturer_id: [],
+          asset_category_id: [],
+          assigned_to: [],
+          location_id: [],
           asset_id: []
         };
       }
@@ -220,18 +270,23 @@ __webpack_require__.r(__webpack_exports__);
         return {
           code: [],
           slug: [],
-          name: [],
-          address: [],
-          street: [],
-          district: [],
-          city: [],
-          province: [],
-          country: [],
-          postal_code: [],
-          latitude: [],
-          longitude: [],
-          is_active: [],
+          reference_no: [],
+          asset_tag: [],
+          serial_no: [],
+          description: [],
+          purchased_date: [],
+          purchased_cost: [],
+          warranty_start_date: [],
+          warranty_end_date: [],
+          sku: [],
+          quantity: [],
           notes: [],
+          asset_model_id: [],
+          supplier_id: [],
+          manufacturer_id: [],
+          asset_category_id: [],
+          assigned_to: [],
+          location_id: [],
           asset_id: []
         };
       }
@@ -243,17 +298,23 @@ __webpack_require__.r(__webpack_exports__);
       form: {
         code: "",
         slug: "",
-        name: "",
-        address: "",
-        street: "",
-        district: "",
-        city: "",
-        province: "",
-        country: "",
-        postal_code: "",
-        latitude: "",
-        longitude: "",
-        is_active: true,
+        reference_no: "",
+        asset_tag: "",
+        serial_no: "",
+        description: "",
+        purchased_date: "",
+        purchased_cost: "",
+        warranty_start_date: "",
+        warranty_end_date: "",
+        sku: "",
+        quantity: "",
+        notes: "",
+        asset_model_id: "",
+        supplier_id: "",
+        manufacturer_id: "",
+        asset_category_id: "",
+        assigned_to: "",
+        location_id: "",
         asset_id: ""
       }
     };
@@ -275,7 +336,17 @@ __webpack_require__.r(__webpack_exports__);
         this.form.is_active = false;
       }
 
+      var warranty_dates = this.warranty_date.split("/"); // this.form.warranty_start_date = warranty_dates[0] ?? null;
+      // this.form.warranty_end_date = warranty_dates[1] ?? null;
+
+      this.form.warranty_start_date = null;
+      this.form.warranty_end_date = null;
       this.$emit("on-save", this.form);
+    }
+  },
+  computed: {
+    warranty_date: function warranty_date() {
+      return this.warranty_start_date + "/" + this.warranty_end_date;
     }
   },
   watch: {
@@ -324,7 +395,7 @@ var render = function() {
         [
           _c(
             "v-col",
-            { attrs: { cols: "12", md: "6" } },
+            { attrs: { cols: "12", sm: "6", md: "4" } },
             [
               _c(
                 "v-card",
@@ -349,177 +420,158 @@ var render = function() {
                             [
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Name",
+                                  "error-messages": _vm.errors.reference_no[0],
+                                  hint: "Ex. 000011",
+                                  label: "Reference No.",
                                   outlined: "",
-                                  clearable: "",
-                                  hint: "Ex. Warehouse1",
-                                  "error-messages": _vm.errors.name[0]
+                                  clearable: ""
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.name = []
+                                    _vm.errors.reference_no = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.name,
+                                  value: _vm.form.reference_no,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "name", $$v)
+                                    _vm.$set(_vm.form, "reference_no", $$v)
                                   },
-                                  expression: "form.name"
+                                  expression: "form.reference_no"
                                 }
                               }),
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Address",
+                                  "error-messages": _vm.errors.asset_tag[0],
+                                  hint: "Ex. 000011",
+                                  label: "Asset Tag",
                                   outlined: "",
-                                  clearable: "",
-                                  hint: "Ex. Block 16 Lot 4 XYZ Subdivision",
-                                  "error-messages": _vm.errors.address[0]
+                                  clearable: ""
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.address = []
+                                    _vm.errors.asset_tag = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.address,
+                                  value: _vm.form.asset_tag,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "address", $$v)
+                                    _vm.$set(_vm.form, "asset_tag", $$v)
                                   },
-                                  expression: "form.address"
+                                  expression: "form.asset_tag"
                                 }
                               }),
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Street",
+                                  "error-messages": _vm.errors.serial_no[0],
+                                  hint: "Ex. 000011",
+                                  label: "Serial No.",
                                   outlined: "",
-                                  clearable: "",
-                                  hint: "Ex. Balete Street",
-                                  "error-messages": _vm.errors.street[0]
+                                  clearable: ""
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.street = []
+                                    _vm.errors.serial_no = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.street,
+                                  value: _vm.form.serial_no,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "street", $$v)
+                                    _vm.$set(_vm.form, "serial_no", $$v)
                                   },
-                                  expression: "form.street"
+                                  expression: "form.serial_no"
                                 }
                               }),
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "District",
+                                  "error-messages": _vm.errors.description[0],
+                                  hint: "Ex. 000011",
+                                  label: "Description",
                                   outlined: "",
-                                  clearable: "",
-                                  hint: "Ex. Barangay Poblacion",
-                                  "error-messages": _vm.errors.district[0]
+                                  clearable: ""
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.district = []
+                                    _vm.errors.description = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.district,
+                                  value: _vm.form.description,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "district", $$v)
+                                    _vm.$set(_vm.form, "description", $$v)
                                   },
-                                  expression: "form.district"
+                                  expression: "form.description"
                                 }
                               }),
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "City",
+                                  "error-messages":
+                                    _vm.errors.asset_category_id[0],
+                                  hint: "Ex. 000011",
+                                  label: "Category",
                                   outlined: "",
-                                  clearable: "",
-                                  hint: "Ex. General Santos City",
-                                  "error-messages": _vm.errors.city[0]
+                                  clearable: ""
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.city = []
+                                    _vm.errors.asset_category_id = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.city,
+                                  value: _vm.form.asset_category_id,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "city", $$v)
+                                    _vm.$set(_vm.form, "asset_category_id", $$v)
                                   },
-                                  expression: "form.city"
+                                  expression: "form.asset_category_id"
                                 }
                               }),
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Province",
+                                  "error-messages":
+                                    _vm.errors.asset_model_id[0],
+                                  hint: "Ex. 000011",
+                                  label: "Model",
                                   outlined: "",
-                                  clearable: "",
-                                  hint: "South Cotabato",
-                                  "error-messages": _vm.errors.province[0]
+                                  clearable: ""
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.province = []
+                                    _vm.errors.asset_model_id = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.province,
+                                  value: _vm.form.asset_model_id,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "province", $$v)
+                                    _vm.$set(_vm.form, "asset_model_id", $$v)
                                   },
-                                  expression: "form.province"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-combobox", {
-                                attrs: {
-                                  label: "Country",
-                                  outlined: "",
-                                  clearable: "",
-                                  items: ["Philippines"],
-                                  "error-messages": _vm.errors.country[0]
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.country = []
-                                  }
-                                },
-                                model: {
-                                  value: _vm.form.country,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "country", $$v)
-                                  },
-                                  expression: "form.country"
+                                  expression: "form.asset_model_id"
                                 }
                               }),
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Postal Code",
+                                  "error-messages":
+                                    _vm.errors.manufacturer_id[0],
+                                  hint: "Ex. 000011",
+                                  label: "Manufacturer",
                                   outlined: "",
-                                  clearable: "",
-                                  hint: "Ex. 9500",
-                                  type: "number"
+                                  clearable: ""
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.postal_code = []
+                                    _vm.errors.manufacturer_id = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.postal_code,
+                                  value: _vm.form.manufacturer_id,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "postal_code", $$v)
+                                    _vm.$set(_vm.form, "manufacturer_id", $$v)
                                   },
-                                  expression: "form.postal_code"
+                                  expression: "form.manufacturer_id"
                                 }
                               })
                             ],
@@ -540,7 +592,200 @@ var render = function() {
           _vm._v(" "),
           _c(
             "v-col",
-            { attrs: { cols: "12", md: "6" } },
+            { attrs: { cols: "12", sm: "6", md: "4" } },
+            [
+              _c(
+                "v-card",
+                { attrs: { flat: "" } },
+                [
+                  _c("v-card-title", [
+                    _vm._v(
+                      "\n                    Purchase Information\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-text",
+                    [
+                      _c(
+                        "v-row",
+                        { staticClass: "d-flex justify-center" },
+                        [
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  "error-messages": _vm.errors.supplier_id[0],
+                                  hint: "Ex. 000011",
+                                  label: "Supplier",
+                                  outlined: "",
+                                  clearable: ""
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.supplier_id = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.supplier_id,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "supplier_id", $$v)
+                                  },
+                                  expression: "form.supplier_id"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  "error-messages":
+                                    _vm.errors.purchased_date[0],
+                                  hint: "Ex. 000011",
+                                  label: "Purchase Date",
+                                  outlined: "",
+                                  clearable: ""
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.purchased_date = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.purchased_date,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "purchased_date", $$v)
+                                  },
+                                  expression: "form.purchased_date"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  "error-messages":
+                                    _vm.errors.purchased_cost[0],
+                                  hint: "Ex. 000011",
+                                  label: "Purchase Cost",
+                                  outlined: "",
+                                  clearable: ""
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.purchased_cost = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.purchased_cost,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "purchased_cost", $$v)
+                                  },
+                                  expression: "form.purchased_cost"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  hint: "Ex. 000011",
+                                  label: "Received Date",
+                                  outlined: "",
+                                  clearable: ""
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  hint: "Ex. 000011",
+                                  label: "Received By",
+                                  outlined: "",
+                                  clearable: ""
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  "error-messages":
+                                    _vm.errors.warranty_start_date[0],
+                                  hint: "Ex. 000011",
+                                  label: "Warranty Date",
+                                  outlined: "",
+                                  clearable: ""
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.warranty_start_date = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.warranty_date,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "warranty_date", $$v)
+                                  },
+                                  expression: "form.warranty_date"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  "error-messages": _vm.errors.sku[0],
+                                  hint: "Ex. 000011",
+                                  label: "Stock Keeping Unit",
+                                  outlined: "",
+                                  clearable: ""
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.sku = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.sku,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "sku", $$v)
+                                  },
+                                  expression: "form.sku"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  "error-messages": _vm.errors.quantity[0],
+                                  hint: "Ex. 000011",
+                                  label: "Quantity",
+                                  outlined: "",
+                                  clearable: ""
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.quantity = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.quantity,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "quantity", $$v)
+                                  },
+                                  expression: "form.quantity"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-col",
+            { attrs: { cols: "12", sm: "6", md: "4" } },
             [
               _c(
                 "v-card",
@@ -565,76 +810,11 @@ var render = function() {
                             [
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Latitude",
-                                  outlined: "",
-                                  clearable: "",
-                                  hint: "Ex. 6.1164 N",
-                                  "error-messages": _vm.errors.latitude[0]
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.latitude = []
-                                  }
-                                },
-                                model: {
-                                  value: _vm.form.latitude,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "latitude", $$v)
-                                  },
-                                  expression: "form.latitude"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Longitude",
-                                  outlined: "",
-                                  clearable: "",
-                                  hint: "Ex. 125.1716 E",
-                                  "error-messages": _vm.errors.longitude[0]
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.longitude = []
-                                  }
-                                },
-                                model: {
-                                  value: _vm.form.longitude,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "longitude", $$v)
-                                  },
-                                  expression: "form.longitude"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Parent Asset",
-                                  outlined: "",
-                                  clearable: "",
-                                  "error-messages": _vm.errors.asset_id[0]
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.asset_id = []
-                                  }
-                                },
-                                model: {
-                                  value: _vm.form.asset_id,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "asset_id", _vm._n($$v))
-                                  },
-                                  expression: "form.asset_id"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-textarea", {
-                                attrs: {
+                                  "error-messages": _vm.errors.notes[0],
+                                  hint: "Ex. 000011",
                                   label: "Notes",
                                   outlined: "",
-                                  clearable: "",
-                                  rows: "3",
-                                  "error-messages": _vm.errors.notes[0]
+                                  clearable: ""
                                 },
                                 on: {
                                   input: function($event) {
@@ -662,24 +842,6 @@ var render = function() {
                   _c(
                     "v-card-actions",
                     [
-                      _c(
-                        "v-sheet",
-                        { staticClass: "ml-4" },
-                        [
-                          _c("v-switch", {
-                            attrs: { inset: "", label: "Active" },
-                            model: {
-                              value: _vm.form.is_active,
-                              callback: function($$v) {
-                                _vm.$set(_vm.form, "is_active", $$v)
-                              },
-                              expression: "form.is_active"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
                       _c("v-spacer"),
                       _vm._v(" "),
                       _c(
@@ -836,6 +998,11 @@ var AssetDataService = /*#__PURE__*/function () {
     key: "delete",
     value: function _delete(id, data) {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/assets/".concat(id), data);
+    }
+  }, {
+    key: "deleteMany",
+    value: function deleteMany(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/assets/multiple", data);
     }
   }]);
 

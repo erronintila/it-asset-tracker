@@ -352,6 +352,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -376,18 +377,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       form: {
         code: "",
         slug: "",
-        name: "",
-        address: "",
-        street: "",
-        district: "",
-        city: "",
-        province: "",
-        country: "",
-        postal_code: "",
-        latitude: "",
-        longitude: "",
-        is_active: true,
+        reference_no: "",
+        asset_tag: "",
+        serial_no: "",
+        description: "",
+        purchased_date: "",
+        purchased_cost: "",
+        warranty_start_date: "",
+        warranty_end_date: "",
+        sku: "",
+        quantity: "",
         notes: "",
+        asset_model_id: "",
+        supplier_id: "",
+        manufacturer_id: "",
+        asset_category_id: "",
+        assigned_to: "",
+        location_id: "",
         asset_id: ""
       }
     };
@@ -528,25 +534,26 @@ var render = function() {
             { attrs: { cols: "12", md: "4" } },
             [
               _c("CardSummary", {
-                attrs: { title: _vm.form.name, subtitle: "# " + _vm.form.code },
+                attrs: {
+                  title: _vm.form.description,
+                  subtitle: "# " + _vm.form.code
+                },
                 scopedSlots: _vm._u([
                   {
                     key: "body",
                     fn: function() {
                       return [
                         _c("p", [
+                          _vm._v("Asset Tage: " + _vm._s(_vm.form.asset_tag))
+                        ]),
+                        _vm._v(" "),
+                        _c("p", [
+                          _vm._v("Serial No.: " + _vm._s(_vm.form.serial_no))
+                        ]),
+                        _vm._v(" "),
+                        _c("p", [
                           _vm._v(
-                            "\n                        Address: " +
-                              _vm._s(_vm.form.address) +
-                              ", " +
-                              _vm._s(_vm.form.city) +
-                              ",\n                        " +
-                              _vm._s(_vm.form.province) +
-                              ", " +
-                              _vm._s(_vm.form.postal_code) +
-                              ",\n                        " +
-                              _vm._s(_vm.form.country) +
-                              "\n                    "
+                            "Manufacturer: " + _vm._s(_vm.form.manufacturer_id)
                           )
                         ])
                       ]
@@ -1437,6 +1444,11 @@ var AssetDataService = /*#__PURE__*/function () {
     key: "delete",
     value: function _delete(id, data) {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/assets/".concat(id), data);
+    }
+  }, {
+    key: "deleteMany",
+    value: function deleteMany(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/assets/multiple", data);
     }
   }]);
 

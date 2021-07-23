@@ -1,7 +1,7 @@
 <template>
     <v-form ref="form" v-model="valid">
         <v-row class="d-flex justify-center">
-            <v-col cols="12" md="6">
+            <v-col cols="12" sm="6" md="4">
                 <v-card flat>
                     <v-card-title>
                         General Information
@@ -10,84 +10,157 @@
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
                                 <v-text-field
-                                    v-model="form.name"
-                                    label="Name"
+                                    v-model="form.reference_no"
+                                    :error-messages="errors.reference_no[0]"
+                                    @input="errors.reference_no = []"
+                                    hint="Ex. 000011"
+                                    label="Reference No."
                                     outlined
                                     clearable
-                                    hint="Ex. Warehouse1"
-                                    :error-messages="errors.name[0]"
-                                    @input="errors.name = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.address"
-                                    label="Address"
+                                    v-model="form.asset_tag"
+                                    :error-messages="errors.asset_tag[0]"
+                                    @input="errors.asset_tag = []"
+                                    hint="Ex. 000011"
+                                    label="Asset Tag"
                                     outlined
                                     clearable
-                                    hint="Ex. Block 16 Lot 4 XYZ Subdivision"
-                                    :error-messages="errors.address[0]"
-                                    @input="errors.address = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.street"
-                                    label="Street"
+                                    v-model="form.serial_no"
+                                    :error-messages="errors.serial_no[0]"
+                                    @input="errors.serial_no = []"
+                                    hint="Ex. 000011"
+                                    label="Serial No."
                                     outlined
                                     clearable
-                                    hint="Ex. Balete Street"
-                                    :error-messages="errors.street[0]"
-                                    @input="errors.street = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.district"
-                                    label="District"
+                                    v-model="form.description"
+                                    :error-messages="errors.description[0]"
+                                    @input="errors.description = []"
+                                    hint="Ex. 000011"
+                                    label="Description"
                                     outlined
                                     clearable
-                                    hint="Ex. Barangay Poblacion"
-                                    :error-messages="errors.district[0]"
-                                    @input="errors.district = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.city"
-                                    label="City"
+                                    v-model="form.asset_category_id"
+                                    :error-messages="
+                                        errors.asset_category_id[0]
+                                    "
+                                    @input="errors.asset_category_id = []"
+                                    hint="Ex. 000011"
+                                    label="Category"
                                     outlined
                                     clearable
-                                    hint="Ex. General Santos City"
-                                    :error-messages="errors.city[0]"
-                                    @input="errors.city = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.province"
-                                    label="Province"
+                                    v-model="form.asset_model_id"
+                                    :error-messages="errors.asset_model_id[0]"
+                                    @input="errors.asset_model_id = []"
+                                    hint="Ex. 000011"
+                                    label="Model"
                                     outlined
                                     clearable
-                                    hint="South Cotabato"
-                                    :error-messages="errors.province[0]"
-                                    @input="errors.province = []"
                                 ></v-text-field>
-                                <v-combobox
-                                    v-model="form.country"
-                                    label="Country"
-                                    outlined
-                                    clearable
-                                    :items="['Philippines']"
-                                    :error-messages="errors.country[0]"
-                                    @input="errors.country = []"
-                                ></v-combobox>
                                 <v-text-field
-                                    v-model="form.postal_code"
-                                    label="Postal Code"
+                                    v-model="form.manufacturer_id"
+                                    :error-messages="errors.manufacturer_id[0]"
+                                    @input="errors.manufacturer_id = []"
+                                    hint="Ex. 000011"
+                                    label="Manufacturer"
                                     outlined
                                     clearable
-                                    hint="Ex. 9500"
-                                    type="number"
-                                    @input="errors.postal_code = []"
                                 ></v-text-field>
                             </v-col>
                         </v-row>
                     </v-card-text>
                 </v-card>
             </v-col>
-
-            <v-col cols="12" md="6">
+            <v-col cols="12" sm="6" md="4">
+                <v-card flat>
+                    <v-card-title>
+                        Purchase Information
+                    </v-card-title>
+                    <v-card-text>
+                        <v-row class="d-flex justify-center">
+                            <v-col cols="12">
+                                <v-text-field
+                                    v-model="form.supplier_id"
+                                    :error-messages="errors.supplier_id[0]"
+                                    @input="errors.supplier_id = []"
+                                    hint="Ex. 000011"
+                                    label="Supplier"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                                <v-text-field
+                                    v-model="form.purchased_date"
+                                    :error-messages="errors.purchased_date[0]"
+                                    @input="errors.purchased_date = []"
+                                    hint="Ex. 000011"
+                                    label="Purchase Date"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                                <v-text-field
+                                    v-model="form.purchased_cost"
+                                    :error-messages="errors.purchased_cost[0]"
+                                    @input="errors.purchased_cost = []"
+                                    hint="Ex. 000011"
+                                    label="Purchase Cost"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                                <v-text-field
+                                    hint="Ex. 000011"
+                                    label="Received Date"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                                <v-text-field
+                                    hint="Ex. 000011"
+                                    label="Received By"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                                <v-text-field
+                                    v-model="form.warranty_date"
+                                    :error-messages="
+                                        errors.warranty_start_date[0]
+                                    "
+                                    @input="errors.warranty_start_date = []"
+                                    hint="Ex. 000011"
+                                    label="Warranty Date"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                                <v-text-field
+                                    v-model="form.sku"
+                                    :error-messages="errors.sku[0]"
+                                    @input="errors.sku = []"
+                                    hint="Ex. 000011"
+                                    label="Stock Keeping Unit"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                                <v-text-field
+                                    v-model="form.quantity"
+                                    :error-messages="errors.quantity[0]"
+                                    @input="errors.quantity = []"
+                                    hint="Ex. 000011"
+                                    label="Quantity"
+                                    outlined
+                                    clearable
+                                ></v-text-field>
+                            </v-col>
+                        </v-row>
+                    </v-card-text>
+                </v-card>
+            </v-col>
+            <v-col cols="12" sm="6" md="4">
                 <v-card flat>
                     <v-card-title>
                         Other Information
@@ -96,51 +169,18 @@
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
                                 <v-text-field
-                                    v-model="form.latitude"
-                                    label="Latitude"
-                                    outlined
-                                    clearable
-                                    hint="Ex. 6.1164 N"
-                                    :error-messages="errors.latitude[0]"
-                                    @input="errors.latitude = []"
-                                ></v-text-field>
-                                <v-text-field
-                                    v-model="form.longitude"
-                                    label="Longitude"
-                                    outlined
-                                    clearable
-                                    hint="Ex. 125.1716 E"
-                                    :error-messages="errors.longitude[0]"
-                                    @input="errors.longitude = []"
-                                ></v-text-field>
-                                <v-text-field
-                                    v-model.number="form.asset_id"
-                                    label="Parent Asset"
-                                    outlined
-                                    clearable
-                                    :error-messages="errors.asset_id[0]"
-                                    @input="errors.asset_id = []"
-                                ></v-text-field>
-                                <v-textarea
                                     v-model="form.notes"
+                                    :error-messages="errors.notes[0]"
+                                    @input="errors.notes = []"
+                                    hint="Ex. 000011"
                                     label="Notes"
                                     outlined
                                     clearable
-                                    rows="3"
-                                    :error-messages="errors.notes[0]"
-                                    @input="errors.notes = []"
-                                ></v-textarea>
+                                ></v-text-field>
                             </v-col>
                         </v-row>
                     </v-card-text>
                     <v-card-actions>
-                        <v-sheet class="ml-4">
-                            <v-switch
-                                v-model="form.is_active"
-                                inset
-                                label="Active"
-                            ></v-switch>
-                        </v-sheet>
                         <v-spacer></v-spacer>
                         <v-btn
                             color="primary"
@@ -166,18 +206,23 @@ export default {
                 return {
                     code: "",
                     slug: "",
-                    name: "",
-                    address: "",
-                    street: "",
-                    district: "",
-                    city: "",
-                    province: "",
-                    country: "",
-                    postal_code: "",
-                    latitude: "",
-                    longitude: "",
-                    is_active: true,
+                    reference_no: "",
+                    asset_tag: "",
+                    serial_no: "",
+                    description: "",
+                    purchased_date: "",
+                    purchased_cost: "",
+                    warranty_start_date: "",
+                    warranty_end_date: "",
+                    sku: "",
+                    quantity: "",
                     notes: "",
+                    asset_model_id: "",
+                    supplier_id: "",
+                    manufacturer_id: "",
+                    asset_category_id: "",
+                    assigned_to: "",
+                    location_id: "",
                     asset_id: ""
                 };
             }
@@ -188,18 +233,23 @@ export default {
                 return {
                     code: [],
                     slug: [],
-                    name: [],
-                    address: [],
-                    street: [],
-                    district: [],
-                    city: [],
-                    province: [],
-                    country: [],
-                    postal_code: [],
-                    latitude: [],
-                    longitude: [],
-                    is_active: [],
+                    reference_no: [],
+                    asset_tag: [],
+                    serial_no: [],
+                    description: [],
+                    purchased_date: [],
+                    purchased_cost: [],
+                    warranty_start_date: [],
+                    warranty_end_date: [],
+                    sku: [],
+                    quantity: [],
                     notes: [],
+                    asset_model_id: [],
+                    supplier_id: [],
+                    manufacturer_id: [],
+                    asset_category_id: [],
+                    assigned_to: [],
+                    location_id: [],
                     asset_id: []
                 };
             }
@@ -210,18 +260,23 @@ export default {
                 return {
                     code: [],
                     slug: [],
-                    name: [],
-                    address: [],
-                    street: [],
-                    district: [],
-                    city: [],
-                    province: [],
-                    country: [],
-                    postal_code: [],
-                    latitude: [],
-                    longitude: [],
-                    is_active: [],
+                    reference_no: [],
+                    asset_tag: [],
+                    serial_no: [],
+                    description: [],
+                    purchased_date: [],
+                    purchased_cost: [],
+                    warranty_start_date: [],
+                    warranty_end_date: [],
+                    sku: [],
+                    quantity: [],
                     notes: [],
+                    asset_model_id: [],
+                    supplier_id: [],
+                    manufacturer_id: [],
+                    asset_category_id: [],
+                    assigned_to: [],
+                    location_id: [],
                     asset_id: []
                 };
             }
@@ -233,17 +288,23 @@ export default {
             form: {
                 code: "",
                 slug: "",
-                name: "",
-                address: "",
-                street: "",
-                district: "",
-                city: "",
-                province: "",
-                country: "",
-                postal_code: "",
-                latitude: "",
-                longitude: "",
-                is_active: true,
+                reference_no: "",
+                asset_tag: "",
+                serial_no: "",
+                description: "",
+                purchased_date: "",
+                purchased_cost: "",
+                warranty_start_date: "",
+                warranty_end_date: "",
+                sku: "",
+                quantity: "",
+                notes: "",
+                asset_model_id: "",
+                supplier_id: "",
+                manufacturer_id: "",
+                asset_category_id: "",
+                assigned_to: "",
+                location_id: "",
                 asset_id: ""
             }
         };
@@ -265,7 +326,19 @@ export default {
                 this.form.is_active = false;
             }
 
+            let warranty_dates = this.warranty_date.split("/");
+            // this.form.warranty_start_date = warranty_dates[0] ?? null;
+            // this.form.warranty_end_date = warranty_dates[1] ?? null;
+
+            this.form.warranty_start_date = null;
+            this.form.warranty_end_date = null;
+
             this.$emit("on-save", this.form);
+        }
+    },
+    computed: {
+        warranty_date() {
+            return this.warranty_start_date + "/" + this.warranty_end_date;
         }
     },
     watch: {

@@ -44,7 +44,7 @@ class AssetController extends Controller
     {
         $validated = $request->validated();
         $data = DB::transaction(function () use ($validated) {
-            $asset_tag = date("YmdHis");
+            $asset_tag = $validated['asset_tag'] ?? date("YmdHis");
             $code = 'AST' . date("YmdHis");
             $slug = $code . '-' . implode('-', explode(' ', $asset_tag));
 
@@ -84,9 +84,11 @@ class AssetController extends Controller
     {
         $validated = $request->validated();
         $data = DB::transaction(function () use ($id, $validated) {
+            $asset_tag = $validated['asset_tag'] ?? date("YmdHis");
+
             $asset = Asset::findOrFail($id);
             $asset->fill($validated);
-            $asset->slug = $asset->code . '-' . implode('-', explode(' ', $asset->asset_tag));
+            $asset->slug = $asset->code . '-' . implode('-', explode(' ', $asset_tag));
             $asset->save();
             return $asset;
         });

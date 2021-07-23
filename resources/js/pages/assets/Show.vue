@@ -8,13 +8,14 @@
 
         <v-row>
             <v-col cols="12" md="4">
-                <CardSummary :title="form.name" :subtitle="'# ' + form.code">
+                <CardSummary
+                    :title="form.description"
+                    :subtitle="'# ' + form.code"
+                >
                     <template v-slot:body>
-                        <p>
-                            Address: {{ form.address }}, {{ form.city }},
-                            {{ form.province }}, {{ form.postal_code }},
-                            {{ form.country }}
-                        </p>
+                        <p>Asset Tage: {{ form.asset_tag }}</p>
+                        <p>Serial No.: {{ form.serial_no }}</p>
+                        <p>Manufacturer: {{ form.manufacturer_id }}</p>
                     </template>
                     <template v-slot:actions>
                         <v-btn
@@ -307,18 +308,23 @@ export default {
             form: {
                 code: "",
                 slug: "",
-                name: "",
-                address: "",
-                street: "",
-                district: "",
-                city: "",
-                province: "",
-                country: "",
-                postal_code: "",
-                latitude: "",
-                longitude: "",
-                is_active: true,
+                reference_no: "",
+                asset_tag: "",
+                serial_no: "",
+                description: "",
+                purchased_date: "",
+                purchased_cost: "",
+                warranty_start_date: "",
+                warranty_end_date: "",
+                sku: "",
+                quantity: "",
                 notes: "",
+                asset_model_id: "",
+                supplier_id: "",
+                manufacturer_id: "",
+                asset_category_id: "",
+                assigned_to: "",
+                location_id: "",
                 asset_id: ""
             }
         };

@@ -901,6 +901,11 @@ var AssetDataService = /*#__PURE__*/function () {
     value: function _delete(id, data) {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/assets/".concat(id), data);
     }
+  }, {
+    key: "deleteMany",
+    value: function deleteMany(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/assets/multiple", data);
+    }
   }]);
 
   return AssetDataService;

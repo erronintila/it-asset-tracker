@@ -25,9 +25,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -39,33 +36,45 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       form: {
         code: "",
         slug: "",
-        name: "",
-        address: "",
-        street: "",
-        district: "",
-        city: "",
-        province: "",
-        country: "",
-        postal_code: "",
-        latitude: "",
-        longitude: "",
-        is_active: true,
+        reference_no: "",
+        asset_tag: "",
+        serial_no: "",
+        description: "",
+        purchased_date: "",
+        purchased_cost: "",
+        warranty_start_date: "",
+        warranty_end_date: "",
+        sku: "",
+        quantity: "",
         notes: "",
+        asset_model_id: "",
+        supplier_id: "",
+        manufacturer_id: "",
+        asset_category_id: "",
+        assigned_to: "",
+        location_id: "",
         asset_id: ""
       },
       errors: {
-        name: [],
-        address: [],
-        street: [],
-        district: [],
-        city: [],
-        province: [],
-        country: [],
-        postal_code: [],
-        latitude: [],
-        longitude: [],
-        is_active: [],
+        code: [],
+        slug: [],
+        reference_no: [],
+        asset_tag: [],
+        serial_no: [],
+        description: [],
+        purchased_date: [],
+        purchased_cost: [],
+        warranty_start_date: [],
+        warranty_end_date: [],
+        sku: [],
+        quantity: [],
         notes: [],
+        asset_model_id: [],
+        supplier_id: [],
+        manufacturer_id: [],
+        asset_category_id: [],
+        assigned_to: [],
+        location_id: [],
         asset_id: []
       }
     };
