@@ -127,14 +127,14 @@
                         nextIcon: 'mdi-chevron-right'
                     }"
                 >
-                    <template v-slot:[`item.code`]="{ item }">
+                    <template v-slot:[`item.asset_tag`]="{ item }">
                         <router-link
                             :to="{
                                 name: 'assets.show',
                                 params: { id: item.id }
                             }"
                         >
-                            {{ item.code }}
+                            {{ item.asset_tag }}
                         </router-link>
                     </template>
                     <template v-slot:[`item.status`]="{ item }">
@@ -168,7 +168,7 @@ export default {
             ],
             tableOptions: {
                 options: {
-                    sortBy: ["code"],
+                    sortBy: ["description"],
                     sortDesc: [false],
                     page: 1,
                     itemsPerPage: 10
@@ -177,10 +177,10 @@ export default {
                 itemsPerPageOptions: [10, 20, 50, 100],
                 serverItemsLength: 0,
                 headers: [
-                    { text: "Code", value: "code" },
-                    { text: "Name", value: "name" },
-                    { text: "Address", value: "address" },
-                    { text: "Assets", value: "quantity" }
+                    { text: "Asset Tag", value: "asset_tag" },
+                    { text: "Description", value: "description" },
+                    { text: "Category", value: "asset_category.name" },
+                    { text: "Manufacturer", value: "manufacturer.name" }
                 ]
             },
             search: "",
@@ -289,7 +289,7 @@ export default {
             this.selectedItems = [];
             this.search = "";
             this.tableOptions.options = {
-                sortBy: ["code"],
+                sortBy: ["description"],
                 sortDesc: [false],
                 page: 1,
                 itemsPerPage: 10

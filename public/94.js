@@ -50,7 +50,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         asset_model_id: "",
         supplier_id: "",
         manufacturer_id: "",
-        asset_category_id: "",
+        asset_category: null,
         assigned_to: "",
         location_id: "",
         asset_id: ""
@@ -94,6 +94,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       _services_AssetDataService__WEBPACK_IMPORTED_MODULE_0__["default"].show(this.$route.params.id, data).then(function (response) {
         console.log(response.data);
         _this.form = _objectSpread(_objectSpread({}, _this.form), response.data.data);
+        console.log(_objectSpread(_objectSpread({}, _this.form), response.data.data));
       })["catch"](function (error) {
         console.log(error.response);
         alert("An error has occurred.");
@@ -285,6 +286,70 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     assetForm: {
@@ -307,7 +372,7 @@ __webpack_require__.r(__webpack_exports__);
           asset_model_id: "",
           supplier_id: "",
           manufacturer_id: "",
-          asset_category_id: "",
+          asset_category: null,
           assigned_to: "",
           location_id: "",
           asset_id: ""
@@ -389,7 +454,7 @@ __webpack_require__.r(__webpack_exports__);
         asset_model_id: "",
         supplier_id: "",
         manufacturer_id: "",
-        asset_category_id: "",
+        asset_category: null,
         assigned_to: "",
         location_id: "",
         asset_id: ""
@@ -413,7 +478,17 @@ __webpack_require__.r(__webpack_exports__);
         this.form.is_active = false;
       }
 
+      var warranty_dates = this.warranty_date.split("/"); // this.form.warranty_start_date = warranty_dates[0] ?? null;
+      // this.form.warranty_end_date = warranty_dates[1] ?? null;
+
+      this.form.warranty_start_date = null;
+      this.form.warranty_end_date = null;
       this.$emit("on-save", this.form);
+    }
+  },
+  computed: {
+    warranty_date: function warranty_date() {
+      return this.warranty_start_date + "/" + this.warranty_end_date;
     }
   },
   watch: {
@@ -668,6 +743,11 @@ var AssetDataService = /*#__PURE__*/function () {
     key: "delete",
     value: function _delete(id, data) {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/assets/".concat(id), data);
+    }
+  }, {
+    key: "deleteMany",
+    value: function deleteMany(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/assets/multiple", data);
     }
   }]);
 

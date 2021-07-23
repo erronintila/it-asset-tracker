@@ -198,7 +198,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }],
       tableOptions: {
         options: {
-          sortBy: ["code"],
+          sortBy: ["description"],
           sortDesc: [false],
           page: 1,
           itemsPerPage: 10
@@ -207,17 +207,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         itemsPerPageOptions: [10, 20, 50, 100],
         serverItemsLength: 0,
         headers: [{
-          text: "Code",
-          value: "code"
+          text: "Asset Tag",
+          value: "asset_tag"
         }, {
-          text: "Name",
-          value: "name"
+          text: "Description",
+          value: "description"
         }, {
-          text: "Address",
-          value: "address"
+          text: "Category",
+          value: "asset_category.name"
         }, {
-          text: "Assets",
-          value: "quantity"
+          text: "Manufacturer",
+          value: "manufacturer.name"
         }]
       },
       search: "",
@@ -329,7 +329,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.selectedItems = [];
       this.search = "";
       this.tableOptions.options = {
-        sortBy: ["code"],
+        sortBy: ["description"],
         sortDesc: [false],
         page: 1,
         itemsPerPage: 10
@@ -685,7 +685,7 @@ var render = function() {
                 scopedSlots: _vm._u(
                   [
                     {
-                      key: "item.code",
+                      key: "item.asset_tag",
                       fn: function(ref) {
                         var item = ref.item
                         return [
@@ -702,7 +702,7 @@ var render = function() {
                             [
                               _vm._v(
                                 "\n                        " +
-                                  _vm._s(item.code) +
+                                  _vm._s(item.asset_tag) +
                                   "\n                    "
                               )
                             ]
