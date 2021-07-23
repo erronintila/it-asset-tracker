@@ -170,6 +170,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -343,16 +344,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: {
     params: function params(nv) {
-      return _objectSpread(_objectSpread({}, this.tableOptions.options), {}, {
-        query: this.search // query: this.status
-
-      });
+      return _objectSpread({}, this.tableOptions.options);
     },
     hasFilters: function hasFilters() {
       return this.search || this.selectedItems.length;
     }
   },
   watch: {
+    search: function search() {
+      if (!this.search) {
+        this.getData();
+      }
+    },
     params: {
       immediate: true,
       deep: true,
@@ -551,7 +554,18 @@ var render = function() {
                   clearable: "",
                   "append-icon": "mdi-clipboard-search-outline"
                 },
-                on: { "click:append": _vm.openSearchDialog },
+                on: {
+                  "click:append": _vm.openSearchDialog,
+                  keyup: function($event) {
+                    if (
+                      !$event.type.indexOf("key") &&
+                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                    ) {
+                      return null
+                    }
+                    return _vm.getData.apply(null, arguments)
+                  }
+                },
                 model: {
                   value: _vm.search,
                   callback: function($$v) {

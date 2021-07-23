@@ -51,6 +51,7 @@
                     clearable
                     append-icon="mdi-clipboard-search-outline"
                     @click:append="openSearchDialog"
+                    @keyup.enter="getData"
                 ></v-text-field>
             </template>
         </page-header>
@@ -238,7 +239,7 @@ export default {
                         sortType: sortDesc[0] ? "desc" : "asc",
                         page: page,
                         itemsPerPage: itemsPerPage,
-                        search: search,
+                        search: search
                         // status: status
                     }
                 };
@@ -329,8 +330,8 @@ export default {
     computed: {
         params(nv) {
             return {
-                ...this.tableOptions.options,
-                query: this.search,
+                ...this.tableOptions.options
+                // query: this.search
                 // query: this.status
             };
         },
@@ -339,6 +340,11 @@ export default {
         }
     },
     watch: {
+        search() {
+            if (!this.search) {
+                this.getData();
+            }
+        },
         params: {
             immediate: true,
             deep: true,
