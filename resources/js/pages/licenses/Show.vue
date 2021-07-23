@@ -1,82 +1,41 @@
 <template>
     <div>
-        <v-row class="mb-4">
-            <v-col class="d-flex justify-start">
-                <v-btn icon @click="$router.go(-1)">
-                    <v-icon>mdi-arrow-left</v-icon>
-                </v-btn>
-                <span class="page-title">License Details</span>
-            </v-col>
-        </v-row>
+        <page-header
+            class="mb-4"
+            :title="'License Details'"
+            :backButton="true"
+        ></page-header>
 
         <v-row>
             <v-col cols="12" md="4">
-                <v-card>
-                    <template slot="progress">
-                        <v-progress-linear
-                            color="deep-purple"
-                            height="10"
-                            indeterminate
-                        ></v-progress-linear>
+                <CardSummary
+                    :title="form.description"
+                    :subtitle="'# ' + form.code"
+                >
+                    <template v-slot:body>
+                        <p>Serial No.: {{ form.serial_no }}</p>
+                        <p>Manufacturer: {{ form.manufacturer_id }}</p>
                     </template>
-
-                    <v-card-title>
-                        Description
-                        <v-spacer></v-spacer>
-                        <v-chip>Status</v-chip>
-                    </v-card-title>
-
-                    <v-card-text>
-                        <div class="my-4 text-subtitle-1">
-                            Manufacturer
-                        </div>
-
-                        <p>
-                            Notes: Lorem ipsum dolor, sit amet consectetur
-                            adipisicing elit. Inventore, officiis?
-                        </p>
-
-                        <p>
-                            Last Updated: 2021-01-01 08:00
-                        </p>
-                    </v-card-text>
-
-                    <v-divider class="mx-4"></v-divider>
-
-                    <!-- <v-card-title>Tonight's availability</v-card-title> -->
-
-                    <!-- <v-card-text>
-                        <v-chip-group
-                            active-class="deep-purple accent-4 white--text"
-                            column
+                    <template v-slot:actions>
+                        <v-btn
+                            icon
+                            @click="
+                                $router.push(
+                                    '/licenses/' + $route.params.id + '/edit'
+                                )
+                            "
                         >
-                            <v-chip>5:30PM</v-chip>
-
-                            <v-chip>7:30PM</v-chip>
-
-                            <v-chip>8:00PM</v-chip>
-
-                            <v-chip>9:00PM</v-chip>
-                        </v-chip-group>
-                    </v-card-text> -->
-
-                    <v-card-actions>
-                        <v-btn icon>
-                            <v-icon>mdi-file-document-edit-outline</v-icon>
+                            <v-icon>
+                                mdi-file-document-edit-outline
+                            </v-icon>
                         </v-btn>
-
-                        <v-btn icon>
-                            <v-icon>mdi-delete</v-icon>
+                        <v-btn icon @click="onDelete">
+                            <v-icon>
+                                mdi-delete
+                            </v-icon>
                         </v-btn>
-
-                        <v-btn icon>
-                            <v-icon>mdi-file-export-outline</v-icon>
-                        </v-btn>
-                        <v-btn icon>
-                            <v-icon>mdi-text-box-plus-outline</v-icon>
-                        </v-btn>
-                    </v-card-actions>
-                </v-card>
+                    </template>
+                </CardSummary>
             </v-col>
             <v-col cols="12" md="8">
                 <v-card>
@@ -91,15 +50,15 @@
                             <v-card flat>
                                 <v-card-text>
                                     <div class="page-title my-4">
-                                        Assets
+                                        License Name
                                     </div>
 
                                     <div class="my-4">
                                         <VueApexCharts
                                             type="donut"
                                             height="300"
-                                            :options="options.asset"
-                                            :series="series.asset"
+                                            :options="options.license"
+                                            :series="series.license"
                                         ></VueApexCharts>
                                     </div>
                                 </v-card-text>
@@ -122,11 +81,13 @@
                                             </thead>
                                             <tbody>
                                                 <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
+                                                    v-for="(value,
+                                                    name,
+                                                    index) in form"
+                                                    :key="index"
                                                 >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
+                                                    <td>{{ name }}</td>
+                                                    <td>{{ value }}</td>
                                                 </tr>
                                             </tbody>
                                         </template>
@@ -317,20 +278,23 @@
 
 <script>
 import VueApexCharts from "vue-apexcharts";
+import CardSummary from "../../components/pages/CardSummary.vue";
+import LicenseDataService from "../../services/LicenseDataService";
 
 export default {
     components: {
-        VueApexCharts
+        VueApexCharts,
+        CardSummary
     },
     data() {
         return {
             tab: null,
-            items: ["overview", "details", "assets", "System Activity Logs"],
+            items: ["overview", "details", "licenses", "System Activity Logs"],
             series: {
-                asset: [44, 55, 41, 17]
+                license: [44, 55, 41, 17]
             },
             options: {
-                asset: {
+                license: {
                     labels: [
                         "In Storage",
                         "In Use",
@@ -339,49 +303,65 @@ export default {
                     ]
                 }
             },
-            records: [
-                {
-                    name: "Data 1",
-                    value: 159
-                },
-                {
-                    name: "Data 2",
-                    value: 237
-                },
-                {
-                    name: "Data 3",
-                    value: 262
-                },
-                {
-                    name: "Data 4",
-                    value: 305
-                },
-                {
-                    name: "Data 5",
-                    value: 356
-                },
-                {
-                    name: "Data 6",
-                    value: 375
-                },
-                {
-                    name: "Data 7",
-                    value: 392
-                },
-                {
-                    name: "Data 8",
-                    value: 408
-                },
-                {
-                    name: "Data 9",
-                    value: 452
-                },
-                {
-                    name: "Data 10",
-                    value: 518
-                }
-            ]
+            records: [],
+            form: {
+                code: "",
+                slug: "",
+                reference_no: "",
+                license_tag: "",
+                serial_no: "",
+                description: "",
+                purchased_date: "",
+                purchased_cost: "",
+                warranty_start_date: "",
+                warranty_end_date: "",
+                sku: "",
+                quantity: "",
+                notes: "",
+                asset_model_id: "",
+                supplier_id: "",
+                manufacturer_id: "",
+                asset_category_id: "",
+                assigned_to: "",
+                location_id: "",
+                asset_id: ""
+            }
         };
+    },
+    methods: {
+        getData() {
+            let data = {};
+
+            LicenseDataService.show(this.$route.params.id, data)
+                .then(response => {
+                    console.log(response.data);
+                    this.form = { ...this.form, ...response.data.data };
+                })
+                .catch(error => {
+                    console.log(error.response);
+                    alert("An error has occurred.");
+                    this.$router.push({ name: "licenses.index" }, () => {});
+                });
+        },
+        onDelete() {
+            if (!confirm("WARNING: Do you want to delete this record?")) {
+                return;
+            }
+
+            LicenseDataService.delete(this.$route.params.id, {})
+                .then(response => {
+                    console.log(response.data);
+                    alert(response.data.message);
+                    this.$router.push({ name: "licenses.index" });
+                })
+                .catch(error => {
+                    console.log(error.response);
+                    alert("An error has occurred.");
+                });
+        }
+    },
+    created() {
+        this.getData();
     }
 };
 </script>

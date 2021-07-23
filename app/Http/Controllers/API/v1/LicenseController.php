@@ -45,7 +45,7 @@ class LicenseController extends Controller
         $validated = $request->validated();
         $data = DB::transaction(function () use ($validated) {
             $code = 'LIC' . date("YmdHis");
-            $slug = $code . '-' . implode('-', explode(' ', $validated['name']));
+            $slug = $code . '-' . implode('-', explode(' ', $validated['description']));
 
             $license = new License();
             $license->fill($validated);
@@ -84,7 +84,7 @@ class LicenseController extends Controller
         $data = DB::transaction(function () use ($id, $validated) {
             $license = License::findOrFail($id);
             $license->fill($validated);
-            $license->slug = $license->code . '-' . implode('-', explode(' ', $validated['name']));
+            $license->slug = $license->code . '-' . implode('-', explode(' ', $validated['description']));
             $license->save();
             return $license;
         });

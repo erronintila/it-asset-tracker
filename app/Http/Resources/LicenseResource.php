@@ -21,6 +21,10 @@ class LicenseResource extends JsonResource
             "reference_no" => $this->reference_no,
             "serial_no" => $this->serial_no,
             "description" => $this->description,
+            "purchased_date" => $this->purchased_date,
+            "purchased_cost" => $this->purchased_cost,
+            "warranty_start_date" => $this->warranty_start_date,
+            "warranty_end_date" => $this->warranty_end_date,
 
             "created_at" => $this->created_at,
             "updated_at" => $this->updated_at,

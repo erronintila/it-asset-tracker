@@ -16,6 +16,14 @@ const license_routes = [
         }
     },
     {
+        path: "/licenses/:id/edit",
+        component: () => import("../pages/licenses/Edit"),
+        name: "licenses.edit",
+        meta: {
+            auth: true
+        }
+    },
+    {
         path: "/licenses/:id",
         component: () => import("../pages/licenses/Show"),
         name: "licenses.show",

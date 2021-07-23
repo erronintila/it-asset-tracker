@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class License extends Model
 {
     use SoftDeletes;
-    
+
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | LARAVEL MODEL CONFIGURATION
@@ -42,4 +42,18 @@ class License extends Model
     | LARAVEL ACCESSORS
     |------------------------------------------------------------------------------------------------------------------------------------
     */
+
+    /*
+    |------------------------------------------------------------------------------------------------------------------------------------
+    | CUSTOM
+    |------------------------------------------------------------------------------------------------------------------------------------
+    */
+
+    public function scopeSearch($query, $text)
+    {
+        return $query->where("code", "like", "%$text%")
+            ->orWhere("reference_no", "like", "%$text%")
+            ->orWhere("serial_no", "like", "%$text%")
+            ->orWhere("description", "like", "%$text%");
+    }
 }
