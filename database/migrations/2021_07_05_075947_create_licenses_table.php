@@ -18,6 +18,8 @@ class CreateLicensesTable extends Migration
             $table->string('code');
             $table->string('slug');
             $table->string('reference_no')->nullable();
+            $table->string('serial_no')->nullable();
+            $table->string('description');
             $table->timestamps();
             $table->softDeletes();
             $table->foreignId('supplier_id')->nullable()->constrained()->onDelete('cascade');

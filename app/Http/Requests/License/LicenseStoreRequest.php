@@ -13,7 +13,7 @@ class LicenseStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,14 @@ class LicenseStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'code' => ['nullable', 'string', 'max:250', 'unique:licenses,code'],
+            'slug' => ['nullable', 'string', 'max:250', 'unique:licenses,slug'],
+            "reference_no" => ['nullable', 'string', 'max:250'],
+            "serial_no" => ['nullable', 'string', 'max:250'],
+            "description" => ['required', 'string', 'max:250'],
+            "supplier_id" => ['nullable', 'integer'],
+            "manufacturer_id" => ['nullable', 'integer'],
+            "asset_category_id" => ['required', 'integer'],
         ];
     }
 }
