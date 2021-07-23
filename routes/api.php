@@ -19,6 +19,7 @@ Route::middleware('auth:sanctum')->prefix("v1")->group(function () {
 
     // Multiple deletion routes
     Route::delete('asset_models/multiple', 'API\v1\AssetModelController@destroyMany')->name('delete.asset_models.multiple');
+    Route::delete('assets/multiple', 'API\v1\AssetController@destroyMany')->name('delete.assets.multiple');
     Route::delete('transaction_types/multiple', 'API\v1\TransactionTypeController@destroyMany')->name('delete.transaction_types.multiple');
     Route::delete('asset_categories/multiple', 'API\v1\AssetCategoryController@destroyMany')->name('delete.asset_categories.multiple');
     Route::delete('customers/multiple', 'API\v1\CustomerController@destroyMany')->name('delete.customers.multiple');

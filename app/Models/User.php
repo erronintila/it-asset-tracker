@@ -72,6 +72,11 @@ class User extends Authenticatable
         return $this->morphTo();
     }
 
+    public function assets()
+    {
+        return $this->hasMany(Asset::class);
+    }
+
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | LARAVEL ACCESSORS

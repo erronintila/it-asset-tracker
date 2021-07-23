@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Asset;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class AssetUpdateRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class AssetUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,26 @@ class AssetUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "code" => ["nullable", "string", "max:250", Rule::unique("assets", 'code')->ignore($this->asset)],
+            "slug" => ["nullable", "string", "max:250", Rule::unique("assets", 'slug')->ignore($this->asset)],
+            "reference_no" => ["nullable", "string", "max:250"],
+            "asset_tag" => ["nullable", "string", "max:250", Rule::unique("assets", 'asset_tag')->ignore($this->asset)],
+            "serial_no" => ["nullable", "string", "max:250"],
+            "description" => ["required", "string", "max:250"],
+            "purchased_date" => ["nullable", "string", "max:250"],
+            "purchased_cost" => ["nullable", "string", "max:250"],
+            "warranty_start_date" => ["nullable", "string", "max:250"],
+            "warranty_end_date" => ["nullable", "string", "max:250"],
+            "sku" => ["nullable", "string", "max:250"],
+            "quantity" => ["nullable", "string", "max:250"],
+            "notes" => ["nullable", "string"],
+            "asset_model_id" => ["nullable", "integer"],
+            "supplier_id" => ["nullable", "integer"],
+            "manufacturer_id" => ["required", "integer"],
+            "asset_category_id" => ["required", "integer"],
+            "assigned_to" => ["nullable", "integer"],
+            "location_id" => ["nullable", "integer"],
+            "asset_id" => ["nullable", "integer"],
         ];
     }
 }
