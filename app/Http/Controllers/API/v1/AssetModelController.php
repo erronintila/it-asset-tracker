@@ -22,11 +22,14 @@ class AssetModelController extends Controller
      */
     public function index()
     {
+        $search = request('search') ?? "";
         $sortBy = request('sortBy') ?? "code";
         $sortType = request('sortType') ?? "asc";
         $itemsPerPage = request('itemsPerPage') ?? 10;
 
-        $asset_models = AssetModel::orderBy($sortBy, $sortType)->paginate($itemsPerPage);
+        $asset_models = AssetModel::search($search)
+            ->orderBy($sortBy, $sortType)
+            ->paginate($itemsPerPage);
 
         return $this->successResponse('read', $asset_models, 200);
         // return $this->successResponse('Success', AssetModelResource::collection($asset_models), 200);

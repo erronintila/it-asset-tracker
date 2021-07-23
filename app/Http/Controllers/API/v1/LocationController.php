@@ -21,11 +21,14 @@ class LocationController extends Controller
      */
     public function index()
     {
+        $search = request('search') ?? "";
         $sortBy = request('sortBy') ?? "code";
         $sortType = request('sortType') ?? "asc";
         $itemsPerPage = request('itemsPerPage') ?? 10;
 
-        $locations = Location::orderBy($sortBy, $sortType)->paginate($itemsPerPage);
+        $locations = Location::search($search)
+            ->orderBy($sortBy, $sortType)
+            ->paginate($itemsPerPage);
 
         return $this->successResponse('read', $locations, 200);
         // return $this->successResponse('Success', LocationResource::collection($locations), 200);

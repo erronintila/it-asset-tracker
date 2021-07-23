@@ -22,11 +22,14 @@ class TransactionTypeController extends Controller
      */
     public function index()
     {
+        $search = request('search') ?? "";
         $sortBy = request('sortBy') ?? "code";
         $sortType = request('sortType') ?? "asc";
         $itemsPerPage = request('itemsPerPage') ?? 10;
 
-        $transaction_types = TransactionType::orderBy($sortBy, $sortType)->paginate($itemsPerPage);
+        $transaction_types = TransactionType::search($search)
+            ->orderBy($sortBy, $sortType)
+            ->paginate($itemsPerPage);
 
         return $this->successResponse('read', $transaction_types, 200);
         // return $this->successResponse('Success', TransactionTypeResource::collection($transaction_types), 200);

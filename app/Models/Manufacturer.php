@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Manufacturer extends Model
 {
     use SoftDeletes;
-    
+
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | LARAVEL MODEL CONFIGURATION
@@ -34,4 +34,28 @@ class Manufacturer extends Model
     | LARAVEL ACCESSORS
     |------------------------------------------------------------------------------------------------------------------------------------
     */
+
+    /*
+    |------------------------------------------------------------------------------------------------------------------------------------
+    | CUSTOM
+    |------------------------------------------------------------------------------------------------------------------------------------
+    */
+
+    public function scopeSearch($query, $text)
+    {
+        return $query->where("name", "like", "%$text%")
+            ->orWhere("code", "like", "%$text%")
+            ->orWhere("phone1", "like", "%$text%")
+            ->orWhere("phone2", "like", "%$text%")
+            ->orWhere("email", "like", "%$text%")
+            ->orWhere("website", "like", "%$text%")
+            ->orWhere("fax", "like", "%$text%")
+            ->orWhere("address", "like", "%$text%")
+            ->orWhere("street", "like", "%$text%")
+            ->orWhere("district", "like", "%$text%")
+            ->orWhere("city", "like", "%$text%")
+            ->orWhere("province", "like", "%$text%")
+            ->orWhere("country", "like", "%$text%")
+            ->orWhere("postal_code", "like", "%$text%");
+    }
 }

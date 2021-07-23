@@ -1,14 +1,22 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[11],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/locations/Form.vue?vue&type=script&lang=js&":
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/employees/Form.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/locations/Form.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/employees/Form.vue?vue&type=script&lang=js& ***!
   \********************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -168,27 +176,216 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    locationForm: {
+    employeeForm: {
       type: Object,
       "default": function _default() {
         return {
-          code: "",
-          slug: "",
-          name: "",
-          address: "",
-          street: "",
-          district: "",
-          city: "",
-          province: "",
-          country: "",
-          postal_code: "",
-          latitude: "",
-          longitude: "",
+          username: "",
+          email: "",
           is_active: true,
           notes: "",
-          location_id: ""
+          profile: {
+            code: "",
+            slug: "",
+            first_name: "",
+            middle_name: "",
+            last_name: "",
+            suffix: "",
+            gender: "",
+            birthdate: "",
+            business_phone: "",
+            home_phone: "",
+            mobile_phone: "",
+            job_title: "",
+            address: "",
+            street: "",
+            district: "",
+            city: "",
+            province: "",
+            country: "",
+            postal_code: "",
+            latitude: "",
+            longitude: "",
+            location_id: "",
+            department_id: "",
+            image: ""
+          }
         };
       }
     },
@@ -198,7 +395,16 @@ __webpack_require__.r(__webpack_exports__);
         return {
           code: [],
           slug: [],
-          name: [],
+          first_name: [],
+          middle_name: [],
+          last_name: [],
+          suffix: [],
+          gender: [],
+          birthdate: [],
+          business_phone: [],
+          home_phone: [],
+          mobile_phone: [],
+          job_title: [],
           address: [],
           street: [],
           district: [],
@@ -208,9 +414,13 @@ __webpack_require__.r(__webpack_exports__);
           postal_code: [],
           latitude: [],
           longitude: [],
-          is_active: [],
+          is_active: true,
+          location_id: [],
+          department_id: [],
           notes: [],
-          location_id: []
+          email: [],
+          username: [],
+          image: []
         };
       }
     },
@@ -220,7 +430,16 @@ __webpack_require__.r(__webpack_exports__);
         return {
           code: [],
           slug: [],
-          name: [],
+          first_name: [],
+          middle_name: [],
+          last_name: [],
+          suffix: [],
+          gender: [],
+          birthdate: [],
+          business_phone: [],
+          home_phone: [],
+          mobile_phone: [],
+          job_title: [],
           address: [],
           street: [],
           district: [],
@@ -230,9 +449,13 @@ __webpack_require__.r(__webpack_exports__);
           postal_code: [],
           latitude: [],
           longitude: [],
-          is_active: [],
+          is_active: true,
+          location_id: [],
+          department_id: [],
           notes: [],
-          location_id: []
+          email: [],
+          username: [],
+          image: []
         };
       }
     }
@@ -240,21 +463,38 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       valid: false,
+      birthdateModal: false,
       form: {
-        code: "",
-        slug: "",
-        name: "",
-        address: "",
-        street: "",
-        district: "",
-        city: "",
-        province: "",
-        country: "",
-        postal_code: "",
-        latitude: "",
-        longitude: "",
+        username: "",
+        email: "",
         is_active: true,
-        location_id: ""
+        notes: "",
+        profile: {
+          code: "",
+          slug: "",
+          first_name: "",
+          middle_name: "",
+          last_name: "",
+          suffix: "",
+          gender: "",
+          birthdate: "",
+          business_phone: "",
+          home_phone: "",
+          mobile_phone: "",
+          job_title: "",
+          address: "",
+          street: "",
+          district: "",
+          city: "",
+          province: "",
+          country: "",
+          postal_code: "",
+          latitude: "",
+          longitude: "",
+          location_id: "",
+          department_id: "",
+          image: ""
+        }
       }
     };
   },
@@ -269,17 +509,28 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
-      console.log(this.form);
+      var newForm = _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, this.form.profile), this.form), {
+        name: this.form.profile.name
+      }), {
+        profile_id: this.form.profile.id
+      });
 
-      if (!this.form.is_active) {
-        this.form.is_active = false;
+      console.log(newForm);
+
+      if (!newForm.is_active) {
+        newForm.is_active = false;
       }
 
-      this.$emit("on-save", this.form);
+      this.$emit("on-save", newForm);
+    }
+  },
+  computed: {
+    maxDate: function maxDate() {
+      return moment__WEBPACK_IMPORTED_MODULE_0___default()().subtract(18, "year").format("YYYY-MM-DD");
     }
   },
   watch: {
-    locationForm: {
+    employeeForm: {
       immediate: true,
       handler: function handler(newValue, oldValue) {
         this.form = newValue;
@@ -290,9 +541,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/locations/Form.vue?vue&type=template&id=eb468fc4&":
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/employees/Form.vue?vue&type=template&id=607b4852&":
 /*!************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/locations/Form.vue?vue&type=template&id=eb468fc4& ***!
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/employees/Form.vue?vue&type=template&id=607b4852& ***!
   \************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -324,7 +575,7 @@ var render = function() {
         [
           _c(
             "v-col",
-            { attrs: { cols: "12", md: "6" } },
+            { attrs: { cols: "12", md: "4" } },
             [
               _c(
                 "v-card",
@@ -349,177 +600,428 @@ var render = function() {
                             [
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Name",
+                                  label: "Department",
                                   outlined: "",
                                   clearable: "",
-                                  hint: "Ex. Warehouse1",
-                                  "error-messages": _vm.errors.name[0]
+                                  hint: "Ex. Sales and Marketing",
+                                  "error-messages": _vm.errors.department_id[0]
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.name = []
+                                    _vm.errors.department_id = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.name,
+                                  value: _vm.form.profile.department_id,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "name", $$v)
+                                    _vm.$set(
+                                      _vm.form.profile,
+                                      "department_id",
+                                      $$v
+                                    )
                                   },
-                                  expression: "form.name"
+                                  expression: "form.profile.department_id"
                                 }
                               }),
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Address",
+                                  label: "Job Title",
                                   outlined: "",
                                   clearable: "",
-                                  hint: "Ex. Block 16 Lot 4 XYZ Subdivision",
-                                  "error-messages": _vm.errors.address[0]
+                                  hint: "Ex. Sales Representative",
+                                  "error-messages": _vm.errors.job_title[0]
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.address = []
+                                    _vm.errors.job_title = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.address,
+                                  value: _vm.form.profile.job_title,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "address", $$v)
+                                    _vm.$set(_vm.form.profile, "job_title", $$v)
                                   },
-                                  expression: "form.address"
+                                  expression: "form.profile.job_title"
                                 }
                               }),
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Street",
+                                  label: "First Name",
                                   outlined: "",
                                   clearable: "",
-                                  hint: "Ex. Balete Street",
-                                  "error-messages": _vm.errors.street[0]
+                                  hint: "Ex. Juan",
+                                  "error-messages": _vm.errors.first_name[0]
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.street = []
+                                    _vm.errors.first_name = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.street,
+                                  value: _vm.form.profile.first_name,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "street", $$v)
+                                    _vm.$set(
+                                      _vm.form.profile,
+                                      "first_name",
+                                      $$v
+                                    )
                                   },
-                                  expression: "form.street"
+                                  expression: "form.profile.first_name"
                                 }
                               }),
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "District",
+                                  label: "Middle Name",
                                   outlined: "",
                                   clearable: "",
-                                  hint: "Ex. Barangay Poblacion",
-                                  "error-messages": _vm.errors.district[0]
+                                  hint: "Ex. Dela Cruz",
+                                  "error-messages": _vm.errors.middle_name[0]
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.district = []
+                                    _vm.errors.middle_name = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.district,
+                                  value: _vm.form.profile.middle_name,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "district", $$v)
+                                    _vm.$set(
+                                      _vm.form.profile,
+                                      "middle_name",
+                                      $$v
+                                    )
                                   },
-                                  expression: "form.district"
+                                  expression: "form.profile.middle_name"
                                 }
                               }),
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "City",
+                                  label: "Last Name",
                                   outlined: "",
                                   clearable: "",
-                                  hint: "Ex. General Santos City",
-                                  "error-messages": _vm.errors.city[0]
+                                  hint: "Ex. Dela Cruz",
+                                  "error-messages": _vm.errors.last_name[0]
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.city = []
+                                    _vm.errors.last_name = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.city,
+                                  value: _vm.form.profile.last_name,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "city", $$v)
+                                    _vm.$set(_vm.form.profile, "last_name", $$v)
                                   },
-                                  expression: "form.city"
+                                  expression: "form.profile.last_name"
                                 }
                               }),
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Province",
+                                  label: "Suffix",
                                   outlined: "",
                                   clearable: "",
-                                  hint: "South Cotabato",
-                                  "error-messages": _vm.errors.province[0]
+                                  hint: "Ex. Jr.",
+                                  "error-messages": _vm.errors.suffix[0]
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.province = []
+                                    _vm.errors.suffix = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.province,
+                                  value: _vm.form.profile.suffix,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "province", $$v)
+                                    _vm.$set(_vm.form.profile, "suffix", $$v)
                                   },
-                                  expression: "form.province"
+                                  expression: "form.profile.suffix"
                                 }
                               }),
                               _vm._v(" "),
-                              _c("v-combobox", {
+                              _c("v-select", {
                                 attrs: {
-                                  label: "Country",
+                                  items: ["male", "female"],
+                                  label: "Gender",
                                   outlined: "",
-                                  clearable: "",
-                                  items: ["Philippines"],
-                                  "error-messages": _vm.errors.country[0]
+                                  "error-messages": _vm.errors.gender[0]
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.country = []
+                                    _vm.errors.gender = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.country,
+                                  value: _vm.form.profile.gender,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "country", $$v)
+                                    _vm.$set(_vm.form.profile, "gender", $$v)
                                   },
-                                  expression: "form.country"
+                                  expression: "form.profile.gender"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "v-dialog",
+                                {
+                                  ref: "dialog",
+                                  attrs: {
+                                    "return-value": _vm.form.birthdate,
+                                    persistent: "",
+                                    width: "290px"
+                                  },
+                                  on: {
+                                    "update:returnValue": function($event) {
+                                      return _vm.$set(
+                                        _vm.form,
+                                        "birthdate",
+                                        $event
+                                      )
+                                    },
+                                    "update:return-value": function($event) {
+                                      return _vm.$set(
+                                        _vm.form,
+                                        "birthdate",
+                                        $event
+                                      )
+                                    }
+                                  },
+                                  scopedSlots: _vm._u([
+                                    {
+                                      key: "activator",
+                                      fn: function(ref) {
+                                        var on = ref.on
+                                        var attrs = ref.attrs
+                                        return [
+                                          _c(
+                                            "v-text-field",
+                                            _vm._g(
+                                              _vm._b(
+                                                {
+                                                  attrs: {
+                                                    label: "Birthdate",
+                                                    readonly: "",
+                                                    outlined: "",
+                                                    hint: "Ex. 2000-01-01",
+                                                    "error-messages":
+                                                      _vm.errors.birthdate[0]
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      _vm.errors.birthdate = []
+                                                    }
+                                                  },
+                                                  model: {
+                                                    value:
+                                                      _vm.form.profile
+                                                        .birthdate,
+                                                    callback: function($$v) {
+                                                      _vm.$set(
+                                                        _vm.form.profile,
+                                                        "birthdate",
+                                                        $$v
+                                                      )
+                                                    },
+                                                    expression:
+                                                      "form.profile.birthdate"
+                                                  }
+                                                },
+                                                "v-text-field",
+                                                attrs,
+                                                false
+                                              ),
+                                              on
+                                            )
+                                          )
+                                        ]
+                                      }
+                                    }
+                                  ]),
+                                  model: {
+                                    value: _vm.birthdateModal,
+                                    callback: function($$v) {
+                                      _vm.birthdateModal = $$v
+                                    },
+                                    expression: "birthdateModal"
+                                  }
+                                },
+                                [
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-date-picker",
+                                    {
+                                      attrs: {
+                                        max: _vm.maxDate,
+                                        scrollable: ""
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          _vm.errors.birthdate = []
+                                        }
+                                      },
+                                      model: {
+                                        value: _vm.form.profile.birthdate,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.form.profile,
+                                            "birthdate",
+                                            $$v
+                                          )
+                                        },
+                                        expression: "form.profile.birthdate"
+                                      }
+                                    },
+                                    [
+                                      _c("v-spacer"),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          attrs: { text: "", color: "primary" },
+                                          on: {
+                                            click: function($event) {
+                                              _vm.birthdateModal = false
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                        Cancel\n                                    "
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          attrs: { text: "", color: "primary" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.$refs.dialog.save(
+                                                _vm.form.profile.birthdate
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                        OK\n                                    "
+                                          )
+                                        ]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Location",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. Office 1",
+                                  "error-messages": _vm.errors.location_id[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.location_id = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.location_id,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.form.profile,
+                                      "location_id",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "form.profile.location_id"
                                 }
                               }),
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Postal Code",
+                                  label: "Mobile Phone No.",
                                   outlined: "",
                                   clearable: "",
-                                  hint: "Ex. 9500",
-                                  type: "number"
+                                  type: "number",
+                                  hint: "Ex. 09XXXXXXXXX",
+                                  "error-messages": _vm.errors.mobile_phone[0]
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.postal_code = []
+                                    _vm.errors.mobile_phone = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.postal_code,
+                                  value: _vm.form.profile.mobile_phone,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "postal_code", $$v)
+                                    _vm.$set(
+                                      _vm.form.profile,
+                                      "mobile_phone",
+                                      $$v
+                                    )
                                   },
-                                  expression: "form.postal_code"
+                                  expression: "form.profile.mobile_phone"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Home Phone No.",
+                                  outlined: "",
+                                  clearable: "",
+                                  type: "number",
+                                  hint: "Ex. 09XXXXXXXXX",
+                                  "error-messages": _vm.errors.home_phone[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.home_phone = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.home_phone,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.form.profile,
+                                      "home_phone",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "form.profile.home_phone"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Work Phone No.",
+                                  outlined: "",
+                                  clearable: "",
+                                  type: "number",
+                                  hint: "Ex. 09XXXXXXXXX",
+                                  "error-messages": _vm.errors.business_phone[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.business_phone = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.business_phone,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.form.profile,
+                                      "business_phone",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "form.profile.business_phone"
                                 }
                               })
                             ],
@@ -540,7 +1042,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "v-col",
-            { attrs: { cols: "12", md: "6" } },
+            { attrs: { cols: "12", md: "4" } },
             [
               _c(
                 "v-card",
@@ -548,7 +1050,7 @@ var render = function() {
                 [
                   _c("v-card-title", [
                     _vm._v(
-                      "\n                    Other Information\n                "
+                      "\n                    Address Information\n                "
                     )
                   ]),
                   _vm._v(" "),
@@ -565,6 +1067,164 @@ var render = function() {
                             [
                               _c("v-text-field", {
                                 attrs: {
+                                  label: "Address",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. Block 16 Lot 4 XYZ Subdivision",
+                                  "error-messages": _vm.errors.address[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.address = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.address,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form.profile, "address", $$v)
+                                  },
+                                  expression: "form.profile.address"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Street",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. Balete Street",
+                                  "error-messages": _vm.errors.street[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.street = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.street,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form.profile, "street", $$v)
+                                  },
+                                  expression: "form.profile.street"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "District",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. Barangay Poblacion",
+                                  "error-messages": _vm.errors.district[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.district = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.district,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form.profile, "district", $$v)
+                                  },
+                                  expression: "form.profile.district"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "City",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. General Santos City",
+                                  "error-messages": _vm.errors.city[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.city = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.city,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form.profile, "city", $$v)
+                                  },
+                                  expression: "form.profile.city"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Province",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "South Cotabato",
+                                  "error-messages": _vm.errors.province[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.province = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.province,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form.profile, "province", $$v)
+                                  },
+                                  expression: "form.profile.province"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-combobox", {
+                                attrs: {
+                                  label: "Country",
+                                  outlined: "",
+                                  clearable: "",
+                                  items: ["Philippines"],
+                                  "error-messages": _vm.errors.country[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.country = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.country,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form.profile, "country", $$v)
+                                  },
+                                  expression: "form.profile.country"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Postal Code",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. 9500",
+                                  type: "number"
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.postal_code = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.postal_code,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.form.profile,
+                                      "postal_code",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "form.profile.postal_code"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
                                   label: "Latitude",
                                   outlined: "",
                                   clearable: "",
@@ -577,11 +1237,11 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.latitude,
+                                  value: _vm.form.profile.latitude,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "latitude", $$v)
+                                    _vm.$set(_vm.form.profile, "latitude", $$v)
                                   },
-                                  expression: "form.latitude"
+                                  expression: "form.profile.latitude"
                                 }
                               }),
                               _vm._v(" "),
@@ -599,36 +1259,116 @@ var render = function() {
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.longitude,
+                                  value: _vm.form.profile.longitude,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "longitude", $$v)
+                                    _vm.$set(_vm.form.profile, "longitude", $$v)
                                   },
-                                  expression: "form.longitude"
+                                  expression: "form.profile.longitude"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-col",
+            { attrs: { cols: "12", md: "4" } },
+            [
+              _c(
+                "v-card",
+                { attrs: { flat: "" } },
+                [
+                  _c("v-card-title", [
+                    _vm._v(
+                      "\n                    Account Information\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-text",
+                    [
+                      _c(
+                        "v-row",
+                        { staticClass: "d-flex justify-center" },
+                        [
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Email",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. juandelacruz@gmail.com",
+                                  "error-messages": _vm.errors.email[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.email = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.email,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "email", $$v)
+                                  },
+                                  expression: "form.email"
                                 }
                               }),
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Parent Location",
+                                  label: "Username",
                                   outlined: "",
                                   clearable: "",
-                                  "error-messages": _vm.errors.location_id[0]
+                                  hint: "Ex. juandelacruz",
+                                  "error-messages": _vm.errors.username[0]
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.location_id = []
+                                    _vm.errors.username = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.location_id,
+                                  value: _vm.form.username,
                                   callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.form,
-                                      "location_id",
-                                      _vm._n($$v)
-                                    )
+                                    _vm.$set(_vm.form, "username", $$v)
                                   },
-                                  expression: "form.location_id"
+                                  expression: "form.username"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Image",
+                                  outlined: "",
+                                  clearable: "",
+                                  "error-messages": _vm.errors.image[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.image = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.image,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form.profile, "image", $$v)
+                                  },
+                                  expression: "form.profile.image"
                                 }
                               }),
                               _vm._v(" "),
@@ -722,17 +1462,17 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/pages/locations/Form.vue":
+/***/ "./resources/js/pages/employees/Form.vue":
 /*!***********************************************!*\
-  !*** ./resources/js/pages/locations/Form.vue ***!
+  !*** ./resources/js/pages/employees/Form.vue ***!
   \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Form_vue_vue_type_template_id_eb468fc4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=template&id=eb468fc4& */ "./resources/js/pages/locations/Form.vue?vue&type=template&id=eb468fc4&");
-/* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./resources/js/pages/locations/Form.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Form_vue_vue_type_template_id_607b4852___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=template&id=607b4852& */ "./resources/js/pages/employees/Form.vue?vue&type=template&id=607b4852&");
+/* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./resources/js/pages/employees/Form.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -743,8 +1483,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Form_vue_vue_type_template_id_eb468fc4___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Form_vue_vue_type_template_id_eb468fc4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Form_vue_vue_type_template_id_607b4852___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Form_vue_vue_type_template_id_607b4852___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -754,46 +1494,46 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/pages/locations/Form.vue"
+component.options.__file = "resources/js/pages/employees/Form.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/pages/locations/Form.vue?vue&type=script&lang=js&":
+/***/ "./resources/js/pages/employees/Form.vue?vue&type=script&lang=js&":
 /*!************************************************************************!*\
-  !*** ./resources/js/pages/locations/Form.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/js/pages/employees/Form.vue?vue&type=script&lang=js& ***!
   \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/locations/Form.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/employees/Form.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/pages/locations/Form.vue?vue&type=template&id=eb468fc4&":
+/***/ "./resources/js/pages/employees/Form.vue?vue&type=template&id=607b4852&":
 /*!******************************************************************************!*\
-  !*** ./resources/js/pages/locations/Form.vue?vue&type=template&id=eb468fc4& ***!
+  !*** ./resources/js/pages/employees/Form.vue?vue&type=template&id=607b4852& ***!
   \******************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_eb468fc4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=template&id=eb468fc4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/locations/Form.vue?vue&type=template&id=eb468fc4&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_eb468fc4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_607b4852___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=template&id=607b4852& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/employees/Form.vue?vue&type=template&id=607b4852&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_607b4852___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_eb468fc4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_607b4852___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "./resources/js/services/LocationDataService.js":
+/***/ "./resources/js/services/EmployeeDataService.js":
 /*!******************************************************!*\
-  !*** ./resources/js/services/LocationDataService.js ***!
+  !*** ./resources/js/services/EmployeeDataService.js ***!
   \******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -811,47 +1551,47 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 // import http from "../http-common";
 
 
-var LocationDataService = /*#__PURE__*/function () {
-  function LocationDataService() {
-    _classCallCheck(this, LocationDataService);
+var EmployeeDataService = /*#__PURE__*/function () {
+  function EmployeeDataService() {
+    _classCallCheck(this, EmployeeDataService);
   }
 
-  _createClass(LocationDataService, [{
+  _createClass(EmployeeDataService, [{
     key: "getAll",
     value: function getAll(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/locations", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/employees", data);
     }
   }, {
     key: "show",
     value: function show(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/locations/".concat(id), data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/employees/".concat(id), data);
     }
   }, {
     key: "store",
     value: function store(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/locations", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/employees", data);
     }
   }, {
     key: "update",
     value: function update(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/locations/".concat(id), data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/employees/".concat(id), data);
     }
   }, {
     key: "delete",
     value: function _delete(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/locations/".concat(id), data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/employees/".concat(id), data);
     }
   }, {
     key: "deleteMany",
     value: function deleteMany(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/locations/multiple", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/employees/multiple", data);
     }
   }]);
 
-  return LocationDataService;
+  return EmployeeDataService;
 }();
 
-/* harmony default export */ __webpack_exports__["default"] = (new LocationDataService());
+/* harmony default export */ __webpack_exports__["default"] = (new EmployeeDataService());
 
 /***/ })
 

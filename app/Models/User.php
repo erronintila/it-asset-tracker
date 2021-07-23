@@ -87,4 +87,24 @@ class User extends Authenticatable
     {
         return ($this->profile) ? $this->profile->full_name : $this->name;
     }
+
+    /*
+    |------------------------------------------------------------------------------------------------------------------------------------
+    | CUSTOM
+    |------------------------------------------------------------------------------------------------------------------------------------
+    */
+
+    public function scopeSearch($query, $text)
+    {
+        return $query->where("name", "like", "%$text%")
+            ->orWhere("username", "like", "%$text%")
+            ->orWhere("email", "like", "%$text%");
+        // ->orWhere("address", "like", "%$text%")
+        // ->orWhere("street", "like", "%$text%")
+        // ->orWhere("district", "like", "%$text%")
+        // ->orWhere("city", "like", "%$text%")
+        // ->orWhere("province", "like", "%$text%")
+        // ->orWhere("country", "like", "%$text%")
+        // ->orWhere("postal_code", "like", "%$text%");
+    }
 }

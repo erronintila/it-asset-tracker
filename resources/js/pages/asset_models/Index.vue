@@ -198,7 +198,7 @@ export default {
                     page,
                     itemsPerPage
                 } = this.tableOptions.options;
-                // let search = this.search.trim().toLowerCase();
+                let search = this.search;
                 // let status = this.status;
 
                 let data = {
@@ -206,8 +206,8 @@ export default {
                         sortBy: sortBy[0],
                         sortType: sortDesc[0] ? "desc" : "asc",
                         page: page,
-                        itemsPerPage: itemsPerPage
-                        // search: search,
+                        itemsPerPage: itemsPerPage,
+                        search: search,
                         // status: status
                     }
                 };
@@ -299,8 +299,8 @@ export default {
     computed: {
         params(nv) {
             return {
-                ...this.tableOptions.options
-                // query: this.search,
+                ...this.tableOptions.options,
+                query: this.search,
                 // query: this.status
             };
         },

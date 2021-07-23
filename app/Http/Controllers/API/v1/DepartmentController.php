@@ -22,11 +22,14 @@ class DepartmentController extends Controller
      */
     public function index()
     {
+        $search = request('search') ?? "";
         $sortBy = request('sortBy') ?? "code";
         $sortType = request('sortType') ?? "asc";
         $itemsPerPage = request('itemsPerPage') ?? 10;
 
-        $departments = Department::orderBy($sortBy, $sortType)->paginate($itemsPerPage);
+        $departments = Department::search($search)
+            ->orderBy($sortBy, $sortType)
+            ->paginate($itemsPerPage);
 
         return $this->successResponse('read', $departments, 200);
         // return $this->successResponse('Success', DepartmentResource::collection($departments), 200);

@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 class AssetCategoryController extends Controller
 {
     use HttpResponseMessage;
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -22,11 +22,14 @@ class AssetCategoryController extends Controller
      */
     public function index()
     {
+        $search = request('search') ?? "";
         $sortBy = request('sortBy') ?? "code";
         $sortType = request('sortType') ?? "asc";
         $itemsPerPage = request('itemsPerPage') ?? 10;
 
-        $asset_categories = AssetCategory::orderBy($sortBy, $sortType)->paginate($itemsPerPage);
+        $asset_categories = AssetCategory::search($search)
+            ->orderBy($sortBy, $sortType)
+            ->paginate($itemsPerPage);
 
         return $this->successResponse('read', $asset_categories, 200);
     }

@@ -187,10 +187,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/work_orders/Show.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/work_orders/Show.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/assets/Show.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/assets/Show.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -200,6 +200,251 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_apexcharts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_apexcharts__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_X_DataTable_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/X-DataTable.vue */ "./resources/js/components/X-DataTable.vue");
 /* harmony import */ var _components_X_Dialog_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/X-Dialog.vue */ "./resources/js/components/X-Dialog.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -545,10 +790,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      dialogCategory: false,
+      dialogStatus: false,
+      dialogType: false,
+      dialogManufacturer: false,
       tab: null,
-      items: ["overview", "details", "assets", "licenses", // "consumables",
-      // "maintenances",
-      "system activity logs", "attachments"],
       series: {
         asset: [44, 55, 41, 17]
       },
@@ -557,36 +803,38 @@ __webpack_require__.r(__webpack_exports__);
           labels: ["Repair", "Preventive Maintenance", "Corrective Maintenance", "Others"]
         }
       },
+      items: ["overview", "details", "sub-assets", "licenses", // "consumables",
+      "work orders", "evaluation", "system activity logs", "attachments"],
       records: [{
-        name: "Data 1",
-        value: 159
+        id: 1,
+        text: "Data 1",
+        number: 159,
+        date: "2021-12-31",
+        "boolean": "true"
       }, {
-        name: "Data 2",
-        value: 237
+        id: 2,
+        text: "Data 1",
+        number: 159,
+        date: "2021-12-31",
+        "boolean": "true"
       }, {
-        name: "Data 3",
-        value: 262
+        id: 3,
+        text: "Data 1",
+        number: 159,
+        date: "2021-12-31",
+        "boolean": "true"
       }, {
-        name: "Data 4",
-        value: 305
+        id: 4,
+        text: "Data 1",
+        number: 159,
+        date: "2021-12-31",
+        "boolean": "true"
       }, {
-        name: "Data 5",
-        value: 356
-      }, {
-        name: "Data 6",
-        value: 375
-      }, {
-        name: "Data 7",
-        value: 392
-      }, {
-        name: "Data 8",
-        value: 408
-      }, {
-        name: "Data 9",
-        value: 452
-      }, {
-        name: "Data 10",
-        value: 518
+        id: 5,
+        text: "Data 1",
+        number: 159,
+        date: "2021-12-31",
+        "boolean": "true"
       }]
     };
   }
@@ -762,10 +1010,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/work_orders/Show.vue?vue&type=template&id=31e118c2&":
-/*!**************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/work_orders/Show.vue?vue&type=template&id=31e118c2& ***!
-  \**************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/assets/Show.vue?vue&type=template&id=269f7ad0&":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/assets/Show.vue?vue&type=template&id=269f7ad0& ***!
+  \*********************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -803,7 +1051,7 @@ var render = function() {
               ),
               _vm._v(" "),
               _c("span", { staticClass: "page-title" }, [
-                _vm._v("Work Order Details")
+                _vm._v("Asset Details")
               ])
             ],
             1
@@ -853,21 +1101,7 @@ var render = function() {
                       ),
                       _c("v-spacer"),
                       _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        {
-                          attrs: {
-                            rounded: "",
-                            color: "yellow",
-                            elevation: "0"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        On Going\n                    "
-                          )
-                        ]
-                      )
+                      _c("v-chip", [_vm._v("Status")])
                     ],
                     1
                   ),
@@ -927,7 +1161,7 @@ var render = function() {
                     [
                       _c(
                         "v-btn",
-                        { attrs: { icon: "" } },
+                        { attrs: { icon: "", title: "Update" } },
                         [
                           _c("v-icon", [
                             _vm._v("mdi-file-document-edit-outline")
@@ -938,21 +1172,21 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "v-btn",
-                        { attrs: { icon: "" } },
+                        { attrs: { icon: "", title: "Dispose" } },
                         [_c("v-icon", [_vm._v("mdi-delete")])],
                         1
                       ),
                       _vm._v(" "),
                       _c(
                         "v-btn",
-                        { attrs: { icon: "" } },
+                        { attrs: { icon: "", title: "Checkout" } },
                         [_c("v-icon", [_vm._v("mdi-file-export-outline")])],
                         1
                       ),
                       _vm._v(" "),
                       _c(
                         "v-btn",
-                        { attrs: { icon: "" } },
+                        { attrs: { icon: "", title: "Create Work Order" } },
                         [_c("v-icon", [_vm._v("mdi-text-box-plus-outline")])],
                         1
                       )
@@ -1053,62 +1287,18 @@ var render = function() {
                               _c(
                                 "v-card-text",
                                 [
-                                  _c("v-simple-table", {
-                                    scopedSlots: _vm._u([
-                                      {
-                                        key: "default",
-                                        fn: function() {
-                                          return [
-                                            _c("thead", [
-                                              _c("tr", [
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Name\n                                                "
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Value\n                                                "
-                                                    )
-                                                  ]
-                                                )
-                                              ])
-                                            ]),
-                                            _vm._v(" "),
-                                            _c(
-                                              "tbody",
-                                              _vm._l(_vm.records, function(
-                                                item
-                                              ) {
-                                                return _c(
-                                                  "tr",
-                                                  { key: item.name },
-                                                  [
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.name))
-                                                    ]),
-                                                    _vm._v(" "),
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.value))
-                                                    ])
-                                                  ]
-                                                )
-                                              }),
-                                              0
-                                            )
-                                          ]
+                                  _c("XDataTable", {
+                                    attrs: {
+                                      showSelect: false,
+                                      headers: [
+                                        {
+                                          text: "Field",
+                                          value: "text"
                                         },
-                                        proxy: true
-                                      }
-                                    ])
+                                        { text: "Value", value: "text" }
+                                      ],
+                                      items: _vm.records
+                                    }
                                   })
                                 ],
                                 1
@@ -1130,62 +1320,249 @@ var render = function() {
                               _c(
                                 "v-card-text",
                                 [
-                                  _c("v-simple-table", {
-                                    scopedSlots: _vm._u([
-                                      {
-                                        key: "default",
-                                        fn: function() {
-                                          return [
-                                            _c("thead", [
-                                              _c("tr", [
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Name\n                                                "
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Value\n                                                "
-                                                    )
-                                                  ]
+                                  _c(
+                                    "v-row",
+                                    [
+                                      _c("v-spacer"),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-col",
+                                        { staticClass: "d-flex justify-end" },
+                                        [
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                icon: "",
+                                                title: "Add New"
+                                              }
+                                            },
+                                            [
+                                              _c("v-icon", [_vm._v("mdi-plus")])
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                icon: "",
+                                                title: "Update"
+                                              }
+                                            },
+                                            [
+                                              _c("v-icon", [
+                                                _vm._v(
+                                                  "mdi-square-edit-outline"
                                                 )
                                               ])
-                                            ]),
-                                            _vm._v(" "),
-                                            _c(
-                                              "tbody",
-                                              _vm._l(_vm.records, function(
-                                                item
-                                              ) {
-                                                return _c(
-                                                  "tr",
-                                                  { key: item.name },
-                                                  [
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.name))
-                                                    ]),
-                                                    _vm._v(" "),
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.value))
-                                                    ])
-                                                  ]
-                                                )
-                                              }),
-                                              0
-                                            )
-                                          ]
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                icon: "",
+                                                title: "Delete"
+                                              }
+                                            },
+                                            [
+                                              _c("v-icon", [
+                                                _vm._v("mdi-delete-outline")
+                                              ])
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                icon: "",
+                                                title: "View Data"
+                                              }
+                                            },
+                                            [_c("v-icon", [_vm._v("mdi-eye")])],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-menu",
+                                            {
+                                              attrs: { bottom: "", left: "" },
+                                              scopedSlots: _vm._u([
+                                                {
+                                                  key: "activator",
+                                                  fn: function(ref) {
+                                                    var on = ref.on
+                                                    var attrs = ref.attrs
+                                                    return [
+                                                      _c(
+                                                        "v-btn",
+                                                        _vm._g(
+                                                          _vm._b(
+                                                            {
+                                                              attrs: {
+                                                                icon: ""
+                                                              }
+                                                            },
+                                                            "v-btn",
+                                                            attrs,
+                                                            false
+                                                          ),
+                                                          on
+                                                        ),
+                                                        [
+                                                          _c("v-icon", [
+                                                            _vm._v(
+                                                              "\n                                                        mdi-dots-vertical\n                                                    "
+                                                            )
+                                                          ])
+                                                        ],
+                                                        1
+                                                      )
+                                                    ]
+                                                  }
+                                                }
+                                              ])
+                                            },
+                                            [
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-list",
+                                                [
+                                                  _c(
+                                                    "v-list-item",
+                                                    {
+                                                      attrs: {
+                                                        link: "",
+                                                        to:
+                                                          "/checkin_requests/create"
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("v-list-item-title", [
+                                                        _vm._v(
+                                                          "\n                                                        Checkin\n                                                    "
+                                                        )
+                                                      ])
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-list-item",
+                                                    {
+                                                      attrs: {
+                                                        link: "",
+                                                        to:
+                                                          "/checkout_requests/create"
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("v-list-item-title", [
+                                                        _vm._v(
+                                                          "\n                                                        Checkout\n                                                    "
+                                                        )
+                                                      ])
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-list-item",
+                                                    {
+                                                      attrs: { link: "" },
+                                                      on: {
+                                                        click: function(
+                                                          $event
+                                                        ) {
+                                                          _vm.dialogCategory = true
+                                                        }
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("v-list-item-title", [
+                                                        _vm._v(
+                                                          "\n                                                        Category Filter\n                                                    "
+                                                        )
+                                                      ])
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-list-item",
+                                                    {
+                                                      attrs: { link: "" },
+                                                      on: {
+                                                        click: function(
+                                                          $event
+                                                        ) {
+                                                          _vm.dialogStatus = true
+                                                        }
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("v-list-item-title", [
+                                                        _vm._v(
+                                                          "\n                                                        Status Filter\n                                                    "
+                                                        )
+                                                      ])
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-list-item",
+                                                    {
+                                                      attrs: { link: "" },
+                                                      on: {
+                                                        click: function(
+                                                          $event
+                                                        ) {
+                                                          _vm.dialogManufacturer = true
+                                                        }
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("v-list-item-title", [
+                                                        _vm._v(
+                                                          "\n                                                        Manufacturer Filter\n                                                    "
+                                                        )
+                                                      ])
+                                                    ],
+                                                    1
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c("XDataTable", {
+                                    attrs: {
+                                      showSelect: true,
+                                      headers: [
+                                        {
+                                          text: "Description",
+                                          value: "text"
                                         },
-                                        proxy: true
-                                      }
-                                    ])
+                                        { text: "Rating", value: "number" },
+                                        { text: "Category", value: "text" }
+                                      ],
+                                      items: _vm.records
+                                    }
                                   })
                                 ],
                                 1
@@ -1207,62 +1584,192 @@ var render = function() {
                               _c(
                                 "v-card-text",
                                 [
-                                  _c("v-simple-table", {
-                                    scopedSlots: _vm._u([
-                                      {
-                                        key: "default",
-                                        fn: function() {
-                                          return [
-                                            _c("thead", [
-                                              _c("tr", [
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Name\n                                                "
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Value\n                                                "
-                                                    )
-                                                  ]
+                                  _c(
+                                    "v-row",
+                                    [
+                                      _c("v-spacer"),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-col",
+                                        { staticClass: "d-flex justify-end" },
+                                        [
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                icon: "",
+                                                title: "Add New"
+                                              }
+                                            },
+                                            [
+                                              _c("v-icon", [_vm._v("mdi-plus")])
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                icon: "",
+                                                title: "Update"
+                                              }
+                                            },
+                                            [
+                                              _c("v-icon", [
+                                                _vm._v(
+                                                  "mdi-square-edit-outline"
                                                 )
                                               ])
-                                            ]),
-                                            _vm._v(" "),
-                                            _c(
-                                              "tbody",
-                                              _vm._l(_vm.records, function(
-                                                item
-                                              ) {
-                                                return _c(
-                                                  "tr",
-                                                  { key: item.name },
-                                                  [
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.name))
-                                                    ]),
-                                                    _vm._v(" "),
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.value))
-                                                    ])
-                                                  ]
-                                                )
-                                              }),
-                                              0
-                                            )
-                                          ]
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                icon: "",
+                                                title: "Delete"
+                                              }
+                                            },
+                                            [
+                                              _c("v-icon", [
+                                                _vm._v("mdi-delete-outline")
+                                              ])
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                icon: "",
+                                                title: "View Data"
+                                              }
+                                            },
+                                            [_c("v-icon", [_vm._v("mdi-eye")])],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-menu",
+                                            {
+                                              attrs: { bottom: "", left: "" },
+                                              scopedSlots: _vm._u([
+                                                {
+                                                  key: "activator",
+                                                  fn: function(ref) {
+                                                    var on = ref.on
+                                                    var attrs = ref.attrs
+                                                    return [
+                                                      _c(
+                                                        "v-btn",
+                                                        _vm._g(
+                                                          _vm._b(
+                                                            {
+                                                              attrs: {
+                                                                icon: ""
+                                                              }
+                                                            },
+                                                            "v-btn",
+                                                            attrs,
+                                                            false
+                                                          ),
+                                                          on
+                                                        ),
+                                                        [
+                                                          _c("v-icon", [
+                                                            _vm._v(
+                                                              "\n                                                        mdi-dots-vertical\n                                                    "
+                                                            )
+                                                          ])
+                                                        ],
+                                                        1
+                                                      )
+                                                    ]
+                                                  }
+                                                }
+                                              ])
+                                            },
+                                            [
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-list",
+                                                [
+                                                  _c(
+                                                    "v-list-item",
+                                                    {
+                                                      attrs: { link: "" },
+                                                      on: {
+                                                        click: function(
+                                                          $event
+                                                        ) {
+                                                          _vm.dialogCategory = true
+                                                        }
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("v-list-item-title", [
+                                                        _vm._v(
+                                                          "\n                                                        Category Filter\n                                                    "
+                                                        )
+                                                      ])
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-list-item",
+                                                    {
+                                                      attrs: { link: "" },
+                                                      on: {
+                                                        click: function(
+                                                          $event
+                                                        ) {
+                                                          _vm.dialogManufacturer = true
+                                                        }
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("v-list-item-title", [
+                                                        _vm._v(
+                                                          "\n                                                        Manufacturer Filter\n                                                    "
+                                                        )
+                                                      ])
+                                                    ],
+                                                    1
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c("XDataTable", {
+                                    attrs: {
+                                      showSelect: true,
+                                      headers: [
+                                        {
+                                          text: "Description",
+                                          value: "text"
                                         },
-                                        proxy: true
-                                      }
-                                    ])
+                                        {
+                                          text: "Valid Until",
+                                          value: "date"
+                                        },
+                                        { text: "Category", value: "text" }
+                                      ],
+                                      items: _vm.records
+                                    }
                                   })
                                 ],
                                 1
@@ -1284,62 +1791,193 @@ var render = function() {
                               _c(
                                 "v-card-text",
                                 [
-                                  _c("v-simple-table", {
-                                    scopedSlots: _vm._u([
-                                      {
-                                        key: "default",
-                                        fn: function() {
-                                          return [
-                                            _c("thead", [
-                                              _c("tr", [
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Name\n                                                "
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Value\n                                                "
-                                                    )
-                                                  ]
+                                  _c(
+                                    "v-row",
+                                    [
+                                      _c("v-spacer"),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-col",
+                                        { staticClass: "d-flex justify-end" },
+                                        [
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                icon: "",
+                                                title: "Add New"
+                                              }
+                                            },
+                                            [
+                                              _c("v-icon", [_vm._v("mdi-plus")])
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                icon: "",
+                                                title: "Update"
+                                              }
+                                            },
+                                            [
+                                              _c("v-icon", [
+                                                _vm._v(
+                                                  "mdi-square-edit-outline"
                                                 )
                                               ])
-                                            ]),
-                                            _vm._v(" "),
-                                            _c(
-                                              "tbody",
-                                              _vm._l(_vm.records, function(
-                                                item
-                                              ) {
-                                                return _c(
-                                                  "tr",
-                                                  { key: item.name },
-                                                  [
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.name))
-                                                    ]),
-                                                    _vm._v(" "),
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.value))
-                                                    ])
-                                                  ]
-                                                )
-                                              }),
-                                              0
-                                            )
-                                          ]
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                icon: "",
+                                                title: "Delete"
+                                              }
+                                            },
+                                            [
+                                              _c("v-icon", [
+                                                _vm._v("mdi-delete-outline")
+                                              ])
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                icon: "",
+                                                title: "View Data"
+                                              }
+                                            },
+                                            [_c("v-icon", [_vm._v("mdi-eye")])],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-menu",
+                                            {
+                                              attrs: { bottom: "", left: "" },
+                                              scopedSlots: _vm._u([
+                                                {
+                                                  key: "activator",
+                                                  fn: function(ref) {
+                                                    var on = ref.on
+                                                    var attrs = ref.attrs
+                                                    return [
+                                                      _c(
+                                                        "v-btn",
+                                                        _vm._g(
+                                                          _vm._b(
+                                                            {
+                                                              attrs: {
+                                                                icon: ""
+                                                              }
+                                                            },
+                                                            "v-btn",
+                                                            attrs,
+                                                            false
+                                                          ),
+                                                          on
+                                                        ),
+                                                        [
+                                                          _c("v-icon", [
+                                                            _vm._v(
+                                                              "\n                                                        mdi-dots-vertical\n                                                    "
+                                                            )
+                                                          ])
+                                                        ],
+                                                        1
+                                                      )
+                                                    ]
+                                                  }
+                                                }
+                                              ])
+                                            },
+                                            [
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-list",
+                                                [
+                                                  _c(
+                                                    "v-list-item",
+                                                    {
+                                                      attrs: { link: "" },
+                                                      on: {
+                                                        click: function(
+                                                          $event
+                                                        ) {
+                                                          _vm.dialogType = true
+                                                        }
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("v-list-item-title", [
+                                                        _vm._v(
+                                                          "\n                                                        Type Filter\n                                                    "
+                                                        )
+                                                      ])
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-list-item",
+                                                    {
+                                                      attrs: { link: "" },
+                                                      on: {
+                                                        click: function(
+                                                          $event
+                                                        ) {
+                                                          _vm.dialogStatus = true
+                                                        }
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("v-list-item-title", [
+                                                        _vm._v(
+                                                          "\n                                                        Status Filter\n                                                    "
+                                                        )
+                                                      ])
+                                                    ],
+                                                    1
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c("XDataTable", {
+                                    attrs: {
+                                      showSelect: true,
+                                      headers: [
+                                        {
+                                          text: "Date",
+                                          value: "date"
                                         },
-                                        proxy: true
-                                      }
-                                    ])
+                                        {
+                                          text: "Work Order No.",
+                                          value: "number"
+                                        },
+                                        { text: "Type", value: "text" },
+                                        { text: "Status", value: "text" }
+                                      ],
+                                      items: _vm.records
+                                    }
                                   })
                                 ],
                                 1
@@ -1361,62 +1999,96 @@ var render = function() {
                               _c(
                                 "v-card-text",
                                 [
-                                  _c("v-simple-table", {
-                                    scopedSlots: _vm._u([
-                                      {
-                                        key: "default",
-                                        fn: function() {
-                                          return [
-                                            _c("thead", [
-                                              _c("tr", [
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Name\n                                                "
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Value\n                                                "
-                                                    )
-                                                  ]
+                                  _c(
+                                    "v-row",
+                                    [
+                                      _c("v-spacer"),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-col",
+                                        { staticClass: "d-flex justify-end" },
+                                        [
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                icon: "",
+                                                title: "Add New"
+                                              }
+                                            },
+                                            [
+                                              _c("v-icon", [_vm._v("mdi-plus")])
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                icon: "",
+                                                title: "Update"
+                                              }
+                                            },
+                                            [
+                                              _c("v-icon", [
+                                                _vm._v(
+                                                  "mdi-square-edit-outline"
                                                 )
                                               ])
-                                            ]),
-                                            _vm._v(" "),
-                                            _c(
-                                              "tbody",
-                                              _vm._l(_vm.records, function(
-                                                item
-                                              ) {
-                                                return _c(
-                                                  "tr",
-                                                  { key: item.name },
-                                                  [
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.name))
-                                                    ]),
-                                                    _vm._v(" "),
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.value))
-                                                    ])
-                                                  ]
-                                                )
-                                              }),
-                                              0
-                                            )
-                                          ]
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                icon: "",
+                                                title: "Delete"
+                                              }
+                                            },
+                                            [
+                                              _c("v-icon", [
+                                                _vm._v("mdi-delete-outline")
+                                              ])
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                icon: "",
+                                                title: "View Data"
+                                              }
+                                            },
+                                            [_c("v-icon", [_vm._v("mdi-eye")])],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c("XDataTable", {
+                                    attrs: {
+                                      showSelect: true,
+                                      headers: [
+                                        {
+                                          text: "Description",
+                                          value: "text"
                                         },
-                                        proxy: true
-                                      }
-                                    ])
+                                        {
+                                          text: "Rating",
+                                          value: "number"
+                                        }
+                                      ],
+                                      items: _vm.records
+                                    }
                                   })
                                 ],
                                 1
@@ -1438,62 +2110,21 @@ var render = function() {
                               _c(
                                 "v-card-text",
                                 [
-                                  _c("v-simple-table", {
-                                    scopedSlots: _vm._u([
-                                      {
-                                        key: "default",
-                                        fn: function() {
-                                          return [
-                                            _c("thead", [
-                                              _c("tr", [
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Name\n                                                "
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Value\n                                                "
-                                                    )
-                                                  ]
-                                                )
-                                              ])
-                                            ]),
-                                            _vm._v(" "),
-                                            _c(
-                                              "tbody",
-                                              _vm._l(_vm.records, function(
-                                                item
-                                              ) {
-                                                return _c(
-                                                  "tr",
-                                                  { key: item.name },
-                                                  [
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.name))
-                                                    ]),
-                                                    _vm._v(" "),
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.value))
-                                                    ])
-                                                  ]
-                                                )
-                                              }),
-                                              0
-                                            )
-                                          ]
+                                  _c("XDataTable", {
+                                    attrs: {
+                                      showSelect: true,
+                                      headers: [
+                                        {
+                                          text: "Date",
+                                          value: "date"
                                         },
-                                        proxy: true
-                                      }
-                                    ])
+                                        {
+                                          text: "Activity",
+                                          value: "text"
+                                        }
+                                      ],
+                                      items: _vm.records
+                                    }
                                   })
                                 ],
                                 1
@@ -1515,62 +2146,169 @@ var render = function() {
                               _c(
                                 "v-card-text",
                                 [
-                                  _c("v-simple-table", {
-                                    scopedSlots: _vm._u([
-                                      {
-                                        key: "default",
-                                        fn: function() {
-                                          return [
-                                            _c("thead", [
-                                              _c("tr", [
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Name\n                                                "
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Value\n                                                "
-                                                    )
-                                                  ]
+                                  _c(
+                                    "v-row",
+                                    [
+                                      _c("v-spacer"),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-col",
+                                        { staticClass: "d-flex justify-end" },
+                                        [
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                icon: "",
+                                                title: "Add New"
+                                              }
+                                            },
+                                            [
+                                              _c("v-icon", [_vm._v("mdi-plus")])
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                icon: "",
+                                                title: "Update"
+                                              }
+                                            },
+                                            [
+                                              _c("v-icon", [
+                                                _vm._v(
+                                                  "mdi-square-edit-outline"
                                                 )
                                               ])
-                                            ]),
-                                            _vm._v(" "),
-                                            _c(
-                                              "tbody",
-                                              _vm._l(_vm.records, function(
-                                                item
-                                              ) {
-                                                return _c(
-                                                  "tr",
-                                                  { key: item.name },
-                                                  [
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.name))
-                                                    ]),
-                                                    _vm._v(" "),
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.value))
-                                                    ])
-                                                  ]
-                                                )
-                                              }),
-                                              0
-                                            )
-                                          ]
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                icon: "",
+                                                title: "Delete"
+                                              }
+                                            },
+                                            [
+                                              _c("v-icon", [
+                                                _vm._v("mdi-delete-outline")
+                                              ])
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                icon: "",
+                                                title: "View Data"
+                                              }
+                                            },
+                                            [_c("v-icon", [_vm._v("mdi-eye")])],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-menu",
+                                            {
+                                              attrs: { bottom: "", left: "" },
+                                              scopedSlots: _vm._u([
+                                                {
+                                                  key: "activator",
+                                                  fn: function(ref) {
+                                                    var on = ref.on
+                                                    var attrs = ref.attrs
+                                                    return [
+                                                      _c(
+                                                        "v-btn",
+                                                        _vm._g(
+                                                          _vm._b(
+                                                            {
+                                                              attrs: {
+                                                                icon: ""
+                                                              }
+                                                            },
+                                                            "v-btn",
+                                                            attrs,
+                                                            false
+                                                          ),
+                                                          on
+                                                        ),
+                                                        [
+                                                          _c("v-icon", [
+                                                            _vm._v(
+                                                              "\n                                                        mdi-dots-vertical\n                                                    "
+                                                            )
+                                                          ])
+                                                        ],
+                                                        1
+                                                      )
+                                                    ]
+                                                  }
+                                                }
+                                              ])
+                                            },
+                                            [
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-list",
+                                                [
+                                                  _c(
+                                                    "v-list-item",
+                                                    {
+                                                      attrs: { link: "" },
+                                                      on: {
+                                                        click: function(
+                                                          $event
+                                                        ) {
+                                                          _vm.dialogCategory = true
+                                                        }
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("v-list-item-title", [
+                                                        _vm._v(
+                                                          "\n                                                        Category Filter\n                                                    "
+                                                        )
+                                                      ])
+                                                    ],
+                                                    1
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c("XDataTable", {
+                                    attrs: {
+                                      showSelect: true,
+                                      headers: [
+                                        {
+                                          text: "Description",
+                                          value: "text"
                                         },
-                                        proxy: true
-                                      }
-                                    ])
+                                        {
+                                          text: "File Type",
+                                          value: "text"
+                                        }
+                                      ],
+                                      items: _vm.records
+                                    }
                                   })
                                 ],
                                 1
@@ -1592,7 +2330,43 @@ var render = function() {
           )
         ],
         1
-      )
+      ),
+      _vm._v(" "),
+      _c("XDialog", {
+        attrs: { dialog: _vm.dialogCategory, title: "Category" },
+        on: {
+          "close-dialog": function($event) {
+            _vm.dialogCategory = false
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("XDialog", {
+        attrs: { dialog: _vm.dialogStatus, title: "Status" },
+        on: {
+          "close-dialog": function($event) {
+            _vm.dialogStatus = false
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("XDialog", {
+        attrs: { dialog: _vm.dialogType, title: "Type" },
+        on: {
+          "close-dialog": function($event) {
+            _vm.dialogType = false
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("XDialog", {
+        attrs: { dialog: _vm.dialogManufacturer, title: "Manufacturer" },
+        on: {
+          "close-dialog": function($event) {
+            _vm.dialogManufacturer = false
+          }
+        }
+      })
     ],
     1
   )
@@ -1742,17 +2516,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/pages/work_orders/Show.vue":
-/*!*************************************************!*\
-  !*** ./resources/js/pages/work_orders/Show.vue ***!
-  \*************************************************/
+/***/ "./resources/js/pages/assets/Show.vue":
+/*!********************************************!*\
+  !*** ./resources/js/pages/assets/Show.vue ***!
+  \********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Show_vue_vue_type_template_id_31e118c2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Show.vue?vue&type=template&id=31e118c2& */ "./resources/js/pages/work_orders/Show.vue?vue&type=template&id=31e118c2&");
-/* harmony import */ var _Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Show.vue?vue&type=script&lang=js& */ "./resources/js/pages/work_orders/Show.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Show_vue_vue_type_template_id_269f7ad0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Show.vue?vue&type=template&id=269f7ad0& */ "./resources/js/pages/assets/Show.vue?vue&type=template&id=269f7ad0&");
+/* harmony import */ var _Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Show.vue?vue&type=script&lang=js& */ "./resources/js/pages/assets/Show.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -1763,8 +2537,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Show_vue_vue_type_template_id_31e118c2___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Show_vue_vue_type_template_id_31e118c2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Show_vue_vue_type_template_id_269f7ad0___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Show_vue_vue_type_template_id_269f7ad0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -1774,38 +2548,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/pages/work_orders/Show.vue"
+component.options.__file = "resources/js/pages/assets/Show.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/pages/work_orders/Show.vue?vue&type=script&lang=js&":
-/*!**************************************************************************!*\
-  !*** ./resources/js/pages/work_orders/Show.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************/
+/***/ "./resources/js/pages/assets/Show.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/pages/assets/Show.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Show.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/work_orders/Show.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Show.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/assets/Show.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/pages/work_orders/Show.vue?vue&type=template&id=31e118c2&":
-/*!********************************************************************************!*\
-  !*** ./resources/js/pages/work_orders/Show.vue?vue&type=template&id=31e118c2& ***!
-  \********************************************************************************/
+/***/ "./resources/js/pages/assets/Show.vue?vue&type=template&id=269f7ad0&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/pages/assets/Show.vue?vue&type=template&id=269f7ad0& ***!
+  \***************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_31e118c2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Show.vue?vue&type=template&id=31e118c2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/work_orders/Show.vue?vue&type=template&id=31e118c2&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_31e118c2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_269f7ad0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Show.vue?vue&type=template&id=269f7ad0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/assets/Show.vue?vue&type=template&id=269f7ad0&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_269f7ad0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_31e118c2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_269f7ad0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

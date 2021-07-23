@@ -22,11 +22,14 @@ class ManufacturerController extends Controller
      */
     public function index()
     {
+        $search = request('search') ?? "";
         $sortBy = request('sortBy') ?? "name";
         $sortType = request('sortType') ?? "asc";
         $itemsPerPage = request('itemsPerPage') ?? 10;
 
-        $manufacturers = Manufacturer::orderBy($sortBy, $sortType)->paginate($itemsPerPage);
+        $manufacturers = Manufacturer::search($search)
+            ->orderBy($sortBy, $sortType)
+            ->paginate($itemsPerPage);
 
         return $this->successResponse('read', $manufacturers, 200);
         // return $this->successResponse('Success', ManufacturerResource::collection($manufacturers), 200);

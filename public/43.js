@@ -240,16 +240,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             sortBy = _this$tableOptions$op.sortBy,
             sortDesc = _this$tableOptions$op.sortDesc,
             page = _this$tableOptions$op.page,
-            itemsPerPage = _this$tableOptions$op.itemsPerPage; // let search = this.search.trim().toLowerCase();
-        // let status = this.status;
+            itemsPerPage = _this$tableOptions$op.itemsPerPage;
+        var search = _this.search; // let status = this.status;
 
         var data = {
           params: {
             sortBy: sortBy[0],
             sortType: sortDesc[0] ? "desc" : "asc",
             page: page,
-            itemsPerPage: itemsPerPage // search: search,
-            // status: status
+            itemsPerPage: itemsPerPage,
+            search: search // status: status
 
           }
         };
@@ -343,7 +343,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: {
     params: function params(nv) {
-      return _objectSpread({}, this.tableOptions.options);
+      return _objectSpread(_objectSpread({}, this.tableOptions.options), {}, {
+        query: this.search // query: this.status
+
+      });
     },
     hasFilters: function hasFilters() {
       return this.search || this.selectedItems.length;

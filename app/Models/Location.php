@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Location extends Model
 {
     use SoftDeletes;
-    
+
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | LARAVEL MODEL CONFIGURATION
@@ -34,4 +34,22 @@ class Location extends Model
     | LARAVEL ACCESSORS
     |------------------------------------------------------------------------------------------------------------------------------------
     */
+
+    /*
+    |------------------------------------------------------------------------------------------------------------------------------------
+    | CUSTOM
+    |------------------------------------------------------------------------------------------------------------------------------------
+    */
+
+    public function scopeSearch($query, $text)
+    {
+        return $query->where("name", "like", "%$text%")
+            ->orWhere("address", "like", "%$text%")
+            ->orWhere("street", "like", "%$text%")
+            ->orWhere("district", "like", "%$text%")
+            ->orWhere("city", "like", "%$text%")
+            ->orWhere("province", "like", "%$text%")
+            ->orWhere("country", "like", "%$text%")
+            ->orWhere("postal_code", "like", "%$text%");
+    }
 }

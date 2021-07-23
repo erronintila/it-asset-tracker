@@ -22,11 +22,14 @@ class SupplierController extends Controller
      */
     public function index()
     {
+        $search = request('search') ?? "";
         $sortBy = request('sortBy') ?? "name";
         $sortType = request('sortType') ?? "asc";
         $itemsPerPage = request('itemsPerPage') ?? 10;
 
-        $suppliers = Supplier::orderBy($sortBy, $sortType)->paginate($itemsPerPage);
+        $suppliers = Supplier::search($search)
+            ->orderBy($sortBy, $sortType)
+            ->paginate($itemsPerPage);
 
         return $this->successResponse('read', $suppliers, 200);
         // return $this->successResponse('Success', SupplierResource::collection($suppliers), 200);

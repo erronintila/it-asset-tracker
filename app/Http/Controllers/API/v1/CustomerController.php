@@ -29,14 +29,15 @@ class CustomerController extends Controller
         // }])->where('profile_type', 'App\Models\Employee')->paginate(10);
 
         // return UserResource::collection($employees);
-
+        $search = request('search') ?? "";
         $sortBy = request('sortBy') ?? "name";
         $sortType = request('sortType') ?? "asc";
         $itemsPerPage = request('itemsPerPage') ?? 10;
 
-        $users = User::with(['profile' => function ($query) {
-            $query->with(['user']);
-        }])->where('profile_type', 'App\Models\Customer')
+        $users = User::search($search)
+            ->with(['profile' => function ($query) {
+                $query->with(['user']);
+            }])->where('profile_type', 'App\Models\Customer')
             ->orderBy($sortBy, $sortType)
             ->paginate($itemsPerPage);
 
