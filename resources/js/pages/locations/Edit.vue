@@ -81,7 +81,7 @@ export default {
                 .then(response => {
                     console.log(response.data);
                     alert("Successfully updated.");
-                    this.$router.push({ name: "locations.index" });
+                    this.$router.go(-1);
                 })
                 .catch(error => {
                     console.log(error.response.data);

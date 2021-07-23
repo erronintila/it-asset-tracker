@@ -94,9 +94,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         console.log(response.data);
         alert("Successfully updated.");
 
-        _this2.$router.push({
-          name: "licenses.index"
-        });
+        _this2.$router.go(-1);
       })["catch"](function (error) {
         console.log(error.response.data);
         alert("An error has occurred.");

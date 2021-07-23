@@ -64,9 +64,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         console.log(response.data);
         alert("Successfully created.");
 
-        _this.$router.push({
-          name: "manufacturers.index"
-        });
+        _this.$router.go(-1);
       })["catch"](function (error) {
         console.log(error.response);
         alert("An error has occurred.");

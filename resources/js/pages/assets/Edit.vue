@@ -30,10 +30,10 @@ export default {
                 sku: "",
                 quantity: "",
                 notes: "",
-                asset_model_id: "",
-                supplier_id: "",
-                manufacturer_id: "",
-                asset_category_id: "",
+                asset_model: "",
+                supplier: "",
+                manufacturer: "",
+                asset_category: "",
                 assigned_to: "",
                 location_id: "",
                 asset_id: ""
@@ -90,7 +90,7 @@ export default {
                 .then(response => {
                     console.log(response.data);
                     alert("Successfully updated.");
-                    this.$router.push({ name: "assets.index" });
+                    this.$router.go(-1);
                 })
                 .catch(error => {
                     console.log(error.response.data);
