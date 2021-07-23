@@ -7,11 +7,14 @@ use App\Http\Requests\Asset\AssetStoreRequest;
 use App\Http\Requests\Asset\AssetUpdateRequest;
 use App\Http\Resources\AssetResource;
 use App\Models\Asset;
+use App\Traits\HttpResponseMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class AssetController extends Controller
 {
+    use HttpResponseMessage;
+
     /**
      * Display a listing of the resource.
      *
