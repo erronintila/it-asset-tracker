@@ -31,7 +31,7 @@ class LicenseUpdateRequest extends FormRequest
             "serial_no" => ['nullable', 'string', 'max:250'],
             "description" => ['required', 'string', 'max:250'],
             "purchased_date" => ["nullable", "string", "max:250"],
-            "purchased_cost" => ["nullable", "integer", "max:250"],
+            "purchased_cost" => ["nullable", "integer"],
             "warranty_start_date" => ["nullable", "string", "max:250"],
             "warranty_end_date" => ["nullable", "string", "max:250"],
             "supplier_id" => ['nullable', 'integer'],

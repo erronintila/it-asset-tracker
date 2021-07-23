@@ -1,6 +1,7 @@
 <template>
     <v-data-table
         v-model="selected"
+        dense
         :headers="headers"
         :items="items"
         :items-per-page="itemsPerPage"

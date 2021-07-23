@@ -39,7 +39,7 @@ class EmployeeController extends Controller
 
         $users = User::search($search)
             ->with(['profile' => function ($query) {
-                $query->with(['user', 'department']);
+                $query->with(['location', 'department']);
             }])->where('profile_type', 'App\Models\Employee')
             ->orderBy($sortBy, $sortType)
             ->paginate($itemsPerPage);
@@ -98,7 +98,11 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::with(['profile' => function ($query) {
+            $query->with(['department', 'location']);
+        }])
+            ->where('profile_type', 'App\Models\Employee')
+            ->findOrFail($id);
         return $this->successResponse('read', new UserResource($user), 200);
     }
 

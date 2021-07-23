@@ -23,6 +23,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "x-datatable",
   props: {
@@ -165,6 +166,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "x-dialog",
@@ -176,7 +198,9 @@ __webpack_require__.r(__webpack_exports__);
     XDataTable: _X_DataTable_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
-    return {};
+    return {
+      fullscreen: false
+    };
   },
   methods: {
     closeDialog: function closeDialog() {
@@ -625,6 +649,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("v-data-table", {
     attrs: {
+      dense: "",
       headers: _vm.headers,
       items: _vm.items,
       "items-per-page": _vm.itemsPerPage,
@@ -668,7 +693,11 @@ var render = function() {
   return _c(
     "v-dialog",
     {
-      attrs: { persistent: "", "max-width": "600" },
+      attrs: {
+        fullscreen: _vm.fullscreen,
+        persistent: "",
+        "max-width": "60em"
+      },
       model: {
         value: _vm.dialog,
         callback: function($$v) {
@@ -681,7 +710,40 @@ var render = function() {
       _c(
         "v-card",
         [
-          _c("v-card-title", [_vm._v(_vm._s(_vm.title))]),
+          _c(
+            "v-card-title",
+            { staticClass: "pa-0" },
+            [
+              _c(
+                "v-toolbar",
+                { attrs: { flat: "" } },
+                [
+                  _c("v-toolbar-title", [_vm._v("Title")]),
+                  _vm._v(" "),
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    { attrs: { icon: "" } },
+                    [
+                      _c(
+                        "v-icon",
+                        { staticClass: "heading grey--text text--darken-4" },
+                        [
+                          _vm._v(
+                            "\n                        mdi-close\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
           _vm._v(" "),
           _c(
             "v-card-text",

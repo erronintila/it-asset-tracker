@@ -46,7 +46,7 @@ class CustomerUpdateRequest extends FormRequest
             "organization_type" => ['required', 'string', Rule::in(['walkin', 'private', 'government'])],
             "is_company" => ['required', 'boolean'],
             "is_active" => ['required', 'boolean'],
-            "location_id" => ['nullable', 'integer', 'max:20']
+            "location_id" => ['nullable', 'integer']
         ];
     }
 }

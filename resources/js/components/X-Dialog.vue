@@ -1,7 +1,33 @@
 <template>
-    <v-dialog persistent v-model="dialog" max-width="600">
+    <v-dialog
+        :fullscreen="fullscreen"
+        persistent
+        v-model="dialog"
+        max-width="60em"
+    >
         <v-card>
-            <v-card-title>{{ title }}</v-card-title>
+            <v-card-title class="pa-0">
+                <v-toolbar flat>
+                    <v-toolbar-title>Title</v-toolbar-title>
+                    <v-spacer></v-spacer>
+                    <v-btn icon @click="fullscreen = !fullscreen">
+                        <v-icon class="heading grey--text text--darken-4">
+                            mdi-open
+                        </v-icon>
+                    </v-btn>
+                    <v-btn icon @click="closeDialog">
+                        <v-icon>
+                            mdi-close
+                        </v-icon>
+                    </v-btn>
+                </v-toolbar>
+            </v-card-title>
+            <!-- <v-card-title>
+                <div>{{ title }}</div>
+                <div>
+                    <v-btn @click="fullscreen = !fullscreen">Toggle</v-btn>
+                </div>
+            </v-card-title> -->
             <v-card-text>
                 <div class="d-flex justify-space-between align-center">
                     <div>All Items</div>
@@ -96,7 +122,9 @@ export default {
         XDataTable
     },
     data() {
-        return {};
+        return {
+            fullscreen: false
+        };
     },
     methods: {
         closeDialog() {

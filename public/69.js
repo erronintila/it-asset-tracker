@@ -60,7 +60,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           longitude: "",
           organization_type: "",
           is_company: false,
-          location_id: ""
+          location: ""
         }
       },
       errors: {

@@ -46,8 +46,8 @@ export default {
                     postal_code: "",
                     latitude: "",
                     longitude: "",
-                    location_id: "",
-                    department_id: "",
+                    location: "",
+                    department: "",
                     image: ""
                 }
             },
@@ -98,9 +98,9 @@ export default {
             EmployeeDataService.show(this.$route.params.id, data)
                 .then(response => {
                     console.log(response.data);
-                    this.form = { 
-                        ...this.form, 
-                        ...response.data.data 
+                    this.form = {
+                        ...this.form,
+                        ...response.data.data
                     };
                 })
                 .catch(error => {

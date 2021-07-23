@@ -39,7 +39,7 @@ class LocationUpdateRequest extends FormRequest
             'longitude' => ['nullable', 'string', 'max:250'],
             'is_active' => ['required', 'boolean'],
             // 'notes' => ['nullable', 'string', 'max:250'],
-            'location_id' => ['nullable', 'integer', 'max:20'],
+            'location_id' => ['nullable', 'integer'],
         ];
     }
 }

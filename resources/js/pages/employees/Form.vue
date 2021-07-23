@@ -10,14 +10,51 @@
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
                                 <v-text-field
-                                    v-model="form.profile.department_id"
-                                    label="Department"
-                                    outlined
-                                    clearable
-                                    hint="Ex. Sales and Marketing"
-                                    :error-messages="errors.department_id[0]"
+                                    :value="
+                                        form.profile.department
+                                            ? form.profile.department.name
+                                            : ''
+                                    "
+                                    :error-messages="errors.department_id"
                                     @input="errors.department_id = []"
-                                ></v-text-field>
+                                    label="Department"
+                                    readonly
+                                    outlined
+                                    class="d-flex justify-center align-center"
+                                >
+                                    <template v-slot:append>
+                                        <DepartmentDialogSelector
+                                            :selected="
+                                                !form.profile.department
+                                                    ? []
+                                                    : [
+                                                          ...form.profile
+                                                              .department
+                                                      ]
+                                            "
+                                            :dialogDepartment="dialogDepartment"
+                                            @close-dialog="
+                                                dialogDepartment = false
+                                            "
+                                            @on-select="onSelectDepartment"
+                                        >
+                                            <template v-slot:openDialog>
+                                                <v-btn
+                                                    color="primary"
+                                                    icon
+                                                    @click="
+                                                        dialogDepartment = true
+                                                    "
+                                                >
+                                                    <v-icon dark>
+                                                        mdi-magnify
+                                                    </v-icon>
+                                                </v-btn>
+                                            </template>
+                                        </DepartmentDialogSelector>
+                                    </template>
+                                </v-text-field>
+
                                 <v-text-field
                                     v-model="form.profile.job_title"
                                     label="Job Title"
@@ -120,7 +157,7 @@
                                         </v-btn>
                                     </v-date-picker>
                                 </v-dialog>
-                                <v-text-field
+                                <!-- <v-text-field
                                     v-model="form.profile.location_id"
                                     label="Location"
                                     outlined
@@ -128,7 +165,50 @@
                                     hint="Ex. Office 1"
                                     :error-messages="errors.location_id[0]"
                                     @input="errors.location_id = []"
-                                ></v-text-field>
+                                ></v-text-field> -->
+                                <v-text-field
+                                    :value="
+                                        form.profile.location
+                                            ? form.profile.location.name
+                                            : ''
+                                    "
+                                    :error-messages="errors.location_id"
+                                    @input="errors.location_id = []"
+                                    label="Location"
+                                    readonly
+                                    outlined
+                                    class="d-flex justify-center align-center"
+                                >
+                                    <template v-slot:append>
+                                        <LocationDialogSelector
+                                            :selected="
+                                                !form.profile.location
+                                                    ? []
+                                                    : [...form.profile.location]
+                                            "
+                                            :dialogLocation="dialogLocation"
+                                            @close-dialog="
+                                                dialogLocation = false
+                                            "
+                                            @on-select="onSelectLocation"
+                                        >
+                                            <template v-slot:openDialog>
+                                                <v-btn
+                                                    color="primary"
+                                                    icon
+                                                    @click="
+                                                        dialogLocation = true
+                                                    "
+                                                >
+                                                    <v-icon dark>
+                                                        mdi-magnify
+                                                    </v-icon>
+                                                </v-btn>
+                                            </template>
+                                        </LocationDialogSelector>
+                                    </template>
+                                </v-text-field>
+
                                 <v-text-field
                                     v-model="form.profile.mobile_phone"
                                     label="Mobile Phone No."
@@ -332,6 +412,9 @@
 
 <script>
 import moment from "moment";
+import DepartmentDialogSelector from "../../components/selectors/DepartmentDialogSelector.vue";
+import LocationDialogSelector from "../../components/selectors/LocationDialogSelector.vue";
+
 export default {
     props: {
         employeeForm: {
@@ -350,7 +433,9 @@ export default {
                         last_name: "",
                         suffix: "",
                         gender: "",
-                        birthdate: "",
+                        birthdate: moment()
+                            .subtract(18, "year")
+                            .format("YYYY-MM-DD"),
                         business_phone: "",
                         home_phone: "",
                         mobile_phone: "",
@@ -364,8 +449,8 @@ export default {
                         postal_code: "",
                         latitude: "",
                         longitude: "",
-                        location_id: "",
-                        department_id: "",
+                        location: "",
+                        department: "",
                         image: ""
                     }
                 };
@@ -442,8 +527,14 @@ export default {
             }
         }
     },
+    components: {
+        DepartmentDialogSelector,
+        LocationDialogSelector
+    },
     data() {
         return {
+            dialogDepartment: false,
+            dialogLocation: false,
             valid: false,
             birthdateModal: false,
             form: {
@@ -459,7 +550,9 @@ export default {
                     last_name: "",
                     suffix: "",
                     gender: "",
-                    birthdate: "",
+                    birthdate: moment()
+                        .subtract(18, "year")
+                        .format("YYYY-MM-DD"),
                     business_phone: "",
                     home_phone: "",
                     mobile_phone: "",
@@ -473,8 +566,8 @@ export default {
                     postal_code: "",
                     latitude: "",
                     longitude: "",
-                    location_id: "",
-                    department_id: "",
+                    location: "",
+                    department: "",
                     image: ""
                 }
             }
@@ -495,16 +588,40 @@ export default {
                 ...this.form.profile,
                 ...this.form,
                 ...{ name: this.form.profile.name },
-                ...{ profile_id: this.form.profile.id }
+                ...{ profile_id: this.form.profile.id },
+                ...{ department_id: this.form.profile.department.id },
+                ...{ location_id: this.form.profile.location.id }
             };
-
-            console.log(newForm);
 
             if (!newForm.is_active) {
                 newForm.is_active = false;
             }
 
             this.$emit("on-save", newForm);
+        },
+        onSelectDepartment(e) {
+            this.dialogDepartment = false;
+            this.errors.department_id = [];
+
+            if (e == null || e == undefined) {
+                this.form.profile.department = null;
+                return;
+            }
+
+            this.form.profile.department = e[0];
+            this.dialogDepartment = false;
+        },
+        onSelectLocation(e) {
+            this.dialogLocation = false;
+            this.errors.location_id = [];
+
+            if (e == null || e == undefined) {
+                this.form.profile.location = null;
+                return;
+            }
+
+            this.form.profile.location = e[0];
+            this.dialogLocation = false;
         }
     },
     computed: {

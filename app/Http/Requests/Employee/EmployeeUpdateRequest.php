@@ -48,8 +48,8 @@ class EmployeeUpdateRequest extends FormRequest
             'longitude' => ['nullable', 'string', 'max:250'],
             'is_active' => ['required', 'boolean'],
             'image' => ['nullable', 'string'],
-            'location_id' => ['nullable', 'integer', 'max:20'],
-            'department_id' => ['required', 'integer', 'max:20'],
+            'location_id' => ['nullable', 'integer'],
+            'department_id' => ['required', 'integer'],
             'username' => ['required', 'string', 'max:250', Rule::unique('users', 'username')->ignore($this->id)],
             'email' => ['required', 'string', 'max:250', Rule::unique('users', 'email')->ignore($this->id)],
         ];

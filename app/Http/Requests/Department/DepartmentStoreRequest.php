@@ -28,8 +28,8 @@ class DepartmentStoreRequest extends FormRequest
             'slug' => ['nullable', 'string', 'max:250', 'unique:departments,slug'],
             'name' => ['required', 'string', 'max:250', 'unique:departments,name'],
             'is_active' => ['required', 'boolean'],
-            'manager_id' => ['nullable', 'integer', 'max:20'],
-            'department_id' => ['nullable', 'integer', 'max:20'],
+            'manager_id' => ['nullable', 'integer'],
+            'department_id' => ['nullable', 'integer'],
         ];
     }
 }

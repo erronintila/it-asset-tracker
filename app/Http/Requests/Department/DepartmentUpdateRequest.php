@@ -29,8 +29,8 @@ class DepartmentUpdateRequest extends FormRequest
             'slug' => ['nullable', 'string', 'max:250', Rule::unique('departments', 'slug')->ignore($this->department)],
             'name' => ['required', 'string', 'max:250', Rule::unique('departments', 'name')->ignore($this->department)],
             'is_active' => ['required', 'boolean'],
-            'manager_id' => ['nullable', 'integer', 'max:20'],
-            'department_id' => ['nullable', 'integer', 'max:20'],
+            'manager_id' => ['nullable', 'integer'],
+            'department_id' => ['nullable', 'integer'],
         ];
     }
 }

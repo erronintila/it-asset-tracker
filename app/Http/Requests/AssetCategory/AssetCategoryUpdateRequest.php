@@ -30,7 +30,7 @@ class AssetCategoryUpdateRequest extends FormRequest
             "slug" => ['nullable', 'string', 'max:250', Rule::unique('departments', 'slug')->ignore($this->department)],
             "name" => ['required', 'string', 'max:250', Rule::unique('departments', 'name')->ignore($this->department)],
             "is_active" => ['required', 'boolean'],
-            "asset_category_id" => ['nullable', 'integer', 'max:20'],
+            "asset_category_id" => ['nullable', 'integer'],
         ];
     }
 }

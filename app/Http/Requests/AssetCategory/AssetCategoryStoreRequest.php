@@ -29,7 +29,7 @@ class AssetCategoryStoreRequest extends FormRequest
             "slug" => ['nullable', 'string', 'max:250', 'unique:asset_categories,slug'],
             "name" => ['required', 'string', 'max:250', 'unique:asset_categories,name'],
             "is_active" => ['required', 'boolean'],
-            "asset_category_id" => ['nullable', 'integer', 'max:20'],
+            "asset_category_id" => ['nullable', 'integer'],
         ];
     }
 }

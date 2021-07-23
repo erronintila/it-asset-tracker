@@ -43,7 +43,7 @@ export default {
                     longitude: "",
                     organization_type: "",
                     is_company: false,
-                    location_id: ""
+                    location: ""
                 }
             },
             errors: {

@@ -23,6 +23,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "x-datatable",
   props: {
@@ -243,6 +244,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("v-data-table", {
     attrs: {
+      dense: "",
       headers: _vm.headers,
       items: _vm.items,
       "items-per-page": _vm.itemsPerPage,

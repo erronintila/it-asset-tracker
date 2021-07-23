@@ -196,13 +196,46 @@
                                 >
                                 </v-select>
                                 <v-text-field
-                                    v-model="form.profile.location_id"
-                                    label="Location"
-                                    outlined
-                                    clearable
-                                    :error-messages="errors.location_id[0]"
+                                    :value="
+                                        form.profile.location
+                                            ? form.profile.location.name
+                                            : ''
+                                    "
+                                    :error-messages="errors.location_id"
                                     @input="errors.location_id = []"
+                                    label="Location"
+                                    readonly
+                                    outlined
+                                    class="d-flex justify-center align-center"
                                 >
+                                    <template v-slot:append>
+                                        <LocationDialogSelector
+                                            :selected="
+                                                !form.profile.location
+                                                    ? []
+                                                    : [...form.profile.location]
+                                            "
+                                            :dialogLocation="dialogLocation"
+                                            @close-dialog="
+                                                dialogLocation = false
+                                            "
+                                            @on-select="onSelectLocation"
+                                        >
+                                            <template v-slot:openDialog>
+                                                <v-btn
+                                                    color="primary"
+                                                    icon
+                                                    @click="
+                                                        dialogLocation = true
+                                                    "
+                                                >
+                                                    <v-icon dark>
+                                                        mdi-magnify
+                                                    </v-icon>
+                                                </v-btn>
+                                            </template>
+                                        </LocationDialogSelector>
+                                    </template>
                                 </v-text-field>
                                 <v-textarea
                                     v-model="form.notes"
@@ -252,6 +285,8 @@
 </template>
 
 <script>
+import LocationDialogSelector from "../../components/selectors/LocationDialogSelector.vue";
+
 export default {
     props: {
         customerForm: {
@@ -281,7 +316,7 @@ export default {
                         longitude: "",
                         organization_type: "",
                         is_company: false,
-                        location_id: ""
+                        location: ""
                     }
                 };
             }
@@ -347,8 +382,12 @@ export default {
             }
         }
     },
+    components: {
+        LocationDialogSelector
+    },
     data() {
         return {
+            dialogLocation: false,
             valid: false,
             form: {
                 email: "",
@@ -374,7 +413,7 @@ export default {
                     longitude: "",
                     organization_type: "",
                     is_company: false,
-                    location_id: ""
+                    location: ""
                 }
             }
         };
@@ -395,7 +434,8 @@ export default {
                 ...this.form,
                 // ...{ id: this.form.profile.id },
                 ...{ name: this.form.profile.name },
-                ...{ profile_id: this.form.profile.id }
+                ...{ profile_id: this.form.profile.id },
+                ...{ location_id: this.form.profile.location.id }
             };
 
             console.log(newForm);
@@ -405,6 +445,18 @@ export default {
             }
 
             this.$emit("on-save", newForm);
+        },
+        onSelectLocation(e) {
+            this.dialogLocation = false;
+            this.errors.location_id = [];
+
+            if (e == null || e == undefined) {
+                this.form.profile.location = null;
+                return;
+            }
+
+            this.form.profile.location = e[0];
+            this.dialogLocation = false;
         }
     },
     watch: {
