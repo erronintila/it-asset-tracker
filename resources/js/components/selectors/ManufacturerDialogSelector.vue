@@ -116,7 +116,7 @@ export default {
                 headers: [
                     { text: "Code", value: "code" },
                     { text: "Name", value: "name" },
-                    { text: "Manager", value: "manager_id" }
+                    { text: "Address", value: "address" }
                 ]
             },
             search: "",

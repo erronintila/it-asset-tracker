@@ -45,7 +45,7 @@ export default {
                 slug: "",
                 name: "",
                 is_active: true,
-                manager_id: "",
+                manager: "",
                 department_id: ""
             },
             errors: {

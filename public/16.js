@@ -1,14 +1,21 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[16],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/X-DataTable.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/X-DataTable.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/customers/Form.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/customers/Form.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_selectors_LocationDialogSelector_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/selectors/LocationDialogSelector.vue */ "./resources/js/components/selectors/LocationDialogSelector.vue");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -24,245 +31,465 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "x-datatable",
   props: {
-    // selected: {
-    //     type: Array,
-    //     default: () => []
-    // },
-    headers: {
-      type: Array,
+    customerForm: {
+      type: Object,
       "default": function _default() {
-        return [];
+        return {
+          email: "",
+          is_active: true,
+          notes: "",
+          profile: {
+            code: "",
+            slug: "",
+            name: "",
+            contact_person: "",
+            phone1: "",
+            phone2: "",
+            website: "",
+            fax: "",
+            address: "",
+            street: "",
+            district: "",
+            city: "",
+            province: "",
+            country: "",
+            postal_code: "",
+            latitude: "",
+            longitude: "",
+            organization_type: "",
+            is_company: false,
+            location: ""
+          }
+        };
       }
     },
-    items: {
-      type: Array,
+    rules: {
+      type: Object,
       "default": function _default() {
-        return [];
+        return {
+          code: [],
+          slug: [],
+          name: [],
+          contact_person: [],
+          phone1: [],
+          phone2: [],
+          email: [],
+          website: [],
+          fax: [],
+          address: [],
+          street: [],
+          district: [],
+          city: [],
+          province: [],
+          country: [],
+          postal_code: [],
+          latitude: [],
+          longitude: [],
+          organization_type: [],
+          is_active: [],
+          is_company: [],
+          notes: [],
+          location_id: []
+        };
       }
     },
-    itemsPerPageOptions: {
-      type: Array,
+    errors: {
+      type: Object,
       "default": function _default() {
-        return [3, 5];
+        return {
+          code: [],
+          slug: [],
+          name: [],
+          contact_person: [],
+          phone1: [],
+          phone2: [],
+          email: [],
+          website: [],
+          fax: [],
+          address: [],
+          street: [],
+          district: [],
+          city: [],
+          province: [],
+          country: [],
+          postal_code: [],
+          latitude: [],
+          longitude: [],
+          organization_type: [],
+          is_active: [],
+          is_company: [],
+          notes: [],
+          location_id: []
+        };
       }
-    },
-    itemsPerPage: {
-      type: Number,
-      "default": 5
-    },
-    showSelect: {
-      type: Boolean,
-      "default": true
-    },
-    singleSelect: {
-      type: Boolean,
-      "default": true
     }
   },
-  data: function data() {
-    return {
-      selected: []
-    };
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/X-Dialog.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/X-Dialog.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _X_DataTable_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./X-DataTable.vue */ "./resources/js/components/X-DataTable.vue");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: "x-dialog",
-  props: {
-    dialog: false,
-    title: ""
-  },
   components: {
-    XDataTable: _X_DataTable_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    LocationDialogSelector: _components_selectors_LocationDialogSelector_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
-      fullscreen: false
+      dialogLocation: false,
+      valid: false,
+      form: {
+        email: "",
+        is_active: true,
+        notes: "",
+        profile: {
+          code: "",
+          slug: "",
+          name: "",
+          contact_person: "",
+          phone1: "",
+          phone2: "",
+          website: "",
+          fax: "",
+          address: "",
+          street: "",
+          district: "",
+          city: "",
+          province: "",
+          country: "",
+          postal_code: "",
+          latitude: "",
+          longitude: "",
+          organization_type: "",
+          is_company: false,
+          location: ""
+        }
+      }
     };
   },
   methods: {
-    closeDialog: function closeDialog() {
-      this.$emit("close-dialog");
+    onSave: function onSave() {
+      if (!confirm("Do you want to save?")) {
+        return;
+      }
+
+      if (!this.$refs.form.validate()) {
+        alert("An error has occurred.");
+        return;
+      }
+
+      var newForm = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, this.form.profile), this.form), {
+        name: this.form.profile.name
+      }), {
+        profile_id: this.form.profile.id
+      }), {
+        location_id: this.form.profile.location.id
+      });
+
+      console.log(newForm);
+
+      if (!newForm.is_active) {
+        newForm.is_active = false;
+      }
+
+      this.$emit("on-save", newForm);
+    },
+    onSelectLocation: function onSelectLocation(e) {
+      this.dialogLocation = false;
+      this.errors.location_id = [];
+
+      if (e == null || e == undefined) {
+        this.form.profile.location = null;
+        return;
+      }
+
+      this.form.profile.location = e[0];
+      this.dialogLocation = false;
+    }
+  },
+  watch: {
+    customerForm: {
+      immediate: true,
+      handler: function handler(newValue, oldValue) {
+        this.form = newValue;
+      }
     }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/X-DataTable.vue?vue&type=template&id=0aef3e74&":
-/*!**************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/X-DataTable.vue?vue&type=template&id=0aef3e74& ***!
-  \**************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("v-data-table", {
-    attrs: {
-      dense: "",
-      headers: _vm.headers,
-      items: _vm.items,
-      "items-per-page": _vm.itemsPerPage,
-      "show-select": _vm.showSelect,
-      "single-select": _vm.singleSelect,
-      "footer-props": {
-        itemsPerPageOptions: _vm.itemsPerPageOptions
-      }
-    },
-    model: {
-      value: _vm.selected,
-      callback: function($$v) {
-        _vm.selected = $$v
-      },
-      expression: "selected"
-    }
-  })
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/X-Dialog.vue?vue&type=template&id=05ebfb48&":
-/*!***********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/X-Dialog.vue?vue&type=template&id=05ebfb48& ***!
-  \***********************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/customers/Form.vue?vue&type=template&id=be118df2&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/customers/Form.vue?vue&type=template&id=be118df2& ***!
+  \************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -275,70 +502,214 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-dialog",
+    "v-form",
     {
-      attrs: {
-        fullscreen: _vm.fullscreen,
-        persistent: "",
-        "max-width": "60em"
-      },
+      ref: "form",
       model: {
-        value: _vm.dialog,
+        value: _vm.valid,
         callback: function($$v) {
-          _vm.dialog = $$v
+          _vm.valid = $$v
         },
-        expression: "dialog"
+        expression: "valid"
       }
     },
     [
       _c(
-        "v-card",
+        "v-row",
+        { staticClass: "d-flex justify-center" },
         [
           _c(
-            "v-card-title",
-            { staticClass: "pa-0" },
+            "v-col",
+            { attrs: { cols: "12", md: "4" } },
             [
               _c(
-                "v-toolbar",
+                "v-card",
                 { attrs: { flat: "" } },
                 [
-                  _c("v-toolbar-title", [_vm._v("Title")]),
-                  _vm._v(" "),
-                  _c("v-spacer"),
+                  _c("v-card-title", [
+                    _vm._v(
+                      "\n                    General Information\n                "
+                    )
+                  ]),
                   _vm._v(" "),
                   _c(
-                    "v-btn",
-                    {
-                      attrs: { icon: "" },
-                      on: {
-                        click: function($event) {
-                          _vm.fullscreen = !_vm.fullscreen
-                        }
-                      }
-                    },
+                    "v-card-text",
                     [
                       _c(
-                        "v-icon",
-                        { staticClass: "heading grey--text text--darken-4" },
+                        "v-row",
+                        { staticClass: "d-flex justify-center" },
                         [
-                          _vm._v(
-                            "\n                        mdi-open\n                    "
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Name",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. XYZ Company",
+                                  "error-messages": _vm.errors.name[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.name = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.name,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form.profile, "name", $$v)
+                                  },
+                                  expression: "form.profile.name"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Email Address",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. sample@sample.com",
+                                  "error-messages": _vm.errors.email[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.email = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.email,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "email", $$v)
+                                  },
+                                  expression: "form.email"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Contact Person",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. Juan Dela Cruz",
+                                  "error-messages": _vm.errors.contact_person[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.contact_person = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.contact_person,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.form.profile,
+                                      "contact_person",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "form.profile.contact_person"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Phone No. (1)",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. 09XXXXXXXXX",
+                                  "error-messages":
+                                    _vm.errors.contact_person[0],
+                                  type: "number"
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.contact_person = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.phone1,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form.profile, "phone1", $$v)
+                                  },
+                                  expression: "form.profile.phone1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Phone No. (2)",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. 09XXXXXXXXX",
+                                  "error-messages":
+                                    _vm.errors.contact_person[0],
+                                  type: "number"
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.contact_person = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.phone2,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form.profile, "phone2", $$v)
+                                  },
+                                  expression: "form.profile.phone2"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Fax",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. 1 323 555 1234",
+                                  "error-messages": _vm.errors.fax[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.fax = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.fax,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form.profile, "fax", $$v)
+                                  },
+                                  expression: "form.profile.fax"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Website",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. www.sample.com",
+                                  "error-messages": _vm.errors.website[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.website = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.website,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form.profile, "website", $$v)
+                                  },
+                                  expression: "form.profile.website"
+                                }
+                              })
+                            ],
+                            1
                           )
-                        ]
+                        ],
+                        1
                       )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-btn",
-                    { attrs: { icon: "" }, on: { click: _vm.closeDialog } },
-                    [
-                      _c("v-icon", [
-                        _vm._v(
-                          "\n                        mdi-close\n                    "
-                        )
-                      ])
                     ],
                     1
                   )
@@ -350,77 +721,486 @@ var render = function() {
           ),
           _vm._v(" "),
           _c(
-            "v-card-text",
+            "v-col",
+            { attrs: { cols: "12", md: "4" } },
             [
               _c(
-                "div",
-                { staticClass: "d-flex justify-space-between align-center" },
+                "v-card",
+                { attrs: { flat: "" } },
                 [
-                  _c("div", [_vm._v("All Items")]),
+                  _c("v-card-title", [
+                    _vm._v(
+                      "\n                    Address Information\n                "
+                    )
+                  ]),
                   _vm._v(" "),
                   _c(
-                    "div",
+                    "v-card-text",
                     [
-                      _c("v-text-field", {
-                        attrs: { label: "Search", clearable: "" }
-                      })
+                      _c(
+                        "v-row",
+                        { staticClass: "d-flex justify-center" },
+                        [
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Address",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. Block 16 Lot 4 XYZ Subdivision",
+                                  "error-messages": _vm.errors.address[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.address = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.address,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form.profile, "address", $$v)
+                                  },
+                                  expression: "form.profile.address"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Street",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. Balete Street",
+                                  "error-messages": _vm.errors.street[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.street = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.street,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form.profile, "street", $$v)
+                                  },
+                                  expression: "form.profile.street"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "District",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. Barangay Poblacion",
+                                  "error-messages": _vm.errors.district[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.district = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.district,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form.profile, "district", $$v)
+                                  },
+                                  expression: "form.profile.district"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "City",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. General Santos City",
+                                  "error-messages": _vm.errors.city[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.city = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.city,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form.profile, "city", $$v)
+                                  },
+                                  expression: "form.profile.city"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Province",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "South Cotabato",
+                                  "error-messages": _vm.errors.province[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.province = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.province,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form.profile, "province", $$v)
+                                  },
+                                  expression: "form.profile.province"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-combobox", {
+                                attrs: {
+                                  label: "Country",
+                                  outlined: "",
+                                  clearable: "",
+                                  items: ["Philippines"],
+                                  "error-messages": _vm.errors.country[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.country = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.country,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form.profile, "country", $$v)
+                                  },
+                                  expression: "form.profile.country"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Postal Code",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. 9500",
+                                  type: "number"
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.postal_code = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.postal_code,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.form.profile,
+                                      "postal_code",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "form.profile.postal_code"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Latitude",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. 6.1164 N",
+                                  "error-messages": _vm.errors.latitude[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.latitude = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.latitude,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form.profile, "latitude", $$v)
+                                  },
+                                  expression: "form.profile.latitude"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Longitude",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. 125.1716 E",
+                                  "error-messages": _vm.errors.longitude[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.longitude = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.longitude,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form.profile, "longitude", $$v)
+                                  },
+                                  expression: "form.profile.longitude"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
                     ],
                     1
                   )
-                ]
-              ),
-              _vm._v(" "),
-              _c("XDataTable", {
-                attrs: {
-                  headers: [
-                    {
-                      text: "Field 1",
-                      value: "text"
-                    },
-                    { text: "Field 2", value: "number" },
-                    { text: "Field 3", value: "text" }
-                  ],
-                  items: [
-                    {
-                      id: 1,
-                      number: "123",
-                      text: "Data",
-                      date: "2021-12-31",
-                      boolean: "true"
-                    },
-                    {
-                      id: 2,
-                      number: "123",
-                      text: "Data",
-                      date: "2021-12-31",
-                      boolean: "false"
-                    }
-                  ]
-                }
-              })
+                ],
+                1
+              )
             ],
             1
           ),
           _vm._v(" "),
           _c(
-            "v-card-actions",
+            "v-col",
+            { attrs: { cols: "12", md: "4" } },
             [
-              _c("v-spacer"),
-              _vm._v(" "),
               _c(
-                "div",
-                { staticClass: "mb-4" },
+                "v-card",
+                { attrs: { flat: "" } },
                 [
+                  _c("v-card-title", [
+                    _vm._v(
+                      "\n                    Other Information\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
                   _c(
-                    "v-btn",
-                    { staticClass: "mx-2", on: { click: _vm.closeDialog } },
-                    [_vm._v("\n                    OK\n                ")]
+                    "v-card-text",
+                    [
+                      _c(
+                        "v-row",
+                        { staticClass: "d-flex justify-center" },
+                        [
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12" } },
+                            [
+                              _c("v-select", {
+                                attrs: {
+                                  label: "Organization Type",
+                                  items: ["walkin", "private", "government"],
+                                  outlined: "",
+                                  clearable: "",
+                                  "error-messages":
+                                    _vm.errors.organization_type[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.organization_type = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.profile.organization_type,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.form.profile,
+                                      "organization_type",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "form.profile.organization_type"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                staticClass:
+                                  "d-flex justify-center align-center",
+                                attrs: {
+                                  value: _vm.form.profile.location
+                                    ? _vm.form.profile.location.name
+                                    : "",
+                                  "error-messages": _vm.errors.location_id,
+                                  label: "Location",
+                                  readonly: "",
+                                  outlined: ""
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.location_id = []
+                                  }
+                                },
+                                scopedSlots: _vm._u([
+                                  {
+                                    key: "append",
+                                    fn: function() {
+                                      return [
+                                        _c("LocationDialogSelector", {
+                                          attrs: {
+                                            selected: !_vm.form.profile.location
+                                              ? []
+                                              : [].concat(
+                                                  _vm.form.profile.location
+                                                ),
+                                            dialogLocation: _vm.dialogLocation
+                                          },
+                                          on: {
+                                            "close-dialog": function($event) {
+                                              _vm.dialogLocation = false
+                                            },
+                                            "on-select": _vm.onSelectLocation
+                                          },
+                                          scopedSlots: _vm._u([
+                                            {
+                                              key: "openDialog",
+                                              fn: function() {
+                                                return [
+                                                  _c(
+                                                    "v-btn",
+                                                    {
+                                                      attrs: {
+                                                        color: "primary",
+                                                        icon: ""
+                                                      },
+                                                      on: {
+                                                        click: function(
+                                                          $event
+                                                        ) {
+                                                          _vm.dialogLocation = true
+                                                        }
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "v-icon",
+                                                        { attrs: { dark: "" } },
+                                                        [
+                                                          _vm._v(
+                                                            "\n                                                    mdi-magnify\n                                                "
+                                                          )
+                                                        ]
+                                                      )
+                                                    ],
+                                                    1
+                                                  )
+                                                ]
+                                              },
+                                              proxy: true
+                                            }
+                                          ])
+                                        })
+                                      ]
+                                    },
+                                    proxy: true
+                                  }
+                                ])
+                              }),
+                              _vm._v(" "),
+                              _c("v-textarea", {
+                                attrs: {
+                                  label: "Notes",
+                                  outlined: "",
+                                  clearable: "",
+                                  rows: "3",
+                                  "error-messages": _vm.errors.notes[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.notes = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.notes,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "notes", $$v)
+                                  },
+                                  expression: "form.notes"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "v-sheet",
+                                { staticClass: "ml-4" },
+                                [
+                                  _c("v-switch", {
+                                    attrs: { inset: "", label: "Active" },
+                                    model: {
+                                      value: _vm.form.is_active,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "is_active", $$v)
+                                      },
+                                      expression: "form.is_active"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-sheet",
+                                { staticClass: "ml-4" },
+                                [
+                                  _c("v-switch", {
+                                    attrs: { inset: "", label: "Company" },
+                                    model: {
+                                      value: _vm.form.profile.is_company,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.form.profile,
+                                          "is_company",
+                                          $$v
+                                        )
+                                      },
+                                      expression: "form.profile.is_company"
+                                    }
+                                  })
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
                   ),
                   _vm._v(" "),
                   _c(
-                    "v-btn",
-                    { staticClass: "mx-2", on: { click: _vm.closeDialog } },
-                    [_vm._v("\n                    Close\n                ")]
+                    "v-card-actions",
+                    [
+                      _c(
+                        "v-row",
+                        [
+                          _c("v-spacer"),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { staticClass: "d-flex justify-end" },
+                            [
+                              _c(
+                                "v-btn",
+                                {
+                                  staticClass: "mr-2",
+                                  attrs: { color: "primary", large: "" },
+                                  on: { click: _vm.onSave }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                Save\n                            "
+                                  )
+                                ]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
                   )
                 ],
                 1
@@ -442,18 +1222,18 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/X-DataTable.vue":
-/*!*************************************************!*\
-  !*** ./resources/js/components/X-DataTable.vue ***!
-  \*************************************************/
+/***/ "./resources/js/pages/customers/Form.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/pages/customers/Form.vue ***!
+  \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _X_DataTable_vue_vue_type_template_id_0aef3e74___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./X-DataTable.vue?vue&type=template&id=0aef3e74& */ "./resources/js/components/X-DataTable.vue?vue&type=template&id=0aef3e74&");
-/* harmony import */ var _X_DataTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./X-DataTable.vue?vue&type=script&lang=js& */ "./resources/js/components/X-DataTable.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _Form_vue_vue_type_template_id_be118df2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=template&id=be118df2& */ "./resources/js/pages/customers/Form.vue?vue&type=template&id=be118df2&");
+/* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./resources/js/pages/customers/Form.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -462,9 +1242,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _X_DataTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _X_DataTable_vue_vue_type_template_id_0aef3e74___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _X_DataTable_vue_vue_type_template_id_0aef3e74___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Form_vue_vue_type_template_id_be118df2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Form_vue_vue_type_template_id_be118df2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -474,109 +1254,104 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/X-DataTable.vue"
+component.options.__file = "resources/js/pages/customers/Form.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/X-DataTable.vue?vue&type=script&lang=js&":
-/*!**************************************************************************!*\
-  !*** ./resources/js/components/X-DataTable.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************/
+/***/ "./resources/js/pages/customers/Form.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/pages/customers/Form.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_X_DataTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./X-DataTable.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/X-DataTable.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_X_DataTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/customers/Form.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/X-DataTable.vue?vue&type=template&id=0aef3e74&":
-/*!********************************************************************************!*\
-  !*** ./resources/js/components/X-DataTable.vue?vue&type=template&id=0aef3e74& ***!
-  \********************************************************************************/
+/***/ "./resources/js/pages/customers/Form.vue?vue&type=template&id=be118df2&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/pages/customers/Form.vue?vue&type=template&id=be118df2& ***!
+  \******************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_X_DataTable_vue_vue_type_template_id_0aef3e74___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./X-DataTable.vue?vue&type=template&id=0aef3e74& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/X-DataTable.vue?vue&type=template&id=0aef3e74&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_X_DataTable_vue_vue_type_template_id_0aef3e74___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_be118df2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=template&id=be118df2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/customers/Form.vue?vue&type=template&id=be118df2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_be118df2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_X_DataTable_vue_vue_type_template_id_0aef3e74___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_be118df2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "./resources/js/components/X-Dialog.vue":
-/*!**********************************************!*\
-  !*** ./resources/js/components/X-Dialog.vue ***!
-  \**********************************************/
+/***/ "./resources/js/services/CustomerDataService.js":
+/*!******************************************************!*\
+  !*** ./resources/js/services/CustomerDataService.js ***!
+  \******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _X_Dialog_vue_vue_type_template_id_05ebfb48___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./X-Dialog.vue?vue&type=template&id=05ebfb48& */ "./resources/js/components/X-Dialog.vue?vue&type=template&id=05ebfb48&");
-/* harmony import */ var _X_Dialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./X-Dialog.vue?vue&type=script&lang=js& */ "./resources/js/components/X-Dialog.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+// import http from "../http-common";
 
 
+var CustomerDataService = /*#__PURE__*/function () {
+  function CustomerDataService() {
+    _classCallCheck(this, CustomerDataService);
+  }
 
+  _createClass(CustomerDataService, [{
+    key: "getAll",
+    value: function getAll(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/customers", data);
+    }
+  }, {
+    key: "show",
+    value: function show(id, data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/customers/".concat(id), data);
+    }
+  }, {
+    key: "store",
+    value: function store(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/customers", data);
+    }
+  }, {
+    key: "update",
+    value: function update(id, data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/customers/".concat(id), data);
+    }
+  }, {
+    key: "delete",
+    value: function _delete(id, data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/customers/".concat(id), data);
+    }
+  }, {
+    key: "deleteMany",
+    value: function deleteMany(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/customers/multiple", data);
+    }
+  }]);
 
+  return CustomerDataService;
+}();
 
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _X_Dialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _X_Dialog_vue_vue_type_template_id_05ebfb48___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _X_Dialog_vue_vue_type_template_id_05ebfb48___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/X-Dialog.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/X-Dialog.vue?vue&type=script&lang=js&":
-/*!***********************************************************************!*\
-  !*** ./resources/js/components/X-Dialog.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_X_Dialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./X-Dialog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/X-Dialog.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_X_Dialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/X-Dialog.vue?vue&type=template&id=05ebfb48&":
-/*!*****************************************************************************!*\
-  !*** ./resources/js/components/X-Dialog.vue?vue&type=template&id=05ebfb48& ***!
-  \*****************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_X_Dialog_vue_vue_type_template_id_05ebfb48___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./X-Dialog.vue?vue&type=template&id=05ebfb48& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/X-Dialog.vue?vue&type=template&id=05ebfb48&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_X_Dialog_vue_vue_type_template_id_05ebfb48___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_X_Dialog_vue_vue_type_template_id_05ebfb48___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
+/* harmony default export */ __webpack_exports__["default"] = (new CustomerDataService());
 
 /***/ })
 

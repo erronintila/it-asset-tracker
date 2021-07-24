@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Employee extends Model
 {
     use SoftDeletes;
-    
+
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | LARAVEL MODEL CONFIGURATION
@@ -49,6 +49,11 @@ class Employee extends Model
     public function department()
     {
         return $this->belongsTo('App\Models\Department');
+    }
+
+    public function departments()
+    {
+        return $this->hasMany(Department::class);
     }
 
     /*

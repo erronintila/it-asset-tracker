@@ -20,11 +20,13 @@ class DepartmentResource extends JsonResource
             "slug" => $this->slug,
             "name" => $this->name,
             "is_active" => $this->is_active,
-            "manager_id" => $this->manager_id,
-            "department_id" => $this->department_id,
+
             "created_at" => $this->created_at,
             "updated_at" => $this->updated_at,
-            "deleted_at" => $this->deleted_at
+            "deleted_at" => $this->deleted_at,
+
+            "manager" => $this->manager,
+            "department_id" => $this->department_id,
         ];
     }
 }

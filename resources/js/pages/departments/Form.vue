@@ -19,14 +19,45 @@
                                     @inputs="errors.name = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.manager_id"
+                                    :value="
+                                        form.manager ? form.manager.name : ''
+                                    "
+                                    :error-messages="errors.manager_id"
+                                    @input="errors.manager_id = []"
                                     label="Manager"
+                                    readonly
                                     outlined
-                                    clearable
-                                    hint="Ex. Juan Dela Cruz"
-                                    :error-messages="errors.manager_id[0]"
-                                    @inputs="errors.manager_id = []"
-                                ></v-text-field>
+                                    class="d-flex justify-center align-center"
+                                >
+                                    <template v-slot:append>
+                                        <EmployeeDialogSelector
+                                            :selected="
+                                                !form.manager
+                                                    ? []
+                                                    : [...form.manager]
+                                            "
+                                            :dialogManager="dialogManager"
+                                            @close-dialog="
+                                                dialogManager = false
+                                            "
+                                            @on-select="onSelectManager"
+                                        >
+                                            <template v-slot:openDialog>
+                                                <v-btn
+                                                    color="primary"
+                                                    icon
+                                                    @click="
+                                                        dialogManager = true
+                                                    "
+                                                >
+                                                    <v-icon dark>
+                                                        mdi-magnify
+                                                    </v-icon>
+                                                </v-btn>
+                                            </template>
+                                        </EmployeeDialogSelector>
+                                    </template>
+                                </v-text-field>
                                 <v-text-field
                                     v-model="form.department_id"
                                     label="Parent Department"
@@ -78,6 +109,8 @@
 </template>
 
 <script>
+import EmployeeDialogSelector from "../../components/selectors/EmployeeDialogSelector.vue";
+
 export default {
     props: {
         title: {
@@ -92,7 +125,7 @@ export default {
                     slug: "",
                     name: "",
                     is_active: true,
-                    manager_id: "",
+                    manager: "",
                     department_id: ""
                 };
             }
@@ -124,15 +157,19 @@ export default {
             }
         }
     },
+    components: {
+        EmployeeDialogSelector
+    },
     data() {
         return {
+            dialogManager: false,
             valid: false,
             form: {
                 code: "",
                 slug: "",
                 name: "",
                 is_active: true,
-                manager_id: "",
+                manager: "",
                 department_id: ""
             }
         };
@@ -160,15 +197,32 @@ export default {
 
             console.log(this.form);
 
-            if (!this.form.is_active) {
-                this.form.is_active = false;
+            let newForm = {
+                ...this.form,
+                ...{ manager_id: this.form.manager.id }
+            };
+
+            if (!newForm.is_active) {
+                newForm.is_active = false;
             }
 
-            this.$emit("on-save", this.form);
+            this.$emit("on-save", newForm);
         },
         onCancel() {
             this.onReset();
             this.$emit("on-cancel");
+        },
+        onSelectManager(e) {
+            this.dialogManager = false;
+            this.errors.manager_id = [];
+
+            if (e == null || e == undefined) {
+                this.form.manager = null;
+                return;
+            }
+
+            this.form.manager = e[0];
+            this.dialogManager = false;
         }
     },
     watch: {
