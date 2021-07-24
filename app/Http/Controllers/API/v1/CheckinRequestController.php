@@ -31,8 +31,8 @@ class CheckinRequestController extends Controller
         $itemsPerPage = request('itemsPerPage') ?? 10;
 
         $transactions = Transaction::search($search)
-            ->with(['request'])
-            ->where('requestable_type', 'App\Models\CheckinRequest')
+            ->with(['user', 'transactionable'])
+            ->where('transactionable_type', 'App\Models\CheckinRequest')
             ->orderBy($sortBy, $sortType)
             ->paginate($itemsPerPage);
 
@@ -87,10 +87,8 @@ class CheckinRequestController extends Controller
      */
     public function show($id)
     {
-        $transaction = Transaction::with(['profile' => function ($query) {
-            $query->with(['transaction_type', 'location']);
-        }])
-            ->where('profile_type', 'App\Models\CheckinRequest')
+        $transaction = Transaction::with(['user', 'transactionable'])
+            ->where('transactionable_type', 'App\Models\CheckinRequest')
             ->findOrFail($id);
         return $this->successResponse('read', new TransactionResource($transaction), 200);
     }

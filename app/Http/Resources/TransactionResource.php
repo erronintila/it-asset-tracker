@@ -21,10 +21,13 @@ class TransactionResource extends JsonResource
             "request_date" => $this->request_date,
             "description" => $this->description,
             "priority" => $this->priority,
-            "request" => $this->request,
+            "transactionable" => $this->transactionable,
+
+            "priority_label" => $this->priority_label,
+            "status" => $this->status,
 
             "transaction_type_id" => $this->transaction_type_id,
-            "user_id" => $this->user_id,
+            "user" => $this->user,
             "parent_asset_id" => $this->parent_asset_id,
             "owner_id" => $this->owner_id,
             "assigned_user_id" => $this->assigned_user_id,

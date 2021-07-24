@@ -1,87 +1,20 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[104],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/assets/Create.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/assets/Create.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/checkin_requests/Show.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/checkin_requests/Show.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _services_AssetDataService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../services/AssetDataService */ "./resources/js/services/AssetDataService.js");
-/* harmony import */ var _Form_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.vue */ "./resources/js/pages/assets/Form.vue");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    Form: _Form_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
-  },
-  data: function data() {
-    return {
-      formDataLoaded: true,
-      errors: {
-        code: [],
-        slug: [],
-        reference_no: [],
-        asset_tag: [],
-        serial_no: [],
-        description: [],
-        purchased_date: [],
-        purchased_cost: [],
-        warranty_start_date: [],
-        warranty_end_date: [],
-        sku: [],
-        quantity: [],
-        notes: [],
-        asset_model_id: [],
-        supplier_id: [],
-        manufacturer_id: [],
-        asset_category_id: [],
-        assigned_to: [],
-        location_id: [],
-        asset_id: []
-      }
-    };
-  },
-  methods: {
-    onSave: function onSave(value) {
-      var _this = this;
-
-      _services_AssetDataService__WEBPACK_IMPORTED_MODULE_0__["default"].store(value).then(function (response) {
-        console.log(response.data);
-        alert("Successfully created.");
-
-        _this.$router.go(-1);
-      })["catch"](function (error) {
-        console.log(error.response);
-        alert("An error has occurred.");
-        _this.errors = _objectSpread(_objectSpread({}, _this.errors), error.response.data.errors);
-      });
-    }
-  }
-});
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\resources\\js\\pages\\checkin_requests\\Show.vue: Unexpected token, expected \",\" (331:42)\n\n\u001b[0m \u001b[90m 329 |\u001b[39m                 description\u001b[33m:\u001b[39m \u001b[32m\"\"\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 330 |\u001b[39m                 priority\u001b[33m:\u001b[39m \u001b[32m\"\"\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 331 |\u001b[39m                 priority_label\u001b[33m:\u001b[39m \u001b[32m\"{ text: \"\u001b[39m\u001b[32m\", color: \"\u001b[39m\u001b[32m\", dark: false},\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 332 |\u001b[39m                 status\u001b[33m:\u001b[39m { text\u001b[33m:\u001b[39m \u001b[32m\"\"\u001b[39m\u001b[33m,\u001b[39m color\u001b[33m:\u001b[39m \u001b[32m\"\"\u001b[39m\u001b[33m,\u001b[39m dark\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m}\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 333 |\u001b[39m                 transactionable\u001b[33m:\u001b[39m {}\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 334 |\u001b[39m                 transaction_type_id\u001b[33m:\u001b[39m \u001b[32m\"\"\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n    at Parser._raise (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:810:17)\n    at Parser.raiseWithData (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:803:17)\n    at Parser.raise (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:764:17)\n    at Parser.unexpected (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:9980:16)\n    at Parser.expect (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:9954:28)\n    at Parser.parseObjectLike (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:11770:14)\n    at Parser.parseExprAtom (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:11298:23)\n    at Parser.parseExprSubscripts (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10954:23)\n    at Parser.parseUpdate (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10934:21)\n    at Parser.parseMaybeUnary (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10912:23)\n    at Parser.parseExprOps (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10769:23)\n    at Parser.parseMaybeConditional (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10743:23)\n    at Parser.parseMaybeAssign (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10706:21)\n    at C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10673:39\n    at Parser.allowInAnd (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:12396:12)\n    at Parser.parseMaybeAssignAllowIn (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10673:17)\n    at Parser.parseObjectProperty (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:11939:101)\n    at Parser.parseObjPropValue (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:11964:100)\n    at Parser.parsePropertyDefinition (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:11888:10)\n    at Parser.parseObjectLike (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:11778:25)\n    at Parser.parseExprAtom (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:11298:23)\n    at Parser.parseExprSubscripts (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10954:23)\n    at Parser.parseUpdate (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10934:21)\n    at Parser.parseMaybeUnary (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10912:23)\n    at Parser.parseExprOps (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10769:23)\n    at Parser.parseMaybeConditional (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10743:23)\n    at Parser.parseMaybeAssign (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10706:21)\n    at Parser.parseExpressionBase (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10651:23)\n    at C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10645:39\n    at Parser.allowInAnd (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:12390:16)\n    at Parser.parseExpression (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10645:17)\n    at Parser.parseReturnStatement (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:12974:28)\n    at Parser.parseStatementContent (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:12644:21)\n    at Parser.parseStatement (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:12596:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:13185:25)\n    at Parser.parseBlockBody (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:13176:10)");
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/assets/Create.vue?vue&type=template&id=5e90268f&":
-/*!***********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/assets/Create.vue?vue&type=template&id=5e90268f& ***!
-  \***********************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/checkin_requests/Show.vue?vue&type=template&id=ab79ed46&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/checkin_requests/Show.vue?vue&type=template&id=ab79ed46& ***!
+  \*******************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -96,12 +29,777 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("page-header", { attrs: { title: "New Asset", backButton: true } }),
+      _c("page-header", {
+        staticClass: "mb-4",
+        attrs: { title: "Checkin Request Details", backButton: true }
+      }),
       _vm._v(" "),
-      _c("Form", {
-        attrs: { errors: _vm.errors },
-        on: { "on-save": _vm.onSave }
-      })
+      _c(
+        "v-row",
+        [
+          _c(
+            "v-col",
+            { attrs: { cols: "12", md: "4" } },
+            [
+              _c("CardSummary", {
+                attrs: {
+                  title: _vm.form.code,
+                  subtitle: _vm.form.request_date
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "body",
+                    fn: function() {
+                      return [
+                        _c("p", [
+                          _vm._v("Description: " + _vm._s(_vm.form.description))
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          [
+                            _vm._v(
+                              "\n                        Priority:\n                        "
+                            ),
+                            _c(
+                              "v-chip",
+                              {
+                                attrs: {
+                                  small: "",
+                                  color: _vm.form.priority_label.color,
+                                  dark: _vm.form.priority_label.dark
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                            " +
+                                    _vm._s(_vm.form.priority_label.text) +
+                                    "\n                        "
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          [
+                            _vm._v(
+                              "\n                        Status:\n                        "
+                            ),
+                            _c(
+                              "v-chip",
+                              {
+                                attrs: {
+                                  small: "",
+                                  color: _vm.form.status.color,
+                                  dark: _vm.form.status.dark
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                            " +
+                                    _vm._s(_vm.form.status.text) +
+                                    "\n                        "
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      ]
+                    },
+                    proxy: true
+                  },
+                  {
+                    key: "actions",
+                    fn: function() {
+                      return [
+                        _c(
+                          "v-btn",
+                          {
+                            attrs: { icon: "" },
+                            on: {
+                              click: function($event) {
+                                return _vm.$router.push(
+                                  "/checkin_requests/" +
+                                    _vm.$route.params.id +
+                                    "/edit"
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c("v-icon", [
+                              _vm._v(
+                                "\n                            mdi-file-document-edit-outline\n                        "
+                              )
+                            ])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-btn",
+                          { attrs: { icon: "" }, on: { click: _vm.onDelete } },
+                          [
+                            _c("v-icon", [
+                              _vm._v(
+                                "\n                            mdi-delete\n                        "
+                              )
+                            ])
+                          ],
+                          1
+                        )
+                      ]
+                    },
+                    proxy: true
+                  }
+                ])
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-col",
+            { attrs: { cols: "12", md: "8" } },
+            [
+              _c(
+                "v-card",
+                [
+                  _c(
+                    "v-tabs",
+                    {
+                      attrs: { "show-arrows": "" },
+                      model: {
+                        value: _vm.tab,
+                        callback: function($$v) {
+                          _vm.tab = $$v
+                        },
+                        expression: "tab"
+                      }
+                    },
+                    [
+                      _c("v-tabs-slider", {
+                        attrs: { color: "teal lighten-3" }
+                      }),
+                      _vm._v(" "),
+                      _vm._l(_vm.items, function(item) {
+                        return _c("v-tab", { key: item }, [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(item) +
+                              "\n                    "
+                          )
+                        ])
+                      })
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-tabs-items",
+                    {
+                      model: {
+                        value: _vm.tab,
+                        callback: function($$v) {
+                          _vm.tab = $$v
+                        },
+                        expression: "tab"
+                      }
+                    },
+                    [
+                      _c(
+                        "v-tab-item",
+                        [
+                          _c(
+                            "v-card",
+                            { attrs: { flat: "" } },
+                            [
+                              _c("v-card-text", [
+                                _c("div", { staticClass: "page-title my-4" }, [
+                                  _vm._v(
+                                    "\n                                    Checkin Request Name\n                                "
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "my-4" },
+                                  [
+                                    _c("VueApexCharts", {
+                                      attrs: {
+                                        type: "donut",
+                                        height: "300",
+                                        options: _vm.options.asset,
+                                        series: _vm.series.asset
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ])
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-tab-item",
+                        [
+                          _c(
+                            "v-card",
+                            { attrs: { flat: "" } },
+                            [
+                              _c(
+                                "v-card-text",
+                                [
+                                  _c("v-simple-table", {
+                                    scopedSlots: _vm._u([
+                                      {
+                                        key: "default",
+                                        fn: function() {
+                                          return [
+                                            _c("thead", [
+                                              _c("tr", [
+                                                _c(
+                                                  "th",
+                                                  { staticClass: "text-left" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                    Name\n                                                "
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "th",
+                                                  { staticClass: "text-left" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                    Value\n                                                "
+                                                    )
+                                                  ]
+                                                )
+                                              ])
+                                            ]),
+                                            _vm._v(" "),
+                                            _c(
+                                              "tbody",
+                                              _vm._l(_vm.form, function(
+                                                value,
+                                                name,
+                                                index
+                                              ) {
+                                                return _c(
+                                                  "tr",
+                                                  { key: index },
+                                                  [
+                                                    _c("td", [
+                                                      _vm._v(_vm._s(name))
+                                                    ]),
+                                                    _vm._v(" "),
+                                                    _c("td", [
+                                                      _vm._v(_vm._s(value))
+                                                    ])
+                                                  ]
+                                                )
+                                              }),
+                                              0
+                                            )
+                                          ]
+                                        },
+                                        proxy: true
+                                      }
+                                    ])
+                                  })
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-tab-item",
+                        [
+                          _c(
+                            "v-card",
+                            { attrs: { flat: "" } },
+                            [
+                              _c(
+                                "v-card-text",
+                                [
+                                  _c("v-simple-table", {
+                                    scopedSlots: _vm._u([
+                                      {
+                                        key: "default",
+                                        fn: function() {
+                                          return [
+                                            _c("thead", [
+                                              _c("tr", [
+                                                _c(
+                                                  "th",
+                                                  { staticClass: "text-left" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                    Name\n                                                "
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "th",
+                                                  { staticClass: "text-left" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                    Value\n                                                "
+                                                    )
+                                                  ]
+                                                )
+                                              ])
+                                            ]),
+                                            _vm._v(" "),
+                                            _c(
+                                              "tbody",
+                                              _vm._l(_vm.records, function(
+                                                item
+                                              ) {
+                                                return _c(
+                                                  "tr",
+                                                  { key: item.name },
+                                                  [
+                                                    _c("td", [
+                                                      _vm._v(_vm._s(item.name))
+                                                    ]),
+                                                    _vm._v(" "),
+                                                    _c("td", [
+                                                      _vm._v(_vm._s(item.value))
+                                                    ])
+                                                  ]
+                                                )
+                                              }),
+                                              0
+                                            )
+                                          ]
+                                        },
+                                        proxy: true
+                                      }
+                                    ])
+                                  })
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-tab-item",
+                        [
+                          _c(
+                            "v-card",
+                            { attrs: { flat: "" } },
+                            [
+                              _c(
+                                "v-card-text",
+                                [
+                                  _c("v-simple-table", {
+                                    scopedSlots: _vm._u([
+                                      {
+                                        key: "default",
+                                        fn: function() {
+                                          return [
+                                            _c("thead", [
+                                              _c("tr", [
+                                                _c(
+                                                  "th",
+                                                  { staticClass: "text-left" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                    Name\n                                                "
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "th",
+                                                  { staticClass: "text-left" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                    Value\n                                                "
+                                                    )
+                                                  ]
+                                                )
+                                              ])
+                                            ]),
+                                            _vm._v(" "),
+                                            _c(
+                                              "tbody",
+                                              _vm._l(_vm.records, function(
+                                                item
+                                              ) {
+                                                return _c(
+                                                  "tr",
+                                                  { key: item.name },
+                                                  [
+                                                    _c("td", [
+                                                      _vm._v(_vm._s(item.name))
+                                                    ]),
+                                                    _vm._v(" "),
+                                                    _c("td", [
+                                                      _vm._v(_vm._s(item.value))
+                                                    ])
+                                                  ]
+                                                )
+                                              }),
+                                              0
+                                            )
+                                          ]
+                                        },
+                                        proxy: true
+                                      }
+                                    ])
+                                  })
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-tab-item",
+                        [
+                          _c(
+                            "v-card",
+                            { attrs: { flat: "" } },
+                            [
+                              _c(
+                                "v-card-text",
+                                [
+                                  _c("v-simple-table", {
+                                    scopedSlots: _vm._u([
+                                      {
+                                        key: "default",
+                                        fn: function() {
+                                          return [
+                                            _c("thead", [
+                                              _c("tr", [
+                                                _c(
+                                                  "th",
+                                                  { staticClass: "text-left" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                    Name\n                                                "
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "th",
+                                                  { staticClass: "text-left" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                    Value\n                                                "
+                                                    )
+                                                  ]
+                                                )
+                                              ])
+                                            ]),
+                                            _vm._v(" "),
+                                            _c(
+                                              "tbody",
+                                              _vm._l(_vm.records, function(
+                                                item
+                                              ) {
+                                                return _c(
+                                                  "tr",
+                                                  { key: item.name },
+                                                  [
+                                                    _c("td", [
+                                                      _vm._v(_vm._s(item.name))
+                                                    ]),
+                                                    _vm._v(" "),
+                                                    _c("td", [
+                                                      _vm._v(_vm._s(item.value))
+                                                    ])
+                                                  ]
+                                                )
+                                              }),
+                                              0
+                                            )
+                                          ]
+                                        },
+                                        proxy: true
+                                      }
+                                    ])
+                                  })
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-tab-item",
+                        [
+                          _c(
+                            "v-card",
+                            { attrs: { flat: "" } },
+                            [
+                              _c(
+                                "v-card-text",
+                                [
+                                  _c("v-simple-table", {
+                                    scopedSlots: _vm._u([
+                                      {
+                                        key: "default",
+                                        fn: function() {
+                                          return [
+                                            _c("thead", [
+                                              _c("tr", [
+                                                _c(
+                                                  "th",
+                                                  { staticClass: "text-left" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                    Name\n                                                "
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "th",
+                                                  { staticClass: "text-left" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                    Value\n                                                "
+                                                    )
+                                                  ]
+                                                )
+                                              ])
+                                            ]),
+                                            _vm._v(" "),
+                                            _c(
+                                              "tbody",
+                                              _vm._l(_vm.records, function(
+                                                item
+                                              ) {
+                                                return _c(
+                                                  "tr",
+                                                  { key: item.name },
+                                                  [
+                                                    _c("td", [
+                                                      _vm._v(_vm._s(item.name))
+                                                    ]),
+                                                    _vm._v(" "),
+                                                    _c("td", [
+                                                      _vm._v(_vm._s(item.value))
+                                                    ])
+                                                  ]
+                                                )
+                                              }),
+                                              0
+                                            )
+                                          ]
+                                        },
+                                        proxy: true
+                                      }
+                                    ])
+                                  })
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-tab-item",
+                        [
+                          _c(
+                            "v-card",
+                            { attrs: { flat: "" } },
+                            [
+                              _c(
+                                "v-card-text",
+                                [
+                                  _c("v-simple-table", {
+                                    scopedSlots: _vm._u([
+                                      {
+                                        key: "default",
+                                        fn: function() {
+                                          return [
+                                            _c("thead", [
+                                              _c("tr", [
+                                                _c(
+                                                  "th",
+                                                  { staticClass: "text-left" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                    Name\n                                                "
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "th",
+                                                  { staticClass: "text-left" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                    Value\n                                                "
+                                                    )
+                                                  ]
+                                                )
+                                              ])
+                                            ]),
+                                            _vm._v(" "),
+                                            _c(
+                                              "tbody",
+                                              _vm._l(_vm.records, function(
+                                                item
+                                              ) {
+                                                return _c(
+                                                  "tr",
+                                                  { key: item.name },
+                                                  [
+                                                    _c("td", [
+                                                      _vm._v(_vm._s(item.name))
+                                                    ]),
+                                                    _vm._v(" "),
+                                                    _c("td", [
+                                                      _vm._v(_vm._s(item.value))
+                                                    ])
+                                                  ]
+                                                )
+                                              }),
+                                              0
+                                            )
+                                          ]
+                                        },
+                                        proxy: true
+                                      }
+                                    ])
+                                  })
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-tab-item",
+                        [
+                          _c(
+                            "v-card",
+                            { attrs: { flat: "" } },
+                            [
+                              _c(
+                                "v-card-text",
+                                [
+                                  _c("v-simple-table", {
+                                    scopedSlots: _vm._u([
+                                      {
+                                        key: "default",
+                                        fn: function() {
+                                          return [
+                                            _c("thead", [
+                                              _c("tr", [
+                                                _c(
+                                                  "th",
+                                                  { staticClass: "text-left" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                    Name\n                                                "
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "th",
+                                                  { staticClass: "text-left" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                    Value\n                                                "
+                                                    )
+                                                  ]
+                                                )
+                                              ])
+                                            ]),
+                                            _vm._v(" "),
+                                            _c(
+                                              "tbody",
+                                              _vm._l(_vm.records, function(
+                                                item
+                                              ) {
+                                                return _c(
+                                                  "tr",
+                                                  { key: item.name },
+                                                  [
+                                                    _c("td", [
+                                                      _vm._v(_vm._s(item.name))
+                                                    ]),
+                                                    _vm._v(" "),
+                                                    _c("td", [
+                                                      _vm._v(_vm._s(item.value))
+                                                    ])
+                                                  ]
+                                                )
+                                              }),
+                                              0
+                                            )
+                                          ]
+                                        },
+                                        proxy: true
+                                      }
+                                    ])
+                                  })
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
     ],
     1
   )
@@ -113,17 +811,17 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/pages/assets/Create.vue":
-/*!**********************************************!*\
-  !*** ./resources/js/pages/assets/Create.vue ***!
-  \**********************************************/
+/***/ "./resources/js/pages/checkin_requests/Show.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/pages/checkin_requests/Show.vue ***!
+  \******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Create_vue_vue_type_template_id_5e90268f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Create.vue?vue&type=template&id=5e90268f& */ "./resources/js/pages/assets/Create.vue?vue&type=template&id=5e90268f&");
-/* harmony import */ var _Create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Create.vue?vue&type=script&lang=js& */ "./resources/js/pages/assets/Create.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Show_vue_vue_type_template_id_ab79ed46___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Show.vue?vue&type=template&id=ab79ed46& */ "./resources/js/pages/checkin_requests/Show.vue?vue&type=template&id=ab79ed46&");
+/* harmony import */ var _Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Show.vue?vue&type=script&lang=js& */ "./resources/js/pages/checkin_requests/Show.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -133,9 +831,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Create_vue_vue_type_template_id_5e90268f___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Create_vue_vue_type_template_id_5e90268f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Show_vue_vue_type_template_id_ab79ed46___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Show_vue_vue_type_template_id_ab79ed46___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -145,38 +843,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/pages/assets/Create.vue"
+component.options.__file = "resources/js/pages/checkin_requests/Show.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/pages/assets/Create.vue?vue&type=script&lang=js&":
-/*!***********************************************************************!*\
-  !*** ./resources/js/pages/assets/Create.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************/
+/***/ "./resources/js/pages/checkin_requests/Show.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/pages/checkin_requests/Show.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Create.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/assets/Create.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Show.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/checkin_requests/Show.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/pages/assets/Create.vue?vue&type=template&id=5e90268f&":
-/*!*****************************************************************************!*\
-  !*** ./resources/js/pages/assets/Create.vue?vue&type=template&id=5e90268f& ***!
-  \*****************************************************************************/
+/***/ "./resources/js/pages/checkin_requests/Show.vue?vue&type=template&id=ab79ed46&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/pages/checkin_requests/Show.vue?vue&type=template&id=ab79ed46& ***!
+  \*************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_5e90268f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Create.vue?vue&type=template&id=5e90268f& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/assets/Create.vue?vue&type=template&id=5e90268f&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_5e90268f___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_ab79ed46___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Show.vue?vue&type=template&id=ab79ed46& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/checkin_requests/Show.vue?vue&type=template&id=ab79ed46&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_ab79ed46___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_5e90268f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_ab79ed46___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

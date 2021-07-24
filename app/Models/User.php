@@ -77,6 +77,11 @@ class User extends Authenticatable
         return $this->hasMany(Asset::class);
     }
 
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | LARAVEL ACCESSORS

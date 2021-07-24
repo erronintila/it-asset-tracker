@@ -28,8 +28,8 @@ class CreateTransactionsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->unsignedBigInteger("requestable_id")->nullable();
-            $table->string("requestable_type")->nullable();
+            $table->unsignedBigInteger("transactionable_id")->nullable();
+            $table->string("transactionable_type")->nullable();
 
             $table->foreignId('transaction_type_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
