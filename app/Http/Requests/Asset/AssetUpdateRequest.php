@@ -38,13 +38,15 @@ class AssetUpdateRequest extends FormRequest
             "sku" => ["nullable", "string", "max:250"],
             "quantity" => ["nullable", "integer"],
             "notes" => ["nullable", "string"],
+
             "asset_model_id" => ["nullable", "integer"],
             "supplier_id" => ["nullable", "integer"],
             "manufacturer_id" => ["required", "integer"],
             "asset_category_id" => ["required", "integer"],
-            "assigned_to" => ["nullable", "integer"],
-            "location_id" => ["nullable", "integer"],
-            "asset_id" => ["nullable", "integer"],
+
+            "assigned_user_id" => ["nullable", "integer"],
+            "assigned_location_id" => ["nullable", "integer"],
+            "assigned_asset_id" => ["nullable", "integer"],
         ];
     }
 }

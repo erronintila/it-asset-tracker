@@ -29,16 +29,23 @@ class AssetResource extends JsonResource
             "sku" => $this->sku,
             "quantity" => $this->quantity,
             "notes" => $this->notes,
+
+            "disposed_at" => $this->created_at,
+            "maintained_at" => $this->created_at,
             "created_at" => $this->created_at,
             "updated_at" => $this->updated_at,
             "deleted_at" => $this->deleted_at,
+
             "asset_model" => $this->asset_model,
             "supplier" => $this->supplier,
             "manufacturer" => $this->manufacturer,
             "asset_category" => $this->asset_category,
-            "assigned_to" => $this->assigned_to,
-            "location_id" => $this->location_id,
-            "asset_id" => $this->asset_id,
+
+            "assigned_user" => $this->assigned_user,
+            "assigned_location_id" => $this->assigned_location_id,
+            "assigned_asset_id" => $this->assigned_asset_id,
+
+            "status" => $this->status,
         ];
     }
 }

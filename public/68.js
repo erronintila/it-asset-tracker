@@ -52,9 +52,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         supplier_id: [],
         manufacturer_id: [],
         asset_category_id: [],
-        assigned_to: [],
-        location_id: [],
-        asset_id: []
+        assigned_user_id: [],
+        assigned_location_id: [],
+        assigned_asset_id: []
       }
     };
   },

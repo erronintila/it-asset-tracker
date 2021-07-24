@@ -24,11 +24,17 @@ class CreateLicensesTable extends Migration
             $table->double('purchased_cost', 10, 2)->nullable();
             $table->date('warranty_start_date')->nullable();
             $table->date('warranty_end_date')->nullable();
+            $table->timestamp("disposed_at")->nullable();
             $table->timestamps();
             $table->softDeletes();
+
             $table->foreignId('supplier_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('manufacturer_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('asset_category_id')->constrained()->onDelete('cascade');
+
+            $table->foreignId('assigned_user_id')->nullable()->constrained('users');
+            $table->foreignId('assigned_location_id')->nullable()->constrained('locations');
+            $table->foreignId('assigned_asset_id')->nullable()->constrained('assets')->onDelete('cascade');
         });
     }
 

@@ -218,6 +218,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, {
           text: "Manufacturer",
           value: "manufacturer.name"
+        }, {
+          text: "Assigned To",
+          value: "assigned_user.name"
+        }, {
+          text: "Status",
+          value: "status",
+          sortable: false
         }]
       },
       search: "",
@@ -721,13 +728,13 @@ var render = function() {
                               attrs: {
                                 small: "",
                                 color: item.status.color,
-                                "text-color": item.status.text_color
+                                dark: item.status.dark
                               }
                             },
                             [
                               _vm._v(
                                 "\n                        " +
-                                  _vm._s(item.status.text) +
+                                  _vm._s(item.status.status) +
                                   "\n                    "
                               )
                             ]

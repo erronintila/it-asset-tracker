@@ -17,6 +17,13 @@ class License extends Model
 
     protected $guarded = [];
 
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['status'];
+
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | LIBRARY/PACKAGE CONFIGURATION
@@ -57,6 +64,39 @@ class License extends Model
     | LARAVEL ACCESSORS
     |------------------------------------------------------------------------------------------------------------------------------------
     */
+
+    public function getStatusAttribute()
+    {
+        if ($this->disposed_at) {
+            return [
+                "status" => "Disposed",
+                "color" => "red",
+                "dark" => true
+            ];
+        }
+
+        if (!$this->asset_id) {
+            return [
+                "status" => "In Storage",
+                "color" => "blue",
+                "dark" => true
+            ];
+        }
+
+        if ($this->asset_id) {
+            return [
+                "status" => "In Use",
+                "color" => "green",
+                "dark" => true
+            ];
+        }
+
+        return [
+            "status" => "Undefined",
+            "color" => "red",
+            "dark" => true
+        ];
+    }
 
     /*
     |------------------------------------------------------------------------------------------------------------------------------------

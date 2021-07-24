@@ -26,6 +26,7 @@ class LicenseResource extends JsonResource
             "warranty_start_date" => $this->warranty_start_date,
             "warranty_end_date" => $this->warranty_end_date,
 
+            "disposed_at" => $this->created_at,
             "created_at" => $this->created_at,
             "updated_at" => $this->updated_at,
             "deleted_at" => $this->deleted_at,
@@ -33,6 +34,10 @@ class LicenseResource extends JsonResource
             "supplier" => $this->supplier,
             "manufacturer" => $this->manufacturer,
             "asset_category" => $this->asset_category,
+
+            "assigned_user" => $this->assigned_user,
+            "assigned_location_id" => $this->assigned_location_id,
+            "assigned_asset_id" => $this->assigned_asset_id,
         ];
     }
 }

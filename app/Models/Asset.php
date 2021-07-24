@@ -17,6 +17,13 @@ class Asset extends Model
 
     protected $guarded = [];
 
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['status'];
+
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | LIBRARY/PACKAGE CONFIGURATION
@@ -58,9 +65,9 @@ class Asset extends Model
         return $this->belongsTo(AssetCategory::class);
     }
 
-    public function assigned_to()
+    public function assigned_user()
     {
-        return $this->belongsTo(User::class, 'assigned_to');
+        return $this->belongsTo(User::class, 'assigned_user_id');
     }
 
     public function location()
@@ -83,6 +90,55 @@ class Asset extends Model
     | LARAVEL ACCESSORS
     |------------------------------------------------------------------------------------------------------------------------------------
     */
+
+    public function getStatusAttribute()
+    {
+        if ($this->disposed_at) {
+            return [
+                "status" => "Disposed",
+                "color" => "red",
+                "dark" => true
+            ];
+        }
+
+        if ($this->maintained_at) {
+            return [
+                "status" => "In Maintenance",
+                "color" => "yellow",
+                "dark" => false
+            ];
+        }
+
+        if (!$this->assigned_location_id && !$this->assigned_user_id) {
+            return [
+                "status" => "Pending",
+                "color" => "grey",
+                "dark" => true
+            ];
+        }
+
+        if ($this->assigned_location_id && !$this->assigned_user_id) {
+            return [
+                "status" => "In Storage",
+                "color" => "blue",
+                "dark" => true
+            ];
+        }
+
+        if ($this->assigned_location_id && $this->assigned_user_id) {
+            return [
+                "status" => "In Use",
+                "color" => "green",
+                "dark" => true
+            ];
+        }
+
+        return [
+            "status" => "Undefined",
+            "color" => "red",
+            "dark" => true
+        ];
+    }
 
     /*
     |------------------------------------------------------------------------------------------------------------------------------------

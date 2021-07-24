@@ -46,7 +46,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         warranty_end_date: [],
         supplier_id: [],
         manufacturer_id: [],
-        asset_category_id: []
+        asset_category_id: [],
+        assigned_user_id: [],
+        assigned_location_id: [],
+        assigned_asset_id: []
       }
     };
   },

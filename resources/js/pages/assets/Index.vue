@@ -141,9 +141,9 @@
                         <v-chip
                             small
                             :color="item.status.color"
-                            :text-color="item.status.text_color"
+                            :dark="item.status.dark"
                         >
-                            {{ item.status.text }}
+                            {{ item.status.status }}
                         </v-chip>
                     </template>
                 </v-data-table>
@@ -180,7 +180,9 @@ export default {
                     { text: "Asset Tag", value: "asset_tag" },
                     { text: "Description", value: "description" },
                     { text: "Category", value: "asset_category.name" },
-                    { text: "Manufacturer", value: "manufacturer.name" }
+                    { text: "Manufacturer", value: "manufacturer.name" },
+                    { text: "Assigned To", value: "assigned_user.name" },
+                    { text: "Status", value: "status", sortable: false }
                 ]
             },
             search: "",

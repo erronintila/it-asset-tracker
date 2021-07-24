@@ -34,9 +34,14 @@ class LicenseUpdateRequest extends FormRequest
             "purchased_cost" => ["nullable", "integer"],
             "warranty_start_date" => ["nullable", "string", "max:250"],
             "warranty_end_date" => ["nullable", "string", "max:250"],
+            
             "supplier_id" => ['nullable', 'integer'],
             "manufacturer_id" => ['nullable', 'integer'],
             "asset_category_id" => ['required', 'integer'],
+
+            "assigned_user_id" => ["nullable", "integer"],
+            "assigned_location_id" => ["nullable", "integer"],
+            "assigned_asset_id" => ["nullable", "integer"],
         ];
     }
 }
