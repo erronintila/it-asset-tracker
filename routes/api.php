@@ -18,6 +18,7 @@ Route::get('/v1/user', 'AuthController@user'); // Get Current User route
 Route::middleware('auth:sanctum')->prefix("v1")->group(function () {
 
     // Multiple deletion routes
+    Route::delete('checkin_requests/multiple', 'API\v1\CheckinRequestController@destroyMany')->name('delete.checkin_requests.multiple');
     Route::delete('asset_models/multiple', 'API\v1\AssetModelController@destroyMany')->name('delete.asset_models.multiple');
     Route::delete('assets/multiple', 'API\v1\AssetController@destroyMany')->name('delete.assets.multiple');
     Route::delete('transaction_types/multiple', 'API\v1\TransactionTypeController@destroyMany')->name('delete.transaction_types.multiple');

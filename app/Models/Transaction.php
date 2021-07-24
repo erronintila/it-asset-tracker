@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Transaction extends Model
 {
     use SoftDeletes;
-    
+
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | LARAVEL MODEL CONFIGURATION
@@ -28,6 +28,11 @@ class Transaction extends Model
     | RELATIONSHIPS
     |------------------------------------------------------------------------------------------------------------------------------------
     */
+
+    public function request()
+    {
+        return $this->morphTo();
+    }
 
     /**
      * Get all of the licenses that are assigned this transaction.

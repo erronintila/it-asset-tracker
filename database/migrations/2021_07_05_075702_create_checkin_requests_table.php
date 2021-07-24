@@ -15,7 +15,6 @@ class CreateCheckinRequestsTable extends Migration
     {
         Schema::create('checkin_requests', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
             $table->timestamps();
             $table->softDeletes();
         });

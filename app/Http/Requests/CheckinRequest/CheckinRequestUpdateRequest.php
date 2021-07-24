@@ -3,6 +3,7 @@
 namespace App\Http\Requests\CheckinRequest;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CheckinRequestUpdateRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class CheckinRequestUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,19 @@ class CheckinRequestUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "code" => ["nullable", "string", "max:250", Rule::unique("transactions", 'code')->ignore($this->asset)],
+            "reference" => ["nullable", "string", "max:250"],
+            "request_date" => ["required", "date"],
+            "description" => ["required", "string", "max:250"],
+            "priority" => ['required', 'string', 'in:low,medium,high'],
+
+            "transaction_type_id" => ['required', 'integer'],
+            "user_id" => ['required', 'integer'],
+            "parent_asset_id" => ['required', 'integer'],
+            "owner_id" => ['required', 'integer'],
+            "assigned_user_id" => ['nullable', 'integer'],
+            "assigned_location_id" => ['required', 'integer'],
+            "assigned_asset_id" => ['nullable', 'integer'],
         ];
     }
 }
