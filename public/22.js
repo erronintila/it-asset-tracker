@@ -1,77 +1,14 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[22],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/CardSummary.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/CardSummary.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: "card-summary",
-  props: {
-    title: {
-      type: String,
-      "default": ""
-    },
-    subtitle: {
-      type: String,
-      "default": ""
-    }
-  },
-  data: function data() {
-    return {};
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/asset_categories/Edit.vue?vue&type=script&lang=js&":
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/checkin_requests/Form.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/asset_categories/Edit.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/checkin_requests/Form.vue?vue&type=script&lang=js& ***!
   \***************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Form_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue */ "./resources/js/pages/asset_categories/Form.vue");
-/* harmony import */ var _services_AssetCategoryDataService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/AssetCategoryDataService */ "./resources/js/services/AssetCategoryDataService.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -88,516 +25,287 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "AssetCategoryEdit",
   props: {
-    dialogEdit: {
-      type: Boolean,
-      "default": false
-    },
-    title: {
-      type: String,
-      "default": ""
-    },
-    asset_category: {
+    locationForm: {
       type: Object,
-      "default": function _default() {}
+      "default": function _default() {
+        return {
+          code: "",
+          reference: "",
+          request_date: "",
+          description: "",
+          priority: "",
+          priority_label: {
+            text: "",
+            color: "",
+            dark: false
+          },
+          status: {
+            text: "",
+            color: "",
+            dark: false
+          },
+          transactionable: "",
+          transaction_type_id: "",
+          user: "",
+          parent_asset_id: "",
+          owner_id: "",
+          assigned_user_id: "",
+          assigned_location_id: "",
+          assigned_asset_id: ""
+        };
+      }
+    },
+    rules: {
+      type: Object,
+      "default": function _default() {
+        return {
+          code: [],
+          reference: [],
+          request_date: [],
+          description: [],
+          priority: [],
+          transactionable: [],
+          transaction_type_id: [],
+          user_id: [],
+          parent_asset_id: [],
+          owner_id: [],
+          assigned_user_id: [],
+          assigned_location_id: [],
+          assigned_asset_id: []
+        };
+      }
+    },
+    errors: {
+      type: Object,
+      "default": function _default() {
+        return {
+          code: [],
+          reference: [],
+          request_date: [],
+          description: [],
+          priority: [],
+          transactionable: [],
+          transaction_type_id: [],
+          user_id: [],
+          parent_asset_id: [],
+          owner_id: [],
+          assigned_user_id: [],
+          assigned_location_id: [],
+          assigned_asset_id: []
+        };
+      }
     }
-  },
-  components: {
-    Form: _Form_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
-      dialog: false,
+      valid: false,
       form: {
         code: "",
-        slug: "",
-        type: "",
-        name: "",
-        is_active: true,
-        asset_category_id: ""
-      },
-      errors: {
-        code: [],
-        slug: [],
-        type: [],
-        name: [],
-        is_active: [],
-        asset_category_id: []
+        reference: "",
+        request_date: "",
+        description: "",
+        priority: "",
+        priority_label: {
+          text: "",
+          color: "",
+          dark: false
+        },
+        status: {
+          text: "",
+          color: "",
+          dark: false
+        },
+        transactionable: {},
+        transaction_type_id: "",
+        user: {},
+        parent_asset_id: "",
+        owner_id: "",
+        assigned_user_id: "",
+        assigned_location_id: "",
+        assigned_asset_id: ""
       }
     };
   },
   methods: {
-    getData: function getData(asset_category) {
-      var _this = this;
-
-      var data = {};
-      _services_AssetCategoryDataService__WEBPACK_IMPORTED_MODULE_1__["default"].show(asset_category.id, data).then(function (response) {
-        console.log(response.data);
-        _this.form = _objectSpread(_objectSpread({}, _this.form), response.data.data);
-      })["catch"](function (error) {
-        console.log(error.response);
-        alert("An error has occurred.");
-      });
-    },
-    onSave: function onSave(value) {
-      var _this2 = this;
-
-      _services_AssetCategoryDataService__WEBPACK_IMPORTED_MODULE_1__["default"].update(value.id, value).then(function (response) {
-        console.log(response.data);
-        alert("Successfully edited.");
-
-        _this2.$emit("save-dialog");
-      })["catch"](function (error) {
-        console.log(error.response);
-        alert("An error has occurred.");
-        _this2.errors = _objectSpread(_objectSpread({}, _this2.errors), error.response.data.errors);
-      });
-    },
-    onCancel: function onCancel() {
-      this.errors = {
-        code: [],
-        slug: [],
-        type: [],
-        name: [],
-        is_active: [],
-        asset_category_id: []
-      };
-      this.$emit("close-dialog");
-    }
-  },
-  watch: {
-    dialogEdit: {
-      immediate: true,
-      deep: true,
-      handler: function handler(newValue, oldValue) {
-        this.dialog = newValue;
-
-        if (!oldValue && newValue && this.asset_category) {
-          this.getData(this.asset_category);
-        }
-      }
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/asset_categories/Show.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/asset_categories/Show.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_pages_CardSummary_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/pages/CardSummary.vue */ "./resources/js/components/pages/CardSummary.vue");
-/* harmony import */ var _services_AssetCategoryDataService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/AssetCategoryDataService */ "./resources/js/services/AssetCategoryDataService.js");
-/* harmony import */ var _Edit_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Edit.vue */ "./resources/js/pages/asset_categories/Edit.vue");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    CardSummary: _components_pages_CardSummary_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    AssetCategoryEdit: _Edit_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
-  },
-  data: function data() {
-    return {
-      tab: null,
-      items: ["details", "employees", "assets", "history"],
-      dialogAssetCategoryEdit: false,
-      records: [],
-      form: {
-        code: "",
-        slug: "",
-        type: "",
-        name: "",
-        is_active: true,
-        asset_category_id: ""
-      }
-    };
-  },
-  methods: {
-    getData: function getData() {
-      var _this = this;
-
-      var data = {};
-      _services_AssetCategoryDataService__WEBPACK_IMPORTED_MODULE_1__["default"].show(this.$route.params.id, data).then(function (response) {
-        console.log(response.data);
-        _this.form = _objectSpread(_objectSpread({}, _this.form), response.data.data);
-      })["catch"](function (error) {
-        console.log(error.response);
-        alert("An error has occurred.");
-
-        _this.$router.push({
-          name: "asset_categories.index"
-        }, function () {});
-      });
-    },
-    onDelete: function onDelete() {
-      var _this2 = this;
-
-      if (!confirm("WARNING: Do you want to delete this record?")) {
+    onSave: function onSave() {
+      if (!confirm("Do you want to save?")) {
         return;
       }
 
-      _services_AssetCategoryDataService__WEBPACK_IMPORTED_MODULE_1__["default"]["delete"](this.$route.params.id, {}).then(function (response) {
-        console.log(response.data);
-        alert(response.data.message);
-
-        _this2.$router.push({
-          name: "asset_categories.index"
-        });
-      })["catch"](function (error) {
-        console.log(error.response);
+      if (!this.$refs.form.validate()) {
         alert("An error has occurred.");
-      });
+        return;
+      }
+
+      console.log(this.form);
+
+      if (!this.form.is_active) {
+        this.form.is_active = false;
+      }
+
+      this.$emit("on-save", this.form);
     }
   },
-  created: function created() {
-    this.getData();
+  watch: {
+    locationForm: {
+      immediate: true,
+      handler: function handler(newValue, oldValue) {
+        this.form = newValue;
+      }
+    }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/CardSummary.vue?vue&type=template&id=1e96e050&":
-/*!********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/CardSummary.vue?vue&type=template&id=1e96e050& ***!
-  \********************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "v-card",
-    [
-      _vm._t("header"),
-      _vm._v(" "),
-      _c(
-        "v-list-item",
-        { attrs: { "two-line": "" } },
-        [
-          _c(
-            "v-list-item-content",
-            [
-              _c("v-list-item-title", { staticClass: "text-h5" }, [
-                _vm._v(
-                  "\n                " + _vm._s(_vm.title) + "\n            "
-                )
-              ]),
-              _vm._v(" "),
-              _c("v-list-item-subtitle", [
-                _vm._v(
-                  "\n                " + _vm._s(_vm.subtitle) + "\n            "
-                )
-              ])
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("v-card-text", [_vm._t("body")], 2),
-      _vm._v(" "),
-      _c("v-divider"),
-      _vm._v(" "),
-      _c("v-card-actions", [_vm._t("actions")], 2)
-    ],
-    2
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/asset_categories/Edit.vue?vue&type=template&id=0723c255&":
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/checkin_requests/Form.vue?vue&type=template&id=4a9e00b8&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/asset_categories/Edit.vue?vue&type=template&id=0723c255& ***!
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/checkin_requests/Form.vue?vue&type=template&id=4a9e00b8& ***!
   \*******************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -611,32 +319,405 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-dialog",
+    "v-form",
     {
-      attrs: { persistent: "", "max-width": "500" },
+      ref: "form",
       model: {
-        value: _vm.dialog,
+        value: _vm.valid,
         callback: function($$v) {
-          _vm.dialog = $$v
+          _vm.valid = $$v
         },
-        expression: "dialog"
+        expression: "valid"
       }
     },
     [
       _c(
-        "v-card",
+        "v-row",
+        { staticClass: "d-flex justify-center" },
         [
           _c(
-            "v-card-text",
+            "v-col",
+            { attrs: { cols: "12", md: "6" } },
             [
-              _c("Form", {
-                attrs: {
-                  title: "Update AssetCategory",
-                  asset_categoryForm: _vm.form,
-                  errors: _vm.errors
-                },
-                on: { "on-save": _vm.onSave, "on-cancel": _vm.onCancel }
-              })
+              _c(
+                "v-card",
+                { attrs: { flat: "" } },
+                [
+                  _c("v-card-title", [
+                    _vm._v(
+                      "\n                    General Information\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-text",
+                    [
+                      _c(
+                        "v-row",
+                        { staticClass: "d-flex justify-center" },
+                        [
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Name",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. Warehouse1",
+                                  "error-messages": _vm.errors.name[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.name = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.name,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "name", $$v)
+                                  },
+                                  expression: "form.name"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Address",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. Block 16 Lot 4 XYZ Subdivision",
+                                  "error-messages": _vm.errors.address[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.address = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.address,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "address", $$v)
+                                  },
+                                  expression: "form.address"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Street",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. Balete Street",
+                                  "error-messages": _vm.errors.street[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.street = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.street,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "street", $$v)
+                                  },
+                                  expression: "form.street"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "District",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. Barangay Poblacion",
+                                  "error-messages": _vm.errors.district[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.district = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.district,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "district", $$v)
+                                  },
+                                  expression: "form.district"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "City",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. General Santos City",
+                                  "error-messages": _vm.errors.city[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.city = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.city,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "city", $$v)
+                                  },
+                                  expression: "form.city"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Province",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "South Cotabato",
+                                  "error-messages": _vm.errors.province[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.province = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.province,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "province", $$v)
+                                  },
+                                  expression: "form.province"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-combobox", {
+                                attrs: {
+                                  label: "Country",
+                                  outlined: "",
+                                  clearable: "",
+                                  items: ["Philippines"],
+                                  "error-messages": _vm.errors.country[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.country = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.country,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "country", $$v)
+                                  },
+                                  expression: "form.country"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Postal Code",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. 9500",
+                                  type: "number"
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.postal_code = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.postal_code,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "postal_code", $$v)
+                                  },
+                                  expression: "form.postal_code"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-col",
+            { attrs: { cols: "12", md: "6" } },
+            [
+              _c(
+                "v-card",
+                { attrs: { flat: "" } },
+                [
+                  _c("v-card-title", [
+                    _vm._v(
+                      "\n                    Other Information\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-text",
+                    [
+                      _c(
+                        "v-row",
+                        { staticClass: "d-flex justify-center" },
+                        [
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Latitude",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. 6.1164 N",
+                                  "error-messages": _vm.errors.latitude[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.latitude = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.latitude,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "latitude", $$v)
+                                  },
+                                  expression: "form.latitude"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Longitude",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. 125.1716 E",
+                                  "error-messages": _vm.errors.longitude[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.longitude = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.longitude,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "longitude", $$v)
+                                  },
+                                  expression: "form.longitude"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Parent Location",
+                                  outlined: "",
+                                  clearable: "",
+                                  "error-messages": _vm.errors.location_id[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.location_id = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.location_id,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.form,
+                                      "location_id",
+                                      _vm._n($$v)
+                                    )
+                                  },
+                                  expression: "form.location_id"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-textarea", {
+                                attrs: {
+                                  label: "Notes",
+                                  outlined: "",
+                                  clearable: "",
+                                  rows: "3",
+                                  "error-messages": _vm.errors.notes[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.notes = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.notes,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "notes", $$v)
+                                  },
+                                  expression: "form.notes"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-actions",
+                    [
+                      _c(
+                        "v-sheet",
+                        { staticClass: "ml-4" },
+                        [
+                          _c("v-switch", {
+                            attrs: { inset: "", label: "Active" },
+                            model: {
+                              value: _vm.form.is_active,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "is_active", $$v)
+                              },
+                              expression: "form.is_active"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("v-spacer"),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "mr-2",
+                          attrs: { color: "primary", large: "" },
+                          on: { click: _vm.onSave }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Save\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
             ],
             1
           )
@@ -654,806 +735,17 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/asset_categories/Show.vue?vue&type=template&id=d9170470&":
-/*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/asset_categories/Show.vue?vue&type=template&id=d9170470& ***!
-  \*******************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("page-header", {
-        staticClass: "mb-4",
-        attrs: { title: "Asset Category Details", backButton: true }
-      }),
-      _vm._v(" "),
-      _c(
-        "v-row",
-        [
-          _c(
-            "v-col",
-            { attrs: { cols: "12", md: "4" } },
-            [
-              _c("CardSummary", {
-                attrs: { title: _vm.form.name, subtitle: "# " + _vm.form.code },
-                scopedSlots: _vm._u([
-                  {
-                    key: "body",
-                    fn: function() {
-                      return [
-                        _c("p", [_vm._v("Type: " + _vm._s(_vm.form.type))]),
-                        _vm._v(" "),
-                        _c("p", [
-                          _vm._v("Last Updated: " + _vm._s(_vm.form.updated_at))
-                        ])
-                      ]
-                    },
-                    proxy: true
-                  },
-                  {
-                    key: "actions",
-                    fn: function() {
-                      return [
-                        _c(
-                          "v-btn",
-                          {
-                            attrs: { icon: "" },
-                            on: {
-                              click: function($event) {
-                                _vm.dialogAssetCategoryEdit = true
-                              }
-                            }
-                          },
-                          [
-                            _c("v-icon", [
-                              _vm._v(
-                                "\n                            mdi-file-document-edit-outline\n                        "
-                              )
-                            ])
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-btn",
-                          { attrs: { icon: "" }, on: { click: _vm.onDelete } },
-                          [
-                            _c("v-icon", [
-                              _vm._v(
-                                "\n                            mdi-delete\n                        "
-                              )
-                            ])
-                          ],
-                          1
-                        )
-                      ]
-                    },
-                    proxy: true
-                  }
-                ])
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-col",
-            { attrs: { cols: "12", md: "8" } },
-            [
-              _c(
-                "v-card",
-                [
-                  _c(
-                    "v-tabs",
-                    {
-                      attrs: { "show-arrows": "" },
-                      model: {
-                        value: _vm.tab,
-                        callback: function($$v) {
-                          _vm.tab = $$v
-                        },
-                        expression: "tab"
-                      }
-                    },
-                    [
-                      _c("v-tabs-slider", {
-                        attrs: { color: "teal lighten-3" }
-                      }),
-                      _vm._v(" "),
-                      _vm._l(_vm.items, function(item) {
-                        return _c("v-tab", { key: item }, [
-                          _vm._v(
-                            "\n                        " +
-                              _vm._s(item) +
-                              "\n                    "
-                          )
-                        ])
-                      })
-                    ],
-                    2
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-tabs-items",
-                    {
-                      model: {
-                        value: _vm.tab,
-                        callback: function($$v) {
-                          _vm.tab = $$v
-                        },
-                        expression: "tab"
-                      }
-                    },
-                    [
-                      _c(
-                        "v-tab-item",
-                        [
-                          _c(
-                            "v-card",
-                            { attrs: { flat: "" } },
-                            [
-                              _c(
-                                "v-card-text",
-                                [
-                                  _c("v-simple-table", {
-                                    scopedSlots: _vm._u([
-                                      {
-                                        key: "default",
-                                        fn: function() {
-                                          return [
-                                            _c("thead", [
-                                              _c("tr", [
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Name\n                                                "
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Value\n                                                "
-                                                    )
-                                                  ]
-                                                )
-                                              ])
-                                            ]),
-                                            _vm._v(" "),
-                                            _c(
-                                              "tbody",
-                                              _vm._l(_vm.form, function(
-                                                value,
-                                                name,
-                                                index
-                                              ) {
-                                                return _c(
-                                                  "tr",
-                                                  { key: index },
-                                                  [
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(name))
-                                                    ]),
-                                                    _vm._v(" "),
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(value))
-                                                    ])
-                                                  ]
-                                                )
-                                              }),
-                                              0
-                                            )
-                                          ]
-                                        },
-                                        proxy: true
-                                      }
-                                    ])
-                                  })
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-tab-item",
-                        [
-                          _c(
-                            "v-card",
-                            { attrs: { flat: "" } },
-                            [
-                              _c(
-                                "v-card-text",
-                                [
-                                  _c("v-simple-table", {
-                                    scopedSlots: _vm._u([
-                                      {
-                                        key: "default",
-                                        fn: function() {
-                                          return [
-                                            _c("thead", [
-                                              _c("tr", [
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Name\n                                                "
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Value\n                                                "
-                                                    )
-                                                  ]
-                                                )
-                                              ])
-                                            ]),
-                                            _vm._v(" "),
-                                            _c(
-                                              "tbody",
-                                              _vm._l(_vm.records, function(
-                                                item
-                                              ) {
-                                                return _c(
-                                                  "tr",
-                                                  { key: item.name },
-                                                  [
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.name))
-                                                    ]),
-                                                    _vm._v(" "),
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.value))
-                                                    ])
-                                                  ]
-                                                )
-                                              }),
-                                              0
-                                            )
-                                          ]
-                                        },
-                                        proxy: true
-                                      }
-                                    ])
-                                  })
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-tab-item",
-                        [
-                          _c(
-                            "v-card",
-                            { attrs: { flat: "" } },
-                            [
-                              _c(
-                                "v-card-text",
-                                [
-                                  _c("v-simple-table", {
-                                    scopedSlots: _vm._u([
-                                      {
-                                        key: "default",
-                                        fn: function() {
-                                          return [
-                                            _c("thead", [
-                                              _c("tr", [
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Name\n                                                "
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Value\n                                                "
-                                                    )
-                                                  ]
-                                                )
-                                              ])
-                                            ]),
-                                            _vm._v(" "),
-                                            _c(
-                                              "tbody",
-                                              _vm._l(_vm.records, function(
-                                                item
-                                              ) {
-                                                return _c(
-                                                  "tr",
-                                                  { key: item.name },
-                                                  [
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.name))
-                                                    ]),
-                                                    _vm._v(" "),
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.value))
-                                                    ])
-                                                  ]
-                                                )
-                                              }),
-                                              0
-                                            )
-                                          ]
-                                        },
-                                        proxy: true
-                                      }
-                                    ])
-                                  })
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-tab-item",
-                        [
-                          _c(
-                            "v-card",
-                            { attrs: { flat: "" } },
-                            [
-                              _c(
-                                "v-card-text",
-                                [
-                                  _c("v-simple-table", {
-                                    scopedSlots: _vm._u([
-                                      {
-                                        key: "default",
-                                        fn: function() {
-                                          return [
-                                            _c("thead", [
-                                              _c("tr", [
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Name\n                                                "
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Value\n                                                "
-                                                    )
-                                                  ]
-                                                )
-                                              ])
-                                            ]),
-                                            _vm._v(" "),
-                                            _c(
-                                              "tbody",
-                                              _vm._l(_vm.records, function(
-                                                item
-                                              ) {
-                                                return _c(
-                                                  "tr",
-                                                  { key: item.name },
-                                                  [
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.name))
-                                                    ]),
-                                                    _vm._v(" "),
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.value))
-                                                    ])
-                                                  ]
-                                                )
-                                              }),
-                                              0
-                                            )
-                                          ]
-                                        },
-                                        proxy: true
-                                      }
-                                    ])
-                                  })
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-tab-item",
-                        [
-                          _c(
-                            "v-card",
-                            { attrs: { flat: "" } },
-                            [
-                              _c(
-                                "v-card-text",
-                                [
-                                  _c("v-simple-table", {
-                                    scopedSlots: _vm._u([
-                                      {
-                                        key: "default",
-                                        fn: function() {
-                                          return [
-                                            _c("thead", [
-                                              _c("tr", [
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Name\n                                                "
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Value\n                                                "
-                                                    )
-                                                  ]
-                                                )
-                                              ])
-                                            ]),
-                                            _vm._v(" "),
-                                            _c(
-                                              "tbody",
-                                              _vm._l(_vm.records, function(
-                                                item
-                                              ) {
-                                                return _c(
-                                                  "tr",
-                                                  { key: item.name },
-                                                  [
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.name))
-                                                    ]),
-                                                    _vm._v(" "),
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.value))
-                                                    ])
-                                                  ]
-                                                )
-                                              }),
-                                              0
-                                            )
-                                          ]
-                                        },
-                                        proxy: true
-                                      }
-                                    ])
-                                  })
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-tab-item",
-                        [
-                          _c(
-                            "v-card",
-                            { attrs: { flat: "" } },
-                            [
-                              _c(
-                                "v-card-text",
-                                [
-                                  _c("v-simple-table", {
-                                    scopedSlots: _vm._u([
-                                      {
-                                        key: "default",
-                                        fn: function() {
-                                          return [
-                                            _c("thead", [
-                                              _c("tr", [
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Name\n                                                "
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Value\n                                                "
-                                                    )
-                                                  ]
-                                                )
-                                              ])
-                                            ]),
-                                            _vm._v(" "),
-                                            _c(
-                                              "tbody",
-                                              _vm._l(_vm.records, function(
-                                                item
-                                              ) {
-                                                return _c(
-                                                  "tr",
-                                                  { key: item.name },
-                                                  [
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.name))
-                                                    ]),
-                                                    _vm._v(" "),
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.value))
-                                                    ])
-                                                  ]
-                                                )
-                                              }),
-                                              0
-                                            )
-                                          ]
-                                        },
-                                        proxy: true
-                                      }
-                                    ])
-                                  })
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-tab-item",
-                        [
-                          _c(
-                            "v-card",
-                            { attrs: { flat: "" } },
-                            [
-                              _c(
-                                "v-card-text",
-                                [
-                                  _c("v-simple-table", {
-                                    scopedSlots: _vm._u([
-                                      {
-                                        key: "default",
-                                        fn: function() {
-                                          return [
-                                            _c("thead", [
-                                              _c("tr", [
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Name\n                                                "
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "th",
-                                                  { staticClass: "text-left" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Value\n                                                "
-                                                    )
-                                                  ]
-                                                )
-                                              ])
-                                            ]),
-                                            _vm._v(" "),
-                                            _c(
-                                              "tbody",
-                                              _vm._l(_vm.records, function(
-                                                item
-                                              ) {
-                                                return _c(
-                                                  "tr",
-                                                  { key: item.name },
-                                                  [
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.name))
-                                                    ]),
-                                                    _vm._v(" "),
-                                                    _c("td", [
-                                                      _vm._v(_vm._s(item.value))
-                                                    ])
-                                                  ]
-                                                )
-                                              }),
-                                              0
-                                            )
-                                          ]
-                                        },
-                                        proxy: true
-                                      }
-                                    ])
-                                  })
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("AssetCategoryEdit", {
-        attrs: {
-          asset_category: _vm.form,
-          dialogEdit: _vm.dialogAssetCategoryEdit
-        },
-        on: {
-          "close-dialog": function($event) {
-            _vm.dialogAssetCategoryEdit = false
-          },
-          "save-dialog": function() {
-            _vm.getData()
-            _vm.dialogAssetCategoryEdit = false
-          }
-        }
-      })
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/pages/CardSummary.vue":
-/*!*******************************************************!*\
-  !*** ./resources/js/components/pages/CardSummary.vue ***!
-  \*******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _CardSummary_vue_vue_type_template_id_1e96e050___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CardSummary.vue?vue&type=template&id=1e96e050& */ "./resources/js/components/pages/CardSummary.vue?vue&type=template&id=1e96e050&");
-/* harmony import */ var _CardSummary_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CardSummary.vue?vue&type=script&lang=js& */ "./resources/js/components/pages/CardSummary.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _CardSummary_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _CardSummary_vue_vue_type_template_id_1e96e050___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _CardSummary_vue_vue_type_template_id_1e96e050___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/pages/CardSummary.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/pages/CardSummary.vue?vue&type=script&lang=js&":
-/*!********************************************************************************!*\
-  !*** ./resources/js/components/pages/CardSummary.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CardSummary_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./CardSummary.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/CardSummary.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CardSummary_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/pages/CardSummary.vue?vue&type=template&id=1e96e050&":
-/*!**************************************************************************************!*\
-  !*** ./resources/js/components/pages/CardSummary.vue?vue&type=template&id=1e96e050& ***!
-  \**************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CardSummary_vue_vue_type_template_id_1e96e050___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./CardSummary.vue?vue&type=template&id=1e96e050& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/CardSummary.vue?vue&type=template&id=1e96e050&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CardSummary_vue_vue_type_template_id_1e96e050___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CardSummary_vue_vue_type_template_id_1e96e050___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/pages/asset_categories/Edit.vue":
+/***/ "./resources/js/pages/checkin_requests/Form.vue":
 /*!******************************************************!*\
-  !*** ./resources/js/pages/asset_categories/Edit.vue ***!
+  !*** ./resources/js/pages/checkin_requests/Form.vue ***!
   \******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Edit_vue_vue_type_template_id_0723c255___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Edit.vue?vue&type=template&id=0723c255& */ "./resources/js/pages/asset_categories/Edit.vue?vue&type=template&id=0723c255&");
-/* harmony import */ var _Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Edit.vue?vue&type=script&lang=js& */ "./resources/js/pages/asset_categories/Edit.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Form_vue_vue_type_template_id_4a9e00b8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=template&id=4a9e00b8& */ "./resources/js/pages/checkin_requests/Form.vue?vue&type=template&id=4a9e00b8&");
+/* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./resources/js/pages/checkin_requests/Form.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -1463,9 +755,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Edit_vue_vue_type_template_id_0723c255___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Edit_vue_vue_type_template_id_0723c255___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Form_vue_vue_type_template_id_4a9e00b8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Form_vue_vue_type_template_id_4a9e00b8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -1475,107 +767,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/pages/asset_categories/Edit.vue"
+component.options.__file = "resources/js/pages/checkin_requests/Form.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/pages/asset_categories/Edit.vue?vue&type=script&lang=js&":
+/***/ "./resources/js/pages/checkin_requests/Form.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************!*\
-  !*** ./resources/js/pages/asset_categories/Edit.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/js/pages/checkin_requests/Form.vue?vue&type=script&lang=js& ***!
   \*******************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Edit.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/asset_categories/Edit.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/checkin_requests/Form.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/pages/asset_categories/Edit.vue?vue&type=template&id=0723c255&":
+/***/ "./resources/js/pages/checkin_requests/Form.vue?vue&type=template&id=4a9e00b8&":
 /*!*************************************************************************************!*\
-  !*** ./resources/js/pages/asset_categories/Edit.vue?vue&type=template&id=0723c255& ***!
+  !*** ./resources/js/pages/checkin_requests/Form.vue?vue&type=template&id=4a9e00b8& ***!
   \*************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_0723c255___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Edit.vue?vue&type=template&id=0723c255& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/asset_categories/Edit.vue?vue&type=template&id=0723c255&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_0723c255___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_4a9e00b8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=template&id=4a9e00b8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/checkin_requests/Form.vue?vue&type=template&id=4a9e00b8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_4a9e00b8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_0723c255___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/pages/asset_categories/Show.vue":
-/*!******************************************************!*\
-  !*** ./resources/js/pages/asset_categories/Show.vue ***!
-  \******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Show_vue_vue_type_template_id_d9170470___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Show.vue?vue&type=template&id=d9170470& */ "./resources/js/pages/asset_categories/Show.vue?vue&type=template&id=d9170470&");
-/* harmony import */ var _Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Show.vue?vue&type=script&lang=js& */ "./resources/js/pages/asset_categories/Show.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Show_vue_vue_type_template_id_d9170470___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Show_vue_vue_type_template_id_d9170470___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/pages/asset_categories/Show.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/pages/asset_categories/Show.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/pages/asset_categories/Show.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Show.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/asset_categories/Show.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/pages/asset_categories/Show.vue?vue&type=template&id=d9170470&":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/pages/asset_categories/Show.vue?vue&type=template&id=d9170470& ***!
-  \*************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_d9170470___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Show.vue?vue&type=template&id=d9170470& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/asset_categories/Show.vue?vue&type=template&id=d9170470&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_d9170470___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_d9170470___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_4a9e00b8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
