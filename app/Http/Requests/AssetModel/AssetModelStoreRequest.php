@@ -29,7 +29,7 @@ class AssetModelStoreRequest extends FormRequest
             'name' => ['required', 'string', 'max:250', 'unique:asset_models,name'],
             "model_no" => ['required', 'string', 'max:250'],
             "is_active" => ['required', 'boolean'],
-            "manufacturer_id" => ['nullable', 'integer'],
+            "manufacturer_id" => ['required', 'integer'],
         ];
     }
 }

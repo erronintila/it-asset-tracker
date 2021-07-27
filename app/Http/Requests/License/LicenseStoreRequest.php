@@ -35,7 +35,7 @@ class LicenseStoreRequest extends FormRequest
             "warranty_end_date" => ["nullable", "string", "max:250"],
 
             "supplier_id" => ['nullable', 'integer'],
-            "manufacturer_id" => ['nullable', 'integer'],
+            "manufacturer_id" => ['required', 'integer'],
             "asset_category_id" => ['required', 'integer'],
 
             "assigned_user_id" => ["nullable", "integer"],

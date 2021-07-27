@@ -48,7 +48,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         asset_category: "",
         assigned_user_id: "",
         assigned_location_id: "",
-        assigned_asset_id: ""
+        assigned_asset_id: "",
+        date_range: []
       },
       errors: {
         code: [],
@@ -83,7 +84,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       _services_LicenseDataService__WEBPACK_IMPORTED_MODULE_0__["default"].show(this.$route.params.id, data).then(function (response) {
         console.log(response.data);
-        _this.form = _objectSpread(_objectSpread({}, _this.form), response.data.data);
+        _this.form = _objectSpread(_objectSpread(_objectSpread({}, _this.form), response.data.data), {
+          date_range: [response.data.data.warranty_start_date, response.data.data.warranty_end_date]
+        });
       })["catch"](function (error) {
         console.log(error.response);
         alert("An error has occurred.");

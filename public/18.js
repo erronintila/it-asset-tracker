@@ -1,5 +1,212 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[18],{
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/X-DateRangePicker.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/X-DateRangePicker.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    dateRange: {
+      type: Array,
+      "default": function _default() {
+        return [moment__WEBPACK_IMPORTED_MODULE_0___default()().startOf("month").format("YYYY-MM-DD"), moment__WEBPACK_IMPORTED_MODULE_0___default()().endOf("month").format("YYYY-MM-DD")];
+      }
+    },
+    datePreset: {
+      type: String,
+      "default": "Custom"
+    },
+    datePresets: {
+      type: Array,
+      "default": function _default() {
+        return [{
+          label: "Today",
+          range: [moment__WEBPACK_IMPORTED_MODULE_0___default()().format("YYYY-MM-DD"), moment__WEBPACK_IMPORTED_MODULE_0___default()().format("YYYY-MM-DD")]
+        }, {
+          label: "Yesterday",
+          range: [moment__WEBPACK_IMPORTED_MODULE_0___default()().subtract(1, "days").format("YYYY-MM-DD"), moment__WEBPACK_IMPORTED_MODULE_0___default()().subtract(1, "days").format("YYYY-MM-DD")]
+        }, {
+          label: "This Week",
+          range: [moment__WEBPACK_IMPORTED_MODULE_0___default()().startOf("week").format("YYYY-MM-DD"), moment__WEBPACK_IMPORTED_MODULE_0___default()().endOf("week").format("YYYY-MM-DD")]
+        }, {
+          label: "Last Week",
+          range: [moment__WEBPACK_IMPORTED_MODULE_0___default()().subtract(1, "weeks").startOf("week").format("YYYY-MM-DD"), moment__WEBPACK_IMPORTED_MODULE_0___default()().subtract(1, "weeks").endOf("week").format("YYYY-MM-DD")]
+        }, {
+          label: "This Month",
+          range: [moment__WEBPACK_IMPORTED_MODULE_0___default()().startOf("month").format("YYYY-MM-DD"), moment__WEBPACK_IMPORTED_MODULE_0___default()().endOf("month").format("YYYY-MM-DD")]
+        }, {
+          label: "Last Month",
+          range: [moment__WEBPACK_IMPORTED_MODULE_0___default()().subtract(1, "months").startOf("month").format("YYYY-MM-DD"), moment__WEBPACK_IMPORTED_MODULE_0___default()().subtract(1, "months").endOf("month").format("YYYY-MM-DD")]
+        }, {
+          label: "This Quarter",
+          range: [moment__WEBPACK_IMPORTED_MODULE_0___default()().startOf("quarter").format("YYYY-MM-DD"), moment__WEBPACK_IMPORTED_MODULE_0___default()().endOf("quarter").format("YYYY-MM-DD")]
+        }, {
+          label: "Last Quarter",
+          range: [moment__WEBPACK_IMPORTED_MODULE_0___default()().subtract(1, "quarters").startOf("quarter").format("YYYY-MM-DD"), moment__WEBPACK_IMPORTED_MODULE_0___default()().subtract(1, "quarters").endOf("quarter").format("YYYY-MM-DD")]
+        }, {
+          label: "This Year",
+          range: [moment__WEBPACK_IMPORTED_MODULE_0___default()().startOf("year").format("YYYY-MM-DD"), moment__WEBPACK_IMPORTED_MODULE_0___default()().endOf("year").format("YYYY-MM-DD")]
+        }, {
+          label: "Last Year",
+          range: [moment__WEBPACK_IMPORTED_MODULE_0___default()().subtract(1, "years").startOf("year").format("YYYY-MM-DD"), moment__WEBPACK_IMPORTED_MODULE_0___default()().subtract(1, "years").endOf("year").format("YYYY-MM-DD")]
+        }, {
+          label: "Last 5 Years",
+          range: [moment__WEBPACK_IMPORTED_MODULE_0___default()().subtract(5, "years").startOf("year").format("YYYY-MM-DD"), moment__WEBPACK_IMPORTED_MODULE_0___default()().subtract(1, "years").endOf("year").format("YYYY-MM-DD")]
+        }];
+      }
+    }
+  },
+  data: function data() {
+    return {
+      range: [],
+      preset: {},
+      presets: [],
+      dialog: false
+    };
+  },
+  methods: {
+    onCancel: function onCancel() {
+      this.dialog = false;
+      this.preset = {};
+    },
+    onSave: function onSave() {
+      if (this.range && this.range.length == 2) {
+        var sortedDates = this.range.sort(function (a, b) {
+          return new Date(a) - new Date(b);
+        });
+        this.$refs.dialog.save(sortedDates);
+        this.$emit("on-change", sortedDates);
+        return;
+      }
+
+      this.dialog = true;
+    }
+  },
+  computed: {
+    dateRangeText: function dateRangeText() {
+      if (this.range && this.range.length) {
+        var sortedDates = this.range.sort(function (a, b) {
+          return new Date(a) - new Date(b);
+        });
+        return sortedDates.join(" ~ ");
+      }
+
+      return "";
+    }
+  },
+  watch: {
+    preset: function preset() {
+      if (this.preset && Object.keys(this.preset).length) {
+        this.range = this.preset.range;
+      }
+    },
+    dateRange: {
+      immediate: true,
+      handler: function handler(newValue, oldValue) {
+        this.range = newValue;
+      }
+    },
+    datePreset: {
+      immediate: true,
+      handler: function handler(newValue, oldValue) {
+        this.preset = newValue;
+      }
+    },
+    datePresets: {
+      immediate: true,
+      handler: function handler(newValue, oldValue) {
+        this.presets = newValue;
+      }
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/licenses/Form.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/licenses/Form.vue?vue&type=script&lang=js& ***!
@@ -14,6 +221,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_selectors_AssetCategoryDialogSelector_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/selectors/AssetCategoryDialogSelector.vue */ "./resources/js/components/selectors/AssetCategoryDialogSelector.vue");
 /* harmony import */ var _components_selectors_ManufacturerDialogSelector_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/selectors/ManufacturerDialogSelector.vue */ "./resources/js/components/selectors/ManufacturerDialogSelector.vue");
 /* harmony import */ var _components_selectors_SupplierDialogSelector_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/selectors/SupplierDialogSelector.vue */ "./resources/js/components/selectors/SupplierDialogSelector.vue");
+/* harmony import */ var _components_X_DateRangePicker_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/X-DateRangePicker.vue */ "./resources/js/components/X-DateRangePicker.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -298,6 +506,37 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -322,7 +561,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           asset_category: "",
           assigned_user_id: "",
           assigned_location_id: "",
-          assigned_asset_id: ""
+          assigned_asset_id: "",
+          date_range: []
         };
       }
     },
@@ -374,7 +614,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   components: {
     AssetCategoryDialogSelector: _components_selectors_AssetCategoryDialogSelector_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     ManufacturerDialogSelector: _components_selectors_ManufacturerDialogSelector_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    SupplierDialogSelector: _components_selectors_SupplierDialogSelector_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    SupplierDialogSelector: _components_selectors_SupplierDialogSelector_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    XDateRangePicker: _components_X_DateRangePicker_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   data: function data() {
     return {
@@ -398,7 +639,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         asset_category: "",
         assigned_user_id: "",
         assigned_location_id: "",
-        assigned_asset_id: ""
+        assigned_asset_id: "",
+        date_range: [moment__WEBPACK_IMPORTED_MODULE_0___default()().startOf("year").format("YYYY-MM-DD"), moment__WEBPACK_IMPORTED_MODULE_0___default()().endOf("year").format("YYYY-MM-DD")]
       }
     };
   },
@@ -427,11 +669,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         newForm.is_active = false;
       }
 
-      var warranty_dates = this.warranty_date.split("/"); // this.form.warranty_start_date = warranty_dates[0] ?? null;
-      // this.form.warranty_end_date = warranty_dates[1] ?? null;
-
-      newForm.warranty_start_date = null;
-      newForm.warranty_end_date = null;
+      newForm.warranty_start_date = newForm.date_range ? newForm.date_range[0] : null;
+      newForm.warranty_end_date = newForm.date_range ? newForm.date_range[1] : null;
       this.$emit("on-save", newForm);
     },
     onSelectAssetCategory: function onSelectAssetCategory(e) {
@@ -469,6 +708,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       this.form.supplier = e[0];
       this.dialogSupplier = false;
+    },
+    updateDates: function updateDates(e) {
+      this.form.date_range = e;
     }
   },
   computed: {
@@ -477,6 +719,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     maxDate: function maxDate() {
       return moment__WEBPACK_IMPORTED_MODULE_0___default()().format("YYYY-MM-DD");
+    },
+    formattedDateRange: function formattedDateRange() {
+      var start_date = moment__WEBPACK_IMPORTED_MODULE_0___default()(this.form.date_range[0]).format("MMM DD, YYYY");
+      var end_date = moment__WEBPACK_IMPORTED_MODULE_0___default()(this.form.date_range[1]).format("MMM DD, YYYY");
+
+      if (JSON.stringify(start_date) == JSON.stringify(end_date)) {
+        return start_date;
+      }
+
+      if (JSON.stringify(end_date) == null) {
+        return start_date;
+      }
+
+      return "".concat(start_date, " ~ ").concat(end_date);
     }
   },
   watch: {
@@ -488,6 +744,244 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }
 });
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/X-DateRangePicker.vue?vue&type=template&id=05b2e566&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/X-DateRangePicker.vue?vue&type=template&id=05b2e566& ***!
+  \********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-dialog",
+    {
+      ref: "dialog",
+      attrs: { "return-value": _vm.range, persistent: "", width: "290px" },
+      on: {
+        "update:returnValue": function($event) {
+          _vm.range = $event
+        },
+        "update:return-value": function($event) {
+          _vm.range = $event
+        }
+      },
+      scopedSlots: _vm._u(
+        [
+          {
+            key: "activator",
+            fn: function(ref) {
+              var on = ref.on
+              var attrs = ref.attrs
+              return [
+                _vm._t("openDialog", null, null, {
+                  on: on,
+                  attrs: attrs,
+                  dateRangeText: _vm.dateRangeText
+                })
+              ]
+            }
+          }
+        ],
+        null,
+        true
+      ),
+      model: {
+        value: _vm.dialog,
+        callback: function($$v) {
+          _vm.dialog = $$v
+        },
+        expression: "dialog"
+      }
+    },
+    [
+      _vm._v(" "),
+      _c(
+        "v-card",
+        [
+          _c(
+            "v-container",
+            [
+              _c(
+                "v-row",
+                [
+                  _c("v-col", [
+                    _c(
+                      "div",
+                      { staticClass: "text-center" },
+                      [
+                        _c(
+                          "v-menu",
+                          {
+                            attrs: { "offset-y": "" },
+                            scopedSlots: _vm._u([
+                              {
+                                key: "activator",
+                                fn: function(ref) {
+                                  var on = ref.on
+                                  var attrs = ref.attrs
+                                  return [
+                                    _c(
+                                      "v-btn",
+                                      _vm._g(
+                                        _vm._b(
+                                          {
+                                            attrs: {
+                                              color: "primary",
+                                              dark: "",
+                                              text: ""
+                                            }
+                                          },
+                                          "v-btn",
+                                          attrs,
+                                          false
+                                        ),
+                                        on
+                                      ),
+                                      [
+                                        _c("v-icon", [_vm._v("mdi-calendar")]),
+                                        _vm._v(
+                                          " \n                                    " +
+                                            _vm._s(_vm.dateRangeText) +
+                                            "\n                                "
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ]
+                                }
+                              }
+                            ])
+                          },
+                          [
+                            _vm._v(" "),
+                            _c(
+                              "v-list",
+                              {
+                                staticClass: "overflow-y-auto",
+                                staticStyle: { "max-height": "200px" }
+                              },
+                              [
+                                _c(
+                                  "v-list-item-group",
+                                  {
+                                    model: {
+                                      value: _vm.preset,
+                                      callback: function($$v) {
+                                        _vm.preset = $$v
+                                      },
+                                      expression: "preset"
+                                    }
+                                  },
+                                  _vm._l(_vm.presets, function(item, index) {
+                                    return _c(
+                                      "v-list-item",
+                                      { key: index, attrs: { value: item } },
+                                      [
+                                        _c("v-list-item-title", [
+                                          _vm._v(
+                                            "\n                                            " +
+                                              _vm._s(item.label) +
+                                              "\n                                        "
+                                          )
+                                        ])
+                                      ],
+                                      1
+                                    )
+                                  }),
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.range && _vm.range.length != 2
+                      ? _c(
+                          "div",
+                          { staticClass: "overline red--text text-capitalize" },
+                          [
+                            _vm._v(
+                              "\n                        *select 1 more\n                    "
+                            )
+                          ]
+                        )
+                      : _vm._e()
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-divider")
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-date-picker",
+            {
+              attrs: { "no-title": "", range: "", scrollable: "" },
+              on: {
+                change: function($event) {
+                  _vm.preset = {}
+                }
+              },
+              model: {
+                value: _vm.range,
+                callback: function($$v) {
+                  _vm.range = $$v
+                },
+                expression: "range"
+              }
+            },
+            [
+              _c("v-spacer"),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                {
+                  attrs: { text: "", color: "primary" },
+                  on: { click: _vm.onCancel }
+                },
+                [_vm._v(" Cancel ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                {
+                  attrs: { text: "", color: "primary" },
+                  on: { click: _vm.onSave }
+                },
+                [_vm._v(" OK ")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
 
 /***/ }),
 
@@ -1085,27 +1579,61 @@ var render = function() {
                                 }
                               }),
                               _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  "error-messages":
-                                    _vm.errors.warranty_start_date[0],
-                                  hint: "Ex. 000011",
-                                  label: "Warranty Date",
-                                  outlined: "",
-                                  clearable: ""
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.warranty_start_date = []
+                              _c("XDateRangePicker", {
+                                ref: "dateRangePicker",
+                                attrs: { dateRange: _vm.form.date_range },
+                                on: { "on-change": _vm.updateDates },
+                                scopedSlots: _vm._u([
+                                  {
+                                    key: "openDialog",
+                                    fn: function(ref) {
+                                      var on = ref.on
+                                      var attrs = ref.attrs
+                                      var dateRangeText = ref.dateRangeText
+                                      return [
+                                        _c(
+                                          "v-text-field",
+                                          _vm._g(
+                                            _vm._b(
+                                              {
+                                                attrs: {
+                                                  value: dateRangeText,
+                                                  "error-messages":
+                                                    _vm.errors
+                                                      .warranty_start_date,
+                                                  label: "Warranty",
+                                                  readonly: "",
+                                                  outlined: "",
+                                                  clearable: ""
+                                                },
+                                                on: {
+                                                  input: function($event) {
+                                                    _vm.errors.warranty_start_date = []
+                                                  }
+                                                },
+                                                model: {
+                                                  value: _vm.form.date_range,
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.form,
+                                                      "date_range",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression: "form.date_range"
+                                                }
+                                              },
+                                              "v-text-field",
+                                              attrs,
+                                              false
+                                            ),
+                                            on
+                                          )
+                                        )
+                                      ]
+                                    }
                                   }
-                                },
-                                model: {
-                                  value: _vm.form.warranty_date,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "warranty_date", $$v)
-                                  },
-                                  expression: "form.warranty_date"
-                                }
+                                ])
                               })
                             ],
                             1
@@ -1153,6 +1681,75 @@ var render = function() {
 }
 var staticRenderFns = []
 render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/X-DateRangePicker.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/X-DateRangePicker.vue ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _X_DateRangePicker_vue_vue_type_template_id_05b2e566___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./X-DateRangePicker.vue?vue&type=template&id=05b2e566& */ "./resources/js/components/X-DateRangePicker.vue?vue&type=template&id=05b2e566&");
+/* harmony import */ var _X_DateRangePicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./X-DateRangePicker.vue?vue&type=script&lang=js& */ "./resources/js/components/X-DateRangePicker.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _X_DateRangePicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _X_DateRangePicker_vue_vue_type_template_id_05b2e566___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _X_DateRangePicker_vue_vue_type_template_id_05b2e566___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/X-DateRangePicker.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/X-DateRangePicker.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/X-DateRangePicker.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_X_DateRangePicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./X-DateRangePicker.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/X-DateRangePicker.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_X_DateRangePicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/X-DateRangePicker.vue?vue&type=template&id=05b2e566&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/X-DateRangePicker.vue?vue&type=template&id=05b2e566& ***!
+  \**************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_X_DateRangePicker_vue_vue_type_template_id_05b2e566___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./X-DateRangePicker.vue?vue&type=template&id=05b2e566& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/X-DateRangePicker.vue?vue&type=template&id=05b2e566&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_X_DateRangePicker_vue_vue_type_template_id_05b2e566___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_X_DateRangePicker_vue_vue_type_template_id_05b2e566___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
