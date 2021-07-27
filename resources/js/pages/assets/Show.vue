@@ -316,6 +316,8 @@ export default {
                 purchased_cost: "",
                 warranty_start_date: "",
                 warranty_end_date: "",
+                received_date: "",
+                received_by: "",
                 sku: "",
                 quantity: "",
                 notes: "",

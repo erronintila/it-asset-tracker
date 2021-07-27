@@ -1,0 +1,836 @@
+[33mcommit 7306cede73e06da6568bdc94d3c7e6e51e303e23[m[33m ([m[1;36mHEAD -> [m[1;32mdevelop[m[33m, [m[1;31morigin/develop[m[33m)[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Tue Jul 27 14:23:15 2021 +0800
+
+    Add datepicker on licenses.
+
+[33mcommit 823ea99194d4d3d3bfad54175edf8f8d51be13e1[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Sat Jul 24 13:15:22 2021 +0800
+
+    Set up frontend layout for checkin requests.
+
+[33mcommit 2290be3925bf6cdac264c0bc6224786a810c40c1[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Sat Jul 24 11:20:10 2021 +0800
+
+    Add CRUD functionality on backend for checkin requests.
+
+[33mcommit 133ca81b07464cbf0c37999845c9c4b9048a1f09[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Sat Jul 24 10:10:53 2021 +0800
+
+    Modify Asset and License fields.
+
+[33mcommit 53dec48a9ea02caf38cd3d45f99d09aa268b69f1[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Sat Jul 24 08:47:11 2021 +0800
+
+    Refactor source code for dialog selectors.
+
+[33mcommit 90ff46e76bb9577798b0263b972e0ca4a15cae18[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Sat Jul 24 04:29:01 2021 +0800
+
+    Add dialog selectors for supplier, manufacturer, asset model, and asset category on assets.
+
+[33mcommit 8e8f25c0eebf63bb6a2d33ddaea508b0c689eaa9[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Sat Jul 24 04:08:11 2021 +0800
+
+    Add dialog selector for supplier, manufacturer, and asset category on licenses.
+
+[33mcommit ee4bdcf9abc5c675f015cfd3eee88416a95399b4[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Sat Jul 24 03:28:22 2021 +0800
+
+    Add manufacturer dialog selector for asset models.
+
+[33mcommit 970665c40add3a77e2daa4b0d87d335aecdf1266[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Sat Jul 24 02:36:07 2021 +0800
+
+    Refactor source code for dialog selectors.
+
+[33mcommit 5717f58c7ad39a6f281bddd5153f659a8f181c22[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Sat Jul 24 02:29:08 2021 +0800
+
+    Set up dialog selectors for all models. Add dialog selector for employees and customers when selecting department and location.
+
+[33mcommit 5faf1df8e3644beb6ff9a9dd83d1405869215bfe[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 23 19:35:52 2021 +0800
+
+    Add CRUD functionality in frontend for licenses.
+
+[33mcommit 8a2de1ef0d08556d9bf52a18851bdc530ad4b9a0[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 23 19:08:26 2021 +0800
+
+    Add CRUD functionality on backend for licenses.
+
+[33mcommit 5a3b1171ee0a442b2cd91c170ff230403853b09d[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 23 18:58:20 2021 +0800
+
+    Modify AssetResource.
+
+[33mcommit 2078feb570682a707dd1b21b14698322f98d59b2[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 23 15:23:51 2021 +0800
+
+    Add frontend functionlality when creating, editing, viewing, deleting assets.
+
+[33mcommit 6d7e2a7a5461b42352806bad47a66fd1f5434968[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 23 13:51:50 2021 +0800
+
+    Set up layout and frontend functionality for assets.
+
+[33mcommit d539b028786d6c5d8096ba6f9b562d5d68a64905[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 23 13:44:26 2021 +0800
+
+    Modify model relationships; Add CRUD functionality on the backend for assets.
+
+[33mcommit 1a9289c6044f6c396ea749de572004c87847327c[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 23 10:36:58 2021 +0800
+
+    Modify search functionality on frontend.
+
+[33mcommit 638fff9fe76da6837760ff5aafa00cbdb7a2eeda[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 23 10:10:38 2021 +0800
+
+    Add search functiionality on all models.
+
+[33mcommit a01eb41ce46d292a42dcb9064e7688536e850a11[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Thu Jul 22 01:57:36 2021 +0800
+
+    Add frontend functionality when creating, editing, viewing, and deleting asset models.
+
+[33mcommit ff07408e682eb0044157bd4f083b67f02a5cf58d[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Thu Jul 22 01:35:02 2021 +0800
+
+    Add backend functionality when creating, editing, viewing, and deleting asset models.
+
+[33mcommit 7ffcb52450f8ef609376ba78c3f3ae15ca62c6da[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Thu Jul 22 00:43:09 2021 +0800
+
+    Modify General Settings layout.
+
+[33mcommit f5deb6e95540801497de7e2f81f1da6b7a62466f[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Thu Jul 22 00:40:26 2021 +0800
+
+    Add frontend functionality when creating, editing, viewing, and deleting request types.
+
+[33mcommit 513d8aafcb588556ebb8eb92c84b95971da9145c[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Thu Jul 22 00:32:30 2021 +0800
+
+    Add frontend functionality when creating, editing, viewing, and deleting work order types.
+
+[33mcommit aeaea806c5e42754c34523feb7fa0b596c364bc7[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Wed Jul 21 23:05:00 2021 +0800
+
+    Add frontend functionality when creating, editing, viewing, and deleting asset categories.
+
+[33mcommit 63b0ce6742ee7b386fd8635747d0210e55ede153[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Wed Jul 21 22:35:05 2021 +0800
+
+    Add backend functionality when creating, editing, viewing, and deleting transaction types.
+
+[33mcommit 636e3b0e97d3a45d3c9e640af08dbe98ed57c78f[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Wed Jul 21 22:23:19 2021 +0800
+
+    Add backend functionality when creating, editing, viewing, and deleting asset categories.
+
+[33mcommit cc39ddea7391b5f7605ec16fb7a58b00cd3bd00f[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Sat Jul 17 09:27:02 2021 +0800
+
+    Add frontend and backend functionality when viewing specific department.
+
+[33mcommit 0c8857e838c4d4fba8199367b41ef7ce45805d35[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Sat Jul 17 09:15:34 2021 +0800
+
+    Add frontend and backend functionality when viewing specific location.
+
+[33mcommit 08701dde33a49280e6904231585b0318d0a66d54[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Sat Jul 17 03:41:20 2021 +0800
+
+    Add frontend and backend functionlaity when viewing specific supplier, customer, employee, and manufacturer.
+
+[33mcommit 611b43fb0d767fb6d27b8c2470b77a777625db56[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Sat Jul 17 01:18:07 2021 +0800
+
+    Modify main page layout for customers, employees, suppliers, manufacturers.
+
+[33mcommit 0a7a933c01240431367c45b7df6988a5bd9c121e[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 16 13:43:08 2021 +0800
+
+    Add functionality when editing departments.
+
+[33mcommit c35dd99f0c0bf3c5220ce2eb310e478087baed87[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 16 13:06:58 2021 +0800
+
+    Create functionality when editing empoyees
+
+[33mcommit 2ac1ea589dbd2b6301591fbe4c9373ce8fd7f04f[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Thu Jul 15 15:22:51 2021 +0800
+
+    Create functionality when editing customers.
+
+[33mcommit 8b9f53c63636082ae69297a03d99ca745fd7de0c[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Thu Jul 15 02:34:50 2021 +0800
+
+    Add functionality when creating employees.
+
+[33mcommit 0489e6548eaae29db51c21d171bdea0c27b80c15[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Thu Jul 15 00:57:43 2021 +0800
+
+    Add deleteMany() function to customers.
+
+[33mcommit d47b70a4e6dc370920e9119ddda4b8f03baa8c59[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Thu Jul 15 00:53:59 2021 +0800
+
+    Modify layout form customers, employees, suppliers, and manufacturers and create functionality when saving new customers.
+
+[33mcommit f86422edeb8c7ab69a37269f51b22ef88f3c7144[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Wed Jul 14 23:43:09 2021 +0800
+
+    Set up frontend functionality for customers.
+
+[33mcommit 4535c12b221e1815337581b33549e3f4e4581d0c[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Wed Jul 14 22:37:42 2021 +0800
+
+    Set up frontend functionality for employees.
+
+[33mcommit 4b354798a47df8cef6062cbf3279ad9f99c36ec7[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Wed Jul 14 22:09:43 2021 +0800
+
+    Set up backend functionality for Customer.
+
+[33mcommit 94be93396230d9021b755f01150b38a9e61edd53[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Wed Jul 14 21:54:54 2021 +0800
+
+    Set up backend functionality for Employee.
+
+[33mcommit 527529b7cb5ad801893f8d41729a03cce9630892[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Wed Jul 14 00:26:13 2021 +0800
+
+    Add frontend functionality and layout for Department.
+
+[33mcommit 96f768f14967d535ed9b3d37b2f9abc9a4749dd4[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Tue Jul 13 22:00:17 2021 +0800
+
+    Modify layout for search and filter results labels.
+
+[33mcommit ce7897ca480ec2bbaf714a96ae5173ada012a1db[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Tue Jul 13 21:16:12 2021 +0800
+
+    Add frontend functionality when creating, editing, deleting, and retrieving Manufacturer information.
+
+[33mcommit 62397b02f01f8d767923a9525599fb023843126c[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Tue Jul 13 20:42:15 2021 +0800
+
+    Add frontend functionality when creating, editing, deleting, and retrieving Supplier information.
+
+[33mcommit 287e6f5f22537c44e557ca71e4c3e75ca749966b[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Tue Jul 13 17:07:02 2021 +0800
+
+    Set up backend functionality for Manufacturer.
+
+[33mcommit 4c26b673ea578bbd20a4d9e07300a749f9b079b1[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Tue Jul 13 16:59:12 2021 +0800
+
+    Set up backend functionality for Supplier.
+
+[33mcommit 73399cfd52e0ab8d41dbf1fb456dd9d6679575e4[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Tue Jul 13 16:45:22 2021 +0800
+
+    Modify create page layout for Department.
+
+[33mcommit 2198f587cd7f73c19194e2808942966f7274c244[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Tue Jul 13 11:39:19 2021 +0800
+
+    Set up backend for Department model.
+
+[33mcommit d9895d219b2a62a0937fa0525983320233d05e05[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Tue Jul 13 00:18:09 2021 +0800
+
+    Add SoftDelete on users migration file.
+
+[33mcommit 4159e5d3f2d22ac717ae0734083522f914c3ff7b[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Tue Jul 13 00:10:14 2021 +0800
+
+    Add CRUD operations for Location; Add SoftDeletes reference to all models; Modify Location page layout.
+
+[33mcommit 5a32d13cf39804e83773b3187ad28ad7aaadc3dd[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Mon Jul 12 00:44:48 2021 +0800
+
+    Modify Location layout and add retrieve all functionality.
+
+[33mcommit 68c17f0d12619770aa00ca906b1421f0eb139c54[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Sun Jul 11 18:23:43 2021 +0800
+
+    Add Loading Screen Component and modify Employee Create page.
+
+[33mcommit 564453ead0c36435e1f8d8b300c7e6070fbdfa75[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Sun Jul 11 13:04:22 2021 +0800
+
+    Add comments on Models; Modify HttpResponseMessage trait; Modify EmployeeController code structure.
+
+[33mcommit 82f5f38313f69b21e3631a3af5b725e4325d809d[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Sat Jul 10 11:03:06 2021 +0800
+
+    Add and modify layouts.
+
+[33mcommit e31f849e35f884d5699666e7856a0e19ea3f3e3e[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Sat Jul 10 03:12:55 2021 +0800
+
+    Modify Dashboard, Home Page, Profile layouts.
+
+[33mcommit 963fb59a697b6d5abb3766583a20b8aac9a31d49[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Sat Jul 10 00:59:45 2021 +0800
+
+    Modify Dashboard layout.
+
+[33mcommit e239a2cc3050a5ff823a4dc5f03aa076132e039d[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Thu Jul 8 00:54:37 2021 +0800
+
+    Add Department model and link to Employee model.
+
+[33mcommit 4a507654761e29b2c24235b948c4592afce74f00[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Wed Jul 7 22:31:26 2021 +0800
+
+    Modify Full Name Accessor for User, Employee, and Customer models.
+
+[33mcommit 04ea3156f20caf9a76823acb57d3afdcb674c260[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Wed Jul 7 22:24:14 2021 +0800
+
+    Update User migration and seeder.
+
+[33mcommit 41411bb659d8409badceff6c1203148a807a5c41[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Wed Jul 7 22:15:54 2021 +0800
+
+    Modify migration files and create seeders and factories.
+
+[33mcommit 728089e513568e2411b2f46a9b2608ae9722fa00[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Tue Jul 6 19:18:26 2021 +0800
+
+    Create new Requests and DataServices for all models
+
+[33mcommit 16f01c0769eccfbae6219a15c9d3ce3b82fa0845[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Tue Jul 6 11:26:42 2021 +0800
+
+    Modify License migration file.
+
+[33mcommit c7415a9674e1858721b78e5150fc581e9a197192[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Tue Jul 6 11:24:51 2021 +0800
+
+    Modify database migration files.
+
+[33mcommit ca8889d734f30bb264dfa917d54d2bb0b2038b6c[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Mon Jul 5 19:43:23 2021 +0800
+
+    Modify migration files.
+
+[33mcommit a01ab965a0549aa820a597429fa820e98bf1c5b1[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Mon Jul 5 16:25:37 2021 +0800
+
+    Add migration, model, controller, and seeder files.
+    Modify HttpResponse trait.
+
+[33mcommit 038a99f5e6de6445e5170a2f4b30d25546f58685[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Mon Jul 5 15:43:23 2021 +0800
+
+    Remove unused files and update UserSeeder.
+
+[33mcommit 8221eeee6a04820be97ec95bb36ffb58322afd57[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Sat Jul 3 15:15:45 2021 +0800
+
+    Update dashboard layout.
+
+[33mcommit 2b207bb2d73da88048ede56b609931ff9fcb999b[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Sat Jul 3 11:10:29 2021 +0800
+
+    Update General Settings page layout.
+
+[33mcommit f028593a7538cb0a96e6ffa85206da1196f002f9[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Sat Jul 3 05:29:05 2021 +0800
+
+    Update all page layouts.
+
+[33mcommit 924e363bd9c03e5d127d956939e20396ddd22e2f[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 2 22:13:56 2021 +0800
+
+    Update Asset, Asset Model, and Auth page layouts.
+
+[33mcommit 1d1ff3f914bd73f74cd94e05cf911b19854392b1[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 2 21:06:05 2021 +0800
+
+    Modify save button layout when creating asset.
+
+[33mcommit 0a0ccee67c0fc716a10bd612d014c916aa692d29[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 2 20:54:18 2021 +0800
+
+    Create Asset Review page and routes.
+
+[33mcommit 440dff2d5cf185259866f2b914c2f6f1b51fb287[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 2 20:26:58 2021 +0800
+
+    Update Asset Category routes.
+
+[33mcommit 89af89ec8888a6912c5303ff2945e2cffa5b3a4f[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 2 20:24:34 2021 +0800
+
+    Update Asset Category page layout.
+
+[33mcommit 8c74f7f38f7a042cc8960000c2bb455d681f2f5f[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 2 20:19:14 2021 +0800
+
+    Update Activity Logs page layout.
+
+[33mcommit 99e2b5afe31202649f04442d05c1c225f91a195b[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 2 20:10:25 2021 +0800
+
+    Update Department page layout.
+
+[33mcommit eced99bee128cef47b0d3dfb3412f5296fdc0c3c[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 2 20:07:10 2021 +0800
+
+    Update Manufacturer page layout.
+
+[33mcommit d7617b810df0566d91869d57c4c026dbf2f7b1cd[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 2 20:04:12 2021 +0800
+
+    Update Supplier page layout.
+
+[33mcommit 0e5efbfa1021f9cb595f248492efc1eb2c4ded1e[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 2 19:59:14 2021 +0800
+
+    Revert "Update Manufacturer page layout."
+    
+    This reverts commit f8f320d2c115178c6641d2262336b3104f53b756.
+
+[33mcommit f8f320d2c115178c6641d2262336b3104f53b756[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 2 19:57:10 2021 +0800
+
+    Update Manufacturer page layout.
+
+[33mcommit 2d912443c9775fa58a3cd455dfa4472cfd083b56[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 2 19:53:34 2021 +0800
+
+    Update Customer page layout.
+
+[33mcommit 6097da9572058ff74d67536f79bf33ac95a18fa7[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 2 19:50:36 2021 +0800
+
+    Update Employee page layout.
+
+[33mcommit c22595b5763cb582ddaac9901b5dd5b18e02f2d2[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 2 19:45:24 2021 +0800
+
+    Update Service Agreement page layout.
+
+[33mcommit b10c0b7c147a4f8e935ec7a94ba259b64c78ae2e[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 2 19:41:10 2021 +0800
+
+    Update Work Order page layout.
+
+[33mcommit c0bc39775a409c468f48ea3fc774cdad58e1c132[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 2 19:20:04 2021 +0800
+
+    Update Location page layout.
+
+[33mcommit a84bfa97ae2173d134ec40a710d06d93d258f60e[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 2 19:17:07 2021 +0800
+
+    Update License  page layout.
+
+[33mcommit 5e5c436e5e3603ace92c135e2fb58a4690e8ab40[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 2 19:14:04 2021 +0800
+
+    Update Consumable page layout.
+
+[33mcommit b6b570203c28b6016f5aac58ed9876ba92a87dc2[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 2 19:09:45 2021 +0800
+
+    Update Asset Model page layout.
+
+[33mcommit 910443a8bb9f335cc63c35e89f74eec8dc6e452f[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 2 18:22:19 2021 +0800
+
+    Modify Asset Page layout.
+
+[33mcommit 84ca7c08def7fe6fc0898cdb29ed1dd1d4f5daa4[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jul 2 01:08:07 2021 +0800
+
+    Modify layout, add pages and routes.
+
+[33mcommit ba573ece77c9275fa1babc6cd936fb4dc6833999[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Thu Jul 1 10:37:02 2021 +0800
+
+    Compile assets.
+
+[33mcommit 42645b5dcaa66d5762f9d367b5a401dbb25fd245[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Thu Jul 1 10:34:47 2021 +0800
+
+    Modify asset categories' pages and routes.
+
+[33mcommit ad8556b91d80b4d39481f9ffb4ff159d37a3cb09[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Thu Jul 1 09:35:11 2021 +0800
+
+    Add new pages and update routes
+
+[33mcommit 547ac65884476f1a0b877071a1353fb7ef78e7bd[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Wed Jun 30 14:47:40 2021 +0800
+
+    Provide initial setup for users
+
+[33mcommit 4527bb2d5a7807c4d8aa4b0bc41a416dc705c602[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Tue Jun 22 00:34:38 2021 +0800
+
+    Set up repository on new location
+
+[33mcommit 9294367e95ef716192ae23827ae739987f97050c[m
+Author: Erron <erronintila@gmail.com>
+Date:   Mon Jun 14 16:56:06 2021 +0800
+
+    added new bookmarked file
+
+[33mcommit 2a9cbc4d086f9870844135656734746c2aa21b38[m
+Author: Erron <erronintila@gmail.com>
+Date:   Mon Jun 14 16:42:48 2021 +0800
+
+    Removed location_user migration.
+
+[33mcommit 8e1ad64e9858e825156ff634eb0eea73695549c5[m
+Author: Erron <erronintila@gmail.com>
+Date:   Mon Jun 14 12:04:04 2021 +0800
+
+    modified migration files
+
+[33mcommit f47fa12e0fe34077913f37053d8cd2e087d815c2[m
+Author: Erron <erronintila@gmail.com>
+Date:   Fri Jun 11 16:20:43 2021 +0800
+
+    updates
+
+[33mcommit be446d6c033fe68100b9de1315bbd7869180cb65[m
+Author: Erron <erronintila@gmail.com>
+Date:   Thu Jun 10 16:33:30 2021 +0800
+
+    added references
+
+[33mcommit 4bb7931b46a37b8cfedd5445c49504f3672ae68b[m
+Author: Erron <erronintila@gmail.com>
+Date:   Wed Jun 9 16:49:44 2021 +0800
+
+    added new resources
+
+[33mcommit 0e8292aecb5354b138562ca2222ba24853490c78[m
+Author: Erron <erronintila@gmail.com>
+Date:   Wed Jun 9 16:47:53 2021 +0800
+
+    updated layout
+
+[33mcommit 90bdc8a7d2497252a00b98d274e329af5fc15129[m
+Author: Erron <erronintila@gmail.com>
+Date:   Wed Jun 9 15:55:01 2021 +0800
+
+    added schema
+
+[33mcommit 1660f5019fd82adf317883a2aa53541a4335d3d3[m
+Author: Erron <erronintila@gmail.com>
+Date:   Wed Jun 9 15:44:58 2021 +0800
+
+    updates
+
+[33mcommit dfd2f58084a6932f66411b762767e0ce99347ffd[m
+Author: Erron <erronintila@gmail.com>
+Date:   Tue Jun 8 16:55:16 2021 +0800
+
+    updated references
+
+[33mcommit eeddaea84bcd68becad46126ea9a962b9c7419e1[m
+Author: Erron <erronintila@gmail.com>
+Date:   Tue Jun 8 16:44:51 2021 +0800
+
+    added references
+
+[33mcommit eb47f77d1520bb9c75e9ee2f9792050ea331145b[m
+Author: Erron <erronintila@gmail.com>
+Date:   Tue Jun 8 16:14:34 2021 +0800
+
+    added references, modified application title
+
+[33mcommit 17f758e39868dafbc60e8060d13fffa76065f231[m
+Author: Erron <erronintila@gmail.com>
+Date:   Tue Jun 8 08:10:48 2021 +0800
+
+    changed directory
+
+[33mcommit 068c3e4a4699d2300b149ce8a83de542ffffe22d[m
+Author: Erron <erronintila@gmail.com>
+Date:   Mon Jun 7 16:52:59 2021 +0800
+
+    added browser favorites file
+
+[33mcommit c923654b94d83f2c2a4568b862fe23dc0fa3623e[m
+Author: Erron <erronintila@gmail.com>
+Date:   Mon Jun 7 16:28:14 2021 +0800
+
+    added new models with migrations (departments, suppliers, manufacturers, assets)
+
+[33mcommit 68d4f83b19b00191281b3312efec11296713a038[m
+Author: Erron <erronintila@gmail.com>
+Date:   Mon Jun 7 14:30:51 2021 +0800
+
+    modified authentication, users table and user seeder
+
+[33mcommit fed7f2cda2210104642678c97adea1c7ecc35b2f[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Mon Jun 7 11:13:04 2021 +0800
+
+    updated references
+
+[33mcommit 4d8d6c82d64ed68298e1f36963f74c4d427fa088[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Mon Jun 7 10:57:50 2021 +0800
+
+    updates
+
+[33mcommit 22a408bb889e93f9c01ca8396395f543ce88d7ca[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Mon Jun 7 02:33:34 2021 +0800
+
+    updated dashboard layout
+
+[33mcommit 18dc68732e73af522477b8a9d920102c8bf8df88[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Mon Jun 7 00:54:28 2021 +0800
+
+    set up new pages and routes
+
+[33mcommit fd31b1b14e3d7768c8e6d89268e11a6f28a467cb[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Sun Jun 6 21:24:41 2021 +0800
+
+    modified directories
+
+[33mcommit 9c856090fff8a9f0ed1e38242c8a79b7d06e76ae[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Sun Jun 6 13:50:39 2021 +0800
+
+    added documentation template
+
+[33mcommit 13bce3917fe6dc2ec124eb16d664f3ea0bb4aca4[m
+Author: Erron <erronintila@gmail.com>
+Date:   Sat Jun 5 16:46:37 2021 +0800
+
+    updated database structure
+
+[33mcommit 6b7fc31de6a845520c53318d18e175592934acbf[m
+Author: Erron <erronintila@gmail.com>
+Date:   Sat Jun 5 09:43:37 2021 +0800
+
+    modifed seeders
+
+[33mcommit 10d0972ab08e71aa4509ddb2b5fb267449bf96bc[m
+Author: Erron <erronintila@gmail.com>
+Date:   Sat Jun 5 09:31:07 2021 +0800
+
+    added spatie packages, merge users and customers into accounts
+
+[33mcommit 76239aa8830194953a921b638bce2dc2e5fb2f0f[m
+Author: Erron <erronintila@gmail.com>
+Date:   Sat Jun 5 08:42:33 2021 +0800
+
+    updates
+
+[33mcommit 53ed4130fae16abb652499303e9b5cfe62ebb503[m
+Merge: f117747 a0e3d8f
+Author: Erron <erronintila@gmail.com>
+Date:   Sat Jun 5 08:41:59 2021 +0800
+
+    Merge branch 'develop' of https://github.com/erronintila/field-service-system into develop
+    
+    # Conflicts:
+    #       public/13.js
+    #       public/14.js
+
+[33mcommit f117747df5fe13646cc99c8cf4915ee0e483de91[m
+Author: Erron <erronintila@gmail.com>
+Date:   Sat Jun 5 08:40:59 2021 +0800
+
+    updates
+
+[33mcommit a0e3d8fcbc989dfb2fdac004d046ef8144b62b1d[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jun 4 20:32:55 2021 +0800
+
+    updated dashboard layout
+
+[33mcommit 5a9f9b1436d0647c2885b357a133e5718ebe2a0c[m
+Author: Erron <erronintila@gmail.com>
+Date:   Fri Jun 4 16:56:55 2021 +0800
+
+    modified layout
+
+[33mcommit 10a0de17ec2cc6a80e7d727ed071e797c8ed8d09[m
+Author: Erron <erronintila@gmail.com>
+Date:   Fri Jun 4 16:46:48 2021 +0800
+
+    modified layout
+
+[33mcommit b6ee097e97aa3c1bcf22c9e1c1522808db279c66[m
+Author: Erron <erronintila@gmail.com>
+Date:   Fri Jun 4 16:40:44 2021 +0800
+
+    modified layout
+
+[33mcommit 59491b324d71dd32ebc96f34f5624fa9bedb837b[m
+Author: Erron <erronintila@gmail.com>
+Date:   Fri Jun 4 16:35:25 2021 +0800
+
+    modified layout
+
+[33mcommit b75c7202b9af7654a464629663cb65b57157163f[m
+Author: Erron <erronintila@gmail.com>
+Date:   Fri Jun 4 15:56:06 2021 +0800
+
+    changed font; modified dashboard
+
+[33mcommit 025824c3b65f66c1e2397ed02f5e59aa5323ce03[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Fri Jun 4 00:56:05 2021 +0800
+
+    modified layout
+
+[33mcommit c8ec7ebc42075946775ea19f9806be2d7bafa3de[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Thu Jun 3 23:25:19 2021 +0800
+
+    added new pages
+
+[33mcommit a5db3eed43c47dc5f4bf7cb0e7d80af940f5c117[m
+Merge: 8c74010 5792920
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Thu Jun 3 22:08:44 2021 +0800
+
+    Merge branch 'feature/users' into develop
+
+[33mcommit 579292029bc9e046c493a67b887b6d429daa6c89[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Thu Jun 3 22:08:13 2021 +0800
+
+    updates
+
+[33mcommit 95a454fb41773059f1e69b508460f6c8b954374c[m
+Author: Erron <erronintila@gmail.com>
+Date:   Thu Jun 3 16:59:06 2021 +0800
+
+    modified layout
+
+[33mcommit e73ccb2d2a60891912f14dcf67dc7431dc26f59f[m
+Author: Erron <erronintila@gmail.com>
+Date:   Thu Jun 3 15:48:11 2021 +0800
+
+    added user pages
+
+[33mcommit 8c740108923054fbafaf3a1058247c01db643006[m
+Author: Erron <erronintila@gmail.com>
+Date:   Thu Jun 3 11:13:59 2021 +0800
+
+    initial commit
+
+[33mcommit a82241abb18ab03683ddc92cd8e871119440fd89[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Wed Jun 2 23:06:02 2021 +0800
+
+    updated .env.example
+
+[33mcommit edfb312eb053372bcb34e845724be92d1c8a6dbf[m
+Author: Erron Intila <erronintila@gmail.com>
+Date:   Wed Jun 2 23:04:38 2021 +0800
+
+    first commit

@@ -228,7 +228,7 @@
                                         </SupplierDialogSelector>
                                     </template>
                                 </v-text-field>
-                                <v-text-field
+                                <!-- <v-text-field
                                     v-model="form.purchased_date"
                                     :error-messages="errors.purchased_date[0]"
                                     @input="errors.purchased_date = []"
@@ -236,7 +236,57 @@
                                     label="Purchase Date"
                                     outlined
                                     clearable
-                                ></v-text-field>
+                                ></v-text-field> -->
+                                <v-dialog
+                                    ref="dialogPurchasedDate"
+                                    v-model="purchased_dateModal"
+                                    :return-value.sync="form.purchased_date"
+                                    persistent
+                                    width="290px"
+                                >
+                                    <template v-slot:activator="{ on, attrs }">
+                                        <v-text-field
+                                            v-model="form.purchased_date"
+                                            label="Purchased Date"
+                                            readonly
+                                            v-bind="attrs"
+                                            v-on="on"
+                                            outlined
+                                            hint="Ex. 2000-01-01"
+                                            :error-messages="
+                                                errors.purchased_date[0]
+                                            "
+                                            @input="errors.purchased_date = []"
+                                            clearable
+                                        ></v-text-field>
+                                    </template>
+                                    <v-date-picker
+                                        v-model="form.purchased_date"
+                                        :max="maxDate"
+                                        scrollable
+                                        @input="errors.purchased_date = []"
+                                    >
+                                        <v-spacer></v-spacer>
+                                        <v-btn
+                                            text
+                                            color="primary"
+                                            @click="purchased_dateModal = false"
+                                        >
+                                            Cancel
+                                        </v-btn>
+                                        <v-btn
+                                            text
+                                            color="primary"
+                                            @click="
+                                                $refs.dialogPurchasedDate.save(
+                                                    form.purchased_date
+                                                )
+                                            "
+                                        >
+                                            OK
+                                        </v-btn>
+                                    </v-date-picker>
+                                </v-dialog>
                                 <v-text-field
                                     v-model="form.purchased_cost"
                                     :error-messages="errors.purchased_cost[0]"
@@ -246,12 +296,62 @@
                                     outlined
                                     clearable
                                 ></v-text-field>
-                                <v-text-field
+                                <!-- <v-text-field
                                     hint="Ex. 000011"
                                     label="Received Date"
                                     outlined
                                     clearable
-                                ></v-text-field>
+                                ></v-text-field> -->
+                                <v-dialog
+                                    ref="dialogReceivedDate"
+                                    v-model="received_dateModal"
+                                    :return-value.sync="form.received_date"
+                                    persistent
+                                    width="290px"
+                                >
+                                    <template v-slot:activator="{ on, attrs }">
+                                        <v-text-field
+                                            v-model="form.received_date"
+                                            label="Received Date"
+                                            readonly
+                                            v-bind="attrs"
+                                            v-on="on"
+                                            outlined
+                                            hint="Ex. 2000-01-01"
+                                            :error-messages="
+                                                errors.received_date[0]
+                                            "
+                                            @input="errors.received_date = []"
+                                            clearable
+                                        ></v-text-field>
+                                    </template>
+                                    <v-date-picker
+                                        v-model="form.received_date"
+                                        :max="maxDate"
+                                        scrollable
+                                        @input="errors.received_date = []"
+                                    >
+                                        <v-spacer></v-spacer>
+                                        <v-btn
+                                            text
+                                            color="primary"
+                                            @click="received_dateModal = false"
+                                        >
+                                            Cancel
+                                        </v-btn>
+                                        <v-btn
+                                            text
+                                            color="primary"
+                                            @click="
+                                                $refs.dialogReceivedDate.save(
+                                                    form.received_date
+                                                )
+                                            "
+                                        >
+                                            OK
+                                        </v-btn>
+                                    </v-date-picker>
+                                </v-dialog>
                                 <v-text-field
                                     hint="Ex. 000011"
                                     label="Received By"
@@ -330,6 +430,7 @@
 </template>
 
 <script>
+import moment from "moment";
 import AssetModelDialogSelector from "../../components/selectors/AssetModelDialogSelector.vue";
 import AssetCategoryDialogSelector from "../../components/selectors/AssetCategoryDialogSelector.vue";
 import ManufacturerDialogSelector from "../../components/selectors/ManufacturerDialogSelector.vue";
@@ -351,6 +452,8 @@ export default {
                     purchased_cost: "",
                     warranty_start_date: "",
                     warranty_end_date: "",
+                    received_date: "",
+                    received_by: "",
                     sku: "",
                     quantity: "",
                     notes: "",
@@ -378,6 +481,8 @@ export default {
                     purchased_cost: [],
                     warranty_start_date: [],
                     warranty_end_date: [],
+                    received_date: [],
+                    received_by: [],
                     sku: [],
                     quantity: [],
                     notes: [],
@@ -405,6 +510,8 @@ export default {
                     purchased_cost: [],
                     warranty_start_date: [],
                     warranty_end_date: [],
+                    received_date: [],
+                    received_by: [],
                     sku: [],
                     quantity: [],
                     notes: [],
@@ -425,6 +532,8 @@ export default {
             dialogAssetCategory: false,
             dialogManufacturer: false,
             dialogSupplier: false,
+            purchased_dateModal: false,
+            received_dateModal: false,
             valid: false,
             form: {
                 code: "",
@@ -437,6 +546,8 @@ export default {
                 purchased_cost: "",
                 warranty_start_date: "",
                 warranty_end_date: "",
+                received_date: "",
+                received_by: "",
                 sku: "",
                 quantity: "",
                 notes: "",
@@ -542,6 +653,9 @@ export default {
     computed: {
         warranty_date() {
             return this.warranty_start_date + "/" + this.warranty_end_date;
+        },
+        maxDate() {
+            return moment().format("YYYY-MM-DD");
         }
     },
     watch: {
