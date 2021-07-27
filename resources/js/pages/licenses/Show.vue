@@ -14,7 +14,7 @@
                 >
                     <template v-slot:body>
                         <p>Serial No.: {{ form.serial_no }}</p>
-                        <p>Manufacturer: {{ form.manufacturer_id }}</p>
+                        <p>Manufacturer: {{ form.manufacturer.name }}</p>
                     </template>
                     <template v-slot:actions>
                         <v-btn

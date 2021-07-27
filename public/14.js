@@ -718,6 +718,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -2057,10 +2062,23 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  hint: "Ex. 000011",
+                                  "error-messages": _vm.errors.received_by[0],
+                                  hint: "Ex. Juan Dela Cruz",
                                   label: "Received By",
                                   outlined: "",
                                   clearable: ""
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.received_by = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.received_by,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "received_by", $$v)
+                                  },
+                                  expression: "form.received_by"
                                 }
                               }),
                               _vm._v(" "),

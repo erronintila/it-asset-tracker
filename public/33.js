@@ -548,7 +548,8 @@ var render = function() {
                         _vm._v(" "),
                         _c("p", [
                           _vm._v(
-                            "Manufacturer: " + _vm._s(_vm.form.manufacturer_id)
+                            "Manufacturer: " +
+                              _vm._s(_vm.form.manufacturer.name)
                           )
                         ])
                       ]

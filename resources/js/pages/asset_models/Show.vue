@@ -10,7 +10,7 @@
             <v-col cols="12" md="4">
                 <CardSummary :title="form.name" :subtitle="'# ' + form.code">
                     <template v-slot:body>
-                        <p>Manufacturer: {{ form.manufacturer_id }}</p>
+                        <p>Manufacturer: {{ form.manufacturer.name }}</p>
                     </template>
                     <template v-slot:actions>
                         <v-btn

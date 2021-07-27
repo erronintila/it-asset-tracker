@@ -353,7 +353,12 @@
                                     </v-date-picker>
                                 </v-dialog>
                                 <v-text-field
-                                    hint="Ex. 000011"
+                                    v-model="form.received_by"
+                                    :error-messages="
+                                        errors.received_by[0]
+                                    "
+                                    @input="errors.received_by = []"
+                                    hint="Ex. Juan Dela Cruz"
                                     label="Received By"
                                     outlined
                                     clearable

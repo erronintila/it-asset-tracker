@@ -26,6 +26,8 @@ class AssetResource extends JsonResource
             "purchased_cost" => $this->purchased_cost,
             "warranty_start_date" => $this->warranty_start_date,
             "warranty_end_date" => $this->warranty_end_date,
+            "received_date" => $this->received_date,
+            "received_by" => $this->received_by,
             "sku" => $this->sku,
             "quantity" => $this->quantity,
             "notes" => $this->notes,

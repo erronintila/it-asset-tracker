@@ -25,6 +25,8 @@ class CreateAssetsTable extends Migration
             $table->double('purchased_cost', 10, 2)->nullable();
             $table->date('warranty_start_date')->nullable();
             $table->date('warranty_end_date')->nullable();
+            $table->date('received_date')->nullable();
+            $table->string('received_by')->nullable();
             $table->string('sku')->nullable();
             $table->double('quantity', 10, 2)->default(1);
             $table->text('notes')->nullable();
