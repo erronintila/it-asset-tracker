@@ -358,7 +358,7 @@
                                     outlined
                                     clearable
                                 ></v-text-field>
-                                <v-text-field
+                                <!-- <v-text-field
                                     v-model="form.warranty_date"
                                     :error-messages="
                                         errors.warranty_start_date[0]
@@ -368,7 +368,37 @@
                                     label="Warranty Date"
                                     outlined
                                     clearable
-                                ></v-text-field>
+                                ></v-text-field> -->
+                                <XDateRangePicker
+                                    ref="dateRangePicker"
+                                    :dateRange="form.date_range"
+                                    @on-change="updateDates"
+                                >
+                                    <template
+                                        v-slot:openDialog="{
+                                            on,
+                                            attrs,
+                                            dateRangeText
+                                        }"
+                                    >
+                                        <v-text-field
+                                            v-model="form.date_range"
+                                            :value="dateRangeText"
+                                            :error-messages="
+                                                errors.warranty_start_date
+                                            "
+                                            @input="
+                                                errors.warranty_start_date = []
+                                            "
+                                            label="Warranty"
+                                            readonly
+                                            outlined
+                                            v-bind="attrs"
+                                            v-on="on"
+                                            clearable
+                                        ></v-text-field>
+                                    </template>
+                                </XDateRangePicker>
                                 <v-text-field
                                     v-model="form.sku"
                                     :error-messages="errors.sku[0]"
@@ -435,6 +465,7 @@ import AssetModelDialogSelector from "../../components/selectors/AssetModelDialo
 import AssetCategoryDialogSelector from "../../components/selectors/AssetCategoryDialogSelector.vue";
 import ManufacturerDialogSelector from "../../components/selectors/ManufacturerDialogSelector.vue";
 import SupplierDialogSelector from "../../components/selectors/SupplierDialogSelector.vue";
+import XDateRangePicker from "../../components/X-DateRangePicker.vue";
 
 export default {
     props: {
@@ -463,7 +494,8 @@ export default {
                     asset_category: "",
                     assigned_user_id: "",
                     assigned_location_id: "",
-                    assigned_asset_id: ""
+                    assigned_asset_id: "",
+                    date_range: []
                 };
             }
         },
@@ -557,7 +589,8 @@ export default {
                 asset_category: "",
                 assigned_user_id: "",
                 assigned_location_id: "",
-                assigned_asset_id: ""
+                assigned_asset_id: "",
+                date_range: []
             }
         };
     },
@@ -565,7 +598,8 @@ export default {
         AssetModelDialogSelector,
         AssetCategoryDialogSelector,
         ManufacturerDialogSelector,
-        SupplierDialogSelector
+        SupplierDialogSelector,
+        XDateRangePicker
     },
     methods: {
         onSave() {
@@ -592,12 +626,12 @@ export default {
                 newForm.is_active = false;
             }
 
-            let warranty_dates = this.warranty_date.split("/");
-            // this.form.warranty_start_date = warranty_dates[0] ?? null;
-            // this.form.warranty_end_date = warranty_dates[1] ?? null;
-
-            newForm.warranty_start_date = null;
-            newForm.warranty_end_date = null;
+            newForm.warranty_start_date = newForm.date_range
+                ? newForm.date_range[0]
+                : null;
+            newForm.warranty_end_date = newForm.date_range
+                ? newForm.date_range[1]
+                : null;
 
             this.$emit("on-save", newForm);
         },
@@ -648,6 +682,9 @@ export default {
 
             this.form.supplier = e[0];
             this.dialogSupplier = false;
+        },
+        updateDates(e) {
+            this.form.date_range = e;
         }
     },
     computed: {
@@ -656,6 +693,24 @@ export default {
         },
         maxDate() {
             return moment().format("YYYY-MM-DD");
+        },
+        formattedDateRange() {
+            let start_date = moment(this.form.date_range[0]).format(
+                "MMM DD, YYYY"
+            );
+            let end_date = moment(this.form.date_range[1]).format(
+                "MMM DD, YYYY"
+            );
+
+            if (JSON.stringify(start_date) == JSON.stringify(end_date)) {
+                return start_date;
+            }
+
+            if (JSON.stringify(end_date) == null) {
+                return start_date;
+            }
+
+            return `${start_date} ~ ${end_date}`;
         }
     },
     watch: {

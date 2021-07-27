@@ -38,7 +38,8 @@ export default {
                 asset_category: "",
                 assigned_user_id: "",
                 assigned_location_id: "",
-                assigned_asset_id: ""
+                assigned_asset_id: "",
+                date_range: []
             },
             errors: {
                 code: [],
@@ -81,7 +82,16 @@ export default {
             AssetDataService.show(this.$route.params.id, data)
                 .then(response => {
                     console.log(response.data);
-                    this.form = { ...this.form, ...response.data.data };
+                    this.form = {
+                        ...this.form,
+                        ...response.data.data,
+                        ...{
+                            date_range: [
+                                response.data.data.warranty_start_date,
+                                response.data.data.warranty_end_date
+                            ]
+                        }
+                    };
                 })
                 .catch(error => {
                     console.log(error.response);

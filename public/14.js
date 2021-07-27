@@ -250,6 +250,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_selectors_AssetCategoryDialogSelector_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/selectors/AssetCategoryDialogSelector.vue */ "./resources/js/components/selectors/AssetCategoryDialogSelector.vue");
 /* harmony import */ var _components_selectors_ManufacturerDialogSelector_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/selectors/ManufacturerDialogSelector.vue */ "./resources/js/components/selectors/ManufacturerDialogSelector.vue");
 /* harmony import */ var _components_selectors_SupplierDialogSelector_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/selectors/SupplierDialogSelector.vue */ "./resources/js/components/selectors/SupplierDialogSelector.vue");
+/* harmony import */ var _components_X_DateRangePicker_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/X-DateRangePicker.vue */ "./resources/js/components/X-DateRangePicker.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -687,6 +688,37 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -719,7 +751,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           asset_category: "",
           assigned_user_id: "",
           assigned_location_id: "",
-          assigned_asset_id: ""
+          assigned_asset_id: "",
+          date_range: []
         };
       }
     },
@@ -813,7 +846,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         asset_category: "",
         assigned_user_id: "",
         assigned_location_id: "",
-        assigned_asset_id: ""
+        assigned_asset_id: "",
+        date_range: []
       }
     };
   },
@@ -821,7 +855,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     AssetModelDialogSelector: _components_selectors_AssetModelDialogSelector_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     AssetCategoryDialogSelector: _components_selectors_AssetCategoryDialogSelector_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     ManufacturerDialogSelector: _components_selectors_ManufacturerDialogSelector_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    SupplierDialogSelector: _components_selectors_SupplierDialogSelector_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+    SupplierDialogSelector: _components_selectors_SupplierDialogSelector_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    XDateRangePicker: _components_X_DateRangePicker_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   },
   methods: {
     onSave: function onSave() {
@@ -850,11 +885,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         newForm.is_active = false;
       }
 
-      var warranty_dates = this.warranty_date.split("/"); // this.form.warranty_start_date = warranty_dates[0] ?? null;
-      // this.form.warranty_end_date = warranty_dates[1] ?? null;
-
-      newForm.warranty_start_date = null;
-      newForm.warranty_end_date = null;
+      newForm.warranty_start_date = newForm.date_range ? newForm.date_range[0] : null;
+      newForm.warranty_end_date = newForm.date_range ? newForm.date_range[1] : null;
       this.$emit("on-save", newForm);
     },
     onSelectAssetModel: function onSelectAssetModel(e) {
@@ -904,6 +936,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       this.form.supplier = e[0];
       this.dialogSupplier = false;
+    },
+    updateDates: function updateDates(e) {
+      this.form.date_range = e;
     }
   },
   computed: {
@@ -912,6 +947,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     maxDate: function maxDate() {
       return moment__WEBPACK_IMPORTED_MODULE_0___default()().format("YYYY-MM-DD");
+    },
+    formattedDateRange: function formattedDateRange() {
+      var start_date = moment__WEBPACK_IMPORTED_MODULE_0___default()(this.form.date_range[0]).format("MMM DD, YYYY");
+      var end_date = moment__WEBPACK_IMPORTED_MODULE_0___default()(this.form.date_range[1]).format("MMM DD, YYYY");
+
+      if (JSON.stringify(start_date) == JSON.stringify(end_date)) {
+        return start_date;
+      }
+
+      if (JSON.stringify(end_date) == null) {
+        return start_date;
+      }
+
+      return "".concat(start_date, " ~ ").concat(end_date);
     }
   },
   watch: {
@@ -2015,27 +2064,61 @@ var render = function() {
                                 }
                               }),
                               _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  "error-messages":
-                                    _vm.errors.warranty_start_date[0],
-                                  hint: "Ex. 000011",
-                                  label: "Warranty Date",
-                                  outlined: "",
-                                  clearable: ""
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.warranty_start_date = []
+                              _c("XDateRangePicker", {
+                                ref: "dateRangePicker",
+                                attrs: { dateRange: _vm.form.date_range },
+                                on: { "on-change": _vm.updateDates },
+                                scopedSlots: _vm._u([
+                                  {
+                                    key: "openDialog",
+                                    fn: function(ref) {
+                                      var on = ref.on
+                                      var attrs = ref.attrs
+                                      var dateRangeText = ref.dateRangeText
+                                      return [
+                                        _c(
+                                          "v-text-field",
+                                          _vm._g(
+                                            _vm._b(
+                                              {
+                                                attrs: {
+                                                  value: dateRangeText,
+                                                  "error-messages":
+                                                    _vm.errors
+                                                      .warranty_start_date,
+                                                  label: "Warranty",
+                                                  readonly: "",
+                                                  outlined: "",
+                                                  clearable: ""
+                                                },
+                                                on: {
+                                                  input: function($event) {
+                                                    _vm.errors.warranty_start_date = []
+                                                  }
+                                                },
+                                                model: {
+                                                  value: _vm.form.date_range,
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.form,
+                                                      "date_range",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression: "form.date_range"
+                                                }
+                                              },
+                                              "v-text-field",
+                                              attrs,
+                                              false
+                                            ),
+                                            on
+                                          )
+                                        )
+                                      ]
+                                    }
                                   }
-                                },
-                                model: {
-                                  value: _vm.form.warranty_date,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "warranty_date", $$v)
-                                  },
-                                  expression: "form.warranty_date"
-                                }
+                                ])
                               }),
                               _vm._v(" "),
                               _c("v-text-field", {

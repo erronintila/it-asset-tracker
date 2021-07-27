@@ -412,14 +412,7 @@ export default {
                 assigned_user_id: "",
                 assigned_location_id: "",
                 assigned_asset_id: "",
-                date_range: [
-                    moment()
-                        .startOf("year")
-                        .format("YYYY-MM-DD"),
-                    moment()
-                        .endOf("year")
-                        .format("YYYY-MM-DD")
-                ]
+                date_range: []
             }
         };
     },
