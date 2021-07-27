@@ -31,6 +31,9 @@ Route::middleware('auth:sanctum')->prefix("v1")->group(function () {
     Route::delete('manufacturers/multiple', 'API\v1\ManufacturerController@destroyMany')->name('delete.manufacturers.multiple');
     Route::delete('suppliers/multiple', 'API\v1\SupplierController@destroyMany')->name('delete.suppliers.multiple');
 
+    // Dashboard routes
+    Route::get('dashboard', 'API\v1\DashboardController@index');
+
     // API Resource routes
     Route::apiResources([
         'agreements' => 'API\v1\AgreementController',

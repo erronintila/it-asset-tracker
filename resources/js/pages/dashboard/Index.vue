@@ -266,6 +266,7 @@
 import { mapGetters } from "vuex";
 import VueApexCharts from "vue-apexcharts";
 import XDialog from "../../components/X-Dialog.vue";
+import DashboardDataService from "../../services/DashboardDataService";
 
 export default {
     name: "dashboard",
@@ -279,12 +280,15 @@ export default {
             dialogCategory: false,
             dialogManufacturer: false,
             tableSelected: [],
+            assets: {
+                total: 0
+            },
             dashboard: {
                 headers: [
                     {
                         title: "Total Assets",
                         subtitle: "",
-                        body: "1,000,000.00",
+                        body: "0",
                         color: "white",
                         dark: false,
                         text_color: "black--text",
@@ -315,7 +319,7 @@ export default {
                         color: "white",
                         dark: false,
                         text_color: "black--text",
-                        link: "/work_orders"
+                        link: "/schedules"
                     }
                 ]
             },
@@ -415,13 +419,33 @@ export default {
             ]
         };
     },
+    methods: {
+        async getData() {
+            try {
+                await DashboardDataService.getAll().then(response =>
+                    console.log(response)
+                );
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    },
     computed: {
         ...mapGetters({
             user: "auth/user"
         }),
         dateRangeText() {
             return this.dates.join(" ~ ");
+        },
+        assetSummary() {
+            return this.assets.total;
+            return {
+                total: this.assets ? this.assets.total : 0
+            };
         }
+    },
+    mounted() {
+        this.getData();
     }
 };
 </script>
