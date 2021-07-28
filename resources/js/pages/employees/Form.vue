@@ -111,7 +111,7 @@
                                 <v-dialog
                                     ref="dialog"
                                     v-model="birthdateModal"
-                                    :return-value.sync="form.birthdate"
+                                    :return-value.sync="form.profile.birthdate"
                                     persistent
                                     width="290px"
                                 >

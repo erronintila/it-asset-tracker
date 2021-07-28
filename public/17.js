@@ -943,21 +943,21 @@ var render = function() {
                                 {
                                   ref: "dialog",
                                   attrs: {
-                                    "return-value": _vm.form.birthdate,
+                                    "return-value": _vm.form.profile.birthdate,
                                     persistent: "",
                                     width: "290px"
                                   },
                                   on: {
                                     "update:returnValue": function($event) {
                                       return _vm.$set(
-                                        _vm.form,
+                                        _vm.form.profile,
                                         "birthdate",
                                         $event
                                       )
                                     },
                                     "update:return-value": function($event) {
                                       return _vm.$set(
-                                        _vm.form,
+                                        _vm.form.profile,
                                         "birthdate",
                                         $event
                                       )

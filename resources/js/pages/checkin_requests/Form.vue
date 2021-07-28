@@ -1,7 +1,7 @@
 <template>
     <v-form ref="form" v-model="valid">
         <v-row class="d-flex justify-center">
-            <v-col cols="12" md="6">
+            <v-col cols="12" md="4">
                 <v-card flat>
                     <v-card-title>
                         General Information
@@ -10,137 +10,167 @@
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
                                 <v-text-field
-                                    v-model="form.name"
-                                    label="Name"
+                                    label="Reference No."
                                     outlined
                                     clearable
-                                    hint="Ex. Warehouse1"
-                                    :error-messages="errors.name[0]"
-                                    @input="errors.name = []"
+                                ></v-text-field>
+                                <v-select
+                                    v-model="form.transaction_type"
+                                    :error-messages="
+                                        errors.transaction_type_id[0]
+                                    "
+                                    @input="errors.transaction_type_id = []"
+                                    return-object
+                                    item-text="name"
+                                    label="Request Type"
+                                    outlined
+                                    clearable
+                                    :items="transaction_types"
+                                ></v-select>
+                                <!-- <v-text-field
+                                    label="Date"
+                                    outlined
+                                    clearable
+                                ></v-text-field> -->
+                                <v-dialog
+                                    ref="dialogRequestDate"
+                                    v-model="requestDateModal"
+                                    :return-value.sync="form.request_date"
+                                    persistent
+                                    width="290px"
+                                >
+                                    <template v-slot:activator="{ on, attrs }">
+                                        <v-text-field
+                                            v-model="form.request_date"
+                                            label="Request Date"
+                                            readonly
+                                            v-bind="attrs"
+                                            v-on="on"
+                                            outlined
+                                            hint="Ex. 2000-01-01"
+                                            :error-messages="
+                                                errors.request_date[0]
+                                            "
+                                            @input="errors.request_date = []"
+                                        ></v-text-field>
+                                    </template>
+                                    <v-date-picker
+                                        v-model="form.request_date"
+                                        :max="maxDate"
+                                        scrollable
+                                        @input="errors.request_date = []"
+                                    >
+                                        <v-spacer></v-spacer>
+                                        <v-btn
+                                            text
+                                            color="primary"
+                                            @click="requestDateModal = false"
+                                        >
+                                            Cancel
+                                        </v-btn>
+                                        <v-btn
+                                            text
+                                            color="primary"
+                                            @click="
+                                                $refs.dialogRequestDate.save(
+                                                    form.request_date
+                                                )
+                                            "
+                                        >
+                                            OK
+                                        </v-btn>
+                                    </v-date-picker>
+                                </v-dialog>
+                                <v-text-field
+                                    label="Description"
+                                    outlined
+                                    clearable
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.address"
-                                    label="Address"
+                                    :value="
+                                        form.location ? form.location.name : ''
+                                    "
+                                    :error-messages="errors.location_id"
+                                    @input="errors.location_id = []"
+                                    label="Location"
+                                    readonly
                                     outlined
-                                    clearable
-                                    hint="Ex. Block 16 Lot 4 XYZ Subdivision"
-                                    :error-messages="errors.address[0]"
-                                    @input="errors.address = []"
-                                ></v-text-field>
+                                    class="d-flex justify-center align-center"
+                                >
+                                    <template v-slot:append>
+                                        <LocationDialogSelector
+                                            :selected="
+                                                !form.location
+                                                    ? []
+                                                    : [...form.location]
+                                            "
+                                            :dialogLocation="dialogLocation"
+                                            @close-dialog="
+                                                dialogLocation = false
+                                            "
+                                            @on-select="onSelectLocation"
+                                        >
+                                            <template v-slot:openDialog>
+                                                <v-btn
+                                                    color="primary"
+                                                    icon
+                                                    @click="
+                                                        dialogLocation = true
+                                                    "
+                                                >
+                                                    <v-icon dark>
+                                                        mdi-magnify
+                                                    </v-icon>
+                                                </v-btn>
+                                            </template>
+                                        </LocationDialogSelector>
+                                    </template>
+                                </v-text-field>
                                 <v-text-field
-                                    v-model="form.street"
-                                    label="Street"
+                                    label="Notes"
                                     outlined
                                     clearable
-                                    hint="Ex. Balete Street"
-                                    :error-messages="errors.street[0]"
-                                    @input="errors.street = []"
-                                ></v-text-field>
-                                <v-text-field
-                                    v-model="form.district"
-                                    label="District"
-                                    outlined
-                                    clearable
-                                    hint="Ex. Barangay Poblacion"
-                                    :error-messages="errors.district[0]"
-                                    @input="errors.district = []"
-                                ></v-text-field>
-                                <v-text-field
-                                    v-model="form.city"
-                                    label="City"
-                                    outlined
-                                    clearable
-                                    hint="Ex. General Santos City"
-                                    :error-messages="errors.city[0]"
-                                    @input="errors.city = []"
-                                ></v-text-field>
-                                <v-text-field
-                                    v-model="form.province"
-                                    label="Province"
-                                    outlined
-                                    clearable
-                                    hint="South Cotabato"
-                                    :error-messages="errors.province[0]"
-                                    @input="errors.province = []"
-                                ></v-text-field>
-                                <v-combobox
-                                    v-model="form.country"
-                                    label="Country"
-                                    outlined
-                                    clearable
-                                    :items="['Philippines']"
-                                    :error-messages="errors.country[0]"
-                                    @input="errors.country = []"
-                                ></v-combobox>
-                                <v-text-field
-                                    v-model="form.postal_code"
-                                    label="Postal Code"
-                                    outlined
-                                    clearable
-                                    hint="Ex. 9500"
-                                    type="number"
-                                    @input="errors.postal_code = []"
                                 ></v-text-field>
                             </v-col>
                         </v-row>
                     </v-card-text>
                 </v-card>
             </v-col>
-
-            <v-col cols="12" md="6">
+            <v-col cols="12" md="8">
                 <v-card flat>
-                    <v-card-title>
-                        Other Information
+                    <v-card-title class="d-flex justify-space-between">
+                        <div>
+                            Assets
+                        </div>
+                        <div>
+                            <v-btn
+                                icon
+                                fab
+                                small
+                                to="/assets/create"
+                                title="Create new asset"
+                            >
+                                <v-icon>mdi-plus</v-icon>
+                            </v-btn>
+                            <v-btn
+                                icon
+                                fab
+                                small
+                                title="Choose asset"
+                                @click="dialogAsset = true"
+                            >
+                                <v-icon>mdi-clipboard-plus-outline</v-icon>
+                            </v-btn>
+                        </div>
                     </v-card-title>
                     <v-card-text>
-                        <v-row class="d-flex justify-center">
-                            <v-col cols="12">
-                                <v-text-field
-                                    v-model="form.latitude"
-                                    label="Latitude"
-                                    outlined
-                                    clearable
-                                    hint="Ex. 6.1164 N"
-                                    :error-messages="errors.latitude[0]"
-                                    @input="errors.latitude = []"
-                                ></v-text-field>
-                                <v-text-field
-                                    v-model="form.longitude"
-                                    label="Longitude"
-                                    outlined
-                                    clearable
-                                    hint="Ex. 125.1716 E"
-                                    :error-messages="errors.longitude[0]"
-                                    @input="errors.longitude = []"
-                                ></v-text-field>
-                                <v-text-field
-                                    v-model.number="form.location_id"
-                                    label="Parent Location"
-                                    outlined
-                                    clearable
-                                    :error-messages="errors.location_id[0]"
-                                    @input="errors.location_id = []"
-                                ></v-text-field>
-                                <v-textarea
-                                    v-model="form.notes"
-                                    label="Notes"
-                                    outlined
-                                    clearable
-                                    rows="3"
-                                    :error-messages="errors.notes[0]"
-                                    @input="errors.notes = []"
-                                ></v-textarea>
-                            </v-col>
-                        </v-row>
+                        <v-data-table
+                            :headers="headers"
+                            :items="form.assets"
+                            :items-per-page="5"
+                        ></v-data-table>
                     </v-card-text>
                     <v-card-actions>
-                        <v-sheet class="ml-4">
-                            <v-switch
-                                v-model="form.is_active"
-                                inset
-                                label="Active"
-                            ></v-switch>
-                        </v-sheet>
                         <v-spacer></v-spacer>
                         <v-btn
                             color="primary"
@@ -154,10 +184,24 @@
                 </v-card>
             </v-col>
         </v-row>
+
+        <AssetDialogSelector
+            :selected="!form.assets ? [] : form.assets"
+            :dialogAsset="dialogAsset"
+            :singleSelect="false"
+            @close-dialog="dialogAsset = false"
+            @on-select="onSelectAsset"
+        >
+        </AssetDialogSelector>
     </v-form>
 </template>
 
 <script>
+import moment from "moment";
+import AssetDialogSelector from "../../components/selectors/AssetDialogSelector.vue";
+import LocationDialogSelector from "../../components/selectors/LocationDialogSelector.vue";
+import TransactionTypeDataService from "../../services/TransactionTypeDataService";
+
 export default {
     props: {
         locationForm: {
@@ -178,7 +222,9 @@ export default {
                     owner_id: "",
                     assigned_user_id: "",
                     assigned_location_id: "",
-                    assigned_asset_id: ""
+                    assigned_asset_id: "",
+                    assets: [],
+                    location: null
                 };
             }
         },
@@ -223,17 +269,30 @@ export default {
             }
         }
     },
+    components: {
+        AssetDialogSelector,
+        LocationDialogSelector
+    },
     data() {
         return {
             valid: false,
+            dialogAsset: false,
+            requestDateModal: false,
+            dialogLocation: false,
+            headers: [
+                { text: "Code", value: "code" },
+                { text: "Serial No.", value: "serial_no" },
+                { text: "Description", value: "description" }
+            ],
+            transaction_types: [],
             form: {
                 code: "",
                 reference: "",
                 request_date: "",
                 description: "",
                 priority: "",
-                priority_label: { text: "", color: "", dark: false},
-                status: { text: "", color: "", dark: false},
+                priority_label: { text: "", color: "", dark: false },
+                status: { text: "", color: "", dark: false },
                 transactionable: {},
                 transaction_type_id: "",
                 user: {},
@@ -241,11 +300,28 @@ export default {
                 owner_id: "",
                 assigned_user_id: "",
                 assigned_location_id: "",
-                assigned_asset_id: ""
+                assigned_asset_id: "",
+                assets: [],
+                location: null,
+                transaction_type: null
             }
         };
     },
     methods: {
+        async getTransactionTypes() {
+            try {
+                TransactionTypeDataService.getAll({
+                    params: {
+                        itemsPerPage: 100
+                    }
+                }).then(response => {
+                    console.log(response.data);
+                    this.transaction_types = response.data.data.data;
+                });
+            } catch (error) {
+                console.log(error);
+            }
+        },
         onSave() {
             if (!confirm("Do you want to save?")) {
                 return;
@@ -257,12 +333,41 @@ export default {
             }
 
             console.log(this.form);
+            return;
 
             if (!this.form.is_active) {
                 this.form.is_active = false;
             }
 
             this.$emit("on-save", this.form);
+        },
+        onSelectAsset(e) {
+            this.dialogAsset = false;
+
+            if (e == null || e == undefined) {
+                this.form.assets = [];
+                return;
+            }
+
+            this.form.assets = e;
+            this.dialogAsset = false;
+        },
+        onSelectLocation(e) {
+            this.dialogLocation = false;
+            this.errors.location_id = [];
+
+            if (e == null || e == undefined) {
+                this.form.location = null;
+                return;
+            }
+
+            this.form.location = e[0];
+            this.dialogLocation = false;
+        }
+    },
+    computed: {
+        maxDate() {
+            return moment().format("YYYY-MM-DD");
         }
     },
     watch: {
@@ -272,6 +377,9 @@ export default {
                 this.form = newValue;
             }
         }
+    },
+    mounted() {
+        this.getTransactionTypes();
     }
 };
 </script>

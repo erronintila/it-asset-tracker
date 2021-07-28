@@ -34,7 +34,9 @@ export default {
                 owner_id: "",
                 assigned_user_id: "",
                 assigned_location_id: "",
-                assigned_asset_id: ""
+                assigned_asset_id: "",
+                assets: [],
+                location: null
             },
             errors: {
                 code: [],

@@ -115,8 +115,8 @@ export default {
                 serverItemsLength: 0,
                 headers: [
                     { text: "Code", value: "code" },
-                    { text: "Name", value: "name" },
-                    { text: "Manager", value: "manager_id" }
+                    { text: "Serial No.", value: "serial_no" },
+                    { text: "Description", value: "description" }
                 ]
             },
             search: "",
