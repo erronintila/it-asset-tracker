@@ -171,15 +171,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -243,9 +234,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, {
           text: "User",
           value: "user.name"
-        }, {
-          text: "Priority",
-          value: "priority_label"
         }, {
           text: "Status",
           value: "status"
@@ -759,31 +747,6 @@ var render = function() {
                               _vm._v(
                                 "\n                        " +
                                   _vm._s(item.status.text) +
-                                  "\n                    "
-                              )
-                            ]
-                          )
-                        ]
-                      }
-                    },
-                    {
-                      key: "item.priority_label",
-                      fn: function(ref) {
-                        var item = ref.item
-                        return [
-                          _c(
-                            "v-chip",
-                            {
-                              attrs: {
-                                small: "",
-                                color: item.priority_label.color,
-                                dark: item.priority_label.dark
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                        " +
-                                  _vm._s(item.priority_label.text) +
                                   "\n                    "
                               )
                             ]

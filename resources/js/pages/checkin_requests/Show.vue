@@ -12,16 +12,6 @@
                     <template v-slot:body>
                         <p>Description: {{ form.description }}</p>
                         <p>
-                            Priority:
-                            <v-chip
-                                small
-                                :color="form.priority_label.color"
-                                :dark="form.priority_label.dark"
-                            >
-                                {{ form.priority_label.text }}
-                            </v-chip>
-                        </p>
-                        <p>
                             Status:
                             <v-chip
                                 small
@@ -327,8 +317,6 @@ export default {
                 reference: "",
                 request_date: "",
                 description: "",
-                priority: "",
-                priority_label: { text: "", color: "", dark: false },
                 status: { text: "", color: "", dark: false },
                 transactionable: {},
                 transaction_type_id: "",

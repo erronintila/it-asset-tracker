@@ -12,6 +12,7 @@ use App\Models\Transaction;
 use App\Models\TransactionType;
 use App\Traits\HttpResponseMessage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class CheckinRequestController extends Controller
@@ -48,32 +49,31 @@ class CheckinRequestController extends Controller
     public function store(CheckinRequestStoreRequest $request)
     {
         $validated = $request->validated();
+
         $data = DB::transaction(function () use ($validated) {
             $code = 'CIN' . date("YmdHis");
 
             $transaction_type = TransactionType::findOrFail($validated['transaction_type_id']);
+            $location = Location::findOrFail($validated['assigned_location_id']);
 
             $transaction = new Transaction();
-            $transaction->type = "checkin";
-            $transaction->name = $validated['first_name'] . ' ' . $validated['last_name'];
-            $transaction->transactionname = $validated['transactionname'];
-            $transaction->email = $validated['email'] ?? null;
-            $transaction->password = bcrypt('password');
+            $transaction->code = $code;
+            $transaction->reference_no = $validated['reference_no'];
+            $transaction->request_date = $validated['request_date'];
+            $transaction->description = $validated['description'];
+
+            $transaction->transaction_type()->associate($transaction_type);
+            $transaction->assigned_location()->associate($location);
+            $transaction->user()->associate(Auth::user());
+            $transaction->save();
+
+            $transaction->assets()->attach(array_column($validated['assets'], 'id'));
 
             $checkin_request = new CheckinRequest();
-            $checkin_request->fill($validated);
-            $checkin_request->code = $code;
-
-            $checkin_request->transaction_type()->associate($transaction_type);
-            if ($validated['location_id']) {
-                $location = Location::findOrFail($validated['location_id']);
-                $checkin_request->location()->associate($location);
-            }
-
             $checkin_request->save();
             $checkin_request->transaction()->save($transaction);
 
-            return $checkin_request;
+            return $transaction;
         });
 
         return $this->successResponse('create', $data, 201);

@@ -146,15 +146,6 @@
                             {{ item.status.text }}
                         </v-chip>
                     </template>
-                    <template v-slot:[`item.priority_label`]="{ item }">
-                        <v-chip
-                            small
-                            :color="item.priority_label.color"
-                            :dark="item.priority_label.dark"
-                        >
-                            {{ item.priority_label.text }}
-                        </v-chip>
-                    </template>
                 </v-data-table>
             </v-col>
         </v-row>
@@ -194,7 +185,6 @@ export default {
                     { text: "Request Date", value: "request_date" },
                     { text: "Description", value: "description" },
                     { text: "User", value: "user.name" },
-                    { text: "Priority", value: "priority_label" },
                     { text: "Status", value: "status" }
                 ]
             },

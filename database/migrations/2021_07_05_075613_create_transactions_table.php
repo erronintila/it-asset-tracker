@@ -16,10 +16,9 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->string('code');
-            $table->string('reference')->nullable();
+            $table->string('reference_no')->nullable();
             $table->timestamp('request_date');
             $table->string('description');
-            $table->enum("priority", ["low", "medium", "high"]);
 
             $table->timestamp('approved_at')->nullable();
             $table->timestamp('completed_at')->nullable();

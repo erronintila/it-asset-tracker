@@ -42,7 +42,17 @@ class Asset extends Model
      */
     public function transactions()
     {
-        return $this->morphToMany('App\Models\Transaction', 'assetable');
+        return $this->morphToMany(Transaction::class, 'assetable');
+    }
+
+    public function assigned_transactions()
+    {
+        return $this->hasMany(Transaction::class, 'assigned_transaction_id');
+    }
+
+    public function parent_asset_transactions()
+    {
+        return $this->hasMany(Transaction::class, 'parent_asset_id');
     }
 
     public function supplier()

@@ -10,9 +10,13 @@
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
                                 <v-text-field
+                                    v-model="form.reference_no"
                                     label="Reference No."
                                     outlined
                                     clearable
+                                    hint="Ex. 00001"
+                                    :error-messages="errors.reference_no[0]"
+                                    @input="errors.reference_no = []"
                                 ></v-text-field>
                                 <v-select
                                     v-model="form.transaction_type"
@@ -27,11 +31,6 @@
                                     clearable
                                     :items="transaction_types"
                                 ></v-select>
-                                <!-- <v-text-field
-                                    label="Date"
-                                    outlined
-                                    clearable
-                                ></v-text-field> -->
                                 <v-dialog
                                     ref="dialogRequestDate"
                                     v-model="requestDateModal"
@@ -82,16 +81,22 @@
                                     </v-date-picker>
                                 </v-dialog>
                                 <v-text-field
+                                    v-model="form.description"
                                     label="Description"
                                     outlined
                                     clearable
+                                    hint="Ex. Checkin Request for Asset"
+                                    :error-messages="errors.description[0]"
+                                    @input="errors.description = []"
                                 ></v-text-field>
                                 <v-text-field
                                     :value="
                                         form.location ? form.location.name : ''
                                     "
-                                    :error-messages="errors.location_id"
-                                    @input="errors.location_id = []"
+                                    :error-messages="
+                                        errors.assigned_location_id
+                                    "
+                                    @input="errors.assigned_location_id = []"
                                     label="Location"
                                     readonly
                                     outlined
@@ -126,11 +131,14 @@
                                         </LocationDialogSelector>
                                     </template>
                                 </v-text-field>
-                                <v-text-field
+                                <!-- <v-text-field
+                                    v-model="form.notes"
                                     label="Notes"
                                     outlined
                                     clearable
-                                ></v-text-field>
+                                    :error-messages="errors.notes[0]"
+                                    @input="errors.notes = []"
+                                ></v-text-field> -->
                             </v-col>
                         </v-row>
                     </v-card-text>
@@ -164,11 +172,27 @@
                         </div>
                     </v-card-title>
                     <v-card-text>
+                        <small
+                            class="red--text"
+                            v-if="
+                                form.assets.length == 0 && errors.assets.length
+                            "
+                        >
+                            {{ errors.assets[0] }}
+                        </small>
                         <v-data-table
                             :headers="headers"
                             :items="form.assets"
                             :items-per-page="5"
-                        ></v-data-table>
+                        >
+                            <template v-slot:[`item.action`]="{ item }">
+                                <v-btn icon>
+                                    <v-icon @click="removeItem(item)">
+                                        mdi-delete
+                                    </v-icon>
+                                </v-btn>
+                            </template>
+                        </v-data-table>
                     </v-card-text>
                     <v-card-actions>
                         <v-spacer></v-spacer>
@@ -209,11 +233,9 @@ export default {
             default: () => {
                 return {
                     code: "",
-                    reference: "",
+                    reference_no: "",
                     request_date: "",
                     description: "",
-                    priority: "",
-                    priority_label: { text: "", color: "", dark: false },
                     status: { text: "", color: "", dark: false },
                     transactionable: "",
                     transaction_type_id: "",
@@ -233,10 +255,9 @@ export default {
             default: () => {
                 return {
                     code: [],
-                    reference: [],
+                    reference_no: [],
                     request_date: [],
                     description: [],
-                    priority: [],
                     transactionable: [],
                     transaction_type_id: [],
                     user_id: [],
@@ -244,7 +265,8 @@ export default {
                     owner_id: [],
                     assigned_user_id: [],
                     assigned_location_id: [],
-                    assigned_asset_id: []
+                    assigned_asset_id: [],
+                    assets: []
                 };
             }
         },
@@ -253,10 +275,9 @@ export default {
             default: () => {
                 return {
                     code: [],
-                    reference: [],
+                    reference_no: [],
                     request_date: [],
                     description: [],
-                    priority: [],
                     transactionable: [],
                     transaction_type_id: [],
                     user_id: [],
@@ -264,7 +285,8 @@ export default {
                     owner_id: [],
                     assigned_user_id: [],
                     assigned_location_id: [],
-                    assigned_asset_id: []
+                    assigned_asset_id: [],
+                    assets: []
                 };
             }
         }
@@ -282,16 +304,15 @@ export default {
             headers: [
                 { text: "Code", value: "code" },
                 { text: "Serial No.", value: "serial_no" },
-                { text: "Description", value: "description" }
+                { text: "Description", value: "description" },
+                { text: "Action", value: "action" }
             ],
             transaction_types: [],
             form: {
                 code: "",
-                reference: "",
+                reference_no: "",
                 request_date: "",
                 description: "",
-                priority: "",
-                priority_label: { text: "", color: "", dark: false },
                 status: { text: "", color: "", dark: false },
                 transactionable: {},
                 transaction_type_id: "",
@@ -332,17 +353,31 @@ export default {
                 return;
             }
 
-            console.log(this.form);
-            return;
+            let newform = {
+                ...this.form,
+                ...{
+                    assigned_location_id: this.form.location
+                        ? this.form.location.id
+                        : null
+                },
+                ...{
+                    transaction_type_id: this.form.transaction_type
+                        ? this.form.transaction_type.id
+                        : null
+                }
+            };
 
-            if (!this.form.is_active) {
-                this.form.is_active = false;
+            console.log(newform);
+
+            if (!newform.is_active) {
+                newform.is_active = false;
             }
 
-            this.$emit("on-save", this.form);
+            this.$emit("on-save", newform);
         },
         onSelectAsset(e) {
             this.dialogAsset = false;
+            this.errors.assets = [];
 
             if (e == null || e == undefined) {
                 this.form.assets = [];
@@ -354,7 +389,7 @@ export default {
         },
         onSelectLocation(e) {
             this.dialogLocation = false;
-            this.errors.location_id = [];
+            this.errors.assigned_location_id = [];
 
             if (e == null || e == undefined) {
                 this.form.location = null;
@@ -363,6 +398,12 @@ export default {
 
             this.form.location = e[0];
             this.dialogLocation = false;
+        },
+        removeItem(item) {
+            if (confirm("Remove this item?")) {
+                this.editedIndex = this.form.assets.indexOf(item);
+                this.form.assets.splice(this.editedIndex, 1);
+            }
         }
     },
     computed: {

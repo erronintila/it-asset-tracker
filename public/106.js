@@ -38,15 +38,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       form: {
         code: "",
-        reference: "",
+        reference_no: "",
         request_date: "",
         description: "",
-        priority: "",
-        priority_label: {
-          text: "",
-          color: "",
-          dark: false
-        },
         status: {
           text: "",
           color: "",
@@ -65,10 +59,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       },
       errors: {
         code: [],
-        reference: [],
+        reference_no: [],
         request_date: [],
         description: [],
-        priority: [],
         transactionable: [],
         transaction_type_id: [],
         user_id: [],
@@ -76,7 +69,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         owner_id: [],
         assigned_user_id: [],
         assigned_location_id: [],
-        assigned_asset_id: []
+        assigned_asset_id: [],
+        assets: []
       }
     };
   },
@@ -237,6 +231,70 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_1df24dea___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/services/LocationDataService.js":
+/*!******************************************************!*\
+  !*** ./resources/js/services/LocationDataService.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+// import http from "../http-common";
+
+
+var LocationDataService = /*#__PURE__*/function () {
+  function LocationDataService() {
+    _classCallCheck(this, LocationDataService);
+  }
+
+  _createClass(LocationDataService, [{
+    key: "getAll",
+    value: function getAll(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/locations", data);
+    }
+  }, {
+    key: "show",
+    value: function show(id, data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/locations/".concat(id), data);
+    }
+  }, {
+    key: "store",
+    value: function store(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/locations", data);
+    }
+  }, {
+    key: "update",
+    value: function update(id, data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/locations/".concat(id), data);
+    }
+  }, {
+    key: "delete",
+    value: function _delete(id, data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/locations/".concat(id), data);
+    }
+  }, {
+    key: "deleteMany",
+    value: function deleteMany(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/locations/multiple", data);
+    }
+  }]);
+
+  return LocationDataService;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (new LocationDataService());
 
 /***/ })
 

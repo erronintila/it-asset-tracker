@@ -1,15 +1,15 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[14],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/selectors/AssetModelDialogSelector.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/selectors/AssetModelDialogSelector.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/selectors/AssetDialogSelector.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/selectors/AssetDialogSelector.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _services_AssetModelDataService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../services/AssetModelDataService */ "./resources/js/services/AssetModelDataService.js");
+/* harmony import */ var _services_AssetDataService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../services/AssetDataService */ "./resources/js/services/AssetDataService.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -100,9 +100,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "asset-model-selector",
+  name: "asset-selector",
   props: {
-    dialogAssetModel: {
+    dialogAsset: {
       type: Boolean,
       "default": false
     },
@@ -135,11 +135,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           text: "Code",
           value: "code"
         }, {
-          text: "Name",
-          value: "name"
+          text: "Serial No.",
+          value: "serial_no"
         }, {
-          text: "Model No.",
-          value: "model_no"
+          text: "Description",
+          value: "description"
         }]
       },
       search: "",
@@ -170,7 +170,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
           }
         };
-        _services_AssetModelDataService__WEBPACK_IMPORTED_MODULE_0__["default"].getAll(data).then(function (response) {
+        _services_AssetDataService__WEBPACK_IMPORTED_MODULE_0__["default"].getAll(data).then(function (response) {
           console.log(response.data);
           _this.items = response.data.data.data;
           _this.tableOptions.serverItemsLength = response.data.data.total;
@@ -220,7 +220,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.selectedItems = newValue;
       }
     },
-    dialogAssetModel: {
+    dialogAsset: {
       immediate: true,
       handler: function handler(newValue) {
         this.dialog = newValue;
@@ -235,529 +235,285 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/assets/Form.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/assets/Form.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/checkin_requests/Form.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/checkin_requests/Form.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_selectors_AssetModelDialogSelector_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/selectors/AssetModelDialogSelector.vue */ "./resources/js/components/selectors/AssetModelDialogSelector.vue");
-/* harmony import */ var _components_selectors_AssetCategoryDialogSelector_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/selectors/AssetCategoryDialogSelector.vue */ "./resources/js/components/selectors/AssetCategoryDialogSelector.vue");
-/* harmony import */ var _components_selectors_ManufacturerDialogSelector_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/selectors/ManufacturerDialogSelector.vue */ "./resources/js/components/selectors/ManufacturerDialogSelector.vue");
-/* harmony import */ var _components_selectors_SupplierDialogSelector_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/selectors/SupplierDialogSelector.vue */ "./resources/js/components/selectors/SupplierDialogSelector.vue");
-/* harmony import */ var _components_X_DateRangePicker_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/X-DateRangePicker.vue */ "./resources/js/components/X-DateRangePicker.vue");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_selectors_AssetDialogSelector_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/selectors/AssetDialogSelector.vue */ "./resources/js/components/selectors/AssetDialogSelector.vue");
+/* harmony import */ var _components_selectors_LocationDialogSelector_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/selectors/LocationDialogSelector.vue */ "./resources/js/components/selectors/LocationDialogSelector.vue");
+/* harmony import */ var _services_TransactionTypeDataService__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/TransactionTypeDataService */ "./resources/js/services/TransactionTypeDataService.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    assetForm: {
+    locationForm: {
       type: Object,
       "default": function _default() {
         return {
           code: "",
-          slug: "",
           reference_no: "",
-          asset_tag: "",
-          serial_no: "",
+          request_date: "",
           description: "",
-          purchased_date: "",
-          purchased_cost: "",
-          warranty_start_date: "",
-          warranty_end_date: "",
-          received_date: "",
-          received_by: "",
-          sku: "",
-          quantity: "",
-          notes: "",
-          asset_model: "",
-          supplier: "",
-          manufacturer: "",
-          asset_category: "",
+          status: {
+            text: "",
+            color: "",
+            dark: false
+          },
+          transactionable: "",
+          transaction_type_id: "",
+          user: "",
+          parent_asset_id: "",
+          owner_id: "",
           assigned_user_id: "",
           assigned_location_id: "",
           assigned_asset_id: "",
-          date_range: []
+          assets: [],
+          location: null
         };
       }
     },
@@ -766,27 +522,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       "default": function _default() {
         return {
           code: [],
-          slug: [],
           reference_no: [],
-          asset_tag: [],
-          serial_no: [],
+          request_date: [],
           description: [],
-          purchased_date: [],
-          purchased_cost: [],
-          warranty_start_date: [],
-          warranty_end_date: [],
-          received_date: [],
-          received_by: [],
-          sku: [],
-          quantity: [],
-          notes: [],
-          asset_model_id: [],
-          supplier_id: [],
-          manufacturer_id: [],
-          asset_category_id: [],
+          transactionable: [],
+          transaction_type_id: [],
+          user_id: [],
+          parent_asset_id: [],
+          owner_id: [],
           assigned_user_id: [],
           assigned_location_id: [],
-          assigned_asset_id: []
+          assigned_asset_id: [],
+          assets: []
         };
       }
     },
@@ -795,75 +542,100 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       "default": function _default() {
         return {
           code: [],
-          slug: [],
           reference_no: [],
-          asset_tag: [],
-          serial_no: [],
+          request_date: [],
           description: [],
-          purchased_date: [],
-          purchased_cost: [],
-          warranty_start_date: [],
-          warranty_end_date: [],
-          received_date: [],
-          received_by: [],
-          sku: [],
-          quantity: [],
-          notes: [],
-          asset_model_id: [],
-          supplier_id: [],
-          manufacturer_id: [],
-          asset_category_id: [],
+          transactionable: [],
+          transaction_type_id: [],
+          user_id: [],
+          parent_asset_id: [],
+          owner_id: [],
           assigned_user_id: [],
           assigned_location_id: [],
-          assigned_asset_id: []
+          assigned_asset_id: [],
+          assets: []
         };
       }
     }
   },
+  components: {
+    AssetDialogSelector: _components_selectors_AssetDialogSelector_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    LocationDialogSelector: _components_selectors_LocationDialogSelector_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+  },
   data: function data() {
     return {
-      dialogAssetModel: false,
-      dialogAssetCategory: false,
-      dialogManufacturer: false,
-      dialogSupplier: false,
-      purchased_dateModal: false,
-      received_dateModal: false,
       valid: false,
+      dialogAsset: false,
+      requestDateModal: false,
+      dialogLocation: false,
+      headers: [{
+        text: "Code",
+        value: "code"
+      }, {
+        text: "Serial No.",
+        value: "serial_no"
+      }, {
+        text: "Description",
+        value: "description"
+      }, {
+        text: "Action",
+        value: "action"
+      }],
+      transaction_types: [],
       form: {
         code: "",
-        slug: "",
         reference_no: "",
-        asset_tag: "",
-        serial_no: "",
+        request_date: "",
         description: "",
-        purchased_date: "",
-        purchased_cost: "",
-        warranty_start_date: "",
-        warranty_end_date: "",
-        received_date: "",
-        received_by: "",
-        sku: "",
-        quantity: "",
-        notes: "",
-        asset_model: "",
-        supplier: "",
-        manufacturer: "",
-        asset_category: "",
+        status: {
+          text: "",
+          color: "",
+          dark: false
+        },
+        transactionable: {},
+        transaction_type_id: "",
+        user: {},
+        parent_asset_id: "",
+        owner_id: "",
         assigned_user_id: "",
         assigned_location_id: "",
         assigned_asset_id: "",
-        date_range: []
+        assets: [],
+        location: null,
+        transaction_type: null
       }
     };
   },
-  components: {
-    AssetModelDialogSelector: _components_selectors_AssetModelDialogSelector_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    AssetCategoryDialogSelector: _components_selectors_AssetCategoryDialogSelector_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    ManufacturerDialogSelector: _components_selectors_ManufacturerDialogSelector_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    SupplierDialogSelector: _components_selectors_SupplierDialogSelector_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
-    XDateRangePicker: _components_X_DateRangePicker_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
-  },
   methods: {
+    getTransactionTypes: function getTransactionTypes() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                try {
+                  _services_TransactionTypeDataService__WEBPACK_IMPORTED_MODULE_4__["default"].getAll({
+                    params: {
+                      itemsPerPage: 100
+                    }
+                  }).then(function (response) {
+                    console.log(response.data);
+                    _this.transaction_types = response.data.data.data;
+                  });
+                } catch (error) {
+                  console.log(error);
+                }
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
     onSave: function onSave() {
       if (!confirm("Do you want to save?")) {
         return;
@@ -874,116 +646,75 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return;
       }
 
-      console.log(this.form);
-
-      var newForm = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, this.form), {
-        asset_model_id: this.form.asset_model.id
+      var newform = _objectSpread(_objectSpread(_objectSpread({}, this.form), {
+        assigned_location_id: this.form.location ? this.form.location.id : null
       }), {
-        asset_category_id: this.form.asset_category.id
-      }), {
-        manufacturer_id: this.form.manufacturer.id
-      }), {
-        supplier_id: this.form.supplier.id
+        transaction_type_id: this.form.transaction_type ? this.form.transaction_type.id : null
       });
 
-      if (!newForm.is_active) {
-        newForm.is_active = false;
+      console.log(newform);
+
+      if (!newform.is_active) {
+        newform.is_active = false;
       }
 
-      newForm.warranty_start_date = newForm.date_range ? newForm.date_range[0] : null;
-      newForm.warranty_end_date = newForm.date_range ? newForm.date_range[1] : null;
-      this.$emit("on-save", newForm);
+      this.$emit("on-save", newform);
     },
-    onSelectAssetModel: function onSelectAssetModel(e) {
-      this.dialogAssetModel = false;
-      this.errors.asset_model_id = [];
+    onSelectAsset: function onSelectAsset(e) {
+      this.dialogAsset = false;
+      this.errors.assets = [];
 
       if (e == null || e == undefined) {
-        this.form.asset_model = null;
+        this.form.assets = [];
         return;
       }
 
-      this.form.asset_model = e[0];
-      this.dialogAssetModel = false;
+      this.form.assets = e;
+      this.dialogAsset = false;
     },
-    onSelectAssetCategory: function onSelectAssetCategory(e) {
-      this.dialogAssetCategory = false;
-      this.errors.asset_category_id = [];
+    onSelectLocation: function onSelectLocation(e) {
+      this.dialogLocation = false;
+      this.errors.assigned_location_id = [];
 
       if (e == null || e == undefined) {
-        this.form.asset_category = null;
+        this.form.location = null;
         return;
       }
 
-      this.form.asset_category = e[0];
-      this.dialogAssetCategory = false;
+      this.form.location = e[0];
+      this.dialogLocation = false;
     },
-    onSelectManufacturer: function onSelectManufacturer(e) {
-      this.dialogManufacturer = false;
-      this.errors.manufacturer_id = [];
-
-      if (e == null || e == undefined) {
-        this.form.manufacturer = null;
-        return;
+    removeItem: function removeItem(item) {
+      if (confirm("Remove this item?")) {
+        this.editedIndex = this.form.assets.indexOf(item);
+        this.form.assets.splice(this.editedIndex, 1);
       }
-
-      this.form.manufacturer = e[0];
-      this.dialogManufacturer = false;
-    },
-    onSelectSupplier: function onSelectSupplier(e) {
-      this.dialogSupplier = false;
-      this.errors.supplier_id = [];
-
-      if (e == null || e == undefined) {
-        this.form.supplier = null;
-        return;
-      }
-
-      this.form.supplier = e[0];
-      this.dialogSupplier = false;
-    },
-    updateDates: function updateDates(e) {
-      this.form.date_range = e;
     }
   },
   computed: {
-    warranty_date: function warranty_date() {
-      return this.warranty_start_date + "/" + this.warranty_end_date;
-    },
     maxDate: function maxDate() {
-      return moment__WEBPACK_IMPORTED_MODULE_0___default()().format("YYYY-MM-DD");
-    },
-    formattedDateRange: function formattedDateRange() {
-      var start_date = moment__WEBPACK_IMPORTED_MODULE_0___default()(this.form.date_range[0]).format("MMM DD, YYYY");
-      var end_date = moment__WEBPACK_IMPORTED_MODULE_0___default()(this.form.date_range[1]).format("MMM DD, YYYY");
-
-      if (JSON.stringify(start_date) == JSON.stringify(end_date)) {
-        return start_date;
-      }
-
-      if (JSON.stringify(end_date) == null) {
-        return start_date;
-      }
-
-      return "".concat(start_date, " ~ ").concat(end_date);
+      return moment__WEBPACK_IMPORTED_MODULE_1___default()().format("YYYY-MM-DD");
     }
   },
   watch: {
-    assetForm: {
+    locationForm: {
       immediate: true,
       handler: function handler(newValue, oldValue) {
         this.form = newValue;
       }
     }
+  },
+  mounted: function mounted() {
+    this.getTransactionTypes();
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/selectors/AssetModelDialogSelector.vue?vue&type=template&id=498f0b26&":
-/*!*************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/selectors/AssetModelDialogSelector.vue?vue&type=template&id=498f0b26& ***!
-  \*************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/selectors/AssetDialogSelector.vue?vue&type=template&id=26bdbde1&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/selectors/AssetDialogSelector.vue?vue&type=template&id=26bdbde1& ***!
+  \********************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1047,7 +778,7 @@ var render = function() {
                     "v-toolbar",
                     { attrs: { flat: "" } },
                     [
-                      _c("v-toolbar-title", [_vm._v("Asset Models")]),
+                      _c("v-toolbar-title", [_vm._v("Assets")]),
                       _vm._v(" "),
                       _c("v-spacer"),
                       _vm._v(" "),
@@ -1206,10 +937,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/assets/Form.vue?vue&type=template&id=570d7117&":
-/*!*********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/assets/Form.vue?vue&type=template&id=570d7117& ***!
-  \*********************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/checkin_requests/Form.vue?vue&type=template&id=4a9e00b8&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/checkin_requests/Form.vue?vue&type=template&id=4a9e00b8& ***!
+  \*******************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1240,7 +971,7 @@ var render = function() {
         [
           _c(
             "v-col",
-            { attrs: { cols: "12", sm: "6", md: "4" } },
+            { attrs: { cols: "12", md: "4" } },
             [
               _c(
                 "v-card",
@@ -1265,11 +996,11 @@ var render = function() {
                             [
                               _c("v-text-field", {
                                 attrs: {
-                                  "error-messages": _vm.errors.reference_no[0],
-                                  hint: "Ex. 000011",
                                   label: "Reference No.",
                                   outlined: "",
-                                  clearable: ""
+                                  clearable: "",
+                                  hint: "Ex. 00001",
+                                  "error-messages": _vm.errors.reference_no[0]
                                 },
                                 on: {
                                   input: function($event) {
@@ -1285,57 +1016,192 @@ var render = function() {
                                 }
                               }),
                               _vm._v(" "),
-                              _c("v-text-field", {
+                              _c("v-select", {
                                 attrs: {
-                                  "error-messages": _vm.errors.asset_tag[0],
-                                  hint: "Ex. 000011",
-                                  label: "Asset Tag",
+                                  "error-messages":
+                                    _vm.errors.transaction_type_id[0],
+                                  "return-object": "",
+                                  "item-text": "name",
+                                  label: "Request Type",
                                   outlined: "",
-                                  clearable: ""
+                                  clearable: "",
+                                  items: _vm.transaction_types
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.asset_tag = []
+                                    _vm.errors.transaction_type_id = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.asset_tag,
+                                  value: _vm.form.transaction_type,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "asset_tag", $$v)
+                                    _vm.$set(_vm.form, "transaction_type", $$v)
                                   },
-                                  expression: "form.asset_tag"
+                                  expression: "form.transaction_type"
                                 }
                               }),
                               _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  "error-messages": _vm.errors.serial_no[0],
-                                  hint: "Ex. 000011",
-                                  label: "Serial No.",
-                                  outlined: "",
-                                  clearable: ""
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.serial_no = []
+                              _c(
+                                "v-dialog",
+                                {
+                                  ref: "dialogRequestDate",
+                                  attrs: {
+                                    "return-value": _vm.form.request_date,
+                                    persistent: "",
+                                    width: "290px"
+                                  },
+                                  on: {
+                                    "update:returnValue": function($event) {
+                                      return _vm.$set(
+                                        _vm.form,
+                                        "request_date",
+                                        $event
+                                      )
+                                    },
+                                    "update:return-value": function($event) {
+                                      return _vm.$set(
+                                        _vm.form,
+                                        "request_date",
+                                        $event
+                                      )
+                                    }
+                                  },
+                                  scopedSlots: _vm._u([
+                                    {
+                                      key: "activator",
+                                      fn: function(ref) {
+                                        var on = ref.on
+                                        var attrs = ref.attrs
+                                        return [
+                                          _c(
+                                            "v-text-field",
+                                            _vm._g(
+                                              _vm._b(
+                                                {
+                                                  attrs: {
+                                                    label: "Request Date",
+                                                    readonly: "",
+                                                    outlined: "",
+                                                    hint: "Ex. 2000-01-01",
+                                                    "error-messages":
+                                                      _vm.errors.request_date[0]
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      _vm.errors.request_date = []
+                                                    }
+                                                  },
+                                                  model: {
+                                                    value:
+                                                      _vm.form.request_date,
+                                                    callback: function($$v) {
+                                                      _vm.$set(
+                                                        _vm.form,
+                                                        "request_date",
+                                                        $$v
+                                                      )
+                                                    },
+                                                    expression:
+                                                      "form.request_date"
+                                                  }
+                                                },
+                                                "v-text-field",
+                                                attrs,
+                                                false
+                                              ),
+                                              on
+                                            )
+                                          )
+                                        ]
+                                      }
+                                    }
+                                  ]),
+                                  model: {
+                                    value: _vm.requestDateModal,
+                                    callback: function($$v) {
+                                      _vm.requestDateModal = $$v
+                                    },
+                                    expression: "requestDateModal"
                                   }
                                 },
-                                model: {
-                                  value: _vm.form.serial_no,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "serial_no", $$v)
-                                  },
-                                  expression: "form.serial_no"
-                                }
-                              }),
+                                [
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-date-picker",
+                                    {
+                                      attrs: {
+                                        max: _vm.maxDate,
+                                        scrollable: ""
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          _vm.errors.request_date = []
+                                        }
+                                      },
+                                      model: {
+                                        value: _vm.form.request_date,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.form,
+                                            "request_date",
+                                            $$v
+                                          )
+                                        },
+                                        expression: "form.request_date"
+                                      }
+                                    },
+                                    [
+                                      _c("v-spacer"),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          attrs: { text: "", color: "primary" },
+                                          on: {
+                                            click: function($event) {
+                                              _vm.requestDateModal = false
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                        Cancel\n                                    "
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          attrs: { text: "", color: "primary" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.$refs.dialogRequestDate.save(
+                                                _vm.form.request_date
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                        OK\n                                    "
+                                          )
+                                        ]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  "error-messages": _vm.errors.description[0],
-                                  hint: "Ex. 000011",
                                   label: "Description",
                                   outlined: "",
-                                  clearable: ""
+                                  clearable: "",
+                                  hint: "Ex. Checkin Request for Asset",
+                                  "error-messages": _vm.errors.description[0]
                                 },
                                 on: {
                                   input: function($event) {
@@ -1355,18 +1221,18 @@ var render = function() {
                                 staticClass:
                                   "d-flex justify-center align-center",
                                 attrs: {
-                                  value: _vm.form.asset_category
-                                    ? _vm.form.asset_category.name
+                                  value: _vm.form.location
+                                    ? _vm.form.location.name
                                     : "",
                                   "error-messages":
-                                    _vm.errors.asset_category_id,
-                                  label: "Asset Category",
+                                    _vm.errors.assigned_location_id,
+                                  label: "Location",
                                   readonly: "",
                                   outlined: ""
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.asset_category_id = []
+                                    _vm.errors.assigned_location_id = []
                                   }
                                 },
                                 scopedSlots: _vm._u([
@@ -1374,22 +1240,18 @@ var render = function() {
                                     key: "append",
                                     fn: function() {
                                       return [
-                                        _c("AssetCategoryDialogSelector", {
+                                        _c("LocationDialogSelector", {
                                           attrs: {
-                                            selected: !_vm.form.asset_category
+                                            selected: !_vm.form.location
                                               ? []
-                                              : [].concat(
-                                                  _vm.form.asset_category
-                                                ),
-                                            dialogAssetCategory:
-                                              _vm.dialogAssetCategory
+                                              : [].concat(_vm.form.location),
+                                            dialogLocation: _vm.dialogLocation
                                           },
                                           on: {
                                             "close-dialog": function($event) {
-                                              _vm.dialogAssetCategory = false
+                                              _vm.dialogLocation = false
                                             },
-                                            "on-select":
-                                              _vm.onSelectAssetCategory
+                                            "on-select": _vm.onSelectLocation
                                           },
                                           scopedSlots: _vm._u([
                                             {
@@ -1407,174 +1269,7 @@ var render = function() {
                                                         click: function(
                                                           $event
                                                         ) {
-                                                          _vm.dialogAssetCategory = true
-                                                        }
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "v-icon",
-                                                        { attrs: { dark: "" } },
-                                                        [
-                                                          _vm._v(
-                                                            "\n                                                    mdi-magnify\n                                                "
-                                                          )
-                                                        ]
-                                                      )
-                                                    ],
-                                                    1
-                                                  )
-                                                ]
-                                              },
-                                              proxy: true
-                                            }
-                                          ])
-                                        })
-                                      ]
-                                    },
-                                    proxy: true
-                                  }
-                                ])
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                staticClass:
-                                  "d-flex justify-center align-center",
-                                attrs: {
-                                  value: _vm.form.asset_model
-                                    ? _vm.form.asset_model.name
-                                    : "",
-                                  "error-messages": _vm.errors.asset_model_id,
-                                  label: "Asset Model",
-                                  readonly: "",
-                                  outlined: ""
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.asset_model_id = []
-                                  }
-                                },
-                                scopedSlots: _vm._u([
-                                  {
-                                    key: "append",
-                                    fn: function() {
-                                      return [
-                                        _c("AssetModelDialogSelector", {
-                                          attrs: {
-                                            selected: !_vm.form.asset_model
-                                              ? []
-                                              : [].concat(_vm.form.asset_model),
-                                            dialogAssetModel:
-                                              _vm.dialogAssetModel
-                                          },
-                                          on: {
-                                            "close-dialog": function($event) {
-                                              _vm.dialogAssetModel = false
-                                            },
-                                            "on-select": _vm.onSelectAssetModel
-                                          },
-                                          scopedSlots: _vm._u([
-                                            {
-                                              key: "openDialog",
-                                              fn: function() {
-                                                return [
-                                                  _c(
-                                                    "v-btn",
-                                                    {
-                                                      attrs: {
-                                                        color: "primary",
-                                                        icon: ""
-                                                      },
-                                                      on: {
-                                                        click: function(
-                                                          $event
-                                                        ) {
-                                                          _vm.dialogAssetModel = true
-                                                        }
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "v-icon",
-                                                        { attrs: { dark: "" } },
-                                                        [
-                                                          _vm._v(
-                                                            "\n                                                    mdi-magnify\n                                                "
-                                                          )
-                                                        ]
-                                                      )
-                                                    ],
-                                                    1
-                                                  )
-                                                ]
-                                              },
-                                              proxy: true
-                                            }
-                                          ])
-                                        })
-                                      ]
-                                    },
-                                    proxy: true
-                                  }
-                                ])
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                staticClass:
-                                  "d-flex justify-center align-center",
-                                attrs: {
-                                  value: _vm.form.manufacturer
-                                    ? _vm.form.manufacturer.name
-                                    : "",
-                                  "error-messages": _vm.errors.manufacturer_id,
-                                  label: "Manufacturer",
-                                  readonly: "",
-                                  outlined: ""
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.manufacturer_id = []
-                                  }
-                                },
-                                scopedSlots: _vm._u([
-                                  {
-                                    key: "append",
-                                    fn: function() {
-                                      return [
-                                        _c("ManufacturerDialogSelector", {
-                                          attrs: {
-                                            selected: !_vm.form.manufacturer
-                                              ? []
-                                              : [].concat(
-                                                  _vm.form.manufacturer
-                                                ),
-                                            dialogManufacturer:
-                                              _vm.dialogManufacturer
-                                          },
-                                          on: {
-                                            "close-dialog": function($event) {
-                                              _vm.dialogManufacturer = false
-                                            },
-                                            "on-select":
-                                              _vm.onSelectManufacturer
-                                          },
-                                          scopedSlots: _vm._u([
-                                            {
-                                              key: "openDialog",
-                                              fn: function() {
-                                                return [
-                                                  _c(
-                                                    "v-btn",
-                                                    {
-                                                      attrs: {
-                                                        color: "primary",
-                                                        icon: ""
-                                                      },
-                                                      on: {
-                                                        click: function(
-                                                          $event
-                                                        ) {
-                                                          _vm.dialogManufacturer = true
+                                                          _vm.dialogLocation = true
                                                         }
                                                       }
                                                     },
@@ -1621,635 +1316,124 @@ var render = function() {
           _vm._v(" "),
           _c(
             "v-col",
-            { attrs: { cols: "12", sm: "6", md: "4" } },
+            { attrs: { cols: "12", md: "8" } },
             [
               _c(
                 "v-card",
                 { attrs: { flat: "" } },
                 [
-                  _c("v-card-title", [
-                    _vm._v(
-                      "\n                    Purchase Information\n                "
-                    )
-                  ]),
-                  _vm._v(" "),
                   _c(
-                    "v-card-text",
+                    "v-card-title",
+                    { staticClass: "d-flex justify-space-between" },
                     [
+                      _c("div", [
+                        _vm._v(
+                          "\n                        Assets\n                    "
+                        )
+                      ]),
+                      _vm._v(" "),
                       _c(
-                        "v-row",
-                        { staticClass: "d-flex justify-center" },
+                        "div",
                         [
                           _c(
-                            "v-col",
-                            { attrs: { cols: "12" } },
+                            "v-btn",
+                            {
+                              attrs: {
+                                icon: "",
+                                fab: "",
+                                small: "",
+                                to: "/assets/create",
+                                title: "Create new asset"
+                              }
+                            },
+                            [_c("v-icon", [_vm._v("mdi-plus")])],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: {
+                                icon: "",
+                                fab: "",
+                                small: "",
+                                title: "Choose asset"
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.dialogAsset = true
+                                }
+                              }
+                            },
                             [
-                              _c("v-text-field", {
-                                staticClass:
-                                  "d-flex justify-center align-center",
-                                attrs: {
-                                  value: _vm.form.supplier
-                                    ? _vm.form.supplier.name
-                                    : "",
-                                  "error-messages": _vm.errors.supplier_id,
-                                  label: "Supplier",
-                                  readonly: "",
-                                  outlined: ""
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.supplier_id = []
-                                  }
-                                },
-                                scopedSlots: _vm._u([
-                                  {
-                                    key: "append",
-                                    fn: function() {
-                                      return [
-                                        _c("SupplierDialogSelector", {
-                                          attrs: {
-                                            selected: !_vm.form.supplier
-                                              ? []
-                                              : [].concat(_vm.form.supplier),
-                                            dialogSupplier: _vm.dialogSupplier
-                                          },
-                                          on: {
-                                            "close-dialog": function($event) {
-                                              _vm.dialogSupplier = false
-                                            },
-                                            "on-select": _vm.onSelectSupplier
-                                          },
-                                          scopedSlots: _vm._u([
-                                            {
-                                              key: "openDialog",
-                                              fn: function() {
-                                                return [
-                                                  _c(
-                                                    "v-btn",
-                                                    {
-                                                      attrs: {
-                                                        color: "primary",
-                                                        icon: ""
-                                                      },
-                                                      on: {
-                                                        click: function(
-                                                          $event
-                                                        ) {
-                                                          _vm.dialogSupplier = true
-                                                        }
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "v-icon",
-                                                        { attrs: { dark: "" } },
-                                                        [
-                                                          _vm._v(
-                                                            "\n                                                    mdi-magnify\n                                                "
-                                                          )
-                                                        ]
-                                                      )
-                                                    ],
-                                                    1
-                                                  )
-                                                ]
-                                              },
-                                              proxy: true
-                                            }
-                                          ])
-                                        })
-                                      ]
-                                    },
-                                    proxy: true
-                                  }
-                                ])
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "v-dialog",
-                                {
-                                  ref: "dialogPurchasedDate",
-                                  attrs: {
-                                    "return-value": _vm.form.purchased_date,
-                                    persistent: "",
-                                    width: "290px"
-                                  },
-                                  on: {
-                                    "update:returnValue": function($event) {
-                                      return _vm.$set(
-                                        _vm.form,
-                                        "purchased_date",
-                                        $event
-                                      )
-                                    },
-                                    "update:return-value": function($event) {
-                                      return _vm.$set(
-                                        _vm.form,
-                                        "purchased_date",
-                                        $event
-                                      )
-                                    }
-                                  },
-                                  scopedSlots: _vm._u([
-                                    {
-                                      key: "activator",
-                                      fn: function(ref) {
-                                        var on = ref.on
-                                        var attrs = ref.attrs
-                                        return [
-                                          _c(
-                                            "v-text-field",
-                                            _vm._g(
-                                              _vm._b(
-                                                {
-                                                  attrs: {
-                                                    label: "Purchased Date",
-                                                    readonly: "",
-                                                    outlined: "",
-                                                    hint: "Ex. 2000-01-01",
-                                                    "error-messages":
-                                                      _vm.errors
-                                                        .purchased_date[0],
-                                                    clearable: ""
-                                                  },
-                                                  on: {
-                                                    input: function($event) {
-                                                      _vm.errors.purchased_date = []
-                                                    }
-                                                  },
-                                                  model: {
-                                                    value:
-                                                      _vm.form.purchased_date,
-                                                    callback: function($$v) {
-                                                      _vm.$set(
-                                                        _vm.form,
-                                                        "purchased_date",
-                                                        $$v
-                                                      )
-                                                    },
-                                                    expression:
-                                                      "form.purchased_date"
-                                                  }
-                                                },
-                                                "v-text-field",
-                                                attrs,
-                                                false
-                                              ),
-                                              on
-                                            )
-                                          )
-                                        ]
-                                      }
-                                    }
-                                  ]),
-                                  model: {
-                                    value: _vm.purchased_dateModal,
-                                    callback: function($$v) {
-                                      _vm.purchased_dateModal = $$v
-                                    },
-                                    expression: "purchased_dateModal"
-                                  }
-                                },
-                                [
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-date-picker",
-                                    {
-                                      attrs: {
-                                        max: _vm.maxDate,
-                                        scrollable: ""
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          _vm.errors.purchased_date = []
-                                        }
-                                      },
-                                      model: {
-                                        value: _vm.form.purchased_date,
-                                        callback: function($$v) {
-                                          _vm.$set(
-                                            _vm.form,
-                                            "purchased_date",
-                                            $$v
-                                          )
-                                        },
-                                        expression: "form.purchased_date"
-                                      }
-                                    },
-                                    [
-                                      _c("v-spacer"),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { text: "", color: "primary" },
-                                          on: {
-                                            click: function($event) {
-                                              _vm.purchased_dateModal = false
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                                        Cancel\n                                    "
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { text: "", color: "primary" },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.$refs.dialogPurchasedDate.save(
-                                                _vm.form.purchased_date
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                                        OK\n                                    "
-                                          )
-                                        ]
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  "error-messages":
-                                    _vm.errors.purchased_cost[0],
-                                  hint: "Ex. 000011",
-                                  label: "Purchase Cost",
-                                  outlined: "",
-                                  clearable: ""
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.purchased_cost = []
-                                  }
-                                },
-                                model: {
-                                  value: _vm.form.purchased_cost,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "purchased_cost", $$v)
-                                  },
-                                  expression: "form.purchased_cost"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "v-dialog",
-                                {
-                                  ref: "dialogReceivedDate",
-                                  attrs: {
-                                    "return-value": _vm.form.received_date,
-                                    persistent: "",
-                                    width: "290px"
-                                  },
-                                  on: {
-                                    "update:returnValue": function($event) {
-                                      return _vm.$set(
-                                        _vm.form,
-                                        "received_date",
-                                        $event
-                                      )
-                                    },
-                                    "update:return-value": function($event) {
-                                      return _vm.$set(
-                                        _vm.form,
-                                        "received_date",
-                                        $event
-                                      )
-                                    }
-                                  },
-                                  scopedSlots: _vm._u([
-                                    {
-                                      key: "activator",
-                                      fn: function(ref) {
-                                        var on = ref.on
-                                        var attrs = ref.attrs
-                                        return [
-                                          _c(
-                                            "v-text-field",
-                                            _vm._g(
-                                              _vm._b(
-                                                {
-                                                  attrs: {
-                                                    label: "Received Date",
-                                                    readonly: "",
-                                                    outlined: "",
-                                                    hint: "Ex. 2000-01-01",
-                                                    "error-messages":
-                                                      _vm.errors
-                                                        .received_date[0],
-                                                    clearable: ""
-                                                  },
-                                                  on: {
-                                                    input: function($event) {
-                                                      _vm.errors.received_date = []
-                                                    }
-                                                  },
-                                                  model: {
-                                                    value:
-                                                      _vm.form.received_date,
-                                                    callback: function($$v) {
-                                                      _vm.$set(
-                                                        _vm.form,
-                                                        "received_date",
-                                                        $$v
-                                                      )
-                                                    },
-                                                    expression:
-                                                      "form.received_date"
-                                                  }
-                                                },
-                                                "v-text-field",
-                                                attrs,
-                                                false
-                                              ),
-                                              on
-                                            )
-                                          )
-                                        ]
-                                      }
-                                    }
-                                  ]),
-                                  model: {
-                                    value: _vm.received_dateModal,
-                                    callback: function($$v) {
-                                      _vm.received_dateModal = $$v
-                                    },
-                                    expression: "received_dateModal"
-                                  }
-                                },
-                                [
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-date-picker",
-                                    {
-                                      attrs: {
-                                        max: _vm.maxDate,
-                                        scrollable: ""
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          _vm.errors.received_date = []
-                                        }
-                                      },
-                                      model: {
-                                        value: _vm.form.received_date,
-                                        callback: function($$v) {
-                                          _vm.$set(
-                                            _vm.form,
-                                            "received_date",
-                                            $$v
-                                          )
-                                        },
-                                        expression: "form.received_date"
-                                      }
-                                    },
-                                    [
-                                      _c("v-spacer"),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { text: "", color: "primary" },
-                                          on: {
-                                            click: function($event) {
-                                              _vm.received_dateModal = false
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                                        Cancel\n                                    "
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { text: "", color: "primary" },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.$refs.dialogReceivedDate.save(
-                                                _vm.form.received_date
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                                        OK\n                                    "
-                                          )
-                                        ]
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  "error-messages": _vm.errors.received_by[0],
-                                  hint: "Ex. Juan Dela Cruz",
-                                  label: "Received By",
-                                  outlined: "",
-                                  clearable: ""
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.received_by = []
-                                  }
-                                },
-                                model: {
-                                  value: _vm.form.received_by,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "received_by", $$v)
-                                  },
-                                  expression: "form.received_by"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("XDateRangePicker", {
-                                ref: "dateRangePicker",
-                                attrs: { dateRange: _vm.form.date_range },
-                                on: { "on-change": _vm.updateDates },
-                                scopedSlots: _vm._u([
-                                  {
-                                    key: "openDialog",
-                                    fn: function(ref) {
-                                      var on = ref.on
-                                      var attrs = ref.attrs
-                                      var dateRangeText = ref.dateRangeText
-                                      return [
-                                        _c(
-                                          "v-text-field",
-                                          _vm._g(
-                                            _vm._b(
-                                              {
-                                                attrs: {
-                                                  value: dateRangeText,
-                                                  "error-messages":
-                                                    _vm.errors
-                                                      .warranty_start_date,
-                                                  label: "Warranty",
-                                                  readonly: "",
-                                                  outlined: "",
-                                                  clearable: ""
-                                                },
-                                                on: {
-                                                  input: function($event) {
-                                                    _vm.errors.warranty_start_date = []
-                                                  }
-                                                },
-                                                model: {
-                                                  value: _vm.form.date_range,
-                                                  callback: function($$v) {
-                                                    _vm.$set(
-                                                      _vm.form,
-                                                      "date_range",
-                                                      $$v
-                                                    )
-                                                  },
-                                                  expression: "form.date_range"
-                                                }
-                                              },
-                                              "v-text-field",
-                                              attrs,
-                                              false
-                                            ),
-                                            on
-                                          )
-                                        )
-                                      ]
-                                    }
-                                  }
-                                ])
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  "error-messages": _vm.errors.sku[0],
-                                  hint: "Ex. 000011",
-                                  label: "Stock Keeping Unit",
-                                  outlined: "",
-                                  clearable: ""
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.sku = []
-                                  }
-                                },
-                                model: {
-                                  value: _vm.form.sku,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "sku", $$v)
-                                  },
-                                  expression: "form.sku"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  "error-messages": _vm.errors.quantity[0],
-                                  hint: "Ex. 000011",
-                                  label: "Quantity",
-                                  outlined: "",
-                                  clearable: ""
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.quantity = []
-                                  }
-                                },
-                                model: {
-                                  value: _vm.form.quantity,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "quantity", $$v)
-                                  },
-                                  expression: "form.quantity"
-                                }
-                              })
+                              _c("v-icon", [
+                                _vm._v("mdi-clipboard-plus-outline")
+                              ])
                             ],
                             1
                           )
                         ],
                         1
                       )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-col",
-            { attrs: { cols: "12", sm: "6", md: "4" } },
-            [
-              _c(
-                "v-card",
-                { attrs: { flat: "" } },
-                [
-                  _c("v-card-title", [
-                    _vm._v(
-                      "\n                    Other Information\n                "
-                    )
-                  ]),
+                    ]
+                  ),
                   _vm._v(" "),
                   _c(
                     "v-card-text",
                     [
-                      _c(
-                        "v-row",
-                        { staticClass: "d-flex justify-center" },
-                        [
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "12" } },
-                            [
-                              _c("v-text-field", {
-                                attrs: {
-                                  "error-messages": _vm.errors.notes[0],
-                                  hint: "Ex. 000011",
-                                  label: "Notes",
-                                  outlined: "",
-                                  clearable: ""
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.notes = []
-                                  }
-                                },
-                                model: {
-                                  value: _vm.form.notes,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "notes", $$v)
-                                  },
-                                  expression: "form.notes"
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
+                      _vm.form.assets.length == 0 && _vm.errors.assets.length
+                        ? _c("small", { staticClass: "red--text" }, [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(_vm.errors.assets[0]) +
+                                "\n                    "
+                            )
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c("v-data-table", {
+                        attrs: {
+                          headers: _vm.headers,
+                          items: _vm.form.assets,
+                          "items-per-page": 5
+                        },
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "item.action",
+                              fn: function(ref) {
+                                var item = ref.item
+                                return [
+                                  _c(
+                                    "v-btn",
+                                    { attrs: { icon: "" } },
+                                    [
+                                      _c(
+                                        "v-icon",
+                                        {
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.removeItem(item)
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                    mdi-delete\n                                "
+                                          )
+                                        ]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ]
+                              }
+                            }
+                          ],
+                          null,
+                          true
+                        )
+                      })
                     ],
                     1
                   ),
@@ -2283,7 +1467,21 @@ var render = function() {
           )
         ],
         1
-      )
+      ),
+      _vm._v(" "),
+      _c("AssetDialogSelector", {
+        attrs: {
+          selected: !_vm.form.assets ? [] : _vm.form.assets,
+          dialogAsset: _vm.dialogAsset,
+          singleSelect: false
+        },
+        on: {
+          "close-dialog": function($event) {
+            _vm.dialogAsset = false
+          },
+          "on-select": _vm.onSelectAsset
+        }
+      })
     ],
     1
   )
@@ -2295,17 +1493,17 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/selectors/AssetModelDialogSelector.vue":
-/*!************************************************************************!*\
-  !*** ./resources/js/components/selectors/AssetModelDialogSelector.vue ***!
-  \************************************************************************/
+/***/ "./resources/js/components/selectors/AssetDialogSelector.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/selectors/AssetDialogSelector.vue ***!
+  \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _AssetModelDialogSelector_vue_vue_type_template_id_498f0b26___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AssetModelDialogSelector.vue?vue&type=template&id=498f0b26& */ "./resources/js/components/selectors/AssetModelDialogSelector.vue?vue&type=template&id=498f0b26&");
-/* harmony import */ var _AssetModelDialogSelector_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AssetModelDialogSelector.vue?vue&type=script&lang=js& */ "./resources/js/components/selectors/AssetModelDialogSelector.vue?vue&type=script&lang=js&");
+/* harmony import */ var _AssetDialogSelector_vue_vue_type_template_id_26bdbde1___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AssetDialogSelector.vue?vue&type=template&id=26bdbde1& */ "./resources/js/components/selectors/AssetDialogSelector.vue?vue&type=template&id=26bdbde1&");
+/* harmony import */ var _AssetDialogSelector_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AssetDialogSelector.vue?vue&type=script&lang=js& */ "./resources/js/components/selectors/AssetDialogSelector.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -2315,9 +1513,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _AssetModelDialogSelector_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _AssetModelDialogSelector_vue_vue_type_template_id_498f0b26___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _AssetModelDialogSelector_vue_vue_type_template_id_498f0b26___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _AssetDialogSelector_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AssetDialogSelector_vue_vue_type_template_id_26bdbde1___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AssetDialogSelector_vue_vue_type_template_id_26bdbde1___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -2327,54 +1525,54 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/selectors/AssetModelDialogSelector.vue"
+component.options.__file = "resources/js/components/selectors/AssetDialogSelector.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/selectors/AssetModelDialogSelector.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************************!*\
-  !*** ./resources/js/components/selectors/AssetModelDialogSelector.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************************/
+/***/ "./resources/js/components/selectors/AssetDialogSelector.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/selectors/AssetDialogSelector.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AssetModelDialogSelector_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./AssetModelDialogSelector.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/selectors/AssetModelDialogSelector.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AssetModelDialogSelector_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AssetDialogSelector_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./AssetDialogSelector.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/selectors/AssetDialogSelector.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AssetDialogSelector_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/selectors/AssetModelDialogSelector.vue?vue&type=template&id=498f0b26&":
-/*!*******************************************************************************************************!*\
-  !*** ./resources/js/components/selectors/AssetModelDialogSelector.vue?vue&type=template&id=498f0b26& ***!
-  \*******************************************************************************************************/
+/***/ "./resources/js/components/selectors/AssetDialogSelector.vue?vue&type=template&id=26bdbde1&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/selectors/AssetDialogSelector.vue?vue&type=template&id=26bdbde1& ***!
+  \**************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AssetModelDialogSelector_vue_vue_type_template_id_498f0b26___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./AssetModelDialogSelector.vue?vue&type=template&id=498f0b26& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/selectors/AssetModelDialogSelector.vue?vue&type=template&id=498f0b26&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AssetModelDialogSelector_vue_vue_type_template_id_498f0b26___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AssetDialogSelector_vue_vue_type_template_id_26bdbde1___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./AssetDialogSelector.vue?vue&type=template&id=26bdbde1& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/selectors/AssetDialogSelector.vue?vue&type=template&id=26bdbde1&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AssetDialogSelector_vue_vue_type_template_id_26bdbde1___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AssetModelDialogSelector_vue_vue_type_template_id_498f0b26___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AssetDialogSelector_vue_vue_type_template_id_26bdbde1___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "./resources/js/pages/assets/Form.vue":
-/*!********************************************!*\
-  !*** ./resources/js/pages/assets/Form.vue ***!
-  \********************************************/
+/***/ "./resources/js/pages/checkin_requests/Form.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/pages/checkin_requests/Form.vue ***!
+  \******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Form_vue_vue_type_template_id_570d7117___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=template&id=570d7117& */ "./resources/js/pages/assets/Form.vue?vue&type=template&id=570d7117&");
-/* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./resources/js/pages/assets/Form.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Form_vue_vue_type_template_id_4a9e00b8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=template&id=4a9e00b8& */ "./resources/js/pages/checkin_requests/Form.vue?vue&type=template&id=4a9e00b8&");
+/* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./resources/js/pages/checkin_requests/Form.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -2385,8 +1583,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Form_vue_vue_type_template_id_570d7117___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Form_vue_vue_type_template_id_570d7117___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Form_vue_vue_type_template_id_4a9e00b8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Form_vue_vue_type_template_id_4a9e00b8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -2396,38 +1594,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/pages/assets/Form.vue"
+component.options.__file = "resources/js/pages/checkin_requests/Form.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/pages/assets/Form.vue?vue&type=script&lang=js&":
-/*!*********************************************************************!*\
-  !*** ./resources/js/pages/assets/Form.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************/
+/***/ "./resources/js/pages/checkin_requests/Form.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/pages/checkin_requests/Form.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/assets/Form.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/checkin_requests/Form.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/pages/assets/Form.vue?vue&type=template&id=570d7117&":
-/*!***************************************************************************!*\
-  !*** ./resources/js/pages/assets/Form.vue?vue&type=template&id=570d7117& ***!
-  \***************************************************************************/
+/***/ "./resources/js/pages/checkin_requests/Form.vue?vue&type=template&id=4a9e00b8&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/pages/checkin_requests/Form.vue?vue&type=template&id=4a9e00b8& ***!
+  \*************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_570d7117___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=template&id=570d7117& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/assets/Form.vue?vue&type=template&id=570d7117&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_570d7117___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_4a9e00b8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=template&id=4a9e00b8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/checkin_requests/Form.vue?vue&type=template&id=4a9e00b8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_4a9e00b8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_570d7117___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_4a9e00b8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -2497,10 +1695,10 @@ var AssetDataService = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./resources/js/services/AssetModelDataService.js":
-/*!********************************************************!*\
-  !*** ./resources/js/services/AssetModelDataService.js ***!
-  \********************************************************/
+/***/ "./resources/js/services/TransactionTypeDataService.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/services/TransactionTypeDataService.js ***!
+  \*************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2517,47 +1715,47 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 // import http from "../http-common";
 
 
-var AssetModelDataService = /*#__PURE__*/function () {
-  function AssetModelDataService() {
-    _classCallCheck(this, AssetModelDataService);
+var TransactionTypeDataService = /*#__PURE__*/function () {
+  function TransactionTypeDataService() {
+    _classCallCheck(this, TransactionTypeDataService);
   }
 
-  _createClass(AssetModelDataService, [{
+  _createClass(TransactionTypeDataService, [{
     key: "getAll",
     value: function getAll(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/asset_models", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/transaction_types", data);
     }
   }, {
     key: "show",
     value: function show(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/asset_models/".concat(id), data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/transaction_types/".concat(id), data);
     }
   }, {
     key: "store",
     value: function store(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/asset_models", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/transaction_types", data);
     }
   }, {
     key: "update",
     value: function update(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/asset_models/".concat(id), data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/transaction_types/".concat(id), data);
     }
   }, {
     key: "delete",
     value: function _delete(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/asset_models/".concat(id), data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/transaction_types/".concat(id), data);
     }
   }, {
     key: "deleteMany",
     value: function deleteMany(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/asset_models/multiple", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/transaction_types/multiple", data);
     }
   }]);
 
-  return AssetModelDataService;
+  return TransactionTypeDataService;
 }();
 
-/* harmony default export */ __webpack_exports__["default"] = (new AssetModelDataService());
+/* harmony default export */ __webpack_exports__["default"] = (new TransactionTypeDataService());
 
 /***/ })
 

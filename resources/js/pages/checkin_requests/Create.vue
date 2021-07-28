@@ -22,10 +22,9 @@ export default {
             formDataLoaded: true,
             errors: {
                 code: [],
-                reference: [],
+                reference_no: [],
                 request_date: [],
                 description: [],
-                priority: [],
                 transactionable: [],
                 transaction_type_id: [],
                 user_id: [],
@@ -33,7 +32,8 @@ export default {
                 owner_id: [],
                 assigned_user_id: [],
                 assigned_location_id: [],
-                assigned_asset_id: []
+                assigned_asset_id: [],
+                assets: []
             }
         };
     },

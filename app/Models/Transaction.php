@@ -24,7 +24,7 @@ class Transaction extends Model
      *
      * @var array
      */
-    protected $appends = ['status', 'priority_label'];
+    protected $appends = ['status'];
 
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
@@ -62,6 +62,36 @@ class Transaction extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function transaction_type()
+    {
+        return $this->belongsTo(TransactionType::class);
+    }
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class, "owner_id");
+    }
+
+    public function parent_asset()
+    {
+        return $this->belongsTo(Asset::class, "parent_asset_id");
+    }
+
+    public function assigned_location()
+    {
+        return $this->belongsTo(Location::class, "assigned_location_id");
+    }
+
+    public function assigned_asset()
+    {
+        return $this->belongsTo(Asset::class, "assigned_asset_id");
+    }
+
+    public function assigned_user()
+    {
+        return $this->belongsTo(User::class, "assigned_user_id");
     }
 
     /*
@@ -125,40 +155,6 @@ class Transaction extends Model
             "color" => "red",
             "dark" => true
         ];
-    }
-
-    public function getPriorityLabelAttribute()
-    {
-        switch ($this->priority) {
-            case 'low':
-                return [
-                    "text" => "Low",
-                    "color" => "grey",
-                    "dark" => true
-                ];
-                break;
-            case 'medium':
-                return [
-                    "text" => "Medium",
-                    "color" => "yellow",
-                    "dark" => false
-                ];
-                break;
-            case 'high':
-                return [
-                    "text" => "High",
-                    "color" => "red",
-                    "dark" => true
-                ];
-                break;
-            default:
-                return [
-                    "text" => "Undefined",
-                    "color" => "red",
-                    "dark" => true
-                ];
-                break;
-        }
     }
 
     /*

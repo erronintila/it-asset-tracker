@@ -38,17 +38,17 @@ class Employee extends Model
 
     public function user()
     {
-        return $this->morphOne('App\Models\User', 'profile');
+        return $this->morphOne(User::class, 'profile');
     }
 
     public function location()
     {
-        return $this->belongsTo('App\Models\Location');
+        return $this->belongsTo(Location::class);
     }
 
     public function department()
     {
-        return $this->belongsTo('App\Models\Department');
+        return $this->belongsTo(Department::class);
     }
 
     public function departments()

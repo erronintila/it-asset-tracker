@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class CheckinRequest extends Model
 {
     use SoftDeletes;
-    
-        /*
+
+    /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | LARAVEL MODEL CONFIGURATION
     |------------------------------------------------------------------------------------------------------------------------------------
@@ -31,7 +31,7 @@ class CheckinRequest extends Model
 
     public function transaction()
     {
-        return $this->morphOne('App\Models\Transaction', 'request');
+        return $this->morphOne(Transaction::class, 'transactionable');
     }
 
     /*
@@ -39,6 +39,4 @@ class CheckinRequest extends Model
     | LARAVEL ACCESSORS
     |------------------------------------------------------------------------------------------------------------------------------------
     */
-    
-    
 }

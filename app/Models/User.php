@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -80,6 +79,16 @@ class User extends Authenticatable
     public function transactions()
     {
         return $this->hasMany(Transaction::class);
+    }
+
+    public function assigned_transactions()
+    {
+        return $this->hasMany(Transaction::class, "assigned_user_id");
+    }
+
+    public function owned_transactions()
+    {
+        return $this->hasMany(Transaction::class, "owner_id");
     }
 
     /*

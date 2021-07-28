@@ -34,6 +34,11 @@ class Location extends Model
         return $this->hasMany(Asset::class);
     }
 
+    public function assigned_transactions()
+    {
+        return $this->hasMany(Transaction::class, "assigned_location_id");
+    }
+
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | LARAVEL ACCESSORS

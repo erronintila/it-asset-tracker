@@ -360,16 +360,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -396,12 +386,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         reference: "",
         request_date: "",
         description: "",
-        priority: "",
-        priority_label: {
-          text: "",
-          color: "",
-          dark: false
-        },
         status: {
           text: "",
           color: "",
@@ -566,33 +550,6 @@ var render = function() {
                         _c("p", [
                           _vm._v("Description: " + _vm._s(_vm.form.description))
                         ]),
-                        _vm._v(" "),
-                        _c(
-                          "p",
-                          [
-                            _vm._v(
-                              "\n                        Priority:\n                        "
-                            ),
-                            _c(
-                              "v-chip",
-                              {
-                                attrs: {
-                                  small: "",
-                                  color: _vm.form.priority_label.color,
-                                  dark: _vm.form.priority_label.dark
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                            " +
-                                    _vm._s(_vm.form.priority_label.text) +
-                                    "\n                        "
-                                )
-                              ]
-                            )
-                          ],
-                          1
-                        ),
                         _vm._v(" "),
                         _c(
                           "p",

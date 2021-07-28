@@ -21,11 +21,9 @@ export default {
         return {
             form: {
                 code: "",
-                reference: "",
+                reference_no: "",
                 request_date: "",
                 description: "",
-                priority: "",
-                priority_label: { text: "", color: "", dark: false},
                 status: { text: "", color: "", dark: false},
                 transactionable: {},
                 transaction_type_id: "",
@@ -40,10 +38,9 @@ export default {
             },
             errors: {
                 code: [],
-                reference: [],
+                reference_no: [],
                 request_date: [],
                 description: [],
-                priority: [],
                 transactionable: [],
                 transaction_type_id: [],
                 user_id: [],
@@ -51,7 +48,8 @@ export default {
                 owner_id: [],
                 assigned_user_id: [],
                 assigned_location_id: [],
-                assigned_asset_id: []
+                assigned_asset_id: [],
+                assets: []
             }
         };
     },

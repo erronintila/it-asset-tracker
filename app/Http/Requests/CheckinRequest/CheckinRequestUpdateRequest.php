@@ -26,10 +26,9 @@ class CheckinRequestUpdateRequest extends FormRequest
     {
         return [
             "code" => ["nullable", "string", "max:250", Rule::unique("transactions", 'code')->ignore($this->asset)],
-            "reference" => ["nullable", "string", "max:250"],
+            "reference_no" => ["nullable", "string", "max:250"],
             "request_date" => ["required", "date"],
             "description" => ["required", "string", "max:250"],
-            "priority" => ['required', 'string', 'in:low,medium,high'],
 
             "transaction_type_id" => ['required', 'integer'],
             "user_id" => ['required', 'integer'],
