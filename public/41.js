@@ -920,6 +920,31 @@ var CheckinRequestDataService = /*#__PURE__*/function () {
     value: function _delete(id, data) {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/checkin_requests/".concat(id), data);
     }
+  }, {
+    key: "deleteMany",
+    value: function deleteMany(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/checkin_requests/multiple", data);
+    }
+  }, {
+    key: "approve",
+    value: function approve(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/checkin_requests/approve", data);
+    }
+  }, {
+    key: "complete",
+    value: function complete(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/checkin_requests/complete", data);
+    }
+  }, {
+    key: "post",
+    value: function post(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/checkin_requests/post", data);
+    }
+  }, {
+    key: "cancel",
+    value: function cancel(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/checkin_requests/cancel", data);
+    }
   }]);
 
   return CheckinRequestDataService;

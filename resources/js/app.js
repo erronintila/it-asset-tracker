@@ -10,9 +10,11 @@ import router from "./router/index";
 import App from "./components/layouts/App";
 import ApexCharts from "apexcharts";
 import Mixin from "./mixins/index";
+import VueMoment from "vue-moment";
 
 Vue.use(VueRouter);
 Vue.use(Mixin);
+Vue.use(VueMoment);
 
 Vue.component(
     "loading-screen",

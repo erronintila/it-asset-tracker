@@ -1,16 +1,20 @@
 <template>
     <div>
         <page-header
-            :title="'Update Location'"
+            :title="'Update Checkin Request'"
             :backButton="true"
         ></page-header>
 
-        <Form @on-save="onSave" :locationForm="form" :errors="errors"></Form>
+        <Form
+            @on-save="onSave"
+            :checkinRequestForm="form"
+            :errors="errors"
+        ></Form>
     </div>
 </template>
 
 <script>
-import LocationDataService from "../../services/LocationDataService";
+import CheckinRequestDataService from "../../services/CheckinRequestDataService";
 import Form from "./Form.vue";
 
 export default {
@@ -24,7 +28,7 @@ export default {
                 reference_no: "",
                 request_date: "",
                 description: "",
-                status: { text: "", color: "", dark: false},
+                status: { text: "", color: "", dark: false },
                 transactionable: {},
                 transaction_type_id: "",
                 user: {},
@@ -34,7 +38,7 @@ export default {
                 assigned_location_id: "",
                 assigned_asset_id: "",
                 assets: [],
-                location: null
+                assigned_location: null
             },
             errors: {
                 code: [],
@@ -65,19 +69,26 @@ export default {
             //     };
             // }
 
-            LocationDataService.show(this.$route.params.id, data)
+            CheckinRequestDataService.show(this.$route.params.id, data)
                 .then(response => {
                     console.log(response.data);
                     this.form = { ...this.form, ...response.data.data };
+                    console.log("hahaha", {
+                        ...this.form,
+                        ...response.data.data
+                    });
                 })
                 .catch(error => {
                     console.log(error.response);
                     alert("An error has occurred.");
-                    this.$router.push({ name: "locations.index" }, () => {});
+                    this.$router.push(
+                        { name: "checkin_requests.index" },
+                        () => {}
+                    );
                 });
         },
         onSave(value) {
-            LocationDataService.update(this.$route.params.id, value)
+            CheckinRequestDataService.update(this.$route.params.id, value)
                 .then(response => {
                     console.log(response.data);
                     alert("Successfully updated.");

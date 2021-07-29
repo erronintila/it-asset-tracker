@@ -92,17 +92,16 @@
 
                                 <LocationDialogSelector
                                     :selected="
-                                        !form.location ? [] : [...form.location]
+                                        !form.assigned_location ? [] : [...form.assigned_location]
                                     "
                                     :dialogLocation="dialogLocation"
-                                    @close-dialog="dialogLocation = false"
                                     @on-select="onSelectLocation"
                                 >
                                     <template v-slot:openDialog="{ on, attrs }">
                                         <v-text-field
                                             :value="
-                                                form.location
-                                                    ? form.location.name
+                                                form.assigned_location
+                                                    ? form.assigned_location.name
                                                     : ''
                                             "
                                             :error-messages="
@@ -148,7 +147,7 @@
                         <div>
                             Assets
                         </div>
-                        <div>
+                        <div class="d-flex">
                             <v-btn
                                 icon
                                 fab
@@ -158,15 +157,27 @@
                             >
                                 <v-icon>mdi-plus</v-icon>
                             </v-btn>
-                            <v-btn
-                                icon
-                                fab
-                                small
-                                title="Choose asset"
-                                @click="dialogAsset = true"
+                            <AssetDialogSelector
+                                :selected="!form.assets ? [] : form.assets"
+                                :dialogAsset="dialogAsset"
+                                :singleSelect="false"
+                                @on-select="onSelectAsset"
                             >
-                                <v-icon>mdi-clipboard-plus-outline</v-icon>
-                            </v-btn>
+                                <template v-slot:openDialog="{ on, attrs }">
+                                    <v-btn
+                                        icon
+                                        fab
+                                        small
+                                        title="Choose asset"
+                                        v-bind="attrs"
+                                        v-on="on"
+                                    >
+                                        <v-icon
+                                            >mdi-clipboard-plus-outline</v-icon
+                                        >
+                                    </v-btn>
+                                </template>
+                            </AssetDialogSelector>
                         </div>
                     </v-card-title>
                     <v-card-text>
@@ -206,15 +217,6 @@
                 </v-card>
             </v-col>
         </v-row>
-
-        <AssetDialogSelector
-            :selected="!form.assets ? [] : form.assets"
-            :dialogAsset="dialogAsset"
-            :singleSelect="false"
-            @close-dialog="dialogAsset = false"
-            @on-select="onSelectAsset"
-        >
-        </AssetDialogSelector>
     </v-form>
 </template>
 
@@ -226,7 +228,7 @@ import TransactionTypeDataService from "../../services/TransactionTypeDataServic
 
 export default {
     props: {
-        locationForm: {
+        checkinRequestForm: {
             type: Object,
             default: () => {
                 return {
@@ -244,7 +246,7 @@ export default {
                     assigned_location_id: "",
                     assigned_asset_id: "",
                     assets: [],
-                    location: null
+                    assigned_location: null
                 };
             }
         },
@@ -321,7 +323,7 @@ export default {
                 assigned_location_id: "",
                 assigned_asset_id: "",
                 assets: [],
-                location: null,
+                assigned_location: null,
                 transaction_type: null
             }
         };
@@ -354,8 +356,8 @@ export default {
             let newform = {
                 ...this.form,
                 ...{
-                    assigned_location_id: this.form.location
-                        ? this.form.location.id
+                    assigned_location_id: this.form.assigned_location
+                        ? this.form.assigned_location.id
                         : null
                 },
                 ...{
@@ -390,11 +392,11 @@ export default {
             this.errors.assigned_location_id = [];
 
             if (e == null || e == undefined) {
-                this.form.location = null;
+                this.form.assigned_location = null;
                 return;
             }
 
-            this.form.location = e[0];
+            this.form.assigned_location = e[0];
             this.dialogLocation = false;
         },
         removeItem(item) {
@@ -410,7 +412,7 @@ export default {
         }
     },
     watch: {
-        locationForm: {
+        checkinRequestForm: {
             immediate: true,
             handler(newValue, oldValue) {
                 this.form = newValue;

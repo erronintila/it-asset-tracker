@@ -17,7 +17,7 @@ class CreateTransactionsTable extends Migration
             $table->id();
             $table->string('code');
             $table->string('reference_no')->nullable();
-            $table->timestamp('request_date');
+            $table->date('request_date');
             $table->string('description');
 
             $table->timestamp('approved_at')->nullable();

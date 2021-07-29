@@ -66,7 +66,7 @@ class CheckinRequestController extends Controller
             $transaction->user()->associate(Auth::user());
             $transaction->save();
 
-            $transaction->assets()->attach(array_column($validated['assets'], 'id'));
+            $transaction->assets()->sync(array_column($validated['assets'], 'id'));
 
             $checkin_request = new CheckinRequest();
             $checkin_request->save();
@@ -112,30 +112,28 @@ class CheckinRequestController extends Controller
     public function update(CheckinRequestUpdateRequest $request, $id)
     {
         $validated = $request->validated();
-        $data = DB::transaction(function () use ($id, $validated) {
-            $transaction = Transaction::findOrFail($id);
 
+        $data = DB::transaction(function () use ($validated, $id) {
             $transaction_type = TransactionType::findOrFail($validated['transaction_type_id']);
+            $location = Location::findOrFail($validated['assigned_location_id']);
 
-            $transaction->type = "checkin";
-            $transaction->name = ($validated['first_name'] . ' ' . $validated['last_name']);
-            $transaction->email = $validated['email'] ?? null;
-            $transaction->transactionname = $validated['transactionname'];
-            // $transaction->save();
+            $transaction = Transaction::findOrFail($id);
+            $transaction->reference_no = $validated['reference_no'];
+            $transaction->request_date = $validated['request_date'];
+            $transaction->description = $validated['description'];
 
-            $checkin_request = CheckinRequest::findOrFail($transaction->profile->id);
-            $checkin_request->fill($validated);
+            $transaction->transaction_type()->associate($transaction_type);
+            $transaction->assigned_location()->associate($location);
+            // $transaction->user()->associate(Auth::user());
+            $transaction->save();
 
-            $checkin_request->transaction_type()->associate($transaction_type);
-            if ($validated['location_id']) {
-                $location = Location::findOrFail($validated['location_id']);
-                $checkin_request->location()->associate($location);
-            }
+            $transaction->assets()->sync(array_column($validated['assets'], 'id'));
 
+            $checkin_request = CheckinRequest::findOrFail($transaction->transactionable->id);
             $checkin_request->save();
             $checkin_request->transaction()->save($transaction);
 
-            return $checkin_request;
+            return $transaction;
         });
 
         return $this->successResponse('update', $data, 200);
@@ -166,5 +164,65 @@ class CheckinRequestController extends Controller
         });
 
         return $this->successResponse('delete', $data, 200);
+    }
+
+    public function approve()
+    {
+        $ids = request('ids');
+        $data = DB::transaction(function () use ($ids) {
+            $transactions = Transaction::findOrFail($ids);
+            $transactions->each(function ($item) {
+                $item->approved_at = now();
+                $item->save();
+            });
+            return $transactions;
+        });
+
+        return $this->successResponse('Successfully approved.', $data, 200);
+    }
+
+    public function complete()
+    {
+        $ids = request('ids');
+        $data = DB::transaction(function () use ($ids) {
+            $transactions = Transaction::findOrFail($ids);
+            $transactions->each(function ($item) {
+                $item->completed_at = now();
+                $item->save();
+            });
+            return $transactions;
+        });
+
+        return $this->successResponse('Successfully completed.', $data, 200);
+    }
+
+    public function post()
+    {
+        $ids = request('ids');
+        $data = DB::transaction(function () use ($ids) {
+            $transactions = Transaction::findOrFail($ids);
+            $transactions->each(function ($item) {
+                $item->posted_at = now();
+                $item->save();
+            });
+            return $transactions;
+        });
+
+        return $this->successResponse('Successfully posted.', $data, 200);
+    }
+
+    public function cancel()
+    {
+        $ids = request('ids');
+        $data = DB::transaction(function () use ($ids) {
+            $transactions = Transaction::findOrFail($ids);
+            $transactions->each(function ($item) {
+                $item->cancelled_at = now();
+                $item->save();
+            });
+            return $transactions;
+        });
+
+        return $this->successResponse('Successfully cancelled.', $data, 200);
     }
 }

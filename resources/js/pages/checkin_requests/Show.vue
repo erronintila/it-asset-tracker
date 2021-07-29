@@ -8,7 +8,12 @@
 
         <v-row>
             <v-col cols="12" md="4">
-                <CardSummary :title="form.code" :subtitle="form.request_date">
+                <CardSummary
+                    :title="'#' + form.code"
+                    :subtitle="
+                        form.request_date | moment('MMMM DD, YYYY hh:mm:ss A')
+                    "
+                >
                     <template v-slot:body>
                         <p>Description: {{ form.description }}</p>
                         <p>

@@ -34,6 +34,30 @@ Route::middleware('auth:sanctum')->prefix("v1")->group(function () {
     // Dashboard routes
     Route::get('dashboard', 'API\v1\DashboardController@index');
 
+    // Checkin status routes
+    Route::put('/checkin_requests/approve', 'API\v1\CheckinRequestController@approve')->name('approve.checkin_requests');
+    Route::put('/checkin_requests/complete', 'API\v1\CheckinRequestController@complete')->name('complete.checkin_requests');
+    Route::put('/checkin_requests/post', 'API\v1\CheckinRequestController@post')->name('post.checkin_requests');
+    Route::put('/checkin_requests/cancel', 'API\v1\CheckinRequestController@cancel')->name('cancel.checkin_requests');
+
+    // Checkout status routes
+    Route::put('/checkout_requests/approve', 'API\v1\CheckoutRequestController@approve')->name('approve.checkout_requests');
+    Route::put('/checkout_requests/complete', 'API\v1\CheckoutRequestController@complete')->name('complete.checkout_requests');
+    Route::put('/checkout_requests/post', 'API\v1\CheckoutRequestController@post')->name('post.checkout_requests');
+    Route::put('/checkout_requests/cancel', 'API\v1\CheckoutRequestController@cancel')->name('cancel.checkout_requests');
+
+    // Disposal status routes
+    Route::put('/disposal_requests/approve', 'API\v1\DisposalRequestController@approve')->name('approve.disposal_requests');
+    Route::put('/disposal_requests/complete', 'API\v1\DisposalRequestController@complete')->name('complete.disposal_requests');
+    Route::put('/disposal_requests/post', 'API\v1\DisposalRequestController@post')->name('post.disposal_requests');
+    Route::put('/disposal_requests/cancel', 'API\v1\DisposalRequestController@cancel')->name('cancel.disposal_requests');
+
+    // Work Order status routes
+    Route::put('/work_orders/approve', 'API\v1\WorkOrderController@approve')->name('approve.work_orders');
+    Route::put('/work_orders/complete', 'API\v1\WorkOrderController@complete')->name('complete.work_orders');
+    Route::put('/work_orders/post', 'API\v1\WorkOrderController@post')->name('post.work_orders');
+    Route::put('/work_orders/cancel', 'API\v1\WorkOrderController@cancel')->name('cancel.work_orders');
+
     // API Resource routes
     Route::apiResources([
         'agreements' => 'API\v1\AgreementController',

@@ -33,6 +33,7 @@
         "moment": "^2.29.1",
         "numeral": "^2.0.6",
         "vue-apexcharts": "^1.6.1",
+        "vue-moment": "^4.1.0",
         "vuetify": "^2.5.3"
     }
 }

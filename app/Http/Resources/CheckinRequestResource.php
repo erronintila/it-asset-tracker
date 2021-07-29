@@ -17,7 +17,7 @@ class CheckinRequestResource extends JsonResource
         return [
             "id" => $this->id,
             "code" => $this->code,
-            "reference" => $this->reference,
+            "reference_no" => $this->reference_no,
             "request_date" => $this->request_date,
             "description" => $this->description,
             "transactionable" => $this->transactionable,
