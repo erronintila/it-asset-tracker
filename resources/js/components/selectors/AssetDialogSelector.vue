@@ -1,6 +1,7 @@
 <template>
     <div>
         <v-dialog
+            ref="dialog"
             :fullscreen="fullscreen"
             persistent
             v-model="dialog"
@@ -169,11 +170,12 @@ export default {
             if (this.selectedItems.length == 0) {
                 return;
             } else {
+                this.$refs.dialog.save(this.selectedItems);
                 this.$emit("on-select", this.selectedItems);
             }
         },
         closeDialog() {
-            this.$emit("close-dialog");
+            this.dialog = false;
         }
     },
     computed: {

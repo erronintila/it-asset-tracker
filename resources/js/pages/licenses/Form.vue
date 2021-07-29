@@ -36,94 +36,70 @@
                                     outlined
                                     clearable
                                 ></v-text-field>
-                                <v-text-field
-                                    :value="
-                                        form.asset_category
-                                            ? form.asset_category.name
-                                            : ''
+
+                                <AssetCategoryDialogSelector
+                                    :selected="
+                                        !form.asset_category
+                                            ? []
+                                            : [...form.asset_category]
                                     "
-                                    :error-messages="errors.asset_category_id"
-                                    @input="errors.asset_category_id = []"
-                                    label="Asset Category"
-                                    readonly
-                                    outlined
-                                    class="d-flex justify-center align-center"
+                                    :dialogAssetCategory="dialogAssetCategory"
+                                    @close-dialog="dialogAssetCategory = false"
+                                    @on-select="onSelectAssetCategory"
                                 >
-                                    <template v-slot:append>
-                                        <AssetCategoryDialogSelector
-                                            :selected="
-                                                !form.asset_category
-                                                    ? []
-                                                    : [...form.asset_category]
+                                    <template v-slot:openDialog="{ on, attrs }">
+                                        <v-text-field
+                                            :value="
+                                                form.asset_category
+                                                    ? form.asset_category.name
+                                                    : ''
                                             "
-                                            :dialogAssetCategory="
-                                                dialogAssetCategory
+                                            :error-messages="
+                                                errors.asset_category_id
                                             "
-                                            @close-dialog="
-                                                dialogAssetCategory = false
+                                            @input="
+                                                errors.asset_category_id = []
                                             "
-                                            @on-select="onSelectAssetCategory"
-                                        >
-                                            <template v-slot:openDialog>
-                                                <v-btn
-                                                    color="primary"
-                                                    icon
-                                                    @click="
-                                                        dialogAssetCategory = true
-                                                    "
-                                                >
-                                                    <v-icon dark>
-                                                        mdi-magnify
-                                                    </v-icon>
-                                                </v-btn>
-                                            </template>
-                                        </AssetCategoryDialogSelector>
+                                            label="Asset Category"
+                                            readonly
+                                            outlined
+                                            class="d-flex justify-center align-center"
+                                            v-bind="attrs"
+                                            v-on="on"
+                                        ></v-text-field>
                                     </template>
-                                </v-text-field>
-                                <v-text-field
-                                    :value="
-                                        form.manufacturer
-                                            ? form.manufacturer.name
-                                            : ''
+                                </AssetCategoryDialogSelector>
+
+                                <ManufacturerDialogSelector
+                                    :selected="
+                                        !form.manufacturer
+                                            ? []
+                                            : [...form.manufacturer]
                                     "
-                                    :error-messages="errors.manufacturer_id"
-                                    @input="errors.manufacturer_id = []"
-                                    label="Manufacturer"
-                                    readonly
-                                    outlined
-                                    class="d-flex justify-center align-center"
+                                    :dialogManufacturer="dialogManufacturer"
+                                    @close-dialog="dialogManufacturer = false"
+                                    @on-select="onSelectManufacturer"
                                 >
-                                    <template v-slot:append>
-                                        <ManufacturerDialogSelector
-                                            :selected="
-                                                !form.manufacturer
-                                                    ? []
-                                                    : [...form.manufacturer]
+                                    <template v-slot:openDialog="{ on, attrs }">
+                                        <v-text-field
+                                            :value="
+                                                form.manufacturer
+                                                    ? form.manufacturer.name
+                                                    : ''
                                             "
-                                            :dialogManufacturer="
-                                                dialogManufacturer
+                                            :error-messages="
+                                                errors.manufacturer_id
                                             "
-                                            @close-dialog="
-                                                dialogManufacturer = false
-                                            "
-                                            @on-select="onSelectManufacturer"
-                                        >
-                                            <template v-slot:openDialog>
-                                                <v-btn
-                                                    color="primary"
-                                                    icon
-                                                    @click="
-                                                        dialogManufacturer = true
-                                                    "
-                                                >
-                                                    <v-icon dark>
-                                                        mdi-magnify
-                                                    </v-icon>
-                                                </v-btn>
-                                            </template>
-                                        </ManufacturerDialogSelector>
+                                            @input="errors.manufacturer_id = []"
+                                            label="Manufacturer"
+                                            readonly
+                                            outlined
+                                            class="d-flex justify-center align-center"
+                                            v-bind="attrs"
+                                            v-on="on"
+                                        ></v-text-field>
                                     </template>
-                                </v-text-field>
+                                </ManufacturerDialogSelector>
                             </v-col>
                         </v-row>
                     </v-card-text>
@@ -137,46 +113,32 @@
                     <v-card-text>
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
-                                <v-text-field
-                                    :value="
-                                        form.supplier ? form.supplier.name : ''
+                                <SupplierDialogSelector
+                                    :selected="
+                                        !form.supplier ? [] : [...form.supplier]
                                     "
-                                    :error-messages="errors.supplier_id"
-                                    @input="errors.supplier_id = []"
-                                    label="Supplier"
-                                    readonly
-                                    outlined
-                                    class="d-flex justify-center align-center"
+                                    :dialogSupplier="dialogSupplier"
+                                    @close-dialog="dialogSupplier = false"
+                                    @on-select="onSelectSupplier"
                                 >
-                                    <template v-slot:append>
-                                        <SupplierDialogSelector
-                                            :selected="
-                                                !form.supplier
-                                                    ? []
-                                                    : [...form.supplier]
+                                    <template v-slot:openDialog="{ on, attrs }">
+                                        <v-text-field
+                                            :value="
+                                                form.supplier
+                                                    ? form.supplier.name
+                                                    : ''
                                             "
-                                            :dialogSupplier="dialogSupplier"
-                                            @close-dialog="
-                                                dialogSupplier = false
-                                            "
-                                            @on-select="onSelectSupplier"
-                                        >
-                                            <template v-slot:openDialog>
-                                                <v-btn
-                                                    color="primary"
-                                                    icon
-                                                    @click="
-                                                        dialogSupplier = true
-                                                    "
-                                                >
-                                                    <v-icon dark>
-                                                        mdi-magnify
-                                                    </v-icon>
-                                                </v-btn>
-                                            </template>
-                                        </SupplierDialogSelector>
+                                            :error-messages="errors.supplier_id"
+                                            @input="errors.supplier_id = []"
+                                            label="Supplier"
+                                            readonly
+                                            outlined
+                                            class="d-flex justify-center align-center"
+                                            v-bind="attrs"
+                                            v-on="on"
+                                        ></v-text-field>
                                     </template>
-                                </v-text-field>
+                                </SupplierDialogSelector>
                                 <!-- <v-text-field
                                     v-model="form.purchased_date"
                                     :error-messages="errors.purchased_date[0]"

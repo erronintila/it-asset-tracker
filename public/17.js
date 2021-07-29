@@ -288,20 +288,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -1014,85 +1000,60 @@ var render = function() {
                                 }
                               }),
                               _vm._v(" "),
-                              _c("v-text-field", {
-                                staticClass:
-                                  "d-flex justify-center align-center",
+                              _c("LocationDialogSelector", {
                                 attrs: {
-                                  value: _vm.form.profile.location
-                                    ? _vm.form.profile.location.name
-                                    : "",
-                                  "error-messages": _vm.errors.location_id,
-                                  label: "Location",
-                                  readonly: "",
-                                  outlined: ""
+                                  selected: !_vm.form.profile.location
+                                    ? []
+                                    : [].concat(_vm.form.profile.location),
+                                  dialogLocation: _vm.dialogLocation
                                 },
                                 on: {
-                                  input: function($event) {
-                                    _vm.errors.location_id = []
-                                  }
+                                  "close-dialog": function($event) {
+                                    _vm.dialogLocation = false
+                                  },
+                                  "on-select": _vm.onSelectLocation
                                 },
                                 scopedSlots: _vm._u([
                                   {
-                                    key: "append",
-                                    fn: function() {
+                                    key: "openDialog",
+                                    fn: function(ref) {
+                                      var on = ref.on
+                                      var attrs = ref.attrs
                                       return [
-                                        _c("LocationDialogSelector", {
-                                          attrs: {
-                                            selected: !_vm.form.profile.location
-                                              ? []
-                                              : [].concat(
-                                                  _vm.form.profile.location
-                                                ),
-                                            dialogLocation: _vm.dialogLocation
-                                          },
-                                          on: {
-                                            "close-dialog": function($event) {
-                                              _vm.dialogLocation = false
-                                            },
-                                            "on-select": _vm.onSelectLocation
-                                          },
-                                          scopedSlots: _vm._u([
-                                            {
-                                              key: "openDialog",
-                                              fn: function() {
-                                                return [
-                                                  _c(
-                                                    "v-btn",
-                                                    {
-                                                      attrs: {
-                                                        color: "primary",
-                                                        icon: ""
-                                                      },
-                                                      on: {
-                                                        click: function(
-                                                          $event
-                                                        ) {
-                                                          _vm.dialogLocation = true
-                                                        }
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "v-icon",
-                                                        { attrs: { dark: "" } },
-                                                        [
-                                                          _vm._v(
-                                                            "\n                                                    mdi-magnify\n                                                "
-                                                          )
-                                                        ]
-                                                      )
-                                                    ],
-                                                    1
-                                                  )
-                                                ]
+                                        _c(
+                                          "v-text-field",
+                                          _vm._g(
+                                            _vm._b(
+                                              {
+                                                staticClass:
+                                                  "d-flex justify-center align-center",
+                                                attrs: {
+                                                  value: _vm.form.profile
+                                                    .location
+                                                    ? _vm.form.profile.location
+                                                        .name
+                                                    : "",
+                                                  "error-messages":
+                                                    _vm.errors.location_id,
+                                                  label: "Location",
+                                                  readonly: "",
+                                                  outlined: ""
+                                                },
+                                                on: {
+                                                  input: function($event) {
+                                                    _vm.errors.location_id = []
+                                                  }
+                                                }
                                               },
-                                              proxy: true
-                                            }
-                                          ])
-                                        })
+                                              "v-text-field",
+                                              attrs,
+                                              false
+                                            ),
+                                            on
+                                          )
+                                        )
                                       ]
-                                    },
-                                    proxy: true
+                                    }
                                   }
                                 ])
                               }),

@@ -195,48 +195,34 @@
                                     @input="errors.organization_type = []"
                                 >
                                 </v-select>
-                                <v-text-field
-                                    :value="
-                                        form.profile.location
-                                            ? form.profile.location.name
-                                            : ''
+                                <LocationDialogSelector
+                                    :selected="
+                                        !form.profile.location
+                                            ? []
+                                            : [...form.profile.location]
                                     "
-                                    :error-messages="errors.location_id"
-                                    @input="errors.location_id = []"
-                                    label="Location"
-                                    readonly
-                                    outlined
-                                    class="d-flex justify-center align-center"
+                                    :dialogLocation="dialogLocation"
+                                    @close-dialog="dialogLocation = false"
+                                    @on-select="onSelectLocation"
                                 >
-                                    <template v-slot:append>
-                                        <LocationDialogSelector
-                                            :selected="
-                                                !form.profile.location
-                                                    ? []
-                                                    : [...form.profile.location]
+                                    <template v-slot:openDialog="{ on, attrs }">
+                                        <v-text-field
+                                            :value="
+                                                form.profile.location
+                                                    ? form.profile.location.name
+                                                    : ''
                                             "
-                                            :dialogLocation="dialogLocation"
-                                            @close-dialog="
-                                                dialogLocation = false
-                                            "
-                                            @on-select="onSelectLocation"
-                                        >
-                                            <template v-slot:openDialog>
-                                                <v-btn
-                                                    color="primary"
-                                                    icon
-                                                    @click="
-                                                        dialogLocation = true
-                                                    "
-                                                >
-                                                    <v-icon dark>
-                                                        mdi-magnify
-                                                    </v-icon>
-                                                </v-btn>
-                                            </template>
-                                        </LocationDialogSelector>
+                                            :error-messages="errors.location_id"
+                                            @input="errors.location_id = []"
+                                            label="Location"
+                                            readonly
+                                            outlined
+                                            class="d-flex justify-center align-center"
+                                            v-bind="attrs"
+                                            v-on="on"
+                                        ></v-text-field>
                                     </template>
-                                </v-text-field>
+                                </LocationDialogSelector>
                                 <v-textarea
                                     v-model="form.notes"
                                     label="Notes"

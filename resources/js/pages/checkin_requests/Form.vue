@@ -89,48 +89,46 @@
                                     :error-messages="errors.description[0]"
                                     @input="errors.description = []"
                                 ></v-text-field>
-                                <v-text-field
-                                    :value="
-                                        form.location ? form.location.name : ''
+
+                                <LocationDialogSelector
+                                    :selected="
+                                        !form.location ? [] : [...form.location]
                                     "
-                                    :error-messages="
-                                        errors.assigned_location_id
-                                    "
-                                    @input="errors.assigned_location_id = []"
-                                    label="Location"
-                                    readonly
-                                    outlined
-                                    class="d-flex justify-center align-center"
+                                    :dialogLocation="dialogLocation"
+                                    @close-dialog="dialogLocation = false"
+                                    @on-select="onSelectLocation"
                                 >
-                                    <template v-slot:append>
-                                        <LocationDialogSelector
-                                            :selected="
-                                                !form.location
-                                                    ? []
-                                                    : [...form.location]
+                                    <template v-slot:openDialog="{ on, attrs }">
+                                        <v-text-field
+                                            :value="
+                                                form.location
+                                                    ? form.location.name
+                                                    : ''
                                             "
-                                            :dialogLocation="dialogLocation"
-                                            @close-dialog="
-                                                dialogLocation = false
+                                            :error-messages="
+                                                errors.assigned_location_id
                                             "
-                                            @on-select="onSelectLocation"
+                                            @input="
+                                                errors.assigned_location_id = []
+                                            "
+                                            label="Location"
+                                            readonly
+                                            outlined
+                                            class="d-flex justify-center align-center"
+                                            v-bind="attrs"
+                                            v-on="on"
+                                        ></v-text-field>
+                                        <!-- <v-btn
+                                            color="primary"
+                                            icon
+                                            @click="dialogLocation = true"
                                         >
-                                            <template v-slot:openDialog>
-                                                <v-btn
-                                                    color="primary"
-                                                    icon
-                                                    @click="
-                                                        dialogLocation = true
-                                                    "
-                                                >
-                                                    <v-icon dark>
-                                                        mdi-magnify
-                                                    </v-icon>
-                                                </v-btn>
-                                            </template>
-                                        </LocationDialogSelector>
+                                            <v-icon dark>
+                                                mdi-magnify
+                                            </v-icon>
+                                        </v-btn> -->
                                     </template>
-                                </v-text-field>
+                                </LocationDialogSelector>
                                 <!-- <v-text-field
                                     v-model="form.notes"
                                     label="Notes"

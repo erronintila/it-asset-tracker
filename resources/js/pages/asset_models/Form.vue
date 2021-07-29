@@ -27,50 +27,37 @@
                                     :error-messages="errors.model_no[0]"
                                     @input="errors.model_no = []"
                                 ></v-text-field>
-                                <v-text-field
-                                    :value="
-                                        form.manufacturer
-                                            ? form.manufacturer.name
-                                            : ''
+
+                                <ManufacturerDialogSelector
+                                    :selected="
+                                        !form.manufacturer
+                                            ? []
+                                            : [...form.manufacturer]
                                     "
-                                    :error-messages="errors.manufacturer_id"
-                                    @input="errors.manufacturer_id = []"
-                                    label="Manufacturer"
-                                    readonly
-                                    outlined
-                                    class="d-flex justify-center align-center"
+                                    :dialogManufacturer="dialogManufacturer"
+                                    @close-dialog="dialogManufacturer = false"
+                                    @on-select="onSelectManufacturer"
                                 >
-                                    <template v-slot:append>
-                                        <ManufacturerDialogSelector
-                                            :selected="
-                                                !form.manufacturer
-                                                    ? []
-                                                    : [...form.manufacturer]
+                                    <template v-slot:openDialog="{ on, attrs }">
+                                        <v-text-field
+                                            :value="
+                                                form.manufacturer
+                                                    ? form.manufacturer.name
+                                                    : ''
                                             "
-                                            :dialogManufacturer="
-                                                dialogManufacturer
+                                            :error-messages="
+                                                errors.manufacturer_id
                                             "
-                                            @close-dialog="
-                                                dialogManufacturer = false
-                                            "
-                                            @on-select="onSelectManufacturer"
-                                        >
-                                            <template v-slot:openDialog>
-                                                <v-btn
-                                                    color="primary"
-                                                    icon
-                                                    @click="
-                                                        dialogManufacturer = true
-                                                    "
-                                                >
-                                                    <v-icon dark>
-                                                        mdi-magnify
-                                                    </v-icon>
-                                                </v-btn>
-                                            </template>
-                                        </ManufacturerDialogSelector>
+                                            @input="errors.manufacturer_id = []"
+                                            label="Manufacturer"
+                                            readonly
+                                            outlined
+                                            class="d-flex justify-center align-center"
+                                            v-bind="attrs"
+                                            v-on="on"
+                                        ></v-text-field>
                                     </template>
-                                </v-text-field>
+                                </ManufacturerDialogSelector>
                             </v-col>
                         </v-row>
                     </v-card-text>

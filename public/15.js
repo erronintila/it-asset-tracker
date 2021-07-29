@@ -98,6 +98,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "asset-model-selector",
@@ -188,11 +189,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       if (this.selectedItems.length == 0) {
         return;
       } else {
+        this.$refs.dialog.save(this.selectedItems);
         this.$emit("on-select", this.selectedItems);
       }
     },
     closeDialog: function closeDialog() {
-      this.$emit("close-dialog");
+      this.dialog = false;
     }
   },
   computed: {
@@ -257,57 +259,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -1001,6 +952,7 @@ var render = function() {
       _c(
         "v-dialog",
         {
+          ref: "dialog",
           attrs: {
             fullscreen: _vm.fullscreen,
             persistent: "",
@@ -1351,255 +1303,172 @@ var render = function() {
                                 }
                               }),
                               _vm._v(" "),
-                              _c("v-text-field", {
-                                staticClass:
-                                  "d-flex justify-center align-center",
+                              _c("AssetCategoryDialogSelector", {
                                 attrs: {
-                                  value: _vm.form.asset_category
-                                    ? _vm.form.asset_category.name
-                                    : "",
-                                  "error-messages":
-                                    _vm.errors.asset_category_id,
-                                  label: "Asset Category",
-                                  readonly: "",
-                                  outlined: ""
+                                  selected: !_vm.form.asset_category
+                                    ? []
+                                    : [].concat(_vm.form.asset_category),
+                                  dialogAssetCategory: _vm.dialogAssetCategory
                                 },
                                 on: {
-                                  input: function($event) {
-                                    _vm.errors.asset_category_id = []
-                                  }
+                                  "close-dialog": function($event) {
+                                    _vm.dialogAssetCategory = false
+                                  },
+                                  "on-select": _vm.onSelectAssetCategory
                                 },
                                 scopedSlots: _vm._u([
                                   {
-                                    key: "append",
-                                    fn: function() {
+                                    key: "openDialog",
+                                    fn: function(ref) {
+                                      var on = ref.on
+                                      var attrs = ref.attrs
                                       return [
-                                        _c("AssetCategoryDialogSelector", {
-                                          attrs: {
-                                            selected: !_vm.form.asset_category
-                                              ? []
-                                              : [].concat(
-                                                  _vm.form.asset_category
-                                                ),
-                                            dialogAssetCategory:
-                                              _vm.dialogAssetCategory
-                                          },
-                                          on: {
-                                            "close-dialog": function($event) {
-                                              _vm.dialogAssetCategory = false
-                                            },
-                                            "on-select":
-                                              _vm.onSelectAssetCategory
-                                          },
-                                          scopedSlots: _vm._u([
-                                            {
-                                              key: "openDialog",
-                                              fn: function() {
-                                                return [
-                                                  _c(
-                                                    "v-btn",
-                                                    {
-                                                      attrs: {
-                                                        color: "primary",
-                                                        icon: ""
-                                                      },
-                                                      on: {
-                                                        click: function(
-                                                          $event
-                                                        ) {
-                                                          _vm.dialogAssetCategory = true
-                                                        }
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "v-icon",
-                                                        { attrs: { dark: "" } },
-                                                        [
-                                                          _vm._v(
-                                                            "\n                                                    mdi-magnify\n                                                "
-                                                          )
-                                                        ]
-                                                      )
-                                                    ],
-                                                    1
-                                                  )
-                                                ]
+                                        _c(
+                                          "v-text-field",
+                                          _vm._g(
+                                            _vm._b(
+                                              {
+                                                staticClass:
+                                                  "d-flex justify-center align-center",
+                                                attrs: {
+                                                  value: _vm.form.asset_category
+                                                    ? _vm.form.asset_category
+                                                        .name
+                                                    : "",
+                                                  "error-messages":
+                                                    _vm.errors
+                                                      .asset_category_id,
+                                                  label: "Asset Category",
+                                                  readonly: "",
+                                                  outlined: ""
+                                                },
+                                                on: {
+                                                  input: function($event) {
+                                                    _vm.errors.asset_category_id = []
+                                                  }
+                                                }
                                               },
-                                              proxy: true
-                                            }
-                                          ])
-                                        })
+                                              "v-text-field",
+                                              attrs,
+                                              false
+                                            ),
+                                            on
+                                          )
+                                        )
                                       ]
-                                    },
-                                    proxy: true
+                                    }
                                   }
                                 ])
                               }),
                               _vm._v(" "),
-                              _c("v-text-field", {
-                                staticClass:
-                                  "d-flex justify-center align-center",
+                              _c("AssetModelDialogSelector", {
                                 attrs: {
-                                  value: _vm.form.asset_model
-                                    ? _vm.form.asset_model.name
-                                    : "",
-                                  "error-messages": _vm.errors.asset_model_id,
-                                  label: "Asset Model",
-                                  readonly: "",
-                                  outlined: ""
+                                  selected: !_vm.form.asset_model
+                                    ? []
+                                    : [].concat(_vm.form.asset_model),
+                                  dialogAssetModel: _vm.dialogAssetModel
                                 },
                                 on: {
-                                  input: function($event) {
-                                    _vm.errors.asset_model_id = []
-                                  }
+                                  "close-dialog": function($event) {
+                                    _vm.dialogAssetModel = false
+                                  },
+                                  "on-select": _vm.onSelectAssetModel
                                 },
                                 scopedSlots: _vm._u([
                                   {
-                                    key: "append",
-                                    fn: function() {
+                                    key: "openDialog",
+                                    fn: function(ref) {
+                                      var on = ref.on
+                                      var attrs = ref.attrs
                                       return [
-                                        _c("AssetModelDialogSelector", {
-                                          attrs: {
-                                            selected: !_vm.form.asset_model
-                                              ? []
-                                              : [].concat(_vm.form.asset_model),
-                                            dialogAssetModel:
-                                              _vm.dialogAssetModel
-                                          },
-                                          on: {
-                                            "close-dialog": function($event) {
-                                              _vm.dialogAssetModel = false
-                                            },
-                                            "on-select": _vm.onSelectAssetModel
-                                          },
-                                          scopedSlots: _vm._u([
-                                            {
-                                              key: "openDialog",
-                                              fn: function() {
-                                                return [
-                                                  _c(
-                                                    "v-btn",
-                                                    {
-                                                      attrs: {
-                                                        color: "primary",
-                                                        icon: ""
-                                                      },
-                                                      on: {
-                                                        click: function(
-                                                          $event
-                                                        ) {
-                                                          _vm.dialogAssetModel = true
-                                                        }
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "v-icon",
-                                                        { attrs: { dark: "" } },
-                                                        [
-                                                          _vm._v(
-                                                            "\n                                                    mdi-magnify\n                                                "
-                                                          )
-                                                        ]
-                                                      )
-                                                    ],
-                                                    1
-                                                  )
-                                                ]
+                                        _c(
+                                          "v-text-field",
+                                          _vm._g(
+                                            _vm._b(
+                                              {
+                                                staticClass:
+                                                  "d-flex justify-center align-center",
+                                                attrs: {
+                                                  value: _vm.form.asset_model
+                                                    ? _vm.form.asset_model.name
+                                                    : "",
+                                                  "error-messages":
+                                                    _vm.errors.asset_model_id,
+                                                  label: "Asset Model",
+                                                  readonly: "",
+                                                  outlined: ""
+                                                },
+                                                on: {
+                                                  input: function($event) {
+                                                    _vm.errors.asset_model_id = []
+                                                  }
+                                                }
                                               },
-                                              proxy: true
-                                            }
-                                          ])
-                                        })
+                                              "v-text-field",
+                                              attrs,
+                                              false
+                                            ),
+                                            on
+                                          )
+                                        )
                                       ]
-                                    },
-                                    proxy: true
+                                    }
                                   }
                                 ])
                               }),
                               _vm._v(" "),
-                              _c("v-text-field", {
-                                staticClass:
-                                  "d-flex justify-center align-center",
+                              _c("ManufacturerDialogSelector", {
                                 attrs: {
-                                  value: _vm.form.manufacturer
-                                    ? _vm.form.manufacturer.name
-                                    : "",
-                                  "error-messages": _vm.errors.manufacturer_id,
-                                  label: "Manufacturer",
-                                  readonly: "",
-                                  outlined: ""
+                                  selected: !_vm.form.manufacturer
+                                    ? []
+                                    : [].concat(_vm.form.manufacturer),
+                                  dialogManufacturer: _vm.dialogManufacturer
                                 },
                                 on: {
-                                  input: function($event) {
-                                    _vm.errors.manufacturer_id = []
-                                  }
+                                  "close-dialog": function($event) {
+                                    _vm.dialogManufacturer = false
+                                  },
+                                  "on-select": _vm.onSelectManufacturer
                                 },
                                 scopedSlots: _vm._u([
                                   {
-                                    key: "append",
-                                    fn: function() {
+                                    key: "openDialog",
+                                    fn: function(ref) {
+                                      var on = ref.on
+                                      var attrs = ref.attrs
                                       return [
-                                        _c("ManufacturerDialogSelector", {
-                                          attrs: {
-                                            selected: !_vm.form.manufacturer
-                                              ? []
-                                              : [].concat(
-                                                  _vm.form.manufacturer
-                                                ),
-                                            dialogManufacturer:
-                                              _vm.dialogManufacturer
-                                          },
-                                          on: {
-                                            "close-dialog": function($event) {
-                                              _vm.dialogManufacturer = false
-                                            },
-                                            "on-select":
-                                              _vm.onSelectManufacturer
-                                          },
-                                          scopedSlots: _vm._u([
-                                            {
-                                              key: "openDialog",
-                                              fn: function() {
-                                                return [
-                                                  _c(
-                                                    "v-btn",
-                                                    {
-                                                      attrs: {
-                                                        color: "primary",
-                                                        icon: ""
-                                                      },
-                                                      on: {
-                                                        click: function(
-                                                          $event
-                                                        ) {
-                                                          _vm.dialogManufacturer = true
-                                                        }
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "v-icon",
-                                                        { attrs: { dark: "" } },
-                                                        [
-                                                          _vm._v(
-                                                            "\n                                                    mdi-magnify\n                                                "
-                                                          )
-                                                        ]
-                                                      )
-                                                    ],
-                                                    1
-                                                  )
-                                                ]
+                                        _c(
+                                          "v-text-field",
+                                          _vm._g(
+                                            _vm._b(
+                                              {
+                                                staticClass:
+                                                  "d-flex justify-center align-center",
+                                                attrs: {
+                                                  value: _vm.form.manufacturer
+                                                    ? _vm.form.manufacturer.name
+                                                    : "",
+                                                  "error-messages":
+                                                    _vm.errors.manufacturer_id,
+                                                  label: "Manufacturer",
+                                                  readonly: "",
+                                                  outlined: ""
+                                                },
+                                                on: {
+                                                  input: function($event) {
+                                                    _vm.errors.manufacturer_id = []
+                                                  }
+                                                }
                                               },
-                                              proxy: true
-                                            }
-                                          ])
-                                        })
+                                              "v-text-field",
+                                              attrs,
+                                              false
+                                            ),
+                                            on
+                                          )
+                                        )
                                       ]
-                                    },
-                                    proxy: true
+                                    }
                                   }
                                 ])
                               })
@@ -1644,83 +1513,58 @@ var render = function() {
                             "v-col",
                             { attrs: { cols: "12" } },
                             [
-                              _c("v-text-field", {
-                                staticClass:
-                                  "d-flex justify-center align-center",
+                              _c("SupplierDialogSelector", {
                                 attrs: {
-                                  value: _vm.form.supplier
-                                    ? _vm.form.supplier.name
-                                    : "",
-                                  "error-messages": _vm.errors.supplier_id,
-                                  label: "Supplier",
-                                  readonly: "",
-                                  outlined: ""
+                                  selected: !_vm.form.supplier
+                                    ? []
+                                    : [].concat(_vm.form.supplier),
+                                  dialogSupplier: _vm.dialogSupplier
                                 },
                                 on: {
-                                  input: function($event) {
-                                    _vm.errors.supplier_id = []
-                                  }
+                                  "close-dialog": function($event) {
+                                    _vm.dialogSupplier = false
+                                  },
+                                  "on-select": _vm.onSelectSupplier
                                 },
                                 scopedSlots: _vm._u([
                                   {
-                                    key: "append",
-                                    fn: function() {
+                                    key: "openDialog",
+                                    fn: function(ref) {
+                                      var on = ref.on
+                                      var attrs = ref.attrs
                                       return [
-                                        _c("SupplierDialogSelector", {
-                                          attrs: {
-                                            selected: !_vm.form.supplier
-                                              ? []
-                                              : [].concat(_vm.form.supplier),
-                                            dialogSupplier: _vm.dialogSupplier
-                                          },
-                                          on: {
-                                            "close-dialog": function($event) {
-                                              _vm.dialogSupplier = false
-                                            },
-                                            "on-select": _vm.onSelectSupplier
-                                          },
-                                          scopedSlots: _vm._u([
-                                            {
-                                              key: "openDialog",
-                                              fn: function() {
-                                                return [
-                                                  _c(
-                                                    "v-btn",
-                                                    {
-                                                      attrs: {
-                                                        color: "primary",
-                                                        icon: ""
-                                                      },
-                                                      on: {
-                                                        click: function(
-                                                          $event
-                                                        ) {
-                                                          _vm.dialogSupplier = true
-                                                        }
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "v-icon",
-                                                        { attrs: { dark: "" } },
-                                                        [
-                                                          _vm._v(
-                                                            "\n                                                    mdi-magnify\n                                                "
-                                                          )
-                                                        ]
-                                                      )
-                                                    ],
-                                                    1
-                                                  )
-                                                ]
+                                        _c(
+                                          "v-text-field",
+                                          _vm._g(
+                                            _vm._b(
+                                              {
+                                                staticClass:
+                                                  "d-flex justify-center align-center",
+                                                attrs: {
+                                                  value: _vm.form.supplier
+                                                    ? _vm.form.supplier.name
+                                                    : "",
+                                                  "error-messages":
+                                                    _vm.errors.supplier_id,
+                                                  label: "Supplier",
+                                                  readonly: "",
+                                                  outlined: ""
+                                                },
+                                                on: {
+                                                  input: function($event) {
+                                                    _vm.errors.supplier_id = []
+                                                  }
+                                                }
                                               },
-                                              proxy: true
-                                            }
-                                          ])
-                                        })
+                                              "v-text-field",
+                                              attrs,
+                                              false
+                                            ),
+                                            on
+                                          )
+                                        )
                                       ]
-                                    },
-                                    proxy: true
+                                    }
                                   }
                                 ])
                               }),

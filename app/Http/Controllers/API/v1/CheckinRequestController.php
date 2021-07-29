@@ -5,13 +5,12 @@ namespace App\Http\Controllers\API\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CheckinRequest\CheckinRequestStoreRequest;
 use App\Http\Requests\CheckinRequest\CheckinRequestUpdateRequest;
-use App\Http\Resources\TransactionResource;
+use App\Http\Resources\CheckinRequestResource;
 use App\Models\CheckinRequest;
 use App\Models\Location;
 use App\Models\Transaction;
 use App\Models\TransactionType;
 use App\Traits\HttpResponseMessage;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -87,10 +86,20 @@ class CheckinRequestController extends Controller
      */
     public function show($id)
     {
-        $transaction = Transaction::with(['user', 'transactionable'])
+        $transaction = Transaction::with([
+            'user',
+            'transactionable',
+            'transaction_type',
+            'assigned_location',
+            'assigned_user',
+            'assigned_asset',
+            'parent_asset',
+            'owner',
+            'assets'
+        ])
             ->where('transactionable_type', 'App\Models\CheckinRequest')
             ->findOrFail($id);
-        return $this->successResponse('read', new TransactionResource($transaction), 200);
+        return $this->successResponse('read', new CheckinRequestResource($transaction), 200);
     }
 
     /**

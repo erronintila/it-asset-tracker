@@ -98,6 +98,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "asset-selector",
@@ -188,11 +189,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       if (this.selectedItems.length == 0) {
         return;
       } else {
+        this.$refs.dialog.save(this.selectedItems);
         this.$emit("on-select", this.selectedItems);
       }
     },
     closeDialog: function closeDialog() {
-      this.$emit("close-dialog");
+      this.dialog = false;
     }
   },
   computed: {
@@ -263,8 +265,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
 //
 //
 //
@@ -732,6 +732,7 @@ var render = function() {
       _c(
         "v-dialog",
         {
+          ref: "dialog",
           attrs: {
             fullscreen: _vm.fullscreen,
             persistent: "",
@@ -1217,84 +1218,59 @@ var render = function() {
                                 }
                               }),
                               _vm._v(" "),
-                              _c("v-text-field", {
-                                staticClass:
-                                  "d-flex justify-center align-center",
+                              _c("LocationDialogSelector", {
                                 attrs: {
-                                  value: _vm.form.location
-                                    ? _vm.form.location.name
-                                    : "",
-                                  "error-messages":
-                                    _vm.errors.assigned_location_id,
-                                  label: "Location",
-                                  readonly: "",
-                                  outlined: ""
+                                  selected: !_vm.form.location
+                                    ? []
+                                    : [].concat(_vm.form.location),
+                                  dialogLocation: _vm.dialogLocation
                                 },
                                 on: {
-                                  input: function($event) {
-                                    _vm.errors.assigned_location_id = []
-                                  }
+                                  "close-dialog": function($event) {
+                                    _vm.dialogLocation = false
+                                  },
+                                  "on-select": _vm.onSelectLocation
                                 },
                                 scopedSlots: _vm._u([
                                   {
-                                    key: "append",
-                                    fn: function() {
+                                    key: "openDialog",
+                                    fn: function(ref) {
+                                      var on = ref.on
+                                      var attrs = ref.attrs
                                       return [
-                                        _c("LocationDialogSelector", {
-                                          attrs: {
-                                            selected: !_vm.form.location
-                                              ? []
-                                              : [].concat(_vm.form.location),
-                                            dialogLocation: _vm.dialogLocation
-                                          },
-                                          on: {
-                                            "close-dialog": function($event) {
-                                              _vm.dialogLocation = false
-                                            },
-                                            "on-select": _vm.onSelectLocation
-                                          },
-                                          scopedSlots: _vm._u([
-                                            {
-                                              key: "openDialog",
-                                              fn: function() {
-                                                return [
-                                                  _c(
-                                                    "v-btn",
-                                                    {
-                                                      attrs: {
-                                                        color: "primary",
-                                                        icon: ""
-                                                      },
-                                                      on: {
-                                                        click: function(
-                                                          $event
-                                                        ) {
-                                                          _vm.dialogLocation = true
-                                                        }
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "v-icon",
-                                                        { attrs: { dark: "" } },
-                                                        [
-                                                          _vm._v(
-                                                            "\n                                                    mdi-magnify\n                                                "
-                                                          )
-                                                        ]
-                                                      )
-                                                    ],
-                                                    1
-                                                  )
-                                                ]
+                                        _c(
+                                          "v-text-field",
+                                          _vm._g(
+                                            _vm._b(
+                                              {
+                                                staticClass:
+                                                  "d-flex justify-center align-center",
+                                                attrs: {
+                                                  value: _vm.form.location
+                                                    ? _vm.form.location.name
+                                                    : "",
+                                                  "error-messages":
+                                                    _vm.errors
+                                                      .assigned_location_id,
+                                                  label: "Location",
+                                                  readonly: "",
+                                                  outlined: ""
+                                                },
+                                                on: {
+                                                  input: function($event) {
+                                                    _vm.errors.assigned_location_id = []
+                                                  }
+                                                }
                                               },
-                                              proxy: true
-                                            }
-                                          ])
-                                        })
+                                              "v-text-field",
+                                              attrs,
+                                              false
+                                            ),
+                                            on
+                                          )
+                                        )
                                       ]
-                                    },
-                                    proxy: true
+                                    }
                                   }
                                 ])
                               })

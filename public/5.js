@@ -98,6 +98,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "employee-selector",
@@ -185,11 +186,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       if (this.selectedItems.length == 0) {
         return;
       } else {
+        this.$refs.dialog.save(this.selectedItems);
         this.$emit("on-select", this.selectedItems);
       }
     },
     closeDialog: function closeDialog() {
-      this.$emit("close-dialog");
+      this.dialog = false;
     }
   },
   computed: {
@@ -505,6 +507,7 @@ var render = function() {
       _c(
         "v-dialog",
         {
+          ref: "dialog",
           attrs: {
             fullscreen: _vm.fullscreen,
             persistent: "",

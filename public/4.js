@@ -305,6 +305,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "asset-category-selector",
@@ -392,11 +393,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       if (this.selectedItems.length == 0) {
         return;
       } else {
+        this.$refs.dialog.save(this.selectedItems);
         this.$emit("on-select", this.selectedItems);
       }
     },
     closeDialog: function closeDialog() {
-      this.$emit("close-dialog");
+      this.dialog = false;
     }
   },
   computed: {
@@ -455,6 +457,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -627,11 +630,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       if (this.selectedItems.length == 0) {
         return;
       } else {
+        this.$refs.dialog.save(this.selectedItems);
         this.$emit("on-select", this.selectedItems);
       }
     },
     closeDialog: function closeDialog() {
-      this.$emit("close-dialog");
+      this.dialog = false;
     }
   },
   computed: {
@@ -933,6 +937,7 @@ var render = function() {
       _c(
         "v-dialog",
         {
+          ref: "dialog",
           attrs: {
             fullscreen: _vm.fullscreen,
             persistent: "",
@@ -1159,6 +1164,7 @@ var render = function() {
       _c(
         "v-dialog",
         {
+          ref: "dialog",
           attrs: {
             fullscreen: _vm.fullscreen,
             persistent: "",
