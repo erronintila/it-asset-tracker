@@ -487,6 +487,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 
@@ -620,7 +623,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 try {
                   _services_TransactionTypeDataService__WEBPACK_IMPORTED_MODULE_4__["default"].getAll({
                     params: {
-                      itemsPerPage: 100
+                      itemsPerPage: 100,
+                      action_types: ["checkin"]
                     }
                   }).then(function (response) {
                     console.log(response.data);

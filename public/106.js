@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _services_LocationDataService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../services/LocationDataService */ "./resources/js/services/LocationDataService.js");
+/* harmony import */ var _services_CheckinRequestDataService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../services/CheckinRequestDataService */ "./resources/js/services/CheckinRequestDataService.js");
 /* harmony import */ var _Form_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.vue */ "./resources/js/pages/checkin_requests/Form.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -17,6 +17,10 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
 //
 //
 //
@@ -55,7 +59,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         assigned_location_id: "",
         assigned_asset_id: "",
         assets: [],
-        location: null
+        assigned_location: null
       },
       errors: {
         code: [],
@@ -86,22 +90,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       //     };
       // }
 
-      _services_LocationDataService__WEBPACK_IMPORTED_MODULE_0__["default"].show(this.$route.params.id, data).then(function (response) {
+      _services_CheckinRequestDataService__WEBPACK_IMPORTED_MODULE_0__["default"].show(this.$route.params.id, data).then(function (response) {
         console.log(response.data);
         _this.form = _objectSpread(_objectSpread({}, _this.form), response.data.data);
+        console.log("hahaha", _objectSpread(_objectSpread({}, _this.form), response.data.data));
       })["catch"](function (error) {
         console.log(error.response);
         alert("An error has occurred.");
 
         _this.$router.push({
-          name: "locations.index"
+          name: "checkin_requests.index"
         }, function () {});
       });
     },
     onSave: function onSave(value) {
       var _this2 = this;
 
-      _services_LocationDataService__WEBPACK_IMPORTED_MODULE_0__["default"].update(this.$route.params.id, value).then(function (response) {
+      _services_CheckinRequestDataService__WEBPACK_IMPORTED_MODULE_0__["default"].update(this.$route.params.id, value).then(function (response) {
         console.log(response.data);
         alert("Successfully updated.");
 
@@ -147,11 +152,11 @@ var render = function() {
     "div",
     [
       _c("page-header", {
-        attrs: { title: "Update Location", backButton: true }
+        attrs: { title: "Update Checkin Request", backButton: true }
       }),
       _vm._v(" "),
       _c("Form", {
-        attrs: { locationForm: _vm.form, errors: _vm.errors },
+        attrs: { checkinRequestForm: _vm.form, errors: _vm.errors },
         on: { "on-save": _vm.onSave }
       })
     ],
@@ -231,70 +236,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_1df24dea___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
-
-/***/ }),
-
-/***/ "./resources/js/services/LocationDataService.js":
-/*!******************************************************!*\
-  !*** ./resources/js/services/LocationDataService.js ***!
-  \******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-// import http from "../http-common";
-
-
-var LocationDataService = /*#__PURE__*/function () {
-  function LocationDataService() {
-    _classCallCheck(this, LocationDataService);
-  }
-
-  _createClass(LocationDataService, [{
-    key: "getAll",
-    value: function getAll(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/locations", data);
-    }
-  }, {
-    key: "show",
-    value: function show(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/locations/".concat(id), data);
-    }
-  }, {
-    key: "store",
-    value: function store(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/locations", data);
-    }
-  }, {
-    key: "update",
-    value: function update(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/locations/".concat(id), data);
-    }
-  }, {
-    key: "delete",
-    value: function _delete(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/locations/".concat(id), data);
-    }
-  }, {
-    key: "deleteMany",
-    value: function deleteMany(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/locations/multiple", data);
-    }
-  }]);
-
-  return LocationDataService;
-}();
-
-/* harmony default export */ __webpack_exports__["default"] = (new LocationDataService());
 
 /***/ })
 

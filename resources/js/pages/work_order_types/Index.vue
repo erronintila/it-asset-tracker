@@ -240,7 +240,8 @@ export default {
                         sortType: sortDesc[0] ? "desc" : "asc",
                         page: page,
                         itemsPerPage: itemsPerPage,
-                        search: search
+                        search: search,
+                        action_types: ["maintenance"]
                         // status: status
                     }
                 };

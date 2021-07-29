@@ -502,7 +502,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             sortType: sortDesc[0] ? "desc" : "asc",
             page: page,
             itemsPerPage: itemsPerPage,
-            search: search // status: status
+            search: search,
+            action_types: ["maintenance"] // status: status
 
           }
         };

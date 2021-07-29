@@ -92,7 +92,9 @@
 
                                 <LocationDialogSelector
                                     :selected="
-                                        !form.assigned_location ? [] : [...form.assigned_location]
+                                        !form.assigned_location
+                                            ? []
+                                            : [...form.assigned_location]
                                     "
                                     :dialogLocation="dialogLocation"
                                     @on-select="onSelectLocation"
@@ -101,7 +103,8 @@
                                         <v-text-field
                                             :value="
                                                 form.assigned_location
-                                                    ? form.assigned_location.name
+                                                    ? form.assigned_location
+                                                          .name
                                                     : ''
                                             "
                                             :error-messages="
@@ -333,7 +336,8 @@ export default {
             try {
                 TransactionTypeDataService.getAll({
                     params: {
-                        itemsPerPage: 100
+                        itemsPerPage: 100,
+                        action_types: ["checkin"]
                     }
                 }).then(response => {
                     console.log(response.data);
