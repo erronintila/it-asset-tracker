@@ -1,104 +1,54 @@
 <template>
     <div>
-        <v-row class="mb-4">
-            <v-col class="d-flex justify-start">
-                <v-btn icon @click="$router.go(-1)">
-                    <v-icon>mdi-arrow-left</v-icon>
-                </v-btn>
-                <span class="page-title">Work Order Details</span>
-            </v-col>
-        </v-row>
+        <page-header
+            class="mb-4"
+            :title="'Checkin Request Details'"
+            :backButton="true"
+        ></page-header>
 
         <v-row>
             <v-col cols="12" md="4">
-                <v-card>
-                    <template slot="progress">
-                        <v-progress-linear
-                            color="deep-purple"
-                            height="10"
-                            indeterminate
-                        ></v-progress-linear>
+                <CardSummary
+                    :title="'#' + form.code"
+                    :subtitle="
+                        form.request_date | moment('MMMM DD, YYYY hh:mm:ss A')
+                    "
+                >
+                    <template v-slot:body>
+                        <p>Description: {{ form.description }}</p>
+                        <p>
+                            Status:
+                            <v-chip
+                                small
+                                :color="form.status.color"
+                                :dark="form.status.dark"
+                            >
+                                {{ form.status.text }}
+                            </v-chip>
+                        </p>
                     </template>
-
-                    <v-img
-                        height="250"
-                        src="https://cdn.vuetifyjs.com/images/parallax/material2.jpg"
-                    ></v-img>
-
-                    <v-card-title>
-                        Description
-                        <v-spacer></v-spacer>
-                        <v-btn rounded color="yellow" elevation="0">
-                            On Going
-                        </v-btn>
-                    </v-card-title>
-
-                    <v-card-text>
-                        <v-row align="center" class="mx-0">
-                            <v-rating
-                                :value="4.5"
-                                color="amber"
-                                dense
-                                half-increments
-                                readonly
-                                size="14"
-                            ></v-rating>
-
-                            <div class="grey--text ms-4">
-                                4.5 (413)
-                            </div>
-                        </v-row>
-
-                        <div class="my-4 text-subtitle-1">
-                            # 32412431234
-                        </div>
-
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing
-                            elit. Sit, possimus.
-                        </p>
-
-                        <p>
-                            Last Updated: 2021-01-01 08:00
-                        </p>
-                    </v-card-text>
-
-                    <v-divider class="mx-4"></v-divider>
-
-                    <!-- <v-card-title>Tonight's availability</v-card-title> -->
-
-                    <!-- <v-card-text>
-                        <v-chip-group
-                            active-class="deep-purple accent-4 white--text"
-                            column
+                    <template v-slot:actions>
+                        <v-btn
+                            icon
+                            @click="
+                                $router.push(
+                                    '/work_orders/' +
+                                        $route.params.id +
+                                        '/edit'
+                                )
+                            "
                         >
-                            <v-chip>5:30PM</v-chip>
-
-                            <v-chip>7:30PM</v-chip>
-
-                            <v-chip>8:00PM</v-chip>
-
-                            <v-chip>9:00PM</v-chip>
-                        </v-chip-group>
-                    </v-card-text> -->
-
-                    <v-card-actions>
-                        <v-btn icon>
-                            <v-icon>mdi-file-document-edit-outline</v-icon>
+                            <v-icon>
+                                mdi-file-document-edit-outline
+                            </v-icon>
                         </v-btn>
-
-                        <v-btn icon>
-                            <v-icon>mdi-delete</v-icon>
+                        <v-btn icon @click="onDelete">
+                            <v-icon>
+                                mdi-delete
+                            </v-icon>
                         </v-btn>
-
-                        <v-btn icon>
-                            <v-icon>mdi-file-export-outline</v-icon>
-                        </v-btn>
-                        <v-btn icon>
-                            <v-icon>mdi-text-box-plus-outline</v-icon>
-                        </v-btn>
-                    </v-card-actions>
-                </v-card>
+                    </template>
+                </CardSummary>
             </v-col>
             <v-col cols="12" md="8">
                 <v-card>
@@ -112,13 +62,18 @@
                         <v-tab-item>
                             <v-card flat>
                                 <v-card-text>
-                                    <!-- Overview -->
-                                    <VueApexCharts
-                                        type="donut"
-                                        height="300"
-                                        :options="options.asset"
-                                        :series="series.asset"
-                                    ></VueApexCharts>
+                                    <div class="page-title my-4">
+                                        Checkin Request Name
+                                    </div>
+
+                                    <div class="my-4">
+                                        <VueApexCharts
+                                            type="donut"
+                                            height="300"
+                                            :options="options.asset"
+                                            :series="series.asset"
+                                        ></VueApexCharts>
+                                    </div>
                                 </v-card-text>
                             </v-card>
                         </v-tab-item>
@@ -139,11 +94,13 @@
                                             </thead>
                                             <tbody>
                                                 <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
+                                                    v-for="(value,
+                                                    name,
+                                                    index) in form"
+                                                    :key="index"
                                                 >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
+                                                    <td>{{ name }}</td>
+                                                    <td>{{ value }}</td>
                                                 </tr>
                                             </tbody>
                                         </template>
@@ -334,84 +291,86 @@
 
 <script>
 import VueApexCharts from "vue-apexcharts";
-import XDataTable from "../../components/X-DataTable.vue";
-import XDialog from "../../components/X-Dialog.vue";
+import CardSummary from "../../components/pages/CardSummary.vue";
+import WorkOrderDataService from "../../services/WorkOrderDataService";
 
 export default {
     components: {
         VueApexCharts,
-        XDataTable,
-        XDialog
+        CardSummary
     },
     data() {
         return {
             tab: null,
-            items: [
-                "overview",
-                "details",
-                "assets",
-                "licenses",
-                // "consumables",
-                // "maintenances",
-                "system activity logs",
-                "attachments"
-            ],
+            items: ["overview", "details", "assets", "System Activity Logs"],
             series: {
                 asset: [44, 55, 41, 17]
             },
             options: {
                 asset: {
                     labels: [
-                        "Repair",
-                        "Preventive Maintenance",
-                        "Corrective Maintenance",
-                        "Others"
+                        "In Storage",
+                        "In Use",
+                        "In Maintenance",
+                        "Disposed"
                     ]
                 }
             },
-            records: [
-                {
-                    name: "Data 1",
-                    value: 159
-                },
-                {
-                    name: "Data 2",
-                    value: 237
-                },
-                {
-                    name: "Data 3",
-                    value: 262
-                },
-                {
-                    name: "Data 4",
-                    value: 305
-                },
-                {
-                    name: "Data 5",
-                    value: 356
-                },
-                {
-                    name: "Data 6",
-                    value: 375
-                },
-                {
-                    name: "Data 7",
-                    value: 392
-                },
-                {
-                    name: "Data 8",
-                    value: 408
-                },
-                {
-                    name: "Data 9",
-                    value: 452
-                },
-                {
-                    name: "Data 10",
-                    value: 518
-                }
-            ]
+            records: [],
+            form: {
+                code: "",
+                reference: "",
+                request_date: "",
+                description: "",
+                status: { text: "", color: "", dark: false },
+                transactionable: {},
+                transaction_type_id: "",
+                user: {},
+                parent_asset_id: "",
+                owner_id: "",
+                assigned_user_id: "",
+                assigned_location_id: "",
+                assigned_asset_id: ""
+            }
         };
+    },
+    methods: {
+        getData() {
+            let data = {};
+
+            WorkOrderDataService.show(this.$route.params.id, data)
+                .then(response => {
+                    console.log(response.data);
+                    this.form = { ...this.form, ...response.data.data };
+                })
+                .catch(error => {
+                    console.log(error.response);
+                    alert("An error has occurred.");
+                    this.$router.push(
+                        { name: "work_orders.index" },
+                        () => {}
+                    );
+                });
+        },
+        onDelete() {
+            if (!confirm("WARNING: Do you want to delete this record?")) {
+                return;
+            }
+
+            WorkOrderDataService.delete(this.$route.params.id, {})
+                .then(response => {
+                    console.log(response.data);
+                    alert(response.data.message);
+                    this.$router.push({ name: "work_orders.index" });
+                })
+                .catch(error => {
+                    console.log(error.response);
+                    alert("An error has occurred.");
+                });
+        }
+    },
+    created() {
+        this.getData();
     }
 };
 </script>

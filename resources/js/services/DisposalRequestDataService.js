@@ -21,6 +21,26 @@ class DisposalRequestDataService {
     delete(id, data) {
         return axios.delete(`/api/v1/disposal_requests/${id}`, data);
     }
+
+    deleteMany(data) {
+        return axios.delete(`/api/v1/disposal_requests/multiple`, data);
+    }
+
+    approve(data) {
+        return axios.put(`/api/v1/disposal_requests/approve`, data);
+    }
+
+    complete(data) {
+        return axios.put(`/api/v1/disposal_requests/complete`, data);
+    }
+
+    post(data) {
+        return axios.put(`/api/v1/disposal_requests/post`, data);
+    }
+
+    cancel(data) {
+        return axios.put(`/api/v1/disposal_requests/cancel`, data);
+    }
 }
 
 export default new DisposalRequestDataService();

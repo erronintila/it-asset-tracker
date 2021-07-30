@@ -54,7 +54,7 @@ class DisposalRequestController extends Controller
             $code = 'CIN' . date("YmdHis");
 
             $transaction_type = TransactionType::findOrFail($validated['transaction_type_id']);
-            $location = Location::findOrFail($validated['assigned_location_id']);
+            // $location = Location::findOrFail($validated['assigned_location_id']);
 
             $transaction = new Transaction();
             $transaction->code = $code;
@@ -63,11 +63,12 @@ class DisposalRequestController extends Controller
             $transaction->description = $validated['description'];
 
             $transaction->transaction_type()->associate($transaction_type);
-            $transaction->assigned_location()->associate($location);
+            // $transaction->assigned_location()->associate($location);
             $transaction->user()->associate(Auth::user());
             $transaction->save();
 
             $transaction->assets()->sync(array_column($validated['assets'], 'id'));
+            $transaction->assigned_employees()->sync(array_column($validated['assigned_employees'], 'id'));
 
             $checkin_request = new DisposalRequest();
             $checkin_request->save();
@@ -96,7 +97,8 @@ class DisposalRequestController extends Controller
             'assigned_asset',
             'parent_asset',
             'owner',
-            'assets'
+            'assets',
+            'assigned_employees'
         ])
             ->where('transactionable_type', 'App\Models\DisposalRequest')
             ->findOrFail($id);
@@ -116,7 +118,7 @@ class DisposalRequestController extends Controller
 
         $data = DB::transaction(function () use ($validated, $id) {
             $transaction_type = TransactionType::findOrFail($validated['transaction_type_id']);
-            $location = Location::findOrFail($validated['assigned_location_id']);
+            // $location = Location::findOrFail($validated['assigned_location_id']);
 
             $transaction = Transaction::findOrFail($id);
             $transaction->reference_no = $validated['reference_no'];
@@ -124,11 +126,12 @@ class DisposalRequestController extends Controller
             $transaction->description = $validated['description'];
 
             $transaction->transaction_type()->associate($transaction_type);
-            $transaction->assigned_location()->associate($location);
+            // $transaction->assigned_location()->associate($location);
             // $transaction->user()->associate(Auth::user());
             $transaction->save();
 
             $transaction->assets()->sync(array_column($validated['assets'], 'id'));
+            $transaction->assigned_employees()->sync(array_column($validated['assigned_employees'], 'id'));
 
             $checkin_request = DisposalRequest::findOrFail($transaction->transactionable->id);
             $checkin_request->save();

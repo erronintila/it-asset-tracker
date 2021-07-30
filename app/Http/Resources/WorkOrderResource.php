@@ -32,6 +32,7 @@ class WorkOrderResource extends JsonResource
             "assigned_location" => $this->assigned_location,
             "assigned_asset" => $this->assigned_asset,
             "assets" => $this->assets,
+            "assigned_employees" => $this->assigned_employees,
 
             "approved_at" => $this->approved_at,
             "completed_at" => $this->completed_at,

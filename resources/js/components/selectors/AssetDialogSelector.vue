@@ -98,6 +98,10 @@ export default {
         selected: {
             type: Array,
             default: () => []
+        },
+        requestType: {
+            type: String,
+            default: null
         }
     },
     data() {
@@ -137,6 +141,7 @@ export default {
                 } = this.tableOptions.options;
                 let search = this.search;
                 // let status = this.status;
+                let request_type = this.requestType;
 
                 let data = {
                     params: {
@@ -144,7 +149,8 @@ export default {
                         sortType: sortDesc[0] ? "desc" : "asc",
                         page: page,
                         itemsPerPage: itemsPerPage,
-                        search: search
+                        search: search,
+                        request_type: request_type
                         // status: status
                     }
                 };

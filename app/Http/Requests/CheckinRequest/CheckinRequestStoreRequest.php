@@ -37,7 +37,8 @@ class CheckinRequestStoreRequest extends FormRequest
             "assigned_location_id" => ['required', 'integer'],
             "assigned_asset_id" => ['nullable', 'integer'],
 
-            "assets" => ['required', 'array']
+            "assets" => ['required', 'array'],
+            "assigned_employees" => ['required', 'array']
         ];
     }
 

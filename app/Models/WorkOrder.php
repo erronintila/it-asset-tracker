@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class WorkOrder extends Model
 {
     use SoftDeletes;
-    
+
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | LARAVEL MODEL CONFIGURATION
@@ -31,7 +31,7 @@ class WorkOrder extends Model
 
     public function transaction()
     {
-        return $this->morphOne('App\Models\Transaction', 'request');
+        return $this->morphOne('App\Models\Transaction', 'transactionable');
     }
 
     /*

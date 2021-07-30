@@ -148,6 +148,74 @@
                 <v-card flat>
                     <v-card-title class="d-flex justify-space-between">
                         <div>
+                            Assigned Employees
+                        </div>
+                        <div class="d-flex">
+                            <v-btn
+                                icon
+                                fab
+                                small
+                                to="/employees/create"
+                                title="Create new employee"
+                            >
+                                <v-icon>mdi-plus</v-icon>
+                            </v-btn>
+                            <EmployeeDialogSelector
+                                :selected="
+                                    !form.assigned_employees
+                                        ? []
+                                        : form.assigned_employees
+                                "
+                                :singleSelect="false"
+                                @on-select="onSelectEmployee"
+                            >
+                                <template v-slot:openDialog="{ on, attrs }">
+                                    <v-btn
+                                        icon
+                                        fab
+                                        small
+                                        title="Choose employee"
+                                        v-bind="attrs"
+                                        v-on="on"
+                                    >
+                                        <v-icon>
+                                            mdi-clipboard-plus-outline
+                                        </v-icon>
+                                    </v-btn>
+                                </template>
+                            </EmployeeDialogSelector>
+                        </div>
+                    </v-card-title>
+                    <v-card-text>
+                        <small
+                            class="red--text"
+                            v-if="
+                                form.assigned_employees.length == 0 &&
+                                    errors.assigned_employees.length
+                            "
+                        >
+                            {{ errors.assigned_employees[0] }}
+                        </small>
+                        <v-data-table
+                            :headers="headers.employee"
+                            :items="form.assigned_employees"
+                            :items-per-page="5"
+                        >
+                            <template v-slot:[`item.action`]="{ item }">
+                                <v-btn icon>
+                                    <v-icon @click="removeEmployeeItem(item)">
+                                        mdi-delete
+                                    </v-icon>
+                                </v-btn>
+                            </template>
+                        </v-data-table>
+                    </v-card-text>
+                </v-card>
+            </v-col>
+            <v-col cols="12">
+                <v-card flat>
+                    <v-card-title class="d-flex justify-space-between">
+                        <div>
                             Assets
                         </div>
                         <div class="d-flex">
@@ -193,7 +261,7 @@
                             {{ errors.assets[0] }}
                         </small>
                         <v-data-table
-                            :headers="headers"
+                            :headers="headers.asset"
                             :items="form.assets"
                             :items-per-page="5"
                         >
@@ -226,6 +294,7 @@
 <script>
 import moment from "moment";
 import AssetDialogSelector from "../../components/selectors/AssetDialogSelector.vue";
+import EmployeeDialogSelector from "../../components/selectors/EmployeeDialogSelector.vue";
 import LocationDialogSelector from "../../components/selectors/LocationDialogSelector.vue";
 import TransactionTypeDataService from "../../services/TransactionTypeDataService";
 
@@ -249,6 +318,7 @@ export default {
                     assigned_location_id: "",
                     assigned_asset_id: "",
                     assets: [],
+                    assigned_employees: [],
                     assigned_location: null
                 };
             }
@@ -269,7 +339,8 @@ export default {
                     assigned_user_id: [],
                     assigned_location_id: [],
                     assigned_asset_id: [],
-                    assets: []
+                    assets: [],
+                    assigned_employees: []
                 };
             }
         },
@@ -289,14 +360,16 @@ export default {
                     assigned_user_id: [],
                     assigned_location_id: [],
                     assigned_asset_id: [],
-                    assets: []
+                    assets: [],
+                    assigned_employees: []
                 };
             }
         }
     },
     components: {
         AssetDialogSelector,
-        LocationDialogSelector
+        LocationDialogSelector,
+        EmployeeDialogSelector
     },
     data() {
         return {
@@ -304,12 +377,20 @@ export default {
             dialogAsset: false,
             requestDateModal: false,
             dialogLocation: false,
-            headers: [
-                { text: "Code", value: "code" },
-                { text: "Serial No.", value: "serial_no" },
-                { text: "Description", value: "description" },
-                { text: "Action", value: "action" }
-            ],
+            headers: {
+                employee: [
+                    { text: "Code", value: "profile.code" },
+                    { text: "Fullname", value: "full_name" },
+                    { text: "Job Title", value: "profile.job_title" },
+                    { text: "Action", value: "action" }
+                ],
+                asset: [
+                    { text: "Code", value: "code" },
+                    { text: "Serial No.", value: "serial_no" },
+                    { text: "Description", value: "description" },
+                    { text: "Action", value: "action" }
+                ]
+            },
             transaction_types: [],
             form: {
                 code: "",
@@ -326,6 +407,7 @@ export default {
                 assigned_location_id: "",
                 assigned_asset_id: "",
                 assets: [],
+                assigned_employees: [],
                 assigned_location: null,
                 transaction_type: null
             }
@@ -391,6 +473,16 @@ export default {
             this.form.assets = e;
             this.dialogAsset = false;
         },
+        onSelectEmployee(e) {
+            this.errors.assigned_employees = [];
+
+            if (e == null || e == undefined) {
+                this.form.assigned_employees = [];
+                return;
+            }
+
+            this.form.assigned_employees = e;
+        },
         onSelectLocation(e) {
             this.dialogLocation = false;
             this.errors.assigned_location_id = [];
@@ -407,6 +499,12 @@ export default {
             if (confirm("Remove this item?")) {
                 this.editedIndex = this.form.assets.indexOf(item);
                 this.form.assets.splice(this.editedIndex, 1);
+            }
+        },
+        removeEmployeeItem(item) {
+            if (confirm("Remove this item?")) {
+                this.editedIndex = this.form.assigned_employees.indexOf(item);
+                this.form.assigned_employees.splice(this.editedIndex, 1);
             }
         }
     },

@@ -64,6 +64,11 @@ class Transaction extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function assigned_employees()
+    {
+        return $this->belongsToMany(User::class, "transaction_user");
+    }
+
     public function transaction_type()
     {
         return $this->belongsTo(TransactionType::class);

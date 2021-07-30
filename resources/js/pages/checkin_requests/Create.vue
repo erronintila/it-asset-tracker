@@ -33,7 +33,8 @@ export default {
                 assigned_user_id: [],
                 assigned_location_id: [],
                 assigned_asset_id: [],
-                assets: []
+                assets: [],
+                assigned_employees: [],
             }
         };
     },

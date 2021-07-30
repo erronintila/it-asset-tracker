@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmployeeTransactionTable extends Migration
+class CreateTransactionUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateEmployeeTransactionTable extends Migration
      */
     public function up()
     {
-        Schema::create('employee_transaction', function (Blueprint $table) {
+        Schema::create('transaction_user', function (Blueprint $table) {
             $table->foreignId('transaction_id')->nullable()->constrained()->onDelete('cascade');
-            $table->foreignId('employee_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamp('approved_at')->nullable();
             $table->timestamp('cancelled_at')->nullable();
             $table->timestamps();
@@ -29,6 +29,6 @@ class CreateEmployeeTransactionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employee_transaction');
+        Schema::dropIfExists('transaction_user');
     }
 }

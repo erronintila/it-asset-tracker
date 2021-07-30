@@ -30,14 +30,15 @@ class DisposalRequestStoreRequest extends FormRequest
             "description" => ["required", "string", "max:250"],
 
             "transaction_type_id" => ['required', 'integer'],
-            "user_id" => ['nullable', 'integer'],
-            "parent_asset_id" => ['nullable', 'integer'],
-            "owner_id" => ['nullable', 'integer'],
-            "assigned_user_id" => ['nullable', 'integer'],
-            "assigned_location_id" => ['required', 'integer'],
-            "assigned_asset_id" => ['nullable', 'integer'],
+            // "user_id" => ['nullable', 'integer'],
+            // "parent_asset_id" => ['nullable', 'integer'],
+            // "owner_id" => ['nullable', 'integer'],
+            // "assigned_user_id" => ['nullable', 'integer'],
+            // "assigned_location_id" => ['required', 'integer'],
+            // "assigned_asset_id" => ['nullable', 'integer'],
 
-            "assets" => ['required', 'array']
+            "assets" => ['required', 'array'],
+            "assigned_employees" => ['required', 'array']
         ];
     }
 

@@ -16,6 +16,14 @@ const disposal_request_routes = [
         }
     },
     {
+        path: "/disposal_requests/:id/edit",
+        name: "disposal_requests.edit",
+        component: () => import("../pages/disposal_requests/Edit"),
+        meta: {
+            auth: true
+        }
+    },
+    {
         path: "/disposal_requests/:id",
         name: "disposal_requests.show",
         component: () => import("../pages/disposal_requests/Show"),

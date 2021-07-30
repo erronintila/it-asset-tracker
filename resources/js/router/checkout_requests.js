@@ -16,6 +16,14 @@ const checkout_request_routes = [
         }
     },
     {
+        path: "/checkout_requests/:id/edit",
+        name: "checkout_requests.edit",
+        component: () => import("../pages/checkout_requests/Edit"),
+        meta: {
+            auth: true
+        }
+    },
+    {
         path: "/checkout_requests/:id",
         name: "checkout_requests.show",
         component: () => import("../pages/checkout_requests/Show"),

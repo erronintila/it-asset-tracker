@@ -21,6 +21,26 @@ class WorkOrderDataService {
     delete(id, data) {
         return axios.delete(`/api/v1/work_orders/${id}`, data);
     }
+
+    deleteMany(data) {
+        return axios.delete(`/api/v1/work_orders/multiple`, data);
+    }
+
+    approve(data) {
+        return axios.put(`/api/v1/work_orders/approve`, data);
+    }
+
+    complete(data) {
+        return axios.put(`/api/v1/work_orders/complete`, data);
+    }
+
+    post(data) {
+        return axios.put(`/api/v1/work_orders/post`, data);
+    }
+
+    cancel(data) {
+        return axios.put(`/api/v1/work_orders/cancel`, data);
+    }
 }
 
 export default new WorkOrderDataService();

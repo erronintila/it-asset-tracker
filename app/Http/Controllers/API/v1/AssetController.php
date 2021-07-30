@@ -26,33 +26,52 @@ class AssetController extends Controller
         $sortBy = request('sortBy') ?? "code";
         $sortType = request('sortType') ?? "asc";
         $itemsPerPage = request('itemsPerPage') ?? 10;
-        $statuses = request('statuses') ?? ['Pending', 'In Storage', 'In Use', 'In Maintenance', 'Disposed'];
+        $request_type = request("request_type") ?? null;
+        // $statuses = request('statuses') ?? ['Pending', 'In Storage', 'In Use', 'In Maintenance', 'Disposed'];
 
         $assets = Asset::with(['assigned_user', 'asset_category', 'supplier', 'manufacturer', 'asset_model'])
             ->search($search)
             ->orderBy($sortBy, $sortType);
 
-        if (in_array("Pending", $statuses)) {
-            $assets = $assets->where("assigned_location_id", null)
-                ->where("assigned_user_id", null);
+        if ($request_type) {
+            switch ($request_type) {
+                case 'checkin':
+                    break;
+                case 'checkout':
+                    $assets = $assets->where("assigned_location_id", "<>", null);
+                    break;
+                case 'disposal':
+                    $assets = $assets->where("assigned_user_id", null)->where("assigned_location_id", "<>", null);
+                    break;
+                case 'maintenance':
+                    $assets = $assets->where("assigned_location_id", "<>", null);
+                    break;
+                default:
+                    break;
+            }
         }
 
-        if (in_array("In Storage", $statuses)) {
-            $assets = $assets->where("assigned_location_id", "<>", null)
-                ->where("assigned_user_id", null);
-        }
+        // if (in_array("Pending", $statuses)) {
+        //     $assets = $assets->where("assigned_location_id", null)
+        //         ->where("assigned_user_id", null);
+        // }
 
-        if (in_array("In Use", $statuses)) {
-            $assets = $assets->where("assigned_user_id", "<>", null);
-        }
+        // if (in_array("In Storage", $statuses)) {
+        //     $assets = $assets->where("assigned_location_id", "<>", null)
+        //         ->where("assigned_user_id", null);
+        // }
 
-        if (in_array("In Maintenance", $statuses)) {
-            $assets = $assets->where("is_under_maintenance", true);
-        }
+        // if (in_array("In Use", $statuses)) {
+        //     $assets = $assets->where("assigned_user_id", "<>", null);
+        // }
 
-        if (in_array("Disposed", $statuses)) {
-            $assets = $assets->where("disposed_at", "<>", null);
-        }
+        // if (in_array("In Maintenance", $statuses)) {
+        //     $assets = $assets->where("is_under_maintenance", true);
+        // }
+
+        // if (in_array("Disposed", $statuses)) {
+        //     $assets = $assets->where("disposed_at", "<>", null);
+        // }
 
         $assets = $assets->paginate($itemsPerPage);
 

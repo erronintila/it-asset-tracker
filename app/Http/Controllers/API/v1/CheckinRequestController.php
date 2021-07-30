@@ -67,6 +67,7 @@ class CheckinRequestController extends Controller
             $transaction->save();
 
             $transaction->assets()->sync(array_column($validated['assets'], 'id'));
+            $transaction->assigned_employees()->sync(array_column($validated['assigned_employees'], 'id'));
 
             $checkin_request = new CheckinRequest();
             $checkin_request->save();
@@ -95,7 +96,8 @@ class CheckinRequestController extends Controller
             'assigned_asset',
             'parent_asset',
             'owner',
-            'assets'
+            'assets',
+            'assigned_employees'
         ])
             ->where('transactionable_type', 'App\Models\CheckinRequest')
             ->findOrFail($id);
@@ -128,6 +130,7 @@ class CheckinRequestController extends Controller
             $transaction->save();
 
             $transaction->assets()->sync(array_column($validated['assets'], 'id'));
+            $transaction->assigned_employees()->sync(array_column($validated['assigned_employees'], 'id'));
 
             $checkin_request = CheckinRequest::findOrFail($transaction->transactionable->id);
             $checkin_request->save();
