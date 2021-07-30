@@ -15,7 +15,6 @@ class CreateCheckoutRequestsTable extends Migration
     {
         Schema::create('checkout_requests', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
             $table->timestamps();
             $table->softDeletes();
         });

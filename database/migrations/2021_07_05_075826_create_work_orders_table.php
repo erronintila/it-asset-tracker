@@ -15,7 +15,6 @@ class CreateWorkOrdersTable extends Migration
     {
         Schema::create('work_orders', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
             $table->text('incident');
             $table->text('diagnosis');
             $table->text('action_taken');
