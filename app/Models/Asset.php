@@ -111,7 +111,7 @@ class Asset extends Model
             ];
         }
 
-        if ($this->maintained_at) {
+        if ($this->is_under_maintenance) {
             return [
                 "status" => "In Maintenance",
                 "color" => "yellow",

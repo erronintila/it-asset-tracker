@@ -31,7 +31,6 @@ class CreateAssetsTable extends Migration
             $table->double('quantity', 10, 2)->default(1);
             $table->text('notes')->nullable();
             $table->timestamp('disposed_at')->nullable();
-            $table->timestamp('maintained_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->foreignId('asset_model_id')->nullable()->constrained()->onDelete('cascade');
@@ -39,6 +38,7 @@ class CreateAssetsTable extends Migration
             $table->foreignId('manufacturer_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('asset_category_id')->constrained()->onDelete('cascade');
 
+            $table->boolean('is_under_maintenance')->default(false);
             $table->foreignId('assigned_user_id')->nullable()->constrained('users');
             $table->foreignId('assigned_location_id')->nullable()->constrained('locations');
             $table->foreignId('assigned_asset_id')->nullable()->constrained('assets')->onDelete('cascade');
