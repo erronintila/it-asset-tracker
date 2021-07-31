@@ -90,55 +90,36 @@
                                     @input="errors.description = []"
                                 ></v-text-field>
 
-                                <LocationDialogSelector
+                                <EmployeeDialogSelector
                                     :selected="
-                                        !form.assigned_location
+                                        !form.assigned_user
                                             ? []
-                                            : [...form.assigned_location]
+                                            : [...form.assigned_user]
                                     "
-                                    :dialogLocation="dialogLocation"
-                                    @on-select="onSelectLocation"
+                                    @on-select="onSelectUser"
                                 >
                                     <template v-slot:openDialog="{ on, attrs }">
                                         <v-text-field
                                             :value="
-                                                form.assigned_location
-                                                    ? form.assigned_location
-                                                          .name
+                                                form.assigned_user
+                                                    ? form.assigned_user
+                                                          .full_name
                                                     : ''
                                             "
+                                            label="Employee"
+                                            outlined
+                                            clearable
                                             :error-messages="
-                                                errors.assigned_location_id
+                                                errors.assigned_user_id[0]
                                             "
                                             @input="
-                                                errors.assigned_location_id = []
+                                                errors.assigned_user_id = []
                                             "
-                                            label="Location"
-                                            readonly
-                                            outlined
-                                            class="d-flex justify-center align-center"
                                             v-bind="attrs"
                                             v-on="on"
                                         ></v-text-field>
-                                        <!-- <v-btn
-                                            color="primary"
-                                            icon
-                                            @click="dialogLocation = true"
-                                        >
-                                            <v-icon dark>
-                                                mdi-magnify
-                                            </v-icon>
-                                        </v-btn> -->
                                     </template>
-                                </LocationDialogSelector>
-                                <!-- <v-text-field
-                                    v-model="form.notes"
-                                    label="Notes"
-                                    outlined
-                                    clearable
-                                    :error-messages="errors.notes[0]"
-                                    @input="errors.notes = []"
-                                ></v-text-field> -->
+                                </EmployeeDialogSelector>
                             </v-col>
                         </v-row>
                     </v-card-text>
@@ -296,7 +277,6 @@
 import moment from "moment";
 import AssetDialogSelector from "../../components/selectors/AssetDialogSelector.vue";
 import EmployeeDialogSelector from "../../components/selectors/EmployeeDialogSelector.vue";
-import LocationDialogSelector from "../../components/selectors/LocationDialogSelector.vue";
 import TransactionTypeDataService from "../../services/TransactionTypeDataService";
 
 export default {
@@ -320,7 +300,8 @@ export default {
                     assigned_asset_id: "",
                     assets: [],
                     assigned_employees: [],
-                    assigned_location: null
+                    assigned_location: null,
+                    assigned_user: null
                 };
             }
         },
@@ -369,7 +350,6 @@ export default {
     },
     components: {
         AssetDialogSelector,
-        LocationDialogSelector,
         EmployeeDialogSelector
     },
     data() {
@@ -377,7 +357,6 @@ export default {
             valid: false,
             dialogAsset: false,
             requestDateModal: false,
-            dialogLocation: false,
             headers: {
                 employee: [
                     { text: "Code", value: "profile.code" },
@@ -410,7 +389,8 @@ export default {
                 assets: [],
                 assigned_employees: [],
                 assigned_location: null,
-                transaction_type: null
+                transaction_type: null,
+                assigned_user: null
             }
         };
     },
@@ -442,11 +422,6 @@ export default {
 
             let newform = {
                 ...this.form,
-                ...{
-                    assigned_location_id: this.form.assigned_location
-                        ? this.form.assigned_location.id
-                        : null
-                },
                 ...{
                     transaction_type_id: this.form.transaction_type
                         ? this.form.transaction_type.id
@@ -484,17 +459,15 @@ export default {
 
             this.form.assigned_employees = e;
         },
-        onSelectLocation(e) {
-            this.dialogLocation = false;
-            this.errors.assigned_location_id = [];
+        onSelectUser(e) {
+            this.errors.assigned_user_id = [];
 
             if (e == null || e == undefined) {
-                this.form.assigned_location = null;
+                this.form.assigned_user = null;
                 return;
             }
 
-            this.form.assigned_location = e[0];
-            this.dialogLocation = false;
+            this.form.assigned_user = e[0];
         },
         removeItem(item) {
             if (confirm("Remove this item?")) {

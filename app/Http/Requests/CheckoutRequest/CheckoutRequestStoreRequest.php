@@ -33,12 +33,12 @@ class CheckoutRequestStoreRequest extends FormRequest
             "user_id" => ['nullable', 'integer'],
             "parent_asset_id" => ['nullable', 'integer'],
             "owner_id" => ['nullable', 'integer'],
-            "assigned_user_id" => ['nullable', 'integer'],
-            "assigned_location_id" => ['required', 'integer'],
+            "assigned_user_id" => ['required', 'integer'],
+            "assigned_location_id" => ['nullable', 'integer'],
             "assigned_asset_id" => ['nullable', 'integer'],
 
             "assets" => ['required', 'array'],
-            "assigned_employees" => ['required', 'array']
+            "assigned_employees" => ['nullable', 'array']
         ];
     }
 

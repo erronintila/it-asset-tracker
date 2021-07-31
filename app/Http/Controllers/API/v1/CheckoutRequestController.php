@@ -10,6 +10,7 @@ use App\Models\CheckoutRequest;
 use App\Models\Location;
 use App\Models\Transaction;
 use App\Models\TransactionType;
+use App\Models\User;
 use App\Traits\HttpResponseMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,10 +52,10 @@ class CheckoutRequestController extends Controller
         $validated = $request->validated();
 
         $data = DB::transaction(function () use ($validated) {
-            $code = 'CIN' . date("YmdHis");
+            $code = 'COUT' . date("YmdHis");
 
             $transaction_type = TransactionType::findOrFail($validated['transaction_type_id']);
-            $location = Location::findOrFail($validated['assigned_location_id']);
+            $assigned_user = User::findOrFail($validated['assigned_user_id']);
 
             $transaction = new Transaction();
             $transaction->code = $code;
@@ -63,8 +64,11 @@ class CheckoutRequestController extends Controller
             $transaction->description = $validated['description'];
 
             $transaction->transaction_type()->associate($transaction_type);
-            $transaction->assigned_location()->associate($location);
             $transaction->user()->associate(Auth::user());
+
+            $transaction->assigned_user()->associate($assigned_user);
+            $transaction->assigned_location()->associate($assigned_user->location);
+
             $transaction->save();
 
             $transaction->assets()->sync(array_column($validated['assets'], 'id'));
@@ -118,7 +122,7 @@ class CheckoutRequestController extends Controller
 
         $data = DB::transaction(function () use ($validated, $id) {
             $transaction_type = TransactionType::findOrFail($validated['transaction_type_id']);
-            $location = Location::findOrFail($validated['assigned_location_id']);
+            $assigned_user = User::findOrFail($validated['assigned_user_id']);
 
             $transaction = Transaction::findOrFail($id);
             $transaction->reference_no = $validated['reference_no'];
@@ -126,8 +130,10 @@ class CheckoutRequestController extends Controller
             $transaction->description = $validated['description'];
 
             $transaction->transaction_type()->associate($transaction_type);
-            $transaction->assigned_location()->associate($location);
-            // $transaction->user()->associate(Auth::user());
+
+            $transaction->assigned_user()->associate($assigned_user);
+            $transaction->assigned_location()->associate($assigned_user->location);
+
             $transaction->save();
 
             $transaction->assets()->sync(array_column($validated['assets'], 'id'));

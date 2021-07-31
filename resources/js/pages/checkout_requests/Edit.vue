@@ -39,7 +39,8 @@ export default {
                 assigned_asset_id: "",
                 assets: [],
                 assigned_employees: [],
-                assigned_location: null
+                assigned_location: null,
+                assigned_user: null
             },
             errors: {
                 code: [],
@@ -55,7 +56,7 @@ export default {
                 assigned_location_id: [],
                 assigned_asset_id: [],
                 assets: [],
-                assigned_employees: [],
+                assigned_employees: []
             }
         };
     },

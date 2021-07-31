@@ -114,6 +114,11 @@ export default {
                             icon: "mdi-chart-areaspline",
                             text: "Locations",
                             link: { name: "locations.index" }
+                        },
+                        {
+                            icon: "mdi-chart-areaspline",
+                            text: "Reviews",
+                            link: { name: "locations.index" }
                         }
                         // {
                         //     icon: "mdi-chart-areaspline",

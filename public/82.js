@@ -60,7 +60,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         assigned_asset_id: "",
         assets: [],
         assigned_employees: [],
-        assigned_location: null
+        assigned_location: null,
+        assigned_user: null
       },
       errors: {
         code: [],

@@ -53,17 +53,20 @@ class CheckinRequestController extends Controller
             $code = 'CIN' . date("YmdHis");
 
             $transaction_type = TransactionType::findOrFail($validated['transaction_type_id']);
-            $location = Location::findOrFail($validated['assigned_location_id']);
+            $assigned_location = Location::findOrFail($validated['assigned_location_id']);
 
             $transaction = new Transaction();
             $transaction->code = $code;
             $transaction->reference_no = $validated['reference_no'];
             $transaction->request_date = $validated['request_date'];
             $transaction->description = $validated['description'];
+            $transaction->assigned_user_id = null;
 
             $transaction->transaction_type()->associate($transaction_type);
-            $transaction->assigned_location()->associate($location);
             $transaction->user()->associate(Auth::user());
+
+            $transaction->assigned_location()->associate($assigned_location);
+
             $transaction->save();
 
             $transaction->assets()->sync(array_column($validated['assets'], 'id'));
@@ -117,16 +120,18 @@ class CheckinRequestController extends Controller
 
         $data = DB::transaction(function () use ($validated, $id) {
             $transaction_type = TransactionType::findOrFail($validated['transaction_type_id']);
-            $location = Location::findOrFail($validated['assigned_location_id']);
+            $assigned_location = Location::findOrFail($validated['assigned_location_id']);
 
             $transaction = Transaction::findOrFail($id);
             $transaction->reference_no = $validated['reference_no'];
             $transaction->request_date = $validated['request_date'];
             $transaction->description = $validated['description'];
+            $transaction->assigned_user_id = null;
 
             $transaction->transaction_type()->associate($transaction_type);
-            $transaction->assigned_location()->associate($location);
-            // $transaction->user()->associate(Auth::user());
+
+            $transaction->assigned_location()->associate($assigned_location);
+
             $transaction->save();
 
             $transaction->assets()->sync(array_column($validated['assets'], 'id'));
@@ -171,10 +176,13 @@ class CheckinRequestController extends Controller
 
     public function approve()
     {
-        $ids = request('ids');
+        $ids = request('ids') ?? "ambot";
+        return $ids;
         $data = DB::transaction(function () use ($ids) {
-            $transactions = Transaction::findOrFail($ids);
+            $transactions = Transaction::findOrFail([$ids]);
+            return $transactions;
             $transactions->each(function ($item) {
+                abort(500);
                 $item->approved_at = now();
                 $item->save();
             });

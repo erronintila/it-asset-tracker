@@ -15,8 +15,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_selectors_AssetDialogSelector_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/selectors/AssetDialogSelector.vue */ "./resources/js/components/selectors/AssetDialogSelector.vue");
 /* harmony import */ var _components_selectors_EmployeeDialogSelector_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/selectors/EmployeeDialogSelector.vue */ "./resources/js/components/selectors/EmployeeDialogSelector.vue");
-/* harmony import */ var _components_selectors_LocationDialogSelector_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/selectors/LocationDialogSelector.vue */ "./resources/js/components/selectors/LocationDialogSelector.vue");
-/* harmony import */ var _services_TransactionTypeDataService__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/TransactionTypeDataService */ "./resources/js/services/TransactionTypeDataService.js");
+/* harmony import */ var _services_TransactionTypeDataService__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/TransactionTypeDataService */ "./resources/js/services/TransactionTypeDataService.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -304,26 +303,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 
 
 
@@ -353,7 +332,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           assigned_asset_id: "",
           assets: [],
           assigned_employees: [],
-          assigned_location: null
+          assigned_location: null,
+          assigned_user: null
         };
       }
     },
@@ -402,7 +382,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   components: {
     AssetDialogSelector: _components_selectors_AssetDialogSelector_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    LocationDialogSelector: _components_selectors_LocationDialogSelector_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
     EmployeeDialogSelector: _components_selectors_EmployeeDialogSelector_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   data: function data() {
@@ -410,7 +389,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       valid: false,
       dialogAsset: false,
       requestDateModal: false,
-      dialogLocation: false,
       headers: {
         employee: [{
           text: "Code",
@@ -461,7 +439,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         assets: [],
         assigned_employees: [],
         assigned_location: null,
-        transaction_type: null
+        transaction_type: null,
+        assigned_user: null
       }
     };
   },
@@ -475,7 +454,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 try {
-                  _services_TransactionTypeDataService__WEBPACK_IMPORTED_MODULE_5__["default"].getAll({
+                  _services_TransactionTypeDataService__WEBPACK_IMPORTED_MODULE_4__["default"].getAll({
                     params: {
                       itemsPerPage: 100,
                       action_types: ["checkout"]
@@ -506,9 +485,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return;
       }
 
-      var newform = _objectSpread(_objectSpread(_objectSpread({}, this.form), {
-        assigned_location_id: this.form.assigned_location ? this.form.assigned_location.id : null
-      }), {
+      var newform = _objectSpread(_objectSpread({}, this.form), {
         transaction_type_id: this.form.transaction_type ? this.form.transaction_type.id : null
       });
 
@@ -542,17 +519,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       this.form.assigned_employees = e;
     },
-    onSelectLocation: function onSelectLocation(e) {
-      this.dialogLocation = false;
-      this.errors.assigned_location_id = [];
+    onSelectUser: function onSelectUser(e) {
+      this.errors.assigned_user_id = [];
 
       if (e == null || e == undefined) {
-        this.form.assigned_location = null;
+        this.form.assigned_user = null;
         return;
       }
 
-      this.form.assigned_location = e[0];
-      this.dialogLocation = false;
+      this.form.assigned_user = e[0];
     },
     removeItem: function removeItem(item) {
       if (confirm("Remove this item?")) {
@@ -867,14 +842,13 @@ var render = function() {
                                 }
                               }),
                               _vm._v(" "),
-                              _c("LocationDialogSelector", {
+                              _c("EmployeeDialogSelector", {
                                 attrs: {
-                                  selected: !_vm.form.assigned_location
+                                  selected: !_vm.form.assigned_user
                                     ? []
-                                    : [].concat(_vm.form.assigned_location),
-                                  dialogLocation: _vm.dialogLocation
+                                    : [].concat(_vm.form.assigned_user)
                                 },
-                                on: { "on-select": _vm.onSelectLocation },
+                                on: { "on-select": _vm.onSelectUser },
                                 scopedSlots: _vm._u([
                                   {
                                     key: "openDialog",
@@ -887,24 +861,21 @@ var render = function() {
                                           _vm._g(
                                             _vm._b(
                                               {
-                                                staticClass:
-                                                  "d-flex justify-center align-center",
                                                 attrs: {
-                                                  value: _vm.form
-                                                    .assigned_location
-                                                    ? _vm.form.assigned_location
-                                                        .name
+                                                  value: _vm.form.assigned_user
+                                                    ? _vm.form.assigned_user
+                                                        .full_name
                                                     : "",
+                                                  label: "Employee",
+                                                  outlined: "",
+                                                  clearable: "",
                                                   "error-messages":
                                                     _vm.errors
-                                                      .assigned_location_id,
-                                                  label: "Location",
-                                                  readonly: "",
-                                                  outlined: ""
+                                                      .assigned_user_id[0]
                                                 },
                                                 on: {
                                                   input: function($event) {
-                                                    _vm.errors.assigned_location_id = []
+                                                    _vm.errors.assigned_user_id = []
                                                   }
                                                 }
                                               },

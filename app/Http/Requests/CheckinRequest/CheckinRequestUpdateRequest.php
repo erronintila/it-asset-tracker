@@ -39,7 +39,7 @@ class CheckinRequestUpdateRequest extends FormRequest
             "assigned_asset_id" => ['nullable', 'integer'],
 
             "assets" => ['required', 'array'],
-            "assigned_employees" => ['required', 'array']
+            "assigned_employees" => ['nullable', 'array']
         ];
     }
 
