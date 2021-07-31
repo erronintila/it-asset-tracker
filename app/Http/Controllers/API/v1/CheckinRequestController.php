@@ -176,13 +176,10 @@ class CheckinRequestController extends Controller
 
     public function approve()
     {
-        $ids = request('ids') ?? "ambot";
-        return $ids;
+        $ids = request('ids');
         $data = DB::transaction(function () use ($ids) {
-            $transactions = Transaction::findOrFail([$ids]);
-            return $transactions;
+            $transactions = Transaction::findOrFail($ids);
             $transactions->each(function ($item) {
-                abort(500);
                 $item->approved_at = now();
                 $item->save();
             });

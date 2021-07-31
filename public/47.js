@@ -378,11 +378,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       var data = {
-        params: {
-          ids: this.selectedItems.map(function (item) {
-            return item.id;
-          })
-        }
+        // params: {
+        ids: this.selectedItems.map(function (item) {
+          return item.id;
+        }) // }
+
       };
 
       switch (status) {

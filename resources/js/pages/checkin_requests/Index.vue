@@ -320,9 +320,9 @@ export default {
             }
 
             let data = {
-                params: {
-                    ids: this.selectedItems.map(item => item.id)
-                }
+                // params: {
+                ids: this.selectedItems.map(item => item.id)
+                // }
             };
 
             switch (status) {
