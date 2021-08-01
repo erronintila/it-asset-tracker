@@ -313,7 +313,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       },
       dashboard: {
         headers: [{
-          title: "Total Assets",
+          title: "Total Active Assets",
           subtitle: "",
           body: "0",
           color: "white",

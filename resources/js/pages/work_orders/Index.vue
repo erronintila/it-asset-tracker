@@ -166,9 +166,9 @@ export default {
                 { text: "Restore", action: "restore", icon: "mdi-restore" },
                 { text: "Export", action: "export", icon: "mdi-export" },
                 { text: "Approve", action: "approve", icon: "mdi-check" },
-                { text: "Complete", action: "complete", icon: "mdi-check" },
-                { text: "Post", action: "post", icon: "mdi-check" },
-                { text: "Cancel", action: "cancel", icon: "mdi-check" }
+                { text: "Complete", action: "complete", icon: "mdi-check-all" },
+                { text: "Post", action: "post", icon: "mdi-check-circle" },
+                { text: "Cancel", action: "cancel", icon: "mdi-cancel" }
             ],
             tableOptions: {
                 options: {
@@ -245,9 +245,7 @@ export default {
                         return;
                     }
                     this.$router.push(
-                        "/work_orders/" +
-                            this.selectedItems[0].id +
-                            "/edit"
+                        "/work_orders/" + this.selectedItems[0].id + "/edit"
                     );
                     break;
                 case "delete":

@@ -286,7 +286,7 @@ export default {
             dashboard: {
                 headers: [
                     {
-                        title: "Total Assets",
+                        title: "Total Active Assets",
                         subtitle: "",
                         body: "0",
                         color: "white",

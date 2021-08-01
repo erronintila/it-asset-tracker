@@ -202,15 +202,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }, {
         text: "Complete",
         action: "complete",
-        icon: "mdi-check"
+        icon: "mdi-check-all"
       }, {
         text: "Post",
         action: "post",
-        icon: "mdi-check"
+        icon: "mdi-check-circle"
       }, {
         text: "Cancel",
         action: "cancel",
-        icon: "mdi-check"
+        icon: "mdi-cancel"
       }],
       tableOptions: {
         options: {
