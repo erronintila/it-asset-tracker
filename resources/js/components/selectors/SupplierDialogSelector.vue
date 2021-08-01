@@ -87,10 +87,6 @@ import SupplierDataService from "../../services/SupplierDataService";
 export default {
     name: "supplier-selector",
     props: {
-        dialogSupplier: {
-            type: Boolean,
-            default: false
-        },
         singleSelect: {
             type: Boolean,
             default: true
@@ -207,13 +203,9 @@ export default {
                 this.selectedItems = newValue;
             }
         },
-        dialogSupplier: {
-            immediate: true,
-            handler(newValue) {
-                this.dialog = newValue;
-                if (newValue) {
-                    this.getData();
-                }
+        dialog() {
+            if (this.dialog) {
+                this.getData();
             }
         }
     }

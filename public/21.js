@@ -380,6 +380,37 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -411,7 +442,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           assets: [],
           assigned_employees: [],
           assigned_location: null,
-          assigned_user: null
+          assigned_user: null,
+          assigned_asset: null
         };
       }
     },
@@ -466,7 +498,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       valid: false,
-      dialogAsset: false,
       requestDateModal: false,
       headers: {
         employee: [{
@@ -579,7 +610,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.$emit("on-save", newform);
     },
     onSelectAsset: function onSelectAsset(e) {
-      this.dialogAsset = false;
       this.errors.assets = [];
 
       if (e == null || e == undefined) {
@@ -588,7 +618,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       this.form.assets = e;
-      this.dialogAsset = false;
+    },
+    onSelectAssignedAsset: function onSelectAssignedAsset() {
+      this.errors.assigned_asset_id = [];
+
+      if (e == null || e == undefined) {
+        this.form.assigned_asset_id = [];
+        return;
+      }
+
+      this.form.assigned_asset = e[0];
     },
     onSelectEmployee: function onSelectEmployee(e) {
       this.errors.assigned_employees = [];
@@ -1044,6 +1083,57 @@ var render = function() {
                                     proxy: true
                                   }
                                 ])
+                              }),
+                              _vm._v(" "),
+                              _c("AssetDialogSelector", {
+                                attrs: {
+                                  selected: !_vm.form.assigned_asset
+                                    ? []
+                                    : [].concat(_vm.form.assigned_asset),
+                                  requestType: "checkout"
+                                },
+                                on: { "on-select": _vm.onSelectAssignedAsset },
+                                scopedSlots: _vm._u([
+                                  {
+                                    key: "openDialog",
+                                    fn: function(ref) {
+                                      var on = ref.on
+                                      var attrs = ref.attrs
+                                      return [
+                                        _c(
+                                          "v-text-field",
+                                          _vm._g(
+                                            _vm._b(
+                                              {
+                                                attrs: {
+                                                  value: _vm.form.assigned_asset
+                                                    ? _vm.form.assigned_asset
+                                                        .description
+                                                    : "",
+                                                  label: "Assigned Asset",
+                                                  outlined: "",
+                                                  clearable: "",
+                                                  "error-messages":
+                                                    _vm.errors
+                                                      .assigned_asset_id[0]
+                                                },
+                                                on: {
+                                                  input: function($event) {
+                                                    _vm.errors.assigned_asset_id = []
+                                                  }
+                                                }
+                                              },
+                                              "v-text-field",
+                                              attrs,
+                                              false
+                                            ),
+                                            on
+                                          )
+                                        )
+                                      ]
+                                    }
+                                  }
+                                ])
                               })
                             ],
                             1
@@ -1260,7 +1350,6 @@ var render = function() {
                           _c("AssetDialogSelector", {
                             attrs: {
                               selected: !_vm.form.assets ? [] : _vm.form.assets,
-                              dialogAsset: _vm.dialogAsset,
                               singleSelect: false,
                               requestType: "checkout"
                             },

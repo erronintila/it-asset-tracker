@@ -87,10 +87,6 @@ import AssetCategoryDataService from "../../services/AssetCategoryDataService";
 export default {
     name: "asset-category-selector",
     props: {
-        dialogAssetCategory: {
-            type: Boolean,
-            default: false
-        },
         singleSelect: {
             type: Boolean,
             default: true
@@ -206,13 +202,9 @@ export default {
                 this.selectedItems = newValue;
             }
         },
-        dialogAssetCategory: {
-            immediate: true,
-            handler(newValue) {
-                this.dialog = newValue;
-                if (newValue) {
-                    this.getData();
-                }
+        dialog() {
+            if (this.dialog) {
+                this.getData();
             }
         }
     }

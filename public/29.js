@@ -494,7 +494,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 
@@ -612,9 +611,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       valid: false,
-      dialogAsset: false,
       requestDateModal: false,
-      dialogLocation: false,
       headers: {
         employee: [{
           text: "Code",
@@ -725,7 +722,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.$emit("on-save", newform);
     },
     onSelectAsset: function onSelectAsset(e) {
-      this.dialogAsset = false;
       this.errors.assets = [];
 
       if (e == null || e == undefined) {
@@ -734,7 +730,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       this.form.assets = e;
-      this.dialogAsset = false;
     },
     onSelectEmployee: function onSelectEmployee(e) {
       this.errors.assigned_employees = [];
@@ -747,7 +742,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.form.assigned_employees = e;
     },
     onSelectLocation: function onSelectLocation(e) {
-      this.dialogLocation = false;
       this.errors.assigned_location_id = [];
 
       if (e == null || e == undefined) {
@@ -756,7 +750,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       this.form.assigned_location = e[0];
-      this.dialogLocation = false;
     },
     removeItem: function removeItem(item) {
       if (confirm("Remove this item?")) {
@@ -1739,7 +1732,6 @@ var render = function() {
                           _c("AssetDialogSelector", {
                             attrs: {
                               selected: !_vm.form.assets ? [] : _vm.form.assets,
-                              dialogAsset: _vm.dialogAsset,
                               singleSelect: false,
                               requestType: "maintenance",
                               assignedAssetId: _vm.form.parent_asset

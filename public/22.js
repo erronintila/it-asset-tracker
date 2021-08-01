@@ -286,8 +286,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -389,7 +387,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
-      dialogLocation: false,
       valid: false,
       form: {
         email: "",
@@ -448,7 +445,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$emit("on-save", newForm);
     },
     onSelectLocation: function onSelectLocation(e) {
-      this.dialogLocation = false;
       this.errors.location_id = [];
 
       if (e == null || e == undefined) {
@@ -457,7 +453,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       this.form.profile.location = e[0];
-      this.dialogLocation = false;
     }
   },
   watch: {
@@ -1004,15 +999,9 @@ var render = function() {
                                 attrs: {
                                   selected: !_vm.form.profile.location
                                     ? []
-                                    : [].concat(_vm.form.profile.location),
-                                  dialogLocation: _vm.dialogLocation
+                                    : [].concat(_vm.form.profile.location)
                                 },
-                                on: {
-                                  "close-dialog": function($event) {
-                                    _vm.dialogLocation = false
-                                  },
-                                  "on-select": _vm.onSelectLocation
-                                },
+                                on: { "on-select": _vm.onSelectLocation },
                                 scopedSlots: _vm._u([
                                   {
                                     key: "openDialog",

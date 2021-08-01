@@ -87,10 +87,6 @@ import LocationDataService from "../../services/LocationDataService";
 export default {
     name: "location-selector",
     props: {
-        dialogLocation: {
-            type: Boolean,
-            default: false
-        },
         singleSelect: {
             type: Boolean,
             default: true
@@ -207,13 +203,9 @@ export default {
                 this.selectedItems = newValue;
             }
         },
-        dialogLocation: {
-            immediate: true,
-            handler(newValue) {
-                this.dialog = newValue;
-                if (newValue) {
-                    this.getData();
-                }
+        dialog() {
+            if (this.dialog) {
+                this.getData();
             }
         }
     }

@@ -87,10 +87,6 @@ import ManufacturerDataService from "../../services/ManufacturerDataService";
 export default {
     name: "manufacturer-selector",
     props: {
-        dialogManufacturer: {
-            type: Boolean,
-            default: false
-        },
         singleSelect: {
             type: Boolean,
             default: true
@@ -207,13 +203,9 @@ export default {
                 this.selectedItems = newValue;
             }
         },
-        dialogManufacturer: {
-            immediate: true,
-            handler(newValue) {
-                this.dialog = newValue;
-                if (newValue) {
-                    this.getData();
-                }
+        dialog() {
+            if (this.dialog) {
+                this.getData();
             }
         }
     }

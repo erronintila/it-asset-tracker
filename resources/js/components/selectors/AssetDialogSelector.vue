@@ -87,10 +87,6 @@ import AssetDataService from "../../services/AssetDataService";
 export default {
     name: "asset-selector",
     props: {
-        dialogAsset: {
-            type: Boolean,
-            default: false
-        },
         singleSelect: {
             type: Boolean,
             default: true
@@ -229,15 +225,6 @@ export default {
             immediate: true,
             handler(newValue) {
                 this.selectedItems = newValue;
-            }
-        },
-        dialogAsset: {
-            immediate: true,
-            handler(newValue) {
-                this.dialog = newValue;
-                if (newValue) {
-                    this.getData();
-                }
             }
         },
         dialog() {

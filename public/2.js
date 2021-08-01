@@ -103,10 +103,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "asset-selector",
   props: {
-    dialogAsset: {
-      type: Boolean,
-      "default": false
-    },
     singleSelect: {
       type: Boolean,
       "default": true
@@ -245,16 +241,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       immediate: true,
       handler: function handler(newValue) {
         this.selectedItems = newValue;
-      }
-    },
-    dialogAsset: {
-      immediate: true,
-      handler: function handler(newValue) {
-        this.dialog = newValue;
-
-        if (newValue) {
-          this.getData();
-        }
       }
     },
     dialog: function dialog() {

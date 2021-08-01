@@ -400,10 +400,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
 
 
 
@@ -523,8 +519,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
-      dialogDepartment: false,
-      dialogLocation: false,
       valid: false,
       birthdateModal: false,
       form: {
@@ -589,7 +583,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$emit("on-save", newForm);
     },
     onSelectDepartment: function onSelectDepartment(e) {
-      this.dialogDepartment = false;
       this.errors.department_id = [];
 
       if (e == null || e == undefined) {
@@ -598,10 +591,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       this.form.profile.department = e[0];
-      this.dialogDepartment = false;
     },
     onSelectLocation: function onSelectLocation(e) {
-      this.dialogLocation = false;
       this.errors.location_id = [];
 
       if (e == null || e == undefined) {
@@ -610,7 +601,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       this.form.profile.location = e[0];
-      this.dialogLocation = false;
     }
   },
   computed: {
@@ -691,15 +681,9 @@ var render = function() {
                                 attrs: {
                                   selected: !_vm.form.profile.department
                                     ? []
-                                    : [].concat(_vm.form.profile.department),
-                                  dialogDepartment: _vm.dialogDepartment
+                                    : [].concat(_vm.form.profile.department)
                                 },
-                                on: {
-                                  "close-dialog": function($event) {
-                                    _vm.dialogDepartment = false
-                                  },
-                                  "on-select": _vm.onSelectDepartment
-                                },
+                                on: { "on-select": _vm.onSelectDepartment },
                                 scopedSlots: _vm._u([
                                   {
                                     key: "openDialog",
@@ -1043,15 +1027,9 @@ var render = function() {
                                 attrs: {
                                   selected: !_vm.form.profile.location
                                     ? []
-                                    : [].concat(_vm.form.profile.location),
-                                  dialogLocation: _vm.dialogLocation
+                                    : [].concat(_vm.form.profile.location)
                                 },
-                                on: {
-                                  "close-dialog": function($event) {
-                                    _vm.dialogLocation = false
-                                  },
-                                  "on-select": _vm.onSelectLocation
-                                },
+                                on: { "on-select": _vm.onSelectLocation },
                                 scopedSlots: _vm._u([
                                   {
                                     key: "openDialog",

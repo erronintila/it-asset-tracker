@@ -40,7 +40,8 @@ export default {
                 assets: [],
                 assigned_employees: [],
                 assigned_location: null,
-                assigned_user: null
+                assigned_user: null,
+                assigned_asset: null
             },
             errors: {
                 code: [],

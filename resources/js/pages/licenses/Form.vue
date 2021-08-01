@@ -43,8 +43,6 @@
                                             ? []
                                             : [...form.asset_category]
                                     "
-                                    :dialogAssetCategory="dialogAssetCategory"
-                                    @close-dialog="dialogAssetCategory = false"
                                     @on-select="onSelectAssetCategory"
                                 >
                                     <template v-slot:openDialog="{ on, attrs }">
@@ -76,8 +74,6 @@
                                             ? []
                                             : [...form.manufacturer]
                                     "
-                                    :dialogManufacturer="dialogManufacturer"
-                                    @close-dialog="dialogManufacturer = false"
                                     @on-select="onSelectManufacturer"
                                 >
                                     <template v-slot:openDialog="{ on, attrs }">
@@ -117,8 +113,6 @@
                                     :selected="
                                         !form.supplier ? [] : [...form.supplier]
                                     "
-                                    :dialogSupplier="dialogSupplier"
-                                    @close-dialog="dialogSupplier = false"
                                     @on-select="onSelectSupplier"
                                 >
                                     <template v-slot:openDialog="{ on, attrs }">
@@ -353,9 +347,6 @@ export default {
     },
     data() {
         return {
-            dialogAssetCategory: false,
-            dialogManufacturer: false,
-            dialogSupplier: false,
             purchased_dateModal: false,
             valid: false,
             form: {
@@ -411,7 +402,6 @@ export default {
             this.$emit("on-save", newForm);
         },
         onSelectAssetCategory(e) {
-            this.dialogAssetCategory = false;
             this.errors.asset_category_id = [];
 
             if (e == null || e == undefined) {
@@ -420,10 +410,8 @@ export default {
             }
 
             this.form.asset_category = e[0];
-            this.dialogAssetCategory = false;
         },
         onSelectManufacturer(e) {
-            this.dialogManufacturer = false;
             this.errors.manufacturer_id = [];
 
             if (e == null || e == undefined) {
@@ -432,10 +420,8 @@ export default {
             }
 
             this.form.manufacturer = e[0];
-            this.dialogManufacturer = false;
         },
         onSelectSupplier(e) {
-            this.dialogSupplier = false;
             this.errors.supplier_id = [];
 
             if (e == null || e == undefined) {
@@ -444,7 +430,6 @@ export default {
             }
 
             this.form.supplier = e[0];
-            this.dialogSupplier = false;
         },
         updateDates(e) {
             this.form.date_range = e;

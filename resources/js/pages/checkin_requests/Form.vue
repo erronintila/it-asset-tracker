@@ -96,7 +96,6 @@
                                             ? []
                                             : [...form.assigned_location]
                                     "
-                                    :dialogLocation="dialogLocation"
                                     @on-select="onSelectLocation"
                                 >
                                     <template v-slot:openDialog="{ on, attrs }">
@@ -120,25 +119,8 @@
                                             v-bind="attrs"
                                             v-on="on"
                                         ></v-text-field>
-                                        <!-- <v-btn
-                                            color="primary"
-                                            icon
-                                            @click="dialogLocation = true"
-                                        >
-                                            <v-icon dark>
-                                                mdi-magnify
-                                            </v-icon>
-                                        </v-btn> -->
                                     </template>
                                 </LocationDialogSelector>
-                                <!-- <v-text-field
-                                    v-model="form.notes"
-                                    label="Notes"
-                                    outlined
-                                    clearable
-                                    :error-messages="errors.notes[0]"
-                                    @input="errors.notes = []"
-                                ></v-text-field> -->
                             </v-col>
                         </v-row>
                     </v-card-text>
@@ -230,7 +212,6 @@
                             </v-btn>
                             <AssetDialogSelector
                                 :selected="!form.assets ? [] : form.assets"
-                                :dialogAsset="dialogAsset"
                                 :singleSelect="false"
                                 @on-select="onSelectAsset"
                             >
@@ -374,9 +355,7 @@ export default {
     data() {
         return {
             valid: false,
-            dialogAsset: false,
             requestDateModal: false,
-            dialogLocation: false,
             headers: {
                 employee: [
                     { text: "Code", value: "profile.code" },
@@ -462,7 +441,6 @@ export default {
             this.$emit("on-save", newform);
         },
         onSelectAsset(e) {
-            this.dialogAsset = false;
             this.errors.assets = [];
 
             if (e == null || e == undefined) {
@@ -471,7 +449,6 @@ export default {
             }
 
             this.form.assets = e;
-            this.dialogAsset = false;
         },
         onSelectEmployee(e) {
             this.errors.assigned_employees = [];
@@ -484,7 +461,6 @@ export default {
             this.form.assigned_employees = e;
         },
         onSelectLocation(e) {
-            this.dialogLocation = false;
             this.errors.assigned_location_id = [];
 
             if (e == null || e == undefined) {
@@ -493,7 +469,6 @@ export default {
             }
 
             this.form.assigned_location = e[0];
-            this.dialogLocation = false;
         },
         removeItem(item) {
             if (confirm("Remove this item?")) {

@@ -201,8 +201,6 @@
                                             ? []
                                             : [...form.profile.location]
                                     "
-                                    :dialogLocation="dialogLocation"
-                                    @close-dialog="dialogLocation = false"
                                     @on-select="onSelectLocation"
                                 >
                                     <template v-slot:openDialog="{ on, attrs }">
@@ -373,7 +371,6 @@ export default {
     },
     data() {
         return {
-            dialogLocation: false,
             valid: false,
             form: {
                 email: "",
@@ -433,7 +430,6 @@ export default {
             this.$emit("on-save", newForm);
         },
         onSelectLocation(e) {
-            this.dialogLocation = false;
             this.errors.location_id = [];
 
             if (e == null || e == undefined) {
@@ -442,7 +438,6 @@ export default {
             }
 
             this.form.profile.location = e[0];
-            this.dialogLocation = false;
         }
     },
     watch: {

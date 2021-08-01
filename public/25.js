@@ -285,12 +285,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 
@@ -374,9 +368,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
-      dialogAssetCategory: false,
-      dialogManufacturer: false,
-      dialogSupplier: false,
       purchased_dateModal: false,
       valid: false,
       form: {
@@ -429,7 +420,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$emit("on-save", newForm);
     },
     onSelectAssetCategory: function onSelectAssetCategory(e) {
-      this.dialogAssetCategory = false;
       this.errors.asset_category_id = [];
 
       if (e == null || e == undefined) {
@@ -438,10 +428,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       this.form.asset_category = e[0];
-      this.dialogAssetCategory = false;
     },
     onSelectManufacturer: function onSelectManufacturer(e) {
-      this.dialogManufacturer = false;
       this.errors.manufacturer_id = [];
 
       if (e == null || e == undefined) {
@@ -450,10 +438,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       this.form.manufacturer = e[0];
-      this.dialogManufacturer = false;
     },
     onSelectSupplier: function onSelectSupplier(e) {
-      this.dialogSupplier = false;
       this.errors.supplier_id = [];
 
       if (e == null || e == undefined) {
@@ -462,7 +448,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       this.form.supplier = e[0];
-      this.dialogSupplier = false;
     },
     updateDates: function updateDates(e) {
       this.form.date_range = e;
@@ -629,15 +614,9 @@ var render = function() {
                                 attrs: {
                                   selected: !_vm.form.asset_category
                                     ? []
-                                    : [].concat(_vm.form.asset_category),
-                                  dialogAssetCategory: _vm.dialogAssetCategory
+                                    : [].concat(_vm.form.asset_category)
                                 },
-                                on: {
-                                  "close-dialog": function($event) {
-                                    _vm.dialogAssetCategory = false
-                                  },
-                                  "on-select": _vm.onSelectAssetCategory
-                                },
+                                on: { "on-select": _vm.onSelectAssetCategory },
                                 scopedSlots: _vm._u([
                                   {
                                     key: "openDialog",
@@ -687,15 +666,9 @@ var render = function() {
                                 attrs: {
                                   selected: !_vm.form.manufacturer
                                     ? []
-                                    : [].concat(_vm.form.manufacturer),
-                                  dialogManufacturer: _vm.dialogManufacturer
+                                    : [].concat(_vm.form.manufacturer)
                                 },
-                                on: {
-                                  "close-dialog": function($event) {
-                                    _vm.dialogManufacturer = false
-                                  },
-                                  "on-select": _vm.onSelectManufacturer
-                                },
+                                on: { "on-select": _vm.onSelectManufacturer },
                                 scopedSlots: _vm._u([
                                   {
                                     key: "openDialog",
@@ -783,15 +756,9 @@ var render = function() {
                                 attrs: {
                                   selected: !_vm.form.supplier
                                     ? []
-                                    : [].concat(_vm.form.supplier),
-                                  dialogSupplier: _vm.dialogSupplier
+                                    : [].concat(_vm.form.supplier)
                                 },
-                                on: {
-                                  "close-dialog": function($event) {
-                                    _vm.dialogSupplier = false
-                                  },
-                                  "on-select": _vm.onSelectSupplier
-                                },
+                                on: { "on-select": _vm.onSelectSupplier },
                                 scopedSlots: _vm._u([
                                   {
                                     key: "openDialog",

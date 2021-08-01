@@ -196,6 +196,38 @@
                                         </CustomerDialogSelector>
                                     </template>
                                 </v-text-field>
+
+                                <AssetDialogSelector
+                                    :selected="
+                                        !form.assigned_asset
+                                            ? []
+                                            : [...form.assigned_asset]
+                                    "
+                                    :requestType="'checkout'"
+                                    @on-select="onSelectAssignedAsset"
+                                >
+                                    <template v-slot:openDialog="{ on, attrs }">
+                                        <v-text-field
+                                            :value="
+                                                form.assigned_asset
+                                                    ? form.assigned_asset
+                                                          .description
+                                                    : ''
+                                            "
+                                            label="Assigned Asset"
+                                            outlined
+                                            clearable
+                                            :error-messages="
+                                                errors.assigned_asset_id[0]
+                                            "
+                                            @input="
+                                                errors.assigned_asset_id = []
+                                            "
+                                            v-bind="attrs"
+                                            v-on="on"
+                                        ></v-text-field>
+                                    </template>
+                                </AssetDialogSelector>
                             </v-col>
                         </v-row>
                     </v-card-text>
@@ -287,7 +319,6 @@
                             </v-btn>
                             <AssetDialogSelector
                                 :selected="!form.assets ? [] : form.assets"
-                                :dialogAsset="dialogAsset"
                                 :singleSelect="false"
                                 :requestType="'checkout'"
                                 @on-select="onSelectAsset"
@@ -378,7 +409,8 @@ export default {
                     assets: [],
                     assigned_employees: [],
                     assigned_location: null,
-                    assigned_user: null
+                    assigned_user: null,
+                    assigned_asset: null
                 };
             }
         },
@@ -433,7 +465,6 @@ export default {
     data() {
         return {
             valid: false,
-            dialogAsset: false,
             requestDateModal: false,
             headers: {
                 employee: [
@@ -521,7 +552,6 @@ export default {
             this.$emit("on-save", newform);
         },
         onSelectAsset(e) {
-            this.dialogAsset = false;
             this.errors.assets = [];
 
             if (e == null || e == undefined) {
@@ -530,7 +560,16 @@ export default {
             }
 
             this.form.assets = e;
-            this.dialogAsset = false;
+        },
+        onSelectAssignedAsset() {
+            this.errors.assigned_asset_id = [];
+
+            if (e == null || e == undefined) {
+                this.form.assigned_asset_id = [];
+                return;
+            }
+
+            this.form.assigned_asset = e[0];
         },
         onSelectEmployee(e) {
             this.errors.assigned_employees = [];

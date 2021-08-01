@@ -87,10 +87,6 @@ import EmployeeDataService from "../../services/EmployeeDataService";
 export default {
     name: "employee-selector",
     props: {
-        dialogEmployee: {
-            type: Boolean,
-            default: false
-        },
         singleSelect: {
             type: Boolean,
             default: true
@@ -206,13 +202,9 @@ export default {
                 this.selectedItems = newValue;
             }
         },
-        dialogEmployee: {
-            immediate: true,
-            handler(newValue) {
-                this.dialog = newValue;
-                if (newValue) {
-                    this.getData();
-                }
+        dialog() {
+            if (this.dialog) {
+                this.getData();
             }
         }
     }

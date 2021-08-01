@@ -18,46 +18,35 @@
                                     :error-messages="errors.name[0]"
                                     @inputs="errors.name = []"
                                 ></v-text-field>
-                                <v-text-field
-                                    :value="
-                                        form.manager ? form.manager.name : ''
+                                <EmployeeDialogSelector
+                                    :selected="
+                                        !form.manager ? [] : [...form.manager]
                                     "
-                                    :error-messages="errors.manager_id"
-                                    @input="errors.manager_id = []"
-                                    label="Manager"
-                                    readonly
-                                    outlined
-                                    class="d-flex justify-center align-center"
+                                    @on-select="onSelectManager"
                                 >
-                                    <template v-slot:append>
-                                        <EmployeeDialogSelector
-                                            :selected="
-                                                !form.manager
-                                                    ? []
-                                                    : [...form.manager]
+                                    <template
+                                        v-slot:openDialog="{
+                                            on,
+                                            attrs
+                                        }"
+                                    >
+                                        <v-text-field
+                                            :value="
+                                                form.manager
+                                                    ? form.manager.name
+                                                    : ''
                                             "
-                                            :dialogManager="dialogManager"
-                                            @close-dialog="
-                                                dialogManager = false
-                                            "
-                                            @on-select="onSelectManager"
-                                        >
-                                            <template v-slot:openDialog>
-                                                <v-btn
-                                                    color="primary"
-                                                    icon
-                                                    @click="
-                                                        dialogManager = true
-                                                    "
-                                                >
-                                                    <v-icon dark>
-                                                        mdi-magnify
-                                                    </v-icon>
-                                                </v-btn>
-                                            </template>
-                                        </EmployeeDialogSelector>
+                                            :error-messages="errors.manager_id"
+                                            @input="errors.manager_id = []"
+                                            label="Manager"
+                                            readonly
+                                            outlined
+                                            class="d-flex justify-center align-center"
+                                            v-bind="attrs"
+                                            v-on="on"
+                                        ></v-text-field>
                                     </template>
-                                </v-text-field>
+                                </EmployeeDialogSelector>
                                 <v-text-field
                                     v-model="form.department_id"
                                     label="Parent Department"
@@ -162,7 +151,6 @@ export default {
     },
     data() {
         return {
-            dialogManager: false,
             valid: false,
             form: {
                 code: "",
@@ -213,7 +201,6 @@ export default {
             this.$emit("on-cancel");
         },
         onSelectManager(e) {
-            this.dialogManager = false;
             this.errors.manager_id = [];
 
             if (e == null || e == undefined) {
@@ -222,7 +209,6 @@ export default {
             }
 
             this.form.manager = e[0];
-            this.dialogManager = false;
         }
     },
     watch: {

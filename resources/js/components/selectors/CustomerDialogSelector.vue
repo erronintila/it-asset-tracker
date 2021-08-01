@@ -87,10 +87,6 @@ import CustomerDataService from "../../services/CustomerDataService";
 export default {
     name: "customer-selector",
     props: {
-        dialogCustomer: {
-            type: Boolean,
-            default: false
-        },
         singleSelect: {
             type: Boolean,
             default: true
@@ -206,13 +202,9 @@ export default {
                 this.selectedItems = newValue;
             }
         },
-        dialogCustomer: {
-            immediate: true,
-            handler(newValue) {
-                this.dialog = newValue;
-                if (newValue) {
-                    this.getData();
-                }
+        dialog() {
+            if (this.dialog) {
+                this.getData();
             }
         }
     }

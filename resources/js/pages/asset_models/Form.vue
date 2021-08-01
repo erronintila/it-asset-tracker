@@ -34,8 +34,6 @@
                                             ? []
                                             : [...form.manufacturer]
                                     "
-                                    :dialogManufacturer="dialogManufacturer"
-                                    @close-dialog="dialogManufacturer = false"
                                     @on-select="onSelectManufacturer"
                                 >
                                     <template v-slot:openDialog="{ on, attrs }">
@@ -135,7 +133,6 @@ export default {
     },
     data() {
         return {
-            dialogManufacturer: false,
             valid: false,
             form: {
                 code: "",
@@ -172,7 +169,6 @@ export default {
             this.$emit("on-save", newForm);
         },
         onSelectManufacturer(e) {
-            this.dialogManufacturer = false;
             this.errors.manufacturer_id = [];
 
             if (e == null || e == undefined) {
@@ -181,7 +177,6 @@ export default {
             }
 
             this.form.manufacturer = e[0];
-            this.dialogManufacturer = false;
         }
     },
     watch: {

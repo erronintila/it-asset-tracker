@@ -103,10 +103,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "manufacturer-selector",
   props: {
-    dialogManufacturer: {
-      type: Boolean,
-      "default": false
-    },
     singleSelect: {
       type: Boolean,
       "default": true
@@ -222,14 +218,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.selectedItems = newValue;
       }
     },
-    dialogManufacturer: {
-      immediate: true,
-      handler: function handler(newValue) {
-        this.dialog = newValue;
-
-        if (newValue) {
-          this.getData();
-        }
+    dialog: function dialog() {
+      if (this.dialog) {
+        this.getData();
       }
     }
   }

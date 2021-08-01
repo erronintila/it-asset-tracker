@@ -53,11 +53,11 @@ class AssetController extends Controller
             }
         }
 
-        if ($assigned_user_id != null) {
+        if ($assigned_user_id) {
             $assets = $assets->where("assigned_user_id", $assigned_user_id);
         }
 
-        if ($assigned_asset_id != null) {
+        if ($assigned_asset_id) {
             $assets = $assets->where("assigned_asset_id", $assigned_asset_id);
         }
 

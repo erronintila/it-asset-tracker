@@ -101,8 +101,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -151,7 +149,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
-      dialogManufacturer: false,
       valid: false,
       form: {
         code: "",
@@ -187,7 +184,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$emit("on-save", newForm);
     },
     onSelectManufacturer: function onSelectManufacturer(e) {
-      this.dialogManufacturer = false;
       this.errors.manufacturer_id = [];
 
       if (e == null || e == undefined) {
@@ -196,7 +192,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       this.form.manufacturer = e[0];
-      this.dialogManufacturer = false;
     }
   },
   watch: {
@@ -316,15 +311,9 @@ var render = function() {
                                 attrs: {
                                   selected: !_vm.form.manufacturer
                                     ? []
-                                    : [].concat(_vm.form.manufacturer),
-                                  dialogManufacturer: _vm.dialogManufacturer
+                                    : [].concat(_vm.form.manufacturer)
                                 },
-                                on: {
-                                  "close-dialog": function($event) {
-                                    _vm.dialogManufacturer = false
-                                  },
-                                  "on-select": _vm.onSelectManufacturer
-                                },
+                                on: { "on-select": _vm.onSelectManufacturer },
                                 scopedSlots: _vm._u([
                                   {
                                     key: "openDialog",

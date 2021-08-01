@@ -87,10 +87,6 @@ import TransactionTypeDataService from "../../services/TransactionTypeDataServic
 export default {
     name: "location-selector",
     props: {
-        dialogTransactionType: {
-            type: Boolean,
-            default: false
-        },
         singleSelect: {
             type: Boolean,
             default: true
@@ -207,13 +203,9 @@ export default {
                 this.selectedItems = newValue;
             }
         },
-        dialogTransactionType: {
-            immediate: true,
-            handler(newValue) {
-                this.dialog = newValue;
-                if (newValue) {
-                    this.getData();
-                }
+        dialog() {
+            if (this.dialog) {
+                this.getData();
             }
         }
     }

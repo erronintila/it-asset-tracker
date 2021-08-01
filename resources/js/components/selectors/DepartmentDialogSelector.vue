@@ -87,10 +87,6 @@ import DepartmentDataService from "../../services/DepartmentDataService";
 export default {
     name: "department-selector",
     props: {
-        dialogDepartment: {
-            type: Boolean,
-            default: false
-        },
         singleSelect: {
             type: Boolean,
             default: true
@@ -207,13 +203,9 @@ export default {
                 this.selectedItems = newValue;
             }
         },
-        dialogDepartment: {
-            immediate: true,
-            handler(newValue) {
-                this.dialog = newValue;
-                if (newValue) {
-                    this.getData();
-                }
+        dialog() {
+            if (this.dialog) {
+                this.getData();
             }
         }
     }
