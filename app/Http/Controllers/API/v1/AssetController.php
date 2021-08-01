@@ -27,6 +27,8 @@ class AssetController extends Controller
         $sortType = request('sortType') ?? "asc";
         $itemsPerPage = request('itemsPerPage') ?? 10;
         $request_type = request("request_type") ?? null;
+        $assigned_user_id = request("assigned_user_id") ?? null;
+        $assigned_asset_id = request("assigned_asset_id") ?? null;
         // $statuses = request('statuses') ?? ['Pending', 'In Storage', 'In Use', 'In Maintenance', 'Disposed'];
 
         $assets = Asset::with(['assigned_user', 'asset_category', 'supplier', 'manufacturer', 'asset_model'])
@@ -49,6 +51,14 @@ class AssetController extends Controller
                 default:
                     break;
             }
+        }
+
+        if ($assigned_user_id != null) {
+            $assets = $assets->where("assigned_user_id", $assigned_user_id);
+        }
+
+        if ($assigned_asset_id != null) {
+            $assets = $assets->where("assigned_asset_id", $assigned_asset_id);
         }
 
         // if (in_array("Pending", $statuses)) {

@@ -1,6 +1,6 @@
 <template>
     <v-form ref="form" v-model="valid">
-        <v-row class="d-flex justify-center">
+        <v-row class="d-flex justify-left">
             <v-col cols="12" md="4">
                 <v-card flat>
                     <v-card-title>
@@ -90,61 +90,227 @@
                                     @input="errors.description = []"
                                 ></v-text-field>
 
-                                <LocationDialogSelector
-                                    :selected="
-                                        !form.assigned_location
-                                            ? []
-                                            : [...form.assigned_location]
-                                    "
-                                    :dialogLocation="dialogLocation"
-                                    @on-select="onSelectLocation"
+                                <XDateRangePicker
+                                    ref="dateRangeScheduled"
+                                    :dateRange="form.scheduled_date"
+                                    @on-change="updateScheduledDate"
                                 >
-                                    <template v-slot:openDialog="{ on, attrs }">
+                                    <template
+                                        v-slot:openDialog="{
+                                            on,
+                                            attrs,
+                                            dateRangeText
+                                        }"
+                                    >
                                         <v-text-field
-                                            :value="
-                                                form.assigned_location
-                                                    ? form.assigned_location
-                                                          .name
-                                                    : ''
-                                            "
+                                            v-model="form.scheduled_date"
+                                            :value="dateRangeText"
                                             :error-messages="
-                                                errors.assigned_location_id
+                                                errors.scheduled_start_date
                                             "
                                             @input="
-                                                errors.assigned_location_id = []
+                                                errors.scheduled_start_date = []
                                             "
-                                            label="Location"
+                                            label="Scheduled Date"
                                             readonly
                                             outlined
-                                            class="d-flex justify-center align-center"
                                             v-bind="attrs"
                                             v-on="on"
+                                            clearable
                                         ></v-text-field>
-                                        <!-- <v-btn
-                                            color="primary"
-                                            icon
-                                            @click="dialogLocation = true"
-                                        >
-                                            <v-icon dark>
-                                                mdi-magnify
-                                            </v-icon>
-                                        </v-btn> -->
                                     </template>
-                                </LocationDialogSelector>
-                                <!-- <v-text-field
-                                    v-model="form.notes"
-                                    label="Notes"
-                                    outlined
-                                    clearable
-                                    :error-messages="errors.notes[0]"
-                                    @input="errors.notes = []"
-                                ></v-text-field> -->
+                                </XDateRangePicker>
+
+                                <XDateRangePicker
+                                    ref="dateRangeActual"
+                                    :dateRange="form.actual_date_performed"
+                                    @on-change="updateActualDate"
+                                >
+                                    <template
+                                        v-slot:openDialog="{
+                                            on,
+                                            attrs,
+                                            dateRangeText
+                                        }"
+                                    >
+                                        <v-text-field
+                                            v-model="form.actual_date_performed"
+                                            :value="dateRangeText"
+                                            :error-messages="
+                                                errors.actual_start_date
+                                            "
+                                            @input="
+                                                errors.actual_start_date = []
+                                            "
+                                            label="Actual Date Performed"
+                                            readonly
+                                            outlined
+                                            v-bind="attrs"
+                                            v-on="on"
+                                            clearable
+                                        ></v-text-field>
+                                    </template>
+                                </XDateRangePicker>
                             </v-col>
                         </v-row>
                     </v-card-text>
                 </v-card>
             </v-col>
-            <v-col cols="12" md="8">
+
+            <v-col cols="12" md="4">
+                <v-card flat>
+                    <v-card-title>
+                        Asset Information
+                    </v-card-title>
+                    <v-card-text>
+                        <v-row class="d-flex justify-center">
+                            <v-col cols="12">
+                                <v-text-field
+                                    :value="
+                                        form.assigned_user
+                                            ? form.assigned_user.full_name
+                                            : ''
+                                    "
+                                    label="Assigned User"
+                                    outlined
+                                    :error-messages="errors.assigned_user_id[0]"
+                                    @input="errors.assigned_user_id = []"
+                                    readonly
+                                >
+                                    <template v-slot:append>
+                                        <EmployeeDialogSelector
+                                            :selected="
+                                                !form.assigned_user
+                                                    ? []
+                                                    : [...form.assigned_user]
+                                            "
+                                            @on-select="onSelectUser"
+                                        >
+                                            <template
+                                                v-slot:openDialog="{
+                                                    on,
+                                                    attrs
+                                                }"
+                                            >
+                                                <v-btn
+                                                    v-bind="attrs"
+                                                    v-on="on"
+                                                    icon
+                                                    title="Select Employee"
+                                                >
+                                                    <v-icon>
+                                                        mdi-clipboard-account
+                                                    </v-icon>
+                                                </v-btn>
+                                            </template>
+                                        </EmployeeDialogSelector>
+
+                                        <CustomerDialogSelector
+                                            :selected="
+                                                !form.assigned_user
+                                                    ? []
+                                                    : [...form.assigned_user]
+                                            "
+                                            @on-select="onSelectUser"
+                                        >
+                                            <template
+                                                v-slot:openDialog="{
+                                                    on,
+                                                    attrs
+                                                }"
+                                            >
+                                                <v-btn
+                                                    v-bind="attrs"
+                                                    v-on="on"
+                                                    icon
+                                                    title="Select Customer"
+                                                >
+                                                    <v-icon>
+                                                        mdi-card-account-details-outline
+                                                    </v-icon>
+                                                </v-btn>
+                                            </template>
+                                        </CustomerDialogSelector>
+                                    </template>
+                                </v-text-field>
+                                <AssetDialogSelector
+                                    :selected="
+                                        !form.parent_asset
+                                            ? []
+                                            : [...form.parent_asset]
+                                    "
+                                    :requestType="'work_order'"
+                                    :assignedUserId="
+                                        form.assigned_user
+                                            ? form.assigned_user.id
+                                            : 0
+                                    "
+                                    @on-select="onSelectAsset"
+                                >
+                                    <template v-slot:openDialog="{ on, attrs }">
+                                        <v-text-field
+                                            :disabled="!form.assigned_user"
+                                            :value="
+                                                form.parent_asset
+                                                    ? form.parent_asset
+                                                          .description
+                                                    : ''
+                                            "
+                                            label="Asset"
+                                            outlined
+                                            :error-messages="
+                                                errors.parent_asset_id[0]
+                                            "
+                                            @input="errors.parent_asset_id = []"
+                                            readonly
+                                            v-bind="attrs"
+                                            v-on="on"
+                                        ></v-text-field>
+                                    </template>
+                                </AssetDialogSelector>
+                                <v-text-field
+                                    v-model="form.code"
+                                    label="Incident"
+                                    outlined
+                                    clearable
+                                    hint="Ex. Work Order for Asset"
+                                    :error-messages="errors.code[0]"
+                                    @input="errors.code = []"
+                                ></v-text-field>
+                                <v-text-field
+                                    v-model="form.code"
+                                    label="Diagnosis"
+                                    outlined
+                                    clearable
+                                    hint="Ex. Work Order for Asset"
+                                    :error-messages="errors.code[0]"
+                                    @input="errors.code = []"
+                                ></v-text-field>
+                                <v-text-field
+                                    v-model="form.code"
+                                    label="Action Taken"
+                                    outlined
+                                    clearable
+                                    hint="Ex. Work Order for Asset"
+                                    :error-messages="errors.code[0]"
+                                    @input="errors.code = []"
+                                ></v-text-field>
+                                <v-text-field
+                                    v-model="form.code"
+                                    label="Recommendation"
+                                    outlined
+                                    clearable
+                                    hint="Ex. Work Order for Asset"
+                                    :error-messages="errors.code[0]"
+                                    @input="errors.code = []"
+                                ></v-text-field>
+                            </v-col>
+                        </v-row>
+                    </v-card-text>
+                </v-card>
+            </v-col>
+
+            <v-col cols="12" md="6">
                 <v-card flat>
                     <v-card-title class="d-flex justify-space-between">
                         <div>
@@ -212,11 +378,11 @@
                     </v-card-text>
                 </v-card>
             </v-col>
-            <v-col cols="12">
+            <v-col cols="12" md="6">
                 <v-card flat>
                     <v-card-title class="d-flex justify-space-between">
                         <div>
-                            Assets
+                            Sub-Assets
                         </div>
                         <div class="d-flex">
                             <v-btn
@@ -233,10 +399,14 @@
                                 :dialogAsset="dialogAsset"
                                 :singleSelect="false"
                                 :requestType="'maintenance'"
+                                :assignedAssetId="
+                                    form.parent_asset ? form.parent_asset.id : 0
+                                "
                                 @on-select="onSelectAsset"
                             >
                                 <template v-slot:openDialog="{ on, attrs }">
                                     <v-btn
+                                        :disabled="!form.parent_asset"
                                         icon
                                         fab
                                         small
@@ -244,9 +414,9 @@
                                         v-bind="attrs"
                                         v-on="on"
                                     >
-                                        <v-icon
-                                            >mdi-clipboard-plus-outline</v-icon
-                                        >
+                                        <v-icon>
+                                            mdi-clipboard-plus-outline
+                                        </v-icon>
                                     </v-btn>
                                 </template>
                             </AssetDialogSelector>
@@ -296,8 +466,10 @@
 import moment from "moment";
 import AssetDialogSelector from "../../components/selectors/AssetDialogSelector.vue";
 import EmployeeDialogSelector from "../../components/selectors/EmployeeDialogSelector.vue";
+import CustomerDialogSelector from "../../components/selectors/CustomerDialogSelector.vue";
 import LocationDialogSelector from "../../components/selectors/LocationDialogSelector.vue";
 import TransactionTypeDataService from "../../services/TransactionTypeDataService";
+import XDateRangePicker from "../../components/X-DateRangePicker.vue";
 
 export default {
     props: {
@@ -309,6 +481,14 @@ export default {
                     reference_no: "",
                     request_date: "",
                     description: "",
+                    incident: "",
+                    diagnosis: "",
+                    action_taken: "",
+                    recommendation: "",
+                    scheduled_start_date: "",
+                    scheduled_end_date: "",
+                    actual_start_date: "",
+                    actual_end_date: "",
                     status: { text: "", color: "", dark: false },
                     transactionable: "",
                     transaction_type_id: "",
@@ -320,7 +500,11 @@ export default {
                     assigned_asset_id: "",
                     assets: [],
                     assigned_employees: [],
-                    assigned_location: null
+                    assigned_location: null,
+                    actual_date_performed: [],
+                    scheduled_date: [],
+                    assigned_user: null,
+                    parent_asset: null
                 };
             }
         },
@@ -332,6 +516,14 @@ export default {
                     reference_no: [],
                     request_date: [],
                     description: [],
+                    incident: [],
+                    diagnosis: [],
+                    action_taken: [],
+                    recommendation: [],
+                    scheduled_start_date: [],
+                    scheduled_end_date: [],
+                    actual_start_date: [],
+                    actual_end_date: [],
                     transactionable: [],
                     transaction_type_id: [],
                     user_id: [],
@@ -353,6 +545,14 @@ export default {
                     reference_no: [],
                     request_date: [],
                     description: [],
+                    incident: [],
+                    diagnosis: [],
+                    action_taken: [],
+                    recommendation: [],
+                    scheduled_start_date: [],
+                    scheduled_end_date: [],
+                    actual_start_date: [],
+                    actual_end_date: [],
                     transactionable: [],
                     transaction_type_id: [],
                     user_id: [],
@@ -370,7 +570,9 @@ export default {
     components: {
         AssetDialogSelector,
         LocationDialogSelector,
-        EmployeeDialogSelector
+        EmployeeDialogSelector,
+        XDateRangePicker,
+        CustomerDialogSelector
     },
     data() {
         return {
@@ -507,6 +709,32 @@ export default {
                 this.editedIndex = this.form.assigned_employees.indexOf(item);
                 this.form.assigned_employees.splice(this.editedIndex, 1);
             }
+        },
+        updateActualDate(e) {
+            this.form.actual_date_performed = e;
+        },
+        updateScheduledDate(e) {
+            this.form.scheduled_date = e;
+        },
+        onSelectUser(e) {
+            this.errors.assigned_user_id = [];
+
+            if (e == null || e == undefined) {
+                this.form.assigned_user = null;
+                return;
+            }
+
+            this.form.assigned_user = e[0];
+        },
+        onSelectAsset(e) {
+            this.errors.parent_asset_id = [];
+
+            if (e == null || e == undefined) {
+                this.form.parent_asset = null;
+                return;
+            }
+
+            this.form.parent_asset = e[0];
         }
     },
     computed: {

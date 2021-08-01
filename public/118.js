@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[110],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[118],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/work_orders/Edit.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************!*\
@@ -67,8 +67,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         assigned_location: null,
         actual_date_performed: [],
         scheduled_date: [],
-        assigned_user: null,
-        parent_asset: null
+        assigned_user: null
       },
       errors: {
         code: [],

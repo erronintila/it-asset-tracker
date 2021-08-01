@@ -102,6 +102,14 @@ export default {
         requestType: {
             type: String,
             default: null
+        },
+        assignedUserId: {
+            type: Number,
+            default: null
+        },
+        assignedAssetId: {
+            type: Number,
+            default: null
         }
     },
     data() {
@@ -142,6 +150,8 @@ export default {
                 let search = this.search;
                 // let status = this.status;
                 let request_type = this.requestType;
+                let assigned_user_id = this.assignedUserId;
+                let assigned_asset_id = this.assignedAssetId;
 
                 let data = {
                     params: {
@@ -154,6 +164,14 @@ export default {
                         // status: status
                     }
                 };
+
+                if (assigned_user_id) {
+                    data.params.assigned_user_id = assigned_user_id;
+                }
+
+                if (assigned_asset_id) {
+                    data.params.assigned_asset_id = assigned_asset_id;
+                }
 
                 AssetDataService.getAll(data)
                     .then(response => {
@@ -220,6 +238,11 @@ export default {
                 if (newValue) {
                     this.getData();
                 }
+            }
+        },
+        dialog() {
+            if (this.dialog) {
+                this.getData();
             }
         }
     }

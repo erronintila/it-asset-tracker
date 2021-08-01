@@ -54,34 +54,31 @@ class WorkOrderController extends Controller
             $code = 'CIN' . date("YmdHis");
 
             $transaction_type = TransactionType::findOrFail($validated['transaction_type_id']);
-            $location = Location::findOrFail($validated['assigned_location_id']);
 
             $transaction = new Transaction();
             $transaction->code = $code;
             $transaction->reference_no = $validated['reference_no'];
             $transaction->request_date = $validated['request_date'];
             $transaction->description = $validated['description'];
-            $transaction->incident = $validated['incident'];
-            $transaction->diagnosis = $validated['diagnosis'];
-            $transaction->action_taken = $validated['action_taken'];
-            $transaction->recommendation = $validated['recommendation'];
-            $transaction->scheduled_start_date = $validated['scheduled_start_date'];
-            $transaction->scheduled_end_date = $validated['scheduled_end_date'];
-            $transaction->actual_start_date = $validated['actual_start_date'];
-            $transaction->actual_end_date = $validated['actual_end_date'];
-
 
             $transaction->transaction_type()->associate($transaction_type);
-            $transaction->assigned_location()->associate($location);
             $transaction->user()->associate(Auth::user());
             $transaction->save();
 
             $transaction->assets()->sync(array_column($validated['assets'], 'id'));
             $transaction->assigned_employees()->sync(array_column($validated['assigned_employees'], 'id'));
 
-            $checkin_request = new WorkOrder();
-            $checkin_request->save();
-            $checkin_request->transaction()->save($transaction);
+            $work_order = new WorkOrder();
+            $work_order->incident = $validated['incident'];
+            $work_order->diagnosis = $validated['diagnosis'];
+            $work_order->action_taken = $validated['action_taken'];
+            $work_order->recommendation = $validated['recommendation'];
+            $work_order->scheduled_start_date = $validated['scheduled_start_date'];
+            $work_order->scheduled_end_date = $validated['scheduled_end_date'];
+            $work_order->actual_start_date = $validated['actual_start_date'];
+            $work_order->actual_end_date = $validated['actual_end_date'];
+            $work_order->save();
+            $work_order->transaction()->save($transaction);
 
             return $transaction;
         });
@@ -127,32 +124,29 @@ class WorkOrderController extends Controller
 
         $data = DB::transaction(function () use ($validated, $id) {
             $transaction_type = TransactionType::findOrFail($validated['transaction_type_id']);
-            $location = Location::findOrFail($validated['assigned_location_id']);
 
             $transaction = Transaction::findOrFail($id);
             $transaction->reference_no = $validated['reference_no'];
             $transaction->request_date = $validated['request_date'];
             $transaction->description = $validated['description'];
-            $transaction->incident = $validated['incident'];
-            $transaction->diagnosis = $validated['diagnosis'];
-            $transaction->action_taken = $validated['action_taken'];
-            $transaction->recommendation = $validated['recommendation'];
-            $transaction->scheduled_start_date = $validated['scheduled_start_date'];
-            $transaction->scheduled_end_date = $validated['scheduled_end_date'];
-            $transaction->actual_start_date = $validated['actual_start_date'];
-            $transaction->actual_end_date = $validated['actual_end_date'];
 
             $transaction->transaction_type()->associate($transaction_type);
-            $transaction->assigned_location()->associate($location);
-            // $transaction->user()->associate(Auth::user());
             $transaction->save();
 
             $transaction->assets()->sync(array_column($validated['assets'], 'id'));
             $transaction->assigned_employees()->sync(array_column($validated['assigned_employees'], 'id'));
 
-            $checkin_request = WorkOrder::findOrFail($transaction->transactionable->id);
-            $checkin_request->save();
-            $checkin_request->transaction()->save($transaction);
+            $work_order = WorkOrder::findOrFail($transaction->transactionable->id);
+            $work_order->incident = $validated['incident'];
+            $work_order->diagnosis = $validated['diagnosis'];
+            $work_order->action_taken = $validated['action_taken'];
+            $work_order->recommendation = $validated['recommendation'];
+            $work_order->scheduled_start_date = $validated['scheduled_start_date'];
+            $work_order->scheduled_end_date = $validated['scheduled_end_date'];
+            $work_order->actual_start_date = $validated['actual_start_date'];
+            $work_order->actual_end_date = $validated['actual_end_date'];
+            $work_order->save();
+            $work_order->transaction()->save($transaction);
 
             return $transaction;
         });

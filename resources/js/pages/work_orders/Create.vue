@@ -1,9 +1,6 @@
 <template>
     <div>
-        <page-header
-            :title="'New Work Order'"
-            :backButton="true"
-        ></page-header>
+        <page-header :title="'New Work Order'" :backButton="true"></page-header>
 
         <Form @on-save="onSave" :errors="errors"></Form>
     </div>
@@ -25,6 +22,14 @@ export default {
                 reference_no: [],
                 request_date: [],
                 description: [],
+                incident: [],
+                diagnosis: [],
+                action_taken: [],
+                recommendation: [],
+                scheduled_start_date: [],
+                scheduled_end_date: [],
+                actual_start_date: [],
+                actual_end_date: [],
                 transactionable: [],
                 transaction_type_id: [],
                 user_id: [],
@@ -34,7 +39,7 @@ export default {
                 assigned_location_id: [],
                 assigned_asset_id: [],
                 assets: [],
-                assigned_employees: [],
+                assigned_employees: []
             }
         };
     },

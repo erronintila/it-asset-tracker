@@ -18,6 +18,8 @@ class CreateAssetableTable extends Migration
             $table->foreignId('transaction_id')->constrained()->onDelete('cascade');
             $table->unsignedBigInteger('assetable_id');
             $table->string('assetable_type');
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
+            $table->integer('quantity')->default(1);
             $table->timestamp('approved_at')->nullable();
             $table->timestamp('cancelled_at')->nullable();
             $table->timestamps();

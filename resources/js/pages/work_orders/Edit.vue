@@ -5,11 +5,7 @@
             :backButton="true"
         ></page-header>
 
-        <Form
-            @on-save="onSave"
-            :workOrderForm="form"
-            :errors="errors"
-        ></Form>
+        <Form @on-save="onSave" :workOrderForm="form" :errors="errors"></Form>
     </div>
 </template>
 
@@ -28,6 +24,14 @@ export default {
                 reference_no: "",
                 request_date: "",
                 description: "",
+                incident: "",
+                diagnosis: "",
+                action_taken: "",
+                recommendation: "",
+                scheduled_start_date: "",
+                scheduled_end_date: "",
+                actual_start_date: "",
+                actual_end_date: "",
                 status: { text: "", color: "", dark: false },
                 transactionable: {},
                 transaction_type_id: "",
@@ -39,13 +43,25 @@ export default {
                 assigned_asset_id: "",
                 assets: [],
                 assigned_employees: [],
-                assigned_location: null
+                assigned_location: null,
+                actual_date_performed: [],
+                scheduled_date: [],
+                assigned_user: null,
+                parent_asset: null
             },
             errors: {
                 code: [],
                 reference_no: [],
                 request_date: [],
                 description: [],
+                incident: [],
+                diagnosis: [],
+                action_taken: [],
+                recommendation: [],
+                scheduled_start_date: [],
+                scheduled_end_date: [],
+                actual_start_date: [],
+                actual_end_date: [],
                 transactionable: [],
                 transaction_type_id: [],
                 user_id: [],
@@ -55,7 +71,7 @@ export default {
                 assigned_location_id: [],
                 assigned_asset_id: [],
                 assets: [],
-                assigned_employees: [],
+                assigned_employees: []
             }
         };
     },
@@ -83,10 +99,7 @@ export default {
                 .catch(error => {
                     console.log(error.response);
                     alert("An error has occurred.");
-                    this.$router.push(
-                        { name: "work_orders.index" },
-                        () => {}
-                    );
+                    this.$router.push({ name: "work_orders.index" }, () => {});
                 });
         },
         onSave(value) {

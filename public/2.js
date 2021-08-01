@@ -120,6 +120,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     requestType: {
       type: String,
       "default": null
+    },
+    assignedUserId: {
+      type: Number,
+      "default": null
+    },
+    assignedAssetId: {
+      type: Number,
+      "default": null
     }
   },
   data: function data() {
@@ -166,6 +174,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         var search = _this.search; // let status = this.status;
 
         var request_type = _this.requestType;
+        var assigned_user_id = _this.assignedUserId;
+        var assigned_asset_id = _this.assignedAssetId;
         var data = {
           params: {
             sortBy: sortBy[0],
@@ -177,6 +187,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
           }
         };
+
+        if (assigned_user_id) {
+          data.params.assigned_user_id = assigned_user_id;
+        }
+
+        if (assigned_asset_id) {
+          data.params.assigned_asset_id = assigned_asset_id;
+        }
+
         _services_AssetDataService__WEBPACK_IMPORTED_MODULE_0__["default"].getAll(data).then(function (response) {
           console.log(response.data);
           _this.items = response.data.data.data;
@@ -236,6 +255,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         if (newValue) {
           this.getData();
         }
+      }
+    },
+    dialog: function dialog() {
+      if (this.dialog) {
+        this.getData();
       }
     }
   }
