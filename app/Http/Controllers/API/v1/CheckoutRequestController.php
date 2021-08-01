@@ -67,7 +67,7 @@ class CheckoutRequestController extends Controller
             $transaction->user()->associate(Auth::user());
 
             $transaction->assigned_user()->associate($assigned_user);
-            $transaction->assigned_location()->associate($assigned_user->location);
+            $transaction->assigned_location()->associate($assigned_user->profile->location);
 
             $transaction->save();
 
@@ -132,7 +132,7 @@ class CheckoutRequestController extends Controller
             $transaction->transaction_type()->associate($transaction_type);
 
             $transaction->assigned_user()->associate($assigned_user);
-            $transaction->assigned_location()->associate($assigned_user->location);
+            $transaction->assigned_location()->associate($assigned_user->profile->location);
 
             $transaction->save();
 

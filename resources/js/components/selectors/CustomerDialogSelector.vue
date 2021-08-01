@@ -106,7 +106,7 @@ export default {
             fullscreen: false,
             tableOptions: {
                 options: {
-                    sortBy: ["code"],
+                    sortBy: ["name"],
                     sortDesc: [false],
                     page: 1,
                     itemsPerPage: 5
@@ -115,9 +115,8 @@ export default {
                 itemsPerPageOptions: [5, 10, 20],
                 serverItemsLength: 0,
                 headers: [
-                    { text: "Code", value: "code" },
-                    { text: "Name", value: "name" },
-                    { text: "Manager", value: "manager_id" }
+                    { text: "Code", value: "profile.code" },
+                    { text: "Name", value: "name" }
                 ]
             },
             search: "",

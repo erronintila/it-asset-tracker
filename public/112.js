@@ -5,555 +5,9 @@
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/checkout_requests/Form.vue?vue&type=script&lang=js& ***!
   \****************************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_selectors_AssetDialogSelector_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/selectors/AssetDialogSelector.vue */ "./resources/js/components/selectors/AssetDialogSelector.vue");
-/* harmony import */ var _components_selectors_EmployeeDialogSelector_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/selectors/EmployeeDialogSelector.vue */ "./resources/js/components/selectors/EmployeeDialogSelector.vue");
-/* harmony import */ var _services_TransactionTypeDataService__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/TransactionTypeDataService */ "./resources/js/services/TransactionTypeDataService.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    checkoutRequestForm: {
-      type: Object,
-      "default": function _default() {
-        return {
-          code: "",
-          reference_no: "",
-          request_date: "",
-          description: "",
-          status: {
-            text: "",
-            color: "",
-            dark: false
-          },
-          transactionable: "",
-          transaction_type_id: "",
-          user: "",
-          parent_asset_id: "",
-          owner_id: "",
-          assigned_user_id: "",
-          assigned_location_id: "",
-          assigned_asset_id: "",
-          assets: [],
-          assigned_employees: [],
-          assigned_location: null
-        };
-      }
-    },
-    rules: {
-      type: Object,
-      "default": function _default() {
-        return {
-          code: [],
-          reference_no: [],
-          request_date: [],
-          description: [],
-          transactionable: [],
-          transaction_type_id: [],
-          user_id: [],
-          parent_asset_id: [],
-          owner_id: [],
-          assigned_user_id: [],
-          assigned_location_id: [],
-          assigned_asset_id: [],
-          assets: [],
-          assigned_employees: []
-        };
-      }
-    },
-    errors: {
-      type: Object,
-      "default": function _default() {
-        return {
-          code: [],
-          reference_no: [],
-          request_date: [],
-          description: [],
-          transactionable: [],
-          transaction_type_id: [],
-          user_id: [],
-          parent_asset_id: [],
-          owner_id: [],
-          assigned_user_id: [],
-          assigned_location_id: [],
-          assigned_asset_id: [],
-          assets: [],
-          assigned_employees: []
-        };
-      }
-    }
-  },
-  components: {
-    AssetDialogSelector: _components_selectors_AssetDialogSelector_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    EmployeeDialogSelector: _components_selectors_EmployeeDialogSelector_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
-  },
-  data: function data() {
-    return {
-      valid: false,
-      dialogAsset: false,
-      requestDateModal: false,
-      headers: {
-        employee: [{
-          text: "Code",
-          value: "profile.code"
-        }, {
-          text: "Fullname",
-          value: "full_name"
-        }, {
-          text: "Job Title",
-          value: "profile.job_title"
-        }, {
-          text: "Action",
-          value: "action"
-        }],
-        asset: [{
-          text: "Code",
-          value: "code"
-        }, {
-          text: "Serial No.",
-          value: "serial_no"
-        }, {
-          text: "Description",
-          value: "description"
-        }, {
-          text: "Action",
-          value: "action"
-        }]
-      },
-      transaction_types: [],
-      form: {
-        code: "",
-        reference_no: "",
-        request_date: "",
-        description: "",
-        status: {
-          text: "",
-          color: "",
-          dark: false
-        },
-        transactionable: {},
-        transaction_type_id: "",
-        user: {},
-        parent_asset_id: "",
-        owner_id: "",
-        assigned_user_id: "",
-        assigned_location_id: "",
-        assigned_asset_id: "",
-        assets: [],
-        assigned_employees: [],
-        assigned_location: null,
-        transaction_type: null
-      }
-    };
-  },
-  methods: {
-    getTransactionTypes: function getTransactionTypes() {
-      var _this = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                try {
-                  _services_TransactionTypeDataService__WEBPACK_IMPORTED_MODULE_4__["default"].getAll({
-                    params: {
-                      itemsPerPage: 100,
-                      action_types: ["checkout"]
-                    }
-                  }).then(function (response) {
-                    console.log(response.data);
-                    _this.transaction_types = response.data.data.data;
-                  });
-                } catch (error) {
-                  console.log(error);
-                }
-
-              case 1:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
-    },
-    onSave: function onSave() {
-      if (!confirm("Do you want to save?")) {
-        return;
-      }
-
-      if (!this.$refs.form.validate()) {
-        alert("An error has occurred.");
-        return;
-      }
-
-      var newform = _objectSpread(_objectSpread({}, this.form), {
-        transaction_type_id: this.form.transaction_type ? this.form.transaction_type.id : null
-      });
-
-      console.log(newform);
-
-      if (!newform.is_active) {
-        newform.is_active = false;
-      }
-
-      this.$emit("on-save", newform);
-    },
-    onSelectAsset: function onSelectAsset(e) {
-      this.dialogAsset = false;
-      this.errors.assets = [];
-
-      if (e == null || e == undefined) {
-        this.form.assets = [];
-        return;
-      }
-
-      this.form.assets = e;
-      this.dialogAsset = false;
-    },
-    onSelectEmployee: function onSelectEmployee(e) {
-      this.errors.assigned_employees = [];
-
-      if (e == null || e == undefined) {
-        this.form.assigned_employees = [];
-        return;
-      }
-
-      this.form.assigned_employees = e;
-    },
-    onSelectUser: function onSelectUser(e) {
-      this.errors.assigned_user_id = [];
-
-      if (e == null || e == undefined) {
-        this.form.assigned_user = null;
-        return;
-      }
-
-      this.form.assigned_user = e[0];
-    },
-    removeItem: function removeItem(item) {
-      if (confirm("Remove this item?")) {
-        this.editedIndex = this.form.assets.indexOf(item);
-        this.form.assets.splice(this.editedIndex, 1);
-      }
-    },
-    removeEmployeeItem: function removeEmployeeItem(item) {
-      if (confirm("Remove this item?")) {
-        this.editedIndex = this.form.assigned_employees.indexOf(item);
-        this.form.assigned_employees.splice(this.editedIndex, 1);
-      }
-    }
-  },
-  computed: {
-    maxDate: function maxDate() {
-      return moment__WEBPACK_IMPORTED_MODULE_1___default()().format("YYYY-MM-DD");
-    }
-  },
-  watch: {
-    checkoutRequestForm: {
-      immediate: true,
-      handler: function handler(newValue, oldValue) {
-        this.form = newValue;
-      }
-    }
-  },
-  mounted: function mounted() {
-    this.getTransactionTypes();
-  }
-});
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\resources\\js\\pages\\checkout_requests\\Form.vue: Identifier 'EmployeeDialogSelector' has already been declared. (327:7)\n\n\u001b[0m \u001b[90m 325 |\u001b[39m \u001b[36mimport\u001b[39m \u001b[33mAssetDialogSelector\u001b[39m \u001b[36mfrom\u001b[39m \u001b[32m\"../../components/selectors/AssetDialogSelector.vue\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 326 |\u001b[39m \u001b[36mimport\u001b[39m \u001b[33mEmployeeDialogSelector\u001b[39m \u001b[36mfrom\u001b[39m \u001b[32m\"../../components/selectors/EmployeeDialogSelector.vue\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 327 |\u001b[39m \u001b[36mimport\u001b[39m \u001b[33mEmployeeDialogSelector\u001b[39m \u001b[36mfrom\u001b[39m \u001b[32m\"../../components/selectors/EmployeeDialogSelector.vue\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 328 |\u001b[39m \u001b[36mimport\u001b[39m \u001b[33mTransactionTypeDataService\u001b[39m \u001b[36mfrom\u001b[39m \u001b[32m\"../../services/TransactionTypeDataService\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 329 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 330 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mdefault\u001b[39m {\u001b[0m\n    at Parser._raise (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:810:17)\n    at Parser.raiseWithData (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:803:17)\n    at Parser.raise (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:764:17)\n    at ScopeHandler.checkRedeclarationInScope (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:1474:12)\n    at ScopeHandler.declareName (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:1440:12)\n    at Parser.checkLVal (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:10506:24)\n    at Parser.parseImportSpecifierLocal (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:14050:10)\n    at Parser.maybeParseDefaultImportSpecifier (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:14152:12)\n    at Parser.parseImport (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:14015:31)\n    at Parser.parseStatementContent (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:12696:27)\n    at Parser.parseStatement (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:12596:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:13185:25)\n    at Parser.parseBlockBody (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:13176:10)\n    at Parser.parseProgram (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:12519:10)\n    at Parser.parseTopLevel (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:12510:25)\n    at Parser.parse (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:14241:10)\n    at parse (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\parser\\lib\\index.js:14293:38)\n    at parser (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\core\\lib\\parser\\index.js:52:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:82:38)\n    at normalizeFile.next (<anonymous>)\n    at run (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\core\\lib\\transformation\\index.js:29:50)\n    at run.next (<anonymous>)\n    at Function.transform (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\@babel\\core\\lib\\transform.js:25:41)\n    at transform.next (<anonymous>)\n    at step (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\gensync\\index.js:261:32)\n    at C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\gensync\\index.js:273:13\n    at async.call.result.err.err (C:\\Users\\erron\\Documents\\Projects\\Laravel\\it-asset-tracker\\node_modules\\gensync\\index.js:223:11)");
 
 /***/ }),
 
@@ -841,7 +295,7 @@ var render = function() {
                                 attrs: {
                                   selected: !_vm.form.assigned_user
                                     ? []
-                                    : _vm.form.assigned_user
+                                    : [].concat(_vm.form.assigned_user)
                                 },
                                 on: { "on-select": _vm.onSelectUser },
                                 scopedSlots: _vm._u([
@@ -852,44 +306,70 @@ var render = function() {
                                       var attrs = ref.attrs
                                       return [
                                         _c(
-                                          "v-text-field",
+                                          "v-btn",
                                           _vm._g(
                                             _vm._b(
                                               {
                                                 attrs: {
-                                                  label: "Employee",
-                                                  outlined: "",
-                                                  clearable: "",
-                                                  "error-messages":
-                                                    _vm.errors
-                                                      .assigned_user_id[0],
-                                                  "return-object": "",
-                                                  "item-text": _vm.full_name
-                                                },
-                                                on: {
-                                                  input: function($event) {
-                                                    _vm.errors.assigned_user_id = []
-                                                  }
-                                                },
-                                                model: {
-                                                  value: _vm.form.assigned_user,
-                                                  callback: function($$v) {
-                                                    _vm.$set(
-                                                      _vm.form,
-                                                      "assigned_user",
-                                                      $$v
-                                                    )
-                                                  },
-                                                  expression:
-                                                    "form.assigned_user"
+                                                  icon: "",
+                                                  title: "Select Employee"
                                                 }
                                               },
-                                              "v-text-field",
+                                              "v-btn",
                                               attrs,
                                               false
                                             ),
                                             on
-                                          )
+                                          ),
+                                          [
+                                            _c("v-icon", [
+                                              _vm._v("mdi-account")
+                                            ])
+                                          ],
+                                          1
+                                        )
+                                      ]
+                                    }
+                                  }
+                                ])
+                              }),
+                              _vm._v(" "),
+                              _c("CustomerDialogSelector", {
+                                attrs: {
+                                  selected: !_vm.form.assigned_user
+                                    ? []
+                                    : [].concat(_vm.form.assigned_user)
+                                },
+                                on: { "on-select": _vm.onSelectUser },
+                                scopedSlots: _vm._u([
+                                  {
+                                    key: "openDialog",
+                                    fn: function(ref) {
+                                      var on = ref.on
+                                      var attrs = ref.attrs
+                                      return [
+                                        _c(
+                                          "v-btn",
+                                          _vm._g(
+                                            _vm._b(
+                                              {
+                                                attrs: {
+                                                  icon: "",
+                                                  title: "Select Customer"
+                                                }
+                                              },
+                                              "v-btn",
+                                              attrs,
+                                              false
+                                            ),
+                                            on
+                                          ),
+                                          [
+                                            _c("v-icon", [
+                                              _vm._v("mdi-account")
+                                            ])
+                                          ],
+                                          1
                                         )
                                       ]
                                     }

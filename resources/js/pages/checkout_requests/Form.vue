@@ -90,16 +90,44 @@
                                     @input="errors.description = []"
                                 ></v-text-field>
 
-                                <EmployeeDialogSelector
-                                    :selected="
-                                        !form.assigned_user
-                                            ? []
-                                            : [...form.assigned_user]
+                                <v-text-field
+                                    :value="
+                                        form.assigned_user
+                                            ? form.assigned_user.full_name
+                                            : ''
                                     "
-                                    @on-select="onSelectUser"
+                                    label="Assigned User"
+                                    outlined
+                                    :error-messages="errors.assigned_user_id[0]"
+                                    @input="errors.assigned_user_id = []"
+                                    readonly
                                 >
-                                    <template v-slot:openDialog="{ on, attrs }">
-                                        <v-text-field
+                                    <template v-slot:append>
+                                        <EmployeeDialogSelector
+                                            :selected="
+                                                !form.assigned_user
+                                                    ? []
+                                                    : [...form.assigned_user]
+                                            "
+                                            @on-select="onSelectUser"
+                                        >
+                                            <template
+                                                v-slot:openDialog="{
+                                                    on,
+                                                    attrs
+                                                }"
+                                            >
+                                                <v-btn
+                                                    v-bind="attrs"
+                                                    v-on="on"
+                                                    icon
+                                                    title="Select Employee"
+                                                >
+                                                    <v-icon>
+                                                        mdi-clipboard-account
+                                                    </v-icon>
+                                                </v-btn>
+                                                <!-- <v-text-field
                                             :value="
                                                 form.assigned_user
                                                     ? form.assigned_user
@@ -117,9 +145,57 @@
                                             "
                                             v-bind="attrs"
                                             v-on="on"
-                                        ></v-text-field>
+                                        ></v-text-field> -->
+                                            </template>
+                                        </EmployeeDialogSelector>
+
+                                        <CustomerDialogSelector
+                                            :selected="
+                                                !form.assigned_user
+                                                    ? []
+                                                    : [...form.assigned_user]
+                                            "
+                                            @on-select="onSelectUser"
+                                        >
+                                            <template
+                                                v-slot:openDialog="{
+                                                    on,
+                                                    attrs
+                                                }"
+                                            >
+                                                <v-btn
+                                                    v-bind="attrs"
+                                                    v-on="on"
+                                                    icon
+                                                    title="Select Customer"
+                                                >
+                                                    <v-icon>
+                                                        mdi-card-account-details-outline
+                                                    </v-icon>
+                                                </v-btn>
+                                                <!-- <v-text-field
+                                            :value="
+                                                form.assigned_user
+                                                    ? form.assigned_user
+                                                          .full_name
+                                                    : ''
+                                            "
+                                            label="Employee"
+                                            outlined
+                                            clearable
+                                            :error-messages="
+                                                errors.assigned_user_id[0]
+                                            "
+                                            @input="
+                                                errors.assigned_user_id = []
+                                            "
+                                            v-bind="attrs"
+                                            v-on="on"
+                                        ></v-text-field> -->
+                                            </template>
+                                        </CustomerDialogSelector>
                                     </template>
-                                </EmployeeDialogSelector>
+                                </v-text-field>
                             </v-col>
                         </v-row>
                     </v-card-text>
@@ -277,6 +353,7 @@
 import moment from "moment";
 import AssetDialogSelector from "../../components/selectors/AssetDialogSelector.vue";
 import EmployeeDialogSelector from "../../components/selectors/EmployeeDialogSelector.vue";
+import CustomerDialogSelector from "../../components/selectors/CustomerDialogSelector.vue";
 import TransactionTypeDataService from "../../services/TransactionTypeDataService";
 
 export default {
@@ -350,7 +427,8 @@ export default {
     },
     components: {
         AssetDialogSelector,
-        EmployeeDialogSelector
+        EmployeeDialogSelector,
+        CustomerDialogSelector
     },
     data() {
         return {
@@ -425,6 +503,11 @@ export default {
                 ...{
                     transaction_type_id: this.form.transaction_type
                         ? this.form.transaction_type.id
+                        : null
+                },
+                ...{
+                    assigned_user_id: this.form.assigned_user
+                        ? this.form.assigned_user.id
                         : null
                 }
             };
