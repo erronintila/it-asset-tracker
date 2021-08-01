@@ -306,6 +306,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         case "export":
           break;
 
+        case "approve":
+          this.onUpdateStatus("approve");
+          break;
+
+        case "complete":
+          this.onUpdateStatus("complete");
+          break;
+
+        case "post":
+          this.onUpdateStatus("post");
+          break;
+
+        case "cancel":
+          this.onUpdateStatus("cancel");
+          break;
+
         default:
           alert("Error: Action not identified");
           break;
@@ -353,6 +369,78 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         page: 1,
         itemsPerPage: 10
       };
+    },
+    onUpdateStatus: function onUpdateStatus(status) {
+      var _this3 = this;
+
+      if (!confirm("WARNING: Do you want to ".concat(status, " selected items?"))) {
+        return;
+      }
+
+      var data = {
+        // params: {
+        ids: this.selectedItems.map(function (item) {
+          return item.id;
+        }) // }
+
+      };
+
+      switch (status) {
+        case "approve":
+          _services_WorkOrderDataService__WEBPACK_IMPORTED_MODULE_0__["default"].approve(data).then(function (response) {
+            console.log(response.data);
+
+            _this3.getData();
+
+            _this3.selectedItems = [];
+          })["catch"](function (error) {
+            console.log(error.response);
+            alert("An error has occurred.");
+          });
+          break;
+
+        case "complete":
+          _services_WorkOrderDataService__WEBPACK_IMPORTED_MODULE_0__["default"].complete(data).then(function (response) {
+            console.log(response.data);
+
+            _this3.getData();
+
+            _this3.selectedItems = [];
+          })["catch"](function (error) {
+            console.log(error.response);
+            alert("An error has occurred.");
+          });
+          break;
+
+        case "post":
+          _services_WorkOrderDataService__WEBPACK_IMPORTED_MODULE_0__["default"].post(data).then(function (response) {
+            console.log(response.data);
+
+            _this3.getData();
+
+            _this3.selectedItems = [];
+          })["catch"](function (error) {
+            console.log(error.response);
+            alert("An error has occurred.");
+          });
+          break;
+
+        case "cancel":
+          _services_WorkOrderDataService__WEBPACK_IMPORTED_MODULE_0__["default"].cancel(data).then(function (response) {
+            console.log(response.data);
+
+            _this3.getData();
+
+            _this3.selectedItems = [];
+          })["catch"](function (error) {
+            console.log(error.response);
+            alert("An error has occurred.");
+          });
+          break;
+
+        default:
+          break;
+      }
     }
   },
   computed: {

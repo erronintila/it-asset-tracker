@@ -32,6 +32,9 @@ class AssetController extends Controller
         // $statuses = request('statuses') ?? ['Pending', 'In Storage', 'In Use', 'In Maintenance', 'Disposed'];
 
         $assets = Asset::with(['assigned_user', 'asset_category', 'supplier', 'manufacturer', 'asset_model'])
+            // ->with(['last_work_order' => function ($query) {
+            //     $query->with("transactionable");
+            // }])
             ->search($search)
             ->orderBy($sortBy, $sortType);
 

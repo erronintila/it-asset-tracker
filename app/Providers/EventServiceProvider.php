@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Models\Transaction;
+use App\Models\WorkOrder;
 use App\Observers\TransactionObserver;
+use App\Observers\WorkOrderObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -31,5 +33,6 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
         Transaction::observe(TransactionObserver::class);
+        // WorkOrder::observe(WorkOrderObserver::class);
     }
 }

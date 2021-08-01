@@ -121,36 +121,124 @@
                                     </template>
                                 </XDateRangePicker>
 
-                                <XDateRangePicker
-                                    ref="dateRangeActual"
-                                    :dateRange="form.actual_date_performed"
-                                    @on-change="updateActualDate"
+                                <v-dialog
+                                    ref="dialogActualStart"
+                                    v-model="actualStartModal"
+                                    :return-value.sync="
+                                        form.transactionable.actual_start_date
+                                    "
+                                    persistent
+                                    width="290px"
                                 >
-                                    <template
-                                        v-slot:openDialog="{
-                                            on,
-                                            attrs,
-                                            dateRangeText
-                                        }"
-                                    >
+                                    <template v-slot:activator="{ on, attrs }">
                                         <v-text-field
-                                            v-model="form.actual_date_performed"
-                                            :value="dateRangeText"
+                                            v-model="
+                                                form.transactionable
+                                                    .actual_start_date
+                                            "
+                                            label="Actual Start Date"
+                                            readonly
+                                            v-bind="attrs"
+                                            v-on="on"
+                                            outlined
+                                            hint="Ex. 2000-01-01"
                                             :error-messages="
-                                                errors.actual_start_date
+                                                errors.actual_start_date[0]
                                             "
                                             @input="
                                                 errors.actual_start_date = []
                                             "
-                                            label="Actual Date Performed"
-                                            readonly
-                                            outlined
-                                            v-bind="attrs"
-                                            v-on="on"
-                                            clearable
                                         ></v-text-field>
                                     </template>
-                                </XDateRangePicker>
+                                    <v-date-picker
+                                        v-model="
+                                            form.transactionable
+                                                .actual_start_date
+                                        "
+                                        :max="maxDate"
+                                        scrollable
+                                        @input="errors.actual_start_date = []"
+                                    >
+                                        <v-spacer></v-spacer>
+                                        <v-btn
+                                            text
+                                            color="primary"
+                                            @click="actualStartModal = false"
+                                        >
+                                            Cancel
+                                        </v-btn>
+                                        <v-btn
+                                            text
+                                            color="primary"
+                                            @click="
+                                                $refs.dialogActualStart.save(
+                                                    form.transactionable
+                                                        .actual_start_date
+                                                )
+                                            "
+                                        >
+                                            OK
+                                        </v-btn>
+                                    </v-date-picker>
+                                </v-dialog>
+
+                                <v-dialog
+                                    ref="dialogActualEnd"
+                                    v-model="actualEndModal"
+                                    :return-value.sync="
+                                        form.transactionable.actual_end_date
+                                    "
+                                    persistent
+                                    width="290px"
+                                >
+                                    <template v-slot:activator="{ on, attrs }">
+                                        <v-text-field
+                                            v-model="
+                                                form.transactionable
+                                                    .actual_end_date
+                                            "
+                                            label="Actual End Date"
+                                            readonly
+                                            v-bind="attrs"
+                                            v-on="on"
+                                            outlined
+                                            hint="Ex. 2000-01-01"
+                                            :error-messages="
+                                                errors.actual_end_date[0]
+                                            "
+                                            @input="errors.actual_end_date = []"
+                                        ></v-text-field>
+                                    </template>
+                                    <v-date-picker
+                                        v-model="
+                                            form.transactionable.actual_end_date
+                                        "
+                                        :max="maxDate"
+                                        scrollable
+                                        @input="errors.actual_end_date = []"
+                                    >
+                                        <v-spacer></v-spacer>
+                                        <v-btn
+                                            text
+                                            color="primary"
+                                            @click="actualEndModal = false"
+                                        >
+                                            Cancel
+                                        </v-btn>
+                                        <v-btn
+                                            text
+                                            color="primary"
+                                            @click="
+                                                $refs.dialogActualEnd.save(
+                                                    form.transactionable
+                                                        .actual_end_date
+                                                )
+                                            "
+                                        >
+                                            OK
+                                        </v-btn>
+                                    </v-date-picker>
+                                </v-dialog>
                             </v-col>
                         </v-row>
                     </v-card-text>
@@ -269,40 +357,42 @@
                                     </template>
                                 </AssetDialogSelector>
                                 <v-text-field
-                                    v-model="form.code"
+                                    v-model="form.transactionable.incident"
                                     label="Incident"
                                     outlined
                                     clearable
-                                    hint="Ex. Work Order for Asset"
-                                    :error-messages="errors.code[0]"
-                                    @input="errors.code = []"
+                                    hint="Ex. Incident for Asset"
+                                    :error-messages="errors.incident[0]"
+                                    @input="errors.incident = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.code"
+                                    v-model="form.transactionable.diagnosis"
                                     label="Diagnosis"
                                     outlined
                                     clearable
-                                    hint="Ex. Work Order for Asset"
-                                    :error-messages="errors.code[0]"
-                                    @input="errors.code = []"
+                                    hint="Ex. Diagnosis for Asset"
+                                    :error-messages="errors.diagnosis[0]"
+                                    @input="errors.diagnosis = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.code"
+                                    v-model="form.transactionable.action_taken"
                                     label="Action Taken"
                                     outlined
                                     clearable
-                                    hint="Ex. Work Order for Asset"
-                                    :error-messages="errors.code[0]"
-                                    @input="errors.code = []"
+                                    hint="Ex. Action Taken for Asset"
+                                    :error-messages="errors.action_taken[0]"
+                                    @input="errors.action_taken = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.code"
+                                    v-model="
+                                        form.transactionable.recommendation
+                                    "
                                     label="Recommendation"
                                     outlined
                                     clearable
-                                    hint="Ex. Work Order for Asset"
-                                    :error-messages="errors.code[0]"
-                                    @input="errors.code = []"
+                                    hint="Ex. Recommendation for Asset"
+                                    :error-messages="errors.recommendation[0]"
+                                    @input="errors.recommendation = []"
                                 ></v-text-field>
                             </v-col>
                         </v-row>
@@ -480,18 +570,19 @@ export default {
                     reference_no: "",
                     request_date: "",
                     description: "",
-                    incident: "",
-                    diagnosis: "",
-                    action_taken: "",
-                    recommendation: "",
-                    scheduled_start_date: "",
-                    scheduled_end_date: "",
-                    actual_start_date: "",
-                    actual_end_date: "",
                     status: { text: "", color: "", dark: false },
-                    transactionable: "",
+                    transactionable: {
+                        incident: "",
+                        diagnosis: "",
+                        action_taken: "",
+                        recommendation: "",
+                        scheduled_start_date: "",
+                        scheduled_end_date: "",
+                        actual_start_date: "",
+                        actual_end_date: ""
+                    },
                     transaction_type_id: "",
-                    user: "",
+                    user: {},
                     parent_asset_id: "",
                     owner_id: "",
                     assigned_user_id: "",
@@ -577,6 +668,8 @@ export default {
         return {
             valid: false,
             requestDateModal: false,
+            actualStartModal: false,
+            actualEndModal: false,
             headers: {
                 employee: [
                     { text: "Code", value: "profile.code" },
@@ -598,7 +691,16 @@ export default {
                 request_date: "",
                 description: "",
                 status: { text: "", color: "", dark: false },
-                transactionable: {},
+                transactionable: {
+                    incident: "",
+                    diagnosis: "",
+                    action_taken: "",
+                    recommendation: "",
+                    scheduled_start_date: "",
+                    scheduled_end_date: "",
+                    actual_start_date: "",
+                    actual_end_date: ""
+                },
                 transaction_type_id: "",
                 user: {},
                 parent_asset_id: "",
@@ -609,7 +711,10 @@ export default {
                 assets: [],
                 assigned_employees: [],
                 assigned_location: null,
-                transaction_type: null
+                actual_date_performed: [],
+                scheduled_date: [],
+                assigned_user: null,
+                parent_asset: null
             }
         };
     },
@@ -639,11 +744,40 @@ export default {
                 return;
             }
 
-            let newform = {
+            let newForm = {
+                ...this.form.transactionable,
                 ...this.form,
+                ...{ incident: this.form.transactionable.incident },
+                ...{ diagnosis: this.form.transactionable.diagnosis },
                 ...{
-                    assigned_location_id: this.form.assigned_location
-                        ? this.form.assigned_location.id
+                    action_taken: this.form.transactionable.action_taken
+                },
+                ...{
+                    recommendation: this.form.transactionable.recommendation
+                },
+                ...{
+                    scheduled_start_date: this.form.transactionable
+                        .scheduled_start_date
+                },
+                ...{
+                    scheduled_end_date: this.form.transactionable
+                        .scheduled_end_date
+                },
+                ...{
+                    actual_start_date: this.form.transactionable
+                        .actual_start_date
+                },
+                ...{
+                    actual_end_date: this.form.transactionable.actual_end_date
+                },
+                ...{
+                    assigned_user_id: this.form.assigned_user
+                        ? this.form.assigned_user.id
+                        : null
+                },
+                ...{
+                    parent_asset_id: this.form.parent_asset
+                        ? this.form.parent_asset.id
                         : null
                 },
                 ...{
@@ -653,13 +787,20 @@ export default {
                 }
             };
 
-            console.log(newform);
+            console.log(newForm);
 
-            if (!newform.is_active) {
-                newform.is_active = false;
+            if (!newForm.is_active) {
+                newForm.is_active = false;
             }
 
-            this.$emit("on-save", newform);
+            newForm.scheduled_start_date = newForm.scheduled_date
+                ? newForm.scheduled_date[0]
+                : null;
+            newForm.scheduled_end_date = newForm.scheduled_date
+                ? newForm.scheduled_date[1]
+                : null;
+
+            this.$emit("on-save", newForm);
         },
         onSelectAsset(e) {
             this.errors.assets = [];

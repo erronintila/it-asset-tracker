@@ -95,6 +95,11 @@ class Asset extends Model
         return $this->hasMany(Asset::class);
     }
 
+    public function last_work_order()
+    {
+        return $this->belongsTo(Transaction::class, "last_work_order_id");
+    }
+
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | LARAVEL ACCESSORS
@@ -110,6 +115,16 @@ class Asset extends Model
                 "dark" => true
             ];
         }
+
+        // if ($this->last_work_order_id) {
+        //     // if ($this->last_work_order) {
+        //     return [
+        //         "status" => "In Maintenance",
+        //         "color" => "yellow",
+        //         "dark" => false
+        //     ];
+        //     // }
+        // }
 
         if ($this->is_under_maintenance) {
             return [

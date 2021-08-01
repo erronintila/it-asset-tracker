@@ -494,6 +494,96 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -511,22 +601,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           reference_no: "",
           request_date: "",
           description: "",
-          incident: "",
-          diagnosis: "",
-          action_taken: "",
-          recommendation: "",
-          scheduled_start_date: "",
-          scheduled_end_date: "",
-          actual_start_date: "",
-          actual_end_date: "",
           status: {
             text: "",
             color: "",
             dark: false
           },
-          transactionable: "",
+          transactionable: {
+            incident: "",
+            diagnosis: "",
+            action_taken: "",
+            recommendation: "",
+            scheduled_start_date: "",
+            scheduled_end_date: "",
+            actual_start_date: "",
+            actual_end_date: ""
+          },
           transaction_type_id: "",
-          user: "",
+          user: {},
           parent_asset_id: "",
           owner_id: "",
           assigned_user_id: "",
@@ -612,6 +703,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       valid: false,
       requestDateModal: false,
+      actualStartModal: false,
+      actualEndModal: false,
       headers: {
         employee: [{
           text: "Code",
@@ -651,7 +744,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           color: "",
           dark: false
         },
-        transactionable: {},
+        transactionable: {
+          incident: "",
+          diagnosis: "",
+          action_taken: "",
+          recommendation: "",
+          scheduled_start_date: "",
+          scheduled_end_date: "",
+          actual_start_date: "",
+          actual_end_date: ""
+        },
         transaction_type_id: "",
         user: {},
         parent_asset_id: "",
@@ -662,7 +764,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         assets: [],
         assigned_employees: [],
         assigned_location: null,
-        transaction_type: null
+        actual_date_performed: [],
+        scheduled_date: [],
+        assigned_user: null,
+        parent_asset: null
       }
     };
   },
@@ -707,19 +812,39 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return;
       }
 
-      var newform = _objectSpread(_objectSpread(_objectSpread({}, this.form), {
-        assigned_location_id: this.form.assigned_location ? this.form.assigned_location.id : null
+      var newForm = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, this.form.transactionable), this.form), {
+        incident: this.form.transactionable.incident
+      }), {
+        diagnosis: this.form.transactionable.diagnosis
+      }), {
+        action_taken: this.form.transactionable.action_taken
+      }), {
+        recommendation: this.form.transactionable.recommendation
+      }), {
+        scheduled_start_date: this.form.transactionable.scheduled_start_date
+      }), {
+        scheduled_end_date: this.form.transactionable.scheduled_end_date
+      }), {
+        actual_start_date: this.form.transactionable.actual_start_date
+      }), {
+        actual_end_date: this.form.transactionable.actual_end_date
+      }), {
+        assigned_user_id: this.form.assigned_user ? this.form.assigned_user.id : null
+      }), {
+        parent_asset_id: this.form.parent_asset ? this.form.parent_asset.id : null
       }), {
         transaction_type_id: this.form.transaction_type ? this.form.transaction_type.id : null
       });
 
-      console.log(newform);
+      console.log(newForm);
 
-      if (!newform.is_active) {
-        newform.is_active = false;
+      if (!newForm.is_active) {
+        newForm.is_active = false;
       }
 
-      this.$emit("on-save", newform);
+      newForm.scheduled_start_date = newForm.scheduled_date ? newForm.scheduled_date[0] : null;
+      newForm.scheduled_end_date = newForm.scheduled_date ? newForm.scheduled_date[1] : null;
+      this.$emit("on-save", newForm);
     },
     onSelectAsset: function onSelectAsset(e) {
       this.errors.assets = [];
@@ -1148,68 +1273,330 @@ var render = function() {
                                 ])
                               }),
                               _vm._v(" "),
-                              _c("XDateRangePicker", {
-                                ref: "dateRangeActual",
-                                attrs: {
-                                  dateRange: _vm.form.actual_date_performed
-                                },
-                                on: { "on-change": _vm.updateActualDate },
-                                scopedSlots: _vm._u([
-                                  {
-                                    key: "openDialog",
-                                    fn: function(ref) {
-                                      var on = ref.on
-                                      var attrs = ref.attrs
-                                      var dateRangeText = ref.dateRangeText
-                                      return [
-                                        _c(
-                                          "v-text-field",
-                                          _vm._g(
-                                            _vm._b(
-                                              {
-                                                attrs: {
-                                                  value: dateRangeText,
-                                                  "error-messages":
-                                                    _vm.errors
-                                                      .actual_start_date,
-                                                  label:
-                                                    "Actual Date Performed",
-                                                  readonly: "",
-                                                  outlined: "",
-                                                  clearable: ""
-                                                },
-                                                on: {
-                                                  input: function($event) {
-                                                    _vm.errors.actual_start_date = []
+                              _c(
+                                "v-dialog",
+                                {
+                                  ref: "dialogActualStart",
+                                  attrs: {
+                                    "return-value":
+                                      _vm.form.transactionable
+                                        .actual_start_date,
+                                    persistent: "",
+                                    width: "290px"
+                                  },
+                                  on: {
+                                    "update:returnValue": function($event) {
+                                      return _vm.$set(
+                                        _vm.form.transactionable,
+                                        "actual_start_date",
+                                        $event
+                                      )
+                                    },
+                                    "update:return-value": function($event) {
+                                      return _vm.$set(
+                                        _vm.form.transactionable,
+                                        "actual_start_date",
+                                        $event
+                                      )
+                                    }
+                                  },
+                                  scopedSlots: _vm._u([
+                                    {
+                                      key: "activator",
+                                      fn: function(ref) {
+                                        var on = ref.on
+                                        var attrs = ref.attrs
+                                        return [
+                                          _c(
+                                            "v-text-field",
+                                            _vm._g(
+                                              _vm._b(
+                                                {
+                                                  attrs: {
+                                                    label: "Actual Start Date",
+                                                    readonly: "",
+                                                    outlined: "",
+                                                    hint: "Ex. 2000-01-01",
+                                                    "error-messages":
+                                                      _vm.errors
+                                                        .actual_start_date[0]
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      _vm.errors.actual_start_date = []
+                                                    }
+                                                  },
+                                                  model: {
+                                                    value:
+                                                      _vm.form.transactionable
+                                                        .actual_start_date,
+                                                    callback: function($$v) {
+                                                      _vm.$set(
+                                                        _vm.form
+                                                          .transactionable,
+                                                        "actual_start_date",
+                                                        $$v
+                                                      )
+                                                    },
+                                                    expression:
+                                                      "\n                                            form.transactionable\n                                                .actual_start_date\n                                        "
                                                   }
                                                 },
-                                                model: {
-                                                  value:
-                                                    _vm.form
-                                                      .actual_date_performed,
-                                                  callback: function($$v) {
-                                                    _vm.$set(
-                                                      _vm.form,
-                                                      "actual_date_performed",
-                                                      $$v
-                                                    )
-                                                  },
-                                                  expression:
-                                                    "form.actual_date_performed"
-                                                }
-                                              },
-                                              "v-text-field",
-                                              attrs,
-                                              false
-                                            ),
-                                            on
+                                                "v-text-field",
+                                                attrs,
+                                                false
+                                              ),
+                                              on
+                                            )
                                           )
-                                        )
-                                      ]
+                                        ]
+                                      }
                                     }
+                                  ]),
+                                  model: {
+                                    value: _vm.actualStartModal,
+                                    callback: function($$v) {
+                                      _vm.actualStartModal = $$v
+                                    },
+                                    expression: "actualStartModal"
                                   }
-                                ])
-                              })
+                                },
+                                [
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-date-picker",
+                                    {
+                                      attrs: {
+                                        max: _vm.maxDate,
+                                        scrollable: ""
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          _vm.errors.actual_start_date = []
+                                        }
+                                      },
+                                      model: {
+                                        value:
+                                          _vm.form.transactionable
+                                            .actual_start_date,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.form.transactionable,
+                                            "actual_start_date",
+                                            $$v
+                                          )
+                                        },
+                                        expression:
+                                          "\n                                        form.transactionable\n                                            .actual_start_date\n                                    "
+                                      }
+                                    },
+                                    [
+                                      _c("v-spacer"),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          attrs: { text: "", color: "primary" },
+                                          on: {
+                                            click: function($event) {
+                                              _vm.actualStartModal = false
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                        Cancel\n                                    "
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          attrs: { text: "", color: "primary" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.$refs.dialogActualStart.save(
+                                                _vm.form.transactionable
+                                                  .actual_start_date
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                        OK\n                                    "
+                                          )
+                                        ]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-dialog",
+                                {
+                                  ref: "dialogActualEnd",
+                                  attrs: {
+                                    "return-value":
+                                      _vm.form.transactionable.actual_end_date,
+                                    persistent: "",
+                                    width: "290px"
+                                  },
+                                  on: {
+                                    "update:returnValue": function($event) {
+                                      return _vm.$set(
+                                        _vm.form.transactionable,
+                                        "actual_end_date",
+                                        $event
+                                      )
+                                    },
+                                    "update:return-value": function($event) {
+                                      return _vm.$set(
+                                        _vm.form.transactionable,
+                                        "actual_end_date",
+                                        $event
+                                      )
+                                    }
+                                  },
+                                  scopedSlots: _vm._u([
+                                    {
+                                      key: "activator",
+                                      fn: function(ref) {
+                                        var on = ref.on
+                                        var attrs = ref.attrs
+                                        return [
+                                          _c(
+                                            "v-text-field",
+                                            _vm._g(
+                                              _vm._b(
+                                                {
+                                                  attrs: {
+                                                    label: "Actual End Date",
+                                                    readonly: "",
+                                                    outlined: "",
+                                                    hint: "Ex. 2000-01-01",
+                                                    "error-messages":
+                                                      _vm.errors
+                                                        .actual_end_date[0]
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      _vm.errors.actual_end_date = []
+                                                    }
+                                                  },
+                                                  model: {
+                                                    value:
+                                                      _vm.form.transactionable
+                                                        .actual_end_date,
+                                                    callback: function($$v) {
+                                                      _vm.$set(
+                                                        _vm.form
+                                                          .transactionable,
+                                                        "actual_end_date",
+                                                        $$v
+                                                      )
+                                                    },
+                                                    expression:
+                                                      "\n                                            form.transactionable\n                                                .actual_end_date\n                                        "
+                                                  }
+                                                },
+                                                "v-text-field",
+                                                attrs,
+                                                false
+                                              ),
+                                              on
+                                            )
+                                          )
+                                        ]
+                                      }
+                                    }
+                                  ]),
+                                  model: {
+                                    value: _vm.actualEndModal,
+                                    callback: function($$v) {
+                                      _vm.actualEndModal = $$v
+                                    },
+                                    expression: "actualEndModal"
+                                  }
+                                },
+                                [
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-date-picker",
+                                    {
+                                      attrs: {
+                                        max: _vm.maxDate,
+                                        scrollable: ""
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          _vm.errors.actual_end_date = []
+                                        }
+                                      },
+                                      model: {
+                                        value:
+                                          _vm.form.transactionable
+                                            .actual_end_date,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.form.transactionable,
+                                            "actual_end_date",
+                                            $$v
+                                          )
+                                        },
+                                        expression:
+                                          "\n                                        form.transactionable.actual_end_date\n                                    "
+                                      }
+                                    },
+                                    [
+                                      _c("v-spacer"),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          attrs: { text: "", color: "primary" },
+                                          on: {
+                                            click: function($event) {
+                                              _vm.actualEndModal = false
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                        Cancel\n                                    "
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          attrs: { text: "", color: "primary" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.$refs.dialogActualEnd.save(
+                                                _vm.form.transactionable
+                                                  .actual_end_date
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                        OK\n                                    "
+                                          )
+                                        ]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
                             ],
                             1
                           )
@@ -1435,20 +1822,24 @@ var render = function() {
                                   label: "Incident",
                                   outlined: "",
                                   clearable: "",
-                                  hint: "Ex. Work Order for Asset",
-                                  "error-messages": _vm.errors.code[0]
+                                  hint: "Ex. Incident for Asset",
+                                  "error-messages": _vm.errors.incident[0]
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.code = []
+                                    _vm.errors.incident = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.code,
+                                  value: _vm.form.transactionable.incident,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "code", $$v)
+                                    _vm.$set(
+                                      _vm.form.transactionable,
+                                      "incident",
+                                      $$v
+                                    )
                                   },
-                                  expression: "form.code"
+                                  expression: "form.transactionable.incident"
                                 }
                               }),
                               _vm._v(" "),
@@ -1457,20 +1848,24 @@ var render = function() {
                                   label: "Diagnosis",
                                   outlined: "",
                                   clearable: "",
-                                  hint: "Ex. Work Order for Asset",
-                                  "error-messages": _vm.errors.code[0]
+                                  hint: "Ex. Diagnosis for Asset",
+                                  "error-messages": _vm.errors.diagnosis[0]
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.code = []
+                                    _vm.errors.diagnosis = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.code,
+                                  value: _vm.form.transactionable.diagnosis,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "code", $$v)
+                                    _vm.$set(
+                                      _vm.form.transactionable,
+                                      "diagnosis",
+                                      $$v
+                                    )
                                   },
-                                  expression: "form.code"
+                                  expression: "form.transactionable.diagnosis"
                                 }
                               }),
                               _vm._v(" "),
@@ -1479,20 +1874,25 @@ var render = function() {
                                   label: "Action Taken",
                                   outlined: "",
                                   clearable: "",
-                                  hint: "Ex. Work Order for Asset",
-                                  "error-messages": _vm.errors.code[0]
+                                  hint: "Ex. Action Taken for Asset",
+                                  "error-messages": _vm.errors.action_taken[0]
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.code = []
+                                    _vm.errors.action_taken = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.code,
+                                  value: _vm.form.transactionable.action_taken,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "code", $$v)
+                                    _vm.$set(
+                                      _vm.form.transactionable,
+                                      "action_taken",
+                                      $$v
+                                    )
                                   },
-                                  expression: "form.code"
+                                  expression:
+                                    "form.transactionable.action_taken"
                                 }
                               }),
                               _vm._v(" "),
@@ -1501,20 +1901,26 @@ var render = function() {
                                   label: "Recommendation",
                                   outlined: "",
                                   clearable: "",
-                                  hint: "Ex. Work Order for Asset",
-                                  "error-messages": _vm.errors.code[0]
+                                  hint: "Ex. Recommendation for Asset",
+                                  "error-messages": _vm.errors.recommendation[0]
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.code = []
+                                    _vm.errors.recommendation = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.code,
+                                  value:
+                                    _vm.form.transactionable.recommendation,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "code", $$v)
+                                    _vm.$set(
+                                      _vm.form.transactionable,
+                                      "recommendation",
+                                      $$v
+                                    )
                                   },
-                                  expression: "form.code"
+                                  expression:
+                                    "\n                                    form.transactionable.recommendation\n                                "
                                 }
                               })
                             ],

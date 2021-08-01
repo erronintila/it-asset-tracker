@@ -90,7 +90,16 @@
                                     @input="errors.description = []"
                                 ></v-text-field>
 
+                                <v-select
+                                    v-model="checkout_to"
+                                    :items="checkout_to_items"
+                                    outlined
+                                    label="Checkout to"
+                                ></v-select>
+
                                 <v-text-field
+                                    v-if="checkout_to == 'User'"
+                                    :disabled="checkout_to != 'User'"
                                     :value="
                                         form.assigned_user
                                             ? form.assigned_user.full_name
@@ -118,6 +127,9 @@
                                                 }"
                                             >
                                                 <v-btn
+                                                    :disabled="
+                                                        checkout_to != 'User'
+                                                    "
                                                     v-bind="attrs"
                                                     v-on="on"
                                                     icon
@@ -127,25 +139,6 @@
                                                         mdi-clipboard-account
                                                     </v-icon>
                                                 </v-btn>
-                                                <!-- <v-text-field
-                                            :value="
-                                                form.assigned_user
-                                                    ? form.assigned_user
-                                                          .full_name
-                                                    : ''
-                                            "
-                                            label="Employee"
-                                            outlined
-                                            clearable
-                                            :error-messages="
-                                                errors.assigned_user_id[0]
-                                            "
-                                            @input="
-                                                errors.assigned_user_id = []
-                                            "
-                                            v-bind="attrs"
-                                            v-on="on"
-                                        ></v-text-field> -->
                                             </template>
                                         </EmployeeDialogSelector>
 
@@ -164,6 +157,9 @@
                                                 }"
                                             >
                                                 <v-btn
+                                                    :disabled="
+                                                        checkout_to != 'User'
+                                                    "
                                                     v-bind="attrs"
                                                     v-on="on"
                                                     icon
@@ -173,31 +169,13 @@
                                                         mdi-card-account-details-outline
                                                     </v-icon>
                                                 </v-btn>
-                                                <!-- <v-text-field
-                                            :value="
-                                                form.assigned_user
-                                                    ? form.assigned_user
-                                                          .full_name
-                                                    : ''
-                                            "
-                                            label="Employee"
-                                            outlined
-                                            clearable
-                                            :error-messages="
-                                                errors.assigned_user_id[0]
-                                            "
-                                            @input="
-                                                errors.assigned_user_id = []
-                                            "
-                                            v-bind="attrs"
-                                            v-on="on"
-                                        ></v-text-field> -->
                                             </template>
                                         </CustomerDialogSelector>
                                     </template>
                                 </v-text-field>
 
                                 <AssetDialogSelector
+                                    v-if="checkout_to == 'Asset'"
                                     :selected="
                                         !form.assigned_asset
                                             ? []
@@ -208,6 +186,7 @@
                                 >
                                     <template v-slot:openDialog="{ on, attrs }">
                                         <v-text-field
+                                            :disabled="checkout_to != 'Asset'"
                                             :value="
                                                 form.assigned_asset
                                                     ? form.assigned_asset
@@ -466,6 +445,8 @@ export default {
         return {
             valid: false,
             requestDateModal: false,
+            checkout_to: "User",
+            checkout_to_items: ["User", "Asset"],
             headers: {
                 employee: [
                     { text: "Code", value: "profile.code" },

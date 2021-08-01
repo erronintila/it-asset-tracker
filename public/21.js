@@ -390,27 +390,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -499,6 +478,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       valid: false,
       requestDateModal: false,
+      checkout_to: "User",
+      checkout_to_items: ["User", "Asset"],
       headers: {
         employee: [{
           text: "Code",
@@ -962,179 +943,240 @@ var render = function() {
                                 }
                               }),
                               _vm._v(" "),
-                              _c("v-text-field", {
+                              _c("v-select", {
                                 attrs: {
-                                  value: _vm.form.assigned_user
-                                    ? _vm.form.assigned_user.full_name
-                                    : "",
-                                  label: "Assigned User",
+                                  items: _vm.checkout_to_items,
                                   outlined: "",
-                                  "error-messages":
-                                    _vm.errors.assigned_user_id[0],
-                                  readonly: ""
+                                  label: "Checkout to"
                                 },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.assigned_user_id = []
-                                  }
-                                },
-                                scopedSlots: _vm._u([
-                                  {
-                                    key: "append",
-                                    fn: function() {
-                                      return [
-                                        _c("EmployeeDialogSelector", {
-                                          attrs: {
-                                            selected: !_vm.form.assigned_user
-                                              ? []
-                                              : [].concat(
-                                                  _vm.form.assigned_user
-                                                )
-                                          },
-                                          on: { "on-select": _vm.onSelectUser },
-                                          scopedSlots: _vm._u([
-                                            {
-                                              key: "openDialog",
-                                              fn: function(ref) {
-                                                var on = ref.on
-                                                var attrs = ref.attrs
-                                                return [
-                                                  _c(
-                                                    "v-btn",
-                                                    _vm._g(
-                                                      _vm._b(
-                                                        {
-                                                          attrs: {
-                                                            icon: "",
-                                                            title:
-                                                              "Select Employee"
-                                                          }
-                                                        },
-                                                        "v-btn",
-                                                        attrs,
-                                                        false
-                                                      ),
-                                                      on
-                                                    ),
-                                                    [
-                                                      _c("v-icon", [
-                                                        _vm._v(
-                                                          "\n                                                    mdi-clipboard-account\n                                                "
-                                                        )
-                                                      ])
-                                                    ],
-                                                    1
-                                                  )
-                                                ]
-                                              }
-                                            }
-                                          ])
-                                        }),
-                                        _vm._v(" "),
-                                        _c("CustomerDialogSelector", {
-                                          attrs: {
-                                            selected: !_vm.form.assigned_user
-                                              ? []
-                                              : [].concat(
-                                                  _vm.form.assigned_user
-                                                )
-                                          },
-                                          on: { "on-select": _vm.onSelectUser },
-                                          scopedSlots: _vm._u([
-                                            {
-                                              key: "openDialog",
-                                              fn: function(ref) {
-                                                var on = ref.on
-                                                var attrs = ref.attrs
-                                                return [
-                                                  _c(
-                                                    "v-btn",
-                                                    _vm._g(
-                                                      _vm._b(
-                                                        {
-                                                          attrs: {
-                                                            icon: "",
-                                                            title:
-                                                              "Select Customer"
-                                                          }
-                                                        },
-                                                        "v-btn",
-                                                        attrs,
-                                                        false
-                                                      ),
-                                                      on
-                                                    ),
-                                                    [
-                                                      _c("v-icon", [
-                                                        _vm._v(
-                                                          "\n                                                    mdi-card-account-details-outline\n                                                "
-                                                        )
-                                                      ])
-                                                    ],
-                                                    1
-                                                  )
-                                                ]
-                                              }
-                                            }
-                                          ])
-                                        })
-                                      ]
-                                    },
-                                    proxy: true
-                                  }
-                                ])
+                                model: {
+                                  value: _vm.checkout_to,
+                                  callback: function($$v) {
+                                    _vm.checkout_to = $$v
+                                  },
+                                  expression: "checkout_to"
+                                }
                               }),
                               _vm._v(" "),
-                              _c("AssetDialogSelector", {
-                                attrs: {
-                                  selected: !_vm.form.assigned_asset
-                                    ? []
-                                    : [].concat(_vm.form.assigned_asset),
-                                  requestType: "checkout"
-                                },
-                                on: { "on-select": _vm.onSelectAssignedAsset },
-                                scopedSlots: _vm._u([
-                                  {
-                                    key: "openDialog",
-                                    fn: function(ref) {
-                                      var on = ref.on
-                                      var attrs = ref.attrs
-                                      return [
-                                        _c(
-                                          "v-text-field",
-                                          _vm._g(
-                                            _vm._b(
-                                              {
+                              _vm.checkout_to == "User"
+                                ? _c("v-text-field", {
+                                    attrs: {
+                                      disabled: _vm.checkout_to != "User",
+                                      value: _vm.form.assigned_user
+                                        ? _vm.form.assigned_user.full_name
+                                        : "",
+                                      label: "Assigned User",
+                                      outlined: "",
+                                      "error-messages":
+                                        _vm.errors.assigned_user_id[0],
+                                      readonly: ""
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        _vm.errors.assigned_user_id = []
+                                      }
+                                    },
+                                    scopedSlots: _vm._u(
+                                      [
+                                        {
+                                          key: "append",
+                                          fn: function() {
+                                            return [
+                                              _c("EmployeeDialogSelector", {
                                                 attrs: {
-                                                  value: _vm.form.assigned_asset
-                                                    ? _vm.form.assigned_asset
-                                                        .description
-                                                    : "",
-                                                  label: "Assigned Asset",
-                                                  outlined: "",
-                                                  clearable: "",
-                                                  "error-messages":
-                                                    _vm.errors
-                                                      .assigned_asset_id[0]
+                                                  selected: !_vm.form
+                                                    .assigned_user
+                                                    ? []
+                                                    : [].concat(
+                                                        _vm.form.assigned_user
+                                                      )
                                                 },
                                                 on: {
-                                                  input: function($event) {
-                                                    _vm.errors.assigned_asset_id = []
-                                                  }
-                                                }
-                                              },
-                                              "v-text-field",
-                                              attrs,
-                                              false
-                                            ),
-                                            on
-                                          )
-                                        )
-                                      ]
-                                    }
-                                  }
-                                ])
-                              })
+                                                  "on-select": _vm.onSelectUser
+                                                },
+                                                scopedSlots: _vm._u(
+                                                  [
+                                                    {
+                                                      key: "openDialog",
+                                                      fn: function(ref) {
+                                                        var on = ref.on
+                                                        var attrs = ref.attrs
+                                                        return [
+                                                          _c(
+                                                            "v-btn",
+                                                            _vm._g(
+                                                              _vm._b(
+                                                                {
+                                                                  attrs: {
+                                                                    disabled:
+                                                                      _vm.checkout_to !=
+                                                                      "User",
+                                                                    icon: "",
+                                                                    title:
+                                                                      "Select Employee"
+                                                                  }
+                                                                },
+                                                                "v-btn",
+                                                                attrs,
+                                                                false
+                                                              ),
+                                                              on
+                                                            ),
+                                                            [
+                                                              _c("v-icon", [
+                                                                _vm._v(
+                                                                  "\n                                                    mdi-clipboard-account\n                                                "
+                                                                )
+                                                              ])
+                                                            ],
+                                                            1
+                                                          )
+                                                        ]
+                                                      }
+                                                    }
+                                                  ],
+                                                  null,
+                                                  false,
+                                                  1004030281
+                                                )
+                                              }),
+                                              _vm._v(" "),
+                                              _c("CustomerDialogSelector", {
+                                                attrs: {
+                                                  selected: !_vm.form
+                                                    .assigned_user
+                                                    ? []
+                                                    : [].concat(
+                                                        _vm.form.assigned_user
+                                                      )
+                                                },
+                                                on: {
+                                                  "on-select": _vm.onSelectUser
+                                                },
+                                                scopedSlots: _vm._u(
+                                                  [
+                                                    {
+                                                      key: "openDialog",
+                                                      fn: function(ref) {
+                                                        var on = ref.on
+                                                        var attrs = ref.attrs
+                                                        return [
+                                                          _c(
+                                                            "v-btn",
+                                                            _vm._g(
+                                                              _vm._b(
+                                                                {
+                                                                  attrs: {
+                                                                    disabled:
+                                                                      _vm.checkout_to !=
+                                                                      "User",
+                                                                    icon: "",
+                                                                    title:
+                                                                      "Select Customer"
+                                                                  }
+                                                                },
+                                                                "v-btn",
+                                                                attrs,
+                                                                false
+                                                              ),
+                                                              on
+                                                            ),
+                                                            [
+                                                              _c("v-icon", [
+                                                                _vm._v(
+                                                                  "\n                                                    mdi-card-account-details-outline\n                                                "
+                                                                )
+                                                              ])
+                                                            ],
+                                                            1
+                                                          )
+                                                        ]
+                                                      }
+                                                    }
+                                                  ],
+                                                  null,
+                                                  false,
+                                                  1974623861
+                                                )
+                                              })
+                                            ]
+                                          },
+                                          proxy: true
+                                        }
+                                      ],
+                                      null,
+                                      false,
+                                      2300845543
+                                    )
+                                  })
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _vm.checkout_to == "Asset"
+                                ? _c("AssetDialogSelector", {
+                                    attrs: {
+                                      selected: !_vm.form.assigned_asset
+                                        ? []
+                                        : [].concat(_vm.form.assigned_asset),
+                                      requestType: "checkout"
+                                    },
+                                    on: {
+                                      "on-select": _vm.onSelectAssignedAsset
+                                    },
+                                    scopedSlots: _vm._u(
+                                      [
+                                        {
+                                          key: "openDialog",
+                                          fn: function(ref) {
+                                            var on = ref.on
+                                            var attrs = ref.attrs
+                                            return [
+                                              _c(
+                                                "v-text-field",
+                                                _vm._g(
+                                                  _vm._b(
+                                                    {
+                                                      attrs: {
+                                                        disabled:
+                                                          _vm.checkout_to !=
+                                                          "Asset",
+                                                        value: _vm.form
+                                                          .assigned_asset
+                                                          ? _vm.form
+                                                              .assigned_asset
+                                                              .description
+                                                          : "",
+                                                        label: "Assigned Asset",
+                                                        outlined: "",
+                                                        clearable: "",
+                                                        "error-messages":
+                                                          _vm.errors
+                                                            .assigned_asset_id[0]
+                                                      },
+                                                      on: {
+                                                        input: function(
+                                                          $event
+                                                        ) {
+                                                          _vm.errors.assigned_asset_id = []
+                                                        }
+                                                      }
+                                                    },
+                                                    "v-text-field",
+                                                    attrs,
+                                                    false
+                                                  ),
+                                                  on
+                                                )
+                                              )
+                                            ]
+                                          }
+                                        }
+                                      ],
+                                      null,
+                                      false,
+                                      1004054877
+                                    )
+                                  })
+                                : _vm._e()
                             ],
                             1
                           )

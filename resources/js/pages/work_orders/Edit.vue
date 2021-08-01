@@ -12,6 +12,7 @@
 <script>
 import WorkOrderDataService from "../../services/WorkOrderDataService";
 import Form from "./Form.vue";
+import moment from "moment";
 
 export default {
     components: {
@@ -24,16 +25,17 @@ export default {
                 reference_no: "",
                 request_date: "",
                 description: "",
-                incident: "",
-                diagnosis: "",
-                action_taken: "",
-                recommendation: "",
-                scheduled_start_date: "",
-                scheduled_end_date: "",
-                actual_start_date: "",
-                actual_end_date: "",
                 status: { text: "", color: "", dark: false },
-                transactionable: {},
+                transactionable: {
+                    incident: "",
+                    diagnosis: "",
+                    action_taken: "",
+                    recommendation: "",
+                    scheduled_start_date: "",
+                    scheduled_end_date: "",
+                    actual_start_date: "",
+                    actual_end_date: ""
+                },
                 transaction_type_id: "",
                 user: {},
                 parent_asset_id: "",
@@ -90,10 +92,65 @@ export default {
             WorkOrderDataService.show(this.$route.params.id, data)
                 .then(response => {
                     console.log(response.data);
-                    this.form = { ...this.form, ...response.data.data };
+                    this.form = {
+                        ...this.form,
+                        ...response.data.data,
+                        ...{
+                            scheduled_date: [
+                                moment(
+                                    response.data.data.transactionable
+                                        .scheduled_start_date
+                                ).format("YYYY-MM-DD"),
+                                moment(
+                                    response.data.data.transactionable
+                                        .scheduled_end_date
+                                ).format("YYYY-MM-DD")
+                            ]
+                        }
+                        // ...{
+                        //     actual_start_date: moment(
+                        //         response.data.data.transactionable
+                        //             .actual_start_date
+                        //     ).format("YYYY-MM-DD"),
+                        //     actual_end_date: moment(
+                        //         response.data.data.transactionable
+                        //             .actual_end_date
+                        //     ).format("YYYY-MM-DD")
+                        // }
+                    };
+                    // this.form.actual_start_date = moment(
+                    //     response.data.data.transactionable.actual_start_date
+                    // ).format("YYYY-MM-DD");
+
+                    // this.form.actual_end_date = moment(
+                    //     response.data.data.transactionable.actual_end_date
+                    // ).format("YYYY-MM-DD");
+
                     console.log("hahaha", {
                         ...this.form,
-                        ...response.data.data
+                        ...response.data.data,
+                        ...{
+                            scheduled_date: [
+                                moment(
+                                    response.data.data.transactionable
+                                        .scheduled_start_date
+                                ).format("YYYY-MM-DD"),
+                                moment(
+                                    response.data.data.transactionable
+                                        .scheduled_end_date
+                                ).format("YYYY-MM-DD")
+                            ]
+                        },
+                        ...{
+                            actual_start_date: moment(
+                                response.data.data.transactionable
+                                    .actual_start_date
+                            ).format("YYYY-MM-DD"),
+                            actual_end_date: moment(
+                                response.data.data.transactionable
+                                    .actual_end_date
+                            ).format("YYYY-MM-DD")
+                        }
                     });
                 })
                 .catch(error => {

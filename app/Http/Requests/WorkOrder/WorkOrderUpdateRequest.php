@@ -35,18 +35,18 @@ class WorkOrderUpdateRequest extends FormRequest
             "recommendation" => ["required", "string"],
             "scheduled_start_date" => ["required", "date"],
             "scheduled_end_date" => ["required", "date"],
-            "actual_start_date" => ["required", "date"],
-            "actual_end_date" => ["required", "date"],
+            "actual_start_date" => ["nullable", "date"],
+            "actual_end_date" => ["nullable", "date"],
 
             "transaction_type_id" => ['required', 'integer'],
             "user_id" => ['nullable', 'integer'],
-            "parent_asset_id" => ['nullable', 'integer'],
+            "parent_asset_id" => ['required', 'integer'],
             "owner_id" => ['nullable', 'integer'],
-            "assigned_user_id" => ['nullable', 'integer'],
+            "assigned_user_id" => ['required', 'integer'],
             "assigned_location_id" => ['nullable', 'integer'],
             "assigned_asset_id" => ['nullable', 'integer'],
 
-            "assets" => ['required', 'array'],
+            "assets" => ['nullable', 'array'],
             "assigned_employees" => ['required', 'array']
         ];
     }
@@ -54,9 +54,10 @@ class WorkOrderUpdateRequest extends FormRequest
     public function messages()
     {
         return [
-            "assigned_location_id.required" => "The location field is required.",
+            "assigned_user_id.required" => "No assigned user selected.",
+            "parent_asset_id.required" => "No asset selected.",
+            "assigned_employees.required" => "No employees assigned.",
             "transaction_type_id.required" => "The request type field is required.",
-            "assets.required" => "No asset(s) included."
         ];
     }
 }

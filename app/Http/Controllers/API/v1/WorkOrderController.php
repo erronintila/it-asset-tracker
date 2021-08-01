@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\WorkOrder\WorkOrderStoreRequest;
 use App\Http\Requests\WorkOrder\WorkOrderUpdateRequest;
 use App\Http\Resources\WorkOrderResource;
+use App\Models\Asset;
 use App\Models\Location;
 use App\Models\Transaction;
 use App\Models\TransactionType;
+use App\Models\User;
 use App\Models\WorkOrder;
 use App\Traits\HttpResponseMessage;
 use Illuminate\Http\Request;
@@ -54,6 +56,8 @@ class WorkOrderController extends Controller
             $code = 'CIN' . date("YmdHis");
 
             $transaction_type = TransactionType::findOrFail($validated['transaction_type_id']);
+            $parent_asset = Asset::findOrFail($validated['parent_asset_id']);
+            $assigned_user = User::findOrFail($validated['assigned_user_id']);
 
             $transaction = new Transaction();
             $transaction->code = $code;
@@ -63,6 +67,10 @@ class WorkOrderController extends Controller
 
             $transaction->transaction_type()->associate($transaction_type);
             $transaction->user()->associate(Auth::user());
+            $transaction->assigned_user()->associate($assigned_user);
+            $transaction->assigned_location()->associate($assigned_user->profile->location);
+            $transaction->parent_asset()->associate($parent_asset);
+
             $transaction->save();
 
             $transaction->assets()->sync(array_column($validated['assets'], 'id'));
@@ -124,6 +132,8 @@ class WorkOrderController extends Controller
 
         $data = DB::transaction(function () use ($validated, $id) {
             $transaction_type = TransactionType::findOrFail($validated['transaction_type_id']);
+            $parent_asset = Asset::findOrFail($validated['parent_asset_id']);
+            $assigned_user = User::findOrFail($validated['assigned_user_id']);
 
             $transaction = Transaction::findOrFail($id);
             $transaction->reference_no = $validated['reference_no'];
@@ -131,6 +141,9 @@ class WorkOrderController extends Controller
             $transaction->description = $validated['description'];
 
             $transaction->transaction_type()->associate($transaction_type);
+            $transaction->assigned_user()->associate($assigned_user);
+            $transaction->assigned_location()->associate($assigned_user->profile->location);
+            $transaction->parent_asset()->associate($parent_asset);
             $transaction->save();
 
             $transaction->assets()->sync(array_column($validated['assets'], 'id'));

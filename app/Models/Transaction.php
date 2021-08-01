@@ -99,6 +99,11 @@ class Transaction extends Model
         return $this->belongsTo(User::class, "assigned_user_id");
     }
 
+    public function last_work_order_assets()
+    {
+        return $this->hasMany(Asset::class, "last_work_order_id");
+    }
+
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | LARAVEL ACCESSORS
