@@ -10,7 +10,7 @@
 
         <v-toolbar-title class="hidden-sm-and-down ml-0 pl-4 mr-4">
             <router-link
-                :to="{ name: 'home' }"
+                :to="{ name: 'dashboard' }"
                 style="text-decoration: none; color: inherit;"
             >
                 <span class="page-title">

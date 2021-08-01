@@ -14,7 +14,9 @@ class AddTransactionIdToAssetsTable extends Migration
     public function up()
     {
         Schema::table('assets', function (Blueprint $table) {
-            $table->foreignId('last_transaction_id')->nullable()->constrained('transactions');
+            $table->foreignId('last_request_id')->nullable()->constrained('transactions');
+            $table->foreignId('last_work_order_id')->nullable()->constrained('transactions');
+            // $table->foreignId('last_transaction_id')->nullable()->constrained('transactions');
         });
     }
 
@@ -26,7 +28,8 @@ class AddTransactionIdToAssetsTable extends Migration
     public function down()
     {
         Schema::table('assets', function (Blueprint $table) {
-            $table->dropForeign('last_transaction_id');
+            $table->dropForeign('last_request_id');
+            $table->dropForeign('last_work_order_id');
         });
     }
 }

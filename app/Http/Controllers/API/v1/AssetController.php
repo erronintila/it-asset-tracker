@@ -38,13 +38,13 @@ class AssetController extends Controller
                 case 'checkin':
                     break;
                 case 'checkout':
-                    $assets = $assets->where("assigned_location_id", "<>", null);
+                    $assets = $assets->where("disposed_at", null)->where("assigned_location_id", "<>", null);
                     break;
                 case 'disposal':
-                    $assets = $assets->where("assigned_user_id", null)->where("assigned_location_id", "<>", null);
+                    $assets = $assets->where("disposed_at", null)->where("assigned_user_id", null)->where("assigned_location_id", "<>", null);
                     break;
                 case 'maintenance':
-                    $assets = $assets->where("assigned_location_id", "<>", null);
+                    $assets = $assets->where("disposed_at", null)->where("assigned_location_id", "<>", null);
                     break;
                 default:
                     break;

@@ -257,6 +257,18 @@ export default {
                     break;
                 case "export":
                     break;
+                case "approve":
+                    this.onUpdateStatus("approve");
+                    break;
+                case "complete":
+                    this.onUpdateStatus("complete");
+                    break;
+                case "post":
+                    this.onUpdateStatus("post");
+                    break;
+                case "cancel":
+                    this.onUpdateStatus("cancel");
+                    break;
                 default:
                     alert("Error: Action not identified");
                     break;
@@ -301,6 +313,70 @@ export default {
                 page: 1,
                 itemsPerPage: 10
             };
+        },
+        onUpdateStatus(status) {
+            if (!confirm(`WARNING: Do you want to ${status} selected items?`)) {
+                return;
+            }
+
+            let data = {
+                // params: {
+                ids: this.selectedItems.map(item => item.id)
+                // }
+            };
+
+            switch (status) {
+                case "approve":
+                    DisposalRequestDataService.approve(data)
+                        .then(response => {
+                            console.log(response.data);
+                            this.getData();
+                            this.selectedItems = [];
+                        })
+                        .catch(error => {
+                            console.log(error.response);
+                            alert("An error has occurred.");
+                        });
+                    break;
+                case "complete":
+                    DisposalRequestDataService.complete(data)
+                        .then(response => {
+                            console.log(response.data);
+                            this.getData();
+                            this.selectedItems = [];
+                        })
+                        .catch(error => {
+                            console.log(error.response);
+                            alert("An error has occurred.");
+                        });
+                    break;
+                case "post":
+                    DisposalRequestDataService.post(data)
+                        .then(response => {
+                            console.log(response.data);
+                            this.getData();
+                            this.selectedItems = [];
+                        })
+                        .catch(error => {
+                            console.log(error.response);
+                            alert("An error has occurred.");
+                        });
+                    break;
+                case "cancel":
+                    DisposalRequestDataService.cancel(data)
+                        .then(response => {
+                            console.log(response.data);
+                            this.getData();
+                            this.selectedItems = [];
+                        })
+                        .catch(error => {
+                            console.log(error.response);
+                            alert("An error has occurred.");
+                        });
+                    break;
+                default:
+                    break;
+            }
         }
     },
     computed: {

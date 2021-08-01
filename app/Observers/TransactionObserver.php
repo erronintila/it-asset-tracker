@@ -31,16 +31,20 @@ class TransactionObserver
 
                 switch ($action_type) {
                     case 'maintenance':
+                        $item->last_work_order_id = $transaction->id;
                         $item->is_under_maintenance = false;
                         break;
                     case 'disposal':
+                        $item->last_request_id = $transaction->id;
                         $item->disposed_at = now();
                         break;
                     case 'checkout':
+                        $item->last_request_id = $transaction->id;
                         $item->assigned_location_id = $transaction->assigned_location_id;
                         $item->assigned_user_id = $transaction->assigned_user_id;
                         break;
                     case 'checkin':
+                        $item->last_request_id = $transaction->id;
                         $item->assigned_location_id = $transaction->assigned_location_id;
                         $item->assigned_user_id = $transaction->assigned_user_id;
                         break;
