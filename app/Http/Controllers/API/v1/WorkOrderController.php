@@ -61,6 +61,15 @@ class WorkOrderController extends Controller
             $transaction->reference_no = $validated['reference_no'];
             $transaction->request_date = $validated['request_date'];
             $transaction->description = $validated['description'];
+            $transaction->incident = $validated['incident'];
+            $transaction->diagnosis = $validated['diagnosis'];
+            $transaction->action_taken = $validated['action_taken'];
+            $transaction->recommendation = $validated['recommendation'];
+            $transaction->scheduled_start_date = $validated['scheduled_start_date'];
+            $transaction->scheduled_end_date = $validated['scheduled_end_date'];
+            $transaction->actual_start_date = $validated['actual_start_date'];
+            $transaction->actual_end_date = $validated['actual_end_date'];
+
 
             $transaction->transaction_type()->associate($transaction_type);
             $transaction->assigned_location()->associate($location);
@@ -124,6 +133,14 @@ class WorkOrderController extends Controller
             $transaction->reference_no = $validated['reference_no'];
             $transaction->request_date = $validated['request_date'];
             $transaction->description = $validated['description'];
+            $transaction->incident = $validated['incident'];
+            $transaction->diagnosis = $validated['diagnosis'];
+            $transaction->action_taken = $validated['action_taken'];
+            $transaction->recommendation = $validated['recommendation'];
+            $transaction->scheduled_start_date = $validated['scheduled_start_date'];
+            $transaction->scheduled_end_date = $validated['scheduled_end_date'];
+            $transaction->actual_start_date = $validated['actual_start_date'];
+            $transaction->actual_end_date = $validated['actual_end_date'];
 
             $transaction->transaction_type()->associate($transaction_type);
             $transaction->assigned_location()->associate($location);
