@@ -69,22 +69,223 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr
-                                                    v-for="(value,
-                                                    name,
-                                                    index) in form.profile"
-                                                    :key="index"
-                                                >
-                                                    <td>{{ name }}</td>
-                                                    <td>{{ value }}</td>
+                                                <tr>
+                                                    <td>Code</td>
+                                                    <td>
+                                                        {{ form.profile.code }}
+                                                    </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Email</td>
+                                                    <td>First Name</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile
+                                                                .first_name
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Middle Name</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile
+                                                                .middle_name
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Last Name</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile
+                                                                .last_name
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Suffix</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile.suffix
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Gender</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile.gender
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Birthdate</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile
+                                                                .birthdate
+                                                                | moment("LL")
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Business Phone No.</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile
+                                                                .business_phone
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Home Phone No.</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile
+                                                                .home_phone
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Mobile Phone No.</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile
+                                                                .mobile_phone
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Email Address</td>
                                                     <td>{{ form.email }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Username</td>
                                                     <td>{{ form.username }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Job Title</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile
+                                                                .job_title
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Address</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile.address
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Street</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile.street
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>District</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile
+                                                                .district
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>City</td>
+                                                    <td>
+                                                        {{ form.profile.city }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Province</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile
+                                                                .province
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Country</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile.country
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Postal Code</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile
+                                                                .postal_code
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Latitude</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile
+                                                                .latitude
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Longitude</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile
+                                                                .longitude
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Location</td>
+                                                    <td>
+                                                        {{
+                                                            `${form.profile.location.name} : ${form.profile.location.address}, ${form.profile.location.street}, ${form.profile.location.district}, ${form.profile.location.city}, ${form.profile.location.province}, ${form.profile.location.country}, ${form.profile.location.postal_code}`
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Image</td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Department</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile
+                                                                .department.name
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Active</td>
+                                                    <td>
+                                                        {{
+                                                            form.is_active
+                                                                ? "Yes"
+                                                                : "No"
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Created</td>
+                                                    <td>
+                                                        {{
+                                                            form.created_at
+                                                                | moment("LLLL")
+                                                        }}
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </template>
@@ -307,7 +508,20 @@ export default {
                     longitude: "",
                     location_id: "",
                     department_id: "",
-                    image: ""
+                    image: "",
+                    location: {
+                        name: "",
+                        address: "",
+                        street: "",
+                        district: "",
+                        city: "",
+                        province: "",
+                        country: "",
+                        postal_code: ""
+                    },
+                    department: {
+                        name: ""
+                    }
                 }
             }
         };

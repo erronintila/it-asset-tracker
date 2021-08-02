@@ -339,6 +339,207 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -379,7 +580,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           longitude: "",
           location_id: "",
           department_id: "",
-          image: ""
+          image: "",
+          location: {
+            name: "",
+            address: "",
+            street: "",
+            district: "",
+            city: "",
+            province: "",
+            country: "",
+            postal_code: ""
+          },
+          department: {
+            name: ""
+          }
         }
       }
     };
@@ -697,52 +911,428 @@ var render = function() {
                                               ])
                                             ]),
                                             _vm._v(" "),
-                                            _c(
-                                              "tbody",
-                                              [
-                                                _vm._l(
-                                                  _vm.form.profile,
-                                                  function(value, name, index) {
-                                                    return _c(
-                                                      "tr",
-                                                      { key: index },
-                                                      [
-                                                        _c("td", [
-                                                          _vm._v(_vm._s(name))
-                                                        ]),
-                                                        _vm._v(" "),
-                                                        _c("td", [
-                                                          _vm._v(_vm._s(value))
-                                                        ])
-                                                      ]
-                                                    )
-                                                  }
-                                                ),
+                                            _c("tbody", [
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Code")]),
                                                 _vm._v(" "),
-                                                _c("tr", [
-                                                  _c("td", [_vm._v("Email")]),
-                                                  _vm._v(" "),
-                                                  _c("td", [
-                                                    _vm._v(
-                                                      _vm._s(_vm.form.email)
-                                                    )
-                                                  ])
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile.code
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [
+                                                  _vm._v("First Name")
                                                 ]),
                                                 _vm._v(" "),
-                                                _c("tr", [
-                                                  _c("td", [
-                                                    _vm._v("Username")
-                                                  ]),
-                                                  _vm._v(" "),
-                                                  _c("td", [
-                                                    _vm._v(
-                                                      _vm._s(_vm.form.username)
-                                                    )
-                                                  ])
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .first_name
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
                                                 ])
-                                              ],
-                                              2
-                                            )
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [
+                                                  _vm._v("Middle Name")
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .middle_name
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Last Name")]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .last_name
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Suffix")]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile.suffix
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Gender")]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile.gender
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Birthdate")]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm._f("moment")(
+                                                          _vm.form.profile
+                                                            .birthdate,
+                                                          "LL"
+                                                        )
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [
+                                                  _vm._v("Business Phone No.")
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .business_phone
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [
+                                                  _vm._v("Home Phone No.")
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .home_phone
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [
+                                                  _vm._v("Mobile Phone No.")
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .mobile_phone
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [
+                                                  _vm._v("Email Address")
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(_vm._s(_vm.form.email))
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Username")]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    _vm._s(_vm.form.username)
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Job Title")]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .job_title
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Address")]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile.address
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Street")]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile.street
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("District")]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .district
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("City")]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile.city
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Province")]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .province
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Country")]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile.country
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [
+                                                  _vm._v("Postal Code")
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .postal_code
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Latitude")]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .latitude
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Longitude")]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .longitude
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Location")]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .location.name +
+                                                          " : " +
+                                                          _vm.form.profile
+                                                            .location.address +
+                                                          ", " +
+                                                          _vm.form.profile
+                                                            .location.street +
+                                                          ", " +
+                                                          _vm.form.profile
+                                                            .location.district +
+                                                          ", " +
+                                                          _vm.form.profile
+                                                            .location.city +
+                                                          ", " +
+                                                          _vm.form.profile
+                                                            .location.province +
+                                                          ", " +
+                                                          _vm.form.profile
+                                                            .location.country +
+                                                          ", " +
+                                                          _vm.form.profile
+                                                            .location
+                                                            .postal_code
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Image")]),
+                                                _vm._v(" "),
+                                                _c("td")
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [
+                                                  _vm._v("Department")
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .department.name
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Active")]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.is_active
+                                                          ? "Yes"
+                                                          : "No"
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Created")]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm._f("moment")(
+                                                          _vm.form.created_at,
+                                                          "LLLL"
+                                                        )
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ])
+                                            ])
                                           ]
                                         },
                                         proxy: true

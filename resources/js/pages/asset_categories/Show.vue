@@ -52,188 +52,36 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr
-                                                    v-for="(value,
-                                                    name,
-                                                    index) in form"
-                                                    :key="index"
-                                                >
-                                                    <td>{{ name }}</td>
-                                                    <td>{{ value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
-                                </v-card-text>
-                            </v-card>
-                        </v-tab-item>
-                        <v-tab-item>
-                            <v-card flat>
-                                <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
                                                 <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
+                                                    <td>Code</td>
+                                                    <td>{{ form.code }}</td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
-                                                >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
-                                </v-card-text>
-                            </v-card>
-                        </v-tab-item>
-                        <v-tab-item>
-                            <v-card flat>
-                                <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
                                                 <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
+                                                    <td>Type</td>
+                                                    <td>{{ form.type }}</td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
-                                                >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
-                                </v-card-text>
-                            </v-card>
-                        </v-tab-item>
-                        <v-tab-item>
-                            <v-card flat>
-                                <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
                                                 <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
+                                                    <td>Name</td>
+                                                    <td>{{ form.name }}</td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
-                                                >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
-                                </v-card-text>
-                            </v-card>
-                        </v-tab-item>
-                        <v-tab-item>
-                            <v-card flat>
-                                <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
                                                 <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
+                                                    <td>Active</td>
+                                                    <td>
+                                                        {{
+                                                            form.is_active
+                                                                ? "Yes"
+                                                                : "No"
+                                                        }}
+                                                    </td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
-                                                >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
-                                </v-card-text>
-                            </v-card>
-                        </v-tab-item>
-                        <v-tab-item>
-                            <v-card flat>
-                                <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
                                                 <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
-                                                >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
-                                </v-card-text>
-                            </v-card>
-                        </v-tab-item>
-                        <v-tab-item>
-                            <v-card flat>
-                                <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
-                                                >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
+                                                    <td>Created</td>
+                                                    <td>
+                                                        {{
+                                                            form.created_at
+                                                                | moment("LLLL")
+                                                        }}
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </template>
@@ -273,7 +121,7 @@ export default {
     data() {
         return {
             tab: null,
-            items: ["details", "employees", "assets", "history"],
+            items: ["details"],
             dialogAssetCategoryEdit: false,
             records: [],
             form: {

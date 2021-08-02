@@ -29,6 +29,7 @@ class AssetController extends Controller
         $request_type = request("request_type") ?? null;
         $assigned_user_id = request("assigned_user_id") ?? null;
         $assigned_asset_id = request("assigned_asset_id") ?? null;
+        $manufacturer_id = request("manufacturer_id") ?? null;
         // $statuses = request('statuses') ?? ['Pending', 'In Storage', 'In Use', 'In Maintenance', 'Disposed'];
 
         $assets = Asset::with(['assigned_user', 'asset_category', 'supplier', 'manufacturer', 'asset_model'])
@@ -54,6 +55,10 @@ class AssetController extends Controller
                 default:
                     break;
             }
+        }
+
+        if ($manufacturer_id) {
+            $assets = $assets->where("manufacturer_id", $manufacturer_id);
         }
 
         if ($assigned_user_id) {

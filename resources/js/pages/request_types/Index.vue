@@ -129,7 +129,7 @@
                     <template v-slot:[`item.code`]="{ item }">
                         <router-link
                             :to="{
-                                name: 'work_order_types.show',
+                                name: 'request_types.show',
                                 params: { id: item.id }
                             }"
                         >
@@ -241,7 +241,7 @@ export default {
                         page: page,
                         itemsPerPage: itemsPerPage,
                         search: search,
-                        action_types: ['checkin', 'checkout', 'disposal']
+                        action_types: ["checkin", "checkout", "disposal"]
                         // status: status
                     }
                 };

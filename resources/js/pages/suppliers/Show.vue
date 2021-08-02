@@ -64,101 +64,94 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr
-                                                    v-for="(value,
-                                                    name,
-                                                    index) in form"
-                                                    :key="index"
-                                                >
-                                                    <td>{{ name }}</td>
-                                                    <td>{{ value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
-                                </v-card-text>
-                            </v-card>
-                        </v-tab-item>
-                        <v-tab-item>
-                            <v-card flat>
-                                <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
                                                 <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
+                                                    <td>Code</td>
+                                                    <td>{{ form.code }}</td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
-                                                >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
-                                </v-card-text>
-                            </v-card>
-                        </v-tab-item>
-                        <v-tab-item>
-                            <v-card flat>
-                                <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
                                                 <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
+                                                    <td>Name</td>
+                                                    <td>{{ form.name }}</td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
-                                                >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
-                                </v-card-text>
-                            </v-card>
-                        </v-tab-item>
-                        <v-tab-item>
-                            <v-card flat>
-                                <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
                                                 <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
+                                                    <td>Contact Person</td>
+                                                    <td>
+                                                        {{
+                                                            form.contact_person
+                                                        }}
+                                                    </td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
-                                                >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
+                                                <tr>
+                                                    <td>Phone No.</td>
+                                                    <td>
+                                                        {{ form.phone1 }}
+                                                        {{
+                                                            form.phone2
+                                                                ? "; " +
+                                                                  form.phone2
+                                                                : ""
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Email Address</td>
+                                                    <td>{{ form.email }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Website</td>
+                                                    <td>{{ form.website }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Fax</td>
+                                                    <td>{{ form.fax }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Address</td>
+                                                    <td>{{ form.address }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Street</td>
+                                                    <td>{{ form.street }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>District</td>
+                                                    <td>{{ form.district }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>City</td>
+                                                    <td>{{ form.city }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Province</td>
+                                                    <td>{{ form.province }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Country</td>
+                                                    <td>{{ form.country }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Postal Code</td>
+                                                    <td>
+                                                        {{ form.postal_code }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Active</td>
+                                                    <td>
+                                                        {{
+                                                            form.is_active
+                                                                ? "Yes"
+                                                                : "No"
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Created</td>
+                                                    <td>
+                                                        {{
+                                                            form.created_at
+                                                                | moment("LLLL")
+                                                        }}
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </template>
@@ -271,7 +264,7 @@ export default {
     data() {
         return {
             tab: null,
-            items: ["details", "assets", "System Activity Logs"],
+            items: ["details", "assets", "licenses", "System Activity Logs"],
             records: [],
             form: {
                 code: "",

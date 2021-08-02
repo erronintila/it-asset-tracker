@@ -69,80 +69,181 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr
-                                                    v-for="(value,
-                                                    name,
-                                                    index) in form.profile"
-                                                    :key="index"
-                                                >
-                                                    <td>{{ name }}</td>
-                                                    <td>{{ value }}</td>
+                                                <tr>
+                                                    <td>Code</td>
+                                                    <td>
+                                                        {{ form.profile.code }}
+                                                    </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Email</td>
+                                                    <td>Name</td>
+                                                    <td>
+                                                        {{ form.profile.name }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Contact Person</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile
+                                                                .contact_person
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Phone No.</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile.phone1
+                                                        }}
+                                                        {{
+                                                            form.profile.phone2
+                                                                ? "; " +
+                                                                  form.profile
+                                                                      .phone2
+                                                                : ""
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Email Address</td>
                                                     <td>{{ form.email }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Username</td>
-                                                    <td>{{ form.username }}</td>
+                                                    <td>Website</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile.website
+                                                        }}
+                                                    </td>
                                                 </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
-                                </v-card-text>
-                            </v-card>
-                        </v-tab-item>
-                        <v-tab-item>
-                            <v-card flat>
-                                <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
                                                 <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
+                                                    <td>Fax</td>
+                                                    <td>
+                                                        {{ form.profile.fax }}
+                                                    </td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
-                                                >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
-                                </v-card-text>
-                            </v-card>
-                        </v-tab-item>
-                        <v-tab-item>
-                            <v-card flat>
-                                <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
                                                 <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
+                                                    <td>Address</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile.address
+                                                        }}
+                                                    </td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
-                                                >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
+                                                <tr>
+                                                    <td>Street</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile.street
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>District</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile
+                                                                .district
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>City</td>
+                                                    <td>
+                                                        {{ form.profile.city }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Province</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile
+                                                                .province
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Country</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile.country
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Postal Code</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile
+                                                                .postal_code
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Latitude</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile
+                                                                .latitude
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Longitude</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile
+                                                                .longitude
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Location</td>
+                                                    <td>
+                                                        {{
+                                                            `${form.profile.location.name} : ${form.profile.location.address}, ${form.profile.location.street}, ${form.profile.location.district}, ${form.profile.location.city}, ${form.profile.location.province}, ${form.profile.location.country}, ${form.profile.location.postal_code}`
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Organization Type</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile
+                                                                .organization_type
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Company</td>
+                                                    <td>
+                                                        {{
+                                                            form.profile
+                                                                .is_company
+                                                                ? "Yes"
+                                                                : "No"
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Active</td>
+                                                    <td>
+                                                        {{
+                                                            form.is_active
+                                                                ? "Yes"
+                                                                : "No"
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Created</td>
+                                                    <td>
+                                                        {{
+                                                            form.created_at
+                                                                | moment("LLLL")
+                                                        }}
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </template>
@@ -284,7 +385,7 @@ export default {
     data() {
         return {
             tab: null,
-            items: ["details", "assets", "System Activity Logs"],
+            items: ["details", "assets", "licenses", "System Activity Logs"],
             records: [],
             form: {
                 email: "",
@@ -310,7 +411,17 @@ export default {
                     longitude: "",
                     organization_type: "",
                     is_company: false,
-                    location_id: ""
+                    location_id: "",
+                    location: {
+                        name: "",
+                        address: "",
+                        street: "",
+                        district: "",
+                        city: "",
+                        province: "",
+                        country: "",
+                        postal_code: ""
+                    }
                 }
             }
         };

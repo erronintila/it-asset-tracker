@@ -1,39 +1,22 @@
 <template>
     <div>
-        <v-btn @click="dialogDepartment = true">Department</v-btn>
-
-        <DepartmentDialogSelector
-            :dialogDepartment="dialogDepartment"
-            @close-dialog="dialogDepartment = false"
-            @on-select="onSelectDepartment"
-        >
-        </DepartmentDialogSelector>
-
-        {{ this.selectedItems }}
+        <DepartmentTable
+            ref="departmentTable"
+            :showSelect="false"
+            @selected-items="onSelectedItems"
+        ></DepartmentTable>
+        <v-btn @click="$refs.departmentTable.getData()">Hello</v-btn>
     </div>
 </template>
 
 <script>
-import DepartmentDialogSelector from "../../components/selectors/DepartmentDialogSelector.vue";
-
+import DepartmentTable from "../../components/tables/DepartmentTable.vue";
 export default {
     components: {
-        DepartmentDialogSelector
-    },
-    data() {
-        return {
-            dialogDepartment: false,
-            selectedItems: []
-        };
+        DepartmentTable
     },
     methods: {
-        onSelectDepartment(e) {
-            if (e == null || e == undefined) {
-                this.selectedItems = [];
-                return;
-            }
-            this.selectedItems = e;
-            this.dialogDepartment = false;
+        onSelectedItems(e) {
             console.log(e);
         }
     }

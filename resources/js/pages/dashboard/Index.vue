@@ -297,7 +297,7 @@ export default {
                     {
                         title: "Completed Work Orders",
                         subtitle: "",
-                        body: "100",
+                        body: "0",
                         color: "white",
                         dark: false,
                         text_color: "black--text",
@@ -306,7 +306,7 @@ export default {
                     {
                         title: "Pending Work Orders",
                         subtitle: "",
-                        body: "100",
+                        body: "0",
                         color: "white",
                         dark: true,
                         text_color: "black--text",
@@ -315,7 +315,7 @@ export default {
                     {
                         title: "Scheduled Work Orders",
                         subtitle: "",
-                        body: "100",
+                        body: "0",
                         color: "white",
                         dark: false,
                         text_color: "black--text",
@@ -324,10 +324,10 @@ export default {
                 ]
             },
             series: {
-                asset: [44, 55, 41, 17],
+                asset: [0, 0, 0, 0],
                 work_order: [
                     {
-                        data: [1380, 430, 540, 1100]
+                        data: [0, 0, 0, 0]
                     }
                 ]
             },
@@ -385,38 +385,7 @@ export default {
                     { text: "", value: "actions" }
                 ]
             },
-            activities: [
-                {
-                    id: 1,
-                    date: "2021-01-01 11:30",
-                    user: "Erron Intila",
-                    activity: "Cancelled work order #00201"
-                },
-                {
-                    id: 2,
-                    date: "2021-01-01 10:30",
-                    user: "Erron Intila",
-                    activity: "Created work order #00201"
-                },
-                {
-                    id: 3,
-                    date: "2021-01-01 10:00",
-                    user: "Erron Intila",
-                    activity: "Updated account"
-                },
-                {
-                    id: 4,
-                    date: "2021-01-01 09:30",
-                    user: "Erron Intila",
-                    activity: "Deleted asset"
-                },
-                {
-                    id: 5,
-                    date: "2021-01-01 08:30",
-                    user: "Erron Intila",
-                    activity: "Created Asset"
-                }
-            ]
+            activities: []
         };
     },
     methods: {

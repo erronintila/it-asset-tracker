@@ -212,6 +212,7 @@ export default {
                 headers: [
                     { text: "Code", value: "code" },
                     { text: "Name", value: "name" },
+                    { text: "Manager", value: "manager.full_name" },
                     { text: "Assets", value: "quantity" }
                 ]
             },

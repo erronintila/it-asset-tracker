@@ -27,7 +27,8 @@ class DepartmentController extends Controller
         $sortType = request('sortType') ?? "asc";
         $itemsPerPage = request('itemsPerPage') ?? 10;
 
-        $departments = Department::search($search)
+        $departments = Department::with("manager")
+            ->search($search)
             ->orderBy($sortBy, $sortType)
             ->paginate($itemsPerPage);
 
@@ -68,7 +69,7 @@ class DepartmentController extends Controller
      */
     public function show($id)
     {
-        $department = Department::findOrFail($id);
+        $department = Department::with("manager")->findOrFail($id);
         return $this->successResponse('read', new DepartmentResource($department), 200);
     }
 
