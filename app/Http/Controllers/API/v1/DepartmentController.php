@@ -7,6 +7,7 @@ use App\Http\Requests\Department\DepartmentStoreRequest;
 use App\Http\Requests\Department\DepartmentUpdateRequest;
 use App\Http\Resources\DepartmentResource;
 use App\Models\Department;
+use App\Models\User;
 use App\Traits\HttpResponseMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -46,13 +47,17 @@ class DepartmentController extends Controller
     {
         $validated = $request->validated();
         $data = DB::transaction(function () use ($validated) {
-            $code = 'LOC' . date("YmdHis");
+            $user = User::findOrFail($validated['manager_id']);
+            $code = 'DEP' . date("YmdHis");
             $slug = $code . '-' . implode('-', explode(' ', $validated['name']));
 
             $department = new Department();
             $department->fill($validated);
             $department->code = $code;
             $department->slug = $slug;
+
+            $department->manager()->associate($user->profile);
+
             $department->save();
 
             return $department;
@@ -69,7 +74,9 @@ class DepartmentController extends Controller
      */
     public function show($id)
     {
-        $department = Department::with("manager")->findOrFail($id);
+        $department = Department::with(["manager" => function ($query) {
+            $query->with("user");
+        }])->findOrFail($id);
         return $this->successResponse('read', new DepartmentResource($department), 200);
     }
 
@@ -84,9 +91,14 @@ class DepartmentController extends Controller
     {
         $validated = $request->validated();
         $data = DB::transaction(function () use ($id, $validated) {
+            $user = User::findOrFail($validated['manager_id']);
+
             $department = Department::findOrFail($id);
             $department->fill($validated);
             $department->slug = $department->code . '-' . implode('-', explode(' ', $validated['name']));
+
+            $department->manager()->associate($user->profile);
+
             $department->save();
             return $department;
         });

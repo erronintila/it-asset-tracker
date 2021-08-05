@@ -11,12 +11,8 @@
                             <v-col cols="12">
                                 <v-select
                                     v-model="form.action_type"
-                                    :items="[
-                                        'checkin',
-                                        'checkout',
-                                        'maintenance',
-                                        'disposal'
-                                    ]"
+                                    :items="['maintenance']"
+                                    disabled
                                     label="Action Type"
                                     outlined
                                     :error-messages="errors.action_type[0]"
@@ -87,7 +83,7 @@ export default {
                     slug: "",
                     name: "",
                     is_active: true,
-                    action_type: "",
+                    action_type: "maintenance"
                 };
             }
         },
@@ -99,7 +95,7 @@ export default {
                     slug: [],
                     name: [],
                     is_active: [],
-                    action_type: [],
+                    action_type: []
                 };
             }
         },
@@ -111,7 +107,7 @@ export default {
                     slug: [],
                     name: [],
                     is_active: [],
-                    action_type: [],
+                    action_type: []
                 };
             }
         }
@@ -124,7 +120,7 @@ export default {
                 slug: "",
                 name: "",
                 is_active: true,
-                action_type: "",
+                action_type: "maintenance"
             }
         };
     },
@@ -135,7 +131,7 @@ export default {
                 slug: "",
                 name: "",
                 is_active: true,
-                action_type: "",
+                action_type: "maintenance"
             };
         },
         onSave() {

@@ -25,7 +25,7 @@ class DepartmentResource extends JsonResource
             "updated_at" => $this->updated_at,
             "deleted_at" => $this->deleted_at,
 
-            "manager" => $this->manager,
+            "manager" => $this->manager ? $this->manager->user : null,
             "department_id" => $this->department_id,
         ];
     }

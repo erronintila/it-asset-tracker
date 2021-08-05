@@ -79,10 +79,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     title: {
@@ -97,7 +93,7 @@ __webpack_require__.r(__webpack_exports__);
           slug: "",
           name: "",
           is_active: true,
-          action_type: ""
+          action_type: "maintenance"
         };
       }
     },
@@ -134,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
         slug: "",
         name: "",
         is_active: true,
-        action_type: ""
+        action_type: "maintenance"
       }
     };
   },
@@ -145,7 +141,7 @@ __webpack_require__.r(__webpack_exports__);
         slug: "",
         name: "",
         is_active: true,
-        action_type: ""
+        action_type: "maintenance"
       };
     },
     onSave: function onSave() {
@@ -243,12 +239,8 @@ var render = function() {
                             [
                               _c("v-select", {
                                 attrs: {
-                                  items: [
-                                    "checkin",
-                                    "checkout",
-                                    "maintenance",
-                                    "disposal"
-                                  ],
+                                  items: ["maintenance"],
+                                  disabled: "",
                                   label: "Action Type",
                                   outlined: "",
                                   "error-messages": _vm.errors.action_type[0]

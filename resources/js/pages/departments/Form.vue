@@ -33,7 +33,7 @@
                                         <v-text-field
                                             :value="
                                                 form.manager
-                                                    ? form.manager.name
+                                                    ? form.manager.full_name
                                                     : ''
                                             "
                                             :error-messages="errors.manager_id"

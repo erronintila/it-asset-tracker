@@ -341,7 +341,7 @@ var render = function() {
                                                   "d-flex justify-center align-center",
                                                 attrs: {
                                                   value: _vm.form.manager
-                                                    ? _vm.form.manager.name
+                                                    ? _vm.form.manager.full_name
                                                     : "",
                                                   "error-messages":
                                                     _vm.errors.manager_id,
