@@ -1,21 +1,14 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[10],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/departments/Form.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/departments/Form.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/request_types/Form.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/request_types/Form.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_selectors_EmployeeDialogSelector_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/selectors/EmployeeDialogSelector.vue */ "./resources/js/components/selectors/EmployeeDialogSelector.vue");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -85,44 +78,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     title: {
       type: String,
       "default": ""
     },
-    departmentForm: {
+    transaction_typeForm: {
       type: Object,
       "default": function _default() {
         return {
@@ -130,8 +92,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           slug: "",
           name: "",
           is_active: true,
-          manager: "",
-          department_id: ""
+          action_type: ""
         };
       }
     },
@@ -143,8 +104,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           slug: [],
           name: [],
           is_active: [],
-          manager_id: [],
-          department_id: []
+          action_type: []
         };
       }
     },
@@ -156,14 +116,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           slug: [],
           name: [],
           is_active: [],
-          manager_id: [],
-          department_id: []
+          action_type: []
         };
       }
     }
-  },
-  components: {
-    EmployeeDialogSelector: _components_selectors_EmployeeDialogSelector_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
@@ -173,8 +129,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         slug: "",
         name: "",
         is_active: true,
-        manager: "",
-        department_id: ""
+        action_type: ""
       }
     };
   },
@@ -185,8 +140,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         slug: "",
         name: "",
         is_active: true,
-        manager_id: "",
-        department_id: ""
+        action_type: ""
       };
     },
     onSave: function onSave() {
@@ -201,33 +155,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       console.log(this.form);
 
-      var newForm = _objectSpread(_objectSpread({}, this.form), {
-        manager_id: this.form.manager.id
-      });
-
-      if (!newForm.is_active) {
-        newForm.is_active = false;
+      if (!this.form.is_active) {
+        this.form.is_active = false;
       }
 
-      this.$emit("on-save", newForm);
+      this.$emit("on-save", this.form);
     },
     onCancel: function onCancel() {
       this.onReset();
       this.$emit("on-cancel");
-    },
-    onSelectManager: function onSelectManager(e) {
-      this.errors.manager_id = [];
-
-      if (e == null || e == undefined) {
-        this.form.manager = null;
-        return;
-      }
-
-      this.form.manager = e[0];
     }
   },
   watch: {
-    departmentForm: {
+    transaction_typeForm: {
       immediate: true,
       handler: function handler(newValue, oldValue) {
         this.form = newValue;
@@ -238,10 +178,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/departments/Form.vue?vue&type=template&id=279e898a&":
-/*!**************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/departments/Form.vue?vue&type=template&id=279e898a& ***!
-  \**************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/request_types/Form.vue?vue&type=template&id=3b9bfeda&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/request_types/Form.vue?vue&type=template&id=3b9bfeda& ***!
+  \****************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -296,6 +236,27 @@ var render = function() {
                             "v-col",
                             { attrs: { cols: "12" } },
                             [
+                              _c("v-select", {
+                                attrs: {
+                                  items: ["checkin", "checkout", "disposal"],
+                                  label: "Action Type",
+                                  outlined: "",
+                                  "error-messages": _vm.errors.action_type[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.action_type = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.action_type,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "action_type", $$v)
+                                  },
+                                  expression: "form.action_type"
+                                }
+                              }),
+                              _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
                                   label: "Name",
@@ -315,78 +276,6 @@ var render = function() {
                                     _vm.$set(_vm.form, "name", $$v)
                                   },
                                   expression: "form.name"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("EmployeeDialogSelector", {
-                                attrs: {
-                                  selected: !_vm.form.manager
-                                    ? []
-                                    : [].concat(_vm.form.manager)
-                                },
-                                on: { "on-select": _vm.onSelectManager },
-                                scopedSlots: _vm._u([
-                                  {
-                                    key: "openDialog",
-                                    fn: function(ref) {
-                                      var on = ref.on
-                                      var attrs = ref.attrs
-                                      return [
-                                        _c(
-                                          "v-text-field",
-                                          _vm._g(
-                                            _vm._b(
-                                              {
-                                                staticClass:
-                                                  "d-flex justify-center align-center",
-                                                attrs: {
-                                                  value: _vm.form.manager
-                                                    ? _vm.form.manager.full_name
-                                                    : "",
-                                                  "error-messages":
-                                                    _vm.errors.manager_id,
-                                                  label: "Manager",
-                                                  readonly: "",
-                                                  outlined: ""
-                                                },
-                                                on: {
-                                                  input: function($event) {
-                                                    _vm.errors.manager_id = []
-                                                  }
-                                                }
-                                              },
-                                              "v-text-field",
-                                              attrs,
-                                              false
-                                            ),
-                                            on
-                                          )
-                                        )
-                                      ]
-                                    }
-                                  }
-                                ])
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Parent Department",
-                                  outlined: "",
-                                  clearable: "",
-                                  hint: "Ex. Sales And Marketing",
-                                  "error-messages": _vm.errors.department_id[0]
-                                },
-                                on: {
-                                  inputs: function($event) {
-                                    _vm.errors.department_id = []
-                                  }
-                                },
-                                model: {
-                                  value: _vm.form.department_id,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "department_id", $$v)
-                                  },
-                                  expression: "form.department_id"
                                 }
                               })
                             ],
@@ -495,17 +384,17 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/pages/departments/Form.vue":
-/*!*************************************************!*\
-  !*** ./resources/js/pages/departments/Form.vue ***!
-  \*************************************************/
+/***/ "./resources/js/pages/request_types/Form.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/pages/request_types/Form.vue ***!
+  \***************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Form_vue_vue_type_template_id_279e898a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=template&id=279e898a& */ "./resources/js/pages/departments/Form.vue?vue&type=template&id=279e898a&");
-/* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./resources/js/pages/departments/Form.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Form_vue_vue_type_template_id_3b9bfeda___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=template&id=3b9bfeda& */ "./resources/js/pages/request_types/Form.vue?vue&type=template&id=3b9bfeda&");
+/* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./resources/js/pages/request_types/Form.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -516,8 +405,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Form_vue_vue_type_template_id_279e898a___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Form_vue_vue_type_template_id_279e898a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Form_vue_vue_type_template_id_3b9bfeda___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Form_vue_vue_type_template_id_3b9bfeda___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -527,47 +416,47 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/pages/departments/Form.vue"
+component.options.__file = "resources/js/pages/request_types/Form.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/pages/departments/Form.vue?vue&type=script&lang=js&":
-/*!**************************************************************************!*\
-  !*** ./resources/js/pages/departments/Form.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************/
+/***/ "./resources/js/pages/request_types/Form.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/pages/request_types/Form.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/departments/Form.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/request_types/Form.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/pages/departments/Form.vue?vue&type=template&id=279e898a&":
-/*!********************************************************************************!*\
-  !*** ./resources/js/pages/departments/Form.vue?vue&type=template&id=279e898a& ***!
-  \********************************************************************************/
+/***/ "./resources/js/pages/request_types/Form.vue?vue&type=template&id=3b9bfeda&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/pages/request_types/Form.vue?vue&type=template&id=3b9bfeda& ***!
+  \**********************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_279e898a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=template&id=279e898a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/departments/Form.vue?vue&type=template&id=279e898a&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_279e898a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_3b9bfeda___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=template&id=3b9bfeda& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/request_types/Form.vue?vue&type=template&id=3b9bfeda&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_3b9bfeda___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_279e898a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_3b9bfeda___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "./resources/js/services/DepartmentDataService.js":
-/*!********************************************************!*\
-  !*** ./resources/js/services/DepartmentDataService.js ***!
-  \********************************************************/
+/***/ "./resources/js/services/TransactionTypeDataService.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/services/TransactionTypeDataService.js ***!
+  \*************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -584,47 +473,47 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 // import http from "../http-common";
 
 
-var DepartmentDataService = /*#__PURE__*/function () {
-  function DepartmentDataService() {
-    _classCallCheck(this, DepartmentDataService);
+var TransactionTypeDataService = /*#__PURE__*/function () {
+  function TransactionTypeDataService() {
+    _classCallCheck(this, TransactionTypeDataService);
   }
 
-  _createClass(DepartmentDataService, [{
+  _createClass(TransactionTypeDataService, [{
     key: "getAll",
     value: function getAll(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/departments", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/transaction_types", data);
     }
   }, {
     key: "show",
     value: function show(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/departments/".concat(id), data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/transaction_types/".concat(id), data);
     }
   }, {
     key: "store",
     value: function store(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/departments", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/transaction_types", data);
     }
   }, {
     key: "update",
     value: function update(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/departments/".concat(id), data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/transaction_types/".concat(id), data);
     }
   }, {
     key: "delete",
     value: function _delete(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/departments/".concat(id), data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/transaction_types/".concat(id), data);
     }
   }, {
     key: "deleteMany",
     value: function deleteMany(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/departments/multiple", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/transaction_types/multiple", data);
     }
   }]);
 
-  return DepartmentDataService;
+  return TransactionTypeDataService;
 }();
 
-/* harmony default export */ __webpack_exports__["default"] = (new DepartmentDataService());
+/* harmony default export */ __webpack_exports__["default"] = (new TransactionTypeDataService());
 
 /***/ })
 

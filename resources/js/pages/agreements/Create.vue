@@ -20,19 +20,14 @@ export default {
             errors: {
                 code: [],
                 slug: [],
-                name: [],
-                address: [],
-                street: [],
-                district: [],
-                city: [],
-                province: [],
-                country: [],
-                postal_code: [],
-                latitude: [],
-                longitude: [],
-                is_active: [],
-                notes: [],
-                agreement_id: []
+                reference_no: [],
+                description: [],
+                type: [],
+                start_date: [],
+                end_date: [],
+                remarks: [],
+                asset_id: [],
+                customer_id: []
             }
         };
     },

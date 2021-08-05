@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[20],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/checkin_requests/Form.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/checkin_requests/Form.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/checkout_requests/Form.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/checkout_requests/Form.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -15,7 +15,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_selectors_AssetDialogSelector_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/selectors/AssetDialogSelector.vue */ "./resources/js/components/selectors/AssetDialogSelector.vue");
 /* harmony import */ var _components_selectors_EmployeeDialogSelector_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/selectors/EmployeeDialogSelector.vue */ "./resources/js/components/selectors/EmployeeDialogSelector.vue");
-/* harmony import */ var _components_selectors_LocationDialogSelector_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/selectors/LocationDialogSelector.vue */ "./resources/js/components/selectors/LocationDialogSelector.vue");
+/* harmony import */ var _components_selectors_CustomerDialogSelector_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/selectors/CustomerDialogSelector.vue */ "./resources/js/components/selectors/CustomerDialogSelector.vue");
 /* harmony import */ var _services_TransactionTypeDataService__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/TransactionTypeDataService */ "./resources/js/services/TransactionTypeDataService.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -303,6 +303,93 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -310,7 +397,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    checkinRequestForm: {
+    checkoutRequestForm: {
       type: Object,
       "default": function _default() {
         return {
@@ -333,7 +420,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           assigned_asset_id: "",
           assets: [],
           assigned_employees: [],
-          assigned_location: null
+          assigned_location: null,
+          assigned_user: null,
+          assigned_asset: null
         };
       }
     },
@@ -382,13 +471,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   components: {
     AssetDialogSelector: _components_selectors_AssetDialogSelector_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    LocationDialogSelector: _components_selectors_LocationDialogSelector_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
-    EmployeeDialogSelector: _components_selectors_EmployeeDialogSelector_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    EmployeeDialogSelector: _components_selectors_EmployeeDialogSelector_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    CustomerDialogSelector: _components_selectors_CustomerDialogSelector_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   data: function data() {
     return {
       valid: false,
       requestDateModal: false,
+      checkout_to: "User",
+      checkout_to_items: ["User", "Asset"],
       headers: {
         employee: [{
           text: "Code",
@@ -439,7 +530,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         assets: [],
         assigned_employees: [],
         assigned_location: null,
-        transaction_type: null
+        transaction_type: null,
+        assigned_user: null
       }
     };
   },
@@ -456,7 +548,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _services_TransactionTypeDataService__WEBPACK_IMPORTED_MODULE_5__["default"].getAll({
                     params: {
                       itemsPerPage: 100,
-                      action_types: ["checkin"]
+                      action_types: ["checkout"]
                     }
                   }).then(function (response) {
                     console.log(response.data);
@@ -485,9 +577,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       var newform = _objectSpread(_objectSpread(_objectSpread({}, this.form), {
-        assigned_location_id: this.form.assigned_location ? this.form.assigned_location.id : null
-      }), {
         transaction_type_id: this.form.transaction_type ? this.form.transaction_type.id : null
+      }), {
+        assigned_user_id: this.form.assigned_user ? this.form.assigned_user.id : null
       });
 
       console.log(newform);
@@ -508,6 +600,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       this.form.assets = e;
     },
+    onSelectAssignedAsset: function onSelectAssignedAsset() {
+      this.errors.assigned_asset_id = [];
+
+      if (e == null || e == undefined) {
+        this.form.assigned_asset_id = [];
+        return;
+      }
+
+      this.form.assigned_asset = e[0];
+    },
     onSelectEmployee: function onSelectEmployee(e) {
       this.errors.assigned_employees = [];
 
@@ -518,15 +620,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       this.form.assigned_employees = e;
     },
-    onSelectLocation: function onSelectLocation(e) {
-      this.errors.assigned_location_id = [];
+    onSelectUser: function onSelectUser(e) {
+      this.errors.assigned_user_id = [];
 
       if (e == null || e == undefined) {
-        this.form.assigned_location = null;
+        this.form.assigned_user = null;
         return;
       }
 
-      this.form.assigned_location = e[0];
+      this.form.assigned_user = e[0];
     },
     removeItem: function removeItem(item) {
       if (confirm("Remove this item?")) {
@@ -547,7 +649,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   watch: {
-    checkinRequestForm: {
+    checkoutRequestForm: {
       immediate: true,
       handler: function handler(newValue, oldValue) {
         this.form = newValue;
@@ -561,10 +663,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/checkin_requests/Form.vue?vue&type=template&id=4a9e00b8&":
-/*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/checkin_requests/Form.vue?vue&type=template&id=4a9e00b8& ***!
-  \*******************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/checkout_requests/Form.vue?vue&type=template&id=7e51d2bf&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/checkout_requests/Form.vue?vue&type=template&id=7e51d2bf& ***!
+  \********************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -824,7 +926,7 @@ var render = function() {
                                   label: "Description",
                                   outlined: "",
                                   clearable: "",
-                                  hint: "Ex. Checkin Request for Asset",
+                                  hint: "Ex. Checkout Request for Asset",
                                   "error-messages": _vm.errors.description[0]
                                 },
                                 on: {
@@ -841,58 +943,240 @@ var render = function() {
                                 }
                               }),
                               _vm._v(" "),
-                              _c("LocationDialogSelector", {
+                              _c("v-select", {
                                 attrs: {
-                                  selected: !_vm.form.assigned_location
-                                    ? []
-                                    : [].concat(_vm.form.assigned_location)
+                                  items: _vm.checkout_to_items,
+                                  outlined: "",
+                                  label: "Checkout to"
                                 },
-                                on: { "on-select": _vm.onSelectLocation },
-                                scopedSlots: _vm._u([
-                                  {
-                                    key: "openDialog",
-                                    fn: function(ref) {
-                                      var on = ref.on
-                                      var attrs = ref.attrs
-                                      return [
-                                        _c(
-                                          "v-text-field",
-                                          _vm._g(
-                                            _vm._b(
-                                              {
-                                                staticClass:
-                                                  "d-flex justify-center align-center",
+                                model: {
+                                  value: _vm.checkout_to,
+                                  callback: function($$v) {
+                                    _vm.checkout_to = $$v
+                                  },
+                                  expression: "checkout_to"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _vm.checkout_to == "User"
+                                ? _c("v-text-field", {
+                                    attrs: {
+                                      disabled: _vm.checkout_to != "User",
+                                      value: _vm.form.assigned_user
+                                        ? _vm.form.assigned_user.full_name
+                                        : "",
+                                      label: "Assigned User",
+                                      outlined: "",
+                                      "error-messages":
+                                        _vm.errors.assigned_user_id[0],
+                                      readonly: ""
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        _vm.errors.assigned_user_id = []
+                                      }
+                                    },
+                                    scopedSlots: _vm._u(
+                                      [
+                                        {
+                                          key: "append",
+                                          fn: function() {
+                                            return [
+                                              _c("EmployeeDialogSelector", {
                                                 attrs: {
-                                                  value: _vm.form
-                                                    .assigned_location
-                                                    ? _vm.form.assigned_location
-                                                        .name
-                                                    : "",
-                                                  "error-messages":
-                                                    _vm.errors
-                                                      .assigned_location_id,
-                                                  label: "Location",
-                                                  readonly: "",
-                                                  outlined: ""
+                                                  selected: !_vm.form
+                                                    .assigned_user
+                                                    ? []
+                                                    : [].concat(
+                                                        _vm.form.assigned_user
+                                                      )
                                                 },
                                                 on: {
-                                                  input: function($event) {
-                                                    _vm.errors.assigned_location_id = []
-                                                  }
-                                                }
-                                              },
-                                              "v-text-field",
-                                              attrs,
-                                              false
-                                            ),
-                                            on
-                                          )
-                                        )
-                                      ]
-                                    }
-                                  }
-                                ])
-                              })
+                                                  "on-select": _vm.onSelectUser
+                                                },
+                                                scopedSlots: _vm._u(
+                                                  [
+                                                    {
+                                                      key: "openDialog",
+                                                      fn: function(ref) {
+                                                        var on = ref.on
+                                                        var attrs = ref.attrs
+                                                        return [
+                                                          _c(
+                                                            "v-btn",
+                                                            _vm._g(
+                                                              _vm._b(
+                                                                {
+                                                                  attrs: {
+                                                                    disabled:
+                                                                      _vm.checkout_to !=
+                                                                      "User",
+                                                                    icon: "",
+                                                                    title:
+                                                                      "Select Employee"
+                                                                  }
+                                                                },
+                                                                "v-btn",
+                                                                attrs,
+                                                                false
+                                                              ),
+                                                              on
+                                                            ),
+                                                            [
+                                                              _c("v-icon", [
+                                                                _vm._v(
+                                                                  "\n                                                    mdi-clipboard-account\n                                                "
+                                                                )
+                                                              ])
+                                                            ],
+                                                            1
+                                                          )
+                                                        ]
+                                                      }
+                                                    }
+                                                  ],
+                                                  null,
+                                                  false,
+                                                  1004030281
+                                                )
+                                              }),
+                                              _vm._v(" "),
+                                              _c("CustomerDialogSelector", {
+                                                attrs: {
+                                                  selected: !_vm.form
+                                                    .assigned_user
+                                                    ? []
+                                                    : [].concat(
+                                                        _vm.form.assigned_user
+                                                      )
+                                                },
+                                                on: {
+                                                  "on-select": _vm.onSelectUser
+                                                },
+                                                scopedSlots: _vm._u(
+                                                  [
+                                                    {
+                                                      key: "openDialog",
+                                                      fn: function(ref) {
+                                                        var on = ref.on
+                                                        var attrs = ref.attrs
+                                                        return [
+                                                          _c(
+                                                            "v-btn",
+                                                            _vm._g(
+                                                              _vm._b(
+                                                                {
+                                                                  attrs: {
+                                                                    disabled:
+                                                                      _vm.checkout_to !=
+                                                                      "User",
+                                                                    icon: "",
+                                                                    title:
+                                                                      "Select Customer"
+                                                                  }
+                                                                },
+                                                                "v-btn",
+                                                                attrs,
+                                                                false
+                                                              ),
+                                                              on
+                                                            ),
+                                                            [
+                                                              _c("v-icon", [
+                                                                _vm._v(
+                                                                  "\n                                                    mdi-card-account-details-outline\n                                                "
+                                                                )
+                                                              ])
+                                                            ],
+                                                            1
+                                                          )
+                                                        ]
+                                                      }
+                                                    }
+                                                  ],
+                                                  null,
+                                                  false,
+                                                  1974623861
+                                                )
+                                              })
+                                            ]
+                                          },
+                                          proxy: true
+                                        }
+                                      ],
+                                      null,
+                                      false,
+                                      2300845543
+                                    )
+                                  })
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _vm.checkout_to == "Asset"
+                                ? _c("AssetDialogSelector", {
+                                    attrs: {
+                                      selected: !_vm.form.assigned_asset
+                                        ? []
+                                        : [].concat(_vm.form.assigned_asset),
+                                      requestType: "checkout"
+                                    },
+                                    on: {
+                                      "on-select": _vm.onSelectAssignedAsset
+                                    },
+                                    scopedSlots: _vm._u(
+                                      [
+                                        {
+                                          key: "openDialog",
+                                          fn: function(ref) {
+                                            var on = ref.on
+                                            var attrs = ref.attrs
+                                            return [
+                                              _c(
+                                                "v-text-field",
+                                                _vm._g(
+                                                  _vm._b(
+                                                    {
+                                                      attrs: {
+                                                        disabled:
+                                                          _vm.checkout_to !=
+                                                          "Asset",
+                                                        value: _vm.form
+                                                          .assigned_asset
+                                                          ? _vm.form
+                                                              .assigned_asset
+                                                              .description
+                                                          : "",
+                                                        label: "Assigned Asset",
+                                                        outlined: "",
+                                                        clearable: "",
+                                                        "error-messages":
+                                                          _vm.errors
+                                                            .assigned_asset_id[0]
+                                                      },
+                                                      on: {
+                                                        input: function(
+                                                          $event
+                                                        ) {
+                                                          _vm.errors.assigned_asset_id = []
+                                                        }
+                                                      }
+                                                    },
+                                                    "v-text-field",
+                                                    attrs,
+                                                    false
+                                                  ),
+                                                  on
+                                                )
+                                              )
+                                            ]
+                                          }
+                                        }
+                                      ],
+                                      null,
+                                      false,
+                                      1004054877
+                                    )
+                                  })
+                                : _vm._e()
                             ],
                             1
                           )
@@ -1108,7 +1392,8 @@ var render = function() {
                           _c("AssetDialogSelector", {
                             attrs: {
                               selected: !_vm.form.assets ? [] : _vm.form.assets,
-                              singleSelect: false
+                              singleSelect: false,
+                              requestType: "checkout"
                             },
                             on: { "on-select": _vm.onSelectAsset },
                             scopedSlots: _vm._u([
@@ -1255,17 +1540,17 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/pages/checkin_requests/Form.vue":
-/*!******************************************************!*\
-  !*** ./resources/js/pages/checkin_requests/Form.vue ***!
-  \******************************************************/
+/***/ "./resources/js/pages/checkout_requests/Form.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/pages/checkout_requests/Form.vue ***!
+  \*******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Form_vue_vue_type_template_id_4a9e00b8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=template&id=4a9e00b8& */ "./resources/js/pages/checkin_requests/Form.vue?vue&type=template&id=4a9e00b8&");
-/* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./resources/js/pages/checkin_requests/Form.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Form_vue_vue_type_template_id_7e51d2bf___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=template&id=7e51d2bf& */ "./resources/js/pages/checkout_requests/Form.vue?vue&type=template&id=7e51d2bf&");
+/* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./resources/js/pages/checkout_requests/Form.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -1276,8 +1561,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Form_vue_vue_type_template_id_4a9e00b8___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Form_vue_vue_type_template_id_4a9e00b8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Form_vue_vue_type_template_id_7e51d2bf___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Form_vue_vue_type_template_id_7e51d2bf___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -1287,47 +1572,47 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/pages/checkin_requests/Form.vue"
+component.options.__file = "resources/js/pages/checkout_requests/Form.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/pages/checkin_requests/Form.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/pages/checkin_requests/Form.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************/
+/***/ "./resources/js/pages/checkout_requests/Form.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/pages/checkout_requests/Form.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/checkin_requests/Form.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/checkout_requests/Form.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/pages/checkin_requests/Form.vue?vue&type=template&id=4a9e00b8&":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/pages/checkin_requests/Form.vue?vue&type=template&id=4a9e00b8& ***!
-  \*************************************************************************************/
+/***/ "./resources/js/pages/checkout_requests/Form.vue?vue&type=template&id=7e51d2bf&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/pages/checkout_requests/Form.vue?vue&type=template&id=7e51d2bf& ***!
+  \**************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_4a9e00b8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=template&id=4a9e00b8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/checkin_requests/Form.vue?vue&type=template&id=4a9e00b8&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_4a9e00b8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_7e51d2bf___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=template&id=7e51d2bf& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/checkout_requests/Form.vue?vue&type=template&id=7e51d2bf&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_7e51d2bf___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_4a9e00b8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_7e51d2bf___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "./resources/js/services/CheckinRequestDataService.js":
-/*!************************************************************!*\
-  !*** ./resources/js/services/CheckinRequestDataService.js ***!
-  \************************************************************/
+/***/ "./resources/js/services/CheckoutRequestDataService.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/services/CheckoutRequestDataService.js ***!
+  \*************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1344,67 +1629,131 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 // import http from "../http-common";
 
 
-var CheckinRequestDataService = /*#__PURE__*/function () {
-  function CheckinRequestDataService() {
-    _classCallCheck(this, CheckinRequestDataService);
+var CheckoutRequestDataService = /*#__PURE__*/function () {
+  function CheckoutRequestDataService() {
+    _classCallCheck(this, CheckoutRequestDataService);
   }
 
-  _createClass(CheckinRequestDataService, [{
+  _createClass(CheckoutRequestDataService, [{
     key: "getAll",
     value: function getAll(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/checkin_requests", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/checkout_requests", data);
     }
   }, {
     key: "show",
     value: function show(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/checkin_requests/".concat(id), data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/checkout_requests/".concat(id), data);
     }
   }, {
     key: "store",
     value: function store(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/checkin_requests", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/checkout_requests", data);
     }
   }, {
     key: "update",
     value: function update(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/checkin_requests/".concat(id), data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/checkout_requests/".concat(id), data);
     }
   }, {
     key: "delete",
     value: function _delete(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/checkin_requests/".concat(id), data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/checkout_requests/".concat(id), data);
     }
   }, {
     key: "deleteMany",
     value: function deleteMany(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/checkin_requests/multiple", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/checkout_requests/multiple", data);
     }
   }, {
     key: "approve",
     value: function approve(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/checkin_requests/approve", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/checkout_requests/approve", data);
     }
   }, {
     key: "complete",
     value: function complete(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/checkin_requests/complete", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/checkout_requests/complete", data);
     }
   }, {
     key: "post",
     value: function post(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/checkin_requests/post", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/checkout_requests/post", data);
     }
   }, {
     key: "cancel",
     value: function cancel(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/checkin_requests/cancel", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/checkout_requests/cancel", data);
     }
   }]);
 
-  return CheckinRequestDataService;
+  return CheckoutRequestDataService;
 }();
 
-/* harmony default export */ __webpack_exports__["default"] = (new CheckinRequestDataService());
+/* harmony default export */ __webpack_exports__["default"] = (new CheckoutRequestDataService());
+
+/***/ }),
+
+/***/ "./resources/js/services/TransactionTypeDataService.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/services/TransactionTypeDataService.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+// import http from "../http-common";
+
+
+var TransactionTypeDataService = /*#__PURE__*/function () {
+  function TransactionTypeDataService() {
+    _classCallCheck(this, TransactionTypeDataService);
+  }
+
+  _createClass(TransactionTypeDataService, [{
+    key: "getAll",
+    value: function getAll(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/transaction_types", data);
+    }
+  }, {
+    key: "show",
+    value: function show(id, data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/transaction_types/".concat(id), data);
+    }
+  }, {
+    key: "store",
+    value: function store(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/transaction_types", data);
+    }
+  }, {
+    key: "update",
+    value: function update(id, data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/transaction_types/".concat(id), data);
+    }
+  }, {
+    key: "delete",
+    value: function _delete(id, data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/transaction_types/".concat(id), data);
+    }
+  }, {
+    key: "deleteMany",
+    value: function deleteMany(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/transaction_types/multiple", data);
+    }
+  }]);
+
+  return TransactionTypeDataService;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (new TransactionTypeDataService());
 
 /***/ })
 

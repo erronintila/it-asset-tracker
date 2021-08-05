@@ -1,15 +1,16 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[118],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/selectors/AssetDialogSelector.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/selectors/AssetDialogSelector.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/assets/Edit.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/assets/Edit.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_AssetDataService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../services/AssetDataService */ "./resources/js/services/AssetDataService.js");
+/* harmony import */ var _Form_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.vue */ "./resources/js/pages/assets/Form.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -24,239 +25,125 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "asset-selector",
-  props: {
-    singleSelect: {
-      type: Boolean,
-      "default": true
-    },
-    selected: {
-      type: Array,
-      "default": function _default() {
-        return [];
-      }
-    },
-    requestType: {
-      type: String,
-      "default": null
-    },
-    assignedUserId: {
-      type: Number,
-      "default": null
-    },
-    assignedAssetId: {
-      type: Number,
-      "default": null
-    }
+  components: {
+    Form: _Form_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
-      dialog: false,
-      fullscreen: false,
-      tableOptions: {
-        options: {
-          sortBy: ["code"],
-          sortDesc: [false],
-          page: 1,
-          itemsPerPage: 5
-        },
-        loading: false,
-        itemsPerPageOptions: [5, 10, 20],
-        serverItemsLength: 0,
-        headers: [{
-          text: "Code",
-          value: "code"
-        }, {
-          text: "Serial No.",
-          value: "serial_no"
-        }, {
-          text: "Description",
-          value: "description"
-        }]
+      form: {
+        code: "",
+        slug: "",
+        reference_no: "",
+        asset_tag: "",
+        serial_no: "",
+        description: "",
+        purchased_date: "",
+        purchased_cost: "",
+        warranty_start_date: "",
+        warranty_end_date: "",
+        received_date: "",
+        received_by: "",
+        sku: "",
+        quantity: "",
+        notes: "",
+        asset_model: "",
+        supplier: "",
+        manufacturer: "",
+        asset_category: "",
+        assigned_user_id: "",
+        assigned_location_id: "",
+        assigned_asset_id: "",
+        date_range: []
       },
-      search: "",
-      items: [],
-      selectedItems: []
+      errors: {
+        code: [],
+        slug: [],
+        reference_no: [],
+        asset_tag: [],
+        serial_no: [],
+        description: [],
+        purchased_date: [],
+        purchased_cost: [],
+        warranty_start_date: [],
+        warranty_end_date: [],
+        received_date: [],
+        received_by: [],
+        sku: [],
+        quantity: [],
+        notes: [],
+        asset_model_id: [],
+        supplier_id: [],
+        manufacturer_id: [],
+        asset_category_id: [],
+        assigned_user_id: [],
+        assigned_location_id: [],
+        assigned_asset_id: []
+      }
     };
   },
   methods: {
     getData: function getData() {
       var _this = this;
 
-      this.tableOptions.loading = true;
-      return new Promise(function (resolve, reject) {
-        var _this$tableOptions$op = _this.tableOptions.options,
-            sortBy = _this$tableOptions$op.sortBy,
-            sortDesc = _this$tableOptions$op.sortDesc,
-            page = _this$tableOptions$op.page,
-            itemsPerPage = _this$tableOptions$op.itemsPerPage;
-        var search = _this.search; // let status = this.status;
+      var data = {}; // if (this.$route.params.isDeleted) {
+      //     data = {
+      //         params: {
+      //             isDeleted: true
+      //         }
+      //     };
+      // }
 
-        var request_type = _this.requestType;
-        var assigned_user_id = _this.assignedUserId;
-        var assigned_asset_id = _this.assignedAssetId;
-        var data = {
-          params: {
-            sortBy: sortBy[0],
-            sortType: sortDesc[0] ? "desc" : "asc",
-            page: page,
-            itemsPerPage: itemsPerPage,
-            search: search,
-            request_type: request_type // status: status
-
-          }
-        };
-
-        if (assigned_user_id) {
-          data.params.assigned_user_id = assigned_user_id;
-        }
-
-        if (assigned_asset_id) {
-          data.params.assigned_asset_id = assigned_asset_id;
-        }
-
-        _services_AssetDataService__WEBPACK_IMPORTED_MODULE_0__["default"].getAll(data).then(function (response) {
-          console.log(response.data);
-          _this.items = response.data.data.data;
-          _this.tableOptions.serverItemsLength = response.data.data.total;
-          _this.tableOptions.loading = false;
-          resolve();
-        })["catch"](function (error) {
-          _this.tableOptions.loading = false;
-          console.log(error);
-          console.log(error.response);
-          reject();
+      _services_AssetDataService__WEBPACK_IMPORTED_MODULE_0__["default"].show(this.$route.params.id, data).then(function (response) {
+        console.log(response.data);
+        _this.form = _objectSpread(_objectSpread(_objectSpread({}, _this.form), response.data.data), {
+          date_range: [response.data.data.warranty_start_date, response.data.data.warranty_end_date]
         });
+      })["catch"](function (error) {
+        console.log(error.response);
+        alert("An error has occurred.");
+
+        _this.$router.push({
+          name: "assets.index"
+        }, function () {});
       });
     },
-    onSelect: function onSelect() {
-      if (this.selectedItems.length == 0) {
-        return;
-      } else {
-        this.$refs.dialog.save(this.selectedItems);
-        this.$emit("on-select", this.selectedItems);
-      }
-    },
-    closeDialog: function closeDialog() {
-      this.dialog = false;
+    onSave: function onSave(value) {
+      var _this2 = this;
+
+      _services_AssetDataService__WEBPACK_IMPORTED_MODULE_0__["default"].update(this.$route.params.id, value).then(function (response) {
+        console.log(response.data);
+        alert("Successfully updated.");
+
+        _this2.$router.go(-1);
+      })["catch"](function (error) {
+        console.log(error.response.data);
+        alert("An error has occurred.");
+
+        if (error.response) {
+          if (error.response.data) {
+            _this2.errors = _objectSpread(_objectSpread({}, _this2.errors), error.response.data.errors);
+          }
+        }
+      });
     }
   },
-  computed: {
-    params: function params(nv) {
-      return _objectSpread({}, this.tableOptions.options);
-    }
-  },
-  watch: {
-    search: function search() {
-      if (!this.search) {
-        this.getData();
-      }
-    },
-    params: {
-      immediate: true,
-      deep: true,
-      handler: function handler() {
-        this.getData();
-      }
-    },
-    selected: {
-      deep: true,
-      immediate: true,
-      handler: function handler(newValue) {
-        this.selectedItems = newValue;
-      }
-    },
-    dialog: function dialog() {
-      if (this.dialog) {
-        this.getData();
-      }
-    }
-  }
+  created: function created() {
+    this.getData();
+  } // activated() {
+  //     this.getData();
+  // }
+
 });
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/selectors/AssetDialogSelector.vue?vue&type=template&id=26bdbde1&":
-/*!********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/selectors/AssetDialogSelector.vue?vue&type=template&id=26bdbde1& ***!
-  \********************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/assets/Edit.vue?vue&type=template&id=cb628146&":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/assets/Edit.vue?vue&type=template&id=cb628146& ***!
+  \*********************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -271,204 +158,12 @@ var render = function() {
   return _c(
     "div",
     [
-      _c(
-        "v-dialog",
-        {
-          ref: "dialog",
-          attrs: {
-            fullscreen: _vm.fullscreen,
-            persistent: "",
-            "max-width": "60em"
-          },
-          scopedSlots: _vm._u(
-            [
-              {
-                key: "activator",
-                fn: function(ref) {
-                  var on = ref.on
-                  var attrs = ref.attrs
-                  return [
-                    _vm._t("openDialog", null, null, {
-                      attrs: attrs,
-                      on: on,
-                      selectedItems: _vm.selectedItems
-                    })
-                  ]
-                }
-              }
-            ],
-            null,
-            true
-          ),
-          model: {
-            value: _vm.dialog,
-            callback: function($$v) {
-              _vm.dialog = $$v
-            },
-            expression: "dialog"
-          }
-        },
-        [
-          _vm._v(" "),
-          _c(
-            "v-card",
-            [
-              _c(
-                "v-card-title",
-                { staticClass: "pa-0" },
-                [
-                  _c(
-                    "v-toolbar",
-                    { attrs: { flat: "" } },
-                    [
-                      _c("v-toolbar-title", [_vm._v("Assets")]),
-                      _vm._v(" "),
-                      _c("v-spacer"),
-                      _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        { attrs: { icon: "" }, on: { click: _vm.closeDialog } },
-                        [
-                          _c("v-icon", [
-                            _vm._v(
-                              "\n                            mdi-close\n                        "
-                            )
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-card-text",
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "d-flex justify-space-between align-center"
-                    },
-                    [
-                      _c("div", [_vm._v("All Items")]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        [
-                          _c("v-text-field", {
-                            staticClass: "hidden-sm-and-down",
-                            attrs: { label: "Search", clearable: "" },
-                            on: {
-                              keyup: function($event) {
-                                if (
-                                  !$event.type.indexOf("key") &&
-                                  _vm._k(
-                                    $event.keyCode,
-                                    "enter",
-                                    13,
-                                    $event.key,
-                                    "Enter"
-                                  )
-                                ) {
-                                  return null
-                                }
-                                return _vm.getData.apply(null, arguments)
-                              }
-                            },
-                            model: {
-                              value: _vm.search,
-                              callback: function($$v) {
-                                _vm.search = $$v
-                              },
-                              expression: "search"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("v-data-table", {
-                    attrs: {
-                      "show-select": "",
-                      "item-key": "id",
-                      "single-select": _vm.singleSelect,
-                      headers: _vm.tableOptions.headers,
-                      items: _vm.items,
-                      loading: _vm.tableOptions.loading,
-                      options: _vm.tableOptions.options,
-                      "server-items-length": _vm.tableOptions.serverItemsLength,
-                      "footer-props": {
-                        itemsPerPageOptions:
-                          _vm.tableOptions.itemsPerPageOptions,
-                        showFirstLastPage: true,
-                        firstIcon: "mdi-page-first",
-                        lastIcon: "mdi-page-last",
-                        prevIcon: "mdi-chevron-left",
-                        nextIcon: "mdi-chevron-right"
-                      }
-                    },
-                    on: {
-                      "update:options": function($event) {
-                        return _vm.$set(_vm.tableOptions, "options", $event)
-                      }
-                    },
-                    model: {
-                      value: _vm.selectedItems,
-                      callback: function($$v) {
-                        _vm.selectedItems = $$v
-                      },
-                      expression: "selectedItems"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-card-actions",
-                [
-                  _c("v-spacer"),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "mb-4" },
-                    [
-                      _c(
-                        "v-btn",
-                        { staticClass: "mx-2", on: { click: _vm.onSelect } },
-                        [
-                          _vm._v(
-                            "\n                        OK\n                    "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        { staticClass: "mx-2", on: { click: _vm.closeDialog } },
-                        [
-                          _vm._v(
-                            "\n                        Close\n                    "
-                          )
-                        ]
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      )
+      _c("page-header", { attrs: { title: "Update Asset", backButton: true } }),
+      _vm._v(" "),
+      _c("Form", {
+        attrs: { assetForm: _vm.form, errors: _vm.errors },
+        on: { "on-save": _vm.onSave }
+      })
     ],
     1
   )
@@ -480,17 +175,17 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/selectors/AssetDialogSelector.vue":
-/*!*******************************************************************!*\
-  !*** ./resources/js/components/selectors/AssetDialogSelector.vue ***!
-  \*******************************************************************/
+/***/ "./resources/js/pages/assets/Edit.vue":
+/*!********************************************!*\
+  !*** ./resources/js/pages/assets/Edit.vue ***!
+  \********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _AssetDialogSelector_vue_vue_type_template_id_26bdbde1___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AssetDialogSelector.vue?vue&type=template&id=26bdbde1& */ "./resources/js/components/selectors/AssetDialogSelector.vue?vue&type=template&id=26bdbde1&");
-/* harmony import */ var _AssetDialogSelector_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AssetDialogSelector.vue?vue&type=script&lang=js& */ "./resources/js/components/selectors/AssetDialogSelector.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Edit_vue_vue_type_template_id_cb628146___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Edit.vue?vue&type=template&id=cb628146& */ "./resources/js/pages/assets/Edit.vue?vue&type=template&id=cb628146&");
+/* harmony import */ var _Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Edit.vue?vue&type=script&lang=js& */ "./resources/js/pages/assets/Edit.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -500,9 +195,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _AssetDialogSelector_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _AssetDialogSelector_vue_vue_type_template_id_26bdbde1___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _AssetDialogSelector_vue_vue_type_template_id_26bdbde1___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Edit_vue_vue_type_template_id_cb628146___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Edit_vue_vue_type_template_id_cb628146___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -512,168 +207,40 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/selectors/AssetDialogSelector.vue"
+component.options.__file = "resources/js/pages/assets/Edit.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/selectors/AssetDialogSelector.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************!*\
-  !*** ./resources/js/components/selectors/AssetDialogSelector.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************/
+/***/ "./resources/js/pages/assets/Edit.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/pages/assets/Edit.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AssetDialogSelector_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./AssetDialogSelector.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/selectors/AssetDialogSelector.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AssetDialogSelector_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Edit.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/assets/Edit.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/selectors/AssetDialogSelector.vue?vue&type=template&id=26bdbde1&":
-/*!**************************************************************************************************!*\
-  !*** ./resources/js/components/selectors/AssetDialogSelector.vue?vue&type=template&id=26bdbde1& ***!
-  \**************************************************************************************************/
+/***/ "./resources/js/pages/assets/Edit.vue?vue&type=template&id=cb628146&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/pages/assets/Edit.vue?vue&type=template&id=cb628146& ***!
+  \***************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AssetDialogSelector_vue_vue_type_template_id_26bdbde1___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./AssetDialogSelector.vue?vue&type=template&id=26bdbde1& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/selectors/AssetDialogSelector.vue?vue&type=template&id=26bdbde1&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AssetDialogSelector_vue_vue_type_template_id_26bdbde1___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_cb628146___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Edit.vue?vue&type=template&id=cb628146& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/assets/Edit.vue?vue&type=template&id=cb628146&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_cb628146___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AssetDialogSelector_vue_vue_type_template_id_26bdbde1___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/services/AssetDataService.js":
-/*!***************************************************!*\
-  !*** ./resources/js/services/AssetDataService.js ***!
-  \***************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-// import http from "../http-common";
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_cb628146___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
-var AssetDataService = /*#__PURE__*/function () {
-  function AssetDataService() {
-    _classCallCheck(this, AssetDataService);
-  }
-
-  _createClass(AssetDataService, [{
-    key: "getAll",
-    value: function getAll(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/assets", data);
-    }
-  }, {
-    key: "show",
-    value: function show(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/assets/".concat(id), data);
-    }
-  }, {
-    key: "store",
-    value: function store(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/assets", data);
-    }
-  }, {
-    key: "update",
-    value: function update(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/assets/".concat(id), data);
-    }
-  }, {
-    key: "delete",
-    value: function _delete(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/assets/".concat(id), data);
-    }
-  }, {
-    key: "deleteMany",
-    value: function deleteMany(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/assets/multiple", data);
-    }
-  }]);
-
-  return AssetDataService;
-}();
-
-/* harmony default export */ __webpack_exports__["default"] = (new AssetDataService());
-
-/***/ }),
-
-/***/ "./resources/js/services/TransactionTypeDataService.js":
-/*!*************************************************************!*\
-  !*** ./resources/js/services/TransactionTypeDataService.js ***!
-  \*************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-// import http from "../http-common";
-
-
-var TransactionTypeDataService = /*#__PURE__*/function () {
-  function TransactionTypeDataService() {
-    _classCallCheck(this, TransactionTypeDataService);
-  }
-
-  _createClass(TransactionTypeDataService, [{
-    key: "getAll",
-    value: function getAll(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/transaction_types", data);
-    }
-  }, {
-    key: "show",
-    value: function show(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/transaction_types/".concat(id), data);
-    }
-  }, {
-    key: "store",
-    value: function store(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/transaction_types", data);
-    }
-  }, {
-    key: "update",
-    value: function update(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/transaction_types/".concat(id), data);
-    }
-  }, {
-    key: "delete",
-    value: function _delete(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/transaction_types/".concat(id), data);
-    }
-  }, {
-    key: "deleteMany",
-    value: function deleteMany(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/transaction_types/multiple", data);
-    }
-  }]);
-
-  return TransactionTypeDataService;
-}();
-
-/* harmony default export */ __webpack_exports__["default"] = (new TransactionTypeDataService());
 
 /***/ })
 

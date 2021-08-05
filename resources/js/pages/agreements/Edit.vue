@@ -22,34 +22,27 @@ export default {
             form: {
                 code: "",
                 slug: "",
-                name: "",
-                address: "",
-                street: "",
-                district: "",
-                city: "",
-                province: "",
-                country: "",
-                postal_code: "",
-                latitude: "",
-                longitude: "",
-                is_active: true,
-                notes: "",
-                agreement_id: ""
+                reference_no: "",
+                description: "",
+                type: "",
+                start_date: "",
+                end_date: "",
+                remarks: "",
+                asset: [],
+                customer: null,
+                date_range: []
             },
             errors: {
-                name: [],
-                address: [],
-                street: [],
-                district: [],
-                city: [],
-                province: [],
-                country: [],
-                postal_code: [],
-                latitude: [],
-                longitude: [],
-                is_active: [],
-                notes: [],
-                agreement_id: []
+                code: [],
+                slug: [],
+                reference_no: [],
+                description: [],
+                type: [],
+                start_date: [],
+                end_date: [],
+                remarks: [],
+                asset_id: [],
+                customer_id: []
             }
         };
     },
@@ -68,7 +61,16 @@ export default {
             AgreementDataService.show(this.$route.params.id, data)
                 .then(response => {
                     console.log(response.data);
-                    this.form = { ...this.form, ...response.data.data };
+                    this.form = {
+                        ...this.form,
+                        ...response.data.data,
+                        ...{
+                            date_range: [
+                                response.data.data.start_date,
+                                response.data.data.end_date
+                            ]
+                        }
+                    };
                 })
                 .catch(error => {
                     console.log(error.response);

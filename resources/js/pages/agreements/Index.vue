@@ -178,9 +178,10 @@ export default {
                 serverItemsLength: 0,
                 headers: [
                     { text: "Code", value: "code" },
-                    { text: "Name", value: "name" },
-                    { text: "Address", value: "address" },
-                    { text: "Assets", value: "quantity" }
+                    { text: "Type", value: "type" },
+                    { text: "Decription", value: "description" },
+                    { text: "Asset", value: "asset.description" },
+                    { text: "Customer", value: "customer.name" }
                 ]
             },
             search: "",

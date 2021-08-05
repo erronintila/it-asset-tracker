@@ -9,78 +9,111 @@
                     <v-card-text>
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
+                                <v-select
+                                    v-model="form.type"
+                                    :items="['contract', 'warranty']"
+                                    label="Type"
+                                    outlined
+                                    :error-messages="errors.type[0]"
+                                    @input="errors.type = []"
+                                ></v-select>
                                 <v-text-field
-                                    v-model="form.name"
-                                    label="Name"
+                                    v-model="form.reference_no"
+                                    label="Reference No"
                                     outlined
                                     clearable
-                                    hint="Ex. Warehouse1"
-                                    :error-messages="errors.name[0]"
-                                    @input="errors.name = []"
+                                    hint="Ex. #00000234"
+                                    :error-messages="errors.reference_no[0]"
+                                    @input="errors.reference_no = []"
                                 ></v-text-field>
                                 <v-text-field
-                                    v-model="form.address"
-                                    label="Address"
+                                    v-model="form.description"
+                                    label="Description"
                                     outlined
                                     clearable
-                                    hint="Ex. Block 16 Lot 4 XYZ Subdivision"
-                                    :error-messages="errors.address[0]"
-                                    @input="errors.address = []"
+                                    hint="Ex. Warranty Agreement"
+                                    :error-messages="errors.description[0]"
+                                    @input="errors.description = []"
                                 ></v-text-field>
-                                <v-text-field
-                                    v-model="form.street"
-                                    label="Street"
-                                    outlined
-                                    clearable
-                                    hint="Ex. Balete Street"
-                                    :error-messages="errors.street[0]"
-                                    @input="errors.street = []"
-                                ></v-text-field>
-                                <v-text-field
-                                    v-model="form.district"
-                                    label="District"
-                                    outlined
-                                    clearable
-                                    hint="Ex. Barangay Poblacion"
-                                    :error-messages="errors.district[0]"
-                                    @input="errors.district = []"
-                                ></v-text-field>
-                                <v-text-field
-                                    v-model="form.city"
-                                    label="City"
-                                    outlined
-                                    clearable
-                                    hint="Ex. General Santos City"
-                                    :error-messages="errors.city[0]"
-                                    @input="errors.city = []"
-                                ></v-text-field>
-                                <v-text-field
-                                    v-model="form.province"
-                                    label="Province"
-                                    outlined
-                                    clearable
-                                    hint="South Cotabato"
-                                    :error-messages="errors.province[0]"
-                                    @input="errors.province = []"
-                                ></v-text-field>
-                                <v-combobox
-                                    v-model="form.country"
-                                    label="Country"
-                                    outlined
-                                    clearable
-                                    :items="['Philippines']"
-                                    :error-messages="errors.country[0]"
-                                    @input="errors.country = []"
-                                ></v-combobox>
-                                <v-text-field
-                                    v-model="form.postal_code"
-                                    label="Postal Code"
-                                    outlined
-                                    clearable
-                                    hint="Ex. 9500"
-                                    type="number"
-                                    @input="errors.postal_code = []"
-                                ></v-text-field>
+                                <XDateRangePicker
+                                    ref="dateRangePicker"
+                                    :dateRange="form.date_range"
+                                    @on-change="updateDates"
+                                >
+                                    <template
+                                        v-slot:openDialog="{
+                                            on,
+                                            attrs,
+                                            dateRangeText
+                                        }"
+                                    >
+                                        <v-text-field
+                                            v-model="form.date_range"
+                                            :value="dateRangeText"
+                                            :error-messages="errors.start_date"
+                                            @input="errors.start_date = []"
+                                            label="Date"
+                                            readonly
+                                            outlined
+                                            v-bind="attrs"
+                                            v-on="on"
+                                            clearable
+                                        ></v-text-field>
+                                    </template>
+                                </XDateRangePicker>
+                                <CustomerDialogSelector
+                                    :selected="
+                                        !form.customer ? [] : [...form.customer]
+                                    "
+                                    @on-select="onSelectUser"
+                                >
+                                    <template
+                                        v-slot:openDialog="{
+                                            on,
+                                            attrs
+                                        }"
+                                    >
+                                        <v-text-field
+                                            :value="
+                                                form.customer
+                                                    ? form.customer.full_name
+                                                    : ''
+                                            "
+                                            label="Customer"
+                                            outlined
+                                            :error-messages="
+                                                errors.customer_id[0]
+                                            "
+                                            @input="errors.customer_id = []"
+                                            readonly
+                                            v-bind="attrs"
+                                            v-on="on"
+                                        ></v-text-field>
+                                    </template>
+                                </CustomerDialogSelector>
+                                <AssetDialogSelector
+                                    :selected="
+                                        !form.asset ? null : [...form.asset]
+                                    "
+                                    @on-select="onSelectAsset"
+                                >
+                                    <template v-slot:openDialog="{ on, attrs }">
+                                        <v-text-field
+                                            :value="
+                                                form.asset
+                                                    ? form.asset.description
+                                                    : ''
+                                            "
+                                            label="Asset"
+                                            outlined
+                                            :error-messages="errors.asset_id[0]"
+                                            @input="errors.asset_id = []"
+                                            readonly
+                                            v-bind="attrs"
+                                            v-on="on"
+                                        ></v-text-field>
+                                    </template>
+                                </AssetDialogSelector>
                             </v-col>
                         </v-row>
                     </v-card-text>
@@ -95,52 +128,19 @@
                     <v-card-text>
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
-                                <v-text-field
-                                    v-model="form.latitude"
-                                    label="Latitude"
-                                    outlined
-                                    clearable
-                                    hint="Ex. 6.1164 N"
-                                    :error-messages="errors.latitude[0]"
-                                    @input="errors.latitude = []"
-                                ></v-text-field>
-                                <v-text-field
-                                    v-model="form.longitude"
-                                    label="Longitude"
-                                    outlined
-                                    clearable
-                                    hint="Ex. 125.1716 E"
-                                    :error-messages="errors.longitude[0]"
-                                    @input="errors.longitude = []"
-                                ></v-text-field>
-                                <v-text-field
-                                    v-model.number="form.agreement_id"
-                                    label="Parent Agreement"
-                                    outlined
-                                    clearable
-                                    :error-messages="errors.agreement_id[0]"
-                                    @input="errors.agreement_id = []"
-                                ></v-text-field>
                                 <v-textarea
-                                    v-model="form.notes"
-                                    label="Notes"
+                                    v-model="form.remarks"
+                                    label="Remarks"
                                     outlined
                                     clearable
                                     rows="3"
-                                    :error-messages="errors.notes[0]"
-                                    @input="errors.notes = []"
+                                    :error-messages="errors.remarks[0]"
+                                    @input="errors.remarks = []"
                                 ></v-textarea>
                             </v-col>
                         </v-row>
                     </v-card-text>
                     <v-card-actions>
-                        <v-sheet class="ml-4">
-                            <v-switch
-                                v-model="form.is_active"
-                                inset
-                                label="Active"
-                            ></v-switch>
-                        </v-sheet>
                         <v-spacer></v-spacer>
                         <v-btn
                             color="primary"
@@ -158,6 +158,10 @@
 </template>
 
 <script>
+import XDateRangePicker from "../../components/X-DateRangePicker.vue";
+import AssetDialogSelector from "../../components/selectors/AssetDialogSelector.vue";
+import CustomerDialogSelector from "../../components/selectors/CustomerDialogSelector.vue";
+
 export default {
     props: {
         agreementForm: {
@@ -166,19 +170,15 @@ export default {
                 return {
                     code: "",
                     slug: "",
-                    name: "",
-                    address: "",
-                    street: "",
-                    district: "",
-                    city: "",
-                    province: "",
-                    country: "",
-                    postal_code: "",
-                    latitude: "",
-                    longitude: "",
-                    is_active: true,
-                    notes: "",
-                    agreement_id: ""
+                    reference_no: "",
+                    description: "",
+                    type: "",
+                    start_date: "",
+                    end_date: "",
+                    remarks: "",
+                    asset: [],
+                    customer: null,
+                    date_range: []
                 };
             }
         },
@@ -188,19 +188,14 @@ export default {
                 return {
                     code: [],
                     slug: [],
-                    name: [],
-                    address: [],
-                    street: [],
-                    district: [],
-                    city: [],
-                    province: [],
-                    country: [],
-                    postal_code: [],
-                    latitude: [],
-                    longitude: [],
-                    is_active: [],
-                    notes: [],
-                    agreement_id: []
+                    reference_no: [],
+                    description: [],
+                    type: [],
+                    start_date: [],
+                    end_date: [],
+                    remarks: [],
+                    asset_id: [],
+                    customer_id: []
                 };
             }
         },
@@ -210,22 +205,22 @@ export default {
                 return {
                     code: [],
                     slug: [],
-                    name: [],
-                    address: [],
-                    street: [],
-                    district: [],
-                    city: [],
-                    province: [],
-                    country: [],
-                    postal_code: [],
-                    latitude: [],
-                    longitude: [],
-                    is_active: [],
-                    notes: [],
-                    agreement_id: []
+                    reference_no: [],
+                    description: [],
+                    type: [],
+                    start_date: [],
+                    end_date: [],
+                    remarks: [],
+                    asset_id: [],
+                    customer_id: []
                 };
             }
         }
+    },
+    components: {
+        XDateRangePicker,
+        AssetDialogSelector,
+        CustomerDialogSelector
     },
     data() {
         return {
@@ -233,18 +228,15 @@ export default {
             form: {
                 code: "",
                 slug: "",
-                name: "",
-                address: "",
-                street: "",
-                district: "",
-                city: "",
-                province: "",
-                country: "",
-                postal_code: "",
-                latitude: "",
-                longitude: "",
-                is_active: true,
-                agreement_id: ""
+                reference_no: "",
+                description: "",
+                type: "",
+                start_date: "",
+                end_date: "",
+                remarks: "",
+                asset: [],
+                customer: null,
+                date_range: []
             }
         };
     },
@@ -259,13 +251,51 @@ export default {
                 return;
             }
 
-            console.log(this.form);
+            let newForm = {
+                ...this.form,
+                ...{
+                    customer_id: this.form.customer
+                        ? this.form.customer.id
+                        : null
+                },
+                ...{
+                    asset_id: this.form.asset ? this.form.asset.id : null
+                }
+            };
 
-            if (!this.form.is_active) {
-                this.form.is_active = false;
+            console.log(newForm);
+
+            newForm.start_date = newForm.date_range
+                ? newForm.date_range[0]
+                : null;
+            newForm.end_date = newForm.date_range
+                ? newForm.date_range[1]
+                : null;
+
+            this.$emit("on-save", newForm);
+        },
+        updateDates(e) {
+            this.form.date_range = e;
+        },
+        onSelectAsset(e) {
+            this.errors.asset_id = [];
+
+            if (e == null || e == undefined) {
+                this.form.asset = [];
+                return;
             }
 
-            this.$emit("on-save", this.form);
+            this.form.asset = e[0];
+        },
+        onSelectUser(e) {
+            this.errors.customer_id = [];
+
+            if (e == null || e == undefined) {
+                this.form.customer = null;
+                return;
+            }
+
+            this.form.customer = e[0];
         }
     },
     watch: {

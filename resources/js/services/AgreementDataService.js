@@ -21,6 +21,10 @@ class AgreementDataService {
     delete(id, data) {
         return axios.delete(`/api/v1/agreements/${id}`, data);
     }
+
+    deleteMany(data) {
+        return axios.delete(`/api/v1/agreements/multiple`, data);
+    }
 }
 
 export default new AgreementDataService();

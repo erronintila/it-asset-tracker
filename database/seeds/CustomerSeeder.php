@@ -12,7 +12,7 @@ class CustomerSeeder extends Seeder
     public function run()
     {
         factory(\App\Models\Customer::class, 30)->create()->each(function ($customer) {
-            $customer->user()->save(factory(\App\Models\User::class)->make(["type" => "customer"]));
+            $customer->user()->save(factory(\App\Models\User::class)->make(["name" => $customer->name, "type" => "customer"]));
         });
     }
 }
