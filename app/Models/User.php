@@ -96,6 +96,11 @@ class User extends Authenticatable
         return $this->hasMany(Transaction::class, "owner_id");
     }
 
+    public function agreements()
+    {
+        return $this->hasMany(Agreement::class, "customer_id");
+    }
+
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | LARAVEL ACCESSORS

@@ -1,103 +1,58 @@
 <template>
     <div>
-        <v-row>
-            <v-col class="d-flex justify-start">
-                <v-btn icon @click="$router.go(-1)">
-                    <v-icon>mdi-arrow-left</v-icon>
-                </v-btn>
-                <span class="page-title">New Service Agreement</span>
-            </v-col>
-        </v-row>
+        <page-header :title="'New Agreement'" :backButton="true"></page-header>
 
-        <v-row class="d-flex justify-center">
-            <v-col cols="12" md="6">
-                <v-card flat>
-                    <v-card-title>
-                        General Information
-                    </v-card-title>
-                    <v-card-text>
-                        <v-row class="d-flex justify-center">
-                            <v-col cols="12">
-                                <v-text-field
-                                    label="Reference No."
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Description"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Type"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Asset"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Customer"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Start Date"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="End Date"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Termination Date"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                            </v-col>
-                        </v-row>
-                    </v-card-text>
-                </v-card>
-            </v-col>
-
-            <v-col cols="12" md="6">
-                <v-card flat>
-                    <v-card-title>
-                        Other Information
-                    </v-card-title>
-                    <v-card-text>
-                        <v-row class="d-flex justify-center">
-                            <v-col cols="12">
-                                <v-text-field
-                                    label="Attachments"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                                <v-text-field
-                                    label="Notes"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
-                            </v-col>
-                        </v-row>
-                    </v-card-text>
-                    <v-card-actions>
-                        <v-spacer></v-spacer>
-                        <v-btn
-                            color="primary"
-                            @click="$router.go(-1)"
-                            class="mr-2"
-                            large
-                        >
-                            Save
-                        </v-btn>
-                    </v-card-actions>
-                </v-card>
-            </v-col>
-        </v-row>
+        <Form @on-save="onSave" :errors="errors"></Form>
     </div>
 </template>
+
+<script>
+import AgreementDataService from "../../services/AgreementDataService";
+import Form from "./Form.vue";
+
+export default {
+    components: {
+        Form
+    },
+    data() {
+        return {
+            formDataLoaded: true,
+            errors: {
+                code: [],
+                slug: [],
+                name: [],
+                address: [],
+                street: [],
+                district: [],
+                city: [],
+                province: [],
+                country: [],
+                postal_code: [],
+                latitude: [],
+                longitude: [],
+                is_active: [],
+                notes: [],
+                agreement_id: []
+            }
+        };
+    },
+    methods: {
+        onSave(value) {
+            AgreementDataService.store(value)
+                .then(response => {
+                    console.log(response.data);
+                    alert("Successfully created.");
+                    this.$router.go(-1);
+                })
+                .catch(error => {
+                    console.log(error.response);
+                    alert("An error has occurred.");
+                    this.errors = {
+                        ...this.errors,
+                        ...error.response.data.errors
+                    };
+                });
+        }
+    }
+};
+</script>

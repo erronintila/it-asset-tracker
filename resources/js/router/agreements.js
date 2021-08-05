@@ -16,6 +16,14 @@ const agreement_routes = [
         }
     },
     {
+        path: "/agreements/:id/edit",
+        component: () => import("../pages/agreements/Edit"),
+        name: "agreements.edit",
+        meta: {
+            auth: true
+        }
+    },
+    {
         path: "/agreements/:id",
         component: () => import("../pages/agreements/Show"),
         name: "agreements.show",

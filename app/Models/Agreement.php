@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Agreement extends Model
 {
     use SoftDeletes;
-    
+
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | LARAVEL MODEL CONFIGURATION
@@ -28,6 +28,16 @@ class Agreement extends Model
     | RELATIONSHIPS
     |------------------------------------------------------------------------------------------------------------------------------------
     */
+
+    public function asset()
+    {
+        return $this->belongsTo(Asset::class);
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(User::class, "customer_id");
+    }
 
     /*
     |------------------------------------------------------------------------------------------------------------------------------------

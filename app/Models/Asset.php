@@ -100,6 +100,11 @@ class Asset extends Model
         return $this->belongsTo(Transaction::class, "last_work_order_id");
     }
 
+    public function agreements()
+    {
+        return $this->hasMany(Agreement::class);
+    }
+
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | LARAVEL ACCESSORS
