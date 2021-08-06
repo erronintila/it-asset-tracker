@@ -18,6 +18,7 @@ Route::get('/v1/user', 'AuthController@user'); // Get Current User route
 Route::middleware('auth:sanctum')->prefix("v1")->group(function () {
 
     Route::put('/users/update_password/{id}', 'API\v1\UserController@update_password');
+    Route::get('activity_logs', 'API\v1\ActivityLogController@index');
 
     // Multiple deletion routes
     Route::delete('agreements/multiple', 'API\v1\AgreementController@destroyMany')->name('delete.agreements.multiple');

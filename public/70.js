@@ -9,6 +9,13 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _services_ActivityLogDataService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../services/ActivityLogDataService */ "./resources/js/services/ActivityLogDataService.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -95,52 +102,197 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      selected: [],
-      headers: [{
-        text: "Date",
-        align: "start",
-        value: "date"
+      actions: [{
+        text: "Refresh",
+        action: "refresh",
+        icon: "mdi-refresh"
       }, {
-        text: "User",
-        value: "user"
-      }, {
-        text: "Activity",
-        value: "activity"
-      }, {
-        text: "",
-        value: "actions"
+        text: "Export",
+        action: "export",
+        icon: "mdi-export"
       }],
-      items: [{
-        id: 1,
-        date: "2021-01-01 11:30",
-        user: "Erron Intila",
-        activity: "Cancelled work order #00201"
-      }, {
-        id: 2,
-        date: "2021-01-01 10:30",
-        user: "Erron Intila",
-        activity: "Created work order #00201"
-      }, {
-        id: 3,
-        date: "2021-01-01 10:00",
-        user: "Erron Intila",
-        activity: "Updated account"
-      }, {
-        id: 4,
-        date: "2021-01-01 09:30",
-        user: "Erron Intila",
-        activity: "Deleted asset"
-      }, {
-        id: 5,
-        date: "2021-01-01 08:30",
-        user: "Erron Intila",
-        activity: "Created Asset"
-      }],
-      showSearch: false
+      tableOptions: {
+        options: {
+          sortBy: ["created_at"],
+          sortDesc: [false],
+          page: 1,
+          itemsPerPage: 10
+        },
+        loading: false,
+        itemsPerPageOptions: [10, 20, 50, 100],
+        serverItemsLength: 0,
+        headers: [{
+          text: "Date",
+          value: "created_at"
+        }, {
+          text: "Description",
+          value: "description"
+        }, {
+          text: "Action",
+          value: "action"
+        }]
+      },
+      search: "",
+      items: [],
+      selectedItems: []
     };
+  },
+  methods: {
+    getData: function getData() {
+      var _this = this;
+
+      this.tableOptions.loading = true;
+      return new Promise(function (resolve, reject) {
+        var _this$tableOptions$op = _this.tableOptions.options,
+            sortBy = _this$tableOptions$op.sortBy,
+            sortDesc = _this$tableOptions$op.sortDesc,
+            page = _this$tableOptions$op.page,
+            itemsPerPage = _this$tableOptions$op.itemsPerPage;
+        var search = _this.search; // let status = this.status;
+
+        var data = {
+          params: {
+            sortBy: sortBy[0],
+            sortType: sortDesc[0] ? "desc" : "asc",
+            page: page,
+            itemsPerPage: itemsPerPage,
+            search: search // status: status
+
+          }
+        };
+        _services_ActivityLogDataService__WEBPACK_IMPORTED_MODULE_0__["default"].getAll(data).then(function (response) {
+          console.log(response.data);
+          _this.items = response.data.data.data;
+          _this.tableOptions.serverItemsLength = response.data.data.total;
+          _this.tableOptions.loading = false;
+          resolve();
+        })["catch"](function (error) {
+          _this.tableOptions.loading = false;
+          console.log(error);
+          console.log(error.response);
+          reject();
+        });
+      });
+    },
+    filterAction: function filterAction(action) {
+      switch (action) {
+        case "refresh":
+          this.getData();
+          break;
+
+        case "update":
+          if (!this.selectedItems.length) {
+            alert("No data selected.");
+            return;
+          }
+
+          this.$router.push("/activity_logs/" + this.selectedItems[0].id + "/edit");
+          break;
+
+        case "delete":
+          this.onDelete();
+          break;
+
+        case "restore":
+          break;
+
+        case "export":
+          break;
+
+        default:
+          alert("Error: Action not identified");
+          break;
+      }
+    },
+    openSearchDialog: function openSearchDialog() {
+      alert("Search Dialog");
+    },
+    clearFilters: function clearFilters() {
+      this.selectedItems = [];
+      this.search = "";
+      this.tableOptions.options = {
+        sortBy: ["created_at"],
+        sortDesc: [false],
+        page: 1,
+        itemsPerPage: 10
+      };
+    }
+  },
+  computed: {
+    params: function params(nv) {
+      return _objectSpread({}, this.tableOptions.options);
+    },
+    hasFilters: function hasFilters() {
+      return this.search || this.selectedItems.length;
+    }
+  },
+  watch: {
+    search: function search() {
+      if (!this.search) {
+        this.getData();
+      }
+    },
+    params: {
+      immediate: true,
+      deep: true,
+      handler: function handler() {
+        this.getData();
+      }
+    }
   }
 });
 
@@ -214,57 +366,13 @@ var render = function() {
     "div",
     [
       _c(
-        "v-row",
+        "page-header",
+        { attrs: { title: "Activity Logs" } },
         [
           _c(
-            "v-col",
-            { staticClass: "d-flex align-center" },
+            "template",
+            { slot: "leftSideNavigation" },
             [
-              _c("div", { staticClass: "page-title d-inline mx-3" }, [
-                _vm._v("\n                Activity Logs\n            ")
-              ]),
-              _vm._v(" "),
-              _c(
-                "v-btn",
-                { attrs: { icon: "" } },
-                [_c("v-icon", [_vm._v("mdi-refresh")])],
-                1
-              ),
-              _vm._v(" "),
-              _vm.selected.length
-                ? _c(
-                    "div",
-                    { staticClass: "d-inline" },
-                    [
-                      _c(
-                        "v-btn",
-                        { attrs: { icon: "" } },
-                        [
-                          _c("v-icon", [
-                            _vm._v("mdi-file-document-edit-outline")
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _c(
-                "v-btn",
-                {
-                  attrs: { icon: "" },
-                  on: {
-                    click: function($event) {
-                      _vm.showSearch = !_vm.showSearch
-                    }
-                  }
-                },
-                [_c("v-icon", [_vm._v("mdi-file-search-outline")])],
-                1
-              ),
-              _vm._v(" "),
               _c(
                 "v-menu",
                 {
@@ -280,14 +388,20 @@ var render = function() {
                             "v-btn",
                             _vm._g(
                               _vm._b(
-                                { attrs: { icon: "" } },
+                                { attrs: { icon: "", title: "More action" } },
                                 "v-btn",
                                 attrs,
                                 false
                               ),
                               on
                             ),
-                            [_c("v-icon", [_vm._v("mdi-dots-vertical")])],
+                            [
+                              _c("v-icon", [
+                                _vm._v(
+                                  "\n                            mdi-dots-vertical\n                        "
+                                )
+                              ])
+                            ],
                             1
                           )
                         ]
@@ -299,19 +413,106 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "v-list",
+                    { attrs: { dense: "" } },
                     [
-                      _c(
-                        "v-list-item",
-                        { attrs: { link: "" } },
-                        [_c("v-list-item-title", [_vm._v("Export ")])],
-                        1
-                      )
+                      _vm._l(_vm.actions, function(item, index) {
+                        return [
+                          _c(
+                            "v-list-item",
+                            {
+                              key: index,
+                              attrs: { link: "" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.filterAction(item.action)
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "v-list-item-icon",
+                                [_c("v-icon", [_vm._v(_vm._s(item.icon))])],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("v-list-item-title", [
+                                _c("div", { staticClass: "mr-3" }, [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(item.text) +
+                                      "\n                                "
+                                  )
+                                ])
+                              ])
+                            ],
+                            1
+                          )
+                        ]
+                      })
                     ],
-                    1
+                    2
                   )
                 ],
                 1
               )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "template",
+            { slot: "rightSideNavigation" },
+            [
+              _c("v-text-field", {
+                staticClass: "hidden-sm-and-down mt-5 p-0",
+                attrs: {
+                  label: "Search",
+                  clearable: "",
+                  "append-icon": "mdi-clipboard-search-outline"
+                },
+                on: {
+                  "click:append": _vm.openSearchDialog,
+                  keyup: function($event) {
+                    if (
+                      !$event.type.indexOf("key") &&
+                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                    ) {
+                      return null
+                    }
+                    return _vm.getData.apply(null, arguments)
+                  }
+                },
+                model: {
+                  value: _vm.search,
+                  callback: function($$v) {
+                    _vm.search = $$v
+                  },
+                  expression: "search"
+                }
+              })
+            ],
+            1
+          )
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c(
+        "v-row",
+        { staticClass: "hidden-sm-and-up mx-1" },
+        [
+          _c(
+            "v-col",
+            [
+              _c("v-text-field", {
+                staticClass: "mt-5 p-0",
+                attrs: {
+                  label: "Search",
+                  clearable: "",
+                  "append-icon": "mdi-clipboard-search-outline"
+                },
+                on: { "click:append": _vm.openSearchDialog }
+              })
             ],
             1
           )
@@ -319,28 +520,59 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _vm.showSearch
-        ? _c(
-            "v-row",
-            [
-              _c(
-                "v-col",
-                { staticClass: "d-flex" },
-                [
-                  _c("v-text-field", {
-                    attrs: {
-                      outlined: "",
-                      clearable: "",
-                      placeholder: "Enter text here..."
+      _c(
+        "div",
+        { staticClass: "my-3" },
+        [
+          _vm.selectedItems.length
+            ? _c(
+                "v-chip",
+                {
+                  attrs: { close: "", label: "", outlined: "", small: "" },
+                  on: {
+                    "click:close": function($event) {
+                      _vm.selectedItems = []
                     }
-                  })
-                ],
-                1
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n            " +
+                      _vm._s(_vm.selectedItems.length) +
+                      " item(s) selected\n        "
+                  )
+                ]
               )
-            ],
-            1
-          )
-        : _vm._e(),
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.search
+            ? _c(
+                "v-chip",
+                {
+                  attrs: { close: "", label: "", outlined: "", small: "" },
+                  on: {
+                    "click:close": function($event) {
+                      _vm.search = ""
+                    }
+                  }
+                },
+                [_vm._v("\n            " + _vm._s(_vm.search) + "\n        ")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.hasFilters
+            ? _c(
+                "v-chip",
+                {
+                  attrs: { close: "", label: "", outlined: "", small: "" },
+                  on: { "click:close": _vm.clearFilters }
+                },
+                [_vm._v("\n            Clear All Filters\n        ")]
+              )
+            : _vm._e()
+        ],
+        1
+      ),
       _vm._v(" "),
       _c(
         "v-row",
@@ -351,31 +583,57 @@ var render = function() {
             [
               _c("v-data-table", {
                 attrs: {
-                  headers: _vm.headers,
+                  "show-select": "",
+                  "item-key": "id",
+                  headers: _vm.tableOptions.headers,
                   items: _vm.items,
-                  "items-per-page": 10,
-                  "show-select": ""
+                  loading: _vm.tableOptions.loading,
+                  options: _vm.tableOptions.options,
+                  "server-items-length": _vm.tableOptions.serverItemsLength,
+                  "footer-props": {
+                    itemsPerPageOptions: _vm.tableOptions.itemsPerPageOptions,
+                    showFirstLastPage: true,
+                    firstIcon: "mdi-page-first",
+                    lastIcon: "mdi-page-last",
+                    prevIcon: "mdi-chevron-left",
+                    nextIcon: "mdi-chevron-right"
+                  }
+                },
+                on: {
+                  "update:options": function($event) {
+                    return _vm.$set(_vm.tableOptions, "options", $event)
+                  }
                 },
                 scopedSlots: _vm._u(
                   [
                     {
-                      key: "item.actions",
+                      key: "item.created_at",
+                      fn: function(ref) {
+                        var item = ref.item
+                        return [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(
+                                _vm._f("moment")(item.created_at, "LLLL")
+                              ) +
+                              "\n                "
+                          )
+                        ]
+                      }
+                    },
+                    {
+                      key: "item.action",
                       fn: function(ref) {
                         var item = ref.item
                         return [
                           _c(
                             "router-link",
                             {
-                              attrs: {
-                                to: {
-                                  name: "",
-                                  params: { id: item.id }
-                                }
-                              }
+                              attrs: { to: "/" + item.properties.custom.link }
                             },
                             [
                               _vm._v(
-                                "\n                        More\n                    "
+                                "\n                        View Details\n                    "
                               )
                             ]
                           )
@@ -387,11 +645,11 @@ var render = function() {
                   true
                 ),
                 model: {
-                  value: _vm.selected,
+                  value: _vm.selectedItems,
                   callback: function($$v) {
-                    _vm.selected = $$v
+                    _vm.selectedItems = $$v
                   },
-                  expression: "selected"
+                  expression: "selectedItems"
                 }
               })
             ],
@@ -495,6 +753,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_3930f959_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/services/ActivityLogDataService.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/services/ActivityLogDataService.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+// import http from "../http-common";
+
+
+var ActivityLogDataService = /*#__PURE__*/function () {
+  function ActivityLogDataService() {
+    _classCallCheck(this, ActivityLogDataService);
+  }
+
+  _createClass(ActivityLogDataService, [{
+    key: "getAll",
+    value: function getAll(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/activity_logs", data);
+    }
+  }]);
+
+  return ActivityLogDataService;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (new ActivityLogDataService());
 
 /***/ })
 
