@@ -1,26 +1,14 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[26],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/licenses/Form.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/licenses/Form.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/locations/Form.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/locations/Form.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_selectors_AssetCategoryDialogSelector_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/selectors/AssetCategoryDialogSelector.vue */ "./resources/js/components/selectors/AssetCategoryDialogSelector.vue");
-/* harmony import */ var _components_selectors_ManufacturerDialogSelector_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/selectors/ManufacturerDialogSelector.vue */ "./resources/js/components/selectors/ManufacturerDialogSelector.vue");
-/* harmony import */ var _components_selectors_SupplierDialogSelector_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/selectors/SupplierDialogSelector.vue */ "./resources/js/components/selectors/SupplierDialogSelector.vue");
-/* harmony import */ var _components_X_DateRangePicker_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/X-DateRangePicker.vue */ "./resources/js/components/X-DateRangePicker.vue");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -180,138 +168,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    licenseForm: {
+    locationForm: {
       type: Object,
       "default": function _default() {
         return {
           code: "",
           slug: "",
-          reference_no: "",
-          serial_no: "",
-          description: "",
-          purchased_date: "",
-          purchased_cost: "",
-          warranty_start_date: "",
-          warranty_end_date: "",
-          supplier: "",
-          manufacturer: "",
-          asset_category: "",
-          assigned_user_id: "",
-          assigned_location_id: "",
-          assigned_asset_id: "",
-          date_range: []
+          name: "",
+          address: "",
+          street: "",
+          district: "",
+          city: "",
+          province: "",
+          country: "",
+          postal_code: "",
+          latitude: "",
+          longitude: "",
+          is_active: true,
+          notes: "",
+          location_id: ""
         };
       }
     },
@@ -321,19 +198,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return {
           code: [],
           slug: [],
-          reference_no: [],
-          serial_no: [],
-          description: [],
-          purchased_date: [],
-          purchased_cost: [],
-          warranty_start_date: [],
-          warranty_end_date: [],
-          supplier_id: [],
-          manufacturer_id: [],
-          asset_category_id: [],
-          assigned_user_id: [],
-          assigned_location_id: [],
-          assigned_asset_id: []
+          name: [],
+          address: [],
+          street: [],
+          district: [],
+          city: [],
+          province: [],
+          country: [],
+          postal_code: [],
+          latitude: [],
+          longitude: [],
+          is_active: [],
+          notes: [],
+          location_id: []
         };
       }
     },
@@ -343,50 +220,41 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return {
           code: [],
           slug: [],
-          reference_no: [],
-          serial_no: [],
-          description: [],
-          purchased_date: [],
-          purchased_cost: [],
-          warranty_start_date: [],
-          warranty_end_date: [],
-          supplier_id: [],
-          manufacturer_id: [],
-          asset_category_id: [],
-          assigned_user_id: [],
-          assigned_location_id: [],
-          assigned_asset_id: []
+          name: [],
+          address: [],
+          street: [],
+          district: [],
+          city: [],
+          province: [],
+          country: [],
+          postal_code: [],
+          latitude: [],
+          longitude: [],
+          is_active: [],
+          notes: [],
+          location_id: []
         };
       }
     }
   },
-  components: {
-    AssetCategoryDialogSelector: _components_selectors_AssetCategoryDialogSelector_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    ManufacturerDialogSelector: _components_selectors_ManufacturerDialogSelector_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    SupplierDialogSelector: _components_selectors_SupplierDialogSelector_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    XDateRangePicker: _components_X_DateRangePicker_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
-  },
   data: function data() {
     return {
-      purchased_dateModal: false,
       valid: false,
       form: {
         code: "",
         slug: "",
-        reference_no: "",
-        serial_no: "",
-        description: "",
-        purchased_date: "",
-        purchased_cost: "",
-        warranty_start_date: "",
-        warranty_end_date: "",
-        supplier: "",
-        manufacturer: "",
-        asset_category: "",
-        assigned_user_id: "",
-        assigned_location_id: "",
-        assigned_asset_id: "",
-        date_range: []
+        name: "",
+        address: "",
+        street: "",
+        district: "",
+        city: "",
+        province: "",
+        country: "",
+        postal_code: "",
+        latitude: "",
+        longitude: "",
+        is_active: true,
+        location_id: ""
       }
     };
   },
@@ -403,80 +271,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       console.log(this.form);
 
-      var newForm = _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, this.form), {
-        asset_category_id: this.form.asset_category.id
-      }), {
-        manufacturer_id: this.form.manufacturer.id
-      }), {
-        supplier_id: this.form.supplier.id
-      });
-
-      if (!newForm.is_active) {
-        newForm.is_active = false;
+      if (!this.form.is_active) {
+        this.form.is_active = false;
       }
 
-      newForm.warranty_start_date = newForm.date_range ? newForm.date_range[0] : null;
-      newForm.warranty_end_date = newForm.date_range ? newForm.date_range[1] : null;
-      this.$emit("on-save", newForm);
-    },
-    onSelectAssetCategory: function onSelectAssetCategory(e) {
-      this.errors.asset_category_id = [];
-
-      if (e == null || e == undefined) {
-        this.form.asset_category = null;
-        return;
-      }
-
-      this.form.asset_category = e[0];
-    },
-    onSelectManufacturer: function onSelectManufacturer(e) {
-      this.errors.manufacturer_id = [];
-
-      if (e == null || e == undefined) {
-        this.form.manufacturer = null;
-        return;
-      }
-
-      this.form.manufacturer = e[0];
-    },
-    onSelectSupplier: function onSelectSupplier(e) {
-      this.errors.supplier_id = [];
-
-      if (e == null || e == undefined) {
-        this.form.supplier = null;
-        return;
-      }
-
-      this.form.supplier = e[0];
-    },
-    updateDates: function updateDates(e) {
-      this.form.date_range = e;
-    }
-  },
-  computed: {
-    warranty_date: function warranty_date() {
-      return this.warranty_start_date + "/" + this.warranty_end_date;
-    },
-    maxDate: function maxDate() {
-      return moment__WEBPACK_IMPORTED_MODULE_0___default()().format("YYYY-MM-DD");
-    },
-    formattedDateRange: function formattedDateRange() {
-      var start_date = moment__WEBPACK_IMPORTED_MODULE_0___default()(this.form.date_range[0]).format("MMM DD, YYYY");
-      var end_date = moment__WEBPACK_IMPORTED_MODULE_0___default()(this.form.date_range[1]).format("MMM DD, YYYY");
-
-      if (JSON.stringify(start_date) == JSON.stringify(end_date)) {
-        return start_date;
-      }
-
-      if (JSON.stringify(end_date) == null) {
-        return start_date;
-      }
-
-      return "".concat(start_date, " ~ ").concat(end_date);
+      this.$emit("on-save", this.form);
     }
   },
   watch: {
-    licenseForm: {
+    locationForm: {
       immediate: true,
       handler: function handler(newValue, oldValue) {
         this.form = newValue;
@@ -487,10 +290,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/licenses/Form.vue?vue&type=template&id=f2561d30&":
-/*!***********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/licenses/Form.vue?vue&type=template&id=f2561d30& ***!
-  \***********************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/locations/Form.vue?vue&type=template&id=eb468fc4&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/locations/Form.vue?vue&type=template&id=eb468fc4& ***!
+  \************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -521,7 +324,7 @@ var render = function() {
         [
           _c(
             "v-col",
-            { attrs: { cols: "12", sm: "6" } },
+            { attrs: { cols: "12", md: "6" } },
             [
               _c(
                 "v-card",
@@ -546,170 +349,178 @@ var render = function() {
                             [
                               _c("v-text-field", {
                                 attrs: {
-                                  "error-messages": _vm.errors.reference_no[0],
-                                  hint: "Ex. 000011",
-                                  label: "Reference No.",
+                                  label: "Name",
                                   outlined: "",
-                                  clearable: ""
+                                  clearable: "",
+                                  hint: "Ex. Warehouse1",
+                                  "error-messages": _vm.errors.name[0]
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.reference_no = []
+                                    _vm.errors.name = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.reference_no,
+                                  value: _vm.form.name,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "reference_no", $$v)
+                                    _vm.$set(_vm.form, "name", $$v)
                                   },
-                                  expression: "form.reference_no"
+                                  expression: "form.name"
                                 }
                               }),
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  "error-messages": _vm.errors.serial_no[0],
-                                  hint: "Ex. 000011",
-                                  label: "Serial No.",
+                                  label: "Address",
                                   outlined: "",
-                                  clearable: ""
+                                  clearable: "",
+                                  hint: "Ex. Block 16 Lot 4 XYZ Subdivision",
+                                  "error-messages": _vm.errors.address[0]
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.serial_no = []
+                                    _vm.errors.address = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.serial_no,
+                                  value: _vm.form.address,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "serial_no", $$v)
+                                    _vm.$set(_vm.form, "address", $$v)
                                   },
-                                  expression: "form.serial_no"
+                                  expression: "form.address"
                                 }
                               }),
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  "error-messages": _vm.errors.description[0],
-                                  hint: "Ex. 000011",
-                                  label: "Description",
+                                  label: "Street",
                                   outlined: "",
-                                  clearable: ""
+                                  clearable: "",
+                                  hint: "Ex. Balete Street",
+                                  "error-messages": _vm.errors.street[0]
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.description = []
+                                    _vm.errors.street = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.description,
+                                  value: _vm.form.street,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "description", $$v)
+                                    _vm.$set(_vm.form, "street", $$v)
                                   },
-                                  expression: "form.description"
+                                  expression: "form.street"
                                 }
                               }),
                               _vm._v(" "),
-                              _c("AssetCategoryDialogSelector", {
+                              _c("v-text-field", {
                                 attrs: {
-                                  selected: !_vm.form.asset_category
-                                    ? []
-                                    : [].concat(_vm.form.asset_category)
+                                  label: "District",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. Barangay Poblacion",
+                                  "error-messages": _vm.errors.district[0]
                                 },
-                                on: { "on-select": _vm.onSelectAssetCategory },
-                                scopedSlots: _vm._u([
-                                  {
-                                    key: "openDialog",
-                                    fn: function(ref) {
-                                      var on = ref.on
-                                      var attrs = ref.attrs
-                                      return [
-                                        _c(
-                                          "v-text-field",
-                                          _vm._g(
-                                            _vm._b(
-                                              {
-                                                staticClass:
-                                                  "d-flex justify-center align-center",
-                                                attrs: {
-                                                  value: _vm.form.asset_category
-                                                    ? _vm.form.asset_category
-                                                        .name
-                                                    : "",
-                                                  "error-messages":
-                                                    _vm.errors
-                                                      .asset_category_id,
-                                                  label: "Asset Category",
-                                                  readonly: "",
-                                                  outlined: ""
-                                                },
-                                                on: {
-                                                  input: function($event) {
-                                                    _vm.errors.asset_category_id = []
-                                                  }
-                                                }
-                                              },
-                                              "v-text-field",
-                                              attrs,
-                                              false
-                                            ),
-                                            on
-                                          )
-                                        )
-                                      ]
-                                    }
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.district = []
                                   }
-                                ])
+                                },
+                                model: {
+                                  value: _vm.form.district,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "district", $$v)
+                                  },
+                                  expression: "form.district"
+                                }
                               }),
                               _vm._v(" "),
-                              _c("ManufacturerDialogSelector", {
+                              _c("v-text-field", {
                                 attrs: {
-                                  selected: !_vm.form.manufacturer
-                                    ? []
-                                    : [].concat(_vm.form.manufacturer)
+                                  label: "City",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. General Santos City",
+                                  "error-messages": _vm.errors.city[0]
                                 },
-                                on: { "on-select": _vm.onSelectManufacturer },
-                                scopedSlots: _vm._u([
-                                  {
-                                    key: "openDialog",
-                                    fn: function(ref) {
-                                      var on = ref.on
-                                      var attrs = ref.attrs
-                                      return [
-                                        _c(
-                                          "v-text-field",
-                                          _vm._g(
-                                            _vm._b(
-                                              {
-                                                staticClass:
-                                                  "d-flex justify-center align-center",
-                                                attrs: {
-                                                  value: _vm.form.manufacturer
-                                                    ? _vm.form.manufacturer.name
-                                                    : "",
-                                                  "error-messages":
-                                                    _vm.errors.manufacturer_id,
-                                                  label: "Manufacturer",
-                                                  readonly: "",
-                                                  outlined: ""
-                                                },
-                                                on: {
-                                                  input: function($event) {
-                                                    _vm.errors.manufacturer_id = []
-                                                  }
-                                                }
-                                              },
-                                              "v-text-field",
-                                              attrs,
-                                              false
-                                            ),
-                                            on
-                                          )
-                                        )
-                                      ]
-                                    }
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.city = []
                                   }
-                                ])
+                                },
+                                model: {
+                                  value: _vm.form.city,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "city", $$v)
+                                  },
+                                  expression: "form.city"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Province",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "South Cotabato",
+                                  "error-messages": _vm.errors.province[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.province = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.province,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "province", $$v)
+                                  },
+                                  expression: "form.province"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-combobox", {
+                                attrs: {
+                                  label: "Country",
+                                  outlined: "",
+                                  clearable: "",
+                                  items: ["Philippines"],
+                                  "error-messages": _vm.errors.country[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.country = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.country,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "country", $$v)
+                                  },
+                                  expression: "form.country"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Postal Code",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. 9500",
+                                  type: "number"
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.postal_code = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.postal_code,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "postal_code", $$v)
+                                  },
+                                  expression: "form.postal_code"
+                                }
                               })
                             ],
                             1
@@ -729,7 +540,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "v-col",
-            { attrs: { cols: "12", sm: "6" } },
+            { attrs: { cols: "12", md: "6" } },
             [
               _c(
                 "v-card",
@@ -737,7 +548,7 @@ var render = function() {
                 [
                   _c("v-card-title", [
                     _vm._v(
-                      "\n                    Purchase Information\n                "
+                      "\n                    Other Information\n                "
                     )
                   ]),
                   _vm._v(" "),
@@ -752,290 +563,95 @@ var render = function() {
                             "v-col",
                             { attrs: { cols: "12" } },
                             [
-                              _c("SupplierDialogSelector", {
-                                attrs: {
-                                  selected: !_vm.form.supplier
-                                    ? []
-                                    : [].concat(_vm.form.supplier)
-                                },
-                                on: { "on-select": _vm.onSelectSupplier },
-                                scopedSlots: _vm._u([
-                                  {
-                                    key: "openDialog",
-                                    fn: function(ref) {
-                                      var on = ref.on
-                                      var attrs = ref.attrs
-                                      return [
-                                        _c(
-                                          "v-text-field",
-                                          _vm._g(
-                                            _vm._b(
-                                              {
-                                                staticClass:
-                                                  "d-flex justify-center align-center",
-                                                attrs: {
-                                                  value: _vm.form.supplier
-                                                    ? _vm.form.supplier.name
-                                                    : "",
-                                                  "error-messages":
-                                                    _vm.errors.supplier_id,
-                                                  label: "Supplier",
-                                                  readonly: "",
-                                                  outlined: ""
-                                                },
-                                                on: {
-                                                  input: function($event) {
-                                                    _vm.errors.supplier_id = []
-                                                  }
-                                                }
-                                              },
-                                              "v-text-field",
-                                              attrs,
-                                              false
-                                            ),
-                                            on
-                                          )
-                                        )
-                                      ]
-                                    }
-                                  }
-                                ])
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "v-dialog",
-                                {
-                                  ref: "dialog",
-                                  attrs: {
-                                    "return-value": _vm.form.purchased_date,
-                                    persistent: "",
-                                    width: "290px"
-                                  },
-                                  on: {
-                                    "update:returnValue": function($event) {
-                                      return _vm.$set(
-                                        _vm.form,
-                                        "purchased_date",
-                                        $event
-                                      )
-                                    },
-                                    "update:return-value": function($event) {
-                                      return _vm.$set(
-                                        _vm.form,
-                                        "purchased_date",
-                                        $event
-                                      )
-                                    }
-                                  },
-                                  scopedSlots: _vm._u([
-                                    {
-                                      key: "activator",
-                                      fn: function(ref) {
-                                        var on = ref.on
-                                        var attrs = ref.attrs
-                                        return [
-                                          _c(
-                                            "v-text-field",
-                                            _vm._g(
-                                              _vm._b(
-                                                {
-                                                  attrs: {
-                                                    label: "Purchased Date",
-                                                    readonly: "",
-                                                    outlined: "",
-                                                    hint: "Ex. 2000-01-01",
-                                                    "error-messages":
-                                                      _vm.errors
-                                                        .purchased_date[0],
-                                                    clearable: ""
-                                                  },
-                                                  on: {
-                                                    input: function($event) {
-                                                      _vm.errors.purchased_date = []
-                                                    }
-                                                  },
-                                                  model: {
-                                                    value:
-                                                      _vm.form.purchased_date,
-                                                    callback: function($$v) {
-                                                      _vm.$set(
-                                                        _vm.form,
-                                                        "purchased_date",
-                                                        $$v
-                                                      )
-                                                    },
-                                                    expression:
-                                                      "form.purchased_date"
-                                                  }
-                                                },
-                                                "v-text-field",
-                                                attrs,
-                                                false
-                                              ),
-                                              on
-                                            )
-                                          )
-                                        ]
-                                      }
-                                    }
-                                  ]),
-                                  model: {
-                                    value: _vm.purchased_dateModal,
-                                    callback: function($$v) {
-                                      _vm.purchased_dateModal = $$v
-                                    },
-                                    expression: "purchased_dateModal"
-                                  }
-                                },
-                                [
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-date-picker",
-                                    {
-                                      attrs: {
-                                        max: _vm.maxDate,
-                                        scrollable: ""
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          _vm.errors.purchased_date = []
-                                        }
-                                      },
-                                      model: {
-                                        value: _vm.form.purchased_date,
-                                        callback: function($$v) {
-                                          _vm.$set(
-                                            _vm.form,
-                                            "purchased_date",
-                                            $$v
-                                          )
-                                        },
-                                        expression: "form.purchased_date"
-                                      }
-                                    },
-                                    [
-                                      _c("v-spacer"),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { text: "", color: "primary" },
-                                          on: {
-                                            click: function($event) {
-                                              _vm.purchased_dateModal = false
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                                        Cancel\n                                    "
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { text: "", color: "primary" },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.$refs.dialog.save(
-                                                _vm.form.purchased_date
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                                        OK\n                                    "
-                                          )
-                                        ]
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
-                                  "error-messages":
-                                    _vm.errors.purchased_cost[0],
-                                  hint: "Ex. 000011",
-                                  label: "Purchase Cost",
+                                  label: "Latitude",
                                   outlined: "",
-                                  clearable: ""
+                                  clearable: "",
+                                  hint: "Ex. 6.1164 N",
+                                  "error-messages": _vm.errors.latitude[0]
                                 },
                                 on: {
                                   input: function($event) {
-                                    _vm.errors.purchased_cost = []
+                                    _vm.errors.latitude = []
                                   }
                                 },
                                 model: {
-                                  value: _vm.form.purchased_cost,
+                                  value: _vm.form.latitude,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.form, "purchased_cost", $$v)
+                                    _vm.$set(_vm.form, "latitude", $$v)
                                   },
-                                  expression: "form.purchased_cost"
+                                  expression: "form.latitude"
                                 }
                               }),
                               _vm._v(" "),
-                              _c("XDateRangePicker", {
-                                ref: "dateRangePicker",
-                                attrs: { dateRange: _vm.form.date_range },
-                                on: { "on-change": _vm.updateDates },
-                                scopedSlots: _vm._u([
-                                  {
-                                    key: "openDialog",
-                                    fn: function(ref) {
-                                      var on = ref.on
-                                      var attrs = ref.attrs
-                                      var dateRangeText = ref.dateRangeText
-                                      return [
-                                        _c(
-                                          "v-text-field",
-                                          _vm._g(
-                                            _vm._b(
-                                              {
-                                                attrs: {
-                                                  value: dateRangeText,
-                                                  "error-messages":
-                                                    _vm.errors
-                                                      .warranty_start_date,
-                                                  label: "Warranty",
-                                                  readonly: "",
-                                                  outlined: "",
-                                                  clearable: ""
-                                                },
-                                                on: {
-                                                  input: function($event) {
-                                                    _vm.errors.warranty_start_date = []
-                                                  }
-                                                },
-                                                model: {
-                                                  value: _vm.form.date_range,
-                                                  callback: function($$v) {
-                                                    _vm.$set(
-                                                      _vm.form,
-                                                      "date_range",
-                                                      $$v
-                                                    )
-                                                  },
-                                                  expression: "form.date_range"
-                                                }
-                                              },
-                                              "v-text-field",
-                                              attrs,
-                                              false
-                                            ),
-                                            on
-                                          )
-                                        )
-                                      ]
-                                    }
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Longitude",
+                                  outlined: "",
+                                  clearable: "",
+                                  hint: "Ex. 125.1716 E",
+                                  "error-messages": _vm.errors.longitude[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.longitude = []
                                   }
-                                ])
+                                },
+                                model: {
+                                  value: _vm.form.longitude,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "longitude", $$v)
+                                  },
+                                  expression: "form.longitude"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Parent Location",
+                                  outlined: "",
+                                  clearable: "",
+                                  "error-messages": _vm.errors.location_id[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.location_id = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.location_id,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.form,
+                                      "location_id",
+                                      _vm._n($$v)
+                                    )
+                                  },
+                                  expression: "form.location_id"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-textarea", {
+                                attrs: {
+                                  label: "Notes",
+                                  outlined: "",
+                                  clearable: "",
+                                  rows: "3",
+                                  "error-messages": _vm.errors.notes[0]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    _vm.errors.notes = []
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.notes,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "notes", $$v)
+                                  },
+                                  expression: "form.notes"
+                                }
                               })
                             ],
                             1
@@ -1050,6 +666,24 @@ var render = function() {
                   _c(
                     "v-card-actions",
                     [
+                      _c(
+                        "v-sheet",
+                        { staticClass: "ml-4" },
+                        [
+                          _c("v-switch", {
+                            attrs: { inset: "", label: "Active" },
+                            model: {
+                              value: _vm.form.is_active,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "is_active", $$v)
+                              },
+                              expression: "form.is_active"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
                       _c("v-spacer"),
                       _vm._v(" "),
                       _c(
@@ -1088,17 +722,17 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/pages/licenses/Form.vue":
-/*!**********************************************!*\
-  !*** ./resources/js/pages/licenses/Form.vue ***!
-  \**********************************************/
+/***/ "./resources/js/pages/locations/Form.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/pages/locations/Form.vue ***!
+  \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Form_vue_vue_type_template_id_f2561d30___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=template&id=f2561d30& */ "./resources/js/pages/licenses/Form.vue?vue&type=template&id=f2561d30&");
-/* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./resources/js/pages/licenses/Form.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Form_vue_vue_type_template_id_eb468fc4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=template&id=eb468fc4& */ "./resources/js/pages/locations/Form.vue?vue&type=template&id=eb468fc4&");
+/* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./resources/js/pages/locations/Form.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -1109,8 +743,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Form_vue_vue_type_template_id_f2561d30___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Form_vue_vue_type_template_id_f2561d30___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Form_vue_vue_type_template_id_eb468fc4___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Form_vue_vue_type_template_id_eb468fc4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -1120,47 +754,47 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/pages/licenses/Form.vue"
+component.options.__file = "resources/js/pages/locations/Form.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/pages/licenses/Form.vue?vue&type=script&lang=js&":
-/*!***********************************************************************!*\
-  !*** ./resources/js/pages/licenses/Form.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************/
+/***/ "./resources/js/pages/locations/Form.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/pages/locations/Form.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/licenses/Form.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/locations/Form.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/pages/licenses/Form.vue?vue&type=template&id=f2561d30&":
-/*!*****************************************************************************!*\
-  !*** ./resources/js/pages/licenses/Form.vue?vue&type=template&id=f2561d30& ***!
-  \*****************************************************************************/
+/***/ "./resources/js/pages/locations/Form.vue?vue&type=template&id=eb468fc4&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/pages/locations/Form.vue?vue&type=template&id=eb468fc4& ***!
+  \******************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_f2561d30___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=template&id=f2561d30& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/licenses/Form.vue?vue&type=template&id=f2561d30&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_f2561d30___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_eb468fc4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=template&id=eb468fc4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/locations/Form.vue?vue&type=template&id=eb468fc4&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_eb468fc4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_f2561d30___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_eb468fc4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "./resources/js/services/LicenseDataService.js":
-/*!*****************************************************!*\
-  !*** ./resources/js/services/LicenseDataService.js ***!
-  \*****************************************************/
+/***/ "./resources/js/services/LocationDataService.js":
+/*!******************************************************!*\
+  !*** ./resources/js/services/LocationDataService.js ***!
+  \******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1177,47 +811,47 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 // import http from "../http-common";
 
 
-var LicenseDataService = /*#__PURE__*/function () {
-  function LicenseDataService() {
-    _classCallCheck(this, LicenseDataService);
+var LocationDataService = /*#__PURE__*/function () {
+  function LocationDataService() {
+    _classCallCheck(this, LocationDataService);
   }
 
-  _createClass(LicenseDataService, [{
+  _createClass(LocationDataService, [{
     key: "getAll",
     value: function getAll(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/licenses", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/locations", data);
     }
   }, {
     key: "show",
     value: function show(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/licenses/".concat(id), data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/locations/".concat(id), data);
     }
   }, {
     key: "store",
     value: function store(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/licenses", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/locations", data);
     }
   }, {
     key: "update",
     value: function update(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/licenses/".concat(id), data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/locations/".concat(id), data);
     }
   }, {
     key: "delete",
     value: function _delete(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/licenses/".concat(id), data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/locations/".concat(id), data);
     }
   }, {
     key: "deleteMany",
     value: function deleteMany(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/licenses/multiple", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/locations/multiple", data);
     }
   }]);
 
-  return LicenseDataService;
+  return LocationDataService;
 }();
 
-/* harmony default export */ __webpack_exports__["default"] = (new LicenseDataService());
+/* harmony default export */ __webpack_exports__["default"] = (new LocationDataService());
 
 /***/ })
 
