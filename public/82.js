@@ -147,16 +147,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 });
 
               case 5:
-                _context.next = 11;
+                _context.next = 12;
                 break;
 
               case 7:
                 _context.prev = 7;
                 _context.t0 = _context["catch"](0);
                 _this.errors = _context.t0.response.data.errors;
+                console.log(_context.t0.response);
                 alert(_context.t0);
 
-              case 11:
+              case 12:
               case "end":
                 return _context.stop();
             }

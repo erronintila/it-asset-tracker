@@ -62,7 +62,8 @@ class LoginController extends Controller
             'username' => $request->username,
             'password' => $request->password,
             'is_active' => 1,
-            'type' => 'admin' || 'employee'
+            'can_login' => 1
+            // 'type' => 'employee' || 'admin'
         ];
     }
 }

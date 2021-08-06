@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\API\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserUpdatePasswordRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Traits\HttpResponseMessage;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -32,7 +34,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = new User();
-        return $this->success("", $user, 200);
+        return $this->successResponse("", $user, 200);
     }
 
     /**
@@ -44,7 +46,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return $this->success("", $user, 200);
+        return $this->successResponse("", $user, 200);
     }
 
     /**
@@ -57,7 +59,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-        return $this->success("", $user, 200);
+        return $this->successResponse("", $user, 200);
     }
 
     /**
@@ -69,6 +71,18 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::destroy($id);
-        return $this->success("", $user, 200);
+        return $this->successResponse("", $user, 200);
+    }
+
+    public function update_password(UserUpdatePasswordRequest $request, $id)
+    {
+        $validated = $request->validated();
+        $data = DB::transaction(function () use ($validated) {
+            $user = User::findOrFail(auth()->user()->id);
+            $user->update(['password' => bcrypt($validated["password"])]);
+            return $user;
+        });
+
+        return $this->successResponse("User password updated successfully", $data, 200);
     }
 }

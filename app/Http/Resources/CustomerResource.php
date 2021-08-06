@@ -37,6 +37,7 @@ class CustomerResource extends JsonResource
             "organization_type" => $this->organization_type,
             "is_company" => $this->is_active,
             "is_active" => $this->is_active,
+            'can_login' => $this->can_login,
             "created_at" => $this->created_at,
             "updated_at" => $this->updated_at,
             "deleted_at" => $this->deleted_at,

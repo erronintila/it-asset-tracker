@@ -68,6 +68,8 @@ class EmployeeController extends Controller
             $user->name = $validated['first_name'] . ' ' . $validated['last_name'];
             $user->username = $validated['username'];
             $user->email = $validated['email'] ?? null;
+            $user->email_verified_at = now();
+            $user->can_login = true;
             $user->password = bcrypt('password');
 
             $employee = new Employee();

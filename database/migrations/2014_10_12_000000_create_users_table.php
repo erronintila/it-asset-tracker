@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->boolean('is_active')->default(true);
+            $table->boolean('can_login')->default(false);
             $table->text('notes')->nullable();
             $table->boolean('default')->default(false);
             $table->timestamps();

@@ -21,6 +21,10 @@ class UserDataService {
     delete(id, data) {
         return axios.delete(`/api/v1/users/${id}`, data);
     }
+
+    updatePassword(id, data) {
+        return axios.put(`/api/v1/users/update_password/${id}`, data);
+    }
 }
 
 export default new UserDataService();
