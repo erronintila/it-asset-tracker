@@ -13,6 +13,7 @@ use App\Models\TransactionType;
 use App\Models\User;
 use App\Models\WorkOrder;
 use App\Traits\HttpResponseMessage;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -32,12 +33,21 @@ class WorkOrderController extends Controller
         $sortBy = request('sortBy') ?? "code";
         $sortType = request('sortType') ?? "asc";
         $itemsPerPage = request('itemsPerPage') ?? 10;
+        // $scheduled_start_date = request('scheduled_start_date');
+        // $scheduled_end_date = request('scheduled_end_date');
 
         $transactions = Transaction::search($search)
             ->with(['user', 'transactionable'])
             ->where('transactionable_type', 'App\Models\WorkOrder')
-            ->orderBy($sortBy, $sortType)
-            ->paginate($itemsPerPage);
+            ->orderBy($sortBy, $sortType);
+
+        if (request()->has("scheduled_start_date") && request()->has("scheduled_end_date")) {
+            $start_date = Carbon::parse(request("scheduled_start_date"))->startOfDay();
+            $end_date = Carbon::parse(request("scheduled_end_date"))->endOfDay();
+            $transactions = $transactions->whereBetween("created_at", [$start_date, $end_date]);
+        }
+
+        $transactions = $transactions->paginate($itemsPerPage);
 
         return $this->successResponse('read', $transactions, 200);
     }

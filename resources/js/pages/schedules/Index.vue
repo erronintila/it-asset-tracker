@@ -139,10 +139,54 @@
                                 mdi-chevron-right
                             </v-icon>
                         </v-btn>
+                        <v-menu rounded offset-y>
+                            <template v-slot:activator="{ on, attrs }">
+                                <v-btn
+                                    icon
+                                    v-bind="attrs"
+                                    v-on="on"
+                                    title="Items per page"
+                                >
+                                    {{ tableOptions.options.itemsPerPage }}
+                                </v-btn>
+                            </template>
+
+                            <v-list dense>
+                                <template
+                                    v-for="(item,
+                                    index) in tableOptions.itemsPerPageOptions"
+                                >
+                                    <v-list-item
+                                        link
+                                        :key="index"
+                                        @click="
+                                            tableOptions.options.itemsPerPage = item
+                                        "
+                                    >
+                                        <v-list-item-title>
+                                            <div class="mr-3">
+                                                {{ item }}
+                                            </div>
+                                        </v-list-item-title>
+                                    </v-list-item>
+                                </template>
+                            </v-list>
+                        </v-menu>
                     </v-toolbar>
                 </v-sheet>
                 <v-sheet height="600">
                     <v-calendar
+                        ref="calendar"
+                        v-model="focus"
+                        color="primary"
+                        :events="items"
+                        :event-color="getEventColor"
+                        :type="'month'"
+                        @click:event="showEvent"
+                        @click:date="viewDay"
+                        @change="updateRange"
+                    ></v-calendar>
+                    <!-- <v-calendar
                         ref="calendar"
                         v-model="focus"
                         color="primary"
@@ -153,8 +197,8 @@
                         @click:more="viewDay"
                         @click:date="viewDay"
                         @change="updateRange"
-                    ></v-calendar>
-                    <v-menu
+                    ></v-calendar> -->
+                    <!-- <v-menu
                         v-model="selectedOpen"
                         :close-on-content-click="false"
                         :activator="selectedElement"
@@ -189,7 +233,7 @@
                                 </v-btn>
                             </v-card-actions>
                         </v-card>
-                    </v-menu>
+                    </v-menu> -->
                 </v-sheet>
             </v-col>
         </v-row>
@@ -197,6 +241,9 @@
 </template>
 
 <script>
+import WorkOrderDataService from "../../services/WorkOrderDataService";
+import moment from "moment";
+
 export default {
     data: () => ({
         actions: [
@@ -227,6 +274,7 @@ export default {
         selectedElement: null,
         selectedOpen: false,
         events: [],
+        items: [],
         colors: [
             "blue",
             "indigo",
@@ -245,15 +293,116 @@ export default {
             "Birthday",
             "Conference",
             "Party"
-        ]
+        ],
+        tableOptions: {
+            options: {
+                sortBy: ["code"],
+                sortDesc: [false],
+                page: 1,
+                itemsPerPage: 10
+            },
+            loading: false,
+            itemsPerPageOptions: [10, 20, 50, 100],
+            serverItemsLength: 0,
+            headers: [
+                { text: "Code", value: "code" },
+                { text: "Request Date", value: "request_date" },
+                { text: "Description", value: "description" },
+                { text: "User", value: "user.name" },
+                { text: "Status", value: "status" }
+            ]
+        },
+        scheduled_date: []
     }),
     mounted() {
         this.$refs.calendar.checkChange();
+        this.getData();
     },
     methods: {
+        getData() {
+            this.tableOptions.loading = true;
+            return new Promise((resolve, reject) => {
+                const {
+                    sortBy,
+                    sortDesc,
+                    page,
+                    itemsPerPage
+                } = this.tableOptions.options;
+                let search = this.search;
+                let scheduled_start_date = this.scheduled_date[0];
+                let scheduled_end_date = this.scheduled_date[1];
+                // let status = this.status;
+
+                let data = {
+                    params: {
+                        sortBy: sortBy[0],
+                        sortType: sortDesc[0] ? "desc" : "asc",
+                        page: page,
+                        itemsPerPage: itemsPerPage,
+                        scheduled_start_date: scheduled_start_date,
+                        scheduled_end_date: scheduled_end_date
+                        // search: search
+                        // status: status
+                    }
+                };
+
+                WorkOrderDataService.getAll(data)
+                    .then(response => {
+                        let colors = this.colors;
+                        console.log(response.data.data.data);
+                        this.items = response.data.data.data.map(function(
+                            item
+                        ) {
+                            let newObj = {};
+                            newObj["name"] = item.description;
+                            newObj["start"] = moment(
+                                item.transactionable.scheduled_start_date
+                            ).format("YYYY-MM-DD HH:mm:ss");
+                            newObj["end"] = moment(
+                                item.transactionable.scheduled_end_date
+                            ).format("YYYY-MM-DD HH:mm:ss");
+                            newObj["color"] =
+                                colors[
+                                    Math.floor(
+                                        Math.random() * (colors.length - 1)
+                                    )
+                                ];
+                            newObj["timed"] = false;
+                            return newObj;
+                        });
+
+                        console.log(this.items);
+
+                        this.tableOptions.serverItemsLength =
+                            response.data.data.total;
+                        this.tableOptions.loading = false;
+                        resolve(this.items);
+                    })
+                    .catch(error => {
+                        this.tableOptions.loading = false;
+                        console.log(error);
+                        console.log(error.response);
+                        reject();
+                    });
+            });
+        },
+        updateRange({ start, end }) {
+            this.scheduled_date = [start.date, end.date];
+            this.getData();
+
+            // this.items = [
+            //     {
+            //         name: "ajhsdgas",
+            //         start: "2021-07-01 01:01:01",
+            //         end: "2021-07-15 01:01:01",
+            //         color: "blue",
+            //         timed: false
+            //     }
+            // ];
+        },
         viewDay({ date }) {
             this.focus = date;
-            this.type = "day";
+            // this.type = "day";
         },
         getEventColor(event) {
             return event.color;
@@ -286,37 +435,24 @@ export default {
             }
 
             nativeEvent.stopPropagation();
-        },
-        updateRange({ start, end }) {
-            const events = [];
-
-            const min = new Date(`${start.date}T00:00:00`);
-            const max = new Date(`${end.date}T23:59:59`);
-            const days = (max.getTime() - min.getTime()) / 86400000;
-            const eventCount = this.rnd(days, days + 20);
-
-            for (let i = 0; i < eventCount; i++) {
-                const allDay = this.rnd(0, 3) === 0;
-                const firstTimestamp = this.rnd(min.getTime(), max.getTime());
-                const first = new Date(
-                    firstTimestamp - (firstTimestamp % 900000)
-                );
-                const secondTimestamp = this.rnd(2, allDay ? 288 : 8) * 900000;
-                const second = new Date(first.getTime() + secondTimestamp);
-
-                events.push({
-                    name: this.names[this.rnd(0, this.names.length - 1)],
-                    start: first,
-                    end: second,
-                    color: this.colors[this.rnd(0, this.colors.length - 1)],
-                    timed: !allDay
-                });
+        }
+    },
+    computed: {
+        params(nv) {
+            return {
+                ...this.tableOptions.options
+                // query: this.search
+                // query: this.status
+            };
+        }
+    },
+    watch: {
+        params: {
+            immediate: true,
+            deep: true,
+            handler() {
+                this.getData();
             }
-
-            this.events = events;
-        },
-        rnd(a, b) {
-            return Math.floor((b - a + 1) * Math.random()) + a;
         }
     }
 };
