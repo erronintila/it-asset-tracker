@@ -26,7 +26,7 @@
                                     :error-messages="errors.name[0]"
                                     @inputs="errors.name = []"
                                 ></v-text-field>
-                                <v-text-field
+                                <!-- <v-text-field
                                     v-model="form.asset_category_id"
                                     label="Parent Asset Category"
                                     outlined
@@ -36,7 +36,7 @@
                                         errors.asset_category_id[0]
                                     "
                                     @inputs="errors.asset_category_id = []"
-                                ></v-text-field>
+                                ></v-text-field> -->
                             </v-col>
                         </v-row>
                     </v-card-text>
@@ -158,8 +158,6 @@ export default {
                 alert("An error has occurred.");
                 return;
             }
-
-            console.log(this.form);
 
             if (!this.form.is_active) {
                 this.form.is_active = false;

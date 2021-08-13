@@ -28,8 +28,23 @@ class AssetCategoryController extends Controller
         $itemsPerPage = request('itemsPerPage') ?? 10;
 
         $asset_categories = AssetCategory::search($search)
-            ->orderBy($sortBy, $sortType)
-            ->paginate($itemsPerPage);
+            ->orderBy($sortBy, $sortType);
+
+        if (request()->has('status')) {
+            switch (request('status')) {
+                case 'Deleted':
+                    $asset_categories = $asset_categories->onlyTrashed();
+                    break;
+                case 'Inactive':
+                    $asset_categories = $asset_categories->where('is_active', false);
+                    break;
+                default:
+                    $asset_categories = $asset_categories->where('is_active', true);
+                    break;
+            }
+        }
+
+        $asset_categories =     $asset_categories->paginate($itemsPerPage);
 
         return $this->successResponse('read', $asset_categories, 200);
     }

@@ -40,7 +40,7 @@ class TransactionTypeController extends Controller
                     $transaction_types = $transaction_types->where('is_active', false);
                     break;
                 default:
-                    $transaction_types = $transaction_types;
+                    $transaction_types = $transaction_types->where('is_active', true);
                     break;
             }
         }

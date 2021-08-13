@@ -140,11 +140,10 @@ export default {
 
             AssetCategoryDataService.show(this.$route.params.id, data)
                 .then(response => {
-                    console.log(response.data);
                     this.form = { ...this.form, ...response.data.data };
                 })
                 .catch(error => {
-                    console.log(error.response);
+                    console.log(error);
                     alert("An error has occurred.");
                     this.$router.push(
                         { name: "asset_categories.index" },
@@ -159,12 +158,11 @@ export default {
 
             AssetCategoryDataService.delete(this.$route.params.id, {})
                 .then(response => {
-                    console.log(response.data);
                     alert(response.data.message);
                     this.$router.push({ name: "asset_categories.index" });
                 })
                 .catch(error => {
-                    console.log(error.response);
+                    console.log(error);
                     alert("An error has occurred.");
                 });
         }

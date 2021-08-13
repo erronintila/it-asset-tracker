@@ -49,10 +49,33 @@
                     class="hidden-sm-and-down mt-5 p-0"
                     label="Search"
                     clearable
-                    append-icon="mdi-clipboard-search-outline"
-                    @click:append="openSearchDialog"
                     @keyup.enter="getData"
                 ></v-text-field>
+                <v-menu
+                    :close-on-content-click="false"
+                    :nudge-width="200"
+                    offset-y
+                    left
+                    bottom
+                >
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-btn icon v-bind="attrs" v-on="on">
+                            <v-icon>mdi-clipboard-search-outline</v-icon>
+                        </v-btn>
+                    </template>
+
+                    <v-card>
+                        <v-list>
+                            <v-list-item>
+                                <v-select
+                                    v-model="filter.status"
+                                    :items="filter.statuses"
+                                    label="Status"
+                                ></v-select>
+                            </v-list-item>
+                        </v-list>
+                    </v-card>
+                </v-menu>
             </template>
         </page-header>
 
@@ -64,7 +87,6 @@
                     label="Search"
                     clearable
                     append-icon="mdi-clipboard-search-outline"
-                    @click:append="openSearchDialog"
                 ></v-text-field>
             </v-col>
         </v-row>
@@ -192,12 +214,15 @@ export default {
         return {
             dialogAssetCategoryCreate: false,
             dialogAssetCategoryEdit: false,
+            filter: {
+                status: "Active",
+                statuses: ["Active", "Inactive", "Deleted"]
+            },
             actions: [
                 { text: "Refresh", action: "refresh", icon: "mdi-refresh" },
                 { text: "Update", action: "update", icon: "mdi-update" },
                 { text: "Delete", action: "delete", icon: "mdi-delete" },
-                { text: "Restore", action: "restore", icon: "mdi-restore" },
-                { text: "Export", action: "export", icon: "mdi-export" }
+                { text: "Restore", action: "restore", icon: "mdi-restore" }
             ],
             tableOptions: {
                 options: {
@@ -212,8 +237,7 @@ export default {
                 headers: [
                     { text: "Code", value: "code" },
                     { text: "Type", value: "type" },
-                    { text: "Name", value: "name" },
-                    { text: "Assets", value: "quantity" }
+                    { text: "Name", value: "name" }
                 ]
             },
             search: "",
@@ -232,7 +256,7 @@ export default {
                     itemsPerPage
                 } = this.tableOptions.options;
                 let search = this.search;
-                // let status = this.status;
+                let status = this.filter.status;
 
                 let data = {
                     params: {
@@ -240,14 +264,13 @@ export default {
                         sortType: sortDesc[0] ? "desc" : "asc",
                         page: page,
                         itemsPerPage: itemsPerPage,
-                        search: search
-                        // status: status
+                        search: search,
+                        status: status
                     }
                 };
 
                 AssetCategoryDataService.getAll(data)
                     .then(response => {
-                        console.log(response.data);
                         this.items = response.data.data.data;
                         this.tableOptions.serverItemsLength =
                             response.data.data.total;
@@ -257,7 +280,6 @@ export default {
                     .catch(error => {
                         this.tableOptions.loading = false;
                         console.log(error);
-                        console.log(error.response);
                         reject();
                     });
             });
@@ -273,7 +295,6 @@ export default {
                         return;
                     }
                     this.dialogAssetCategoryEdit = true;
-                    console.log(this.selectedItems[0].id);
                     break;
                 case "delete":
                     this.onDelete();
@@ -305,17 +326,13 @@ export default {
 
             AssetCategoryDataService.deleteMany(data)
                 .then(response => {
-                    console.log(response.data);
                     this.getData();
                     this.selectedItems = [];
                 })
                 .catch(error => {
-                    console.log(error.response);
+                    console.log(error);
                     alert("An error has occurred.");
                 });
-        },
-        openSearchDialog: function() {
-            alert("Search Dialog");
         },
         clearFilters: function() {
             this.selectedItems = [];
@@ -331,9 +348,9 @@ export default {
     computed: {
         params(nv) {
             return {
-                ...this.tableOptions.options
+                ...this.tableOptions.options,
                 // query: this.search
-                // query: this.status
+                query: this.filter.status
             };
         },
         hasFilters() {

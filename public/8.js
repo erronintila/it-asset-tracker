@@ -293,29 +293,6 @@ var render = function() {
                                   },
                                   expression: "form.name"
                                 }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Parent Asset Category",
-                                  outlined: "",
-                                  clearable: "",
-                                  hint: "Ex. Sales And Marketing",
-                                  "error-messages":
-                                    _vm.errors.asset_category_id[0]
-                                },
-                                on: {
-                                  inputs: function($event) {
-                                    _vm.errors.asset_category_id = []
-                                  }
-                                },
-                                model: {
-                                  value: _vm.form.asset_category_id,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "asset_category_id", $$v)
-                                  },
-                                  expression: "form.asset_category_id"
-                                }
                               })
                             ],
                             1
