@@ -42,7 +42,6 @@ export default {
         onSave(value) {
             CheckinRequestDataService.store(value)
                 .then(response => {
-                    console.log(response.data);
                     alert("Successfully created.");
                     this.$router.go(-1);
                 })

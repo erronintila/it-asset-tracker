@@ -65,7 +65,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this = this;
 
       _services_WorkOrderDataService__WEBPACK_IMPORTED_MODULE_0__["default"].store(value).then(function (response) {
-        console.log(response.data);
         alert("Successfully created.");
 
         _this.$router.go(-1);

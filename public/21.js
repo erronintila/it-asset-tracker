@@ -787,7 +787,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       action_types: ["maintenance"]
                     }
                   }).then(function (response) {
-                    console.log(response.data);
                     _this.transaction_types = response.data.data.data;
                   });
                 } catch (error) {
@@ -835,8 +834,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }), {
         transaction_type_id: this.form.transaction_type ? this.form.transaction_type.id : null
       });
-
-      console.log(newForm);
 
       if (!newForm.is_active) {
         newForm.is_active = false;

@@ -551,7 +551,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       action_types: ["checkout"]
                     }
                   }).then(function (response) {
-                    console.log(response.data);
                     _this.transaction_types = response.data.data.data;
                   });
                 } catch (error) {
@@ -581,8 +580,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }), {
         assigned_user_id: this.form.assigned_user ? this.form.assigned_user.id : null
       });
-
-      console.log(newform);
 
       if (!newform.is_active) {
         newform.is_active = false;

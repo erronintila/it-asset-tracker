@@ -727,7 +727,6 @@ export default {
                         action_types: ["maintenance"]
                     }
                 }).then(response => {
-                    console.log(response.data);
                     this.transaction_types = response.data.data.data;
                 });
             } catch (error) {
@@ -786,8 +785,6 @@ export default {
                         : null
                 }
             };
-
-            console.log(newForm);
 
             if (!newForm.is_active) {
                 newForm.is_active = false;

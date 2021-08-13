@@ -50,10 +50,57 @@
                     class="hidden-sm-and-down mt-5 p-0"
                     label="Search"
                     clearable
-                    append-icon="mdi-clipboard-search-outline"
-                    @click:append="openSearchDialog"
                     @keyup.enter="getData"
                 ></v-text-field>
+                <v-menu
+                    :close-on-content-click="false"
+                    :nudge-width="200"
+                    offset-y
+                    left
+                    bottom
+                >
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-btn icon v-bind="attrs" v-on="on">
+                            <v-icon>mdi-clipboard-search-outline</v-icon>
+                        </v-btn>
+                    </template>
+
+                    <v-card>
+                        <v-list>
+                            <v-list-item>
+                                <v-select
+                                    v-model="filter.status"
+                                    :items="filter.statuses"
+                                    label="Status"
+                                ></v-select>
+                            </v-list-item>
+                            <v-list-item>
+                                <XDateRangePicker
+                                    ref="dateRange"
+                                    :dateRange="filter.date_range"
+                                    @on-change="updateDateRange"
+                                >
+                                    <template
+                                        v-slot:openDialog="{
+                                            on,
+                                            attrs,
+                                            dateRangeText
+                                        }"
+                                    >
+                                        <v-text-field
+                                            v-model="filter.date_range"
+                                            :value="dateRangeText"
+                                            label="Request Date"
+                                            readonly
+                                            v-bind="attrs"
+                                            v-on="on"
+                                        ></v-text-field>
+                                    </template>
+                                </XDateRangePicker>
+                            </v-list-item>
+                        </v-list>
+                    </v-card>
+                </v-menu>
             </template>
         </page-header>
 
@@ -64,8 +111,6 @@
                     class="mt-5 p-0"
                     label="Search"
                     clearable
-                    append-icon="mdi-clipboard-search-outline"
-                    @click:append="openSearchDialog"
                 ></v-text-field>
             </v-col>
         </v-row>
@@ -73,6 +118,17 @@
 
         <!-- Search results info -->
         <div class="my-3">
+            <v-chip
+                v-if="filter.date_range"
+                label
+                close
+                outlined
+                small
+                close-icon="mdi-update"
+                @click:close="resetDates"
+            >
+                {{ `${filter.date_range[0]} ~ ${filter.date_range[1]}` }}
+            </v-chip>
             <v-chip
                 v-if="selectedItems.length"
                 close
@@ -93,6 +149,7 @@
             >
                 {{ search }}
             </v-chip>
+
             <v-chip
                 v-if="hasFilters"
                 close
@@ -154,7 +211,13 @@
 </template>
 
 <script>
+import moment from "moment";
 import WorkOrderDataService from "../../services/WorkOrderDataService";
+import XDateRangePicker from "../../components/X-DateRangePicker.vue";
+import TransactionTypeDataService from "../../services/TransactionTypeDataService";
+import AssetDialogSelector from "../../components/selectors/AssetDialogSelector.vue";
+import EmployeeDialogSelector from "../../components/selectors/EmployeeDialogSelector.vue";
+import CustomerDialogSelector from "../../components/selectors/CustomerDialogSelector.vue";
 
 export default {
     data() {
@@ -164,12 +227,34 @@ export default {
                 { text: "Update", action: "update", icon: "mdi-update" },
                 { text: "Delete", action: "delete", icon: "mdi-delete" },
                 { text: "Restore", action: "restore", icon: "mdi-restore" },
-                { text: "Export", action: "export", icon: "mdi-export" },
+                // { text: "Export", action: "export", icon: "mdi-export" },
                 { text: "Approve", action: "approve", icon: "mdi-check" },
                 { text: "Complete", action: "complete", icon: "mdi-check-all" },
                 { text: "Post", action: "post", icon: "mdi-check-circle" },
                 { text: "Cancel", action: "cancel", icon: "mdi-cancel" }
             ],
+            filter: {
+                status: "Active",
+                statuses: [
+                    "Active",
+                    "Pending",
+                    "Approved",
+                    "Posted",
+                    "Cancelled",
+                    "Deleted"
+                ],
+                date_range: [
+                    moment()
+                        .startOf("year")
+                        .format("YYYY-MM-DD"),
+                    moment()
+                        .endOf("year")
+                        .format("YYYY-MM-DD")
+                ],
+                asset: {},
+                user: {},
+                transaction_type: {}
+            },
             tableOptions: {
                 options: {
                     sortBy: ["code"],
@@ -193,7 +278,23 @@ export default {
             selectedItems: []
         };
     },
+    components: {
+        XDateRangePicker
+    },
     methods: {
+        updateDateRange(e) {
+            this.filter.date_range = e;
+        },
+        resetDates() {
+            this.filter.date_range = [
+                moment()
+                    .startOf("year")
+                    .format("YYYY-MM-DD"),
+                moment()
+                    .endOf("year")
+                    .format("YYYY-MM-DD")
+            ];
+        },
         getData() {
             this.tableOptions.loading = true;
             return new Promise((resolve, reject) => {
@@ -204,7 +305,8 @@ export default {
                     itemsPerPage
                 } = this.tableOptions.options;
                 let search = this.search;
-                // let status = this.status;
+                let status = this.filter.status;
+                let date_range = this.filter.date_range;
 
                 let data = {
                     params: {
@@ -212,14 +314,15 @@ export default {
                         sortType: sortDesc[0] ? "desc" : "asc",
                         page: page,
                         itemsPerPage: itemsPerPage,
-                        search: search
-                        // status: status
+                        search: search,
+                        status: status,
+                        start_date: date_range[0],
+                        end_date: date_range[1]
                     }
                 };
 
                 WorkOrderDataService.getAll(data)
                     .then(response => {
-                        console.log(response.data);
                         this.items = response.data.data.data;
                         this.tableOptions.serverItemsLength =
                             response.data.data.total;
@@ -229,7 +332,6 @@ export default {
                     .catch(error => {
                         this.tableOptions.loading = false;
                         console.log(error);
-                        console.log(error.response);
                         reject();
                     });
             });
@@ -290,17 +392,13 @@ export default {
 
             WorkOrderDataService.deleteMany(data)
                 .then(response => {
-                    console.log(response.data);
                     this.getData();
                     this.selectedItems = [];
                 })
                 .catch(error => {
-                    console.log(error.response);
+                    console.log(error);
                     alert("An error has occurred.");
                 });
-        },
-        openSearchDialog: function() {
-            alert("Search Dialog");
         },
         clearFilters: function() {
             this.selectedItems = [];
@@ -327,48 +425,44 @@ export default {
                 case "approve":
                     WorkOrderDataService.approve(data)
                         .then(response => {
-                            console.log(response.data);
                             this.getData();
                             this.selectedItems = [];
                         })
                         .catch(error => {
-                            console.log(error.response);
+                            console.log(error);
                             alert("An error has occurred.");
                         });
                     break;
                 case "complete":
                     WorkOrderDataService.complete(data)
                         .then(response => {
-                            console.log(response.data);
                             this.getData();
                             this.selectedItems = [];
                         })
                         .catch(error => {
-                            console.log(error.response);
+                            console.log(error);
                             alert("An error has occurred.");
                         });
                     break;
                 case "post":
                     WorkOrderDataService.post(data)
                         .then(response => {
-                            console.log(response.data);
                             this.getData();
                             this.selectedItems = [];
                         })
                         .catch(error => {
-                            console.log(error.response);
+                            console.log(error);
                             alert("An error has occurred.");
                         });
                     break;
                 case "cancel":
                     WorkOrderDataService.cancel(data)
                         .then(response => {
-                            console.log(response.data);
                             this.getData();
                             this.selectedItems = [];
                         })
                         .catch(error => {
-                            console.log(error.response);
+                            console.log(error);
                             alert("An error has occurred.");
                         });
                     break;
@@ -380,9 +474,9 @@ export default {
     computed: {
         params(nv) {
             return {
-                ...this.tableOptions.options
-                // query: this.search
-                // query: this.status
+                ...this.tableOptions.options,
+                query: this.filter.date_range,
+                query: this.filter.status
             };
         },
         hasFilters() {

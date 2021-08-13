@@ -11,6 +11,7 @@ use App\Models\Location;
 use App\Models\Transaction;
 use App\Models\TransactionType;
 use App\Traits\HttpResponseMessage;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -33,8 +34,38 @@ class CheckinRequestController extends Controller
         $transactions = Transaction::search($search)
             ->with(['user', 'transactionable'])
             ->where('transactionable_type', 'App\Models\CheckinRequest')
-            ->orderBy($sortBy, $sortType)
-            ->paginate($itemsPerPage);
+            ->orderBy($sortBy, $sortType);
+
+        if (request()->has('status')) {
+            switch (request('status')) {
+                case 'Deleted':
+                    $transactions = $transactions->onlyTrashed();
+                    break;
+                case 'Cancelled':
+                    $transactions = $transactions->where("cancelled_at", "<>", null);
+                    break;
+                case 'Posted':
+                    $transactions = $transactions->where("posted_at", "<>", null);
+                    break;
+                case 'Approved':
+                    $transactions = $transactions->where("approved_at", "<>", null)->where("posted_at", null);
+                    break;
+                case 'Pending':
+                    $transactions = $transactions->where("approved_at", null);
+                    break;
+                default:
+                    $transactions = $transactions;
+                    break;
+            }
+        }
+
+        if (request()->has("start_date") && request()->has("end_date")) {
+            $start_date = Carbon::parse(request("start_date"))->startOfDay();
+            $end_date = Carbon::parse(request("end_date"))->endOfDay();
+            $transactions = $transactions->whereBetween("request_date", [$start_date, $end_date]);
+        }
+
+        $transactions = $transactions->paginate($itemsPerPage);
 
         return $this->successResponse('read', $transactions, 200);
     }

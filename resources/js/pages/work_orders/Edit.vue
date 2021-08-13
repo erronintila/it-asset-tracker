@@ -91,7 +91,6 @@ export default {
 
             WorkOrderDataService.show(this.$route.params.id, data)
                 .then(response => {
-                    console.log(response.data);
                     this.form = {
                         ...this.form,
                         ...response.data.data,
@@ -125,36 +124,9 @@ export default {
                     // this.form.actual_end_date = moment(
                     //     response.data.data.transactionable.actual_end_date
                     // ).format("YYYY-MM-DD");
-
-                    console.log("hahaha", {
-                        ...this.form,
-                        ...response.data.data,
-                        ...{
-                            scheduled_date: [
-                                moment(
-                                    response.data.data.transactionable
-                                        .scheduled_start_date
-                                ).format("YYYY-MM-DD"),
-                                moment(
-                                    response.data.data.transactionable
-                                        .scheduled_end_date
-                                ).format("YYYY-MM-DD")
-                            ]
-                        },
-                        ...{
-                            actual_start_date: moment(
-                                response.data.data.transactionable
-                                    .actual_start_date
-                            ).format("YYYY-MM-DD"),
-                            actual_end_date: moment(
-                                response.data.data.transactionable
-                                    .actual_end_date
-                            ).format("YYYY-MM-DD")
-                        }
-                    });
                 })
                 .catch(error => {
-                    console.log(error.response);
+                    console.log(error);
                     alert("An error has occurred.");
                     this.$router.push({ name: "work_orders.index" }, () => {});
                 });
@@ -162,12 +134,11 @@ export default {
         onSave(value) {
             WorkOrderDataService.update(this.$route.params.id, value)
                 .then(response => {
-                    console.log(response.data);
                     alert("Successfully updated.");
                     this.$router.go(-1);
                 })
                 .catch(error => {
-                    console.log(error.response.data);
+                    console.log(error);
                     alert("An error has occurred.");
                     if (error.response) {
                         if (error.response.data) {

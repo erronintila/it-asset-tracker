@@ -47,7 +47,6 @@ export default {
         onSave(value) {
             WorkOrderDataService.store(value)
                 .then(response => {
-                    console.log(response.data);
                     alert("Successfully created.");
                     this.$router.go(-1);
                 })

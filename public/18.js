@@ -459,7 +459,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       action_types: ["checkin"]
                     }
                   }).then(function (response) {
-                    console.log(response.data);
                     _this.transaction_types = response.data.data.data;
                   });
                 } catch (error) {
@@ -489,8 +488,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }), {
         transaction_type_id: this.form.transaction_type ? this.form.transaction_type.id : null
       });
-
-      console.log(newform);
 
       if (!newform.is_active) {
         newform.is_active = false;

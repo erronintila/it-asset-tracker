@@ -113,7 +113,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // }
 
       _services_WorkOrderDataService__WEBPACK_IMPORTED_MODULE_0__["default"].show(this.$route.params.id, data).then(function (response) {
-        console.log(response.data);
         _this.form = _objectSpread(_objectSpread(_objectSpread({}, _this.form), response.data.data), {
           scheduled_date: [moment__WEBPACK_IMPORTED_MODULE_2___default()(response.data.data.transactionable.scheduled_start_date).format("YYYY-MM-DD"), moment__WEBPACK_IMPORTED_MODULE_2___default()(response.data.data.transactionable.scheduled_end_date).format("YYYY-MM-DD")]
         }); // this.form.actual_start_date = moment(
@@ -122,15 +121,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         // this.form.actual_end_date = moment(
         //     response.data.data.transactionable.actual_end_date
         // ).format("YYYY-MM-DD");
-
-        console.log("hahaha", _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, _this.form), response.data.data), {
-          scheduled_date: [moment__WEBPACK_IMPORTED_MODULE_2___default()(response.data.data.transactionable.scheduled_start_date).format("YYYY-MM-DD"), moment__WEBPACK_IMPORTED_MODULE_2___default()(response.data.data.transactionable.scheduled_end_date).format("YYYY-MM-DD")]
-        }), {
-          actual_start_date: moment__WEBPACK_IMPORTED_MODULE_2___default()(response.data.data.transactionable.actual_start_date).format("YYYY-MM-DD"),
-          actual_end_date: moment__WEBPACK_IMPORTED_MODULE_2___default()(response.data.data.transactionable.actual_end_date).format("YYYY-MM-DD")
-        }));
       })["catch"](function (error) {
-        console.log(error.response);
+        console.log(error);
         alert("An error has occurred.");
 
         _this.$router.push({
@@ -142,12 +134,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this2 = this;
 
       _services_WorkOrderDataService__WEBPACK_IMPORTED_MODULE_0__["default"].update(this.$route.params.id, value).then(function (response) {
-        console.log(response.data);
         alert("Successfully updated.");
 
         _this2.$router.go(-1);
       })["catch"](function (error) {
-        console.log(error.response.data);
+        console.log(error);
         alert("An error has occurred.");
 
         if (error.response) {

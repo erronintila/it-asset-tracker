@@ -73,15 +73,10 @@ export default {
 
             CheckinRequestDataService.show(this.$route.params.id, data)
                 .then(response => {
-                    console.log(response.data);
                     this.form = { ...this.form, ...response.data.data };
-                    console.log("hahaha", {
-                        ...this.form,
-                        ...response.data.data
-                    });
                 })
                 .catch(error => {
-                    console.log(error.response);
+                    console.log(error);
                     alert("An error has occurred.");
                     this.$router.push(
                         { name: "checkin_requests.index" },
@@ -92,12 +87,11 @@ export default {
         onSave(value) {
             CheckinRequestDataService.update(this.$route.params.id, value)
                 .then(response => {
-                    console.log(response.data);
                     alert("Successfully updated.");
                     this.$router.go(-1);
                 })
                 .catch(error => {
-                    console.log(error.response.data);
+                    console.log(error);
                     alert("An error has occurred.");
                     if (error.response) {
                         if (error.response.data) {

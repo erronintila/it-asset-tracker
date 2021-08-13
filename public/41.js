@@ -413,10 +413,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       var data = {};
       _services_CheckoutRequestDataService__WEBPACK_IMPORTED_MODULE_2__["default"].show(this.$route.params.id, data).then(function (response) {
-        console.log(response.data);
         _this.form = _objectSpread(_objectSpread({}, _this.form), response.data.data);
       })["catch"](function (error) {
-        console.log(error.response);
+        console.log(error);
         alert("An error has occurred.");
 
         _this.$router.push({
@@ -432,14 +431,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       _services_CheckoutRequestDataService__WEBPACK_IMPORTED_MODULE_2__["default"]["delete"](this.$route.params.id, {}).then(function (response) {
-        console.log(response.data);
         alert(response.data.message);
 
         _this2.$router.push({
           name: "checkout_requests.index"
         });
       })["catch"](function (error) {
-        console.log(error.response);
+        console.log(error);
         alert("An error has occurred.");
       });
     }

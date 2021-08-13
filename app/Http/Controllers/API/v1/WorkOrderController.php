@@ -41,6 +41,35 @@ class WorkOrderController extends Controller
             ->where('transactionable_type', 'App\Models\WorkOrder')
             ->orderBy($sortBy, $sortType);
 
+        if (request()->has('status')) {
+            switch (request('status')) {
+                case 'Deleted':
+                    $transactions = $transactions->onlyTrashed();
+                    break;
+                case 'Cancelled':
+                    $transactions = $transactions->where("cancelled_at", "<>", null);
+                    break;
+                case 'Posted':
+                    $transactions = $transactions->where("posted_at", "<>", null);
+                    break;
+                case 'Approved':
+                    $transactions = $transactions->where("approved_at", "<>", null)->where("posted_at", null);
+                    break;
+                case 'Pending':
+                    $transactions = $transactions->where("approved_at", null);
+                    break;
+                default:
+                    $transactions = $transactions;
+                    break;
+            }
+        }
+
+        if (request()->has("start_date") && request()->has("end_date")) {
+            $start_date = Carbon::parse(request("start_date"))->startOfDay();
+            $end_date = Carbon::parse(request("end_date"))->endOfDay();
+            $transactions = $transactions->whereBetween("request_date", [$start_date, $end_date]);
+        }
+
         if (request()->has("scheduled_start_date") && request()->has("scheduled_end_date")) {
             $start_date = Carbon::parse(request("scheduled_start_date"))->startOfDay();
             $end_date = Carbon::parse(request("scheduled_end_date"))->endOfDay();

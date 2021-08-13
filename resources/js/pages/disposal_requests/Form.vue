@@ -369,7 +369,6 @@ export default {
                         action_types: ["disposal"]
                     }
                 }).then(response => {
-                    console.log(response.data);
                     this.transaction_types = response.data.data.data;
                 });
             } catch (error) {
@@ -399,8 +398,6 @@ export default {
                         : null
                 }
             };
-
-            console.log(newform);
 
             if (!newform.is_active) {
                 newform.is_active = false;
