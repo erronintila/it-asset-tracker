@@ -329,11 +329,10 @@ export default {
 
             LocationDataService.show(this.$route.params.id, data)
                 .then(response => {
-                    console.log(response.data);
                     this.form = { ...this.form, ...response.data.data };
                 })
                 .catch(error => {
-                    console.log(error.response);
+                    console.log(error);
                     alert("An error has occurred.");
                     this.$router.push({ name: "locations.index" }, () => {});
                 });
@@ -345,12 +344,11 @@ export default {
 
             LocationDataService.delete(this.$route.params.id, {})
                 .then(response => {
-                    console.log(response.data);
                     alert(response.data.message);
                     this.$router.push({ name: "locations.index" });
                 })
                 .catch(error => {
-                    console.log(error.response);
+                    console.log(error);
                     alert("An error has occurred.");
                 });
         }

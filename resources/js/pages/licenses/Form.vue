@@ -379,9 +379,7 @@ export default {
                 alert("An error has occurred.");
                 return;
             }
-
-            console.log(this.form);
-
+            
             let newForm = {
                 ...this.form,
                 ...{ asset_category_id: this.form.asset_category.id },

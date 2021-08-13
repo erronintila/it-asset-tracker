@@ -171,8 +171,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return;
       }
 
-      console.log(this.form);
-
       var newForm = _objectSpread(_objectSpread({}, this.form), {
         manufacturer_id: this.form.manufacturer.id
       });

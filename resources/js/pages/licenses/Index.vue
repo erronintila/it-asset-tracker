@@ -50,10 +50,33 @@
                     class="hidden-sm-and-down mt-5 p-0"
                     label="Search"
                     clearable
-                    append-icon="mdi-clipboard-search-outline"
-                    @click:append="openSearchDialog"
                     @keyup.enter="getData"
                 ></v-text-field>
+                <v-menu
+                    :close-on-content-click="false"
+                    :nudge-width="200"
+                    offset-y
+                    left
+                    bottom
+                >
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-btn icon v-bind="attrs" v-on="on">
+                            <v-icon>mdi-clipboard-search-outline</v-icon>
+                        </v-btn>
+                    </template>
+
+                    <v-card>
+                        <v-list>
+                            <v-list-item>
+                                <v-select
+                                    v-model="filter.status"
+                                    :items="filter.statuses"
+                                    label="Status"
+                                ></v-select>
+                            </v-list-item>
+                        </v-list>
+                    </v-card>
+                </v-menu>
             </template>
         </page-header>
 
@@ -64,8 +87,6 @@
                     class="mt-5 p-0"
                     label="Search"
                     clearable
-                    append-icon="mdi-clipboard-search-outline"
-                    @click:append="openSearchDialog"
                 ></v-text-field>
             </v-col>
         </v-row>
@@ -92,6 +113,16 @@
                 @click:close="search = ''"
             >
                 {{ search }}
+            </v-chip>
+            <v-chip
+                v-if="filter.status != 'Active'"
+                close
+                label
+                outlined
+                small
+                @click:close="filter.status = 'Active'"
+            >
+                {{ filter.status }}
             </v-chip>
             <v-chip
                 v-if="hasFilters"
@@ -164,8 +195,12 @@ export default {
                 { text: "Update", action: "update", icon: "mdi-update" },
                 { text: "Delete", action: "delete", icon: "mdi-delete" },
                 { text: "Restore", action: "restore", icon: "mdi-restore" },
-                { text: "Export", action: "export", icon: "mdi-export" }
+                // { text: "Export", action: "export", icon: "mdi-export" }
             ],
+            filter: {
+                status: "Active",
+                statuses: ["Active", "Deleted", "Disposed", "In Use", "In Storage", "Pending"]
+            },
             tableOptions: {
                 options: {
                     sortBy: ["description"],
@@ -199,7 +234,7 @@ export default {
                     itemsPerPage
                 } = this.tableOptions.options;
                 let search = this.search;
-                // let status = this.status;
+                let status = this.filter.status;
 
                 let data = {
                     params: {
@@ -207,14 +242,13 @@ export default {
                         sortType: sortDesc[0] ? "desc" : "asc",
                         page: page,
                         itemsPerPage: itemsPerPage,
-                        search: search
-                        // status: status
+                        search: search,
+                        status: status
                     }
                 };
 
                 LicenseDataService.getAll(data)
                     .then(response => {
-                        console.log(response.data);
                         this.items = response.data.data.data;
                         this.tableOptions.serverItemsLength =
                             response.data.data.total;
@@ -224,7 +258,6 @@ export default {
                     .catch(error => {
                         this.tableOptions.loading = false;
                         console.log(error);
-                        console.log(error.response);
                         reject();
                     });
             });
@@ -273,17 +306,13 @@ export default {
 
             LicenseDataService.deleteMany(data)
                 .then(response => {
-                    console.log(response.data);
                     this.getData();
                     this.selectedItems = [];
                 })
                 .catch(error => {
-                    console.log(error.response);
+                    console.log(error);
                     alert("An error has occurred.");
                 });
-        },
-        openSearchDialog: function() {
-            alert("Search Dialog");
         },
         clearFilters: function() {
             this.selectedItems = [];
@@ -299,13 +328,21 @@ export default {
     computed: {
         params(nv) {
             return {
-                ...this.tableOptions.options
+                ...this.tableOptions.options,
                 // query: this.search
-                // query: this.status
+                query: this.filter.status
             };
         },
         hasFilters() {
-            return this.search || this.selectedItems.length;
+            if (this.filter.status != "Active") {
+                return true;
+            }
+
+            if (this.search || this.selectedItems.length) {
+                return true;
+            }
+
+            return false;
         }
     },
     watch: {

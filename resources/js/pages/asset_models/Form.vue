@@ -155,8 +155,6 @@ export default {
                 return;
             }
 
-            console.log(this.form);
-
             let newForm = {
                 ...this.form,
                 ...{ manufacturer_id: this.form.manufacturer.id }

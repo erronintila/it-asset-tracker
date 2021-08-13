@@ -39,6 +39,32 @@ class AssetController extends Controller
             ->search($search)
             ->orderBy($sortBy, $sortType);
 
+        if (request()->has('status')) {
+            switch (request('status')) {
+                case 'Deleted':
+                    $assets = $assets->onlyTrashed();
+                    break;
+                case 'Disposed':
+                    $assets = $assets->where('disposed_at', "<>", null);
+                    break;
+                case 'In Maintenance':
+                    $assets = $assets->where('is_under_maintenance', true);
+                    break;
+                case 'In Use':
+                    $assets = $assets->where('assigned_location_id', "<>", null)->where('assigned_user_id', "<>", null);
+                    break;
+                case 'In Storage':
+                    $assets = $assets->where('assigned_location_id', "<>", null)->where('assigned_user_id', null);
+                    break;
+                case 'Pending':
+                    $assets = $assets->where('assigned_location_id', null)->where('assigned_user_id', null);
+                    break;
+                default:
+                    $assets = $assets;
+                    break;
+            }
+        }
+
         if ($request_type) {
             switch ($request_type) {
                 case 'checkin':

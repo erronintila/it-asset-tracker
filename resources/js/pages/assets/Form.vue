@@ -554,8 +554,6 @@ export default {
                 return;
             }
 
-            console.log(this.form);
-
             let newForm = {
                 ...this.form,
                 ...{ asset_model_id: this.form.asset_model.id },

@@ -10,6 +10,10 @@
                 >
                     <v-icon>mdi-plus</v-icon>
                 </v-btn> -->
+
+                <v-chip label outlined small class="mx-2" :color="status.color">
+                    {{ status.text }}
+                </v-chip>
             </template>
             <template slot="rightSideNavigation">
                 <v-menu rounded offset-y>
@@ -61,7 +65,11 @@
 
                     <v-list dense>
                         <template v-for="(item, index) in statuses">
-                            <v-list-item link :key="index">
+                            <v-list-item
+                                link
+                                :key="index"
+                                @click="status = item"
+                            >
                                 <v-list-item-icon>
                                     <v-icon>{{ item.icon }}</v-icon>
                                 </v-list-item-icon>
@@ -248,19 +256,46 @@ export default {
     data: () => ({
         actions: [
             { text: "Create Work Order", action: "create", icon: "mdi-plus" },
-            { text: "Refresh", action: "refresh", icon: "mdi-refresh" },
-            { text: "Export", action: "export", icon: "mdi-export" }
+            { text: "Refresh", action: "refresh", icon: "mdi-refresh" }
+            // { text: "Export", action: "export", icon: "mdi-export" }
         ],
+        status: {
+            text: "Approved",
+            action: "approved",
+            icon: "mdi-check",
+            color: "blue"
+        },
         statuses: [
             {
                 text: "Pending",
                 action: "pending",
-                icon: "mdi-clock-time-four-outline"
+                icon: "mdi-clock-time-four-outline",
+                color: "grey"
             },
-            { text: "Approved", action: "approved", icon: "mdi-check" },
-            { text: "Completed", action: "completed", icon: "mdi-check-all" },
-            { text: "Posted", action: "posted", icon: "mdi-check-circle" },
-            { text: "Cancelled", action: "cancelled", icon: "mdi-cancel" }
+            {
+                text: "Approved",
+                action: "approved",
+                icon: "mdi-check",
+                color: "blue"
+            },
+            {
+                text: "Completed",
+                action: "completed",
+                icon: "mdi-check-all",
+                color: "yellow"
+            },
+            {
+                text: "Posted",
+                action: "posted",
+                icon: "mdi-check-circle",
+                color: "green"
+            },
+            {
+                text: "Cancelled",
+                action: "cancelled",
+                icon: "mdi-cancel",
+                color: "red"
+            }
         ],
         focus: "",
         type: "month",
@@ -331,7 +366,7 @@ export default {
                 let search = this.search;
                 let scheduled_start_date = this.scheduled_date[0];
                 let scheduled_end_date = this.scheduled_date[1];
-                // let status = this.status;
+                let status = this.status.text;
 
                 let data = {
                     params: {
@@ -340,16 +375,15 @@ export default {
                         page: page,
                         itemsPerPage: itemsPerPage,
                         scheduled_start_date: scheduled_start_date,
-                        scheduled_end_date: scheduled_end_date
+                        scheduled_end_date: scheduled_end_date,
                         // search: search
-                        // status: status
+                        status: status
                     }
                 };
 
                 WorkOrderDataService.getAll(data)
                     .then(response => {
                         let colors = this.colors;
-                        console.log(response.data.data.data);
                         this.items = response.data.data.data.map(function(
                             item
                         ) {
@@ -371,8 +405,6 @@ export default {
                             return newObj;
                         });
 
-                        console.log(this.items);
-
                         this.tableOptions.serverItemsLength =
                             response.data.data.total;
                         this.tableOptions.loading = false;
@@ -381,7 +413,6 @@ export default {
                     .catch(error => {
                         this.tableOptions.loading = false;
                         console.log(error);
-                        console.log(error.response);
                         reject();
                     });
             });
@@ -440,9 +471,9 @@ export default {
     computed: {
         params(nv) {
             return {
-                ...this.tableOptions.options
+                ...this.tableOptions.options,
                 // query: this.search
-                // query: this.status
+                query: this.status
             };
         }
     },

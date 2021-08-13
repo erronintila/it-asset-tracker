@@ -27,8 +27,23 @@ class LocationController extends Controller
         $itemsPerPage = request('itemsPerPage') ?? 10;
 
         $locations = Location::search($search)
-            ->orderBy($sortBy, $sortType)
-            ->paginate($itemsPerPage);
+            ->orderBy($sortBy, $sortType);
+
+        if (request()->has('status')) {
+            switch (request('status')) {
+                case 'Deleted':
+                    $locations = $locations->onlyTrashed();
+                    break;
+                case 'Inactive':
+                    $locations = $locations->where('is_active', false);
+                    break;
+                default:
+                    $locations = $locations->where('is_active', true);
+                    break;
+            }
+        }
+
+        $locations = $locations->paginate($itemsPerPage);
 
         return $this->successResponse('read', $locations, 200);
         // return $this->successResponse('Success', LocationResource::collection($locations), 200);

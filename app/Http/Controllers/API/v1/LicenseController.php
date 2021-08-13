@@ -29,8 +29,32 @@ class LicenseController extends Controller
 
         $licenses = License::with(['asset_category', 'manufacturer', 'supplier'])
             ->search($search)
-            ->orderBy($sortBy, $sortType)
-            ->paginate($itemsPerPage);
+            ->orderBy($sortBy, $sortType);
+
+        if (request()->has('status')) {
+            switch (request('status')) {
+                case 'Deleted':
+                    $licenses = $licenses->onlyTrashed();
+                    break;
+                case 'Disposed':
+                    $licenses = $licenses->where('disposed_at', "<>", null);
+                    break;
+                case 'In Use':
+                    $licenses = $licenses->where('assigned_location_id', "<>", null)->where('assigned_asset_id', "<>", null);
+                    break;
+                case 'In Storage':
+                    $licenses = $licenses->where('assigned_location_id', "<>", null)->where('assigned_asset_id', null);
+                    break;
+                case 'Pending':
+                    $licenses = $licenses->where('assigned_location_id', null)->where('assigned_asset_id', null);
+                    break;
+                default:
+                    $licenses = $licenses;
+                    break;
+            }
+        }
+
+        $licenses =  $licenses->paginate($itemsPerPage);
 
         return $this->successResponse('read', $licenses, 200);
     }

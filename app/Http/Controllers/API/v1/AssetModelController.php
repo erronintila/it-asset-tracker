@@ -29,8 +29,23 @@ class AssetModelController extends Controller
 
         $asset_models = AssetModel::with(['manufacturer'])
             ->search($search)
-            ->orderBy($sortBy, $sortType)
-            ->paginate($itemsPerPage);
+            ->orderBy($sortBy, $sortType);
+
+        if (request()->has('status')) {
+            switch (request('status')) {
+                case 'Deleted':
+                    $asset_models = $asset_models->onlyTrashed();
+                    break;
+                case 'Inactive':
+                    $asset_models = $asset_models->where('is_active', false);
+                    break;
+                default:
+                    $asset_models = $asset_models->where('is_active', true);
+                    break;
+            }
+        }
+
+        $asset_models = $asset_models->paginate($itemsPerPage);
 
         return $this->successResponse('read', $asset_models, 200);
         // return $this->successResponse('Success', AssetModelResource::collection($asset_models), 200);

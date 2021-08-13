@@ -269,8 +269,6 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
-      console.log(this.form);
-
       if (!this.form.is_active) {
         this.form.is_active = false;
       }

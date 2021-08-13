@@ -40,12 +40,11 @@ export default {
         onSave(value) {
             LocationDataService.store(value)
                 .then(response => {
-                    console.log(response.data);
                     alert("Successfully created.");
                     this.$router.go(-1);
                 })
                 .catch(error => {
-                    console.log(error.response);
+                    console.log(error);
                     alert("An error has occurred.");
                     this.errors = {
                         ...this.errors,

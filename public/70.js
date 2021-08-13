@@ -260,6 +260,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -273,31 +281,39 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         text: "Refresh",
         action: "refresh",
         icon: "mdi-refresh"
-      }, {
-        text: "Export",
-        action: "export",
-        icon: "mdi-export"
-      }],
+      } // { text: "Export", action: "export", icon: "mdi-export" }
+      ],
+      status: {
+        text: "Approved",
+        action: "approved",
+        icon: "mdi-check",
+        color: "blue"
+      },
       statuses: [{
         text: "Pending",
         action: "pending",
-        icon: "mdi-clock-time-four-outline"
+        icon: "mdi-clock-time-four-outline",
+        color: "grey"
       }, {
         text: "Approved",
         action: "approved",
-        icon: "mdi-check"
+        icon: "mdi-check",
+        color: "blue"
       }, {
         text: "Completed",
         action: "completed",
-        icon: "mdi-check-all"
+        icon: "mdi-check-all",
+        color: "yellow"
       }, {
         text: "Posted",
         action: "posted",
-        icon: "mdi-check-circle"
+        icon: "mdi-check-circle",
+        color: "green"
       }, {
         text: "Cancelled",
         action: "cancelled",
-        icon: "mdi-cancel"
+        icon: "mdi-cancel",
+        color: "red"
       }],
       focus: "",
       type: "month",
@@ -361,8 +377,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             itemsPerPage = _this$tableOptions$op.itemsPerPage;
         var search = _this.search;
         var scheduled_start_date = _this.scheduled_date[0];
-        var scheduled_end_date = _this.scheduled_date[1]; // let status = this.status;
-
+        var scheduled_end_date = _this.scheduled_date[1];
+        var status = _this.status.text;
         var data = {
           params: {
             sortBy: sortBy[0],
@@ -370,14 +386,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             page: page,
             itemsPerPage: itemsPerPage,
             scheduled_start_date: scheduled_start_date,
-            scheduled_end_date: scheduled_end_date // search: search
-            // status: status
-
+            scheduled_end_date: scheduled_end_date,
+            // search: search
+            status: status
           }
         };
         _services_WorkOrderDataService__WEBPACK_IMPORTED_MODULE_0__["default"].getAll(data).then(function (response) {
           var colors = _this.colors;
-          console.log(response.data.data.data);
           _this.items = response.data.data.data.map(function (item) {
             var newObj = {};
             newObj["name"] = item.description;
@@ -387,14 +402,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             newObj["timed"] = false;
             return newObj;
           });
-          console.log(_this.items);
           _this.tableOptions.serverItemsLength = response.data.data.total;
           _this.tableOptions.loading = false;
           resolve(_this.items);
         })["catch"](function (error) {
           _this.tableOptions.loading = false;
           console.log(error);
-          console.log(error.response);
           reject();
         });
       });
@@ -461,7 +474,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: {
     params: function params(nv) {
-      return _objectSpread({}, this.tableOptions.options);
+      return _objectSpread(_objectSpread({}, this.tableOptions.options), {}, {
+        // query: this.search
+        query: this.status
+      });
     }
   },
   watch: {
@@ -499,7 +515,32 @@ var render = function() {
         "page-header",
         { staticClass: "mb-4", attrs: { title: "Schedule Board" } },
         [
-          _c("template", { slot: "leftSideNavigation" }),
+          _c(
+            "template",
+            { slot: "leftSideNavigation" },
+            [
+              _c(
+                "v-chip",
+                {
+                  staticClass: "mx-2",
+                  attrs: {
+                    label: "",
+                    outlined: "",
+                    small: "",
+                    color: _vm.status.color
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(_vm.status.text) +
+                      "\n            "
+                  )
+                ]
+              )
+            ],
+            1
+          ),
           _vm._v(" "),
           _c(
             "template",
@@ -650,7 +691,15 @@ var render = function() {
                         return [
                           _c(
                             "v-list-item",
-                            { key: index, attrs: { link: "" } },
+                            {
+                              key: index,
+                              attrs: { link: "" },
+                              on: {
+                                click: function($event) {
+                                  _vm.status = item
+                                }
+                              }
+                            },
                             [
                               _c(
                                 "v-list-item-icon",

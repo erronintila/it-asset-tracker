@@ -239,6 +239,7 @@ export default {
                     "Active",
                     "Pending",
                     "Approved",
+                    "Completed",
                     "Posted",
                     "Cancelled",
                     "Deleted"

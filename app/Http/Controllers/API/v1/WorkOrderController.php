@@ -52,6 +52,9 @@ class WorkOrderController extends Controller
                 case 'Posted':
                     $transactions = $transactions->where("posted_at", "<>", null);
                     break;
+                case 'Completed':
+                    $transactions = $transactions->where("completed_at", "<>", null)->where("posted_at", null);
+                    break;
                 case 'Approved':
                     $transactions = $transactions->where("approved_at", "<>", null)->where("posted_at", null);
                     break;
