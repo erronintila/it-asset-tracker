@@ -154,8 +154,6 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
-      console.log(this.form);
-
       if (!this.form.is_active) {
         this.form.is_active = false;
       }
@@ -237,28 +235,6 @@ var render = function() {
                             "v-col",
                             { attrs: { cols: "12" } },
                             [
-                              _c("v-select", {
-                                attrs: {
-                                  items: ["maintenance"],
-                                  disabled: "",
-                                  label: "Action Type",
-                                  outlined: "",
-                                  "error-messages": _vm.errors.action_type[0]
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.action_type = []
-                                  }
-                                },
-                                model: {
-                                  value: _vm.form.action_type,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "action_type", $$v)
-                                  },
-                                  expression: "form.action_type"
-                                }
-                              }),
-                              _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
                                   label: "Name",

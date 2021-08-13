@@ -9,7 +9,7 @@
                     <v-card-text>
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
-                                <v-select
+                                <!-- <v-select
                                     v-model="form.action_type"
                                     :items="['maintenance']"
                                     disabled
@@ -17,7 +17,7 @@
                                     outlined
                                     :error-messages="errors.action_type[0]"
                                     @input="errors.action_type = []"
-                                ></v-select>
+                                ></v-select> -->
                                 <v-text-field
                                     v-model="form.name"
                                     label="Name"
@@ -143,8 +143,6 @@ export default {
                 alert("An error has occurred.");
                 return;
             }
-
-            console.log(this.form);
 
             if (!this.form.is_active) {
                 this.form.is_active = false;

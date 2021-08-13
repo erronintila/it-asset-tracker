@@ -58,31 +58,28 @@ export default {
     },
     methods: {
         getData(transaction_type) {
-            console.log("hello", transaction_type);
             let data = {};
 
             TransactionTypeDataService.show(transaction_type.id, data)
                 .then(response => {
-                    console.log("ambot", response.data);
                     this.form = {
                         ...this.form,
                         ...response.data.data
                     };
                 })
                 .catch(error => {
-                    console.log(error.response);
+                    console.log(error);
                     alert("An error has occurred.");
                 });
         },
         onSave(value) {
             TransactionTypeDataService.update(value.id, value)
                 .then(response => {
-                    console.log(response.data);
                     alert("Successfully edited.");
                     this.$emit("save-dialog");
                 })
                 .catch(error => {
-                    console.log(error.response);
+                    console.log(error);
                     alert("An error has occurred.");
                     this.errors = {
                         ...this.errors,

@@ -558,21 +558,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -1114,99 +1099,7 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("v-spacer"),
-          _vm._v(" "),
-          _c(
-            "v-col",
-            { staticClass: "d-flex align-center justify-end" },
-            [
-              _c(
-                "v-btn",
-                { attrs: { icon: "", title: "Clear Filters" } },
-                [_c("v-icon", [_vm._v("mdi-close")])],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-menu",
-                {
-                  attrs: { bottom: "", left: "" },
-                  scopedSlots: _vm._u([
-                    {
-                      key: "activator",
-                      fn: function(ref) {
-                        var on = ref.on
-                        var attrs = ref.attrs
-                        return [
-                          _c(
-                            "v-btn",
-                            _vm._g(
-                              _vm._b(
-                                { attrs: { icon: "", title: "Filter" } },
-                                "v-btn",
-                                attrs,
-                                false
-                              ),
-                              on
-                            ),
-                            [
-                              _c("v-icon", [
-                                _vm._v("mdi-clipboard-search-outline")
-                              ])
-                            ],
-                            1
-                          )
-                        ]
-                      }
-                    }
-                  ])
-                },
-                [
-                  _vm._v(" "),
-                  _c(
-                    "v-list",
-                    [
-                      _c(
-                        "v-list-item",
-                        {
-                          attrs: { link: "" },
-                          on: {
-                            click: function($event) {
-                              _vm.dialogAccount = true
-                            }
-                          }
-                        },
-                        [
-                          _c("v-list-item-title", [
-                            _vm._v(
-                              "\n                            Account\n                        "
-                            )
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-item",
-                        { attrs: { link: "" } },
-                        [
-                          _c("v-list-item-title", [
-                            _vm._v(
-                              "\n                            Date Range\n                        "
-                            )
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
+          _c("v-spacer")
         ],
         1
       ),
@@ -1231,33 +1124,6 @@ var render = function() {
         ],
         1
       ),
-      _vm._v(" "),
-      _c("XDialog", {
-        attrs: { dialog: _vm.dialogCategory, title: "Category" },
-        on: {
-          "close-dialog": function($event) {
-            _vm.dialogCategory = false
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c("XDialog", {
-        attrs: { dialog: _vm.dialogAccount, title: "Account" },
-        on: {
-          "close-dialog": function($event) {
-            _vm.dialogAccount = false
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c("XDialog", {
-        attrs: { dialog: _vm.dialogManufacturer, title: "Manufacturer" },
-        on: {
-          "close-dialog": function($event) {
-            _vm.dialogManufacturer = false
-          }
-        }
-      }),
       _vm._v(" "),
       _c(
         "v-row",
@@ -1795,45 +1661,6 @@ var render = function() {
                                         _c(
                                           "v-list",
                                           [
-                                            _c(
-                                              "v-list-item",
-                                              { attrs: { link: "" } },
-                                              [
-                                                _c("v-list-item-title", [
-                                                  _vm._v(
-                                                    "\n                                            Today\n                                        "
-                                                  )
-                                                ])
-                                              ],
-                                              1
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "v-list-item",
-                                              { attrs: { link: "" } },
-                                              [
-                                                _c("v-list-item-title", [
-                                                  _vm._v(
-                                                    "\n                                            Yesterday\n                                        "
-                                                  )
-                                                ])
-                                              ],
-                                              1
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "v-list-item",
-                                              { attrs: { link: "" } },
-                                              [
-                                                _c("v-list-item-title", [
-                                                  _vm._v(
-                                                    "\n                                            This Week\n                                        "
-                                                  )
-                                                ])
-                                              ],
-                                              1
-                                            ),
-                                            _vm._v(" "),
                                             _c(
                                               "v-list-item",
                                               {

@@ -8,7 +8,7 @@
                 </div>
             </v-col>
             <v-spacer></v-spacer>
-            <v-col class="d-flex align-center justify-end">
+            <!-- <v-col class="d-flex align-center justify-end">
                 <v-btn icon title="Clear Filters">
                     <v-icon>mdi-close</v-icon>
                 </v-btn>
@@ -31,7 +31,7 @@
                         </v-list-item>
                     </v-list>
                 </v-menu>
-            </v-col>
+            </v-col> -->
         </v-row>
 
         <v-row class="hidden-sm-and-down mb-2">
@@ -46,23 +46,23 @@
             </v-col>
         </v-row>
 
-        <XDialog
+        <!-- <XDialog
             :dialog="dialogCategory"
             :title="'Category'"
             @close-dialog="dialogCategory = false"
-        ></XDialog>
+        ></XDialog> -->
 
-        <XDialog
+        <!-- <XDialog
             :dialog="dialogAccount"
             :title="'Account'"
             @close-dialog="dialogAccount = false"
-        ></XDialog>
+        ></XDialog> -->
 
-        <XDialog
+        <!-- <XDialog
             :dialog="dialogManufacturer"
             :title="'Manufacturer'"
             @close-dialog="dialogManufacturer = false"
-        ></XDialog>
+        ></XDialog> -->
 
         <v-row>
             <v-col cols="12" md="3">
@@ -261,21 +261,6 @@
                                     </template>
 
                                     <v-list>
-                                        <v-list-item link>
-                                            <v-list-item-title>
-                                                Today
-                                            </v-list-item-title>
-                                        </v-list-item>
-                                        <v-list-item link>
-                                            <v-list-item-title>
-                                                Yesterday
-                                            </v-list-item-title>
-                                        </v-list-item>
-                                        <v-list-item link>
-                                            <v-list-item-title>
-                                                This Week
-                                            </v-list-item-title>
-                                        </v-list-item>
                                         <v-list-item
                                             link
                                             @click="

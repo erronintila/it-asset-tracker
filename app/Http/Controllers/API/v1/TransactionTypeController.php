@@ -31,6 +31,20 @@ class TransactionTypeController extends Controller
         $transaction_types = TransactionType::search($search)
             ->orderBy($sortBy, $sortType);
 
+        if (request()->has('status')) {
+            switch (request('status')) {
+                case 'Deleted':
+                    $transaction_types = $transaction_types->onlyTrashed();
+                    break;
+                case 'Inactive':
+                    $transaction_types = $transaction_types->where('is_active', false);
+                    break;
+                default:
+                    $transaction_types = $transaction_types;
+                    break;
+            }
+        }
+
         $transaction_types = $transaction_types->whereIn("action_type", $action_types);
 
         $transaction_types = $transaction_types->paginate($itemsPerPage);
