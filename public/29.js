@@ -232,13 +232,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_apexcharts__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_apexcharts__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_X_Dialog_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/X-Dialog.vue */ "./resources/js/components/X-Dialog.vue");
 /* harmony import */ var _services_DashboardDataService__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/DashboardDataService */ "./resources/js/services/DashboardDataService.js");
+/* harmony import */ var _services_ActivityLogDataService__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/ActivityLogDataService */ "./resources/js/services/ActivityLogDataService.js");
+
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
@@ -508,6 +509,71 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -525,52 +591,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       dialogManufacturer: false,
       tableSelected: [],
       assets: {
-        total: 0
+        total: 0,
+        status: {
+          pending: 0,
+          in_storage: 0,
+          in_maintenance: 0,
+          in_use: 0
+        }
       },
-      dashboard: {
-        headers: [{
-          title: "Total Active Assets",
-          subtitle: "",
-          body: "0",
-          color: "white",
-          dark: false,
-          text_color: "black--text",
-          link: "/assets"
-        }, {
-          title: "Completed Work Orders",
-          subtitle: "",
-          body: "0",
-          color: "white",
-          dark: false,
-          text_color: "black--text",
-          link: "/work_orders"
-        }, {
-          title: "Pending Work Orders",
-          subtitle: "",
-          body: "0",
-          color: "white",
-          dark: true,
-          text_color: "black--text",
-          link: "/work_orders"
-        }, {
-          title: "Scheduled Work Orders",
-          subtitle: "",
-          body: "0",
-          color: "white",
-          dark: false,
-          text_color: "black--text",
-          link: "/schedules"
-        }]
-      },
-      series: {
-        asset: [0, 0, 0, 0],
-        work_order: [{
-          data: [0, 0, 0, 0]
-        }]
+      work_orders: {
+        categories: [4, 4, 4, 4],
+        completed: 0,
+        pending: 0,
+        scheduled: 0
       },
       options: {
         asset: {
-          labels: ["In Storage", "In Use", "In Maintenance", "Disposed"],
+          labels: ["Pending", "In Use", "In Storage", "In Maintenance"],
           legend: {
             show: false
           }
@@ -582,7 +619,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               show: false
             }
           },
-          colors: ["#2E93fA", "#66DA26", "#546E7A", "#E91E63", "#FF9800"],
+          colors: ["#2E93fA", "#546E7A", "#66DA26", "#E91E63", "#FF9800"],
           plotOptions: {
             bar: {
               borderRadius: 8,
@@ -590,31 +627,53 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           },
           xaxis: {
-            categories: ["Installation", "Preventive Maintenance", "Corrective Maintenance", "Repair"]
+            categories: []
           }
         }
       },
       headers: {
         activity: [{
           text: "Date",
-          align: "start",
-          value: "date"
+          value: "created_at"
         }, {
-          text: "User",
-          value: "user"
+          text: "Description",
+          value: "description"
         }, {
-          text: "Activity",
-          value: "activity"
-        }, {
-          text: "",
-          value: "actions"
+          text: "Action",
+          value: "action"
         }]
       },
-      activities: []
+      activityTableOptions: {
+        options: {
+          sortBy: ["created_at"],
+          sortDesc: [false],
+          page: 1,
+          itemsPerPage: 5
+        },
+        loading: false,
+        itemsPerPageOptions: [5, 10],
+        serverItemsLength: 0,
+        headers: [{
+          text: "Date",
+          value: "created_at"
+        }, {
+          text: "Description",
+          value: "description"
+        }, {
+          text: "Action",
+          value: "action"
+        }]
+      },
+      activities: [],
+      work_order_series: [{
+        data: []
+      }]
     };
   },
   methods: {
     getData: function getData() {
+      var _this = this;
+
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
@@ -623,30 +682,102 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.prev = 0;
                 _context.next = 3;
                 return _services_DashboardDataService__WEBPACK_IMPORTED_MODULE_4__["default"].getAll().then(function (response) {
-                  return console.log(response);
+                  var _response$data$data = response.data.data,
+                      assets = _response$data$data.assets,
+                      work_orders = _response$data$data.work_orders;
+                  console.log(response);
+                  _this.assets = _objectSpread({}, assets);
+                  _this.work_orders = _objectSpread({}, work_orders);
+                  _this.series.asset = Object.values(assets.status);
+                  _this.options.work_order = _objectSpread(_objectSpread({}, _this.options.work_order), {
+                    xaxis: {
+                      categories: work_orders.categories.map(function (item) {
+                        return item.name;
+                      })
+                    }
+                  });
+                  console.log(work_orders.categories.map(function (item) {
+                    return item.total;
+                  }));
+
+                  _this.$refs.workOrderChart.updateSeries([{
+                    data: work_orders.categories.map(function (item) {
+                      return item.total;
+                    })
+                  }], false, true);
                 });
 
               case 3:
-                _context.next = 8;
+                _context.next = 9;
                 break;
 
               case 5:
                 _context.prev = 5;
                 _context.t0 = _context["catch"](0);
                 console.log(_context.t0);
+                console.log(_context.t0.response);
 
-              case 8:
+              case 9:
               case "end":
                 return _context.stop();
             }
           }
         }, _callee, null, [[0, 5]]);
       }))();
+    },
+    getActivityLogs: function getActivityLogs() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var _this2$activityTableO, sortBy, sortDesc, page, itemsPerPage, data;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _this2.activityTableOptions.loading = true;
+                _this2$activityTableO = _this2.activityTableOptions.options, sortBy = _this2$activityTableO.sortBy, sortDesc = _this2$activityTableO.sortDesc, page = _this2$activityTableO.page, itemsPerPage = _this2$activityTableO.itemsPerPage;
+                data = {
+                  params: {
+                    sortBy: sortBy[0],
+                    sortType: sortDesc[0] ? "desc" : "asc",
+                    page: page,
+                    itemsPerPage: itemsPerPage
+                  }
+                };
+                _context2.prev = 3;
+                _context2.next = 6;
+                return _services_ActivityLogDataService__WEBPACK_IMPORTED_MODULE_5__["default"].getAll(data).then(function (response) {
+                  _this2.activities = response.data.data.data;
+                  _this2.activityTableOptions.serverItemsLength = response.data.data.total;
+                  _this2.activityTableOptions.loading = false;
+                });
+
+              case 6:
+                _context2.next = 12;
+                break;
+
+              case 8:
+                _context2.prev = 8;
+                _context2.t0 = _context2["catch"](3);
+                console.log(_context2.t0);
+                console.log(_context2.t0.response);
+
+              case 12:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[3, 8]]);
+      }))();
     }
   },
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])({
     user: "auth/user"
   })), {}, {
+    params: function params(nv) {
+      return _objectSpread({}, this.activityTableOptions.options);
+    },
     dateRangeText: function dateRangeText() {
       return this.dates.join(" ~ ");
     },
@@ -655,10 +786,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return {
         total: this.assets ? this.assets.total : 0
       };
+    },
+    series: function series() {
+      return {
+        asset: this.assets ? Object.values(this.assets.status) : [0, 0, 0, 0]
+      };
     }
   }),
+  watch: {
+    params: {
+      immediate: true,
+      deep: true,
+      handler: function handler() {
+        this.getActivityLogs();
+      }
+    }
+  },
   mounted: function mounted() {
     this.getData();
+    this.getActivityLogs();
   }
 });
 
@@ -1115,95 +1261,227 @@ var render = function() {
       _vm._v(" "),
       _c(
         "v-row",
-        _vm._l(_vm.dashboard.headers, function(item, index) {
-          return _c(
+        [
+          _c(
             "v-col",
-            { key: index, attrs: { cols: "12", md: "3" } },
+            { attrs: { cols: "12", md: "3" } },
             [
               _c("v-hover", {
                 attrs: { "open-delay": "30" },
-                scopedSlots: _vm._u(
-                  [
-                    {
-                      key: "default",
-                      fn: function(ref) {
-                        var hover = ref.hover
-                        return [
-                          _c(
-                            "v-card",
-                            {
-                              staticClass: "rounded-lg",
-                              class: { "on-hover": hover },
-                              attrs: {
-                                elevation: hover ? 10 : 3,
-                                color: item.color,
-                                dark: item.dark
-                              }
-                            },
-                            [
-                              _c(
-                                "v-list-item",
-                                { attrs: { "three-line": "", to: item.link } },
-                                [
-                                  _c("v-list-item-content", [
-                                    _c(
-                                      "div",
-                                      {
-                                        class: "header-title " + item.text_color
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                                " +
-                                            _vm._s(item.title) +
-                                            "\n                            "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        class: "header-body " + item.text_color
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                                " +
-                                            _vm._s(item.body) +
-                                            "\n                            "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      { class: "body-2 " + item.text_color },
-                                      [
-                                        _vm._v(
-                                          "\n                                " +
-                                            _vm._s(item.subtitle) +
-                                            "\n                            "
-                                        )
-                                      ]
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(ref) {
+                      var hover = ref.hover
+                      return [
+                        _c(
+                          "v-card",
+                          {
+                            staticClass: "rounded-lg",
+                            class: { "on-hover": hover },
+                            attrs: { elevation: hover ? 10 : 3 }
+                          },
+                          [
+                            _c(
+                              "v-list-item",
+                              { attrs: { "three-line": "", to: "/assets" } },
+                              [
+                                _c("v-list-item-content", [
+                                  _c("div", { class: "header-title" }, [
+                                    _vm._v(
+                                      "\n                                Total Active Assets\n                            "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { class: "header-body" }, [
+                                    _vm._v(
+                                      "\n                                " +
+                                        _vm._s(_vm.assets.total) +
+                                        "\n                            "
                                     )
                                   ])
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ]
-                      }
+                                ])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ]
                     }
-                  ],
-                  null,
-                  true
-                )
+                  }
+                ])
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-col",
+            { attrs: { cols: "12", md: "3" } },
+            [
+              _c("v-hover", {
+                attrs: { "open-delay": "30" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(ref) {
+                      var hover = ref.hover
+                      return [
+                        _c(
+                          "v-card",
+                          {
+                            staticClass: "rounded-lg",
+                            class: { "on-hover": hover },
+                            attrs: { elevation: hover ? 10 : 3 }
+                          },
+                          [
+                            _c(
+                              "v-list-item",
+                              {
+                                attrs: { "three-line": "", to: "/work_orders" }
+                              },
+                              [
+                                _c("v-list-item-content", [
+                                  _c("div", { class: "header-title" }, [
+                                    _vm._v(
+                                      "\n                                Completed Work Orders\n                            "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { class: "header-body" }, [
+                                    _vm._v(
+                                      "\n                                " +
+                                        _vm._s(_vm.work_orders.completed) +
+                                        "\n                            "
+                                    )
+                                  ])
+                                ])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ]
+                    }
+                  }
+                ])
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-col",
+            { attrs: { cols: "12", md: "3" } },
+            [
+              _c("v-hover", {
+                attrs: { "open-delay": "30" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(ref) {
+                      var hover = ref.hover
+                      return [
+                        _c(
+                          "v-card",
+                          {
+                            staticClass: "rounded-lg",
+                            class: { "on-hover": hover },
+                            attrs: { elevation: hover ? 10 : 3 }
+                          },
+                          [
+                            _c(
+                              "v-list-item",
+                              {
+                                attrs: { "three-line": "", to: "/work_orders" }
+                              },
+                              [
+                                _c("v-list-item-content", [
+                                  _c("div", { class: "header-title" }, [
+                                    _vm._v(
+                                      "\n                                Pending Work Orders\n                            "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { class: "header-body" }, [
+                                    _vm._v(
+                                      "\n                                " +
+                                        _vm._s(_vm.work_orders.pending) +
+                                        "\n                            "
+                                    )
+                                  ])
+                                ])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ]
+                    }
+                  }
+                ])
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-col",
+            { attrs: { cols: "12", md: "3" } },
+            [
+              _c("v-hover", {
+                attrs: { "open-delay": "30" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(ref) {
+                      var hover = ref.hover
+                      return [
+                        _c(
+                          "v-card",
+                          {
+                            staticClass: "rounded-lg",
+                            class: { "on-hover": hover },
+                            attrs: { elevation: hover ? 10 : 3 }
+                          },
+                          [
+                            _c(
+                              "v-list-item",
+                              { attrs: { "three-line": "", to: "/schedules" } },
+                              [
+                                _c("v-list-item-content", [
+                                  _c("div", { class: "header-title" }, [
+                                    _vm._v(
+                                      "\n                                Scheduled Work Orders\n                            "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { class: "header-body" }, [
+                                    _vm._v(
+                                      "\n                                " +
+                                        _vm._s(_vm.work_orders.scheduled) +
+                                        "\n                            "
+                                    )
+                                  ])
+                                ])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ]
+                    }
+                  }
+                ])
               })
             ],
             1
           )
-        }),
+        ],
         1
       ),
       _vm._v(" "),
@@ -1342,6 +1620,7 @@ var render = function() {
                                 "div",
                                 [
                                   _c("VueApexCharts", {
+                                    ref: "assetChart",
                                     attrs: {
                                       type: "donut",
                                       height: "300",
@@ -1409,11 +1688,12 @@ var render = function() {
                                 "div",
                                 [
                                   _c("VueApexCharts", {
+                                    ref: "workOrderChart",
                                     attrs: {
                                       type: "bar",
                                       height: "300",
                                       options: _vm.options.work_order,
-                                      series: _vm.series.work_order
+                                      series: _vm.work_order_series
                                     }
                                   })
                                 ],
@@ -1595,12 +1875,30 @@ var render = function() {
                                   attrs: {
                                     headers: _vm.headers.activity,
                                     items: _vm.activities,
-                                    "items-per-page": 5
+                                    loading: _vm.activityTableOptions.loading,
+                                    options: _vm.activityTableOptions.options,
+                                    "server-items-length":
+                                      _vm.activityTableOptions
+                                        .serverItemsLength,
+                                    "footer-props": {
+                                      itemsPerPageOptions:
+                                        _vm.activityTableOptions
+                                          .itemsPerPageOptions
+                                    }
+                                  },
+                                  on: {
+                                    "update:options": function($event) {
+                                      return _vm.$set(
+                                        _vm.activityTableOptions,
+                                        "options",
+                                        $event
+                                      )
+                                    }
                                   },
                                   scopedSlots: _vm._u(
                                     [
                                       {
-                                        key: "item.actions",
+                                        key: "item.action",
                                         fn: function(ref) {
                                           var item = ref.item
                                           return [
@@ -1608,17 +1906,34 @@ var render = function() {
                                               "router-link",
                                               {
                                                 attrs: {
-                                                  to: {
-                                                    name: "",
-                                                    params: { id: item.id }
-                                                  }
+                                                  to:
+                                                    "/" +
+                                                    item.properties.custom.link
                                                 }
                                               },
                                               [
                                                 _vm._v(
-                                                  "\n                                    More\n                                "
+                                                  "\n                                    View Details\n                                "
                                                 )
                                               ]
+                                            )
+                                          ]
+                                        }
+                                      },
+                                      {
+                                        key: "item.created_at",
+                                        fn: function(ref) {
+                                          var item = ref.item
+                                          return [
+                                            _vm._v(
+                                              "\n                                " +
+                                                _vm._s(
+                                                  _vm._f("moment")(
+                                                    item.created_at,
+                                                    "LLLL"
+                                                  )
+                                                ) +
+                                                "\n                            "
                                             )
                                           ]
                                         }
@@ -1878,6 +2193,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_f7b9f0c4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/services/ActivityLogDataService.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/services/ActivityLogDataService.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+// import http from "../http-common";
+
+
+var ActivityLogDataService = /*#__PURE__*/function () {
+  function ActivityLogDataService() {
+    _classCallCheck(this, ActivityLogDataService);
+  }
+
+  _createClass(ActivityLogDataService, [{
+    key: "getAll",
+    value: function getAll(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/activity_logs", data);
+    }
+  }]);
+
+  return ActivityLogDataService;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (new ActivityLogDataService());
 
 /***/ }),
 

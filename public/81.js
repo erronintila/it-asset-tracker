@@ -143,7 +143,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 4:
                 _this.$router.push({
-                  name: "home"
+                  name: "dashboard"
                 });
 
               case 5:

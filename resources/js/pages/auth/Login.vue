@@ -100,7 +100,7 @@ export default {
             try {
                 if (this.$refs.form.validate()) {
                     await this.login(this.form);
-                    this.$router.push({ name: "home" });
+                    this.$router.push({ name: "dashboard" });
                 }
             } catch (error) {
                 this.errors = error.response.data.errors;

@@ -65,30 +65,83 @@
         ></XDialog>
 
         <v-row>
-            <v-col
-                cols="12"
-                md="3"
-                v-for="(item, index) in dashboard.headers"
-                :key="index"
-            >
+            <v-col cols="12" md="3">
                 <v-hover v-slot="{ hover }" open-delay="30">
                     <v-card
                         :elevation="hover ? 10 : 3"
                         :class="{ 'on-hover': hover }"
                         class="rounded-lg"
-                        :color="item.color"
-                        :dark="item.dark"
                     >
-                        <v-list-item three-line :to="item.link">
+                        <v-list-item three-line to="/assets">
                             <v-list-item-content>
-                                <div :class="'header-title ' + item.text_color">
-                                    {{ item.title }}
+                                <div :class="'header-title'">
+                                    Total Active Assets
                                 </div>
-                                <div :class="'header-body ' + item.text_color">
-                                    {{ item.body }}
+                                <div :class="'header-body'">
+                                    {{ assets.total }}
                                 </div>
-                                <div :class="'body-2 ' + item.text_color">
-                                    {{ item.subtitle }}
+                            </v-list-item-content>
+                        </v-list-item>
+                    </v-card>
+                </v-hover>
+            </v-col>
+
+            <v-col cols="12" md="3">
+                <v-hover v-slot="{ hover }" open-delay="30">
+                    <v-card
+                        :elevation="hover ? 10 : 3"
+                        :class="{ 'on-hover': hover }"
+                        class="rounded-lg"
+                    >
+                        <v-list-item three-line to="/work_orders">
+                            <v-list-item-content>
+                                <div :class="'header-title'">
+                                    Completed Work Orders
+                                </div>
+                                <div :class="'header-body'">
+                                    {{ work_orders.completed }}
+                                </div>
+                            </v-list-item-content>
+                        </v-list-item>
+                    </v-card>
+                </v-hover>
+            </v-col>
+
+            <v-col cols="12" md="3">
+                <v-hover v-slot="{ hover }" open-delay="30">
+                    <v-card
+                        :elevation="hover ? 10 : 3"
+                        :class="{ 'on-hover': hover }"
+                        class="rounded-lg"
+                    >
+                        <v-list-item three-line to="/work_orders">
+                            <v-list-item-content>
+                                <div :class="'header-title'">
+                                    Pending Work Orders
+                                </div>
+                                <div :class="'header-body'">
+                                    {{ work_orders.pending }}
+                                </div>
+                            </v-list-item-content>
+                        </v-list-item>
+                    </v-card>
+                </v-hover>
+            </v-col>
+
+            <v-col cols="12" md="3">
+                <v-hover v-slot="{ hover }" open-delay="30">
+                    <v-card
+                        :elevation="hover ? 10 : 3"
+                        :class="{ 'on-hover': hover }"
+                        class="rounded-lg"
+                    >
+                        <v-list-item three-line to="/schedules">
+                            <v-list-item-content>
+                                <div :class="'header-title'">
+                                    Scheduled Work Orders
+                                </div>
+                                <div :class="'header-body'">
+                                    {{ work_orders.scheduled }}
                                 </div>
                             </v-list-item-content>
                         </v-list-item>
@@ -141,12 +194,14 @@
                         <v-card-text>
                             <div>
                                 <VueApexCharts
+                                    ref="assetChart"
                                     type="donut"
                                     height="300"
                                     :options="options.asset"
                                     :series="series.asset"
                                 ></VueApexCharts>
                             </div>
+
                             <div class="mt-2">
                                 <small>All Categories</small>
                                 <small>|</small>
@@ -172,10 +227,11 @@
                         <v-card-text>
                             <div>
                                 <VueApexCharts
+                                    ref="workOrderChart"
                                     type="bar"
                                     height="300"
                                     :options="options.work_order"
-                                    :series="series.work_order"
+                                    :series="work_order_series"
                                 ></VueApexCharts>
                             </div>
                         </v-card-text>
@@ -241,17 +297,25 @@
                             <v-data-table
                                 :headers="headers.activity"
                                 :items="activities"
-                                :items-per-page="5"
+                                :loading="activityTableOptions.loading"
+                                :options.sync="activityTableOptions.options"
+                                :server-items-length="
+                                    activityTableOptions.serverItemsLength
+                                "
+                                :footer-props="{
+                                    itemsPerPageOptions:
+                                        activityTableOptions.itemsPerPageOptions
+                                }"
                             >
-                                <template v-slot:[`item.actions`]="{ item }">
+                                <template v-slot:[`item.action`]="{ item }">
                                     <router-link
-                                        :to="{
-                                            name: '',
-                                            params: { id: item.id }
-                                        }"
+                                        :to="`/${item.properties.custom.link}`"
                                     >
-                                        More
+                                        View Details
                                     </router-link>
+                                </template>
+                                <template v-slot:[`item.created_at`]="{ item }">
+                                    {{ item.created_at | moment("LLLL") }}
                                 </template>
                             </v-data-table>
                         </v-card-text>
@@ -267,6 +331,7 @@ import { mapGetters } from "vuex";
 import VueApexCharts from "vue-apexcharts";
 import XDialog from "../../components/X-Dialog.vue";
 import DashboardDataService from "../../services/DashboardDataService";
+import ActivityLogDataService from "../../services/ActivityLogDataService";
 
 export default {
     name: "dashboard",
@@ -281,63 +346,27 @@ export default {
             dialogManufacturer: false,
             tableSelected: [],
             assets: {
-                total: 0
+                total: 0,
+                status: {
+                    pending: 0,
+                    in_storage: 0,
+                    in_maintenance: 0,
+                    in_use: 0
+                }
             },
-            dashboard: {
-                headers: [
-                    {
-                        title: "Total Active Assets",
-                        subtitle: "",
-                        body: "0",
-                        color: "white",
-                        dark: false,
-                        text_color: "black--text",
-                        link: "/assets"
-                    },
-                    {
-                        title: "Completed Work Orders",
-                        subtitle: "",
-                        body: "0",
-                        color: "white",
-                        dark: false,
-                        text_color: "black--text",
-                        link: "/work_orders"
-                    },
-                    {
-                        title: "Pending Work Orders",
-                        subtitle: "",
-                        body: "0",
-                        color: "white",
-                        dark: true,
-                        text_color: "black--text",
-                        link: "/work_orders"
-                    },
-                    {
-                        title: "Scheduled Work Orders",
-                        subtitle: "",
-                        body: "0",
-                        color: "white",
-                        dark: false,
-                        text_color: "black--text",
-                        link: "/schedules"
-                    }
-                ]
-            },
-            series: {
-                asset: [0, 0, 0, 0],
-                work_order: [
-                    {
-                        data: [0, 0, 0, 0]
-                    }
-                ]
+            work_orders: {
+                categories: [4, 4, 4, 4],
+                completed: 0,
+                pending: 0,
+                scheduled: 0
             },
             options: {
                 asset: {
                     labels: [
-                        "In Storage",
+                        "Pending",
                         "In Use",
-                        "In Maintenance",
-                        "Disposed"
+                        "In Storage",
+                        "In Maintenance"
                     ],
                     legend: {
                         show: false
@@ -352,8 +381,8 @@ export default {
                     },
                     colors: [
                         "#2E93fA",
-                        "#66DA26",
                         "#546E7A",
+                        "#66DA26",
                         "#E91E63",
                         "#FF9800"
                     ],
@@ -364,38 +393,113 @@ export default {
                         }
                     },
                     xaxis: {
-                        categories: [
-                            "Installation",
-                            "Preventive Maintenance",
-                            "Corrective Maintenance",
-                            "Repair"
-                        ]
+                        categories: []
                     }
                 }
             },
             headers: {
                 activity: [
-                    {
-                        text: "Date",
-                        align: "start",
-                        value: "date"
-                    },
-                    { text: "User", value: "user" },
-                    { text: "Activity", value: "activity" },
-                    { text: "", value: "actions" }
+                    { text: "Date", value: "created_at" },
+                    { text: "Description", value: "description" },
+                    { text: "Action", value: "action" }
                 ]
             },
-            activities: []
+
+            activityTableOptions: {
+                options: {
+                    sortBy: ["created_at"],
+                    sortDesc: [false],
+                    page: 1,
+                    itemsPerPage: 5
+                },
+                loading: false,
+                itemsPerPageOptions: [5, 10],
+                serverItemsLength: 0,
+                headers: [
+                    { text: "Date", value: "created_at" },
+                    { text: "Description", value: "description" },
+                    { text: "Action", value: "action" }
+                ]
+            },
+            activities: [],
+            work_order_series: [
+                {
+                    data: []
+                }
+            ]
         };
     },
     methods: {
         async getData() {
             try {
-                await DashboardDataService.getAll().then(response =>
-                    console.log(response)
-                );
+                await DashboardDataService.getAll().then(response => {
+                    const { assets, work_orders } = response.data.data;
+
+                    console.log(response);
+
+                    this.assets = { ...assets };
+                    this.work_orders = { ...work_orders };
+
+                    this.series.asset = Object.values(assets.status);
+
+                    this.options.work_order = {
+                        ...this.options.work_order,
+                        ...{
+                            xaxis: {
+                                categories: work_orders.categories.map(
+                                    item => item.name
+                                )
+                            }
+                        }
+                    };
+
+                    console.log(work_orders.categories.map(item => item.total));
+
+                    this.$refs.workOrderChart.updateSeries(
+                        [
+                            {
+                                data: work_orders.categories.map(
+                                    item => item.total
+                                )
+                            }
+                        ],
+                        false,
+                        true
+                    );
+                });
             } catch (error) {
                 console.log(error);
+                console.log(error.response);
+            }
+        },
+        async getActivityLogs() {
+            this.activityTableOptions.loading = true;
+            const {
+                sortBy,
+                sortDesc,
+                page,
+                itemsPerPage
+            } = this.activityTableOptions.options;
+
+            let data = {
+                params: {
+                    sortBy: sortBy[0],
+                    sortType: sortDesc[0] ? "desc" : "asc",
+                    page: page,
+                    itemsPerPage: itemsPerPage
+                }
+            };
+
+            try {
+                await ActivityLogDataService.getAll(data).then(response => {
+                    this.activities = response.data.data.data;
+                    this.activityTableOptions.serverItemsLength =
+                        response.data.data.total;
+                    this.activityTableOptions.loading = false;
+                });
+            } catch (error) {
+                console.log(error);
+                console.log(error.response);
             }
         }
     },
@@ -403,6 +507,11 @@ export default {
         ...mapGetters({
             user: "auth/user"
         }),
+        params(nv) {
+            return {
+                ...this.activityTableOptions.options
+            };
+        },
         dateRangeText() {
             return this.dates.join(" ~ ");
         },
@@ -411,10 +520,27 @@ export default {
             return {
                 total: this.assets ? this.assets.total : 0
             };
+        },
+        series() {
+            return {
+                asset: this.assets
+                    ? Object.values(this.assets.status)
+                    : [0, 0, 0, 0]
+            };
+        }
+    },
+    watch: {
+        params: {
+            immediate: true,
+            deep: true,
+            handler() {
+                this.getActivityLogs();
+            }
         }
     },
     mounted() {
         this.getData();
+        this.getActivityLogs();
     }
 };
 </script>
