@@ -183,8 +183,6 @@ export default {
                 return;
             }
 
-            console.log(this.form);
-
             let newForm = {
                 ...this.form,
                 ...{ manager_id: this.form.manager.id }

@@ -61,12 +61,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this = this;
 
       _services_DepartmentDataService__WEBPACK_IMPORTED_MODULE_1__["default"].store(value).then(function (response) {
-        console.log(response.data);
         alert("Successfully created.");
 
         _this.$emit("save-dialog");
       })["catch"](function (error) {
-        console.log(error.response);
+        console.log(error);
         alert("An error has occurred.");
         _this.errors = _objectSpread(_objectSpread({}, _this.errors), error.response.data.errors);
       });
@@ -177,10 +176,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       var data = {};
       _services_DepartmentDataService__WEBPACK_IMPORTED_MODULE_1__["default"].show(department.id, data).then(function (response) {
-        console.log(response.data);
         _this.form = _objectSpread(_objectSpread({}, _this.form), response.data.data);
       })["catch"](function (error) {
-        console.log(error.response);
+        console.log(error);
         alert("An error has occurred.");
       });
     },
@@ -188,12 +186,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this2 = this;
 
       _services_DepartmentDataService__WEBPACK_IMPORTED_MODULE_1__["default"].update(value.id, value).then(function (response) {
-        console.log(response.data);
         alert("Successfully edited.");
 
         _this2.$emit("save-dialog");
       })["catch"](function (error) {
-        console.log(error.response);
+        console.log(error);
         alert("An error has occurred.");
         _this2.errors = _objectSpread(_objectSpread({}, _this2.errors), error.response.data.errors);
       });
@@ -424,6 +421,38 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -437,6 +466,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       dialogDepartmentCreate: false,
       dialogDepartmentEdit: false,
+      filter: {
+        status: "Active",
+        statuses: ["Active", "Inactive", "Deleted"]
+      },
       actions: [{
         text: "Refresh",
         action: "refresh",
@@ -453,10 +486,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         text: "Restore",
         action: "restore",
         icon: "mdi-restore"
-      }, {
-        text: "Export",
-        action: "export",
-        icon: "mdi-export"
       }],
       tableOptions: {
         options: {
@@ -476,10 +505,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           value: "name"
         }, {
           text: "Manager",
-          value: "manager.full_name"
-        }, {
-          text: "Assets",
-          value: "quantity"
+          value: "manager.full_name",
+          sortable: false
         }]
       },
       search: "",
@@ -498,20 +525,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             sortDesc = _this$tableOptions$op.sortDesc,
             page = _this$tableOptions$op.page,
             itemsPerPage = _this$tableOptions$op.itemsPerPage;
-        var search = _this.search; // let status = this.status;
-
+        var search = _this.search;
+        var status = _this.filter.status;
         var data = {
           params: {
             sortBy: sortBy[0],
             sortType: sortDesc[0] ? "desc" : "asc",
             page: page,
             itemsPerPage: itemsPerPage,
-            search: search // status: status
-
+            search: search,
+            status: status
           }
         };
         _services_DepartmentDataService__WEBPACK_IMPORTED_MODULE_0__["default"].getAll(data).then(function (response) {
-          console.log(response.data);
           _this.items = response.data.data.data;
           _this.tableOptions.serverItemsLength = response.data.data.total;
           _this.tableOptions.loading = false;
@@ -519,7 +545,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         })["catch"](function (error) {
           _this.tableOptions.loading = false;
           console.log(error);
-          console.log(error.response);
           reject();
         });
       });
@@ -537,7 +562,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
 
           this.dialogDepartmentEdit = true;
-          console.log(this.selectedItems[0].id);
           break;
 
         case "delete":
@@ -575,20 +599,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       };
       _services_DepartmentDataService__WEBPACK_IMPORTED_MODULE_0__["default"].deleteMany(data).then(function (response) {
-        console.log(response.data);
-
         _this2.getData();
 
         _this2.selectedItems = [];
       })["catch"](function (error) {
-        console.log(error.response);
+        console.log(error);
         alert("An error has occurred.");
       });
     },
-    openSearchDialog: function openSearchDialog() {
-      alert("Search Dialog");
-    },
     clearFilters: function clearFilters() {
+      this.filter.status = "Active";
       this.selectedItems = [];
       this.search = "";
       this.tableOptions.options = {
@@ -601,10 +621,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: {
     params: function params(nv) {
-      return _objectSpread({}, this.tableOptions.options);
+      return _objectSpread(_objectSpread({}, this.tableOptions.options), {}, {
+        // query: this.search
+        query: this.filter.status
+      });
     },
     hasFilters: function hasFilters() {
-      return this.search || this.selectedItems.length;
+      if (this.filter.status != "Active") {
+        return true;
+      }
+
+      if (this.search || this.selectedItems.length) {
+        return true;
+      }
+
+      return false;
     }
   },
   watch: {
@@ -918,13 +949,8 @@ var render = function() {
             [
               _c("v-text-field", {
                 staticClass: "hidden-sm-and-down mt-5 p-0",
-                attrs: {
-                  label: "Search",
-                  clearable: "",
-                  "append-icon": "mdi-clipboard-search-outline"
-                },
+                attrs: { label: "Search", clearable: "" },
                 on: {
-                  "click:append": _vm.openSearchDialog,
                   keyup: function($event) {
                     if (
                       !$event.type.indexOf("key") &&
@@ -942,7 +968,84 @@ var render = function() {
                   },
                   expression: "search"
                 }
-              })
+              }),
+              _vm._v(" "),
+              _c(
+                "v-menu",
+                {
+                  attrs: {
+                    "close-on-content-click": false,
+                    "nudge-width": 200,
+                    "offset-y": "",
+                    left: "",
+                    bottom: ""
+                  },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "activator",
+                      fn: function(ref) {
+                        var on = ref.on
+                        var attrs = ref.attrs
+                        return [
+                          _c(
+                            "v-btn",
+                            _vm._g(
+                              _vm._b(
+                                { attrs: { icon: "" } },
+                                "v-btn",
+                                attrs,
+                                false
+                              ),
+                              on
+                            ),
+                            [
+                              _c("v-icon", [
+                                _vm._v("mdi-clipboard-search-outline")
+                              ])
+                            ],
+                            1
+                          )
+                        ]
+                      }
+                    }
+                  ])
+                },
+                [
+                  _vm._v(" "),
+                  _c(
+                    "v-card",
+                    [
+                      _c(
+                        "v-list",
+                        [
+                          _c(
+                            "v-list-item",
+                            [
+                              _c("v-select", {
+                                attrs: {
+                                  items: _vm.filter.statuses,
+                                  label: "Status"
+                                },
+                                model: {
+                                  value: _vm.filter.status,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.filter, "status", $$v)
+                                  },
+                                  expression: "filter.status"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
             ],
             1
           )
@@ -963,8 +1066,7 @@ var render = function() {
                   label: "Search",
                   clearable: "",
                   "append-icon": "mdi-clipboard-search-outline"
-                },
-                on: { "click:append": _vm.openSearchDialog }
+                }
               })
             ],
             1
@@ -1010,6 +1112,25 @@ var render = function() {
                   }
                 },
                 [_vm._v("\n            " + _vm._s(_vm.search) + "\n        ")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.filter.status != "Active"
+            ? _c(
+                "v-chip",
+                {
+                  attrs: { close: "", label: "", outlined: "", small: "" },
+                  on: {
+                    "click:close": function($event) {
+                      _vm.filter.status = "Active"
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n            " + _vm._s(_vm.filter.status) + "\n        "
+                  )
+                ]
               )
             : _vm._e(),
           _vm._v(" "),

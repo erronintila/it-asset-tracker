@@ -30,8 +30,23 @@ class DepartmentController extends Controller
 
         $departments = Department::with("manager")
             ->search($search)
-            ->orderBy($sortBy, $sortType)
-            ->paginate($itemsPerPage);
+            ->orderBy($sortBy, $sortType);
+
+        if (request()->has('status')) {
+            switch (request('status')) {
+                case 'Deleted':
+                    $departments = $departments->onlyTrashed();
+                    break;
+                case 'Inactive':
+                    $departments = $departments->where('is_active', false);
+                    break;
+                default:
+                    $departments = $departments->where('is_active', true);
+                    break;
+            }
+        }
+
+        $departments = $departments->paginate($itemsPerPage);
 
         return $this->successResponse('read', $departments, 200);
         // return $this->successResponse('Success', DepartmentResource::collection($departments), 200);

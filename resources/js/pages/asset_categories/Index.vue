@@ -115,6 +115,16 @@
                 {{ search }}
             </v-chip>
             <v-chip
+                v-if="filter.status != 'Active'"
+                close
+                label
+                outlined
+                small
+                @click:close="filter.status = 'Active'"
+            >
+                {{ filter.status }}
+            </v-chip>
+            <v-chip
                 v-if="hasFilters"
                 close
                 label
@@ -335,6 +345,7 @@ export default {
                 });
         },
         clearFilters: function() {
+            this.filter.status = "Active";
             this.selectedItems = [];
             this.search = "";
             this.tableOptions.options = {
@@ -354,7 +365,15 @@ export default {
             };
         },
         hasFilters() {
-            return this.search || this.selectedItems.length;
+            if (this.filter.status != "Active") {
+                return true;
+            }
+
+            if (this.search || this.selectedItems.length) {
+                return true;
+            }
+
+            return false;
         }
     },
     watch: {

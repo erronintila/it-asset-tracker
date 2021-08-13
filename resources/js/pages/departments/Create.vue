@@ -43,12 +43,11 @@ export default {
         onSave(value) {
             DepartmentDataService.store(value)
                 .then(response => {
-                    console.log(response.data);
                     alert("Successfully created.");
                     this.$emit("save-dialog");
                 })
                 .catch(error => {
-                    console.log(error.response);
+                    console.log(error);
                     alert("An error has occurred.");
                     this.errors = {
                         ...this.errors,

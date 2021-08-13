@@ -136,10 +136,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       var data = {};
       _services_DepartmentDataService__WEBPACK_IMPORTED_MODULE_1__["default"].show(department.id, data).then(function (response) {
-        console.log(response.data);
         _this.form = _objectSpread(_objectSpread({}, _this.form), response.data.data);
       })["catch"](function (error) {
-        console.log(error.response);
+        console.log(error);
         alert("An error has occurred.");
       });
     },
@@ -147,12 +146,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this2 = this;
 
       _services_DepartmentDataService__WEBPACK_IMPORTED_MODULE_1__["default"].update(value.id, value).then(function (response) {
-        console.log(response.data);
         alert("Successfully edited.");
 
         _this2.$emit("save-dialog");
       })["catch"](function (error) {
-        console.log(error.response);
+        console.log(error);
         alert("An error has occurred.");
         _this2.errors = _objectSpread(_objectSpread({}, _this2.errors), error.response.data.errors);
       });
@@ -373,10 +371,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       var data = {};
       _services_DepartmentDataService__WEBPACK_IMPORTED_MODULE_1__["default"].show(this.$route.params.id, data).then(function (response) {
-        console.log(response.data);
         _this.form = _objectSpread(_objectSpread({}, _this.form), response.data.data);
       })["catch"](function (error) {
-        console.log(error.response);
+        console.log(error);
         alert("An error has occurred.");
 
         _this.$router.push({
@@ -392,14 +389,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       _services_DepartmentDataService__WEBPACK_IMPORTED_MODULE_1__["default"]["delete"](this.$route.params.id, {}).then(function (response) {
-        console.log(response.data);
         alert(response.data.message);
 
         _this2.$router.push({
           name: "departments.index"
         });
       })["catch"](function (error) {
-        console.log(error.response);
+        console.log(error);
         alert("An error has occurred.");
       });
     }

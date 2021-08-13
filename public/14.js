@@ -438,6 +438,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -593,6 +603,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     },
     clearFilters: function clearFilters() {
+      this.filter.status = "Active";
       this.selectedItems = [];
       this.search = "";
       this.tableOptions.options = {
@@ -611,7 +622,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     },
     hasFilters: function hasFilters() {
-      return this.search || this.selectedItems.length;
+      if (this.filter.status != "Active") {
+        return true;
+      }
+
+      if (this.search || this.selectedItems.length) {
+        return true;
+      }
+
+      return false;
     }
   },
   watch: {
@@ -1088,6 +1107,25 @@ var render = function() {
                   }
                 },
                 [_vm._v("\n            " + _vm._s(_vm.search) + "\n        ")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.filter.status != "Active"
+            ? _c(
+                "v-chip",
+                {
+                  attrs: { close: "", label: "", outlined: "", small: "" },
+                  on: {
+                    "click:close": function($event) {
+                      _vm.filter.status = "Active"
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n            " + _vm._s(_vm.filter.status) + "\n        "
+                  )
+                ]
               )
             : _vm._e(),
           _vm._v(" "),
