@@ -341,11 +341,10 @@ export default {
                     this.$route.params.id,
                     data
                 ).then(response => {
-                    console.log(response.data);
                     this.form = { ...this.form, ...response.data.data };
                 });
             } catch (error) {
-                console.log(error.response);
+                console.log(error);
                 alert("An error has occurred.");
                 this.$router.push({ name: "manufacturers.index" }, () => {});
             }
@@ -372,7 +371,6 @@ export default {
 
                 AssetDataService.getAll(data)
                     .then(response => {
-                        console.log("oh tiger", response.data);
                         this.assets = response.data.data.data;
                         this.tableAssetOptions.serverItemsLength =
                             response.data.data.total;
@@ -382,7 +380,6 @@ export default {
                     .catch(error => {
                         this.tableAssetOptions.loading = false;
                         console.log(error);
-                        console.log(error.response);
                         reject();
                     });
             });
@@ -394,12 +391,11 @@ export default {
 
             ManufacturerDataService.delete(this.$route.params.id, {})
                 .then(response => {
-                    console.log(response.data);
                     alert(response.data.message);
                     this.$router.push({ name: "manufacturers.index" });
                 })
                 .catch(error => {
-                    console.log(error.response);
+                    console.log(error);
                     alert("An error has occurred.");
                 });
         }

@@ -71,12 +71,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this = this;
 
       _services_EmployeeDataService__WEBPACK_IMPORTED_MODULE_0__["default"].store(value).then(function (response) {
-        console.log(response.data);
         alert("Successfully created.");
 
         _this.$router.go(-1);
       })["catch"](function (error) {
-        console.log(error.response);
+        console.log(error);
         alert("An error has occurred.");
         _this.errors = _objectSpread(_objectSpread({}, _this.errors), error.response.data.errors);
       });

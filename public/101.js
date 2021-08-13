@@ -95,11 +95,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // }
 
       _services_ManufacturerDataService__WEBPACK_IMPORTED_MODULE_0__["default"].show(this.$route.params.id, data).then(function (response) {
-        console.log(response.data);
         _this.form = _objectSpread(_objectSpread({}, _this.form), response.data.data);
-        console.log("asdasd", _objectSpread(_objectSpread({}, _this.form), response.data.data));
       })["catch"](function (error) {
-        console.log(error.response);
+        console.log(error);
         alert("An error has occurred.");
 
         _this.$router.push({
@@ -111,12 +109,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this2 = this;
 
       _services_ManufacturerDataService__WEBPACK_IMPORTED_MODULE_0__["default"].update(this.$route.params.id, value).then(function (response) {
-        console.log(response.data);
         alert("Successfully updated.");
 
         _this2.$router.go(-1);
       })["catch"](function (error) {
-        console.log(error.response.data);
+        console.log(error);
         alert("An error has occurred.");
 
         if (error.response) {

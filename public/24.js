@@ -436,8 +436,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         location_id: this.form.profile.location.id
       });
 
-      console.log(newForm);
-
       if (!newForm.is_active) {
         newForm.is_active = false;
       }

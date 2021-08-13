@@ -28,8 +28,23 @@ class SupplierController extends Controller
         $itemsPerPage = request('itemsPerPage') ?? 10;
 
         $suppliers = Supplier::search($search)
-            ->orderBy($sortBy, $sortType)
-            ->paginate($itemsPerPage);
+            ->orderBy($sortBy, $sortType);
+
+        if (request()->has('status')) {
+            switch (request('status')) {
+                case 'Deleted':
+                    $suppliers = $suppliers->onlyTrashed();
+                    break;
+                case 'Inactive':
+                    $suppliers = $suppliers->where('is_active', false);
+                    break;
+                default:
+                    $suppliers = $suppliers->where('is_active', true);
+                    break;
+            }
+        }
+
+        $suppliers = $suppliers->paginate($itemsPerPage);
 
         return $this->successResponse('read', $suppliers, 200);
         // return $this->successResponse('Success', SupplierResource::collection($suppliers), 200);

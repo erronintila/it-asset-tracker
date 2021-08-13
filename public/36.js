@@ -437,7 +437,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.prev = 1;
                 _context.next = 4;
                 return _services_ManufacturerDataService__WEBPACK_IMPORTED_MODULE_2__["default"].show(_this.$route.params.id, data).then(function (response) {
-                  console.log(response.data);
                   _this.form = _objectSpread(_objectSpread({}, _this.form), response.data.data);
                 });
 
@@ -448,7 +447,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 6:
                 _context.prev = 6;
                 _context.t0 = _context["catch"](1);
-                console.log(_context.t0.response);
+                console.log(_context.t0);
                 alert("An error has occurred.");
 
                 _this.$router.push({
@@ -483,7 +482,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         };
         _services_AssetDataService__WEBPACK_IMPORTED_MODULE_3__["default"].getAll(data).then(function (response) {
-          console.log("oh tiger", response.data);
           _this2.assets = response.data.data.data;
           _this2.tableAssetOptions.serverItemsLength = response.data.data.total;
           _this2.tableAssetOptions.loading = false;
@@ -491,7 +489,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         })["catch"](function (error) {
           _this2.tableAssetOptions.loading = false;
           console.log(error);
-          console.log(error.response);
           reject();
         });
       });
@@ -504,14 +501,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       _services_ManufacturerDataService__WEBPACK_IMPORTED_MODULE_2__["default"]["delete"](this.$route.params.id, {}).then(function (response) {
-        console.log(response.data);
         alert(response.data.message);
 
         _this3.$router.push({
           name: "manufacturers.index"
         });
       })["catch"](function (error) {
-        console.log(error.response);
+        console.log(error);
         alert("An error has occurred.");
       });
     }

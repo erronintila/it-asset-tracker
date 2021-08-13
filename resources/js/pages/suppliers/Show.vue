@@ -294,11 +294,10 @@ export default {
 
             SupplierDataService.show(this.$route.params.id, data)
                 .then(response => {
-                    console.log(response.data);
                     this.form = { ...this.form, ...response.data.data };
                 })
                 .catch(error => {
-                    console.log(error.response);
+                    console.log(error);
                     alert("An error has occurred.");
                     this.$router.push({ name: "suppliers.index" }, () => {});
                 });
@@ -310,12 +309,11 @@ export default {
 
             SupplierDataService.delete(this.$route.params.id, {})
                 .then(response => {
-                    console.log(response.data);
                     alert(response.data.message);
                     this.$router.push({ name: "suppliers.index" });
                 })
                 .catch(error => {
-                    console.log(error.response);
+                    console.log(error);
                     alert("An error has occurred.");
                 });
         }

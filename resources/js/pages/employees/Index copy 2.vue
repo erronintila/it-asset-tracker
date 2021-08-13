@@ -141,7 +141,6 @@ export default {
     created() {
         EmployeeDataService.getAll().then(res => {
             this.items = res.data.data;
-            console.log(res);
         });
     }
 };

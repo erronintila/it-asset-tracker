@@ -421,8 +421,6 @@ export default {
                 ...{ location_id: this.form.profile.location.id }
             };
 
-            console.log(newForm);
-
             if (!newForm.is_active) {
                 newForm.is_active = false;
             }

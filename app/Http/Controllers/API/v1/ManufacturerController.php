@@ -28,8 +28,23 @@ class ManufacturerController extends Controller
         $itemsPerPage = request('itemsPerPage') ?? 10;
 
         $manufacturers = Manufacturer::search($search)
-            ->orderBy($sortBy, $sortType)
-            ->paginate($itemsPerPage);
+            ->orderBy($sortBy, $sortType);
+
+        if (request()->has('status')) {
+            switch (request('status')) {
+                case 'Deleted':
+                    $manufacturers = $manufacturers->onlyTrashed();
+                    break;
+                case 'Inactive':
+                    $manufacturers = $manufacturers->where('is_active', false);
+                    break;
+                default:
+                    $manufacturers = $manufacturers->where('is_active', true);
+                    break;
+            }
+        }
+
+        $manufacturers = $manufacturers->paginate($itemsPerPage);
 
         return $this->successResponse('read', $manufacturers, 200);
         // return $this->successResponse('Success', ManufacturerResource::collection($manufacturers), 200);

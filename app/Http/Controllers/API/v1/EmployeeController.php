@@ -41,8 +41,23 @@ class EmployeeController extends Controller
             ->with(['profile' => function ($query) {
                 $query->with(['location', 'department']);
             }])->where('profile_type', 'App\Models\Employee')
-            ->orderBy($sortBy, $sortType)
-            ->paginate($itemsPerPage);
+            ->orderBy($sortBy, $sortType);
+
+        if (request()->has('status')) {
+            switch (request('status')) {
+                case 'Deleted':
+                    $users = $users->onlyTrashed();
+                    break;
+                case 'Inactive':
+                    $users = $users->where('is_active', false);
+                    break;
+                default:
+                    $users = $users->where('is_active', true);
+                    break;
+            }
+        }
+
+        $users = $users->paginate($itemsPerPage);
 
         return $this->successResponse('read', $users, 200);
         // return $this->successResponse('Success', UserResource::collection($users), 200);
