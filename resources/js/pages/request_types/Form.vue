@@ -143,8 +143,6 @@ export default {
                 return;
             }
 
-            console.log(this.form);
-
             if (!this.form.is_active) {
                 this.form.is_active = false;
             }

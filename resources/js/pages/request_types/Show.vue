@@ -144,11 +144,10 @@ export default {
 
             TransactionTypeDataService.show(this.$route.params.id, data)
                 .then(response => {
-                    console.log(response.data);
                     this.form = { ...this.form, ...response.data.data };
                 })
                 .catch(error => {
-                    console.log(error.response);
+                    console.log(error);
                     alert("An error has occurred.");
                     this.$router.push(
                         { name: "transaction_types.index" },
@@ -163,12 +162,11 @@ export default {
 
             TransactionTypeDataService.delete(this.$route.params.id, {})
                 .then(response => {
-                    console.log(response.data);
                     alert(response.data.message);
                     this.$router.push({ name: "transaction_types.index" });
                 })
                 .catch(error => {
-                    console.log(error.response);
+                    console.log(error);
                     alert("An error has occurred.");
                 });
         }
