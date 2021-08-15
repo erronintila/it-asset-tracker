@@ -213,6 +213,7 @@ export default {
                 serverItemsLength: 0,
                 headers: [
                     { text: "Asset Tag", value: "asset_tag" },
+                    { text: "Serial", value: "serial_no" },
                     { text: "Description", value: "description" },
                     { text: "Category", value: "asset_category.name" },
                     { text: "Manufacturer", value: "manufacturer.name" },

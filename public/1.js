@@ -99,6 +99,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "asset-selector",
@@ -141,16 +150,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         itemsPerPageOptions: [5, 10, 20],
         serverItemsLength: 0,
         headers: [{
-          text: "Code",
-          value: "code"
+          text: "Asset Tag",
+          value: "asset_tag"
         }, {
           text: "Serial No.",
           value: "serial_no"
         }, {
           text: "Description",
           value: "description"
+        }, {
+          text: "Status",
+          value: "status",
+          sortable: false
         }]
       },
+      status: "Active",
       search: "",
       items: [],
       selectedItems: []
@@ -167,8 +181,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             sortDesc = _this$tableOptions$op.sortDesc,
             page = _this$tableOptions$op.page,
             itemsPerPage = _this$tableOptions$op.itemsPerPage;
-        var search = _this.search; // let status = this.status;
-
+        var search = _this.search;
+        var status = _this.status;
         var request_type = _this.requestType;
         var assigned_user_id = _this.assignedUserId;
         var assigned_asset_id = _this.assignedAssetId;
@@ -179,8 +193,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             page: page,
             itemsPerPage: itemsPerPage,
             search: search,
-            request_type: request_type // status: status
-
+            request_type: request_type,
+            status: status
           }
         };
 
@@ -193,7 +207,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
 
         _services_AssetDataService__WEBPACK_IMPORTED_MODULE_0__["default"].getAll(data).then(function (response) {
-          console.log(response.data);
           _this.items = response.data.data.data;
           _this.tableOptions.serverItemsLength = response.data.data.total;
           _this.tableOptions.loading = false;
@@ -201,7 +214,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         })["catch"](function (error) {
           _this.tableOptions.loading = false;
           console.log(error);
-          console.log(error.response);
           reject();
         });
       });
@@ -417,6 +429,37 @@ var render = function() {
                         return _vm.$set(_vm.tableOptions, "options", $event)
                       }
                     },
+                    scopedSlots: _vm._u(
+                      [
+                        {
+                          key: "item.status",
+                          fn: function(ref) {
+                            var item = ref.item
+                            return [
+                              _c(
+                                "v-chip",
+                                {
+                                  attrs: {
+                                    small: "",
+                                    color: item.status.color,
+                                    dark: item.status.dark
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                            " +
+                                      _vm._s(item.status.status) +
+                                      "\n                        "
+                                  )
+                                ]
+                              )
+                            ]
+                          }
+                        }
+                      ],
+                      null,
+                      true
+                    ),
                     model: {
                       value: _vm.selectedItems,
                       callback: function($$v) {

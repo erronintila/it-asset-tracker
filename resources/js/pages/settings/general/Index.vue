@@ -22,12 +22,17 @@
 </template>
 
 <script>
+import SettingDataService from "../../../services/SettingDataService";
+
 export default {
     data() {
         return {
             tab: null,
             items: ["company", "print layout"]
         };
+    },
+    created() {
+        SettingDataService.getAll().then(res => console.log(res)).catch(err => console.log(err.response));
     }
 };
 </script>

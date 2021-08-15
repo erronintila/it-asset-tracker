@@ -242,6 +242,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           text: "Asset Tag",
           value: "asset_tag"
         }, {
+          text: "Serial",
+          value: "serial_no"
+        }, {
           text: "Description",
           value: "description"
         }, {

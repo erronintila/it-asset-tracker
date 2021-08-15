@@ -165,7 +165,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         };
         _services_CustomerDataService__WEBPACK_IMPORTED_MODULE_0__["default"].getAll(data).then(function (response) {
-          console.log(response.data);
           _this.items = response.data.data.data;
           _this.tableOptions.serverItemsLength = response.data.data.total;
           _this.tableOptions.loading = false;
@@ -173,7 +172,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         })["catch"](function (error) {
           _this.tableOptions.loading = false;
           console.log(error);
-          console.log(error.response);
           reject();
         });
       });

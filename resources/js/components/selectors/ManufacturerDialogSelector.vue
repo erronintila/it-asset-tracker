@@ -147,7 +147,6 @@ export default {
 
                 ManufacturerDataService.getAll(data)
                     .then(response => {
-                        console.log(response.data);
                         this.items = response.data.data.data;
                         this.tableOptions.serverItemsLength =
                             response.data.data.total;
@@ -157,7 +156,6 @@ export default {
                     .catch(error => {
                         this.tableOptions.loading = false;
                         console.log(error);
-                        console.log(error.response);
                         reject();
                     });
             });

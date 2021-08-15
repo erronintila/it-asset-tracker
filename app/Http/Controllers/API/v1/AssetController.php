@@ -59,6 +59,9 @@ class AssetController extends Controller
                 case 'Pending':
                     $assets = $assets->where('assigned_location_id', null)->where('assigned_user_id', null);
                     break;
+                case 'Active':
+                    $assets = $assets->where('disposed_at', null);
+                    break;
                 default:
                     $assets = $assets;
                     break;

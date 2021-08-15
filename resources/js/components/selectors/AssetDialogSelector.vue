@@ -63,6 +63,15 @@
                             nextIcon: 'mdi-chevron-right'
                         }"
                     >
+                        <template v-slot:[`item.status`]="{ item }">
+                            <v-chip
+                                small
+                                :color="item.status.color"
+                                :dark="item.status.dark"
+                            >
+                                {{ item.status.status }}
+                            </v-chip>
+                        </template>
                     </v-data-table>
                 </v-card-text>
                 <v-card-actions>
@@ -123,11 +132,13 @@ export default {
                 itemsPerPageOptions: [5, 10, 20],
                 serverItemsLength: 0,
                 headers: [
-                    { text: "Code", value: "code" },
+                    { text: "Asset Tag", value: "asset_tag" },
                     { text: "Serial No.", value: "serial_no" },
-                    { text: "Description", value: "description" }
+                    { text: "Description", value: "description" },
+                    { text: "Status", value: "status", sortable: false }
                 ]
             },
+            status: "Active",
             search: "",
             items: [],
             selectedItems: []
@@ -144,7 +155,7 @@ export default {
                     itemsPerPage
                 } = this.tableOptions.options;
                 let search = this.search;
-                // let status = this.status;
+                let status = this.status;
                 let request_type = this.requestType;
                 let assigned_user_id = this.assignedUserId;
                 let assigned_asset_id = this.assignedAssetId;
@@ -156,8 +167,8 @@ export default {
                         page: page,
                         itemsPerPage: itemsPerPage,
                         search: search,
-                        request_type: request_type
-                        // status: status
+                        request_type: request_type,
+                        status: status
                     }
                 };
 
@@ -171,7 +182,6 @@ export default {
 
                 AssetDataService.getAll(data)
                     .then(response => {
-                        console.log(response.data);
                         this.items = response.data.data.data;
                         this.tableOptions.serverItemsLength =
                             response.data.data.total;
@@ -181,7 +191,6 @@ export default {
                     .catch(error => {
                         this.tableOptions.loading = false;
                         console.log(error);
-                        console.log(error.response);
                         reject();
                     });
             });

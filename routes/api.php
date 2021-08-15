@@ -65,6 +65,9 @@ Route::middleware('auth:sanctum')->prefix("v1")->group(function () {
     Route::put('/work_orders/post', 'API\v1\WorkOrderController@post')->name('post.work_orders');
     Route::put('/work_orders/cancel', 'API\v1\WorkOrderController@cancel')->name('cancel.work_orders');
 
+    // Settings route
+    Route::get('settings', 'API\v1\SettingController@index')->name('settings');
+
     // API Resource routes
     Route::apiResources([
         'agreements' => 'API\v1\AgreementController',
