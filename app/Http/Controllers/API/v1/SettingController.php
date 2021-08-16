@@ -24,39 +24,16 @@ class SettingController extends Controller
      */
     public function index()
     {
-        $group = request("group");
-
+        $group = request("group") ?? "general";
         $settings = DB::table('settings');
 
         if ($group) {
-            $settings = $settings->where("group", response("group"));
+            $settings = $settings->where("group", request("group"));
         }
 
         $settings = $settings->get();
 
         return $this->successResponse("", $settings, 200);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -66,19 +43,14 @@ class SettingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    public function update(
+        Request $request,
+        GeneralSettings $settings
+    ) {
+        $settings->site_name = $request->input('site_name');
+        $settings->site_active = $request->input('site_active');
+        $settings->save();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return $this->successResponse("update", [], 200);
     }
 }

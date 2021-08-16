@@ -13,11 +13,4 @@ class GeneralSettings extends Settings
     {
         return 'general';
     }
-
-    public static function repository(): ?string
-    {
-        return 'settings';
-
-        return response();
-    }
 }

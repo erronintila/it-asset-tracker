@@ -12,7 +12,9 @@
                         </v-tab>
                     </v-tabs>
                     <v-tabs-items v-model="tab">
-                        <v-tab-item> </v-tab-item>
+                        <v-tab-item>
+                            <CompanySettings></CompanySettings>
+                        </v-tab-item>
                         <v-tab-item> </v-tab-item>
                     </v-tabs-items>
                 </v-card>
@@ -22,17 +24,17 @@
 </template>
 
 <script>
-import SettingDataService from "../../../services/SettingDataService";
+import CompanySettings from "./CompanySettings.vue";
 
 export default {
+    components: {
+        CompanySettings
+    },
     data() {
         return {
             tab: null,
             items: ["company", "print layout"]
         };
-    },
-    created() {
-        SettingDataService.getAll().then(res => console.log(res)).catch(err => console.log(err.response));
     }
 };
 </script>
