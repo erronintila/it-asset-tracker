@@ -10,6 +10,11 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _departments_Index_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../departments/Index.vue */ "./resources/js/pages/departments/Index.vue");
+/* harmony import */ var _permissions_Index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../permissions/Index.vue */ "./resources/js/pages/permissions/Index.vue");
+//
+//
+//
+//
 //
 //
 //
@@ -49,9 +54,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    DepartmentIndex: _departments_Index_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    DepartmentIndex: _departments_Index_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    PermissionIndex: _permissions_Index_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
@@ -146,7 +153,11 @@ var render = function() {
                         1
                       ),
                       _vm._v(" "),
-                      _c("v-tab-item")
+                      _c(
+                        "v-tab-item",
+                        [_c("v-card", [_c("PermissionIndex")], 1)],
+                        1
+                      )
                     ],
                     1
                   )

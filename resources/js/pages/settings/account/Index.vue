@@ -28,7 +28,11 @@
                                 <DepartmentIndex></DepartmentIndex>
                             </v-card>
                         </v-tab-item>
-                        <v-tab-item> </v-tab-item>
+                        <v-tab-item>
+                            <v-card>
+                                <PermissionIndex></PermissionIndex>
+                            </v-card>
+                        </v-tab-item>
                     </v-tabs-items>
                 </v-card>
             </v-col>
@@ -38,9 +42,12 @@
 
 <script>
 import DepartmentIndex from "../../departments/Index.vue";
+import PermissionIndex from "../../permissions/Index.vue";
+
 export default {
     components: {
-        DepartmentIndex
+        DepartmentIndex,
+        PermissionIndex
     },
     data() {
         return {

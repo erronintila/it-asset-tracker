@@ -71,6 +71,11 @@ Route::middleware('auth:sanctum')->prefix("v1")->group(function () {
     Route::get('settings/print', 'API\v1\PrintSettingController@index')->name('settings.print.index');
     Route::put('settings/print/update', 'API\v1\PrintSettingController@update')->name('settings.print.update');
 
+    // Permissions route
+    Route::get('permissions', 'API\v1\PermissionController@index');
+    Route::get('permissions/{id}', 'API\v1\PermissionController@show');
+    Route::put('permissions/{id}', 'API\v1\PermissionController@update');
+
     // API Resource routes
     Route::apiResources([
         'agreements' => 'API\v1\AgreementController',
