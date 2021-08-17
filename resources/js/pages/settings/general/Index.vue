@@ -15,7 +15,9 @@
                         <v-tab-item>
                             <CompanySettings></CompanySettings>
                         </v-tab-item>
-                        <v-tab-item> </v-tab-item>
+                        <v-tab-item>
+                            <PrintSettings></PrintSettings>
+                        </v-tab-item>
                     </v-tabs-items>
                 </v-card>
             </v-col>
@@ -25,10 +27,12 @@
 
 <script>
 import CompanySettings from "./CompanySettings.vue";
+import PrintSettings from "./PrintSettings.vue";
 
 export default {
     components: {
-        CompanySettings
+        CompanySettings,
+        PrintSettings
     },
     data() {
         return {

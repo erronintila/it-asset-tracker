@@ -13,9 +13,4 @@ class PrintSettings extends Settings
     {
         return 'print';
     }
-
-    public static function repository(): ?string
-    {
-        return 'settings';
-    }
 }

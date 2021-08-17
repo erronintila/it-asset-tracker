@@ -112,7 +112,8 @@ export default {
                 serverItemsLength: 0,
                 headers: [
                     { text: "Code", value: "profile.code" },
-                    { text: "Name", value: "name" }
+                    { text: "Name", value: "name" },
+                    { text: "Job Title", value: "profile.job_title" }
                 ]
             },
             search: "",

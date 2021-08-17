@@ -66,8 +66,10 @@ Route::middleware('auth:sanctum')->prefix("v1")->group(function () {
     Route::put('/work_orders/cancel', 'API\v1\WorkOrderController@cancel')->name('cancel.work_orders');
 
     // Settings route
-    Route::get('settings', 'API\v1\SettingController@index')->name('settings.index');
-    Route::put('settings/update', 'API\v1\SettingController@update')->name('settings.update');
+    Route::get('settings/general', 'API\v1\GeneralSettingController@index')->name('settings.general.index');
+    Route::put('settings/general/update', 'API\v1\GeneralSettingController@update')->name('settings.general.update');
+    Route::get('settings/print', 'API\v1\PrintSettingController@index')->name('settings.print.index');
+    Route::put('settings/print/update', 'API\v1\PrintSettingController@update')->name('settings.print.update');
 
     // API Resource routes
     Route::apiResources([

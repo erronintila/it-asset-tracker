@@ -24,7 +24,7 @@
 
 <script>
 import _ from "lodash";
-import SettingDataService from "../../../services/SettingDataService";
+import GeneralSettingDataService from "../../../services/GeneralSettingDataService";
 
 export default {
     name: "general-settings",
@@ -41,7 +41,7 @@ export default {
     methods: {
         async getData() {
             try {
-                const response = await SettingDataService.getAll({
+                const response = await GeneralSettingDataService.getAll({
                     params: {
                         group: "general"
                     }
@@ -58,7 +58,7 @@ export default {
         async onSave() {
             if (confirm("Do you want save changes?")) {
                 try {
-                    const response = await SettingDataService.update({
+                    const response = await GeneralSettingDataService.update({
                         ...this.form,
                         ...{ group: "general" }
                     });

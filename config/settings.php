@@ -1,6 +1,7 @@
 <?php
 
 use App\Classes\GeneralSettings;
+use App\Classes\PrintSettings;
 
 return [
 
@@ -9,7 +10,8 @@ return [
      * put them (manually) here.
      */
     'settings' => [
-        GeneralSettings::class
+        GeneralSettings::class,
+        PrintSettings::class
     ],
 
     /*

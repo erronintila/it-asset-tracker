@@ -134,6 +134,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, {
           text: "Name",
           value: "name"
+        }, {
+          text: "Job Title",
+          value: "profile.job_title"
         }]
       },
       search: "",
