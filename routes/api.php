@@ -91,6 +91,7 @@ Route::middleware('auth:sanctum')->prefix("v1")->group(function () {
         'licenses' => 'API\v1\LicenseController',
         'locations' => 'API\v1\LocationController',
         'manufacturers' => 'API\v1\ManufacturerController',
+        'media' => 'API\v1\MediaController',
         'suppliers' => 'API\v1\SupplierController',
         'transactions' => 'API\v1\TransactionController',
         'transaction_types' => 'API\v1\TransactionTypeController',

@@ -87,6 +87,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -231,7 +233,8 @@ var render = function() {
                       "error-messages": _vm.errors.username,
                       "append-icon": "mdi-account-outline",
                       outlined: "",
-                      clearable: ""
+                      clearable: "",
+                      autocomplete: "off"
                     },
                     on: {
                       input: function($event) {
@@ -272,7 +275,8 @@ var render = function() {
                         ? "mdi-eye"
                         : "mdi-eye-off",
                       outlined: "",
-                      clearable: ""
+                      clearable: "",
+                      autocomplete: "off"
                     },
                     on: {
                       input: function($event) {

@@ -30,6 +30,7 @@
                         append-icon="mdi-account-outline"
                         outlined
                         clearable
+                        autocomplete="off"
                     ></v-text-field>
                     <v-text-field
                         v-model="form.password"
@@ -43,6 +44,7 @@
                         @click:append="show_password = !show_password"
                         outlined
                         clearable
+                        autocomplete="off"
                     ></v-text-field>
                     <v-btn
                         class="mr-8"
