@@ -164,51 +164,7 @@
                         <v-tab-item>
                             <v-card flat>
                                 <v-card-text>
-                                    <v-data-table
-                                        item-key="id"
-                                        :headers="tableAssetOptions.headers"
-                                        :items="assets"
-                                        :loading="tableAssetOptions.loading"
-                                        :options.sync="
-                                            tableAssetOptions.options
-                                        "
-                                        :server-items-length="
-                                            tableAssetOptions.serverItemsLength
-                                        "
-                                        :footer-props="{
-                                            itemsPerPageOptions:
-                                                tableAssetOptions.itemsPerPageOptions,
-                                            showFirstLastPage: true,
-                                            firstIcon: 'mdi-page-first',
-                                            lastIcon: 'mdi-page-last',
-                                            prevIcon: 'mdi-chevron-left',
-                                            nextIcon: 'mdi-chevron-right'
-                                        }"
-                                    >
-                                        <template
-                                            v-slot:[`item.asset_tag`]="{ item }"
-                                        >
-                                            <router-link
-                                                :to="{
-                                                    name: 'assets.show',
-                                                    params: { id: item.id }
-                                                }"
-                                            >
-                                                {{ item.asset_tag }}
-                                            </router-link>
-                                        </template>
-                                        <template
-                                            v-slot:[`item.status`]="{ item }"
-                                        >
-                                            <v-chip
-                                                small
-                                                :color="item.status.color"
-                                                :dark="item.status.dark"
-                                            >
-                                                {{ item.status.status }}
-                                            </v-chip>
-                                        </template>
-                                    </v-data-table>
+                                    <Assets :model_id="form.id"></Assets>
                                 </v-card-text>
                             </v-card>
                         </v-tab-item>
@@ -281,10 +237,12 @@
 import CardSummary from "../../components/pages/CardSummary.vue";
 import ManufacturerDataService from "../../services/ManufacturerDataService";
 import AssetDataService from "../../services/AssetDataService";
+import Assets from "./Assets.vue";
 
 export default {
     components: {
-        CardSummary
+        CardSummary,
+        Assets
     },
     data() {
         return {

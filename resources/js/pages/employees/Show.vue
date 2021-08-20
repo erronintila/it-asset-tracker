@@ -296,21 +296,7 @@
                         <v-tab-item>
                             <v-card flat>
                                 <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody></tbody>
-                                        </template>
-                                    </v-simple-table>
+                                    <Assets :model_id="form.id"></Assets>
                                 </v-card-text>
                             </v-card>
                         </v-tab-item>
@@ -469,10 +455,12 @@
 <script>
 import CardSummary from "../../components/pages/CardSummary.vue";
 import EmployeeDataService from "../../services/EmployeeDataService";
+import Assets from "./Assets.vue";
 
 export default {
     components: {
-        CardSummary
+        CardSummary,
+        Assets
     },
     data() {
         return {

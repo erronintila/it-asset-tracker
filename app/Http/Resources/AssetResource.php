@@ -45,6 +45,7 @@ class AssetResource extends JsonResource
 
             "assigned_user" => $this->assigned_user,
             "assigned_location_id" => $this->assigned_location_id,
+            "assigned_location" => $this->assigned_location,
             "assigned_asset_id" => $this->assigned_asset_id,
 
             "status" => $this->status,

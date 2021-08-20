@@ -130,6 +130,16 @@ class Asset extends Model implements HasMedia
         return $this->belongsTo(User::class, 'assigned_user_id');
     }
 
+    public function assigned_asset()
+    {
+        return $this->belongsTo(Asset::class, 'assigned_asset_id');
+    }
+
+    public function assigned_location()
+    {
+        return $this->belongsTo(Location::class, 'assigned_location_id');
+    }
+
     public function location()
     {
         return $this->belongsTo(Location::class);

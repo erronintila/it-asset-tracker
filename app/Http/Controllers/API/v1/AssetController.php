@@ -28,11 +28,14 @@ class AssetController extends Controller
         $itemsPerPage = request('itemsPerPage') ?? 10;
         $request_type = request("request_type") ?? null;
         $assigned_user_id = request("assigned_user_id") ?? null;
+        $assigned_location_id = request("assigned_location_id") ?? null;
         $assigned_asset_id = request("assigned_asset_id") ?? null;
         $manufacturer_id = request("manufacturer_id") ?? null;
+        $supplier_id = request("supplier_id") ?? null;
+        $asset_model_id  = request("asset_model_id") ?? null;
         // $statuses = request('statuses') ?? ['Pending', 'In Storage', 'In Use', 'In Maintenance', 'Disposed'];
 
-        $assets = Asset::with(['assigned_user', 'asset_category', 'supplier', 'manufacturer', 'asset_model'])
+        $assets = Asset::with(['assigned_user', 'assigned_location', 'asset_category', 'supplier', 'manufacturer', 'asset_model'])
             // ->with(['last_work_order' => function ($query) {
             //     $query->with("transactionable");
             // }])
@@ -86,16 +89,28 @@ class AssetController extends Controller
             }
         }
 
-        if ($manufacturer_id) {
-            $assets = $assets->where("manufacturer_id", $manufacturer_id);
+        if (request()->filled("manufacturer_id")) {
+            $assets = $assets->where("manufacturer_id", $manufacturer_id ?? 0);
+        }
+
+        if (request()->filled("supplier_id")) {
+            $assets = $assets->where("supplier_id", $supplier_id ?? 0);
         }
 
         if ($assigned_user_id) {
             $assets = $assets->where("assigned_user_id", $assigned_user_id);
         }
 
+        if ($assigned_location_id) {
+            $assets = $assets->where("assigned_location_id", $assigned_location_id);
+        }
+
         if ($assigned_asset_id) {
             $assets = $assets->where("assigned_asset_id", $assigned_asset_id);
+        }
+
+        if ($asset_model_id) {
+            $assets = $assets->where("asset_model_id", $asset_model_id);
         }
 
         // if (in_array("Pending", $statuses)) {
