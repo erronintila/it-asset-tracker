@@ -165,6 +165,11 @@ class Asset extends Model implements HasMedia
         return $this->hasMany(Agreement::class);
     }
 
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | LARAVEL ACCESSORS

@@ -21,6 +21,9 @@ Route::middleware('auth:sanctum')->prefix("v1")->group(function () {
     Route::get('activity_logs', 'API\v1\ActivityLogController@index');
 
     // Multiple deletion routes
+    Route::delete('reviews/multiple', 'API\v1\ReviewController@destroyMany')->name('delete.reviews.multiple');
+    Route::delete('review_categories/multiple', 'API\v1\ReviewCategoryController@destroyMany')->name('delete.review_categories.multiple');
+    Route::delete('features/multiple', 'API\v1\FeatureController@destroyMany')->name('delete.features.multiple');
     Route::delete('agreements/multiple', 'API\v1\AgreementController@destroyMany')->name('delete.agreements.multiple');
     Route::delete('work_orders/multiple', 'API\v1\WorkOrderController@destroyMany')->name('delete.work_orders.multiple');
     Route::delete('disposal_requests/multiple', 'API\v1\DisposalRequestController@destroyMany')->name('delete.disposal_requests.multiple');
@@ -88,10 +91,13 @@ Route::middleware('auth:sanctum')->prefix("v1")->group(function () {
         'departments' => 'API\v1\DepartmentController',
         'disposal_requests' => 'API\v1\DisposalRequestController',
         'employees' => 'API\v1\EmployeeController',
+        'features' => 'API\v1\FeatureController',
         'licenses' => 'API\v1\LicenseController',
         'locations' => 'API\v1\LocationController',
         'manufacturers' => 'API\v1\ManufacturerController',
         'media' => 'API\v1\MediaController',
+        'review_categories' => 'API\v1\ReviewCategoryController',
+        'reviews' => 'API\v1\ReviewController',
         'suppliers' => 'API\v1\SupplierController',
         'transactions' => 'API\v1\TransactionController',
         'transaction_types' => 'API\v1\TransactionTypeController',
