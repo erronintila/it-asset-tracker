@@ -30,6 +30,10 @@ class FeatureController extends Controller
         $features = Feature::search($search)
             ->orderBy($sortBy, $sortType);
 
+        if (request()->has('review_category_id')) {
+            $features = $features->where('review_category_id', request("review_category_id"));
+        }
+
         if (request()->has('status')) {
             switch (request('status')) {
                 case 'Deleted':
@@ -60,7 +64,7 @@ class FeatureController extends Controller
     {
         $validated = $request->validated();
         $data = DB::transaction(function () use ($validated) {
-            $code = 'LOC' . date("YmdHis");
+            $code = 'FEA' . date("YmdHis");
             $slug = $code . '-' . implode('-', explode(' ', $validated['name']));
 
             $feature = new Feature();

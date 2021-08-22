@@ -60,7 +60,7 @@ class ReviewCategoryController extends Controller
     {
         $validated = $request->validated();
         $data = DB::transaction(function () use ($validated) {
-            $code = 'LOC' . date("YmdHis");
+            $code = 'RCA' . date("YmdHis");
             $slug = $code . '-' . implode('-', explode(' ', $validated['name']));
 
             $review_category = new ReviewCategory();

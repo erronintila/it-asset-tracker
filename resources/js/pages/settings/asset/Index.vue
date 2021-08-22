@@ -22,6 +22,11 @@
                                 <RequestTypeIndex></RequestTypeIndex>
                             </v-card>
                         </v-tab-item>
+                        <v-tab-item>
+                            <v-card>
+                                <ReviewCategoryIndex></ReviewCategoryIndex>
+                            </v-card>
+                        </v-tab-item>
                     </v-tabs-items>
                 </v-card>
             </v-col>
@@ -32,16 +37,18 @@
 <script>
 import AssetCategoryIndex from "../../asset_categories/Index.vue";
 import RequestTypeIndex from "../../request_types/Index.vue";
+import ReviewCategoryIndex from "../../review_categories/Index.vue";
 
 export default {
     components: {
         AssetCategoryIndex,
-        RequestTypeIndex
+        RequestTypeIndex,
+        ReviewCategoryIndex
     },
     data() {
         return {
             tab: null,
-            items: ["categories", "request types"]
+            items: ["categories", "request types", "review categories"]
         };
     }
 };

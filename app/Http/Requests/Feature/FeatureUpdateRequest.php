@@ -25,9 +25,9 @@ class FeatureUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => ['nullable', 'string', 'max:250', Rule::unique('features', 'code')->ignore($this->location)],
-            'slug' => ['nullable', 'string', 'max:250', Rule::unique('features', 'slug')->ignore($this->location)],
-            'name' => ['required', 'string', 'max:250', Rule::unique('features', 'name')->ignore($this->location)],
+            'code' => ['nullable', 'string', 'max:250', Rule::unique('features', 'code')->ignore($this->feature)],
+            'slug' => ['nullable', 'string', 'max:250', Rule::unique('features', 'slug')->ignore($this->feature)],
+            'name' => ['required', 'string', 'max:250', Rule::unique('features', 'name')->ignore($this->feature)],
             "is_active" => ['required', 'boolean'],
             "is_required" => ['required', 'boolean'],
             "review_category_id" =>  ['required', 'integer'],
