@@ -28,6 +28,7 @@ class CreateReviewsTable extends Migration
             $table->softDeletes();
             $table->foreignId("asset_id")->constrained()->onDelete("cascade");
             $table->foreignId("user_id")->constrained()->onDelete("cascade");
+            $table->foreignId("review_category_id")->constrained()->onDelete("cascade");
         });
     }
 

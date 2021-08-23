@@ -118,12 +118,12 @@ export default {
                         {
                             icon: "mdi-chart-areaspline",
                             text: "Reviews",
-                            link: { name: "asset_reviews.index" }
+                            link: { name: "reviews.index" }
                         }
                         // {
                         //     icon: "mdi-chart-areaspline",
                         //     text: "Asset Reviews",
-                        //     link: { name: "asset_reviews.index" }
+                        //     link: { name: "reviews.index" }
                         // }
                         // {
                         //     icon: "mdi-chart-areaspline",

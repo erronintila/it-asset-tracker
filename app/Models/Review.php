@@ -94,4 +94,9 @@ class Review extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function review_category()
+    {
+        return $this->belongsTo(ReviewCategory::class);
+    }
 }

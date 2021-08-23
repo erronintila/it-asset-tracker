@@ -32,6 +32,8 @@ class ReviewResource extends JsonResource
             "asset" => $this->asset,
             "user_id" => $this->user_id,
             "user" => $this->user,
+            "review_category_id" => $this->review_category_id,
+            "review_category" => $this->review_category,
         ];
     }
 }

@@ -85,6 +85,11 @@ class ReviewCategory extends Model
         $this->hasMany(Feature::class);
     }
 
+    public function reviews()
+    {
+        $this->hasMany(Review::class);
+    }
+
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | CUSTOM

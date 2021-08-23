@@ -60,7 +60,7 @@ class ReviewController extends Controller
     {
         $validated = $request->validated();
         $data = DB::transaction(function () use ($validated) {
-            $code = 'LOC' . date("YmdHis");
+            $code = 'REV' . date("YmdHis");
             $slug = $code . '-' . implode('-', explode(' ', $validated['name']));
 
             $review = new Review();

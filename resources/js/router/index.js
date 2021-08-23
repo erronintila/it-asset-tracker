@@ -23,7 +23,7 @@ import location_routes from "./locations";
 import manufacturer_routes from "./manufacturers";
 import supplier_routes from "./suppliers";
 import agreement_routes from "./agreements";
-import asset_review_routes from "./asset_reviews";
+import review_routes from "./reviews";
 import checkin_request_routes from "./checkin_requests";
 import checkout_request_routes from "./checkout_requests";
 import disposal_request_routes from "./disposal_requests";
@@ -58,7 +58,7 @@ const routes = baseRoutes.concat(
     manufacturer_routes,
     supplier_routes,
     agreement_routes,
-    asset_review_routes,
+    review_routes,
     checkin_request_routes,
     checkout_request_routes,
     disposal_request_routes,
