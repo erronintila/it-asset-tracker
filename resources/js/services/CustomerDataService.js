@@ -25,6 +25,10 @@ class CustomerDataService {
     deleteMany(data) {
         return axios.delete(`/api/v1/customers/multiple`, data);
     }
+
+    activate(data) {
+        return axios.put(`/api/v1/customers/activate`, data);
+    }
 }
 
 export default new CustomerDataService();

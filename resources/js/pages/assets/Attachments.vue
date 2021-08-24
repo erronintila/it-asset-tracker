@@ -155,7 +155,9 @@ export default {
             MediaDataService.show(item.id)
                 .then(response => {
                     let fileURL = window.URL.createObjectURL(
-                        new Blob([response.data])
+                        new Blob([response.data], {
+                            type: item.mime_type
+                        })
                     );
                     let fileLink = document.createElement("a");
 

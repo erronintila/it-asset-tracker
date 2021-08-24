@@ -134,4 +134,20 @@ class ReviewCategoryController extends Controller
 
         return $this->successResponse('delete', $data, 200);
     }
+
+    public function activate()
+    {
+        $ids = request('ids');
+        $activation = request("is_active") ? "activated" : "deactivated";
+        $data = DB::transaction(function () use ($ids, $activation) {
+            $data_items = ReviewCategory::findOrFail($ids);
+            $data_items->each(function ($item) use ($activation) {
+                $item->is_active = request("is_active");
+                $item->save();
+            });
+            return $data_items;
+        });
+
+        return $this->successResponse('update', $data, 200);
+    }
 }

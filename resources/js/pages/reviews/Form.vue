@@ -425,8 +425,12 @@ export default {
                     { text: "Code", value: "code" },
                     { text: "Name", value: "name" },
                     { text: "Required", value: "is_required", sortable: false },
-                    { text: "Rating", value: "rating", sortable: false },
-                    { text: "Remarks", value: "remarks", sortable: false },
+                    { text: "Rating", value: "pivot.rating", sortable: false },
+                    {
+                        text: "Remarks",
+                        value: "pivot.remarks",
+                        sortable: false
+                    },
                     { text: "Action", value: "action", sortable: false }
                 ]
             },
@@ -444,10 +448,6 @@ export default {
             },
             editedIndex: -1,
             editedItem: {
-                id: "",
-                code: "",
-                name: "",
-                is_required: false,
                 rating: "",
                 remarks: ""
             }
@@ -531,7 +531,7 @@ export default {
         },
         editItem(item) {
             this.editedIndex = this.form.features.indexOf(item);
-            this.editedItem = Object.assign({}, item);
+            this.editedItem = Object.assign({}, {...{rating: "", remarks: ""}, ...item.pivot});
             this.dialog = true;
         },
         close() {
@@ -543,10 +543,7 @@ export default {
         },
         save() {
             if (this.editedIndex > -1) {
-                Object.assign(
-                    this.form.features[this.editedIndex],
-                    this.editedItem
-                );
+                this.form.features[this.editedIndex].pivot = this.editedItem;
             } else {
                 this.form.features.push(this.editedItem);
             }

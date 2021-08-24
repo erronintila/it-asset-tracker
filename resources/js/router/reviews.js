@@ -16,6 +16,14 @@ const review_routes = [
         }
     },
     {
+        path: "/reviews/:id/edit",
+        component: () => import("../pages/reviews/Edit"),
+        name: "reviews.edit",
+        meta: {
+            auth: true
+        }
+    },
+    {
         path: "/reviews/:id",
         component: () => import("../pages/reviews/Show"),
         name: "reviews.show",

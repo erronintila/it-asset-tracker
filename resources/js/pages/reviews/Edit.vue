@@ -56,7 +56,11 @@ export default {
 
             ReviewDataService.show(this.$route.params.id, data)
                 .then(response => {
-                    this.form = { ...this.form, ...response.data.data };
+                    const res = response.data.data;
+                    this.form = {
+                        ...this.form,
+                        ...res
+                    };
                 })
                 .catch(error => {
                     console.log(error);

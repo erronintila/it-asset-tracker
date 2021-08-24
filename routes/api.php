@@ -41,6 +41,18 @@ Route::middleware('auth:sanctum')->prefix("v1")->group(function () {
     Route::delete('manufacturers/multiple', 'API\v1\ManufacturerController@destroyMany')->name('delete.manufacturers.multiple');
     Route::delete('suppliers/multiple', 'API\v1\SupplierController@destroyMany')->name('delete.suppliers.multiple');
 
+    // Activation routes
+    Route::put("transaction_types/activate", 'API\v1\TransactionTypeController@activate')->name("activate.transaction_types");
+    Route::put("asset_categories/activate", 'API\v1\AssetCategoryController@activate')->name("activate.asset_categories");
+    Route::put("asset_models/activate", 'API\v1\AssetModelController@activate')->name("activate.asset_models");
+    Route::put("customers/activate", 'API\v1\CustomerController@activate')->name("activate.customers");
+    Route::put("departments/activate", 'API\v1\DepartmentController@activate')->name("activate.departments");
+    Route::put("employees/activate", 'API\v1\EmployeeController@activate')->name("activate.employees");
+    Route::put("locations/activate", 'API\v1\LocationController@activate')->name("activate.locations");
+    Route::put("manufacturers/activate", 'API\v1\ManufacturerController@activate')->name("activate.manufacturers");
+    Route::put("suppliers/activate", 'API\v1\SupplierController@activate')->name("activate.suppliers");
+    Route::put("review_categories/activate", 'API\v1\ReviewCategoryController@activate')->name("activate.review_categories");
+
     // Dashboard routes
     Route::get('dashboard', 'API\v1\DashboardController@index');
 

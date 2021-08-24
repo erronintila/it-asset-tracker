@@ -32,6 +32,7 @@ class ReviewController extends Controller
         $itemsPerPage = request('itemsPerPage') ?? 10;
 
         $reviews = Review::search($search)
+            ->with(["features", "review_category", "user", "asset"])
             ->orderBy($sortBy, $sortType);
 
         if (request()->has('status')) {
@@ -39,11 +40,8 @@ class ReviewController extends Controller
                 case 'Deleted':
                     $reviews = $reviews->onlyTrashed();
                     break;
-                case 'Inactive':
-                    $reviews = $reviews->where('is_active', false);
-                    break;
                 default:
-                    $reviews = $reviews->where('is_active', true);
+                    $reviews = $reviews;
                     break;
             }
         }
@@ -88,7 +86,7 @@ class ReviewController extends Controller
 
             foreach ($validated["features"] as $item) {
                 $feature_item = Feature::findOrFail($item["id"]);
-                $arr[$feature_item->id] = ['rating' => $item["rating"], 'remarks' => $item["remarks"]];
+                $newArray[$feature_item->id] = ['rating' => $item["pivot"]["rating"], 'remarks' => $item["pivot"]["remarks"]];
             }
 
             $review->features()->sync($newArray);
@@ -107,7 +105,7 @@ class ReviewController extends Controller
      */
     public function show($id)
     {
-        $review = Review::findOrFail($id);
+        $review = Review::with(["features", "review_category", "user", "asset"])->findOrFail($id);
         return $this->successResponse('read', new ReviewResource($review), 200);
     }
 
@@ -138,7 +136,14 @@ class ReviewController extends Controller
 
             $review->save();
 
-            $review->features()->sync($validated['features']);
+            $newArray = [];
+
+            foreach ($validated["features"] as $item) {
+                $feature_item = Feature::findOrFail($item["id"]);
+                $newArray[$feature_item->id] = ['rating' => $item["pivot"]["rating"], 'remarks' => $item["pivot"]["remarks"]];
+            }
+
+            $review->features()->sync($newArray);
 
             return $review;
         });

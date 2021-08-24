@@ -25,6 +25,10 @@ class EmployeeDataService {
     deleteMany(data) {
         return axios.delete(`/api/v1/employees/multiple`, data);
     }
+
+    activate(data) {
+        return axios.put(`/api/v1/employees/activate`, data);
+    }
 }
 
 export default new EmployeeDataService();

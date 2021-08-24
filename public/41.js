@@ -1822,6 +1822,11 @@ var LocationDataService = /*#__PURE__*/function () {
     value: function deleteMany(data) {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/locations/multiple", data);
     }
+  }, {
+    key: "activate",
+    value: function activate(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/locations/activate", data);
+    }
   }]);
 
   return LocationDataService;

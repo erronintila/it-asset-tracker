@@ -194,7 +194,7 @@ export default {
                 { text: "Refresh", action: "refresh", icon: "mdi-refresh" },
                 { text: "Update", action: "update", icon: "mdi-update" },
                 { text: "Delete", action: "delete", icon: "mdi-delete" },
-                { text: "Restore", action: "restore", icon: "mdi-restore" },
+                { text: "Restore", action: "restore", icon: "mdi-restore" }
                 // { text: "Export", action: "export", icon: "mdi-export" }
             ],
             filter: {
@@ -213,8 +213,8 @@ export default {
                 serverItemsLength: 0,
                 headers: [
                     { text: "Code", value: "code" },
-                    { text: "Name", value: "name" },
-                    { text: "Address", value: "address" },
+                    { text: "Reference No", value: "reference_no" },
+                    { text: "Description", value: "description" }
                     // { text: "Assets", value: "quantity" }
                 ]
             },
@@ -249,6 +249,7 @@ export default {
 
                 ReviewDataService.getAll(data)
                     .then(response => {
+                        console.log(response);
                         this.items = response.data.data.data;
                         this.tableOptions.serverItemsLength =
                             response.data.data.total;

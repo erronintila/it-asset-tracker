@@ -233,7 +233,17 @@ export default {
                 { text: "Refresh", action: "refresh", icon: "mdi-refresh" },
                 { text: "Update", action: "update", icon: "mdi-update" },
                 { text: "Delete", action: "delete", icon: "mdi-delete" },
-                { text: "Restore", action: "restore", icon: "mdi-restore" }
+                { text: "Restore", action: "restore", icon: "mdi-restore" },
+                {
+                    text: "Activate",
+                    action: "activate",
+                    icon: "mdi-checkbox-marked-circle"
+                },
+                {
+                    text: "Deactivate",
+                    action: "deactivate",
+                    icon: "mdi-close-circle"
+                }
             ],
             tableOptions: {
                 options: {
@@ -313,12 +323,51 @@ export default {
                     break;
                 case "restore":
                     break;
+                case "activate":
+                    this.onActivation(true);
+                    break;
+                case "deactivate":
+                    this.onActivation(false);
+                    break;
                 case "export":
                     break;
                 default:
                     alert("Error: Action not identified");
                     break;
             }
+        },
+        onActivation(is_active) {
+            if (!this.selectedItems.length) {
+                alert("No data selected.");
+                return;
+            }
+
+            if (
+                !confirm(
+                    `WARNING: Do you want to ${
+                        is_active ? "activate" : "deactivate"
+                    } selected items?`
+                )
+            ) {
+                return;
+            }
+
+            let data = {
+                // params: {
+                ids: this.selectedItems.map(item => item.id),
+                is_active: is_active
+                // }
+            };
+
+            TransactionTypeDataService.activate(data)
+                .then(response => {
+                    this.getData();
+                    this.selectedItems = [];
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert("An error has occurred.");
+                });
         },
         onDelete: function() {
             if (!this.selectedItems.length) {

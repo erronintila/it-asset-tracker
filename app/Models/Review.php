@@ -82,7 +82,7 @@ class Review extends Model
 
     public function features()
     {
-        return $this->belongsToMany(Feature::class);
+        return $this->belongsToMany(Feature::class)->withPivot('rating', 'remarks')->withTimestamps();
     }
 
     public function asset()
@@ -98,5 +98,18 @@ class Review extends Model
     public function review_category()
     {
         return $this->belongsTo(ReviewCategory::class);
+    }
+
+    /*
+    |------------------------------------------------------------------------------------------------------------------------------------
+    | CUSTOM
+    |------------------------------------------------------------------------------------------------------------------------------------
+    */
+
+    public function scopeSearch($query, $text)
+    {
+        return $query->where("code", "like", "%$text%")
+            ->orWhere("reference_no", "like", "%$text%")
+            ->orWhere("description", "like", "%$text%");
     }
 }

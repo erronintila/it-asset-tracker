@@ -137,4 +137,20 @@ class TransactionTypeController extends Controller
 
         return $this->successResponse('delete', $data, 200);
     }
+
+    public function activate()
+    {
+        $ids = request('ids');
+        $activation = request("is_active") ? "activated" : "deactivated";
+        $data = DB::transaction(function () use ($ids, $activation) {
+            $transaction_types = TransactionType::findOrFail($ids);
+            $transaction_types->each(function ($item) use ($activation) {
+                $item->is_active = request("is_active");
+                $item->save();
+            });
+            return $transaction_types;
+        });
+
+        return $this->successResponse('update', $data, 200);
+    }
 }

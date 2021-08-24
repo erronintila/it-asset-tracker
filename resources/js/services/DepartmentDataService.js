@@ -25,6 +25,10 @@ class DepartmentDataService {
     deleteMany(data) {
         return axios.delete(`/api/v1/departments/multiple`, data);
     }
+
+    activate(data) {
+        return axios.put(`/api/v1/departments/activate`, data);
+    }
 }
 
 export default new DepartmentDataService();

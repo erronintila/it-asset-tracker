@@ -25,6 +25,10 @@ class AssetModelDataService {
     deleteMany(data) {
         return axios.delete(`/api/v1/asset_models/multiple`, data);
     }
+
+    activate(data) {
+        return axios.put(`/api/v1/asset_models/activate`, data);
+    }
 }
 
 export default new AssetModelDataService();

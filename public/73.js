@@ -242,11 +242,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           text: "Code",
           value: "code"
         }, {
-          text: "Name",
-          value: "name"
+          text: "Reference No",
+          value: "reference_no"
         }, {
-          text: "Address",
-          value: "address"
+          text: "Description",
+          value: "description"
         } // { text: "Assets", value: "quantity" }
         ]
       },
@@ -279,6 +279,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         };
         _services_ReviewDataService__WEBPACK_IMPORTED_MODULE_0__["default"].getAll(data).then(function (response) {
+          console.log(response);
           _this.items = response.data.data.data;
           _this.tableOptions.serverItemsLength = response.data.data.total;
           _this.tableOptions.loading = false;

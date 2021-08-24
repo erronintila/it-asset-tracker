@@ -25,6 +25,10 @@ class LocationDataService {
     deleteMany(data) {
         return axios.delete(`/api/v1/review_categories/multiple`, data);
     }
+
+    activate(data) {
+        return axios.put(`/api/v1/review_categories/activate`, data);
+    }
 }
 
 export default new LocationDataService();

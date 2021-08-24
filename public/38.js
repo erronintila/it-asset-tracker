@@ -260,7 +260,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     onDownload: function onDownload(item) {
       _services_MediaDataService__WEBPACK_IMPORTED_MODULE_2__["default"].show(item.id).then(function (response) {
-        var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+        var fileURL = window.URL.createObjectURL(new Blob([response.data], {
+          type: item.mime_type
+        }));
         var fileLink = document.createElement("a");
         fileLink.href = fileURL;
         fileLink.setAttribute("download", item.file_name);

@@ -87,7 +87,7 @@ class Feature extends Model
 
     public function reviews()
     {
-        $this->belongsToMany(Review::class);
+        $this->belongsToMany(Review::class)->withPivot('rating', 'remarks')->withTimestamps();
     }
 
     /*

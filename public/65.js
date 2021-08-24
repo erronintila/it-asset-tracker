@@ -222,6 +222,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         text: "Restore",
         action: "restore",
         icon: "mdi-restore"
+      }, {
+        text: "Activate",
+        action: "activate",
+        icon: "mdi-checkbox-marked-circle"
+      }, {
+        text: "Deactivate",
+        action: "deactivate",
+        icon: "mdi-close-circle"
       } // { text: "Export", action: "export", icon: "mdi-export" }
       ],
       filter: {
@@ -315,6 +323,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         case "restore":
           break;
 
+        case "activate":
+          this.onActivation(true);
+          break;
+
+        case "deactivate":
+          this.onActivation(false);
+          break;
+
         case "export":
           break;
 
@@ -323,8 +339,37 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           break;
       }
     },
-    onDelete: function onDelete() {
+    onActivation: function onActivation(is_active) {
       var _this2 = this;
+
+      if (!this.selectedItems.length) {
+        alert("No data selected.");
+        return;
+      }
+
+      if (!confirm("WARNING: Do you want to ".concat(is_active ? "activate" : "deactivate", " selected items?"))) {
+        return;
+      }
+
+      var data = {
+        // params: {
+        ids: this.selectedItems.map(function (item) {
+          return item.id;
+        }),
+        is_active: is_active // }
+
+      };
+      _services_AssetModelDataService__WEBPACK_IMPORTED_MODULE_0__["default"].activate(data).then(function (response) {
+        _this2.getData();
+
+        _this2.selectedItems = [];
+      })["catch"](function (error) {
+        console.log(error);
+        alert("An error has occurred.");
+      });
+    },
+    onDelete: function onDelete() {
+      var _this3 = this;
 
       if (!this.selectedItems.length) {
         alert("No data selected.");
@@ -343,9 +388,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       };
       _services_AssetModelDataService__WEBPACK_IMPORTED_MODULE_0__["default"].deleteMany(data).then(function (response) {
-        _this2.getData();
+        _this3.getData();
 
-        _this2.selectedItems = [];
+        _this3.selectedItems = [];
       })["catch"](function (error) {
         console.log(error);
         alert("An error has occurred.");
@@ -1028,6 +1073,11 @@ var AssetModelDataService = /*#__PURE__*/function () {
     key: "deleteMany",
     value: function deleteMany(data) {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/asset_models/multiple", data);
+    }
+  }, {
+    key: "activate",
+    value: function activate(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/asset_models/activate", data);
     }
   }]);
 

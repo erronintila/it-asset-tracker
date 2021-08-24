@@ -25,6 +25,10 @@ class ManufacturerDataService {
     deleteMany(data) {
         return axios.delete(`/api/v1/manufacturers/multiple`, data);
     }
+
+    activate(data) {
+        return axios.put(`/api/v1/manufacturers/activate`, data);
+    }
 }
 
 export default new ManufacturerDataService();
