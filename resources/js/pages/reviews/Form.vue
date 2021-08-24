@@ -257,6 +257,11 @@
                             </template>
                             <template v-slot:[`item.action`]="{ item }">
                                 <v-btn icon>
+                                    <v-icon @click="editItem(item)">
+                                        mdi-pencil
+                                    </v-icon>
+                                </v-btn>
+                                <v-btn icon>
                                     <v-icon @click="removeItem(item)">
                                         mdi-delete
                                     </v-icon>
@@ -300,6 +305,43 @@
                 </v-card>
             </v-col>
         </v-row>
+
+        <v-dialog v-model="dialog" max-width="500px">
+            <v-card>
+                <v-card-title>
+                    <span class="text-h5">Rating</span>
+                </v-card-title>
+
+                <v-card-text>
+                    <v-container>
+                        <v-row>
+                            <v-col cols="12">
+                                <v-text-field
+                                    v-model="editedItem.rating"
+                                    label="Rating"
+                                ></v-text-field>
+                            </v-col>
+                            <v-col cols="12">
+                                <v-text-field
+                                    v-model="editedItem.remarks"
+                                    label="Remarks"
+                                ></v-text-field>
+                            </v-col>
+                        </v-row>
+                    </v-container>
+                </v-card-text>
+
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="blue darken-1" text @click="close">
+                        Cancel
+                    </v-btn>
+                    <v-btn color="blue darken-1" text @click="save">
+                        Save
+                    </v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
     </v-form>
 </template>
 
@@ -377,11 +419,14 @@ export default {
             valid: false,
             category: "",
             requestDateModal: false,
+            dialog: false,
             headers: {
                 feature: [
                     { text: "Code", value: "code" },
                     { text: "Name", value: "name" },
                     { text: "Required", value: "is_required", sortable: false },
+                    { text: "Rating", value: "rating", sortable: false },
+                    { text: "Remarks", value: "remarks", sortable: false },
                     { text: "Action", value: "action", sortable: false }
                 ]
             },
@@ -396,6 +441,15 @@ export default {
                 user: null,
                 asset: null,
                 features: []
+            },
+            editedIndex: -1,
+            editedItem: {
+                id: "",
+                code: "",
+                name: "",
+                is_required: false,
+                rating: "",
+                remarks: ""
             }
         };
     },
@@ -413,6 +467,10 @@ export default {
             if (!this.form.is_active) {
                 this.form.is_active = false;
             }
+
+            this.form.review_category_id = this.form.review_category?.id;
+            this.form.user_id = this.form.user?.id;
+            this.form.asset_id = this.form.asset?.id;
 
             this.$emit("on-save", this.form);
         },
@@ -454,13 +512,45 @@ export default {
                 return;
             }
 
-            this.form.features = e;
+            this.form.features = e.map(item => ({
+                ...item,
+                rating: "",
+                remarks: ""
+            }));
         },
         removeItem(item) {
+            if (item.is_required) {
+                alert("Item can't be removed");
+                return;
+            }
+
             if (confirm("Remove this item?")) {
                 this.editedIndex = this.form.features.indexOf(item);
                 this.form.features.splice(this.editedIndex, 1);
             }
+        },
+        editItem(item) {
+            this.editedIndex = this.form.features.indexOf(item);
+            this.editedItem = Object.assign({}, item);
+            this.dialog = true;
+        },
+        close() {
+            this.dialog = false;
+            this.$nextTick(() => {
+                this.editedItem = Object.assign({}, this.defaultItem);
+                this.editedIndex = -1;
+            });
+        },
+        save() {
+            if (this.editedIndex > -1) {
+                Object.assign(
+                    this.form.features[this.editedIndex],
+                    this.editedItem
+                );
+            } else {
+                this.form.features.push(this.editedItem);
+            }
+            this.close();
         }
     },
     computed: {
@@ -474,6 +564,9 @@ export default {
             handler(newValue, oldValue) {
                 this.form = newValue;
             }
+        },
+        dialog(val) {
+            val || this.close();
         }
     }
 };

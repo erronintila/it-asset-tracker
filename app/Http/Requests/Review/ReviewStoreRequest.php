@@ -35,6 +35,8 @@ class ReviewStoreRequest extends FormRequest
             "cancelled_at" => ['nullable'],
             "asset_id" => ['required', 'integer'],
             "user_id" => ['required', 'integer'],
+            "review_category_id" => ['required', 'integer'],
+            "features" => ['required', 'array']
         ];
     }
 }

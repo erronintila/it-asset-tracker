@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReviewFeatureTable extends Migration
+class CreateFeatureReviewTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateReviewFeatureTable extends Migration
      */
     public function up()
     {
-        Schema::create('review_feature', function (Blueprint $table) {
+        Schema::create('feature_review', function (Blueprint $table) {
             $table->id();
             $table->foreignId("review_id")->constrained()->onDelete("cascade");
             $table->foreignId("feature_id")->constrained()->onDelete("cascade");
@@ -30,6 +30,6 @@ class CreateReviewFeatureTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('review_feature');
+        Schema::dropIfExists('feature_review');
     }
 }

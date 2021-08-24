@@ -6,7 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Review\ReviewStoreRequest;
 use App\Http\Requests\Review\ReviewUpdateRequest;
 use App\Http\Resources\ReviewResource;
+use App\Models\Asset;
+use App\Models\Feature;
 use App\Models\Review;
+use App\Models\ReviewCategory;
+use App\Models\User;
 use App\Traits\HttpResponseMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -61,13 +65,33 @@ class ReviewController extends Controller
         $validated = $request->validated();
         $data = DB::transaction(function () use ($validated) {
             $code = 'REV' . date("YmdHis");
-            $slug = $code . '-' . implode('-', explode(' ', $validated['name']));
+            // $slug = $code . '-' . implode('-', explode(' ', $validated['description']));
+            $user = User::findOrFail($validated['user_id']);
+            $review_category = ReviewCategory::findOrFail($validated['review_category_id']);
+            $asset = Asset::findOrFail($validated['asset_id']);
 
             $review = new Review();
-            $review->fill($validated);
+            // $review->fill($validated);
             $review->code = $code;
-            $review->slug = $slug;
+            // $review->slug = $slug;
+            $review->reference_no = $validated['reference_no'];
+            $review->date = $validated['date'];
+            $review->description = $validated['description'];
+
+            $review->user()->associate($user);
+            $review->review_category()->associate($review_category);
+            $review->asset()->associate($asset);
+
             $review->save();
+
+            $newArray = [];
+
+            foreach ($validated["features"] as $item) {
+                $feature_item = Feature::findOrFail($item["id"]);
+                $arr[$feature_item->id] = ['rating' => $item["rating"], 'remarks' => $item["remarks"]];
+            }
+
+            $review->features()->sync($newArray);
 
             return $review;
         });
@@ -98,10 +122,24 @@ class ReviewController extends Controller
     {
         $validated = $request->validated();
         $data = DB::transaction(function () use ($id, $validated) {
+            $user = User::findOrFail($validated['user_id']);
+            $review_category = ReviewCategory::findOrFail($validated['review_category_id']);
+            $asset = Asset::findOrFail($validated['asset_id']);
             $review = Review::findOrFail($id);
-            $review->fill($validated);
-            $review->slug = $review->code . '-' . implode('-', explode(' ', $validated['name']));
+            // $review->fill($validated);
+            // $review->slug = $review->code . '-' . implode('-', explode(' ', $validated['description']));
+            $review->reference_no = $validated['reference_no'];
+            $review->date = $validated['date'];
+            $review->description = $validated['description'];
+
+            $review->user()->associate($user);
+            $review->review_category()->associate($review_category);
+            $review->asset()->associate($asset);
+
             $review->save();
+
+            $review->features()->sync($validated['features']);
+
             return $review;
         });
 
