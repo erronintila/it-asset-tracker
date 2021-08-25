@@ -20,6 +20,12 @@ Route::middleware('auth:sanctum')->prefix("v1")->group(function () {
     Route::put('/users/update_password/{id}', 'API\v1\UserController@update_password');
     Route::get('activity_logs', 'API\v1\ActivityLogController@index');
 
+    // Notificaitons route
+    Route::get('notifications', 'API\v1\NotificationController@index');
+    Route::get('notifications/{id}', 'API\v1\NotificationController@index');
+    Route::put('notifications/mark_read', 'API\v1\NotificationController@mark_read');
+    Route::put('notifications/mark_unread', 'API\v1\NotificationController@mark_unread');
+
     // Multiple deletion routes
     Route::delete('reviews/multiple', 'API\v1\ReviewController@destroyMany')->name('delete.reviews.multiple');
     Route::delete('review_categories/multiple', 'API\v1\ReviewCategoryController@destroyMany')->name('delete.review_categories.multiple');

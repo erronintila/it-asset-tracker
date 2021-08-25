@@ -10,14 +10,18 @@ use App\Models\CheckinRequest;
 use App\Models\Location;
 use App\Models\Transaction;
 use App\Models\TransactionType;
+use App\Models\User;
+use App\Notifications\CheckinRequest as NotificationsCheckinRequest;
 use App\Traits\HttpResponseMessage;
+use App\Traits\SendUserNotification;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Notification;
 
 class CheckinRequestController extends Controller
 {
-    use HttpResponseMessage;
+    use HttpResponseMessage, SendUserNotification;
 
     /**
      * Display a listing of the resource.
@@ -107,6 +111,8 @@ class CheckinRequestController extends Controller
             $checkin_request->save();
             $checkin_request->transaction()->save($transaction);
 
+            $this->sendUserNotification(Auth::user(), "checkin", ["action" => "create", "data" => $transaction]);
+
             return $transaction;
         });
 
@@ -172,6 +178,8 @@ class CheckinRequestController extends Controller
             $checkin_request->save();
             $checkin_request->transaction()->save($transaction);
 
+            $this->sendUserNotification(Auth::user(), "checkin", ["action" => "update", "data" => $transaction]);
+
             return $transaction;
         });
 
@@ -231,6 +239,9 @@ class CheckinRequestController extends Controller
             $transactions = Transaction::findOrFail($ids);
             $transactions->each(function ($item) {
                 $item->approved_at = now();
+
+                $this->sendUserNotification(Auth::user(), "checkin", ["action" => "approve", "data" => $item]);
+
                 $item->save();
             });
             return $transactions;
@@ -246,6 +257,9 @@ class CheckinRequestController extends Controller
             $transactions = Transaction::findOrFail($ids);
             $transactions->each(function ($item) {
                 $item->completed_at = now();
+
+                $this->sendUserNotification(Auth::user(), "checkin", ["action" => "complete", "data" => $item]);
+
                 $item->save();
             });
             return $transactions;
@@ -261,6 +275,9 @@ class CheckinRequestController extends Controller
             $transactions = Transaction::findOrFail($ids);
             $transactions->each(function ($item) {
                 $item->posted_at = now();
+
+                $this->sendUserNotification(Auth::user(), "checkin", ["action" => "post", "data" => $item]);
+
                 $item->save();
             });
             return $transactions;
@@ -276,6 +293,9 @@ class CheckinRequestController extends Controller
             $transactions = Transaction::findOrFail($ids);
             $transactions->each(function ($item) {
                 $item->cancelled_at = now();
+
+                $this->sendUserNotification(Auth::user(), "checkin", ["action" => "cancel", "data" => $item]);
+
                 $item->save();
             });
             return $transactions;

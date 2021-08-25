@@ -10,13 +10,14 @@ use App\Models\DisposalRequest;
 use App\Models\Transaction;
 use App\Models\TransactionType;
 use App\Traits\HttpResponseMessage;
+use App\Traits\SendUserNotification;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class DisposalRequestController extends Controller
 {
-    use HttpResponseMessage;
+    use HttpResponseMessage, SendUserNotification;
 
     /**
      * Display a listing of the resource.
@@ -102,6 +103,8 @@ class DisposalRequestController extends Controller
             $disposal_request->save();
             $disposal_request->transaction()->save($transaction);
 
+            $this->sendUserNotification(Auth::user(), "disposal", ["action" => "create", "data" => $transaction]);
+
             return $transaction;
         });
 
@@ -163,6 +166,8 @@ class DisposalRequestController extends Controller
             $disposal_request->save();
             $disposal_request->transaction()->save($transaction);
 
+            $this->sendUserNotification(Auth::user(), "disposal", ["action" => "update", "data" => $transaction]);
+
             return $transaction;
         });
 
@@ -222,6 +227,9 @@ class DisposalRequestController extends Controller
             $transactions = Transaction::findOrFail($ids);
             $transactions->each(function ($item) {
                 $item->approved_at = now();
+
+                $this->sendUserNotification(Auth::user(), "disposal", ["action" => "approve", "data" => $item]);
+
                 $item->save();
             });
             return $transactions;
@@ -237,6 +245,9 @@ class DisposalRequestController extends Controller
             $transactions = Transaction::findOrFail($ids);
             $transactions->each(function ($item) {
                 $item->completed_at = now();
+
+                $this->sendUserNotification(Auth::user(), "disposal", ["action" => "complete", "data" => $item]);
+
                 $item->save();
             });
             return $transactions;
@@ -252,6 +263,9 @@ class DisposalRequestController extends Controller
             $transactions = Transaction::findOrFail($ids);
             $transactions->each(function ($item) {
                 $item->posted_at = now();
+
+                $this->sendUserNotification(Auth::user(), "disposal", ["action" => "post", "data" => $item]);
+
                 $item->save();
             });
             return $transactions;
@@ -267,6 +281,9 @@ class DisposalRequestController extends Controller
             $transactions = Transaction::findOrFail($ids);
             $transactions->each(function ($item) {
                 $item->cancelled_at = now();
+
+                $this->sendUserNotification(Auth::user(), "disposal", ["action" => "cancel", "data" => $item]);
+
                 $item->save();
             });
             return $transactions;
