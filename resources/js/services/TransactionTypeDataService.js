@@ -26,6 +26,10 @@ class TransactionTypeDataService {
         return axios.delete(`/api/v1/transaction_types/multiple`, data);
     }
 
+    restore(data) {
+        return axios.put(`/api/v1/transaction_types/restore`, data);
+    }
+
     activate(data) {
         return axios.put(`/api/v1/transaction_types/activate`, data);
     }

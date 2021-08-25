@@ -26,6 +26,10 @@ class DisposalRequestDataService {
         return axios.delete(`/api/v1/disposal_requests/multiple`, data);
     }
 
+    restore(data) {
+        return axios.put(`/api/v1/disposal_requests/restore`, data);
+    }
+
     approve(data) {
         return axios.put(`/api/v1/disposal_requests/approve`, data);
     }

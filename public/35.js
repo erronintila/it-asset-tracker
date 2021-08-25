@@ -2214,6 +2214,11 @@ var UserDataService = /*#__PURE__*/function () {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/users/".concat(id), data);
     }
   }, {
+    key: "restore",
+    value: function restore(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/users/restore", data);
+    }
+  }, {
     key: "updatePassword",
     value: function updatePassword(id, data) {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/users/update_password/".concat(id), data);

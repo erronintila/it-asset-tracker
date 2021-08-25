@@ -25,6 +25,10 @@ class LicenseDataService {
     deleteMany(data) {
         return axios.delete(`/api/v1/licenses/multiple`, data);
     }
+
+    restore(data) {
+        return axios.put(`/api/v1/licenses/restore`, data);
+    }
 }
 
 export default new LicenseDataService();

@@ -1480,6 +1480,11 @@ var WorkOrderDataService = /*#__PURE__*/function () {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/work_orders/multiple", data);
     }
   }, {
+    key: "restore",
+    value: function restore(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/work_orders/restore", data);
+    }
+  }, {
     key: "approve",
     value: function approve(data) {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/work_orders/approve", data);

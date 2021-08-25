@@ -386,6 +386,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           break;
 
         case "restore":
+          this.onRestore();
           break;
 
         case "export":
@@ -440,6 +441,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         alert("An error has occurred.");
       });
     },
+    onRestore: function onRestore() {
+      var _this3 = this;
+
+      if (!this.selectedItems.length) {
+        alert("No data selected.");
+        return;
+      }
+
+      if (!confirm("WARNING: Do you want to restore selected items?")) {
+        return;
+      }
+
+      var data = {
+        ids: this.selectedItems.map(function (item) {
+          return item.id;
+        })
+      };
+      _services_WorkOrderDataService__WEBPACK_IMPORTED_MODULE_1__["default"].restore(data).then(function (response) {
+        _this3.getData();
+
+        _this3.selectedItems = [];
+      })["catch"](function (error) {
+        console.log(error);
+        alert("An error has occurred.");
+      });
+    },
     clearFilters: function clearFilters() {
       this.selectedItems = [];
       this.search = "";
@@ -451,7 +478,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       };
     },
     onUpdateStatus: function onUpdateStatus(status) {
-      var _this3 = this;
+      var _this4 = this;
 
       if (!confirm("WARNING: Do you want to ".concat(status, " selected items?"))) {
         return;
@@ -468,9 +495,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       switch (status) {
         case "approve":
           _services_WorkOrderDataService__WEBPACK_IMPORTED_MODULE_1__["default"].approve(data).then(function (response) {
-            _this3.getData();
+            _this4.getData();
 
-            _this3.selectedItems = [];
+            _this4.selectedItems = [];
           })["catch"](function (error) {
             console.log(error);
             alert("An error has occurred.");
@@ -479,9 +506,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         case "complete":
           _services_WorkOrderDataService__WEBPACK_IMPORTED_MODULE_1__["default"].complete(data).then(function (response) {
-            _this3.getData();
+            _this4.getData();
 
-            _this3.selectedItems = [];
+            _this4.selectedItems = [];
           })["catch"](function (error) {
             console.log(error);
             alert("An error has occurred.");
@@ -490,9 +517,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         case "post":
           _services_WorkOrderDataService__WEBPACK_IMPORTED_MODULE_1__["default"].post(data).then(function (response) {
-            _this3.getData();
+            _this4.getData();
 
-            _this3.selectedItems = [];
+            _this4.selectedItems = [];
           })["catch"](function (error) {
             console.log(error);
             alert("An error has occurred.");
@@ -501,9 +528,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         case "cancel":
           _services_WorkOrderDataService__WEBPACK_IMPORTED_MODULE_1__["default"].cancel(data).then(function (response) {
-            _this3.getData();
+            _this4.getData();
 
-            _this3.selectedItems = [];
+            _this4.selectedItems = [];
           })["catch"](function (error) {
             console.log(error);
             alert("An error has occurred.");
@@ -1236,6 +1263,11 @@ var TransactionTypeDataService = /*#__PURE__*/function () {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/transaction_types/multiple", data);
     }
   }, {
+    key: "restore",
+    value: function restore(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/transaction_types/restore", data);
+    }
+  }, {
     key: "activate",
     value: function activate(data) {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/transaction_types/activate", data);
@@ -1303,6 +1335,11 @@ var WorkOrderDataService = /*#__PURE__*/function () {
     key: "deleteMany",
     value: function deleteMany(data) {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/work_orders/multiple", data);
+    }
+  }, {
+    key: "restore",
+    value: function restore(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/work_orders/restore", data);
     }
   }, {
     key: "approve",

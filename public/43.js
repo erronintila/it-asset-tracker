@@ -1628,6 +1628,11 @@ var AssetDataService = /*#__PURE__*/function () {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/assets/".concat(id), data);
     }
   }, {
+    key: "restore",
+    value: function restore(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/assets/restore", data);
+    }
+  }, {
     key: "deleteMany",
     value: function deleteMany(data) {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/assets/multiple", data);
@@ -1696,6 +1701,11 @@ var SupplierDataService = /*#__PURE__*/function () {
     key: "deleteMany",
     value: function deleteMany(data) {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/suppliers/multiple", data);
+    }
+  }, {
+    key: "restore",
+    value: function restore(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/suppliers/restore", data);
     }
   }, {
     key: "activate",

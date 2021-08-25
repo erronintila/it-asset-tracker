@@ -194,12 +194,19 @@ export default {
                 { text: "Refresh", action: "refresh", icon: "mdi-refresh" },
                 { text: "Update", action: "update", icon: "mdi-update" },
                 { text: "Delete", action: "delete", icon: "mdi-delete" },
-                { text: "Restore", action: "restore", icon: "mdi-restore" },
+                { text: "Restore", action: "restore", icon: "mdi-restore" }
                 // { text: "Export", action: "export", icon: "mdi-export" }
             ],
             filter: {
                 status: "Active",
-                statuses: ["Active", "Deleted", "Disposed", "In Use", "In Storage", "Pending"]
+                statuses: [
+                    "Active",
+                    "Deleted",
+                    "Disposed",
+                    "In Use",
+                    "In Storage",
+                    "Pending"
+                ]
             },
             tableOptions: {
                 options: {
@@ -280,6 +287,7 @@ export default {
                     this.onDelete();
                     break;
                 case "restore":
+                    this.onRestore();
                     break;
                 case "export":
                     break;
@@ -305,6 +313,30 @@ export default {
             };
 
             LicenseDataService.deleteMany(data)
+                .then(response => {
+                    this.getData();
+                    this.selectedItems = [];
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert("An error has occurred.");
+                });
+        },
+        onRestore: function() {
+            if (!this.selectedItems.length) {
+                alert("No data selected.");
+                return;
+            }
+
+            if (!confirm("WARNING: Do you want to restore selected items?")) {
+                return;
+            }
+
+            let data = {
+                ids: this.selectedItems.map(item => item.id)
+            };
+
+            LicenseDataService.restore(data)
                 .then(response => {
                     this.getData();
                     this.selectedItems = [];

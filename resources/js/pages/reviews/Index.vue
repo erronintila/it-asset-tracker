@@ -281,6 +281,7 @@ export default {
                     this.onDelete();
                     break;
                 case "restore":
+                    this.onRestore();
                     break;
                 case "export":
                     break;
@@ -306,6 +307,30 @@ export default {
             };
 
             ReviewDataService.deleteMany(data)
+                .then(response => {
+                    this.getData();
+                    this.selectedItems = [];
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert("An error has occurred.");
+                });
+        },
+        onRestore: function() {
+            if (!this.selectedItems.length) {
+                alert("No data selected.");
+                return;
+            }
+
+            if (!confirm("WARNING: Do you want to restore selected items?")) {
+                return;
+            }
+
+            let data = {
+                ids: this.selectedItems.map(item => item.id)
+            };
+
+            ReviewDataService.restore(data)
                 .then(response => {
                     this.getData();
                     this.selectedItems = [];

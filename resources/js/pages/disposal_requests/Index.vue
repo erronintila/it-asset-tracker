@@ -210,7 +210,6 @@
 </template>
 
 <script>
-
 import DisposalRequestDataService from "../../services/DisposalRequestDataService";
 import moment from "moment";
 import XDateRangePicker from "../../components/X-DateRangePicker.vue";
@@ -357,6 +356,7 @@ export default {
                     this.onDelete();
                     break;
                 case "restore":
+                    this.onRestore();
                     break;
                 case "export":
                     break;
@@ -394,6 +394,30 @@ export default {
             };
 
             DisposalRequestDataService.deleteMany(data)
+                .then(response => {
+                    this.getData();
+                    this.selectedItems = [];
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert("An error has occurred.");
+                });
+        },
+        onRestore: function() {
+            if (!this.selectedItems.length) {
+                alert("No data selected.");
+                return;
+            }
+
+            if (!confirm("WARNING: Do you want to restore selected items?")) {
+                return;
+            }
+
+            let data = {
+                ids: this.selectedItems.map(item => item.id)
+            };
+
+            DisposalRequestDataService.restore(data)
                 .then(response => {
                     this.getData();
                     this.selectedItems = [];

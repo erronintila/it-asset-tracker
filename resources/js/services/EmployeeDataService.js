@@ -26,6 +26,10 @@ class EmployeeDataService {
         return axios.delete(`/api/v1/employees/multiple`, data);
     }
 
+    restore(data) {
+        return axios.put(`/api/v1/employees/restore`, data);
+    }
+
     activate(data) {
         return axios.put(`/api/v1/employees/activate`, data);
     }

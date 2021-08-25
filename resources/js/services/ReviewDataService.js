@@ -25,6 +25,10 @@ class ReviewDataService {
     deleteMany(data) {
         return axios.delete(`/api/v1/reviews/multiple`, data);
     }
+
+    restore(data) {
+        return axios.put(`/api/v1/reviews/restore`, data);
+    }
 }
 
 export default new ReviewDataService();

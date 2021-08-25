@@ -26,6 +26,10 @@ class CheckinRequestDataService {
         return axios.delete(`/api/v1/checkin_requests/multiple`, data);
     }
 
+    restore(data) {
+        return axios.put(`/api/v1/checkin_requests/restore`, data);
+    }
+
     approve(data) {
         return axios.put(`/api/v1/checkin_requests/approve`, data);
     }

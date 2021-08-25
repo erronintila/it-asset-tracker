@@ -136,6 +136,25 @@ class AssetModelController extends Controller
         return $this->successResponse('delete', $data, 200);
     }
 
+        /**
+     * Restore the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function restore()
+    {
+        $ids = request('ids') ?? [];
+
+        $data = DB::transaction(function () use ($ids) {
+            $data = AssetModel::onlyTrashed()->findOrFail($ids);
+            $data->each->restore();
+            return $data;
+        });
+
+        return $this->successResponse('restore', $data, 200);
+    }
+
     public function activate()
     {
         $ids = request('ids');

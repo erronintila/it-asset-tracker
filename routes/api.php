@@ -41,6 +41,27 @@ Route::middleware('auth:sanctum')->prefix("v1")->group(function () {
     Route::delete('manufacturers/multiple', 'API\v1\ManufacturerController@destroyMany')->name('delete.manufacturers.multiple');
     Route::delete('suppliers/multiple', 'API\v1\SupplierController@destroyMany')->name('delete.suppliers.multiple');
 
+    // Multiple restore routes
+    Route::put('reviews/restore', 'API\v1\ReviewController@restore')->name('reviews.restore');
+    Route::put('review_categories/restore', 'API\v1\ReviewCategoryController@restore')->name('review_categories.restore');
+    Route::put('features/restore', 'API\v1\FeatureController@restore')->name('features.restore');
+    Route::put('agreements/restore', 'API\v1\AgreementController@restore')->name('agreements.restore');
+    Route::put('work_orders/restore', 'API\v1\WorkOrderController@restore')->name('work_orders.restore');
+    Route::put('disposal_requests/restore', 'API\v1\DisposalRequestController@restore')->name('disposal_requests.restore');
+    Route::put('checkout_requests/restore', 'API\v1\CheckoutRequestController@restore')->name('checkout_requests.restore');
+    Route::put('checkin_requests/restore', 'API\v1\CheckinRequestController@restore')->name('checkin_requests.restore');
+    Route::put('asset_models/restore', 'API\v1\AssetModelController@restore')->name('asset_models.restore');
+    Route::put('assets/restore', 'API\v1\AssetController@restore')->name('assets.restore');
+    Route::put('transaction_types/restore', 'API\v1\TransactionTypeController@restore')->name('transaction_types.restore');
+    Route::put('asset_categories/restore', 'API\v1\AssetCategoryController@restore')->name('asset_categories.restore');
+    Route::put('customers/restore', 'API\v1\CustomerController@restore')->name('customers.restore');
+    Route::put('departments/restore', 'API\v1\DepartmentController@restore')->name('departments.restore');
+    Route::put('employees/restore', 'API\v1\EmployeeController@restore')->name('employees.restore');
+    Route::put('licenses/restore', 'API\v1\LicenseController@restore')->name('licenses.restore');
+    Route::put('locations/restore', 'API\v1\LocationController@restore')->name('locations.restore');
+    Route::put('manufacturers/restore', 'API\v1\ManufacturerController@restore')->name('manufacturers.restore');
+    Route::put('suppliers/restore', 'API\v1\SupplierController@restore')->name('suppliers.restore');
+
     // Activation routes
     Route::put("transaction_types/activate", 'API\v1\TransactionTypeController@activate')->name("activate.transaction_types");
     Route::put("asset_categories/activate", 'API\v1\AssetCategoryController@activate')->name("activate.asset_categories");

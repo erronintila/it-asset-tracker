@@ -385,6 +385,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           break;
 
         case "restore":
+          this.onRestore();
           break;
 
         case "export":
@@ -439,6 +440,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         alert("An error has occurred.");
       });
     },
+    onRestore: function onRestore() {
+      var _this3 = this;
+
+      if (!this.selectedItems.length) {
+        alert("No data selected.");
+        return;
+      }
+
+      if (!confirm("WARNING: Do you want to restore selected items?")) {
+        return;
+      }
+
+      var data = {
+        ids: this.selectedItems.map(function (item) {
+          return item.id;
+        })
+      };
+      _services_CheckinRequestDataService__WEBPACK_IMPORTED_MODULE_0__["default"].restore(data).then(function (response) {
+        _this3.getData();
+
+        _this3.selectedItems = [];
+      })["catch"](function (error) {
+        console.log(error);
+        alert("An error has occurred.");
+      });
+    },
     clearFilters: function clearFilters() {
       this.selectedItems = [];
       this.search = "";
@@ -450,7 +477,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       };
     },
     onUpdateStatus: function onUpdateStatus(status) {
-      var _this3 = this;
+      var _this4 = this;
 
       if (!confirm("WARNING: Do you want to ".concat(status, " selected items?"))) {
         return;
@@ -467,9 +494,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       switch (status) {
         case "approve":
           _services_CheckinRequestDataService__WEBPACK_IMPORTED_MODULE_0__["default"].approve(data).then(function (response) {
-            _this3.getData();
+            _this4.getData();
 
-            _this3.selectedItems = [];
+            _this4.selectedItems = [];
           })["catch"](function (error) {
             console.log(error);
             alert("An error has occurred.");
@@ -478,9 +505,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         case "complete":
           _services_CheckinRequestDataService__WEBPACK_IMPORTED_MODULE_0__["default"].complete(data).then(function (response) {
-            _this3.getData();
+            _this4.getData();
 
-            _this3.selectedItems = [];
+            _this4.selectedItems = [];
           })["catch"](function (error) {
             console.log(error);
             alert("An error has occurred.");
@@ -489,9 +516,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         case "post":
           _services_CheckinRequestDataService__WEBPACK_IMPORTED_MODULE_0__["default"].post(data).then(function (response) {
-            _this3.getData();
+            _this4.getData();
 
-            _this3.selectedItems = [];
+            _this4.selectedItems = [];
           })["catch"](function (error) {
             console.log(error);
             alert("An error has occurred.");
@@ -500,9 +527,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         case "cancel":
           _services_CheckinRequestDataService__WEBPACK_IMPORTED_MODULE_0__["default"].cancel(data).then(function (response) {
-            _this3.getData();
+            _this4.getData();
 
-            _this3.selectedItems = [];
+            _this4.selectedItems = [];
           })["catch"](function (error) {
             console.log(error);
             alert("An error has occurred.");
@@ -1235,6 +1262,11 @@ var CheckinRequestDataService = /*#__PURE__*/function () {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/checkin_requests/multiple", data);
     }
   }, {
+    key: "restore",
+    value: function restore(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/checkin_requests/restore", data);
+    }
+  }, {
     key: "approve",
     value: function approve(data) {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/checkin_requests/approve", data);
@@ -1317,6 +1349,11 @@ var TransactionTypeDataService = /*#__PURE__*/function () {
     key: "deleteMany",
     value: function deleteMany(data) {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/transaction_types/multiple", data);
+    }
+  }, {
+    key: "restore",
+    value: function restore(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/transaction_types/restore", data);
     }
   }, {
     key: "activate",

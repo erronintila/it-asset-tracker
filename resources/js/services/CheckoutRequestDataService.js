@@ -26,6 +26,10 @@ class CheckoutRequestDataService {
         return axios.delete(`/api/v1/checkout_requests/multiple`, data);
     }
 
+    restore(data) {
+        return axios.put(`/api/v1/checkout_requests/restore`, data);
+    }
+
     approve(data) {
         return axios.put(`/api/v1/checkout_requests/approve`, data);
     }

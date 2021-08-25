@@ -1662,6 +1662,11 @@ var CheckoutRequestDataService = /*#__PURE__*/function () {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/checkout_requests/multiple", data);
     }
   }, {
+    key: "restore",
+    value: function restore(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/checkout_requests/restore", data);
+    }
+  }, {
     key: "approve",
     value: function approve(data) {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/checkout_requests/approve", data);
@@ -1744,6 +1749,11 @@ var TransactionTypeDataService = /*#__PURE__*/function () {
     key: "deleteMany",
     value: function deleteMany(data) {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/transaction_types/multiple", data);
+    }
+  }, {
+    key: "restore",
+    value: function restore(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/transaction_types/restore", data);
     }
   }, {
     key: "activate",

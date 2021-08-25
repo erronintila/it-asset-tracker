@@ -191,11 +191,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         text: "Restore",
         action: "restore",
         icon: "mdi-restore"
-      }, {
-        text: "Export",
-        action: "export",
-        icon: "mdi-export"
-      }],
+      } // { text: "Export", action: "export", icon: "mdi-export" }
+      ],
       tableOptions: {
         options: {
           sortBy: ["code"],
@@ -285,6 +282,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           break;
 
         case "restore":
+          this.onRestore();
           break;
 
         case "export":
@@ -320,6 +318,34 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this2.getData();
 
         _this2.selectedItems = [];
+      })["catch"](function (error) {
+        console.log(error.response);
+        alert("An error has occurred.");
+      });
+    },
+    onRestore: function onRestore() {
+      var _this3 = this;
+
+      if (!this.selectedItems.length) {
+        alert("No data selected.");
+        return;
+      }
+
+      if (!confirm("WARNING: Do you want to restore selected items?")) {
+        return;
+      }
+
+      var data = {
+        ids: this.selectedItems.map(function (item) {
+          return item.id;
+        })
+      };
+      _services_AgreementDataService__WEBPACK_IMPORTED_MODULE_0__["default"].restore(data).then(function (response) {
+        console.log(response.data);
+
+        _this3.getData();
+
+        _this3.selectedItems = [];
       })["catch"](function (error) {
         console.log(error.response);
         alert("An error has occurred.");
@@ -908,6 +934,11 @@ var AgreementDataService = /*#__PURE__*/function () {
     key: "deleteMany",
     value: function deleteMany(data) {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/agreements/multiple", data);
+    }
+  }, {
+    key: "restore",
+    value: function restore(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/agreements/restore", data);
     }
   }]);
 

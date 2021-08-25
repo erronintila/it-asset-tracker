@@ -21,6 +21,10 @@ class UserGroupDataService {
     delete(id, data) {
         return axios.delete(`/api/v1/user_groups/${id}`, data);
     }
+
+    restore(data) {
+        return axios.put(`/api/v1/user_groups/restore`, data);
+    }
 }
 
 export default new UserGroupDataService();

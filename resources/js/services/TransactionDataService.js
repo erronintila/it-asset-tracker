@@ -21,6 +21,10 @@ class TransactionDataService {
     delete(id, data) {
         return axios.delete(`/api/v1/transactions/${id}`, data);
     }
+
+    restore(data) {
+        return axios.put(`/api/v1/transactions/restore`, data);
+    }
 }
 
 export default new TransactionDataService();

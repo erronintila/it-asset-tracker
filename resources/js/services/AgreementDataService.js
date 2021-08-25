@@ -25,6 +25,10 @@ class AgreementDataService {
     deleteMany(data) {
         return axios.delete(`/api/v1/agreements/multiple`, data);
     }
+
+    restore(data) {
+        return axios.put(`/api/v1/agreements/restore`, data);
+    }
 }
 
 export default new AgreementDataService();

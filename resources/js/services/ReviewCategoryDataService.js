@@ -26,6 +26,10 @@ class LocationDataService {
         return axios.delete(`/api/v1/review_categories/multiple`, data);
     }
 
+    restore(data) {
+        return axios.put(`/api/v1/review_categories/restore`, data);
+    }
+
     activate(data) {
         return axios.put(`/api/v1/review_categories/activate`, data);
     }

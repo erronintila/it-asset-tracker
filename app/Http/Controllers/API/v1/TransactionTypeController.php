@@ -138,9 +138,28 @@ class TransactionTypeController extends Controller
         return $this->successResponse('delete', $data, 200);
     }
 
-    public function activate()
+    /**
+     * Restore the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function restore()
     {
         $ids = request('ids');
+
+        $data = DB::transaction(function () use ($ids) {
+            $data = TransactionType::onlyTrashed()->findOrFail($ids);
+            $data->each->restore();
+            return $data;
+        });
+
+        return $this->successResponse('restore', $data, 200);
+    }
+
+    public function activate()
+    {
+        $ids = request('ids') ?? [];
         $activation = request("is_active") ? "activated" : "deactivated";
         $data = DB::transaction(function () use ($ids, $activation) {
             $transaction_types = TransactionType::findOrFail($ids);

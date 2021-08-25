@@ -26,6 +26,10 @@ class CustomerDataService {
         return axios.delete(`/api/v1/customers/multiple`, data);
     }
 
+    restore(data) {
+        return axios.put(`/api/v1/customers/restore`, data);
+    }
+
     activate(data) {
         return axios.put(`/api/v1/customers/activate`, data);
     }

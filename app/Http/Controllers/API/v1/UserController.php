@@ -74,6 +74,25 @@ class UserController extends Controller
         return $this->successResponse("", $user, 200);
     }
 
+        /**
+     * Restore the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function restore()
+    {
+        $ids = request('ids') ?? [];
+
+        $data = DB::transaction(function () use ($ids) {
+            $data = User::onlyTrashed()->findOrFail($ids);
+            $data->each->restore();
+            return $data;
+        });
+
+        return $this->successResponse('restore', $data, 200);
+    }
+
     public function update_password(UserUpdatePasswordRequest $request, $id)
     {
         $validated = $request->validated();

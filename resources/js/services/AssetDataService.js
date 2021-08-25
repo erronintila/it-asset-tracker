@@ -22,6 +22,10 @@ class AssetDataService {
         return axios.delete(`/api/v1/assets/${id}`, data);
     }
 
+    restore(data) {
+        return axios.put(`/api/v1/assets/restore`, data);
+    }
+
     deleteMany(data) {
         return axios.delete(`/api/v1/assets/multiple`, data);
     }

@@ -25,6 +25,10 @@ class FeatureDataService {
     deleteMany(data) {
         return axios.delete(`/api/v1/features/multiple`, data);
     }
+
+    restore(data) {
+        return axios.put(`/api/v1/features/restore`, data);
+    }
 }
 
 export default new FeatureDataService();

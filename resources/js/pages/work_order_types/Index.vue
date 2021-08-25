@@ -322,6 +322,7 @@ export default {
                     this.onDelete();
                     break;
                 case "restore":
+                    this.onRestore();
                     break;
                 case "activate":
                     this.onActivation(true);
@@ -392,6 +393,31 @@ export default {
                 })
                 .catch(error => {
                     console.log(error);
+                    alert("An error has occurred.");
+                });
+        },
+        onRestore: function() {
+            if (!this.selectedItems.length) {
+                alert("No data selected.");
+                return;
+            }
+
+            if (!confirm("WARNING: Do you want to restore selected items?")) {
+                return;
+            }
+
+            let data = {
+                ids: this.selectedItems.map(item => item.id)
+            };
+
+            TransactionTypeDataService.restore(data)
+                .then(response => {
+                    console.log(response);
+                    this.getData();
+                    this.selectedItems = [];
+                })
+                .catch(error => {
+                    console.log(error.response);
                     alert("An error has occurred.");
                 });
         },

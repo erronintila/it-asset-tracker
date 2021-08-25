@@ -583,6 +583,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           break;
 
         case "restore":
+          this.onRestore();
           break;
 
         case "export":
@@ -616,6 +617,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this2.getData();
 
         _this2.selectedItems = [];
+      })["catch"](function (error) {
+        console.log(error);
+        alert("An error has occurred.");
+      });
+    },
+    onRestore: function onRestore() {
+      var _this3 = this;
+
+      if (!this.selectedItems.length) {
+        alert("No data selected.");
+        return;
+      }
+
+      if (!confirm("WARNING: Do you want to restore selected items?")) {
+        return;
+      }
+
+      var data = {
+        ids: this.selectedItems.map(function (item) {
+          return item.id;
+        })
+      };
+      _services_FeatureDataService__WEBPACK_IMPORTED_MODULE_0__["default"].restore(data).then(function (response) {
+        _this3.getData();
+
+        _this3.selectedItems = [];
       })["catch"](function (error) {
         console.log(error);
         alert("An error has occurred.");
