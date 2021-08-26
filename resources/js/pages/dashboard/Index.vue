@@ -36,13 +36,97 @@
 
         <v-row class="hidden-sm-and-down mb-2">
             <v-col class="d-flex align-center">
-                <small class="text--secondary">
-                    January 01, 2021 ~ July 09, 2021
-                </small>
+                <XDateRangePicker
+                    ref="dateRange"
+                    :dateRange="filter.date_range"
+                    @on-change="updateDateRange"
+                >
+                    <template
+                        v-slot:openDialog="{
+                            on,
+                            attrs,
+                            dateRangeText
+                        }"
+                    >
+                        <small class="text--secondary" v-bind="attrs" v-on="on">
+                            {{ dateRangeText }}
+                        </small>
+                        <!-- <v-text-field
+                            v-model="filter.date_range"
+                            :value="dateRangeText"
+                            label="Request Date"
+                            readonly
+                            v-bind="attrs"
+                            v-on="on"
+                        ></v-text-field> -->
+                    </template>
+                </XDateRangePicker>
+
                 <small class="mx-4">|</small>
+
                 <small class="text--secondary">
-                    All Accounts
+                    {{
+                        form.assigned_user
+                            ? form.assigned_user.full_name
+                            : "All Accounts"
+                    }}
                 </small>
+
+                <v-btn icon title="Refresh" @click="onRefresh">
+                    <v-icon>
+                        mdi-refresh
+                    </v-icon>
+                </v-btn>
+
+                <EmployeeDialogSelector
+                    :selected="
+                        !form.assigned_user ? [] : [...form.assigned_user]
+                    "
+                    @on-select="onSelectUser"
+                >
+                    <template
+                        v-slot:openDialog="{
+                            on,
+                            attrs
+                        }"
+                    >
+                        <v-btn
+                            v-bind="attrs"
+                            v-on="on"
+                            icon
+                            title="Select Employee"
+                        >
+                            <v-icon>
+                                mdi-clipboard-account
+                            </v-icon>
+                        </v-btn>
+                    </template>
+                </EmployeeDialogSelector>
+
+                <CustomerDialogSelector
+                    :selected="
+                        !form.assigned_user ? [] : [...form.assigned_user]
+                    "
+                    @on-select="onSelectUser"
+                >
+                    <template
+                        v-slot:openDialog="{
+                            on,
+                            attrs
+                        }"
+                    >
+                        <v-btn
+                            v-bind="attrs"
+                            v-on="on"
+                            icon
+                            title="Select Customer"
+                        >
+                            <v-icon>
+                                mdi-card-account-details-outline
+                            </v-icon>
+                        </v-btn>
+                    </template>
+                </CustomerDialogSelector>
             </v-col>
         </v-row>
 
@@ -163,7 +247,7 @@
                             <div class="page-title">
                                 Assets by Status
                             </div>
-                            <v-menu bottom left>
+                            <!-- <v-menu bottom left>
                                 <template v-slot:activator="{ on, attrs }">
                                     <v-btn icon v-bind="attrs" v-on="on">
                                         <v-icon>
@@ -189,7 +273,7 @@
                                         </v-list-item-title>
                                     </v-list-item>
                                 </v-list>
-                            </v-menu>
+                            </v-menu> -->
                         </v-card-title>
                         <v-card-text>
                             <div>
@@ -202,11 +286,11 @@
                                 ></VueApexCharts>
                             </div>
 
-                            <div class="mt-2">
+                            <!-- <div class="mt-2">
                                 <small>All Categories</small>
                                 <small>|</small>
                                 <small>All Manufacturers</small>
-                            </div>
+                            </div> -->
                         </v-card-text>
                     </v-card>
                 </v-hover>
@@ -312,17 +396,24 @@
 </template>
 
 <script>
+import moment from "moment";
 import { mapGetters } from "vuex";
 import VueApexCharts from "vue-apexcharts";
 import XDialog from "../../components/X-Dialog.vue";
 import DashboardDataService from "../../services/DashboardDataService";
 import ActivityLogDataService from "../../services/ActivityLogDataService";
+import XDateRangePicker from "../../components/X-DateRangePicker.vue";
+import CustomerDialogSelector from "../../components/selectors/CustomerDialogSelector.vue";
+import EmployeeDialogSelector from "../../components/selectors/EmployeeDialogSelector.vue";
 
 export default {
     name: "dashboard",
     components: {
         VueApexCharts,
-        XDialog
+        XDialog,
+        XDateRangePicker,
+        CustomerDialogSelector,
+        EmployeeDialogSelector
     },
     data() {
         return {
@@ -330,6 +421,19 @@ export default {
             dialogCategory: false,
             dialogManufacturer: false,
             tableSelected: [],
+            form: {
+                assigned_user: null
+            },
+            filter: {
+                date_range: [
+                    moment()
+                        .startOf("year")
+                        .format("YYYY-MM-DD"),
+                    moment()
+                        .endOf("year")
+                        .format("YYYY-MM-DD")
+                ]
+            },
             assets: {
                 total: 0,
                 status: {
@@ -415,11 +519,35 @@ export default {
         };
     },
     methods: {
+        onSelectUser(e) {
+            if (e == null || e == undefined) {
+                this.form.assigned_user = null;
+                return;
+            }
+
+            this.form.assigned_user = e[0];
+            this.getData();
+        },
+        updateDateRange(e) {
+            this.filter.date_range = e;
+            this.getData();
+        },
+        onRefresh() {
+            this.form.assigned_user = null;
+            this.getData();
+        },
         async getData() {
             try {
-                await DashboardDataService.getAll().then(response => {
-                    const { assets, work_orders } = response.data.data;
+                let data = {
+                    params: {
+                        user_id: this.form.assigned_user?.id,
+                        start_date: this.filter.date_range[0],
+                        end_date: this.filter.date_range[1]
+                    }
+                };
 
+                await DashboardDataService.getAll(data).then(response => {
+                    const { assets, work_orders } = response.data.data;
                     console.log(response);
 
                     this.assets = { ...assets };
@@ -438,7 +566,7 @@ export default {
                         }
                     };
 
-                    console.log(work_orders.categories.map(item => item.total));
+                    // console.log(work_orders.categories.map(item => item.total));
 
                     this.$refs.workOrderChart.updateSeries(
                         [
@@ -454,7 +582,8 @@ export default {
                 });
             } catch (error) {
                 console.log(error);
-                console.log(error.response);
+                console.log("error");
+                // console.log(error.response);
             }
         },
         async getActivityLogs() {
@@ -483,7 +612,7 @@ export default {
                     this.activityTableOptions.loading = false;
                 });
             } catch (error) {
-                console.log(error);
+                // console.log(error);
                 console.log(error.response);
             }
         }
@@ -494,7 +623,9 @@ export default {
         }),
         params(nv) {
             return {
-                ...this.activityTableOptions.options
+                ...this.activityTableOptions.options,
+                query: this.form.assigned_user,
+                query: this.filter.date_range
             };
         },
         dateRangeText() {

@@ -13,14 +13,17 @@ trait SendUserNotification
 {
     protected function sendUserNotification(User $recipient, $type, $data)
     {
+        if (!$recipient->profile) {
+            // if (!$recipient->profile->department) {
+            //     return;
+            // }
+            return;
+        }
+
         if ($recipient->profile) {
             if ($recipient->profile->department) {
                 $recipient = User::find($recipient->profile->department->manager_id);
-            } else {
-                $recipient = null;
             }
-        } else {
-            $recipient = null;
         }
 
         switch ($type) {
