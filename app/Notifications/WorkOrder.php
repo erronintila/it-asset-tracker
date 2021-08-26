@@ -95,7 +95,7 @@ class WorkOrder extends Notification
 
         return [
             'data' => [
-                "model" => "transactions",
+                "model" => "work_orders",
                 "id" => $transaction->id,
                 "code" => $transaction->code,
                 "user" => [

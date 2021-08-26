@@ -57,7 +57,7 @@ class DisposalRequest extends Notification
      */
     public function toArray($notifiable)
     {
-        $record = "Checkin Request";
+        $record = "Disposal Request";
         $action = $this->details["action"] ?? "";
         $data = $this->details['data'];
         $transaction = Transaction::find($data->id);
@@ -95,7 +95,7 @@ class DisposalRequest extends Notification
 
         return [
             'data' => [
-                "model" => "transactions",
+                "model" => "disposal_requests",
                 "id" => $transaction->id,
                 "code" => $transaction->code,
                 "user" => [

@@ -5,12 +5,14 @@ namespace App\Http\Controllers\API\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\NotificationResource;
 use App\Models\User;
+use App\Traits\HttpResponseMessage;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class NotificationController extends Controller
 {
+    use HttpResponseMessage;
     /**
      * Display a listing of the resource.
      *
@@ -25,36 +27,30 @@ class NotificationController extends Controller
         $start_date = request("start_date") ?? date("Y-m-d");
         $end_date = request("end_date") ?? date("Y-m-d");
 
-        $user = request()->has("user_id") ?
-            (request("user_id") > 0 ?
-                User::find(request("user_id")) :
-                auth()->user()) :
-            auth()->user();
-
         $status = request("status") ?? "All Notifications";
+
+        $notifications = auth()->user()->notifications();
 
         if (request()->has("start_date") && request()->has("end_date")) {
             $start_date = Carbon::parse(request("start_date"))->startOfDay();
             $end_date = Carbon::parse(request("end_date"))->endOfDay();
-            $notifications = $user->notifications()->whereBetween("created_at", [$start_date, $end_date]);
+            $notifications = $notifications->whereBetween("created_at", [$start_date, $end_date]);
         }
 
         switch ($status) {
-            case 'All Read':
+            case 'Read':
                 $notifications = $notifications->where("read_at", "<>", null);
-
                 break;
-            case 'All Unread':
+            case 'Unread':
                 $notifications = $notifications->where("read_at", null);
-
                 break;
-
             default:
+                $notifications = $notifications;
                 break;
         }
 
         return NotificationResource::collection($notifications->paginate($itemsPerPage))->additional(['meta' => [
-            'unread' => $user->unReadNotifications->count(),
+            'unread' => auth()->user()->unReadNotifications->count(),
         ]]);
     }
 
@@ -106,7 +102,7 @@ class NotificationController extends Controller
     public function mark_read()
     {
         DB::transaction(function () {
-            switch (request("type")) {
+            switch (request("type") ?? "") {
                 case 'all':
                     auth()->user()->unreadNotifications->markAsRead();
                     break;
@@ -119,13 +115,13 @@ class NotificationController extends Controller
         });
 
         $message = "Notification(s) marked as read";
-        return $this->successResponse([], $message, 200);
+        return $this->successResponse($message, [], 200);
     }
 
     public function mark_unread()
     {
         DB::transaction(function () {
-            switch (request("type")) {
+            switch (request("type") ?? "") {
                 case 'all':
                     auth()->user()->readNotifications->markAsUnread();
                     break;
@@ -138,6 +134,6 @@ class NotificationController extends Controller
         });
 
         $message = "Notification(s) marked as unread";
-        return $this->successResponse([], $message, 200);
+        return $this->successResponse($message, [], 200);
     }
 }

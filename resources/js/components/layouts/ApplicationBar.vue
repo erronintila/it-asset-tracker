@@ -29,7 +29,7 @@
 
         <v-spacer></v-spacer>
 
-        <v-menu
+        <!-- <v-menu
             v-model="notification_menu"
             :close-on-content-click="false"
             offset-y
@@ -109,7 +109,14 @@
                     </v-btn>
                 </v-card-actions>
             </v-card>
-        </v-menu>
+        </v-menu> -->
+
+        <v-btn
+            icon
+            @click="$router.push({ name: 'notifications.index' }, () => {})"
+        >
+            <v-icon>mdi-bell-outline</v-icon>
+        </v-btn>
 
         <v-menu
             v-model="profile_menu"

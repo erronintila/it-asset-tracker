@@ -95,7 +95,7 @@ class CheckinRequest extends Notification implements ShouldQueue
 
         return [
             'data' => [
-                "model" => "transactions",
+                "model" => "checkin_requests",
                 "id" => $transaction->id,
                 "code" => $transaction->code,
                 "user" => [

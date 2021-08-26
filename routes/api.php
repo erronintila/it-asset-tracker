@@ -21,10 +21,10 @@ Route::middleware('auth:sanctum')->prefix("v1")->group(function () {
     Route::get('activity_logs', 'API\v1\ActivityLogController@index');
 
     // Notificaitons route
-    Route::get('notifications', 'API\v1\NotificationController@index');
-    Route::get('notifications/{id}', 'API\v1\NotificationController@index');
-    Route::put('notifications/mark_read', 'API\v1\NotificationController@mark_read');
-    Route::put('notifications/mark_unread', 'API\v1\NotificationController@mark_unread');
+    Route::get('notifications', 'API\v1\NotificationController@index')->name("notifications.index");
+    Route::get('notifications/{id}', 'API\v1\NotificationController@show')->name("notifications.show");
+    Route::put('notifications/mark_read', 'API\v1\NotificationController@mark_read')->name("notifications.mark_read");
+    Route::put('notifications/mark_unread', 'API\v1\NotificationController@mark_unread')->name("notifications.mark_unread");
 
     // Multiple deletion routes
     Route::delete('reviews/multiple', 'API\v1\ReviewController@destroyMany')->name('delete.reviews.multiple');
