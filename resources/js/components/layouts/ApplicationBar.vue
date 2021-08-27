@@ -115,7 +115,23 @@
             icon
             @click="$router.push({ name: 'notifications.index' }, () => {})"
         >
-            <v-icon>mdi-bell-outline</v-icon>
+            <v-badge
+                :content="
+                    $store.getters['auth/notifications']
+                        ? $store.getters['auth/notifications'].length
+                        : null
+                "
+                :value="
+                    $store.getters['auth/notifications']
+                        ? $store.getters['auth/notifications'].length
+                        : null
+                "
+                color="red"
+                overlap
+            >
+                <v-icon>mdi-bell-outline</v-icon>
+            </v-badge>
+            <!-- <v-icon>mdi-bell-outline</v-icon> -->
         </v-btn>
 
         <v-menu

@@ -6,9 +6,11 @@ const work_order_type_routes = [
         component: () => import("../pages/work_order_types/Index"),
         name: "work_order_types.index",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
+            store.dispatch("auth/AUTH_NOTIFICATIONS");
             let permissions = store.getters["auth/user"].permissions;
             if (permissions.includes("view all work order types")) {
                 next();
@@ -38,7 +40,8 @@ const work_order_type_routes = [
         component: () => import("../pages/work_order_types/Show"),
         name: "work_order_types.show",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
             let permissions = store.getters["auth/user"].permissions;

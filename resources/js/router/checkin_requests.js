@@ -6,9 +6,11 @@ const checkin_request_routes = [
         component: () => import("../pages/checkin_requests/Index"),
         name: "checkin_requests.index",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
+            store.dispatch("auth/AUTH_NOTIFICATIONS");
             let permissions = store.getters["auth/user"].permissions;
             if (permissions.includes("view all checkin requests")) {
                 next();
@@ -54,7 +56,8 @@ const checkin_request_routes = [
         name: "checkin_requests.show",
         component: () => import("../pages/checkin_requests/Show"),
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
             let permissions = store.getters["auth/user"].permissions;

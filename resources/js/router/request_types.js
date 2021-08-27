@@ -6,9 +6,11 @@ const request_type_routes = [
         component: () => import("../pages/request_types/Index"),
         name: "request_types.index",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
+            store.dispatch("auth/AUTH_NOTIFICATIONS");
             let permissions = store.getters["auth/user"].permissions;
             if (permissions.includes("view all request types")) {
                 next();
@@ -38,7 +40,8 @@ const request_type_routes = [
         component: () => import("../pages/request_types/Show"),
         name: "request_types.show",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
             let permissions = store.getters["auth/user"].permissions;

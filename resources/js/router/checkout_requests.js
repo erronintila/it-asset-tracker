@@ -6,9 +6,11 @@ const checkout_request_routes = [
         component: () => import("../pages/checkout_requests/Index"),
         name: "checkout_requests.index",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
+            store.dispatch("auth/AUTH_NOTIFICATIONS");
             let permissions = store.getters["auth/user"].permissions;
             if (permissions.includes("view all checkout requests")) {
                 next();
@@ -54,7 +56,8 @@ const checkout_request_routes = [
         name: "checkout_requests.show",
         component: () => import("../pages/checkout_requests/Show"),
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
             let permissions = store.getters["auth/user"].permissions;

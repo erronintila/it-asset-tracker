@@ -522,6 +522,9 @@ export default {
                 this.getData();
             }
         }
+    },
+    activated() {
+        this.getData();
     }
 };
 </script>

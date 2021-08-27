@@ -17,7 +17,8 @@ const pages_routes = [
         component: () => import("../pages/profile/Index"),
         name: "profile",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         }
     },
     {
@@ -25,7 +26,8 @@ const pages_routes = [
         component: () => import("../pages/dashboard/Index"),
         name: "dashboard",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         }
     }
 ];

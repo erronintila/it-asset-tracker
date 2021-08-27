@@ -7,8 +7,10 @@ const employee_routes = [
         name: "employees.index",
         meta: {
             auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
+            store.dispatch("auth/AUTH_NOTIFICATIONS");
             let permissions = store.getters["auth/user"].permissions;
             if (permissions.includes("view all employees")) {
                 next();
@@ -22,7 +24,7 @@ const employee_routes = [
         component: () => import("../pages/employees/Create"),
         name: "employees.create",
         meta: {
-            auth: true,
+            auth: true
         },
         beforeEnter: (to, from, next) => {
             let permissions = store.getters["auth/user"].permissions;
@@ -38,7 +40,7 @@ const employee_routes = [
         component: () => import("../pages/employees/Edit"),
         name: "employees.edit",
         meta: {
-            auth: true,
+            auth: true
         },
         beforeEnter: (to, from, next) => {
             let permissions = store.getters["auth/user"].permissions;
@@ -55,6 +57,7 @@ const employee_routes = [
         name: "employees.show",
         meta: {
             auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
             let permissions = store.getters["auth/user"].permissions;

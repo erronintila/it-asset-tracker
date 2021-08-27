@@ -6,9 +6,11 @@ const asset_routes = [
         component: () => import("../pages/assets/Index"),
         name: "assets.index",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
+            store.dispatch("auth/AUTH_NOTIFICATIONS");
             let permissions = store.getters["auth/user"].permissions;
 
             if (permissions.includes("view all assets")) {
@@ -55,7 +57,8 @@ const asset_routes = [
         name: "assets.show",
         component: () => import("../pages/assets/Show"),
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
             let permissions = store.getters["auth/user"].permissions;

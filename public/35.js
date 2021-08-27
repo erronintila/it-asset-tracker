@@ -673,10 +673,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       profile: null
     },
     authenticated: (_authAuthenticated = "auth/authenticated") !== null && _authAuthenticated !== void 0 ? _authAuthenticated : null
-  })),
-  mounted: function mounted() {
-    console.log(this.user);
-  }
+  }))
 });
 
 /***/ }),

@@ -6,9 +6,11 @@ const review_routes = [
         component: () => import("../pages/reviews/Index"),
         name: "reviews.index",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
+            store.dispatch("auth/AUTH_NOTIFICATIONS");
             let permissions = store.getters["auth/user"].permissions;
             if (permissions.includes("view all reviews")) {
                 next();
@@ -54,7 +56,8 @@ const review_routes = [
         component: () => import("../pages/reviews/Show"),
         name: "reviews.show",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
             let permissions = store.getters["auth/user"].permissions;

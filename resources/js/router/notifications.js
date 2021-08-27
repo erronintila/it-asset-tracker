@@ -4,7 +4,8 @@ const notification_routes = [
         component: () => import("../pages/notifications/Index"),
         name: "notifications.index",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         }
     }
 ];

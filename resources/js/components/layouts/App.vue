@@ -23,7 +23,16 @@
 
         <v-main class="white mb-8 pb-8" v-if="!isLoading">
             <v-container fluid>
-                <router-view></router-view>
+                <!-- <router-view></router-view> -->
+                <transition name="fade" mode="out-in">
+                    <keep-alive>
+                        <router-view v-if="$route.meta.keepAlive"></router-view>
+                    </keep-alive>
+                </transition>
+
+                <transition name="fade" mode="out-in">
+                    <router-view v-if="!$route.meta.keepAlive"></router-view>
+                </transition>
             </v-container>
         </v-main>
 
@@ -290,3 +299,21 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+/* #app {
+    overflow: hidden;
+    width: 100vw;
+} */
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+    /* transform: translateX(2em); */
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: all 0.3s ease;
+}
+</style>

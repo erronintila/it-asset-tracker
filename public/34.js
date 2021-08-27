@@ -927,6 +927,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   mounted: function mounted() {
     this.getData();
     this.getActivityLogs();
+  },
+  activated: function activated() {
+    this.getData();
+    this.getActivityLogs();
   }
 });
 

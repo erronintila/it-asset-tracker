@@ -55,9 +55,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/suppliers/Assets.vue?vue&type=script&lang=js&":
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/employees/Assets.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/suppliers/Assets.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/employees/Assets.vue?vue&type=script&lang=js& ***!
   \**********************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -166,10 +166,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, {
           text: "Manufacturer",
           value: "manufacturer.name"
-        }, {
-          text: "Assigned To",
-          value: "assigned_user.name"
-        }, {
+        }, // { text: "Assigned To", value: "assigned_user.name" },
+        {
           text: "Status",
           value: "status",
           sortable: false
@@ -185,8 +183,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var _this$model_id;
-
         var _this$tableOptions$op, sortBy, sortDesc, page, itemsPerPage, data, response;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
@@ -201,7 +197,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     sortType: sortDesc[0] ? "desc" : "asc",
                     page: page,
                     itemsPerPage: itemsPerPage,
-                    supplier_id: (_this$model_id = _this.model_id) !== null && _this$model_id !== void 0 ? _this$model_id : 0
+                    assigned_user_id: _this.model_id
                   }
                 };
                 _context.prev = 3;
@@ -249,9 +245,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/suppliers/Show.vue?vue&type=script&lang=js&":
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/employees/Show.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/suppliers/Show.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/employees/Show.vue?vue&type=script&lang=js& ***!
   \********************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -259,14 +255,235 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_pages_CardSummary_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/pages/CardSummary.vue */ "./resources/js/components/pages/CardSummary.vue");
-/* harmony import */ var _services_SupplierDataService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/SupplierDataService */ "./resources/js/services/SupplierDataService.js");
-/* harmony import */ var _Assets_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Assets.vue */ "./resources/js/pages/suppliers/Assets.vue");
+/* harmony import */ var _services_EmployeeDataService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/EmployeeDataService */ "./resources/js/services/EmployeeDataService.js");
+/* harmony import */ var _Assets_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Assets.vue */ "./resources/js/pages/employees/Assets.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -511,27 +728,52 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       tab: null,
-      items: ["details", "assets", "licenses", "System Activity Logs"],
+      items: ["details", "assets", "System Activity Logs"],
       records: [],
       form: {
-        code: "",
-        slug: "",
-        name: "",
-        contact_person: "",
-        phone1: "",
-        phone2: "",
+        username: "",
         email: "",
-        website: "",
-        fax: "",
-        address: "",
-        street: "",
-        district: "",
-        city: "",
-        province: "",
-        country: "",
-        postal_code: "",
         is_active: true,
-        notes: ""
+        notes: "",
+        profile: {
+          code: "",
+          slug: "",
+          first_name: "",
+          middle_name: "",
+          last_name: "",
+          suffix: "",
+          gender: "",
+          birthdate: "",
+          business_phone: "",
+          home_phone: "",
+          mobile_phone: "",
+          job_title: "",
+          address: "",
+          street: "",
+          district: "",
+          city: "",
+          province: "",
+          country: "",
+          postal_code: "",
+          latitude: "",
+          longitude: "",
+          location_id: "",
+          department_id: "",
+          image: "",
+          location: {
+            name: "",
+            address: "",
+            street: "",
+            district: "",
+            city: "",
+            province: "",
+            country: "",
+            postal_code: ""
+          },
+          department: {
+            name: ""
+          }
+        }
       }
     };
   },
@@ -540,14 +782,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this = this;
 
       var data = {};
-      _services_SupplierDataService__WEBPACK_IMPORTED_MODULE_1__["default"].show(this.$route.params.id, data).then(function (response) {
+      _services_EmployeeDataService__WEBPACK_IMPORTED_MODULE_1__["default"].show(this.$route.params.id, data).then(function (response) {
         _this.form = _objectSpread(_objectSpread({}, _this.form), response.data.data);
       })["catch"](function (error) {
         console.log(error);
         alert("An error has occurred.");
 
         _this.$router.push({
-          name: "suppliers.index"
+          name: "employees.index"
         }, function () {});
       });
     },
@@ -558,11 +800,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return;
       }
 
-      _services_SupplierDataService__WEBPACK_IMPORTED_MODULE_1__["default"]["delete"](this.$route.params.id, {}).then(function (response) {
+      _services_EmployeeDataService__WEBPACK_IMPORTED_MODULE_1__["default"]["delete"](this.$route.params.id, {}).then(function (response) {
         alert(response.data.message);
 
         _this2.$router.push({
-          name: "suppliers.index"
+          name: "employees.index"
         });
       })["catch"](function (error) {
         console.log(error);
@@ -571,6 +813,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   created: function created() {
+    this.getData();
+  },
+  activated: function activated() {
     this.getData();
   }
 });
@@ -638,9 +883,9 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/suppliers/Assets.vue?vue&type=template&id=3db62318&":
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/employees/Assets.vue?vue&type=template&id=a7d4cf54&":
 /*!**************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/suppliers/Assets.vue?vue&type=template&id=3db62318& ***!
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/employees/Assets.vue?vue&type=template&id=a7d4cf54& ***!
   \**************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -767,9 +1012,9 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/suppliers/Show.vue?vue&type=template&id=4ddeab2e&":
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/employees/Show.vue?vue&type=template&id=c15734e0&":
 /*!************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/suppliers/Show.vue?vue&type=template&id=4ddeab2e& ***!
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/employees/Show.vue?vue&type=template&id=c15734e0& ***!
   \************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -787,7 +1032,7 @@ var render = function() {
     [
       _c("page-header", {
         staticClass: "mb-4",
-        attrs: { title: "Supplier Details", backButton: true }
+        attrs: { title: "Employee Details", backButton: true }
       }),
       _vm._v(" "),
       _c(
@@ -798,13 +1043,20 @@ var render = function() {
             { attrs: { cols: "12", md: "4" } },
             [
               _c("CardSummary", {
-                attrs: { title: _vm.form.name, subtitle: "# " + _vm.form.code },
+                attrs: {
+                  title: _vm.form.name,
+                  subtitle: "# " + _vm.form.profile.code
+                },
                 scopedSlots: _vm._u([
                   {
                     key: "body",
                     fn: function() {
                       return [
-                        _c("p", [_vm._v("Phone: " + _vm._s(_vm.form.phone1))]),
+                        _c("p", [
+                          _vm._v(
+                            "Phone: " + _vm._s(_vm.form.profile.business_phone)
+                          )
+                        ]),
                         _vm._v(" "),
                         _vm.form.email
                           ? _c("p", [
@@ -815,15 +1067,15 @@ var render = function() {
                         _c("p", [
                           _vm._v(
                             "\n                        Address: " +
-                              _vm._s(_vm.form.address) +
-                              ", " +
-                              _vm._s(_vm.form.city) +
+                              _vm._s(_vm.form.profile.address) +
                               ",\n                        " +
-                              _vm._s(_vm.form.province) +
-                              ", " +
-                              _vm._s(_vm.form.postal_code) +
+                              _vm._s(_vm.form.profile.city) +
                               ",\n                        " +
-                              _vm._s(_vm.form.country) +
+                              _vm._s(_vm.form.profile.province) +
+                              ",\n                        " +
+                              _vm._s(_vm.form.profile.postal_code) +
+                              ",\n                        " +
+                              _vm._s(_vm.form.profile.country) +
                               "\n                    "
                           )
                         ])
@@ -842,7 +1094,7 @@ var render = function() {
                             on: {
                               click: function($event) {
                                 return _vm.$router.push(
-                                  "/suppliers/" + _vm.$route.params.id + "/edit"
+                                  "/employees/" + _vm.$route.params.id + "/edit"
                                 )
                               }
                             }
@@ -973,28 +1225,10 @@ var render = function() {
                                                 _c("td", [_vm._v("Code")]),
                                                 _vm._v(" "),
                                                 _c("td", [
-                                                  _vm._v(_vm._s(_vm.form.code))
-                                                ])
-                                              ]),
-                                              _vm._v(" "),
-                                              _c("tr", [
-                                                _c("td", [_vm._v("Name")]),
-                                                _vm._v(" "),
-                                                _c("td", [
-                                                  _vm._v(_vm._s(_vm.form.name))
-                                                ])
-                                              ]),
-                                              _vm._v(" "),
-                                              _c("tr", [
-                                                _c("td", [
-                                                  _vm._v("Contact Person")
-                                                ]),
-                                                _vm._v(" "),
-                                                _c("td", [
                                                   _vm._v(
                                                     "\n                                                    " +
                                                       _vm._s(
-                                                        _vm.form.contact_person
+                                                        _vm.form.profile.code
                                                       ) +
                                                       "\n                                                "
                                                   )
@@ -1002,18 +1236,145 @@ var render = function() {
                                               ]),
                                               _vm._v(" "),
                                               _c("tr", [
-                                                _c("td", [_vm._v("Phone No.")]),
+                                                _c("td", [
+                                                  _vm._v("First Name")
+                                                ]),
                                                 _vm._v(" "),
                                                 _c("td", [
                                                   _vm._v(
                                                     "\n                                                    " +
-                                                      _vm._s(_vm.form.phone1) +
-                                                      "\n                                                    " +
                                                       _vm._s(
-                                                        _vm.form.phone2
-                                                          ? "; " +
-                                                              _vm.form.phone2
-                                                          : ""
+                                                        _vm.form.profile
+                                                          .first_name
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [
+                                                  _vm._v("Middle Name")
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .middle_name
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Last Name")]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .last_name
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Suffix")]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile.suffix
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Gender")]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile.gender
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Birthdate")]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm._f("moment")(
+                                                          _vm.form.profile
+                                                            .birthdate,
+                                                          "LL"
+                                                        )
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [
+                                                  _vm._v("Business Phone No.")
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .business_phone
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [
+                                                  _vm._v("Home Phone No.")
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .home_phone
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [
+                                                  _vm._v("Mobile Phone No.")
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .mobile_phone
                                                       ) +
                                                       "\n                                                "
                                                   )
@@ -1031,20 +1392,27 @@ var render = function() {
                                               ]),
                                               _vm._v(" "),
                                               _c("tr", [
-                                                _c("td", [_vm._v("Website")]),
+                                                _c("td", [_vm._v("Username")]),
                                                 _vm._v(" "),
                                                 _c("td", [
                                                   _vm._v(
-                                                    _vm._s(_vm.form.website)
+                                                    _vm._s(_vm.form.username)
                                                   )
                                                 ])
                                               ]),
                                               _vm._v(" "),
                                               _c("tr", [
-                                                _c("td", [_vm._v("Fax")]),
+                                                _c("td", [_vm._v("Job Title")]),
                                                 _vm._v(" "),
                                                 _c("td", [
-                                                  _vm._v(_vm._s(_vm.form.fax))
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .job_title
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
                                                 ])
                                               ]),
                                               _vm._v(" "),
@@ -1053,7 +1421,11 @@ var render = function() {
                                                 _vm._v(" "),
                                                 _c("td", [
                                                   _vm._v(
-                                                    _vm._s(_vm.form.address)
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile.address
+                                                      ) +
+                                                      "\n                                                "
                                                   )
                                                 ])
                                               ]),
@@ -1063,7 +1435,11 @@ var render = function() {
                                                 _vm._v(" "),
                                                 _c("td", [
                                                   _vm._v(
-                                                    _vm._s(_vm.form.street)
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile.street
+                                                      ) +
+                                                      "\n                                                "
                                                   )
                                                 ])
                                               ]),
@@ -1073,7 +1449,12 @@ var render = function() {
                                                 _vm._v(" "),
                                                 _c("td", [
                                                   _vm._v(
-                                                    _vm._s(_vm.form.district)
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .district
+                                                      ) +
+                                                      "\n                                                "
                                                   )
                                                 ])
                                               ]),
@@ -1082,7 +1463,13 @@ var render = function() {
                                                 _c("td", [_vm._v("City")]),
                                                 _vm._v(" "),
                                                 _c("td", [
-                                                  _vm._v(_vm._s(_vm.form.city))
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile.city
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
                                                 ])
                                               ]),
                                               _vm._v(" "),
@@ -1091,7 +1478,12 @@ var render = function() {
                                                 _vm._v(" "),
                                                 _c("td", [
                                                   _vm._v(
-                                                    _vm._s(_vm.form.province)
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .province
+                                                      ) +
+                                                      "\n                                                "
                                                   )
                                                 ])
                                               ]),
@@ -1101,7 +1493,11 @@ var render = function() {
                                                 _vm._v(" "),
                                                 _c("td", [
                                                   _vm._v(
-                                                    _vm._s(_vm.form.country)
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile.country
+                                                      ) +
+                                                      "\n                                                "
                                                   )
                                                 ])
                                               ]),
@@ -1115,7 +1511,98 @@ var render = function() {
                                                   _vm._v(
                                                     "\n                                                    " +
                                                       _vm._s(
-                                                        _vm.form.postal_code
+                                                        _vm.form.profile
+                                                          .postal_code
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Latitude")]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .latitude
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Longitude")]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .longitude
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Location")]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .location.name +
+                                                          " : " +
+                                                          _vm.form.profile
+                                                            .location.address +
+                                                          ", " +
+                                                          _vm.form.profile
+                                                            .location.street +
+                                                          ", " +
+                                                          _vm.form.profile
+                                                            .location.district +
+                                                          ", " +
+                                                          _vm.form.profile
+                                                            .location.city +
+                                                          ", " +
+                                                          _vm.form.profile
+                                                            .location.province +
+                                                          ", " +
+                                                          _vm.form.profile
+                                                            .location.country +
+                                                          ", " +
+                                                          _vm.form.profile
+                                                            .location
+                                                            .postal_code
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [_vm._v("Image")]),
+                                                _vm._v(" "),
+                                                _c("td")
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c("td", [
+                                                  _vm._v("Department")
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.profile
+                                                          .department.name
                                                       ) +
                                                       "\n                                                "
                                                   )
@@ -1183,6 +1670,237 @@ var render = function() {
                                 [
                                   _c("Assets", {
                                     attrs: { model_id: _vm.form.id }
+                                  })
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-tab-item",
+                        [
+                          _c(
+                            "v-card",
+                            { attrs: { flat: "" } },
+                            [
+                              _c(
+                                "v-card-text",
+                                [
+                                  _c("v-simple-table", {
+                                    scopedSlots: _vm._u([
+                                      {
+                                        key: "default",
+                                        fn: function() {
+                                          return [
+                                            _c("thead", [
+                                              _c("tr", [
+                                                _c(
+                                                  "th",
+                                                  { staticClass: "text-left" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                    Name\n                                                "
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "th",
+                                                  { staticClass: "text-left" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                    Value\n                                                "
+                                                    )
+                                                  ]
+                                                )
+                                              ])
+                                            ]),
+                                            _vm._v(" "),
+                                            _c(
+                                              "tbody",
+                                              _vm._l(_vm.records, function(
+                                                item
+                                              ) {
+                                                return _c(
+                                                  "tr",
+                                                  { key: item.name },
+                                                  [
+                                                    _c("td", [
+                                                      _vm._v(_vm._s(item.name))
+                                                    ]),
+                                                    _vm._v(" "),
+                                                    _c("td", [
+                                                      _vm._v(_vm._s(item.value))
+                                                    ])
+                                                  ]
+                                                )
+                                              }),
+                                              0
+                                            )
+                                          ]
+                                        },
+                                        proxy: true
+                                      }
+                                    ])
+                                  })
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-tab-item",
+                        [
+                          _c(
+                            "v-card",
+                            { attrs: { flat: "" } },
+                            [
+                              _c(
+                                "v-card-text",
+                                [
+                                  _c("v-simple-table", {
+                                    scopedSlots: _vm._u([
+                                      {
+                                        key: "default",
+                                        fn: function() {
+                                          return [
+                                            _c("thead", [
+                                              _c("tr", [
+                                                _c(
+                                                  "th",
+                                                  { staticClass: "text-left" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                    Name\n                                                "
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "th",
+                                                  { staticClass: "text-left" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                    Value\n                                                "
+                                                    )
+                                                  ]
+                                                )
+                                              ])
+                                            ]),
+                                            _vm._v(" "),
+                                            _c(
+                                              "tbody",
+                                              _vm._l(_vm.records, function(
+                                                item
+                                              ) {
+                                                return _c(
+                                                  "tr",
+                                                  { key: item.name },
+                                                  [
+                                                    _c("td", [
+                                                      _vm._v(_vm._s(item.name))
+                                                    ]),
+                                                    _vm._v(" "),
+                                                    _c("td", [
+                                                      _vm._v(_vm._s(item.value))
+                                                    ])
+                                                  ]
+                                                )
+                                              }),
+                                              0
+                                            )
+                                          ]
+                                        },
+                                        proxy: true
+                                      }
+                                    ])
+                                  })
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-tab-item",
+                        [
+                          _c(
+                            "v-card",
+                            { attrs: { flat: "" } },
+                            [
+                              _c(
+                                "v-card-text",
+                                [
+                                  _c("v-simple-table", {
+                                    scopedSlots: _vm._u([
+                                      {
+                                        key: "default",
+                                        fn: function() {
+                                          return [
+                                            _c("thead", [
+                                              _c("tr", [
+                                                _c(
+                                                  "th",
+                                                  { staticClass: "text-left" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                    Name\n                                                "
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "th",
+                                                  { staticClass: "text-left" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                    Value\n                                                "
+                                                    )
+                                                  ]
+                                                )
+                                              ])
+                                            ]),
+                                            _vm._v(" "),
+                                            _c(
+                                              "tbody",
+                                              _vm._l(_vm.records, function(
+                                                item
+                                              ) {
+                                                return _c(
+                                                  "tr",
+                                                  { key: item.name },
+                                                  [
+                                                    _c("td", [
+                                                      _vm._v(_vm._s(item.name))
+                                                    ]),
+                                                    _vm._v(" "),
+                                                    _c("td", [
+                                                      _vm._v(_vm._s(item.value))
+                                                    ])
+                                                  ]
+                                                )
+                                              }),
+                                              0
+                                            )
+                                          ]
+                                        },
+                                        proxy: true
+                                      }
+                                    ])
                                   })
                                 ],
                                 1
@@ -1439,17 +2157,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/pages/suppliers/Assets.vue":
+/***/ "./resources/js/pages/employees/Assets.vue":
 /*!*************************************************!*\
-  !*** ./resources/js/pages/suppliers/Assets.vue ***!
+  !*** ./resources/js/pages/employees/Assets.vue ***!
   \*************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Assets_vue_vue_type_template_id_3db62318___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Assets.vue?vue&type=template&id=3db62318& */ "./resources/js/pages/suppliers/Assets.vue?vue&type=template&id=3db62318&");
-/* harmony import */ var _Assets_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Assets.vue?vue&type=script&lang=js& */ "./resources/js/pages/suppliers/Assets.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Assets_vue_vue_type_template_id_a7d4cf54___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Assets.vue?vue&type=template&id=a7d4cf54& */ "./resources/js/pages/employees/Assets.vue?vue&type=template&id=a7d4cf54&");
+/* harmony import */ var _Assets_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Assets.vue?vue&type=script&lang=js& */ "./resources/js/pages/employees/Assets.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -1460,8 +2178,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _Assets_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Assets_vue_vue_type_template_id_3db62318___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Assets_vue_vue_type_template_id_3db62318___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Assets_vue_vue_type_template_id_a7d4cf54___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Assets_vue_vue_type_template_id_a7d4cf54___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -1471,54 +2189,54 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/pages/suppliers/Assets.vue"
+component.options.__file = "resources/js/pages/employees/Assets.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/pages/suppliers/Assets.vue?vue&type=script&lang=js&":
+/***/ "./resources/js/pages/employees/Assets.vue?vue&type=script&lang=js&":
 /*!**************************************************************************!*\
-  !*** ./resources/js/pages/suppliers/Assets.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/js/pages/employees/Assets.vue?vue&type=script&lang=js& ***!
   \**************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Assets_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Assets.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/suppliers/Assets.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Assets_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Assets.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/employees/Assets.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Assets_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/pages/suppliers/Assets.vue?vue&type=template&id=3db62318&":
+/***/ "./resources/js/pages/employees/Assets.vue?vue&type=template&id=a7d4cf54&":
 /*!********************************************************************************!*\
-  !*** ./resources/js/pages/suppliers/Assets.vue?vue&type=template&id=3db62318& ***!
+  !*** ./resources/js/pages/employees/Assets.vue?vue&type=template&id=a7d4cf54& ***!
   \********************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Assets_vue_vue_type_template_id_3db62318___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Assets.vue?vue&type=template&id=3db62318& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/suppliers/Assets.vue?vue&type=template&id=3db62318&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Assets_vue_vue_type_template_id_3db62318___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Assets_vue_vue_type_template_id_a7d4cf54___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Assets.vue?vue&type=template&id=a7d4cf54& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/employees/Assets.vue?vue&type=template&id=a7d4cf54&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Assets_vue_vue_type_template_id_a7d4cf54___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Assets_vue_vue_type_template_id_3db62318___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Assets_vue_vue_type_template_id_a7d4cf54___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "./resources/js/pages/suppliers/Show.vue":
+/***/ "./resources/js/pages/employees/Show.vue":
 /*!***********************************************!*\
-  !*** ./resources/js/pages/suppliers/Show.vue ***!
+  !*** ./resources/js/pages/employees/Show.vue ***!
   \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Show_vue_vue_type_template_id_4ddeab2e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Show.vue?vue&type=template&id=4ddeab2e& */ "./resources/js/pages/suppliers/Show.vue?vue&type=template&id=4ddeab2e&");
-/* harmony import */ var _Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Show.vue?vue&type=script&lang=js& */ "./resources/js/pages/suppliers/Show.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Show_vue_vue_type_template_id_c15734e0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Show.vue?vue&type=template&id=c15734e0& */ "./resources/js/pages/employees/Show.vue?vue&type=template&id=c15734e0&");
+/* harmony import */ var _Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Show.vue?vue&type=script&lang=js& */ "./resources/js/pages/employees/Show.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -1529,8 +2247,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Show_vue_vue_type_template_id_4ddeab2e___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Show_vue_vue_type_template_id_4ddeab2e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Show_vue_vue_type_template_id_c15734e0___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Show_vue_vue_type_template_id_c15734e0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -1540,38 +2258,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/pages/suppliers/Show.vue"
+component.options.__file = "resources/js/pages/employees/Show.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/pages/suppliers/Show.vue?vue&type=script&lang=js&":
+/***/ "./resources/js/pages/employees/Show.vue?vue&type=script&lang=js&":
 /*!************************************************************************!*\
-  !*** ./resources/js/pages/suppliers/Show.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/js/pages/employees/Show.vue?vue&type=script&lang=js& ***!
   \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Show.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/suppliers/Show.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Show.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/employees/Show.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/pages/suppliers/Show.vue?vue&type=template&id=4ddeab2e&":
+/***/ "./resources/js/pages/employees/Show.vue?vue&type=template&id=c15734e0&":
 /*!******************************************************************************!*\
-  !*** ./resources/js/pages/suppliers/Show.vue?vue&type=template&id=4ddeab2e& ***!
+  !*** ./resources/js/pages/employees/Show.vue?vue&type=template&id=c15734e0& ***!
   \******************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_4ddeab2e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Show.vue?vue&type=template&id=4ddeab2e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/suppliers/Show.vue?vue&type=template&id=4ddeab2e&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_4ddeab2e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_c15734e0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Show.vue?vue&type=template&id=c15734e0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/employees/Show.vue?vue&type=template&id=c15734e0&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_c15734e0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_4ddeab2e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_c15734e0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -1646,9 +2364,9 @@ var AssetDataService = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./resources/js/services/SupplierDataService.js":
+/***/ "./resources/js/services/EmployeeDataService.js":
 /*!******************************************************!*\
-  !*** ./resources/js/services/SupplierDataService.js ***!
+  !*** ./resources/js/services/EmployeeDataService.js ***!
   \******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1666,58 +2384,57 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 // import http from "../http-common";
 
 
-var SupplierDataService = /*#__PURE__*/function () {
-  function SupplierDataService() {
-    _classCallCheck(this, SupplierDataService);
+var EmployeeDataService = /*#__PURE__*/function () {
+  function EmployeeDataService() {
+    _classCallCheck(this, EmployeeDataService);
   }
 
-  _createClass(SupplierDataService, [{
+  _createClass(EmployeeDataService, [{
     key: "getAll",
     value: function getAll(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/suppliers", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/employees", data);
     }
   }, {
     key: "show",
     value: function show(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/suppliers/".concat(id), data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/employees/".concat(id), data);
     }
   }, {
     key: "store",
     value: function store(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/suppliers", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/employees", data);
     }
   }, {
     key: "update",
     value: function update(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/suppliers/".concat(id), data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/employees/".concat(id), data);
     }
   }, {
     key: "delete",
-    value: function _delete(id) {
-      var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/suppliers/".concat(id), data);
+    value: function _delete(id, data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/employees/".concat(id), data);
     }
   }, {
     key: "deleteMany",
     value: function deleteMany(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/suppliers/multiple", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/employees/multiple", data);
     }
   }, {
     key: "restore",
     value: function restore(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/suppliers/restore", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/employees/restore", data);
     }
   }, {
     key: "activate",
     value: function activate(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/suppliers/activate", data);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/employees/activate", data);
     }
   }]);
 
-  return SupplierDataService;
+  return EmployeeDataService;
 }();
 
-/* harmony default export */ __webpack_exports__["default"] = (new SupplierDataService());
+/* harmony default export */ __webpack_exports__["default"] = (new EmployeeDataService());
 
 /***/ })
 

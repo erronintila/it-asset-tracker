@@ -6,9 +6,11 @@ const asset_category_routes = [
         component: () => import("../pages/asset_categories/Index"),
         name: "asset_categories.index",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
+            store.dispatch("auth/AUTH_NOTIFICATIONS");
             let permissions = store.getters["auth/user"].permissions;
             if (permissions.includes("view all asset categories")) {
                 next();
@@ -38,7 +40,8 @@ const asset_category_routes = [
         component: () => import("../pages/asset_categories/Show"),
         name: "asset_categories.show",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
             let permissions = store.getters["auth/user"].permissions;

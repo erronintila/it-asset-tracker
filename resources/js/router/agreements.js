@@ -6,9 +6,11 @@ const agreement_routes = [
         component: () => import("../pages/agreements/Index"),
         name: "agreements.index",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
+            store.dispatch("auth/AUTH_NOTIFICATIONS");
             let permissions = store.getters["auth/user"].permissions;
             if (permissions.includes("view all agreements")) {
                 next();
@@ -22,7 +24,8 @@ const agreement_routes = [
         component: () => import("../pages/agreements/Create"),
         name: "agreements.create",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: false
         },
         beforeEnter: (to, from, next) => {
             let permissions = store.getters["auth/user"].permissions;
@@ -38,7 +41,8 @@ const agreement_routes = [
         component: () => import("../pages/agreements/Edit"),
         name: "agreements.edit",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: false
         },
         beforeEnter: (to, from, next) => {
             let permissions = store.getters["auth/user"].permissions;
@@ -54,7 +58,8 @@ const agreement_routes = [
         component: () => import("../pages/agreements/Show"),
         name: "agreements.show",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
             let permissions = store.getters["auth/user"].permissions;

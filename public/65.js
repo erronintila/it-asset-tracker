@@ -466,6 +466,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.getData();
       }
     }
+  },
+  activated: function activated() {
+    this.getData();
   }
 });
 

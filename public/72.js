@@ -232,15 +232,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, {
         text: "Mark All as Read",
         action: "mark_all_read",
-        icon: "mdi-restore"
+        icon: "mdi-check-all"
       }, {
         text: "Mark as Read",
         action: "mark_read",
-        icon: "mdi-restore"
+        icon: "mdi-check"
       }, {
         text: "Mark as Unread",
         action: "mark_unread",
-        icon: "mdi-restore"
+        icon: "mdi-close"
       }],
       filter: {
         status: "Unread",
@@ -493,6 +493,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.getData();
       }
     }
+  },
+  activated: function activated() {
+    this.getData();
   }
 });
 

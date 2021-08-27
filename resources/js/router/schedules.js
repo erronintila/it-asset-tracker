@@ -6,9 +6,11 @@ const schedule_routes = [
         component: () => import("../pages/schedules/Index"),
         name: "schedules.index",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
+            store.dispatch("auth/AUTH_NOTIFICATIONS");
             let permissions = store.getters["auth/user"].permissions;
             if (permissions.includes("view all schedules")) {
                 next();

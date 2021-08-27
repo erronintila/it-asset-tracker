@@ -65,15 +65,28 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Action Type</td>
-                                                    <td>{{ form.action_type }}</td>
+                                                    <td>
+                                                        {{ form.action_type }}
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Active</td>
-                                                    <td>{{ form.is_active ? 'Yes' : 'No' }}</td>
+                                                    <td>
+                                                        {{
+                                                            form.is_active
+                                                                ? "Yes"
+                                                                : "No"
+                                                        }}
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Created</td>
-                                                    <td>{{ form.created_at | moment("LLLL") }}</td>
+                                                    <td>
+                                                        {{
+                                                            form.created_at
+                                                                | moment("LLLL")
+                                                        }}
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </template>
@@ -159,6 +172,9 @@ export default {
         }
     },
     created() {
+        this.getData();
+    },
+    activated() {
         this.getData();
     }
 };

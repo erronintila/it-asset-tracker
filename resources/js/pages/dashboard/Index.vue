@@ -660,6 +660,10 @@ export default {
     mounted() {
         this.getData();
         this.getActivityLogs();
+    },
+    activated() {
+        this.getData();
+        this.getActivityLogs();
     }
 };
 </script>

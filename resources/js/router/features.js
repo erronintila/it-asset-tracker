@@ -6,9 +6,11 @@ const feature_routes = [
         component: () => import("../pages/features/Index"),
         name: "features.index",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
+            store.dispatch("auth/AUTH_NOTIFICATIONS");
             let permissions = store.getters["auth/user"].permissions;
             if (permissions.includes("view all features")) {
                 next();
@@ -38,7 +40,8 @@ const feature_routes = [
         component: () => import("../pages/features/Show"),
         name: "features.show",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
             let permissions = store.getters["auth/user"].permissions;

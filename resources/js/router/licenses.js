@@ -6,9 +6,11 @@ const license_routes = [
         component: () => import("../pages/licenses/Index"),
         name: "licenses.index",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
+            store.dispatch("auth/AUTH_NOTIFICATIONS");
             let permissions = store.getters["auth/user"].permissions;
             if (permissions.includes("view all licenses")) {
                 next();
@@ -54,7 +56,8 @@ const license_routes = [
         component: () => import("../pages/licenses/Show"),
         name: "licenses.show",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
             let permissions = store.getters["auth/user"].permissions;

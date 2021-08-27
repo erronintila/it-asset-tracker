@@ -72,6 +72,9 @@ export default {
     },
     mounted() {
         this.getData();
+    },
+    activated() {
+        this.getData();
     }
 };
 </script>

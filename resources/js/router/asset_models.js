@@ -6,9 +6,11 @@ const asset_model_routes = [
         component: () => import("../pages/asset_models/Index"),
         name: "asset_models.index",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
+            store.dispatch("auth/AUTH_NOTIFICATIONS");
             let permissions = store.getters["auth/user"].permissions;
             if (permissions.includes("view all asset models")) {
                 next();
@@ -54,7 +56,8 @@ const asset_model_routes = [
         component: () => import("../pages/asset_models/Show"),
         name: "asset_models.show",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
             let permissions = store.getters["auth/user"].permissions;

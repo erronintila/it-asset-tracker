@@ -182,7 +182,7 @@
                         </v-menu>
                     </v-toolbar>
                 </v-sheet>
-                <v-sheet height="600">
+                <v-sheet height="600" class="mx-4">
                     <v-calendar
                         ref="calendar"
                         v-model="focus"
@@ -485,6 +485,9 @@ export default {
                 this.getData();
             }
         }
+    },
+    activated() {
+        this.getData();
     }
 };
 </script>

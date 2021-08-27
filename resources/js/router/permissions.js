@@ -6,9 +6,11 @@ const permission_routes = [
         component: () => import("../pages/permissions/Index"),
         name: "permissions.index",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
+            store.dispatch("auth/AUTH_NOTIFICATIONS");
             let permissions = store.getters["auth/user"].permissions;
             if (permissions.includes("view all permissions")) {
                 next();
@@ -16,7 +18,7 @@ const permission_routes = [
                 next({ name: "error_403" });
             }
         }
-    },
+    }
 ];
 
 export default permission_routes;

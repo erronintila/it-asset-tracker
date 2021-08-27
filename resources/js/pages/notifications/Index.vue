@@ -203,17 +203,17 @@ export default {
                 {
                     text: "Mark All as Read",
                     action: "mark_all_read",
-                    icon: "mdi-restore"
+                    icon: "mdi-check-all"
                 },
                 {
                     text: "Mark as Read",
                     action: "mark_read",
-                    icon: "mdi-restore"
+                    icon: "mdi-check"
                 },
                 {
                     text: "Mark as Unread",
                     action: "mark_unread",
-                    icon: "mdi-restore"
+                    icon: "mdi-close"
                 }
             ],
             filter: {
@@ -445,6 +445,9 @@ export default {
                 this.getData();
             }
         }
+    },
+    activated() {
+        this.getData();
     }
 };
 </script>

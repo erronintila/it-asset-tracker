@@ -195,6 +195,9 @@ export default {
     },
     created() {
         this.getData();
+    },
+    activated() {
+        this.getData();
     }
 };
 </script>

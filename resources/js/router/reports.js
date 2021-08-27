@@ -6,9 +6,11 @@ const report_routes = [
         component: () => import("../pages/reports/activity_logs/Index"),
         name: "reports.activity_logs.index",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
+            store.dispatch("auth/AUTH_NOTIFICATIONS");
             let permissions = store.getters["auth/user"].permissions;
             if (permissions.includes("view all activity logs")) {
                 next();

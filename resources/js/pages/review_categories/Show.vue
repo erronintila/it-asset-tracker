@@ -123,7 +123,7 @@ export default {
                 code: "",
                 slug: "",
                 name: "",
-                is_active: true,
+                is_active: true
             }
         };
     },
@@ -161,6 +161,9 @@ export default {
         }
     },
     created() {
+        this.getData();
+    },
+    activated() {
         this.getData();
     }
 };

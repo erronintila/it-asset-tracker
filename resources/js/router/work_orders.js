@@ -6,9 +6,11 @@ const work_order_routes = [
         component: () => import("../pages/work_orders/Index"),
         name: "work_orders.index",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
+            store.dispatch("auth/AUTH_NOTIFICATIONS");
             let permissions = store.getters["auth/user"].permissions;
             if (permissions.includes("view all work orders")) {
                 next();
@@ -54,7 +56,8 @@ const work_order_routes = [
         component: () => import("../pages/work_orders/Show"),
         name: "work_orders.show",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
             let permissions = store.getters["auth/user"].permissions;

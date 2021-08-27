@@ -1,11 +1,11 @@
 import axios from "axios";
-import router from "../router";
 
 export default {
     namespaced: true,
     state: {
         authenticated: false,
-        user: {}
+        user: {},
+        notifications: null || null
     },
     getters: {
         authenticated(state) {
@@ -13,6 +13,9 @@ export default {
         },
         user(state) {
             return state.user;
+        },
+        notifications(state) {
+            return state.notifications;
         }
     },
     mutations: {
@@ -21,6 +24,9 @@ export default {
         },
         SET_USER(state, value) {
             state.user = value;
+        },
+        SET_NOTIFICATIONS(state, value) {
+            state.notifications = value;
         }
     },
     actions: {
@@ -60,6 +66,25 @@ export default {
                     commit("SET_AUTHENTICATED", false);
                     commit("SET_USER", null);
                 });
+        },
+        AUTH_NOTIFICATIONS(context) {
+            return new Promise((resolve, reject) => {
+                axios
+                    .get(`/api/v1/notifications`, {
+                        params: {
+                            total_unread_only: true
+                        }
+                    })
+                    .then(function(response) {
+                        context.commit("SET_NOTIFICATIONS", response.data.data);
+                        resolve(response.data.data);
+                    })
+                    .catch(function(error) {
+                        console.log(error);
+                        context.commit("SET_NOTIFICATIONS", null);
+                        reject(error);
+                    });
+            });
         }
     }
 };

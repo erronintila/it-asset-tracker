@@ -6,9 +6,11 @@ const disposal_request_routes = [
         component: () => import("../pages/disposal_requests/Index"),
         name: "disposal_requests.index",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
+            store.dispatch("auth/AUTH_NOTIFICATIONS");
             let permissions = store.getters["auth/user"].permissions;
             if (permissions.includes("view all disposal requests")) {
                 next();
@@ -54,7 +56,8 @@ const disposal_request_routes = [
         name: "disposal_requests.show",
         component: () => import("../pages/disposal_requests/Show"),
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
             let permissions = store.getters["auth/user"].permissions;

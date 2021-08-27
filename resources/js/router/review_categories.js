@@ -17,6 +17,7 @@ const review_category_routes = [
             auth: true
         },
         beforeEnter: (to, from, next) => {
+            store.dispatch("auth/AUTH_NOTIFICATIONS");
             let permissions = store.getters["auth/user"].permissions;
             if (permissions.includes("view all review categories")) {
                 next();
@@ -30,7 +31,8 @@ const review_category_routes = [
         component: () => import("../pages/review_categories/Show"),
         name: "review_categories.show",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
             let permissions = store.getters["auth/user"].permissions;

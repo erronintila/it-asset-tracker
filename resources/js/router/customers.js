@@ -6,9 +6,11 @@ const customer_routes = [
         component: () => import("../pages/customers/Index"),
         name: "customers.index",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
+            store.dispatch("auth/AUTH_NOTIFICATIONS");
             let permissions = store.getters["auth/user"].permissions;
             if (permissions.includes("view all customers")) {
                 next();
@@ -54,7 +56,8 @@ const customer_routes = [
         component: () => import("../pages/customers/Show"),
         name: "customers.show",
         meta: {
-            auth: true
+            auth: true,
+            keepAlive: true
         },
         beforeEnter: (to, from, next) => {
             let permissions = store.getters["auth/user"].permissions;

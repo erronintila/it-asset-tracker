@@ -386,9 +386,6 @@ export default {
             user: "auth/user" ?? { profile: null },
             authenticated: "auth/authenticated" ?? null
         })
-    },
-    mounted() {
-        console.log(this.user);
     }
 };
 </script>

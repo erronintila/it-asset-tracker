@@ -319,10 +319,10 @@ export default {
         };
     },
     methods: {
-        getData() {
+        async getData() {
             let data = {};
 
-            AgreementDataService.show(this.$route.params.id, data)
+            await AgreementDataService.show(this.$route.params.id, data)
                 .then(response => {
                     console.log(response.data);
                     this.form = { ...this.form, ...response.data.data };
@@ -351,6 +351,9 @@ export default {
         }
     },
     created() {
+        this.getData();
+    },
+    activated() {
         this.getData();
     }
 };

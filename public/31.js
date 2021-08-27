@@ -332,6 +332,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.getData();
       }
     }
+  },
+  activated: function activated() {
+    this.getData();
   }
 });
 

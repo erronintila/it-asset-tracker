@@ -31,6 +31,10 @@ class NotificationController extends Controller
 
         $notifications = auth()->user()->notifications();
 
+        if (request()->has("total_unread_only")) {
+            return NotificationResource::collection(auth()->user()->unreadNotifications);
+        }
+
         if (request()->has("start_date") && request()->has("end_date")) {
             $start_date = Carbon::parse(request("start_date"))->startOfDay();
             $end_date = Carbon::parse(request("end_date"))->endOfDay();
