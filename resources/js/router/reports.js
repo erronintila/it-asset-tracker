@@ -1,3 +1,5 @@
+import store from "../store/index";
+
 const report_routes = [
     {
         path: "/reports/activity_logs",
@@ -5,6 +7,14 @@ const report_routes = [
         name: "reports.activity_logs.index",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("view all activity logs")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {

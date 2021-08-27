@@ -386,6 +386,13 @@
                                 <template v-slot:[`item.created_at`]="{ item }">
                                     {{ item.created_at | moment("LLLL") }}
                                 </template>
+                                <template v-slot:[`item.causer`]="{ item }">
+                                    {{
+                                        item.causer
+                                            ? item.causer.name
+                                            : "Default"
+                                    }}
+                                </template>
                             </v-data-table>
                         </v-card-text>
                     </v-card>
@@ -489,6 +496,7 @@ export default {
             headers: {
                 activity: [
                     { text: "Date", value: "created_at" },
+                    { text: "User", value: "causer" },
                     { text: "Description", value: "description" },
                     { text: "Action", value: "action" }
                 ]
@@ -497,7 +505,7 @@ export default {
             activityTableOptions: {
                 options: {
                     sortBy: ["created_at"],
-                    sortDesc: [false],
+                    sortDesc: [true],
                     page: 1,
                     itemsPerPage: 5
                 },
@@ -506,6 +514,7 @@ export default {
                 serverItemsLength: 0,
                 headers: [
                     { text: "Date", value: "created_at" },
+                    { text: "User", value: "causer" },
                     { text: "Description", value: "description" },
                     { text: "Action", value: "action" }
                 ]
@@ -548,7 +557,6 @@ export default {
 
                 await DashboardDataService.getAll(data).then(response => {
                     const { assets, work_orders } = response.data.data;
-                    console.log(response);
 
                     this.assets = { ...assets };
                     this.work_orders = { ...work_orders };
@@ -566,8 +574,6 @@ export default {
                         }
                     };
 
-                    // console.log(work_orders.categories.map(item => item.total));
-
                     this.$refs.workOrderChart.updateSeries(
                         [
                             {
@@ -582,8 +588,6 @@ export default {
                 });
             } catch (error) {
                 console.log(error);
-                console.log("error");
-                // console.log(error.response);
             }
         },
         async getActivityLogs() {
@@ -612,8 +616,7 @@ export default {
                     this.activityTableOptions.loading = false;
                 });
             } catch (error) {
-                // console.log(error);
-                console.log(error.response);
+                console.log(error);
             }
         }
     },

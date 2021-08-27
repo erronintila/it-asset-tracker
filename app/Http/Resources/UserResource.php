@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Spatie\Permission\Models\Permission;
 
 class UserResource extends JsonResource
 {
@@ -21,11 +22,13 @@ class UserResource extends JsonResource
             "full_name" => $this->full_name,
             "username" => $this->username,
             "email" => $this->email,
+            "is_superadmin" => $this->is_superadmin,
             "is_active" => $this->is_active,
             'can_login' => $this->can_login,
             'default' => $this->default,
             "notes" => $this->notes,
             "profile" => $this->profile,
+            "permissions" => $this->is_superadmin ? Permission::all()->pluck("name") : $this->getAllPermissions(),
             "created_at" => $this->created_at,
             "updated_at" => $this->updated_at,
             "deleted_at" => $this->deleted_at,

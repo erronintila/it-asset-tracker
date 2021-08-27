@@ -30,6 +30,7 @@ import disposal_request_routes from "./disposal_requests";
 import request_type_routes from "./request_types";
 import review_category_routes from "./review_categories";
 import feature_routes from "./features";
+import error_routes from "./errors";
 
 import store from "../store/index";
 
@@ -64,7 +65,8 @@ const routes = baseRoutes.concat(
     disposal_request_routes,
     request_type_routes,
     review_category_routes,
-    feature_routes
+    feature_routes,
+    error_routes
 );
 
 const router = new VueRouter({

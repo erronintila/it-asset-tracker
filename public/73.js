@@ -152,6 +152,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -168,7 +171,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       tableOptions: {
         options: {
           sortBy: ["created_at"],
-          sortDesc: [false],
+          sortDesc: [true],
           page: 1,
           itemsPerPage: 10
         },
@@ -178,6 +181,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         headers: [{
           text: "Date",
           value: "created_at"
+        }, {
+          text: "User",
+          value: "causer"
         }, {
           text: "Description",
           value: "description"
@@ -215,7 +221,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         };
         _services_ActivityLogDataService__WEBPACK_IMPORTED_MODULE_0__["default"].getAll(data).then(function (response) {
-          console.log(response.data);
           _this.items = response.data.data.data;
           _this.tableOptions.serverItemsLength = response.data.data.total;
           _this.tableOptions.loading = false;
@@ -223,7 +228,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         })["catch"](function (error) {
           _this.tableOptions.loading = false;
           console.log(error);
-          console.log(error.response);
           reject();
         });
       });
@@ -266,7 +270,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.search = "";
       this.tableOptions.options = {
         sortBy: ["created_at"],
-        sortDesc: [false],
+        sortDesc: [true],
         page: 1,
         itemsPerPage: 10
       };
@@ -615,6 +619,21 @@ var render = function() {
                             "\n                    " +
                               _vm._s(
                                 _vm._f("moment")(item.created_at, "LLLL")
+                              ) +
+                              "\n                "
+                          )
+                        ]
+                      }
+                    },
+                    {
+                      key: "item.causer",
+                      fn: function(ref) {
+                        var item = ref.item
+                        return [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(
+                                item.causer ? item.causer.name : "Default"
                               ) +
                               "\n                "
                           )

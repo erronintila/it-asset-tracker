@@ -1,3 +1,5 @@
+import store from "../store/index";
+
 const customer_routes = [
     {
         path: "/customers",
@@ -5,6 +7,14 @@ const customer_routes = [
         name: "customers.index",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("view all customers")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -13,6 +23,14 @@ const customer_routes = [
         name: "customers.create",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("add customers")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -21,6 +39,14 @@ const customer_routes = [
         name: "customers.edit",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("edit customers")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -29,6 +55,14 @@ const customer_routes = [
         name: "customers.show",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("view customers")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     }
 ];

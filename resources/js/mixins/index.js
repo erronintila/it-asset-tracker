@@ -33,7 +33,7 @@ export default {
     methods: {
         moment: function() {
             return moment();
-        }
+        },
         // mixin_formatNumber(value) {
         //     return numeral(value).format("0,0.00");
         // },
@@ -115,12 +115,12 @@ export default {
         // //         this.mixin_errorDialog("Error ", message);
         // //     }
         // // },
-        // // mixin_can(permissionName) {
-        // //     let permissions = this.$store.getters.user.permissions;
-        // //     permissions = permissions.map(item => item.name);
-
-        // //     return permissions.indexOf(permissionName) !== -1;
-        // // },
+        mixin_can(permissionName) {
+            let permissions = this.$store.getters.user.permissions;
+            return permissions.includes(permissionName);
+            // permissions = permissions.map(item => item.name);
+            // return permissions.indexOf(permissionName) !== -1;
+        }
         // // mixin_validate_fund() {
         // //     let _this = this;
         // //     let user_id = this.$store.getters.user.id;

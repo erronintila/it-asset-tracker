@@ -122,6 +122,9 @@
                     <template v-slot:[`item.created_at`]="{ item }">
                         {{ item.created_at | moment("LLLL") }}
                     </template>
+                    <template v-slot:[`item.causer`]="{ item }">
+                        {{ item.causer ? item.causer.name : "Default" }}
+                    </template>
                     <template v-slot:[`item.action`]="{ item }">
                         <router-link :to="`/${item.properties.custom.link}`">
                             View Details
@@ -147,7 +150,7 @@ export default {
             tableOptions: {
                 options: {
                     sortBy: ["created_at"],
-                    sortDesc: [false],
+                    sortDesc: [true],
                     page: 1,
                     itemsPerPage: 10
                 },
@@ -156,6 +159,7 @@ export default {
                 serverItemsLength: 0,
                 headers: [
                     { text: "Date", value: "created_at" },
+                    { text: "User", value: "causer" },
                     { text: "Description", value: "description" },
                     { text: "Action", value: "action" }
                 ]
@@ -191,7 +195,6 @@ export default {
 
                 ActivityLogDataService.getAll(data)
                     .then(response => {
-                        console.log(response.data);
                         this.items = response.data.data.data;
                         this.tableOptions.serverItemsLength =
                             response.data.data.total;
@@ -201,7 +204,6 @@ export default {
                     .catch(error => {
                         this.tableOptions.loading = false;
                         console.log(error);
-                        console.log(error.response);
                         reject();
                     });
             });
@@ -240,7 +242,7 @@ export default {
             this.search = "";
             this.tableOptions.options = {
                 sortBy: ["created_at"],
-                sortDesc: [false],
+                sortDesc: [true],
                 page: 1,
                 itemsPerPage: 10
             };

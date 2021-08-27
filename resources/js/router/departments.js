@@ -1,3 +1,5 @@
+import store from "../store/index";
+
 const department_routes = [
     {
         path: "/departments",
@@ -5,6 +7,14 @@ const department_routes = [
         name: "departments.index",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("view all departments")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -13,6 +23,14 @@ const department_routes = [
         name: "departments.create",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("add departments")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -21,6 +39,14 @@ const department_routes = [
         name: "departments.show",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("view departments")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     }
 ];

@@ -1,3 +1,5 @@
+import store from "../store/index";
+
 const employee_routes = [
     {
         path: "/employees",
@@ -5,6 +7,14 @@ const employee_routes = [
         name: "employees.index",
         meta: {
             auth: true,
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("view all employees")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -13,6 +23,14 @@ const employee_routes = [
         name: "employees.create",
         meta: {
             auth: true,
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("add employees")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -21,6 +39,14 @@ const employee_routes = [
         name: "employees.edit",
         meta: {
             auth: true,
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("edit employees")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -29,6 +55,14 @@ const employee_routes = [
         name: "employees.show",
         meta: {
             auth: true,
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("view employees")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     }
 ];

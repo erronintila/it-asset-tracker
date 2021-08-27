@@ -48,13 +48,15 @@ export default {
             return axios
                 .get("/api/v1/user")
                 .then(response => {
-                    let isValid = response.data ? true : false;
+                    let isValid = response.data.data ? true : false;
                     commit("SET_AUTHENTICATED", isValid);
-                    commit("SET_USER", isValid ? response.data || null : null);
+                    commit(
+                        "SET_USER",
+                        isValid ? response.data.data || null : null
+                    );
                 })
                 .catch(error => {
                     console.log(error);
-                    console.log(error.response);
                     commit("SET_AUTHENTICATED", false);
                     commit("SET_USER", null);
                 });

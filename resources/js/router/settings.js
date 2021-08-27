@@ -1,3 +1,5 @@
+import store from "../store/index";
+
 const setting_routes = [
     {
         path: "/settings/general",
@@ -5,6 +7,14 @@ const setting_routes = [
         name: "settings.general.index",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("view all general settings")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -13,6 +23,14 @@ const setting_routes = [
         name: "settings.account.index",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("view all account settings")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -21,6 +39,14 @@ const setting_routes = [
         name: "settings.asset.index",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("view all asset settings")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -29,6 +55,14 @@ const setting_routes = [
         name: "settings.work_order.index",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("view all work order settings")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     }
 ];

@@ -1,3 +1,5 @@
+import store from "../store/index";
+
 const review_category_routes = [
     // {
     //     path: "/review_categories",
@@ -13,6 +15,14 @@ const review_category_routes = [
         name: "review_categories.create",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("view all review categories")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -21,6 +31,14 @@ const review_category_routes = [
         name: "review_categories.show",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("view review categories")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -29,6 +47,14 @@ const review_category_routes = [
         name: "review_categories.edit",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("edit review categories")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     }
 ];

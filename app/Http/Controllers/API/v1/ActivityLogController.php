@@ -20,10 +20,10 @@ class ActivityLogController extends Controller
     {
         $search = request('search') ?? "";
         $sortBy = request('sortBy') ?? "created_at";
-        $sortType = request('sortType') ?? "asc";
+        $sortType = request('sortType') ?? "desc";
         $itemsPerPage = request('itemsPerPage') ?? 10;
 
-        $activity_logs = Activity::orderBy($sortBy, $sortType)
+        $activity_logs = Activity::with("causer")->orderBy($sortBy, $sortType)
             ->paginate($itemsPerPage);
 
         return $this->successResponse('read', $activity_logs, 200);

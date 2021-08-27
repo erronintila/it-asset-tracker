@@ -1,3 +1,5 @@
+import store from "../store/index";
+
 const asset_routes = [
     {
         path: "/assets",
@@ -5,6 +7,15 @@ const asset_routes = [
         name: "assets.index",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+
+            if (permissions.includes("view all assets")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -13,6 +24,14 @@ const asset_routes = [
         name: "assets.create",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("add all assets")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -21,6 +40,14 @@ const asset_routes = [
         component: () => import("../pages/assets/Edit"),
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("edit all assets")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -29,6 +56,14 @@ const asset_routes = [
         component: () => import("../pages/assets/Show"),
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("view assets")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     }
 ];

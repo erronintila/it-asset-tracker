@@ -1,3 +1,5 @@
+import store from "../store/index";
+
 const work_order_routes = [
     {
         path: "/work_orders",
@@ -5,6 +7,14 @@ const work_order_routes = [
         name: "work_orders.index",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("view all work orders")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -13,6 +23,14 @@ const work_order_routes = [
         name: "work_orders.create",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("add work orders")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -21,6 +39,14 @@ const work_order_routes = [
         name: "work_orders.edit",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("edit work orders")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -29,6 +55,14 @@ const work_order_routes = [
         name: "work_orders.show",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("view work orders")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     }
 ];

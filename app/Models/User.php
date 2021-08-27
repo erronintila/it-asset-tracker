@@ -171,6 +171,11 @@ class User extends Authenticatable
         return ($this->profile) ? $this->profile->full_name : $this->name;
     }
 
+    // public function getPermissionsAttribute()
+    // {
+    //     return $this->getAllPermissions();
+    // }
+
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
     | CUSTOM

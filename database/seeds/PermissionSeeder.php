@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
 
 class PermissionSeeder extends Seeder
@@ -16,19 +17,35 @@ class PermissionSeeder extends Seeder
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
         $models = [
-            "users",
-            "departments",
-            "suppliers",
-            "employees",
-            "customers",
-            "manufacturers",
             "activity logs",
-            "settings",
-            "authentication",
+            "agreements",
+            "asset categories",
+            "asset models",
+            "assets",
             "checkin requests",
             "checkout requests",
+            "customers",
+            "departments",
             "disposal requests",
+            "employees",
+            "features",
+            "licenses",
+            "locations",
+            "manufacturers",
+            "permissions",
+            "request types",
+            "review categories",
+            "reviews",
+            "schedules",
+            "general settings",
+            "account settings",
+            "asset settings",
+            "work order settings",
+            "suppliers",
+            "work order types",
             "work orders",
+            // "users",
+            // "authentication",
         ];
 
         foreach ($models as $model) {
@@ -80,5 +97,7 @@ class PermissionSeeder extends Seeder
                 Permission::create(['name' => 'set customer activation', 'category' => $model]);
             }
         }
+
+        Role::create(['name' => 'superadmin']);
     }
 }

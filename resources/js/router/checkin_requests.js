@@ -1,3 +1,5 @@
+import store from "../store/index";
+
 const checkin_request_routes = [
     {
         path: "/checkin_requests",
@@ -5,6 +7,14 @@ const checkin_request_routes = [
         name: "checkin_requests.index",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("view all checkin requests")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -13,6 +23,14 @@ const checkin_request_routes = [
         name: "checkin_requests.create",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("add checkin requests")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -21,6 +39,14 @@ const checkin_request_routes = [
         component: () => import("../pages/checkin_requests/Edit"),
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("edit checkin requests")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -29,6 +55,14 @@ const checkin_request_routes = [
         component: () => import("../pages/checkin_requests/Show"),
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("view checkin requests")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     }
 ];

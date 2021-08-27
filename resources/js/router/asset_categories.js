@@ -1,3 +1,5 @@
+import store from "../store/index";
+
 const asset_category_routes = [
     {
         path: "/settings/asset/categories",
@@ -5,6 +7,14 @@ const asset_category_routes = [
         name: "asset_categories.index",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("view all asset categories")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -13,6 +23,14 @@ const asset_category_routes = [
         name: "asset_categories.create",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("add asset categories")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -21,6 +39,14 @@ const asset_category_routes = [
         name: "asset_categories.show",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("view asset categories")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     }
 ];

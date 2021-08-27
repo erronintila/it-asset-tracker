@@ -1,3 +1,5 @@
+import store from "../store/index";
+
 const manufacturer_routes = [
     {
         path: "/manufacturers",
@@ -5,6 +7,14 @@ const manufacturer_routes = [
         name: "manufacturers.index",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("view all manufacturers")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -13,6 +23,14 @@ const manufacturer_routes = [
         name: "manufacturers.create",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("add manufacturers")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -21,6 +39,14 @@ const manufacturer_routes = [
         name: "manufacturers.show",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("view manufacturers")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -29,6 +55,14 @@ const manufacturer_routes = [
         name: "manufacturers.edit",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("edit manufacturers")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     }
 ];

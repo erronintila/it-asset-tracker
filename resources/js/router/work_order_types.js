@@ -1,3 +1,5 @@
+import store from "../store/index";
+
 const work_order_type_routes = [
     {
         path: "/work_order_types",
@@ -5,6 +7,14 @@ const work_order_type_routes = [
         name: "work_order_types.index",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("view all work order types")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -13,6 +23,14 @@ const work_order_type_routes = [
         name: "work_order_types.create",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("add work order types")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     },
     {
@@ -21,6 +39,14 @@ const work_order_type_routes = [
         name: "work_order_types.show",
         meta: {
             auth: true
+        },
+        beforeEnter: (to, from, next) => {
+            let permissions = store.getters["auth/user"].permissions;
+            if (permissions.includes("view work order types")) {
+                next();
+            } else {
+                next({ name: "error_403" });
+            }
         }
     }
 ];

@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Spatie\Permission\Models\Permission;
 
 class EmployeeResource extends JsonResource
 {
@@ -44,7 +45,7 @@ class EmployeeResource extends JsonResource
             'user' => $this->user,
             "created_at" => $this->created_at,
             "updated_at" => $this->updated_at,
-            "deleted_at" => $this->deleted_at
+            "deleted_at" => $this->deleted_at,
         ];
     }
 }

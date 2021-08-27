@@ -3,9 +3,9 @@ require("./bootstrap");
 window.Vue = require("vue").default;
 
 import Vue from "vue";
+import store from "./store/index";
 import VueRouter from "vue-router";
 import vuetify from "./plugins/vuetify";
-import store from "./store/index";
 import router from "./router/index";
 import App from "./components/layouts/App";
 import ApexCharts from "apexcharts";
@@ -24,6 +24,35 @@ Vue.component(
 Vue.component(
     "page-header",
     require("./components/layouts/PageHeader.vue").default
+);
+
+axios.interceptors.response.use(
+    function(response) {
+        return response;
+    },
+    function(error) {
+        switch (error.response.status) {
+            case 401:
+                store.dispatch("AUTH_LOGOUT");
+                window.location.replace("/login");
+                break;
+            case 404:
+                router.push({ name: "error_404" });
+                break;
+            case 403:
+                router.push({ name: "error_403" });
+                break;
+            case 500:
+                router.push({ name: "error_500" });
+                break;
+            case 503:
+                router.push({ name: "error_503" });
+                break;
+            default:
+                break;
+        }
+        return Promise.reject(error);
+    }
 );
 
 store.dispatch("auth/AUTH_USER").then(() => {
