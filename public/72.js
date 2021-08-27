@@ -343,14 +343,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         };
         _services_NotificationDataService__WEBPACK_IMPORTED_MODULE_2__["default"].getAll(data).then(function (response) {
-          console.log(response);
           _this2.items = response.data.data;
           _this2.tableOptions.serverItemsLength = response.data.data.total;
           _this2.tableOptions.loading = false;
           resolve();
         })["catch"](function (error) {
           _this2.tableOptions.loading = false;
-          console.log(error.response);
+          console.log(error);
           reject();
         });
       });

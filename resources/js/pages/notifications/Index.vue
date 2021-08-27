@@ -299,7 +299,6 @@ export default {
 
                 NotificationDataService.getAll(data)
                     .then(response => {
-                        console.log(response);
                         this.items = response.data.data;
                         this.tableOptions.serverItemsLength =
                             response.data.data.total;
@@ -308,7 +307,7 @@ export default {
                     })
                     .catch(error => {
                         this.tableOptions.loading = false;
-                        console.log(error.response);
+                        console.log(error);
                         reject();
                     });
             });

@@ -32,9 +32,7 @@
                             icon
                             @click="
                                 $router.push(
-                                    '/work_orders/' +
-                                        $route.params.id +
-                                        '/edit'
+                                    '/work_orders/' + $route.params.id + '/edit'
                                 )
                             "
                         >
@@ -169,116 +167,9 @@
                         <v-tab-item>
                             <v-card flat>
                                 <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
-                                                >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
-                                </v-card-text>
-                            </v-card>
-                        </v-tab-item>
-                        <v-tab-item>
-                            <v-card flat>
-                                <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
-                                                >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
-                                </v-card-text>
-                            </v-card>
-                        </v-tab-item>
-                        <v-tab-item>
-                            <v-card flat>
-                                <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
-                                                >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
-                                </v-card-text>
-                            </v-card>
-                        </v-tab-item>
-                        <v-tab-item>
-                            <v-card flat>
-                                <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
-                                                >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
+                                    <Attachments
+                                        :data_id="form.id"
+                                    ></Attachments>
                                 </v-card-text>
                             </v-card>
                         </v-tab-item>
@@ -293,16 +184,24 @@
 import VueApexCharts from "vue-apexcharts";
 import CardSummary from "../../components/pages/CardSummary.vue";
 import WorkOrderDataService from "../../services/WorkOrderDataService";
+import Attachments from "./Attachments.vue";
 
 export default {
     components: {
         VueApexCharts,
-        CardSummary
+        CardSummary,
+        Attachments
     },
     data() {
         return {
             tab: null,
-            items: ["overview", "details", "assets", "System Activity Logs"],
+            items: [
+                "overview",
+                "details",
+                "assets",
+                "System Activity Logs",
+                "Attachments"
+            ],
             series: {
                 asset: [44, 55, 41, 17]
             },
@@ -345,10 +244,7 @@ export default {
                 .catch(error => {
                     console.log(error);
                     alert("An error has occurred.");
-                    this.$router.push(
-                        { name: "work_orders.index" },
-                        () => {}
-                    );
+                    this.$router.push({ name: "work_orders.index" }, () => {});
                 });
         },
         onDelete() {

@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\Models\Activity;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class WorkOrder extends Model
+class WorkOrder extends Model implements HasMedia
 {
-    use SoftDeletes, LogsActivity;
+    use SoftDeletes, LogsActivity, InteractsWithMedia;
 
     /*
     |------------------------------------------------------------------------------------------------------------------------------------
