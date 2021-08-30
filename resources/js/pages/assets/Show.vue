@@ -47,7 +47,7 @@
                         </v-tab>
                     </v-tabs>
                     <v-tabs-items v-model="tab">
-                        <v-tab-item>
+                        <!-- <v-tab-item>
                             <v-card flat>
                                 <v-card-text>
                                     <div class="page-title my-4">
@@ -64,7 +64,7 @@
                                     </div>
                                 </v-card-text>
                             </v-card>
-                        </v-tab-item>
+                        </v-tab-item> -->
                         <v-tab-item>
                             <v-card flat>
                                 <v-card-text>
@@ -99,58 +99,14 @@
                         <v-tab-item>
                             <v-card flat>
                                 <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
-                                                >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
+                                    <Assets :model_id="form.id"></Assets>
                                 </v-card-text>
                             </v-card>
                         </v-tab-item>
                         <v-tab-item>
                             <v-card flat>
                                 <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
-                                                >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
+                                    <ActivityLogs :model_id="form.id"></ActivityLogs>
                                 </v-card-text>
                             </v-card>
                         </v-tab-item>
@@ -169,18 +125,22 @@ import VueApexCharts from "vue-apexcharts";
 import CardSummary from "../../components/pages/CardSummary.vue";
 import AssetDataService from "../../services/AssetDataService";
 import Attachments from "./Attachments.vue";
+import Assets from "./Assets.vue";
+import ActivityLogs from "./ActivityLogs.vue";
 
 export default {
     components: {
         VueApexCharts,
         CardSummary,
-        Attachments
+        Attachments,
+        Assets,
+        ActivityLogs
     },
     data() {
         return {
             tab: null,
             items: [
-                "overview",
+                // "overview",
                 "details",
                 "assets",
                 "System Activity Logs",

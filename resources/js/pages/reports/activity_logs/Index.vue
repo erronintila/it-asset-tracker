@@ -37,31 +37,33 @@
                 </v-menu>
             </template>
             <template slot="rightSideNavigation">
-                <v-text-field
-                    v-model="search"
-                    class="hidden-sm-and-down mt-5 p-0"
-                    label="Search"
-                    clearable
-                    append-icon="mdi-clipboard-search-outline"
-                    @click:append="openSearchDialog"
-                    @keyup.enter="getData"
-                ></v-text-field>
+                <small class="text--secondary">
+                    {{ form.user ? form.user.full_name : "All Accounts" }}
+                </small>
+                <EmployeeDialogSelector
+                    :selected="!form.user ? [] : [...form.user]"
+                    @on-select="onSelectUser"
+                >
+                    <template
+                        v-slot:openDialog="{
+                            on,
+                            attrs
+                        }"
+                    >
+                        <v-btn
+                            v-bind="attrs"
+                            v-on="on"
+                            icon
+                            title="Select Employee"
+                        >
+                            <v-icon>
+                                mdi-clipboard-account
+                            </v-icon>
+                        </v-btn>
+                    </template>
+                </EmployeeDialogSelector>
             </template>
         </page-header>
-
-        <!-- Search bar on small screen size -->
-        <v-row class="hidden-sm-and-up mx-1">
-            <v-col>
-                <v-text-field
-                    class="mt-5 p-0"
-                    label="Search"
-                    clearable
-                    append-icon="mdi-clipboard-search-outline"
-                    @click:append="openSearchDialog"
-                ></v-text-field>
-            </v-col>
-        </v-row>
-        <!-- End of Search bar -->
 
         <!-- Search results info -->
         <div class="my-3">
@@ -76,14 +78,14 @@
                 {{ selectedItems.length }} item(s) selected
             </v-chip>
             <v-chip
-                v-if="search"
+                v-if="form.user"
                 close
                 label
                 outlined
                 small
-                @click:close="search = ''"
+                @click:close="form.user = null"
             >
-                {{ search }}
+                {{ form.user ? form.user.name : "" }}
             </v-chip>
             <v-chip
                 v-if="hasFilters"
@@ -139,8 +141,12 @@
 
 <script>
 import ActivityLogDataService from "../../../services/ActivityLogDataService";
+import EmployeeDialogSelector from "../../../components/selectors/EmployeeDialogSelector.vue";
 
 export default {
+    components: {
+        EmployeeDialogSelector
+    },
     data() {
         return {
             actions: [
@@ -164,6 +170,9 @@ export default {
                     { text: "Action", value: "action" }
                 ]
             },
+            form: {
+                user: null
+            },
             search: "",
             items: [],
             selectedItems: []
@@ -179,7 +188,7 @@ export default {
                     page,
                     itemsPerPage
                 } = this.tableOptions.options;
-                let search = this.search;
+                let user_id = this.form.user ? this.form.user.id : null;
                 // let status = this.status;
 
                 let data = {
@@ -188,7 +197,7 @@ export default {
                         sortType: sortDesc[0] ? "desc" : "asc",
                         page: page,
                         itemsPerPage: itemsPerPage,
-                        search: search
+                        user_id: user_id
                         // status: status
                     }
                 };
@@ -234,30 +243,36 @@ export default {
                     break;
             }
         },
-        openSearchDialog: function() {
-            alert("Search Dialog");
-        },
         clearFilters: function() {
             this.selectedItems = [];
-            this.search = "";
+            this.form.user = null;
             this.tableOptions.options = {
                 sortBy: ["created_at"],
                 sortDesc: [true],
                 page: 1,
                 itemsPerPage: 10
             };
+        },
+        onSelectUser(e) {
+            if (e == null || e == undefined) {
+                this.form.user = null;
+                return;
+            }
+
+            this.form.user = e[0];
+            this.getData();
         }
     },
     computed: {
         params(nv) {
             return {
-                ...this.tableOptions.options
-                // query: this.search
+                ...this.tableOptions.options,
+                query: this.form.user
                 // query: this.status
             };
         },
         hasFilters() {
-            return this.search || this.selectedItems.length;
+            return this.form.user || this.selectedItems.length;
         }
     },
     watch: {

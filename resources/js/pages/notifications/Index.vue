@@ -303,6 +303,7 @@ export default {
                         this.tableOptions.serverItemsLength =
                             response.data.data.total;
                         this.tableOptions.loading = false;
+                        this.$store.dispatch("auth/AUTH_NOTIFICATIONS");
                         resolve();
                     })
                     .catch(error => {

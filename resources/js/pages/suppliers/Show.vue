@@ -169,58 +169,14 @@
                         <v-tab-item>
                             <v-card flat>
                                 <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
-                                                >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
+                                    
                                 </v-card-text>
                             </v-card>
                         </v-tab-item>
                         <v-tab-item>
                             <v-card flat>
                                 <v-card-text>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-left">
-                                                        Name
-                                                    </th>
-                                                    <th class="text-left">
-                                                        Value
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr
-                                                    v-for="item in records"
-                                                    :key="item.name"
-                                                >
-                                                    <td>{{ item.name }}</td>
-                                                    <td>{{ item.value }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
+                                    <ActivityLogs :model_id="form.id"></ActivityLogs>
                                 </v-card-text>
                             </v-card>
                         </v-tab-item>
@@ -235,11 +191,13 @@
 import CardSummary from "../../components/pages/CardSummary.vue";
 import SupplierDataService from "../../services/SupplierDataService";
 import Assets from "./Assets.vue";
+import ActivityLogs from "./ActivityLogs.vue";
 
 export default {
     components: {
         CardSummary,
-        Assets
+        Assets,
+        ActivityLogs
     },
     data() {
         return {

@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[23],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/work_orders/Form.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/work_orders/Form.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/disposal_requests/Form.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/disposal_requests/Form.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -15,10 +15,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_selectors_AssetDialogSelector_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/selectors/AssetDialogSelector.vue */ "./resources/js/components/selectors/AssetDialogSelector.vue");
 /* harmony import */ var _components_selectors_EmployeeDialogSelector_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/selectors/EmployeeDialogSelector.vue */ "./resources/js/components/selectors/EmployeeDialogSelector.vue");
-/* harmony import */ var _components_selectors_CustomerDialogSelector_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/selectors/CustomerDialogSelector.vue */ "./resources/js/components/selectors/CustomerDialogSelector.vue");
-/* harmony import */ var _components_selectors_LocationDialogSelector_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/selectors/LocationDialogSelector.vue */ "./resources/js/components/selectors/LocationDialogSelector.vue");
-/* harmony import */ var _services_TransactionTypeDataService__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/TransactionTypeDataService */ "./resources/js/services/TransactionTypeDataService.js");
-/* harmony import */ var _components_X_DateRangePicker_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/X-DateRangePicker.vue */ "./resources/js/components/X-DateRangePicker.vue");
+/* harmony import */ var _services_TransactionTypeDataService__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/TransactionTypeDataService */ "./resources/js/services/TransactionTypeDataService.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -275,325 +272,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    workOrderForm: {
+    disposalRequestForm: {
       type: Object,
       "default": function _default() {
         return {
@@ -606,18 +291,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             color: "",
             dark: false
           },
-          transactionable: {
-            incident: "",
-            diagnosis: "",
-            action_taken: "",
-            recommendation: "",
-            scheduled_start_date: "",
-            scheduled_end_date: "",
-            actual_start_date: "",
-            actual_end_date: ""
-          },
+          transactionable: "",
           transaction_type_id: "",
-          user: {},
+          user: "",
           parent_asset_id: "",
           owner_id: "",
           assigned_user_id: "",
@@ -625,11 +301,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           assigned_asset_id: "",
           assets: [],
           assigned_employees: [],
-          assigned_location: null,
-          actual_date_performed: [],
-          scheduled_date: [],
-          assigned_user: null,
-          parent_asset: null
+          assigned_location: null
         };
       }
     },
@@ -641,14 +313,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           reference_no: [],
           request_date: [],
           description: [],
-          incident: [],
-          diagnosis: [],
-          action_taken: [],
-          recommendation: [],
-          scheduled_start_date: [],
-          scheduled_end_date: [],
-          actual_start_date: [],
-          actual_end_date: [],
           transactionable: [],
           transaction_type_id: [],
           user_id: [],
@@ -670,14 +334,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           reference_no: [],
           request_date: [],
           description: [],
-          incident: [],
-          diagnosis: [],
-          action_taken: [],
-          recommendation: [],
-          scheduled_start_date: [],
-          scheduled_end_date: [],
-          actual_start_date: [],
-          actual_end_date: [],
           transactionable: [],
           transaction_type_id: [],
           user_id: [],
@@ -694,17 +350,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   components: {
     AssetDialogSelector: _components_selectors_AssetDialogSelector_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    LocationDialogSelector: _components_selectors_LocationDialogSelector_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
-    EmployeeDialogSelector: _components_selectors_EmployeeDialogSelector_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    XDateRangePicker: _components_X_DateRangePicker_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
-    CustomerDialogSelector: _components_selectors_CustomerDialogSelector_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+    EmployeeDialogSelector: _components_selectors_EmployeeDialogSelector_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   data: function data() {
     return {
       valid: false,
       requestDateModal: false,
-      actualStartModal: false,
-      actualEndModal: false,
       headers: {
         employee: [{
           text: "Code",
@@ -744,16 +395,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           color: "",
           dark: false
         },
-        transactionable: {
-          incident: "",
-          diagnosis: "",
-          action_taken: "",
-          recommendation: "",
-          scheduled_start_date: "",
-          scheduled_end_date: "",
-          actual_start_date: "",
-          actual_end_date: ""
-        },
+        transactionable: {},
         transaction_type_id: "",
         user: {},
         parent_asset_id: "",
@@ -764,14 +406,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         assets: [],
         assigned_employees: [],
         assigned_location: null,
-        actual_date_performed: [],
-        scheduled_date: [],
-        assigned_user: null,
-        parent_asset: null
+        transaction_type: null
       }
     };
   },
-  methods: _defineProperty({
+  methods: {
     getTransactionTypes: function getTransactionTypes() {
       var _this = this;
 
@@ -781,10 +420,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 try {
-                  _services_TransactionTypeDataService__WEBPACK_IMPORTED_MODULE_6__["default"].getAll({
+                  _services_TransactionTypeDataService__WEBPACK_IMPORTED_MODULE_4__["default"].getAll({
                     params: {
                       itemsPerPage: 100,
-                      action_types: ["maintenance"]
+                      action_types: ["disposal"]
                     }
                   }).then(function (response) {
                     _this.transaction_types = response.data.data.data;
@@ -811,37 +450,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return;
       }
 
-      var newForm = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, this.form.transactionable), this.form), {
-        incident: this.form.transactionable.incident
-      }), {
-        diagnosis: this.form.transactionable.diagnosis
-      }), {
-        action_taken: this.form.transactionable.action_taken
-      }), {
-        recommendation: this.form.transactionable.recommendation
-      }), {
-        scheduled_start_date: this.form.transactionable.scheduled_start_date
-      }), {
-        scheduled_end_date: this.form.transactionable.scheduled_end_date
-      }), {
-        actual_start_date: this.form.transactionable.actual_start_date
-      }), {
-        actual_end_date: this.form.transactionable.actual_end_date
-      }), {
-        assigned_user_id: this.form.assigned_user ? this.form.assigned_user.id : null
-      }), {
-        parent_asset_id: this.form.parent_asset ? this.form.parent_asset.id : null
+      var newform = _objectSpread(_objectSpread(_objectSpread({}, this.form), {
+        assigned_location_id: this.form.assigned_location ? this.form.assigned_location.id : null
       }), {
         transaction_type_id: this.form.transaction_type ? this.form.transaction_type.id : null
       });
 
-      if (!newForm.is_active) {
-        newForm.is_active = false;
+      if (!newform.is_active) {
+        newform.is_active = false;
       }
 
-      newForm.scheduled_start_date = newForm.scheduled_date ? newForm.scheduled_date[0] : null;
-      newForm.scheduled_end_date = newForm.scheduled_date ? newForm.scheduled_date[1] : null;
-      this.$emit("on-save", newForm);
+      this.$emit("on-save", newform);
     },
     onSelectAsset: function onSelectAsset(e) {
       this.errors.assets = [];
@@ -863,16 +482,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       this.form.assigned_employees = e;
     },
-    onSelectLocation: function onSelectLocation(e) {
-      this.errors.assigned_location_id = [];
-
-      if (e == null || e == undefined) {
-        this.form.assigned_location = null;
-        return;
-      }
-
-      this.form.assigned_location = e[0];
-    },
     removeItem: function removeItem(item) {
       if (confirm("Remove this item?")) {
         this.editedIndex = this.form.assets.indexOf(item);
@@ -884,40 +493,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.editedIndex = this.form.assigned_employees.indexOf(item);
         this.form.assigned_employees.splice(this.editedIndex, 1);
       }
-    },
-    updateActualDate: function updateActualDate(e) {
-      this.form.actual_date_performed = e;
-    },
-    updateScheduledDate: function updateScheduledDate(e) {
-      this.form.scheduled_date = e;
-    },
-    onSelectUser: function onSelectUser(e) {
-      this.errors.assigned_user_id = [];
-
-      if (e == null || e == undefined) {
-        this.form.assigned_user = null;
-        return;
-      }
-
-      this.form.assigned_user = e[0];
     }
-  }, "onSelectAsset", function onSelectAsset(e) {
-    this.errors.parent_asset_id = [];
-
-    if (e == null || e == undefined) {
-      this.form.parent_asset = null;
-      return;
-    }
-
-    this.form.parent_asset = e[0];
-  }),
+  },
   computed: {
     maxDate: function maxDate() {
       return moment__WEBPACK_IMPORTED_MODULE_1___default()().format("YYYY-MM-DD");
     }
   },
   watch: {
-    workOrderForm: {
+    disposalRequestForm: {
       immediate: true,
       handler: function handler(newValue, oldValue) {
         this.form = newValue;
@@ -931,10 +515,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/work_orders/Form.vue?vue&type=template&id=624f0f09&":
-/*!**************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/work_orders/Form.vue?vue&type=template&id=624f0f09& ***!
-  \**************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/disposal_requests/Form.vue?vue&type=template&id=5778fe6a&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/disposal_requests/Form.vue?vue&type=template&id=5778fe6a& ***!
+  \********************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1194,7 +778,7 @@ var render = function() {
                                   label: "Description",
                                   outlined: "",
                                   clearable: "",
-                                  hint: "Ex. Work Order for Asset",
+                                  hint: "Ex. Disposal Request for Asset",
                                   "error-messages": _vm.errors.description[0]
                                 },
                                 on: {
@@ -1208,716 +792,6 @@ var render = function() {
                                     _vm.$set(_vm.form, "description", $$v)
                                   },
                                   expression: "form.description"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("XDateRangePicker", {
-                                ref: "dateRangeScheduled",
-                                attrs: { dateRange: _vm.form.scheduled_date },
-                                on: { "on-change": _vm.updateScheduledDate },
-                                scopedSlots: _vm._u([
-                                  {
-                                    key: "openDialog",
-                                    fn: function(ref) {
-                                      var on = ref.on
-                                      var attrs = ref.attrs
-                                      var dateRangeText = ref.dateRangeText
-                                      return [
-                                        _c(
-                                          "v-text-field",
-                                          _vm._g(
-                                            _vm._b(
-                                              {
-                                                attrs: {
-                                                  value: dateRangeText,
-                                                  "error-messages":
-                                                    _vm.errors
-                                                      .scheduled_start_date,
-                                                  label: "Scheduled Date",
-                                                  readonly: "",
-                                                  outlined: "",
-                                                  clearable: ""
-                                                },
-                                                on: {
-                                                  input: function($event) {
-                                                    _vm.errors.scheduled_start_date = []
-                                                  }
-                                                },
-                                                model: {
-                                                  value:
-                                                    _vm.form.scheduled_date,
-                                                  callback: function($$v) {
-                                                    _vm.$set(
-                                                      _vm.form,
-                                                      "scheduled_date",
-                                                      $$v
-                                                    )
-                                                  },
-                                                  expression:
-                                                    "form.scheduled_date"
-                                                }
-                                              },
-                                              "v-text-field",
-                                              attrs,
-                                              false
-                                            ),
-                                            on
-                                          )
-                                        )
-                                      ]
-                                    }
-                                  }
-                                ])
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "v-dialog",
-                                {
-                                  ref: "dialogActualStart",
-                                  attrs: {
-                                    "return-value":
-                                      _vm.form.transactionable
-                                        .actual_start_date,
-                                    persistent: "",
-                                    width: "290px"
-                                  },
-                                  on: {
-                                    "update:returnValue": function($event) {
-                                      return _vm.$set(
-                                        _vm.form.transactionable,
-                                        "actual_start_date",
-                                        $event
-                                      )
-                                    },
-                                    "update:return-value": function($event) {
-                                      return _vm.$set(
-                                        _vm.form.transactionable,
-                                        "actual_start_date",
-                                        $event
-                                      )
-                                    }
-                                  },
-                                  scopedSlots: _vm._u([
-                                    {
-                                      key: "activator",
-                                      fn: function(ref) {
-                                        var on = ref.on
-                                        var attrs = ref.attrs
-                                        return [
-                                          _c(
-                                            "v-text-field",
-                                            _vm._g(
-                                              _vm._b(
-                                                {
-                                                  attrs: {
-                                                    label: "Actual Start Date",
-                                                    readonly: "",
-                                                    outlined: "",
-                                                    hint: "Ex. 2000-01-01",
-                                                    "error-messages":
-                                                      _vm.errors
-                                                        .actual_start_date[0]
-                                                  },
-                                                  on: {
-                                                    input: function($event) {
-                                                      _vm.errors.actual_start_date = []
-                                                    }
-                                                  },
-                                                  model: {
-                                                    value:
-                                                      _vm.form.transactionable
-                                                        .actual_start_date,
-                                                    callback: function($$v) {
-                                                      _vm.$set(
-                                                        _vm.form
-                                                          .transactionable,
-                                                        "actual_start_date",
-                                                        $$v
-                                                      )
-                                                    },
-                                                    expression:
-                                                      "\n                                            form.transactionable\n                                                .actual_start_date\n                                        "
-                                                  }
-                                                },
-                                                "v-text-field",
-                                                attrs,
-                                                false
-                                              ),
-                                              on
-                                            )
-                                          )
-                                        ]
-                                      }
-                                    }
-                                  ]),
-                                  model: {
-                                    value: _vm.actualStartModal,
-                                    callback: function($$v) {
-                                      _vm.actualStartModal = $$v
-                                    },
-                                    expression: "actualStartModal"
-                                  }
-                                },
-                                [
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-date-picker",
-                                    {
-                                      attrs: {
-                                        max: _vm.maxDate,
-                                        scrollable: ""
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          _vm.errors.actual_start_date = []
-                                        }
-                                      },
-                                      model: {
-                                        value:
-                                          _vm.form.transactionable
-                                            .actual_start_date,
-                                        callback: function($$v) {
-                                          _vm.$set(
-                                            _vm.form.transactionable,
-                                            "actual_start_date",
-                                            $$v
-                                          )
-                                        },
-                                        expression:
-                                          "\n                                        form.transactionable\n                                            .actual_start_date\n                                    "
-                                      }
-                                    },
-                                    [
-                                      _c("v-spacer"),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { text: "", color: "primary" },
-                                          on: {
-                                            click: function($event) {
-                                              _vm.actualStartModal = false
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                                        Cancel\n                                    "
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { text: "", color: "primary" },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.$refs.dialogActualStart.save(
-                                                _vm.form.transactionable
-                                                  .actual_start_date
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                                        OK\n                                    "
-                                          )
-                                        ]
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-dialog",
-                                {
-                                  ref: "dialogActualEnd",
-                                  attrs: {
-                                    "return-value":
-                                      _vm.form.transactionable.actual_end_date,
-                                    persistent: "",
-                                    width: "290px"
-                                  },
-                                  on: {
-                                    "update:returnValue": function($event) {
-                                      return _vm.$set(
-                                        _vm.form.transactionable,
-                                        "actual_end_date",
-                                        $event
-                                      )
-                                    },
-                                    "update:return-value": function($event) {
-                                      return _vm.$set(
-                                        _vm.form.transactionable,
-                                        "actual_end_date",
-                                        $event
-                                      )
-                                    }
-                                  },
-                                  scopedSlots: _vm._u([
-                                    {
-                                      key: "activator",
-                                      fn: function(ref) {
-                                        var on = ref.on
-                                        var attrs = ref.attrs
-                                        return [
-                                          _c(
-                                            "v-text-field",
-                                            _vm._g(
-                                              _vm._b(
-                                                {
-                                                  attrs: {
-                                                    label: "Actual End Date",
-                                                    readonly: "",
-                                                    outlined: "",
-                                                    hint: "Ex. 2000-01-01",
-                                                    "error-messages":
-                                                      _vm.errors
-                                                        .actual_end_date[0]
-                                                  },
-                                                  on: {
-                                                    input: function($event) {
-                                                      _vm.errors.actual_end_date = []
-                                                    }
-                                                  },
-                                                  model: {
-                                                    value:
-                                                      _vm.form.transactionable
-                                                        .actual_end_date,
-                                                    callback: function($$v) {
-                                                      _vm.$set(
-                                                        _vm.form
-                                                          .transactionable,
-                                                        "actual_end_date",
-                                                        $$v
-                                                      )
-                                                    },
-                                                    expression:
-                                                      "\n                                            form.transactionable\n                                                .actual_end_date\n                                        "
-                                                  }
-                                                },
-                                                "v-text-field",
-                                                attrs,
-                                                false
-                                              ),
-                                              on
-                                            )
-                                          )
-                                        ]
-                                      }
-                                    }
-                                  ]),
-                                  model: {
-                                    value: _vm.actualEndModal,
-                                    callback: function($$v) {
-                                      _vm.actualEndModal = $$v
-                                    },
-                                    expression: "actualEndModal"
-                                  }
-                                },
-                                [
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-date-picker",
-                                    {
-                                      attrs: {
-                                        max: _vm.maxDate,
-                                        scrollable: ""
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          _vm.errors.actual_end_date = []
-                                        }
-                                      },
-                                      model: {
-                                        value:
-                                          _vm.form.transactionable
-                                            .actual_end_date,
-                                        callback: function($$v) {
-                                          _vm.$set(
-                                            _vm.form.transactionable,
-                                            "actual_end_date",
-                                            $$v
-                                          )
-                                        },
-                                        expression:
-                                          "\n                                        form.transactionable.actual_end_date\n                                    "
-                                      }
-                                    },
-                                    [
-                                      _c("v-spacer"),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { text: "", color: "primary" },
-                                          on: {
-                                            click: function($event) {
-                                              _vm.actualEndModal = false
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                                        Cancel\n                                    "
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { text: "", color: "primary" },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.$refs.dialogActualEnd.save(
-                                                _vm.form.transactionable
-                                                  .actual_end_date
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                                        OK\n                                    "
-                                          )
-                                        ]
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-col",
-            { attrs: { cols: "12", md: "4" } },
-            [
-              _c(
-                "v-card",
-                { attrs: { flat: "" } },
-                [
-                  _c("v-card-title", [
-                    _vm._v(
-                      "\n                    Asset Information\n                "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "v-card-text",
-                    [
-                      _c(
-                        "v-row",
-                        { staticClass: "d-flex justify-center" },
-                        [
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "12" } },
-                            [
-                              _c("v-text-field", {
-                                attrs: {
-                                  value: _vm.form.assigned_user
-                                    ? _vm.form.assigned_user.full_name
-                                    : "",
-                                  label: "Assigned User",
-                                  outlined: "",
-                                  "error-messages":
-                                    _vm.errors.assigned_user_id[0],
-                                  readonly: ""
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.assigned_user_id = []
-                                  }
-                                },
-                                scopedSlots: _vm._u([
-                                  {
-                                    key: "append",
-                                    fn: function() {
-                                      return [
-                                        _c("EmployeeDialogSelector", {
-                                          attrs: {
-                                            selected: !_vm.form.assigned_user
-                                              ? []
-                                              : [].concat(
-                                                  _vm.form.assigned_user
-                                                )
-                                          },
-                                          on: { "on-select": _vm.onSelectUser },
-                                          scopedSlots: _vm._u([
-                                            {
-                                              key: "openDialog",
-                                              fn: function(ref) {
-                                                var on = ref.on
-                                                var attrs = ref.attrs
-                                                return [
-                                                  _c(
-                                                    "v-btn",
-                                                    _vm._g(
-                                                      _vm._b(
-                                                        {
-                                                          attrs: {
-                                                            icon: "",
-                                                            title:
-                                                              "Select Employee"
-                                                          }
-                                                        },
-                                                        "v-btn",
-                                                        attrs,
-                                                        false
-                                                      ),
-                                                      on
-                                                    ),
-                                                    [
-                                                      _c("v-icon", [
-                                                        _vm._v(
-                                                          "\n                                                    mdi-clipboard-account\n                                                "
-                                                        )
-                                                      ])
-                                                    ],
-                                                    1
-                                                  )
-                                                ]
-                                              }
-                                            }
-                                          ])
-                                        }),
-                                        _vm._v(" "),
-                                        _c("CustomerDialogSelector", {
-                                          attrs: {
-                                            selected: !_vm.form.assigned_user
-                                              ? []
-                                              : [].concat(
-                                                  _vm.form.assigned_user
-                                                )
-                                          },
-                                          on: { "on-select": _vm.onSelectUser },
-                                          scopedSlots: _vm._u([
-                                            {
-                                              key: "openDialog",
-                                              fn: function(ref) {
-                                                var on = ref.on
-                                                var attrs = ref.attrs
-                                                return [
-                                                  _c(
-                                                    "v-btn",
-                                                    _vm._g(
-                                                      _vm._b(
-                                                        {
-                                                          attrs: {
-                                                            icon: "",
-                                                            title:
-                                                              "Select Customer"
-                                                          }
-                                                        },
-                                                        "v-btn",
-                                                        attrs,
-                                                        false
-                                                      ),
-                                                      on
-                                                    ),
-                                                    [
-                                                      _c("v-icon", [
-                                                        _vm._v(
-                                                          "\n                                                    mdi-card-account-details-outline\n                                                "
-                                                        )
-                                                      ])
-                                                    ],
-                                                    1
-                                                  )
-                                                ]
-                                              }
-                                            }
-                                          ])
-                                        })
-                                      ]
-                                    },
-                                    proxy: true
-                                  }
-                                ])
-                              }),
-                              _vm._v(" "),
-                              _c("AssetDialogSelector", {
-                                attrs: {
-                                  selected: !_vm.form.parent_asset
-                                    ? []
-                                    : [].concat(_vm.form.parent_asset),
-                                  requestType: "work_order",
-                                  assignedUserId: _vm.form.assigned_user
-                                    ? _vm.form.assigned_user.id
-                                    : 0
-                                },
-                                on: { "on-select": _vm.onSelectAsset },
-                                scopedSlots: _vm._u([
-                                  {
-                                    key: "openDialog",
-                                    fn: function(ref) {
-                                      var on = ref.on
-                                      var attrs = ref.attrs
-                                      return [
-                                        _c(
-                                          "v-text-field",
-                                          _vm._g(
-                                            _vm._b(
-                                              {
-                                                attrs: {
-                                                  disabled: !_vm.form
-                                                    .assigned_user,
-                                                  value: _vm.form.parent_asset
-                                                    ? _vm.form.parent_asset
-                                                        .description
-                                                    : "",
-                                                  label: "Asset",
-                                                  outlined: "",
-                                                  "error-messages":
-                                                    _vm.errors
-                                                      .parent_asset_id[0],
-                                                  readonly: ""
-                                                },
-                                                on: {
-                                                  input: function($event) {
-                                                    _vm.errors.parent_asset_id = []
-                                                  }
-                                                }
-                                              },
-                                              "v-text-field",
-                                              attrs,
-                                              false
-                                            ),
-                                            on
-                                          )
-                                        )
-                                      ]
-                                    }
-                                  }
-                                ])
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Incident",
-                                  outlined: "",
-                                  clearable: "",
-                                  hint: "Ex. Incident for Asset",
-                                  "error-messages": _vm.errors.incident[0]
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.incident = []
-                                  }
-                                },
-                                model: {
-                                  value: _vm.form.transactionable.incident,
-                                  callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.form.transactionable,
-                                      "incident",
-                                      $$v
-                                    )
-                                  },
-                                  expression: "form.transactionable.incident"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Diagnosis",
-                                  outlined: "",
-                                  clearable: "",
-                                  hint: "Ex. Diagnosis for Asset",
-                                  "error-messages": _vm.errors.diagnosis[0]
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.diagnosis = []
-                                  }
-                                },
-                                model: {
-                                  value: _vm.form.transactionable.diagnosis,
-                                  callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.form.transactionable,
-                                      "diagnosis",
-                                      $$v
-                                    )
-                                  },
-                                  expression: "form.transactionable.diagnosis"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Action Taken",
-                                  outlined: "",
-                                  clearable: "",
-                                  hint: "Ex. Action Taken for Asset",
-                                  "error-messages": _vm.errors.action_taken[0]
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.action_taken = []
-                                  }
-                                },
-                                model: {
-                                  value: _vm.form.transactionable.action_taken,
-                                  callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.form.transactionable,
-                                      "action_taken",
-                                      $$v
-                                    )
-                                  },
-                                  expression:
-                                    "form.transactionable.action_taken"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Recommendation",
-                                  outlined: "",
-                                  clearable: "",
-                                  hint: "Ex. Recommendation for Asset",
-                                  "error-messages": _vm.errors.recommendation[0]
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.recommendation = []
-                                  }
-                                },
-                                model: {
-                                  value:
-                                    _vm.form.transactionable.recommendation,
-                                  callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.form.transactionable,
-                                      "recommendation",
-                                      $$v
-                                    )
-                                  },
-                                  expression:
-                                    "\n                                    form.transactionable.recommendation\n                                "
                                 }
                               })
                             ],
@@ -1938,7 +812,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "v-col",
-            { attrs: { cols: "12", md: "6" } },
+            { attrs: { cols: "12", md: "8" } },
             [
               _c(
                 "v-card",
@@ -2097,7 +971,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "v-col",
-            { attrs: { cols: "12", md: "6" } },
+            { attrs: { cols: "12" } },
             [
               _c(
                 "v-card",
@@ -2109,7 +983,7 @@ var render = function() {
                     [
                       _c("div", [
                         _vm._v(
-                          "\n                        Sub-Assets\n                    "
+                          "\n                        Assets\n                    "
                         )
                       ]),
                       _vm._v(" "),
@@ -2136,10 +1010,7 @@ var render = function() {
                             attrs: {
                               selected: !_vm.form.assets ? [] : _vm.form.assets,
                               singleSelect: false,
-                              requestType: "maintenance",
-                              assignedAssetId: _vm.form.parent_asset
-                                ? _vm.form.parent_asset.id
-                                : 0
+                              requestType: "disposal"
                             },
                             on: { "on-select": _vm.onSelectAsset },
                             scopedSlots: _vm._u([
@@ -2155,7 +1026,6 @@ var render = function() {
                                         _vm._b(
                                           {
                                             attrs: {
-                                              disabled: !_vm.form.parent_asset,
                                               icon: "",
                                               fab: "",
                                               small: "",
@@ -2170,9 +1040,7 @@ var render = function() {
                                       ),
                                       [
                                         _c("v-icon", [
-                                          _vm._v(
-                                            "\n                                        mdi-clipboard-plus-outline\n                                    "
-                                          )
+                                          _vm._v("mdi-clipboard-plus-outline")
                                         ])
                                       ],
                                       1
@@ -2289,17 +1157,17 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/pages/work_orders/Form.vue":
-/*!*************************************************!*\
-  !*** ./resources/js/pages/work_orders/Form.vue ***!
-  \*************************************************/
+/***/ "./resources/js/pages/disposal_requests/Form.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/pages/disposal_requests/Form.vue ***!
+  \*******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Form_vue_vue_type_template_id_624f0f09___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=template&id=624f0f09& */ "./resources/js/pages/work_orders/Form.vue?vue&type=template&id=624f0f09&");
-/* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./resources/js/pages/work_orders/Form.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Form_vue_vue_type_template_id_5778fe6a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=template&id=5778fe6a& */ "./resources/js/pages/disposal_requests/Form.vue?vue&type=template&id=5778fe6a&");
+/* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./resources/js/pages/disposal_requests/Form.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -2310,8 +1178,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Form_vue_vue_type_template_id_624f0f09___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Form_vue_vue_type_template_id_624f0f09___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Form_vue_vue_type_template_id_5778fe6a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Form_vue_vue_type_template_id_5778fe6a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -2321,40 +1189,129 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/pages/work_orders/Form.vue"
+component.options.__file = "resources/js/pages/disposal_requests/Form.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/pages/work_orders/Form.vue?vue&type=script&lang=js&":
-/*!**************************************************************************!*\
-  !*** ./resources/js/pages/work_orders/Form.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************/
+/***/ "./resources/js/pages/disposal_requests/Form.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/pages/disposal_requests/Form.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/work_orders/Form.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/disposal_requests/Form.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/pages/work_orders/Form.vue?vue&type=template&id=624f0f09&":
-/*!********************************************************************************!*\
-  !*** ./resources/js/pages/work_orders/Form.vue?vue&type=template&id=624f0f09& ***!
-  \********************************************************************************/
+/***/ "./resources/js/pages/disposal_requests/Form.vue?vue&type=template&id=5778fe6a&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/pages/disposal_requests/Form.vue?vue&type=template&id=5778fe6a& ***!
+  \**************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_624f0f09___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=template&id=624f0f09& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/work_orders/Form.vue?vue&type=template&id=624f0f09&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_624f0f09___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_5778fe6a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Form.vue?vue&type=template&id=5778fe6a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/disposal_requests/Form.vue?vue&type=template&id=5778fe6a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_5778fe6a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_624f0f09___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Form_vue_vue_type_template_id_5778fe6a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/services/DisposalRequestDataService.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/services/DisposalRequestDataService.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+// import http from "../http-common";
+
+
+var DisposalRequestDataService = /*#__PURE__*/function () {
+  function DisposalRequestDataService() {
+    _classCallCheck(this, DisposalRequestDataService);
+  }
+
+  _createClass(DisposalRequestDataService, [{
+    key: "getAll",
+    value: function getAll(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/disposal_requests", data);
+    }
+  }, {
+    key: "show",
+    value: function show(id, data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/disposal_requests/".concat(id), data);
+    }
+  }, {
+    key: "store",
+    value: function store(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/disposal_requests", data);
+    }
+  }, {
+    key: "update",
+    value: function update(id, data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/disposal_requests/".concat(id), data);
+    }
+  }, {
+    key: "delete",
+    value: function _delete(id, data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/disposal_requests/".concat(id), data);
+    }
+  }, {
+    key: "deleteMany",
+    value: function deleteMany(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/disposal_requests/multiple", data);
+    }
+  }, {
+    key: "restore",
+    value: function restore(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/disposal_requests/restore", data);
+    }
+  }, {
+    key: "approve",
+    value: function approve(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/disposal_requests/approve", data);
+    }
+  }, {
+    key: "complete",
+    value: function complete(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/disposal_requests/complete", data);
+    }
+  }, {
+    key: "post",
+    value: function post(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/disposal_requests/post", data);
+    }
+  }, {
+    key: "cancel",
+    value: function cancel(data) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/disposal_requests/cancel", data);
+    }
+  }]);
+
+  return DisposalRequestDataService;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (new DisposalRequestDataService());
 
 /***/ }),
 
@@ -2429,95 +1386,6 @@ var TransactionTypeDataService = /*#__PURE__*/function () {
 }();
 
 /* harmony default export */ __webpack_exports__["default"] = (new TransactionTypeDataService());
-
-/***/ }),
-
-/***/ "./resources/js/services/WorkOrderDataService.js":
-/*!*******************************************************!*\
-  !*** ./resources/js/services/WorkOrderDataService.js ***!
-  \*******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-// import http from "../http-common";
-
-
-var WorkOrderDataService = /*#__PURE__*/function () {
-  function WorkOrderDataService() {
-    _classCallCheck(this, WorkOrderDataService);
-  }
-
-  _createClass(WorkOrderDataService, [{
-    key: "getAll",
-    value: function getAll(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/work_orders", data);
-    }
-  }, {
-    key: "show",
-    value: function show(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/work_orders/".concat(id), data);
-    }
-  }, {
-    key: "store",
-    value: function store(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/work_orders", data);
-    }
-  }, {
-    key: "update",
-    value: function update(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/work_orders/".concat(id), data);
-    }
-  }, {
-    key: "delete",
-    value: function _delete(id, data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/work_orders/".concat(id), data);
-    }
-  }, {
-    key: "deleteMany",
-    value: function deleteMany(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/work_orders/multiple", data);
-    }
-  }, {
-    key: "restore",
-    value: function restore(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/work_orders/restore", data);
-    }
-  }, {
-    key: "approve",
-    value: function approve(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/work_orders/approve", data);
-    }
-  }, {
-    key: "complete",
-    value: function complete(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/work_orders/complete", data);
-    }
-  }, {
-    key: "post",
-    value: function post(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/work_orders/post", data);
-    }
-  }, {
-    key: "cancel",
-    value: function cancel(data) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/work_orders/cancel", data);
-    }
-  }]);
-
-  return WorkOrderDataService;
-}();
-
-/* harmony default export */ __webpack_exports__["default"] = (new WorkOrderDataService());
 
 /***/ })
 

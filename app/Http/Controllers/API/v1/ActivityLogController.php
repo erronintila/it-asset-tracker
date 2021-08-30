@@ -22,8 +22,21 @@ class ActivityLogController extends Controller
         $sortBy = request('sortBy') ?? "created_at";
         $sortType = request('sortType') ?? "desc";
         $itemsPerPage = request('itemsPerPage') ?? 10;
+        $user_id = request("user_id") ?? null;
+        $subject_type = request("subject_type") ?? null;
+        $subject_id = request("subject_id") ?? null;
 
-        $activity_logs = Activity::with("causer")->orderBy($sortBy, $sortType)
+        $activity_logs = Activity::with("causer");
+
+        if ($user_id) {
+            $activity_logs = $activity_logs->where("causer_id", $user_id);
+        }
+
+        if ($subject_id && $subject_type) {
+            $activity_logs = $activity_logs->where("subject_type", $subject_type)->where("subject_id", $subject_id);
+        }
+
+        $activity_logs = $activity_logs->orderBy($sortBy, $sortType)
             ->paginate($itemsPerPage);
 
         return $this->successResponse('read', $activity_logs, 200);
