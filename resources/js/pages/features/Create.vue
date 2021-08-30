@@ -58,7 +58,7 @@ export default {
                 })
                 .catch(error => {
                     console.log(error);
-                    console.log(error.reponse);
+                    console.log(error.response);
                     alert("An error has occurred.");
                     this.errors = {
                         ...this.errors,

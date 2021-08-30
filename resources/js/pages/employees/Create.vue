@@ -39,7 +39,8 @@ export default {
                 postal_code: [],
                 latitude: [],
                 longitude: [],
-                is_active: true,
+                is_active: [],
+                can_login: [],
                 location_id: [],
                 department_id: [],
                 notes: [],
@@ -57,7 +58,7 @@ export default {
                     this.$router.go(-1);
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response);
                     alert("An error has occurred.");
                     this.errors = {
                         ...this.errors,

@@ -2,29 +2,37 @@
 
 namespace App\Traits;
 
+use App\Models\Employee;
 use App\Models\User;
 use App\Notifications\CheckinRequest;
 use App\Notifications\CheckoutRequest;
 use App\Notifications\DisposalRequest;
 use App\Notifications\WorkOrder;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 
 trait SendUserNotification
 {
     protected function sendUserNotification(User $recipient, $type, $data)
     {
-        if (!$recipient->profile) {
-            // if (!$recipient->profile->department) {
-            //     return;
-            // }
-            return;
-        }
+        // if (!$recipient->profile) {
+        //     // if (!$recipient->profile->department) {
+        //     //     return;
+        //     // }
+        //     return;
+        // }
 
-        if ($recipient->profile) {
-            if ($recipient->profile->department) {
-                $recipient = User::find($recipient->profile->department->manager_id);
-            }
-        }
+        // if ($recipient->profile) {
+        //     // abort(500, "11");
+        //     if ($recipient->profile->department) {
+        //         // abort(500, "22");
+        //         $employee = Employee::find($recipient->profile->department->manager_id);
+
+        //         if ($employee) {
+        //             $recipient = $employee->user;
+        //         }
+        //     }
+        // }
 
         switch ($type) {
             case 'checkin':
@@ -54,5 +62,27 @@ trait SendUserNotification
             default:
                 break;
         }
+    }
+
+    protected function getRecipient($senderType, $directUser)
+    {
+        $recipient = null;
+        switch ($senderType) {
+            case 'admin':
+                if (Auth::user()->profile) {
+                    if (Auth::user()->profile->department) {
+                        $employee = Employee::find(Auth::user()->profile->department->manager_id);
+                        if ($employee) {
+                            $recipient = $employee->user;
+                        }
+                    }
+                }
+                break;
+            default:
+                $recipient = $directUser;
+                break;
+        }
+
+        return $recipient;
     }
 }

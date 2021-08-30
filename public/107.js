@@ -56,7 +56,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         postal_code: [],
         latitude: [],
         longitude: [],
-        is_active: true,
+        is_active: [],
+        can_login: [],
         location_id: [],
         department_id: [],
         notes: [],
@@ -75,7 +76,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         _this.$router.go(-1);
       })["catch"](function (error) {
-        console.log(error);
+        console.log(error.response);
         alert("An error has occurred.");
         _this.errors = _objectSpread(_objectSpread({}, _this.errors), error.response.data.errors);
       });

@@ -626,6 +626,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -638,6 +647,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           username: "",
           email: "",
           is_active: true,
+          can_login: true,
           notes: "",
           profile: {
             code: "",
@@ -693,7 +703,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           postal_code: [],
           latitude: [],
           longitude: [],
-          is_active: true,
+          is_active: [],
+          can_login: [],
           location_id: [],
           department_id: [],
           notes: [],
@@ -728,7 +739,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           postal_code: [],
           latitude: [],
           longitude: [],
-          is_active: true,
+          is_active: [],
+          can_login: [],
           location_id: [],
           department_id: [],
           notes: [],
@@ -751,6 +763,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         username: "",
         email: "",
         is_active: true,
+        can_login: true,
         notes: "",
         profile: {
           code: "",
@@ -804,6 +817,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       if (!newForm.is_active) {
         newForm.is_active = false;
+      }
+
+      if (!newForm.can_login) {
+        newForm.can_login = false;
       }
 
       this.$emit("on-save", newForm);
@@ -1979,6 +1996,49 @@ var render = function() {
                               })
                             ],
                             1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12" } },
+                            [
+                              _c(
+                                "v-sheet",
+                                { staticClass: "ml-4" },
+                                [
+                                  _c("v-switch", {
+                                    attrs: { inset: "", label: "Allow Login" },
+                                    model: {
+                                      value: _vm.form.can_login,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "can_login", $$v)
+                                      },
+                                      expression: "form.can_login"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-sheet",
+                                { staticClass: "ml-4" },
+                                [
+                                  _c("v-switch", {
+                                    attrs: { inset: "", label: "Active" },
+                                    model: {
+                                      value: _vm.form.is_active,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "is_active", $$v)
+                                      },
+                                      expression: "form.is_active"
+                                    }
+                                  })
+                                ],
+                                1
+                              )
+                            ],
+                            1
                           )
                         ],
                         1
@@ -1990,24 +2050,6 @@ var render = function() {
                   _c(
                     "v-card-actions",
                     [
-                      _c(
-                        "v-sheet",
-                        { staticClass: "ml-4" },
-                        [
-                          _c("v-switch", {
-                            attrs: { inset: "", label: "Active" },
-                            model: {
-                              value: _vm.form.is_active,
-                              callback: function($$v) {
-                                _vm.$set(_vm.form, "is_active", $$v)
-                              },
-                              expression: "form.is_active"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
                       _c("v-spacer"),
                       _vm._v(" "),
                       _c(

@@ -7,6 +7,7 @@ use App\Http\Requests\CheckinRequest\CheckinRequestStoreRequest;
 use App\Http\Requests\CheckinRequest\CheckinRequestUpdateRequest;
 use App\Http\Resources\CheckinRequestResource;
 use App\Models\CheckinRequest;
+use App\Models\Employee;
 use App\Models\Location;
 use App\Models\Transaction;
 use App\Models\TransactionType;
@@ -111,7 +112,7 @@ class CheckinRequestController extends Controller
             $checkin_request->save();
             $checkin_request->transaction()->save($transaction);
 
-            $this->sendUserNotification(Auth::user(), "checkin", ["action" => "create", "data" => $transaction]);
+            $this->sendUserNotification($this->getRecipient("admin", null), "checkin", ["action" => "create", "data" => $transaction]);
 
             return $transaction;
         });
@@ -178,7 +179,7 @@ class CheckinRequestController extends Controller
             $checkin_request->save();
             $checkin_request->transaction()->save($transaction);
 
-            $this->sendUserNotification(Auth::user(), "checkin", ["action" => "update", "data" => $transaction]);
+            $this->sendUserNotification($this->getRecipient("admin", null), "checkin", ["action" => "update", "data" => $transaction]);
 
             return $transaction;
         });
@@ -240,7 +241,7 @@ class CheckinRequestController extends Controller
             $transactions->each(function ($item) {
                 $item->approved_at = now();
 
-                $this->sendUserNotification(Auth::user(), "checkin", ["action" => "approve", "data" => $item]);
+                $this->sendUserNotification($this->getRecipient("user", User::find($item->user_id)), "checkin", ["action" => "approve", "data" => $item]);
 
                 $item->save();
             });
@@ -258,7 +259,7 @@ class CheckinRequestController extends Controller
             $transactions->each(function ($item) {
                 $item->completed_at = now();
 
-                $this->sendUserNotification(Auth::user(), "checkin", ["action" => "complete", "data" => $item]);
+                $this->sendUserNotification($this->getRecipient("user", User::find($item->user_id)), "checkin", ["action" => "complete", "data" => $item]);
 
                 $item->save();
             });
@@ -276,7 +277,7 @@ class CheckinRequestController extends Controller
             $transactions->each(function ($item) {
                 $item->posted_at = now();
 
-                $this->sendUserNotification(Auth::user(), "checkin", ["action" => "post", "data" => $item]);
+                $this->sendUserNotification($this->getRecipient("user", User::find($item->user_id)), "checkin", ["action" => "post", "data" => $item]);
 
                 $item->save();
             });
@@ -294,7 +295,7 @@ class CheckinRequestController extends Controller
             $transactions->each(function ($item) {
                 $item->cancelled_at = now();
 
-                $this->sendUserNotification(Auth::user(), "checkin", ["action" => "cancel", "data" => $item]);
+                $this->sendUserNotification($this->getRecipient("user", User::find($item->user_id)), "checkin", ["action" => "cancel", "data" => $item]);
 
                 $item->save();
             });

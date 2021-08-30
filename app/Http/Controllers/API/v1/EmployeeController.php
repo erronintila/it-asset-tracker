@@ -84,11 +84,11 @@ class EmployeeController extends Controller
             $user->username = $validated['username'];
             $user->email = $validated['email'] ?? null;
             $user->email_verified_at = now();
-            $user->can_login = true;
+            $user->can_login = $validated['can_login'];
             $user->password = bcrypt('password');
 
             $employee = new Employee();
-            $employee->fill(Arr::except($validated, ['email', 'username']));
+            $employee->fill(Arr::except($validated, ['email', 'username', 'can_login']));
             $employee->code = $code;
             $employee->slug = $slug;
 
@@ -143,10 +143,11 @@ class EmployeeController extends Controller
             $user->name = ($validated['first_name'] . ' ' . $validated['last_name']);
             $user->email = $validated['email'] ?? null;
             $user->username = $validated['username'];
+            $user->can_login = $validated['can_login'];
             // $user->save();
 
             $employee = Employee::findOrFail($user->profile->id);
-            $employee->fill(Arr::except($validated, ['email', 'username']));
+            $employee->fill(Arr::except($validated, ['email', 'username', 'can_login']));
             $employee->slug = $slug;
 
             $employee->department()->associate($department);
@@ -191,7 +192,7 @@ class EmployeeController extends Controller
         return $this->successResponse('delete', $data, 200);
     }
 
-        /**
+    /**
      * Restore the specified resource from storage.
      *
      * @param  int  $id

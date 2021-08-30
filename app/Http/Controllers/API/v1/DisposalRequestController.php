@@ -9,6 +9,7 @@ use App\Http\Resources\DisposalRequestResource;
 use App\Models\DisposalRequest;
 use App\Models\Transaction;
 use App\Models\TransactionType;
+use App\Models\User;
 use App\Traits\HttpResponseMessage;
 use App\Traits\SendUserNotification;
 use Carbon\Carbon;
@@ -103,7 +104,7 @@ class DisposalRequestController extends Controller
             $disposal_request->save();
             $disposal_request->transaction()->save($transaction);
 
-            $this->sendUserNotification(Auth::user(), "disposal", ["action" => "create", "data" => $transaction]);
+            $this->sendUserNotification($this->getRecipient("admin", null), "disposal", ["action" => "create", "data" => $transaction]);
 
             return $transaction;
         });
@@ -166,7 +167,7 @@ class DisposalRequestController extends Controller
             $disposal_request->save();
             $disposal_request->transaction()->save($transaction);
 
-            $this->sendUserNotification(Auth::user(), "disposal", ["action" => "update", "data" => $transaction]);
+            $this->sendUserNotification($this->getRecipient("admin", null), "disposal", ["action" => "update", "data" => $transaction]);
 
             return $transaction;
         });
@@ -228,7 +229,7 @@ class DisposalRequestController extends Controller
             $transactions->each(function ($item) {
                 $item->approved_at = now();
 
-                $this->sendUserNotification(Auth::user(), "disposal", ["action" => "approve", "data" => $item]);
+                $this->sendUserNotification($this->getRecipient("user", User::find($item->user_id)), "disposal", ["action" => "approve", "data" => $item]);
 
                 $item->save();
             });
@@ -246,7 +247,7 @@ class DisposalRequestController extends Controller
             $transactions->each(function ($item) {
                 $item->completed_at = now();
 
-                $this->sendUserNotification(Auth::user(), "disposal", ["action" => "complete", "data" => $item]);
+                $this->sendUserNotification($this->getRecipient("user", User::find($item->user_id)), "disposal", ["action" => "complete", "data" => $item]);
 
                 $item->save();
             });
@@ -264,7 +265,7 @@ class DisposalRequestController extends Controller
             $transactions->each(function ($item) {
                 $item->posted_at = now();
 
-                $this->sendUserNotification(Auth::user(), "disposal", ["action" => "post", "data" => $item]);
+                $this->sendUserNotification($this->getRecipient("user", User::find($item->user_id)), "disposal", ["action" => "post", "data" => $item]);
 
                 $item->save();
             });
@@ -282,7 +283,7 @@ class DisposalRequestController extends Controller
             $transactions->each(function ($item) {
                 $item->cancelled_at = now();
 
-                $this->sendUserNotification(Auth::user(), "disposal", ["action" => "cancel", "data" => $item]);
+                $this->sendUserNotification($this->getRecipient("user", User::find($item->user_id)), "disposal", ["action" => "cancel", "data" => $item]);
 
                 $item->save();
             });

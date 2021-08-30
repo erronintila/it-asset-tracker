@@ -28,7 +28,7 @@ class UserResource extends JsonResource
             'default' => $this->default,
             "notes" => $this->notes,
             "profile" => $this->profile,
-            "permissions" => $this->is_superadmin ? Permission::all()->pluck("name") : $this->getAllPermissions(),
+            "permissions" => $this->is_superadmin ? Permission::all()->pluck("name") : $this->getAllPermissions()->pluck('name'),
             "created_at" => $this->created_at,
             "updated_at" => $this->updated_at,
             "deleted_at" => $this->deleted_at,

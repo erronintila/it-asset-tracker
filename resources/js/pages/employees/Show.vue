@@ -122,9 +122,7 @@
                                                     <td>Birthdate</td>
                                                     <td>
                                                         {{
-                                                            form.profile
-                                                                .birthdate
-                                                                | moment("LL")
+                                                            mixin_formatDate(form.profile.birthdate, "LL")
                                                         }}
                                                     </td>
                                                 </tr>
@@ -279,11 +277,20 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
+                                                    <td>Allow Login</td>
+                                                    <td>
+                                                        {{
+                                                            form.can_login
+                                                                ? "Yes"
+                                                                : "No"
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
                                                     <td>Created</td>
                                                     <td>
                                                         {{
-                                                            form.created_at
-                                                                | moment("LLLL")
+                                                            mixin_formatDate(form.created_at, "LLL")
                                                         }}
                                                     </td>
                                                 </tr>
@@ -471,6 +478,7 @@ export default {
                 username: "",
                 email: "",
                 is_active: true,
+                can_login: true,
                 notes: "",
                 profile: {
                     code: "",
@@ -523,7 +531,7 @@ export default {
                     this.form = { ...this.form, ...response.data.data };
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response);
                     alert("An error has occurred.");
                     this.$router.push({ name: "employees.index" }, () => {});
                 });
@@ -539,7 +547,7 @@ export default {
                     this.$router.push({ name: "employees.index" });
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response);
                     alert("An error has occurred.");
                 });
         }

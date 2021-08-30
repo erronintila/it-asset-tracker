@@ -37,9 +37,9 @@ export default {
         // mixin_formatNumber(value) {
         //     return numeral(value).format("0,0.00");
         // },
-        // mixin_formatDate(date, format) {
-        //     return date == null ? "" : moment(date).format(format);
-        // },
+        mixin_formatDate(date, format) {
+            return !date ? "" : moment(date).format(format);
+        },
         // mixin_getHumanDate(date) {
         //     return moment(date).fromNow();
         // },

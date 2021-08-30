@@ -216,7 +216,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.prev = 12;
                 _context.t0 = _context["catch"](3);
                 _this.tableOptions.loading = false;
-                console.log(_context.t0);
+                console.log(_context.t0.response);
 
               case 16:
               case "end":
@@ -717,6 +717,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -734,6 +741,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         username: "",
         email: "",
         is_active: true,
+        can_login: true,
         notes: "",
         profile: {
           code: "",
@@ -785,7 +793,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       _services_EmployeeDataService__WEBPACK_IMPORTED_MODULE_1__["default"].show(this.$route.params.id, data).then(function (response) {
         _this.form = _objectSpread(_objectSpread({}, _this.form), response.data.data);
       })["catch"](function (error) {
-        console.log(error);
+        console.log(error.response);
         alert("An error has occurred.");
 
         _this.$router.push({
@@ -807,7 +815,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           name: "employees.index"
         });
       })["catch"](function (error) {
-        console.log(error);
+        console.log(error.response);
         alert("An error has occurred.");
       });
     }
@@ -1319,7 +1327,7 @@ var render = function() {
                                                   _vm._v(
                                                     "\n                                                    " +
                                                       _vm._s(
-                                                        _vm._f("moment")(
+                                                        _vm.mixin_formatDate(
                                                           _vm.form.profile
                                                             .birthdate,
                                                           "LL"
@@ -1626,15 +1634,33 @@ var render = function() {
                                               ]),
                                               _vm._v(" "),
                                               _c("tr", [
+                                                _c("td", [
+                                                  _vm._v("Allow Login")
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        _vm.form.can_login
+                                                          ? "Yes"
+                                                          : "No"
+                                                      ) +
+                                                      "\n                                                "
+                                                  )
+                                                ])
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
                                                 _c("td", [_vm._v("Created")]),
                                                 _vm._v(" "),
                                                 _c("td", [
                                                   _vm._v(
                                                     "\n                                                    " +
                                                       _vm._s(
-                                                        _vm._f("moment")(
+                                                        _vm.mixin_formatDate(
                                                           _vm.form.created_at,
-                                                          "LLLL"
+                                                          "LLL"
                                                         )
                                                       ) +
                                                       "\n                                                "

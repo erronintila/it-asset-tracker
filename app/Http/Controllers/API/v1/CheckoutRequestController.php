@@ -110,7 +110,7 @@ class CheckoutRequestController extends Controller
             $checkin_request->save();
             $checkin_request->transaction()->save($transaction);
 
-            $this->sendUserNotification(Auth::user(), "checkout", ["action" => "create", "data" => $transaction]);
+            $this->sendUserNotification($this->getRecipient("admin", null), "checkout", ["action" => "create", "data" => $transaction]);
 
             return $transaction;
         });
@@ -177,7 +177,7 @@ class CheckoutRequestController extends Controller
             $checkin_request->save();
             $checkin_request->transaction()->save($transaction);
 
-            $this->sendUserNotification(Auth::user(), "checkout", ["action" => "update", "data" => $transaction]);
+            $this->sendUserNotification($this->getRecipient("admin", null), "checkout", ["action" => "update", "data" => $transaction]);
 
             return $transaction;
         });
@@ -239,7 +239,7 @@ class CheckoutRequestController extends Controller
             $transactions->each(function ($item) {
                 $item->approved_at = now();
 
-                $this->sendUserNotification(Auth::user(), "checkout", ["action" => "approve", "data" => $item]);
+                $this->sendUserNotification($this->getRecipient("user", User::find($item->user_id)), "checkout", ["action" => "approve", "data" => $item]);
 
                 $item->save();
             });
@@ -257,7 +257,7 @@ class CheckoutRequestController extends Controller
             $transactions->each(function ($item) {
                 $item->completed_at = now();
 
-                $this->sendUserNotification(Auth::user(), "checkout", ["action" => "complete", "data" => $item]);
+                $this->sendUserNotification($this->getRecipient("user", User::find($item->user_id)), "checkout", ["action" => "complete", "data" => $item]);
 
                 $item->save();
             });
@@ -275,7 +275,7 @@ class CheckoutRequestController extends Controller
             $transactions->each(function ($item) {
                 $item->posted_at = now();
 
-                $this->sendUserNotification(Auth::user(), "checkout", ["action" => "post", "data" => $item]);
+                $this->sendUserNotification($this->getRecipient("user", User::find($item->user_id)), "checkout", ["action" => "post", "data" => $item]);
 
                 $item->save();
             });
@@ -293,7 +293,7 @@ class CheckoutRequestController extends Controller
             $transactions->each(function ($item) {
                 $item->cancelled_at = now();
 
-                $this->sendUserNotification(Auth::user(), "checkout", ["action" => "cancel", "data" => $item]);
+                $this->sendUserNotification($this->getRecipient("user", User::find($item->user_id)), "checkout", ["action" => "cancel", "data" => $item]);
 
                 $item->save();
             });

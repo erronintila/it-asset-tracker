@@ -131,7 +131,7 @@ class WorkOrderController extends Controller
             $work_order->save();
             $work_order->transaction()->save($transaction);
 
-            $this->sendUserNotification(Auth::user(), "work_order", ["action" => "create", "data" => $transaction]);
+            $this->sendUserNotification($this->getRecipient("admin", null), "work_order", ["action" => "create", "data" => $transaction]);
 
             return $transaction;
         });
@@ -206,7 +206,7 @@ class WorkOrderController extends Controller
             $work_order->save();
             $work_order->transaction()->save($transaction);
 
-            $this->sendUserNotification(Auth::user(), "work_order", ["action" => "update", "data" => $transaction]);
+            $this->sendUserNotification($this->getRecipient("admin", null), "work_order", ["action" => "update", "data" => $transaction]);
 
             return $transaction;
         });
@@ -268,7 +268,7 @@ class WorkOrderController extends Controller
             $transactions->each(function ($item) {
                 $item->approved_at = now();
 
-                $this->sendUserNotification(Auth::user(), "work_order", ["action" => "approve", "data" => $item]);
+                $this->sendUserNotification($this->getRecipient("user", User::find($item->user_id)), "work_order", ["action" => "approve", "data" => $item]);
 
                 $item->save();
             });
@@ -286,7 +286,7 @@ class WorkOrderController extends Controller
             $transactions->each(function ($item) {
                 $item->completed_at = now();
 
-                $this->sendUserNotification(Auth::user(), "work_order", ["action" => "complete", "data" => $item]);
+                $this->sendUserNotification($this->getRecipient("user", User::find($item->user_id)), "work_order", ["action" => "complete", "data" => $item]);
 
                 $item->save();
             });
@@ -304,7 +304,7 @@ class WorkOrderController extends Controller
             $transactions->each(function ($item) {
                 $item->posted_at = now();
 
-                $this->sendUserNotification(Auth::user(), "work_order", ["action" => "post", "data" => $item]);
+                $this->sendUserNotification($this->getRecipient("user", User::find($item->user_id)), "work_order", ["action" => "post", "data" => $item]);
 
                 $item->save();
             });
@@ -322,7 +322,7 @@ class WorkOrderController extends Controller
             $transactions->each(function ($item) {
                 $item->cancelled_at = now();
 
-                $this->sendUserNotification(Auth::user(), "work_order", ["action" => "cancel", "data" => $item]);
+                $this->sendUserNotification($this->getRecipient("user", User::find($item->user_id)), "work_order", ["action" => "cancel", "data" => $item]);
 
                 $item->save();
             });

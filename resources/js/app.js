@@ -7,13 +7,13 @@ import store from "./store/index";
 import VueRouter from "vue-router";
 import vuetify from "./plugins/vuetify";
 import router from "./router/index";
-import App from "./components/layouts/App";
 import ApexCharts from "apexcharts";
 import Mixin from "./mixins/index";
 import VueMoment from "vue-moment";
+import App from "./components/layouts/App";
 
 Vue.use(VueRouter);
-Vue.use(Mixin);
+Vue.mixin(Mixin);
 Vue.use(VueMoment);
 
 Vue.component(

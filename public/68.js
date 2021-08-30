@@ -299,7 +299,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           resolve();
         })["catch"](function (error) {
           _this.tableOptions.loading = false;
-          console.log(error);
+          console.log(error.response);
           reject();
         });
       });
@@ -368,7 +368,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         _this2.selectedItems = [];
       })["catch"](function (error) {
-        console.log(error);
+        console.log(error.response);
         alert("An error has occurred.");
       });
     },
@@ -396,7 +396,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         _this3.selectedItems = [];
       })["catch"](function (error) {
-        console.log(error);
+        console.log(error.response);
         alert("An error has occurred.");
       });
     },
@@ -422,7 +422,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         _this4.selectedItems = [];
       })["catch"](function (error) {
-        console.log(error);
+        console.log(error.response);
         alert("An error has occurred.");
       });
     },

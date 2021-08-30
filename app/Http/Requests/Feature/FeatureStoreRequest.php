@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Feature;
 
+use App\Rules\UniqueInCategory;
 use Illuminate\Foundation\Http\FormRequest;
 
 class FeatureStoreRequest extends FormRequest
@@ -26,7 +27,7 @@ class FeatureStoreRequest extends FormRequest
         return [
             'code' => ['nullable', 'string', 'max:250', 'unique:features,code'],
             'slug' => ['nullable', 'string', 'max:250', 'unique:features,slug'],
-            'name' => ['required', 'string', 'max:250', 'unique:features,name'],
+            'name' => ['required', 'string', 'max:250', new UniqueInCategory(request("review_category_id"), request("name"))],
             "is_active" => ['required', 'boolean'],
             "is_required" => ['required', 'boolean'],
             "review_category_id" =>  ['required', 'integer'],

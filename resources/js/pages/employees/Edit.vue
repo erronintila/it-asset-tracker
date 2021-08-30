@@ -23,6 +23,7 @@ export default {
                 username: "",
                 email: "",
                 is_active: true,
+                can_login: true,
                 notes: "",
                 profile: {
                     code: "",
@@ -73,7 +74,8 @@ export default {
                 postal_code: [],
                 latitude: [],
                 longitude: [],
-                is_active: true,
+                is_active: [],
+                can_login: [],
                 location_id: [],
                 department_id: [],
                 notes: [],
@@ -103,7 +105,7 @@ export default {
                     };
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response);
                     alert("An error has occurred.");
                     this.$router.push({ name: "employees.index" }, () => {});
                 });
@@ -115,7 +117,7 @@ export default {
                     this.$router.go(-1);
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response);
                     alert("An error has occurred.");
                     if (error.response) {
                         if (error.response.data) {

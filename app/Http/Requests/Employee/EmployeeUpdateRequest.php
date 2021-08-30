@@ -47,6 +47,7 @@ class EmployeeUpdateRequest extends FormRequest
             'latitude' => ['nullable', 'string', 'max:250'],
             'longitude' => ['nullable', 'string', 'max:250'],
             'is_active' => ['required', 'boolean'],
+            'can_login' => ['required', 'boolean'],
             'image' => ['nullable', 'string'],
             'location_id' => ['nullable', 'integer'],
             'department_id' => ['required', 'integer'],

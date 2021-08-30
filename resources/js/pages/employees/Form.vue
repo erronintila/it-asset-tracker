@@ -353,16 +353,25 @@
                                     @input="errors.notes = []"
                                 ></v-textarea>
                             </v-col>
+                            <v-col cols="12">
+                                <v-sheet class="ml-4">
+                                    <v-switch
+                                        v-model="form.can_login"
+                                        inset
+                                        label="Allow Login"
+                                    ></v-switch>
+                                </v-sheet>
+                                <v-sheet class="ml-4">
+                                    <v-switch
+                                        v-model="form.is_active"
+                                        inset
+                                        label="Active"
+                                    ></v-switch>
+                                </v-sheet>
+                            </v-col>
                         </v-row>
                     </v-card-text>
                     <v-card-actions>
-                        <v-sheet class="ml-4">
-                            <v-switch
-                                v-model="form.is_active"
-                                inset
-                                label="Active"
-                            ></v-switch>
-                        </v-sheet>
                         <v-spacer></v-spacer>
                         <v-btn
                             color="primary"
@@ -393,6 +402,7 @@ export default {
                     username: "",
                     email: "",
                     is_active: true,
+                    can_login: true,
                     notes: "",
                     profile: {
                         code: "",
@@ -450,7 +460,8 @@ export default {
                     postal_code: [],
                     latitude: [],
                     longitude: [],
-                    is_active: true,
+                    is_active: [],
+                    can_login: [],
                     location_id: [],
                     department_id: [],
                     notes: [],
@@ -485,7 +496,8 @@ export default {
                     postal_code: [],
                     latitude: [],
                     longitude: [],
-                    is_active: true,
+                    is_active: [],
+                    can_login: [],
                     location_id: [],
                     department_id: [],
                     notes: [],
@@ -508,6 +520,7 @@ export default {
                 username: "",
                 email: "",
                 is_active: true,
+                can_login: true,
                 notes: "",
                 profile: {
                     code: "",
@@ -562,6 +575,10 @@ export default {
 
             if (!newForm.is_active) {
                 newForm.is_active = false;
+            }
+
+            if (!newForm.can_login) {
+                newForm.can_login = false;
             }
 
             this.$emit("on-save", newForm);
