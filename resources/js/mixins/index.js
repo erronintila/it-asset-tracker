@@ -99,7 +99,7 @@ export default {
         //             : error.response.statusText
         //         : "";
 
-        //     console.log(error);
+        //     console.log(error.response);
         //     console.log(error.response);
 
         //     this.mixin_errorDialog(errorTitle, errorMesssage);
@@ -131,7 +131,7 @@ export default {
         // //             _this.$store.dispatch("AUTH_USER");
         // //         })
         // //         .catch(error => {
-        // //             console.log(error);
+        // //             console.log(error.response);
         // //             console.log(error.response);
         // //         });
         // // }

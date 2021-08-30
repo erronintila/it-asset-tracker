@@ -12,7 +12,7 @@ export default {
             try {
                 const response = await PermissionDataService.getAll();
             } catch (error) {
-                console.log(error);
+                console.log(error.response);
                 alert("An error has occurred.");
             }
         }

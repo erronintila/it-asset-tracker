@@ -107,7 +107,7 @@ export default {
                 this.tableOptions.serverItemsLength = response.data.data.total;
                 this.tableOptions.loading = false;
             } catch (error) {
-                console.log(error);
+                console.log(error.response);
                 this.tableOptions.loading = false;
                 alert("An error has occurred.");
             }
@@ -134,7 +134,7 @@ export default {
                     this.getData();
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response);
                 });
         },
         onDelete(item) {
@@ -147,7 +147,7 @@ export default {
                     this.getData();
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response);
                     alert("An error has occurred.");
                 });
         },
@@ -168,7 +168,7 @@ export default {
                     fileLink.click();
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response);
                     alert("An error has occurred.");
                 });
         }

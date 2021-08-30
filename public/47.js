@@ -241,7 +241,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
         _this2.getData();
       })["catch"](function (error) {
-        console.log(error);
+        console.log(error.response);
       });
     },
     onDelete: function onDelete(item) {
@@ -254,7 +254,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       _services_MediaDataService__WEBPACK_IMPORTED_MODULE_2__["default"]["delete"](item.id).then(function (response) {
         _this3.getData();
       })["catch"](function (error) {
-        console.log(error);
+        console.log(error.response);
         alert("An error has occurred.");
       });
     },
@@ -269,7 +269,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         document.body.appendChild(fileLink);
         fileLink.click();
       })["catch"](function (error) {
-        console.log(error);
+        console.log(error.response);
         alert("An error has occurred.");
       });
     }
@@ -546,7 +546,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       _services_WorkOrderDataService__WEBPACK_IMPORTED_MODULE_2__["default"].show(this.$route.params.id, data).then(function (response) {
         _this.form = _objectSpread(_objectSpread({}, _this.form), response.data.data);
       })["catch"](function (error) {
-        console.log(error);
+        console.log(error.response);
         alert("An error has occurred.");
 
         _this.$router.push({
@@ -568,7 +568,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           name: "work_orders.index"
         });
       })["catch"](function (error) {
-        console.log(error);
+        console.log(error.response);
         alert("An error has occurred.");
       });
     }

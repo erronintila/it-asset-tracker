@@ -63,7 +63,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         _this.$emit("save-dialog");
       })["catch"](function (error) {
-        console.log(error);
+        console.log(error.response);
         alert("An error has occurred.");
         _this.errors = _objectSpread(_objectSpread({}, _this.errors), error.response.data.errors);
       });

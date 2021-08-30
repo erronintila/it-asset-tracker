@@ -256,7 +256,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           resolve();
         })["catch"](function (error) {
           _this.tableOptions.loading = false;
-          console.log(error);
           console.log(error.response);
           reject();
         });

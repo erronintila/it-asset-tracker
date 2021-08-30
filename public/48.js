@@ -93,7 +93,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 7:
                 _context.prev = 7;
                 _context.t0 = _context["catch"](0);
-                console.log(_context.t0);
+                console.log(_context.t0.response);
                 alert("An error has occurred.");
 
               case 11:
@@ -303,7 +303,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 7:
                 _context.prev = 7;
                 _context.t0 = _context["catch"](0);
-                console.log(_context.t0);
+                console.log(_context.t0.response);
                 alert("An error has occurred.");
 
               case 11:

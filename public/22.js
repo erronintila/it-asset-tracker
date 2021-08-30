@@ -554,7 +554,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     _this.transaction_types = response.data.data.data;
                   });
                 } catch (error) {
-                  console.log(error);
+                  console.log(error.response);
                 }
 
               case 1:

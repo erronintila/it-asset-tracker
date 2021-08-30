@@ -302,7 +302,7 @@ export default {
                     this.form = { ...this.form, ...response.data.data };
                 });
             } catch (error) {
-                console.log(error);
+                console.log(error.response);
                 alert("An error has occurred.");
                 this.$router.push({ name: "manufacturers.index" }, () => {});
             }
@@ -337,7 +337,7 @@ export default {
                     })
                     .catch(error => {
                         this.tableAssetOptions.loading = false;
-                        console.log(error);
+                        console.log(error.response);
                         reject();
                     });
             });
@@ -353,7 +353,7 @@ export default {
                     this.$router.push({ name: "manufacturers.index" });
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response);
                     alert("An error has occurred.");
                 });
         }

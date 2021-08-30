@@ -136,7 +136,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       _services_TransactionTypeDataService__WEBPACK_IMPORTED_MODULE_1__["default"].show(transaction_type.id, data).then(function (response) {
         _this.form = _objectSpread(_objectSpread({}, _this.form), response.data.data);
       })["catch"](function (error) {
-        console.log(error);
+        console.log(error.response);
         alert("An error has occurred.");
       });
     },
@@ -148,7 +148,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         _this2.$emit("save-dialog");
       })["catch"](function (error) {
-        console.log(error);
+        console.log(error.response);
         alert("An error has occurred.");
         _this2.errors = _objectSpread(_objectSpread({}, _this2.errors), error.response.data.errors);
       });
@@ -345,7 +345,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       _services_TransactionTypeDataService__WEBPACK_IMPORTED_MODULE_1__["default"].show(this.$route.params.id, data).then(function (response) {
         _this.form = _objectSpread(_objectSpread({}, _this.form), response.data.data);
       })["catch"](function (error) {
-        console.log(error);
+        console.log(error.response);
         alert("An error has occurred.");
 
         _this.$router.push({
@@ -367,7 +367,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           name: "transaction_types.index"
         });
       })["catch"](function (error) {
-        console.log(error);
+        console.log(error.response);
         alert("An error has occurred.");
       });
     }

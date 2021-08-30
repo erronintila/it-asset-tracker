@@ -204,7 +204,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 8:
                 _context.prev = 8;
                 _context.t0 = _context["catch"](1);
-                console.log(_context.t0);
+                console.log(_context.t0.response);
                 alert("An error has occurred.");
 
               case 12:
@@ -245,7 +245,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           resolve();
         })["catch"](function (error) {
           _this2.tableOptions.loading = false;
-          console.log(error);
+          console.log(error.response);
           reject();
         });
       });

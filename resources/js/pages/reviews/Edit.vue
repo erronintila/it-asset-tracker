@@ -63,7 +63,7 @@ export default {
                     };
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response);
                     alert("An error has occurred.");
                     this.$router.push({ name: "reviews.index" }, () => {});
                 });
@@ -75,7 +75,7 @@ export default {
                     this.$router.go(-1);
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response);
                     alert("An error has occurred.");
                     if (error.response) {
                         if (error.response.data) {

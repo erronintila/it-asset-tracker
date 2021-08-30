@@ -51,7 +51,7 @@ export default {
                     this.form[item.name] = item.payload.replace(/"/g, "");
                 });
             } catch (error) {
-                console.log(error);
+                console.log(error.response);
                 alert("An error has occurred.");
             }
         },

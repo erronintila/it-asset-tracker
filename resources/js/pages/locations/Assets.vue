@@ -122,7 +122,7 @@ export default {
                 this.tableOptions.loading = false;
             } catch (error) {
                 this.tableOptions.loading = false;
-                console.log(error);
+                console.log(error.response);
             }
         }
     },

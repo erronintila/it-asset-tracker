@@ -134,7 +134,7 @@ export default {
                     this.getData();
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response);
                 });
         },
         onDelete(item) {
@@ -147,7 +147,7 @@ export default {
                     this.getData();
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response);
                     alert("An error has occurred.");
                 });
         },
@@ -168,7 +168,7 @@ export default {
                     fileLink.click();
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response);
                     alert("An error has occurred.");
                 });
         }

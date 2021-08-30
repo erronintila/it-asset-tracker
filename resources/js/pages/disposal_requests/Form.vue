@@ -372,7 +372,7 @@ export default {
                     this.transaction_types = response.data.data.data;
                 });
             } catch (error) {
-                console.log(error);
+                console.log(error.response);
             }
         },
         onSave() {

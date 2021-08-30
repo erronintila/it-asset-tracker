@@ -268,7 +268,7 @@ export default {
                     })
                     .catch(error => {
                         this.tableOptions.loading = false;
-                        console.log(error);
+                        console.log(error.response);
                         reject();
                     });
             });
@@ -335,7 +335,7 @@ export default {
                     this.selectedItems = [];
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response);
                     alert("An error has occurred.");
                 });
         },
@@ -361,7 +361,7 @@ export default {
                     this.selectedItems = [];
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response);
                     alert("An error has occurred.");
                 });
         },
@@ -385,7 +385,7 @@ export default {
                     this.selectedItems = [];
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response);
                     alert("An error has occurred.");
                 });
         },

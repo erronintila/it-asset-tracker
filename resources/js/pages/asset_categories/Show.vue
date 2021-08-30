@@ -143,7 +143,7 @@ export default {
                     this.form = { ...this.form, ...response.data.data };
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response);
                     alert("An error has occurred.");
                     this.$router.push(
                         { name: "asset_categories.index" },
@@ -162,7 +162,7 @@ export default {
                     this.$router.push({ name: "asset_categories.index" });
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response);
                     alert("An error has occurred.");
                 });
         }

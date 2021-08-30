@@ -78,7 +78,7 @@ export default {
                     this.form = { ...this.form, ...response.data.data };
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response);
                     alert("An error has occurred.");
                     this.$router.push(
                         { name: "checkout_requests.index" },
@@ -93,7 +93,7 @@ export default {
                     this.$router.go(-1);
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response);
                     alert("An error has occurred.");
                     if (error.response) {
                         if (error.response.data) {

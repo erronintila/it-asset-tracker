@@ -87,7 +87,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       _services_FeatureDataService__WEBPACK_IMPORTED_MODULE_1__["default"].show(feature.id, data).then(function (response) {
         _this.form = _objectSpread(_objectSpread({}, _this.form), response.data.data);
       })["catch"](function (error) {
-        console.log(error);
+        console.log(error.response);
         alert("An error has occurred.");
       });
     },
@@ -100,7 +100,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         _this2.$emit("save-dialog");
       })["catch"](function (error) {
-        console.log(error);
+        console.log(error.response);
         alert("An error has occurred.");
         _this2.errors = _objectSpread(_objectSpread({}, _this2.errors), error.response.data.errors);
       });

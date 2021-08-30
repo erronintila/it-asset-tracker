@@ -587,7 +587,7 @@ export default {
                     );
                 });
             } catch (error) {
-                console.log(error);
+                console.log(error.response);
             }
         },
         async getActivityLogs() {
@@ -616,7 +616,7 @@ export default {
                     this.activityTableOptions.loading = false;
                 });
             } catch (error) {
-                console.log(error);
+                console.log(error.response);
             }
         }
     },

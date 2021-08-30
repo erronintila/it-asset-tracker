@@ -62,7 +62,7 @@ export default {
                     );
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response);
                     commit("SET_AUTHENTICATED", false);
                     commit("SET_USER", null);
                 });
@@ -80,7 +80,7 @@ export default {
                         resolve(response.data.data);
                     })
                     .catch(function(error) {
-                        console.log(error);
+                        console.log(error.response);
                         context.commit("SET_NOTIFICATIONS", null);
                         reject(error);
                     });

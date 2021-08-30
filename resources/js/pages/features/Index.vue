@@ -340,7 +340,7 @@ export default {
                     this.selectedItems = [];
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response);
                     alert("An error has occurred.");
                 });
         },
@@ -364,7 +364,7 @@ export default {
                     this.selectedItems = [];
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error.response);
                     alert("An error has occurred.");
                 });
         },
