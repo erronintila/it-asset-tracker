@@ -49,6 +49,8 @@ class AssetUpdateRequest extends FormRequest
             "assigned_user_id" => ["nullable", "integer"],
             "assigned_location_id" => ["nullable", "integer"],
             "assigned_asset_id" => ["nullable", "integer"],
+
+            // "extra_attributes" => ["nullable", "array"]
         ];
     }
 }

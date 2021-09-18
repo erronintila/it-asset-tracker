@@ -35,6 +35,8 @@ class CreateLicensesTable extends Migration
             $table->foreignId('assigned_user_id')->nullable()->constrained('users');
             $table->foreignId('assigned_location_id')->nullable()->constrained('locations');
             $table->foreignId('assigned_asset_id')->nullable()->constrained('assets')->onDelete('cascade');
+
+            $table->schemalessAttributes('extra_attributes');
         });
     }
 

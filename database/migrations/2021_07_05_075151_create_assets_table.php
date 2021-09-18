@@ -30,6 +30,7 @@ class CreateAssetsTable extends Migration
             $table->string('sku')->nullable();
             $table->double('quantity', 10, 2)->default(1);
             $table->text('notes')->nullable();
+            $table->schemalessAttributes('extra_attributes');
             $table->timestamp('disposed_at')->nullable();
             $table->timestamps();
             $table->softDeletes();

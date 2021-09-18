@@ -31,6 +31,7 @@ class CreateUsersTable extends Migration
             $table->softDeletes();
             $table->unsignedBigInteger("profile_id")->nullable();
             $table->string("profile_type")->nullable();
+            $table->schemalessAttributes('extra_attributes');
         });
     }
 

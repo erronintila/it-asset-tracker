@@ -29,7 +29,7 @@ const asset_routes = [
         },
         beforeEnter: (to, from, next) => {
             let permissions = store.getters["auth/user"].permissions;
-            if (permissions.includes("add all assets")) {
+            if (permissions.includes("add assets")) {
                 next();
             } else {
                 next({ name: "error_403" });
@@ -45,7 +45,7 @@ const asset_routes = [
         },
         beforeEnter: (to, from, next) => {
             let permissions = store.getters["auth/user"].permissions;
-            if (permissions.includes("edit all assets")) {
+            if (permissions.includes("edit assets")) {
                 next();
             } else {
                 next({ name: "error_403" });

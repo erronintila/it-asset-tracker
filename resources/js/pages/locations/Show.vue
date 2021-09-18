@@ -83,7 +83,7 @@
                                                 <tr
                                                     v-for="(value,
                                                     name,
-                                                    index) in form"
+                                                    index) in showDetails"
                                                     :key="index"
                                                 >
                                                     <td>{{ name }}</td>
@@ -105,7 +105,9 @@
                         <v-tab-item>
                             <v-card flat>
                                 <v-card-text>
-                                    <ActivityLogs :model_id="form.id"></ActivityLogs>
+                                    <ActivityLogs
+                                        :model_id="form.id"
+                                    ></ActivityLogs>
                                 </v-card-text>
                             </v-card>
                         </v-tab-item>
@@ -195,6 +197,21 @@ export default {
                     console.log(error.response);
                     alert("An error has occurred.");
                 });
+        }
+    },
+    computed: {
+        showDetails() {
+            let newForm = { ...this.form };
+
+            for (let key in newForm) {
+                if (key == "location_id") {
+                    console.log("no");break;
+                    continue;
+                }
+                newForm[key] = newForm[key];
+            }
+
+            return newForm;
         }
     },
     created() {

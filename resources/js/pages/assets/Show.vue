@@ -106,7 +106,9 @@
                         <v-tab-item>
                             <v-card flat>
                                 <v-card-text>
-                                    <ActivityLogs :model_id="form.id"></ActivityLogs>
+                                    <ActivityLogs
+                                        :model_id="form.id"
+                                    ></ActivityLogs>
                                 </v-card-text>
                             </v-card>
                         </v-tab-item>
@@ -183,7 +185,8 @@ export default {
                 assigned_user_id: "",
                 assigned_location_id: "",
                 assigned_asset_id: "",
-                manufacturer: { name: "" }
+                manufacturer: { name: "" },
+                extra_attributes: []
             }
         };
     },

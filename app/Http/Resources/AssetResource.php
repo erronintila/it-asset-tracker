@@ -49,6 +49,7 @@ class AssetResource extends JsonResource
             "assigned_asset_id" => $this->assigned_asset_id,
 
             "status" => $this->status,
+            // "extra_attributes" => $this->extra_attributes
         ];
     }
 }

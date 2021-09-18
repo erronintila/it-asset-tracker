@@ -39,7 +39,8 @@ export default {
                 asset_category_id: [],
                 assigned_user_id: [],
                 assigned_location_id: [],
-                assigned_asset_id: []
+                assigned_asset_id: [],
+                extra_attributes: []
             }
         };
     },

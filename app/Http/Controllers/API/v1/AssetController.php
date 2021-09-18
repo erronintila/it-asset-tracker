@@ -159,6 +159,14 @@ class AssetController extends Controller
             $asset->code = $code;
             $asset->slug = $slug;
             $asset->asset_tag = $asset_tag;
+
+            // $newArr = [];
+            // foreach ($validated['extra_attributes'] as $key => $value) {
+            //     $newArr[$value['field']] = $value['value'];
+            // }
+
+            // $asset->extra_attributes->set($newArr);
+            // $asset->extra_attributes = $validated['extra_attributes'];
             $asset->save();
 
             return $asset;
@@ -229,7 +237,7 @@ class AssetController extends Controller
         return $this->successResponse('delete', $data, 200);
     }
 
-        /**
+    /**
      * Restore the specified resource from storage.
      *
      * @param  int  $id

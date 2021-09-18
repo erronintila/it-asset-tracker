@@ -39,7 +39,8 @@ export default {
                 assigned_user_id: "",
                 assigned_location_id: "",
                 assigned_asset_id: "",
-                date_range: []
+                date_range: [],
+                extra_attributes: []
             },
             errors: {
                 code: [],
@@ -63,7 +64,8 @@ export default {
                 asset_category_id: [],
                 assigned_user_id: [],
                 assigned_location_id: [],
-                assigned_asset_id: []
+                assigned_asset_id: [],
+                extra_attributes: []
             }
         };
     },

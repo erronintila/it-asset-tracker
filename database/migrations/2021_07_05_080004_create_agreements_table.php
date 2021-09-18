@@ -27,6 +27,8 @@ class CreateAgreementsTable extends Migration
             $table->softDeletes();
             $table->foreignId('asset_id')->constrained()->onDelete('cascade');
             $table->foreignId('customer_id')->constrained('users')->onDelete('cascade');
+
+            $table->schemalessAttributes('extra_attributes');
         });
     }
 

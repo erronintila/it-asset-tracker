@@ -21,6 +21,7 @@
         "spatie/laravel-activitylog": "^3.17",
         "spatie/laravel-medialibrary": "^9.0.0",
         "spatie/laravel-permission": "^4.2",
+        "spatie/laravel-schemaless-attributes": "^1.8",
         "spatie/laravel-settings": "^2.1"
     },
     "require-dev": {

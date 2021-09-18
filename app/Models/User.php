@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -44,6 +45,7 @@ class User extends Authenticatable
         'is_admin' => 'boolean',
         'is_active' => 'boolean',
         'email_verified_at' => 'datetime',
+        'extra_attributes' => SchemalessAttributes::class,
     ];
 
     /**
@@ -60,6 +62,15 @@ class User extends Authenticatable
     | LIBRARY/PACKAGE CONFIGURATION
     |------------------------------------------------------------------------------------------------------------------------------------
     */
+
+    /**
+     * Spatie Schemaless attributes
+     */
+
+    public function scopeWithExtraAttributes(): Builder
+    {
+        return $this->extra_attributes->modelScope();
+    }
 
     /**
      * Activity Logs Configuration

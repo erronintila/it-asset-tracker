@@ -376,15 +376,60 @@
                     <v-card-text>
                         <v-row class="d-flex justify-center">
                             <v-col cols="12">
-                                <v-text-field
-                                    v-model="form.notes"
-                                    :error-messages="errors.notes[0]"
-                                    @input="errors.notes = []"
-                                    hint="Ex. 000011"
-                                    label="Notes"
-                                    outlined
-                                    clearable
-                                ></v-text-field>
+                                <v-col cols="12">
+                                    <v-text-field
+                                        v-model="form.notes"
+                                        :error-messages="errors.notes[0]"
+                                        @input="errors.notes = []"
+                                        hint="Ex. 000011"
+                                        label="Notes"
+                                        outlined
+                                        clearable
+                                    ></v-text-field>
+                                </v-col>
+                                <v-col cols="12">
+                                    Custom Fields
+                                    <div>
+                                        <v-text-field
+                                            v-model="custom_field"
+                                            label="Field"
+                                        ></v-text-field>
+                                        <div class="d-flex">
+                                            <v-text-field
+                                                v-model="custom_value"
+                                                label="Value"
+                                            ></v-text-field>
+                                            <v-btn text icon @click="addCustom">
+                                                <v-icon>
+                                                    mdi-plus
+                                                </v-icon>
+                                            </v-btn>
+                                        </div>
+                                    </div>
+                                    <v-data-table
+                                        :headers="[
+                                            { text: 'Field', value: 'field' },
+                                            { text: 'Value', value: 'value' },
+                                            { text: '', value: 'action' }
+                                        ]"
+                                        :items="form.extra_attributes"
+                                        :footer-props="{
+                                            itemsPerPageOptions: [5]
+                                        }"
+                                    >
+                                        <template
+                                            v-slot:[`item.action`]="{ item }"
+                                        >
+                                            <v-btn
+                                                text
+                                                icon
+                                                @click="removeCustom(item)"
+                                            >
+                                                <v-icon>mdi-delete</v-icon>
+                                            </v-btn>
+                                        </template>
+                                    </v-data-table>
+                                </v-col>
                             </v-col>
                         </v-row>
                     </v-card-text>
@@ -441,7 +486,8 @@ export default {
                     assigned_user_id: "",
                     assigned_location_id: "",
                     assigned_asset_id: "",
-                    date_range: []
+                    date_range: [],
+                    extra_attributes: []
                 };
             }
         },
@@ -470,7 +516,8 @@ export default {
                     asset_category_id: [],
                     assigned_user_id: [],
                     assigned_location_id: [],
-                    assigned_asset_id: []
+                    assigned_asset_id: [],
+                    extra_attributes: []
                 };
             }
         },
@@ -499,7 +546,8 @@ export default {
                     asset_category_id: [],
                     assigned_user_id: [],
                     assigned_location_id: [],
-                    assigned_asset_id: []
+                    assigned_asset_id: [],
+                    extra_attributes: []
                 };
             }
         }
@@ -509,6 +557,8 @@ export default {
             purchased_dateModal: false,
             received_dateModal: false,
             valid: false,
+            custom_field: "",
+            custom_value: "",
             form: {
                 code: "",
                 slug: "",
@@ -532,7 +582,8 @@ export default {
                 assigned_user_id: "",
                 assigned_location_id: "",
                 assigned_asset_id: "",
-                date_range: []
+                date_range: [],
+                extra_attributes: []
             }
         };
     },
@@ -617,6 +668,21 @@ export default {
         },
         updateDates(e) {
             this.form.date_range = e;
+        },
+        addCustom() {
+            if (this.custom_field && this.custom_value) {
+                let newItem = {
+                    field: this.custom_field,
+                    value: this.custom_value
+                };
+                this.form.extra_attributes.push(newItem);
+                this.custom_field = "";
+                this.custom_value = "";
+            }
+        },
+        removeCustom(item) {
+            this.editedIndex = this.form.extra_attributes.indexOf(item);
+            this.form.extra_attributes.splice(this.editedIndex, 1);
         }
     },
     computed: {

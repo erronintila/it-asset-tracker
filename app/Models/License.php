@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\Models\Activity;
@@ -31,6 +32,19 @@ class License extends Model
     | LIBRARY/PACKAGE CONFIGURATION
     |------------------------------------------------------------------------------------------------------------------------------------
     */
+
+    /**
+     * Spatie Schemaless attributes
+     */
+
+    public $casts = [
+        'extra_attributes' => SchemalessAttributes::class,
+    ];
+
+    public function scopeWithExtraAttributes(): Builder
+    {
+        return $this->extra_attributes->modelScope();
+    }
 
     /**
      * Activity Logs Configuration

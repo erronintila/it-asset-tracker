@@ -655,6 +655,51 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -689,7 +734,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           assigned_user_id: "",
           assigned_location_id: "",
           assigned_asset_id: "",
-          date_range: []
+          date_range: [],
+          extra_attributes: []
         };
       }
     },
@@ -718,7 +764,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           asset_category_id: [],
           assigned_user_id: [],
           assigned_location_id: [],
-          assigned_asset_id: []
+          assigned_asset_id: [],
+          extra_attributes: []
         };
       }
     },
@@ -747,7 +794,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           asset_category_id: [],
           assigned_user_id: [],
           assigned_location_id: [],
-          assigned_asset_id: []
+          assigned_asset_id: [],
+          extra_attributes: []
         };
       }
     }
@@ -757,6 +805,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       purchased_dateModal: false,
       received_dateModal: false,
       valid: false,
+      custom_field: "",
+      custom_value: "",
       form: {
         code: "",
         slug: "",
@@ -780,7 +830,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         assigned_user_id: "",
         assigned_location_id: "",
         assigned_asset_id: "",
-        date_range: []
+        date_range: [],
+        extra_attributes: []
       }
     };
   },
@@ -862,6 +913,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     updateDates: function updateDates(e) {
       this.form.date_range = e;
+    },
+    addCustom: function addCustom() {
+      if (this.custom_field && this.custom_value) {
+        var newItem = {
+          field: this.custom_field,
+          value: this.custom_value
+        };
+        this.form.extra_attributes.push(newItem);
+        this.custom_field = "";
+        this.custom_value = "";
+      }
+    },
+    removeCustom: function removeCustom(item) {
+      this.editedIndex = this.form.extra_attributes.indexOf(item);
+      this.form.extra_attributes.splice(this.editedIndex, 1);
     }
   },
   computed: {
@@ -2010,27 +2076,142 @@ var render = function() {
                             "v-col",
                             { attrs: { cols: "12" } },
                             [
-                              _c("v-text-field", {
-                                attrs: {
-                                  "error-messages": _vm.errors.notes[0],
-                                  hint: "Ex. 000011",
-                                  label: "Notes",
-                                  outlined: "",
-                                  clearable: ""
-                                },
-                                on: {
-                                  input: function($event) {
-                                    _vm.errors.notes = []
-                                  }
-                                },
-                                model: {
-                                  value: _vm.form.notes,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "notes", $$v)
-                                  },
-                                  expression: "form.notes"
-                                }
-                              })
+                              _c(
+                                "v-col",
+                                { attrs: { cols: "12" } },
+                                [
+                                  _c("v-text-field", {
+                                    attrs: {
+                                      "error-messages": _vm.errors.notes[0],
+                                      hint: "Ex. 000011",
+                                      label: "Notes",
+                                      outlined: "",
+                                      clearable: ""
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        _vm.errors.notes = []
+                                      }
+                                    },
+                                    model: {
+                                      value: _vm.form.notes,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "notes", $$v)
+                                      },
+                                      expression: "form.notes"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-col",
+                                { attrs: { cols: "12" } },
+                                [
+                                  _vm._v(
+                                    "\n                                Custom Fields\n                                "
+                                  ),
+                                  _c(
+                                    "div",
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: { label: "Field" },
+                                        model: {
+                                          value: _vm.custom_field,
+                                          callback: function($$v) {
+                                            _vm.custom_field = $$v
+                                          },
+                                          expression: "custom_field"
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "d-flex" },
+                                        [
+                                          _c("v-text-field", {
+                                            attrs: { label: "Value" },
+                                            model: {
+                                              value: _vm.custom_value,
+                                              callback: function($$v) {
+                                                _vm.custom_value = $$v
+                                              },
+                                              expression: "custom_value"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: { text: "", icon: "" },
+                                              on: { click: _vm.addCustom }
+                                            },
+                                            [
+                                              _c("v-icon", [
+                                                _vm._v(
+                                                  "\n                                                mdi-plus\n                                            "
+                                                )
+                                              ])
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c("v-data-table", {
+                                    attrs: {
+                                      headers: [
+                                        { text: "Field", value: "field" },
+                                        { text: "Value", value: "value" },
+                                        { text: "", value: "action" }
+                                      ],
+                                      items: _vm.form.extra_attributes,
+                                      "footer-props": {
+                                        itemsPerPageOptions: [5]
+                                      }
+                                    },
+                                    scopedSlots: _vm._u(
+                                      [
+                                        {
+                                          key: "item.action",
+                                          fn: function(ref) {
+                                            var item = ref.item
+                                            return [
+                                              _c(
+                                                "v-btn",
+                                                {
+                                                  attrs: { text: "", icon: "" },
+                                                  on: {
+                                                    click: function($event) {
+                                                      return _vm.removeCustom(
+                                                        item
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("v-icon", [
+                                                    _vm._v("mdi-delete")
+                                                  ])
+                                                ],
+                                                1
+                                              )
+                                            ]
+                                          }
+                                        }
+                                      ],
+                                      null,
+                                      true
+                                    )
+                                  })
+                                ],
+                                1
+                              )
                             ],
                             1
                           )

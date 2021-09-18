@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\Models\Activity;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Database\Eloquent\Builder;
 
 class Asset extends Model implements HasMedia
 {
@@ -32,6 +33,19 @@ class Asset extends Model implements HasMedia
     | LIBRARY/PACKAGE CONFIGURATION
     |------------------------------------------------------------------------------------------------------------------------------------
     */
+
+    /**
+     * Spatie Schemaless attributes
+     */
+
+    public $casts = [
+        'extra_attributes' => SchemalessAttributes::class,
+    ];
+
+    public function scopeWithExtraAttributes(): Builder
+    {
+        return $this->extra_attributes->modelScope();
+    }
 
     /**
      * Activity Logs Configuration
